@@ -1,0 +1,144 @@
+.container, .container-fluid {
+    background: black;
+    color: white;
+    border: darkslategrey 12px solid;
+}
+
+#top-row {
+    padding-bottom: 3px;
+}
+
+.cell-filler {
+    width: 1%;
+}
+
+.cell-left {
+    padding: 0px 5px;
+    text-align: right;
+}
+
+.cell-right {
+    padding: 0px 5px;
+    text-align: right;
+}
+
+.show {
+    background: paleturquoise;
+    border: 4px blue solid;
+    color: black;
+    padding: 4px;
+}
+
+.display {
+    border: 4px red solid;
+}
+
+html {
+    background: #555;
+}
+
+#heading {
+    font-size: 200%;
+}
+
+.data-right {
+    text-align: right;
+}
+
+.data-left {
+    text-align: left;
+}
+
+.h-chars {
+    background: red;
+}
+
+.voice {
+    background: black;
+    color: white;
+}
+
+input[type=range][orient=vertical]
+{
+    writing-mode: bt-lr; /* IE */
+    -webkit-appearance: slider-vertical; /* WebKit */
+    width: 20px;
+    height: 600px;
+    padding: 100pxs 5px;
+}
+
+
+input, textarea {
+    background: black;
+    border: 2px white solid;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.txt {
+    background: white;
+}
+
+#module-text {
+    background: blue;
+    color: red;
+    border: 6px solid black;
+    margin: 0 60px;
+}
+
+.hdr{
+    background: silver;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    font-size: 150%;
+}
+
+#list{
+    text-align:center;
+}
+
+#error-response{
+    text-align:center;
+}
+
+.chars, .txt {
+    color: black;
+    text-align:left;
+}
+
+#newchar {
+    background: white;
+    color: black;
+}
+
+.btn-edit {
+    padding: 2px 10px;
+    background: red;
+    color: white;
+    border: black 4px solid;
+}
+
+.white-border {
+    padding: 2px 10px;
+    background: red;
+    color: white;
+    border: white 4px solid;
+    text-align:center;
+}
+
+#characters {
+    background: #555;
+    color: black;
+}
+
+#title-head {
+    text-align: right;
+}
+
+#title, #summary, #fname { 
+    background: white;
+    color: black;
+}

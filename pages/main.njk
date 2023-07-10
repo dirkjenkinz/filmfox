@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>FilmFox</title>
+        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    </head>
+
+    <body>
+        <div class='container'>
+            <div class='row'>
+                <div class='col-md-2'>
+                    <h1>FilmFox</h1>
+                </div>
+            </div>
+            <div class='row show'>
+                <div class='col-md-3'>
+                    <label class="form-label" for="scripy">Select Script</label>
+                    <input type="file" class="form-control" accept=".fdx" id="script"/>
+                </div>
+                <div class='col-md-3'>
+                    <br>
+                    <button class='btn btn-block btn-edit' id='display'>Display</button>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script>
+        $('#display').on('click', () => {
+            let s = $('#script')
+                .val()
+                .substring(12);
+            if (s !== '') {
+                window.location.href = `/display?script=${s}`
+            };
+        });
+    </script>
+</html>
