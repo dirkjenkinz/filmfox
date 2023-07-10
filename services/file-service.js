@@ -16,6 +16,21 @@ const getFile = (file) => {
     })
 };
 
+const getData = (file) => {
+    const directoryPath = path.join(__dirname, '../data');
+    return new Promise((resolve, reject) => {
+        fs.readFile(`${directoryPath}/${file}.json`,
+            (err, data) => {
+                if (err) {
+                    console.log('error=', err);
+                    reject(err);
+                } else {
+                    resolve(data);
+                }
+            })
+    })
+};
+
 const writeFile = (data, file) => {
     const directoryPath = path.join(__dirname, '../music');
     return new Promise((resolve, reject) => {
@@ -32,5 +47,6 @@ const writeFile = (data, file) => {
 
 module.exports = {
     getFile,
+    getData,
     writeFile,
 };

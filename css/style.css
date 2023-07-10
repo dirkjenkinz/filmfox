@@ -47,6 +47,7 @@ html {
 
 .data-left {
     text-align: left;
+    padding: 0px 4px;
 }
 
 .h-chars {
@@ -54,6 +55,11 @@ html {
 }
 
 .voice {
+    background: black;
+    color: white;
+}
+
+#voices {
     background: black;
     color: white;
 }

@@ -1,4 +1,5 @@
 const url = require('url');
+const voices = require('../../data/voices.json');
 
 const {
   getFile,
@@ -90,12 +91,26 @@ const parseScript = script => {
 }
 
 const displayHandler = async (req, res) => {
-  console.log("entering display handler");
+  console.log("entering display handler !!!");
   let u = url.parse(req.originalUrl, true);
   let file = u.query.script;
   let script = await getFile(file);
-
   let parse = parseScript(script);
+
+  let voice_data = [];
+  let v = [];
+  v.push('-');
+  v.push('-');
+  v.push('-');
+  voice_data.push(v);
+console.log(voice_data);
+  voices.voices.forEach(voice => {
+    let v = [];
+    v.push(voice.name);
+    v.push(voice.description);
+    v.push(voice.voice_id);
+    voice_data.push(v);
+  });
 
   script = parse[0];
   characters = parse[1].sort();
@@ -106,6 +121,7 @@ const displayHandler = async (req, res) => {
     script,
     characters,
     api_key,
+    voice_data,
   });
 };
 

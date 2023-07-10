@@ -21,7 +21,13 @@
             </div>
             <div class='row show'>
                 <div class='col-md-3'>
-                    <label class="form-label" for="scripy">Select Script</label>
+                    <br>
+                    <button class='btn btn-block btn-edit' id='voices'>Voices</button>
+                </div>
+            </div>
+            <div class='row show'>
+                <div class='col-md-3'>
+                    <label class="form-label" for="script">Select Script</label>
                     <input type="file" class="form-control" accept=".fdx" id="script"/>
                 </div>
                 <div class='col-md-3'>
@@ -31,7 +37,7 @@
             </div>
         </div>
     </body>
-    <script>
+    <script>        
         $('#display').on('click', () => {
             let s = $('#script')
                 .val()
@@ -39,6 +45,9 @@
             if (s !== '') {
                 window.location.href = `/display?script=${s}`
             };
+        }),
+         $('#voices').on('click', () => {
+                window.location.href = `/voices`
         });
     </script>
 </html>
