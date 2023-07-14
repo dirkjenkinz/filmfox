@@ -24,27 +24,34 @@
                     <br>
                     <button class='btn btn-block btn-edit' id='voices'>Voices</button>
                 </div>
+                <div class='col-md-3'>
+                    <br>
+                    <button class='btn btn-block btn-edit' id='test'>Test</button>
+                </div>
             </div>
             <div class='row show'>
                 <div class='col-md-3'>
-                    <label class="form-label" for="script">Select Script</label>
+                    <label class="form-label" for="script">Select Script To Convert</label>
                     <input type="file" class="form-control" accept=".fdx" id="script"/>
                 </div>
                 <div class='col-md-3'>
                     <br>
-                    <button class='btn btn-block btn-edit' id='display'>Display</button>
+                    <button class='btn btn-block btn-edit' id='convert'>Convert</button>
                 </div>
             </div>
         </div>
     </body>
     <script>        
-        $('#display').on('click', () => {
+        $('#convert').on('click', () => {
             let s = $('#script')
                 .val()
                 .substring(12);
             if (s !== '') {
-                window.location.href = `/display?script=${s}`
+                window.location.href = `/convert?script=${s}`
             };
+        }),
+         $('#test').on('click', () => {
+                window.location.href = `/test`
         }),
          $('#voices').on('click', () => {
                 window.location.href = `/voices`

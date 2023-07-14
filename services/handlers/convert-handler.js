@@ -3,7 +3,25 @@ const voices = require('../../data/voices.json');
 
 const {
   getFile,
+  writeFile,
 } = require("../file-service");
+
+const getVoiceData = () => {
+  let voice_data = [];
+  let v = [];
+  v.push('-');
+  v.push('-');
+  v.push('-');
+  voice_data.push(v);
+  voices.voices.forEach(voice => {
+    let v = [];
+    v.push(voice.name);
+    v.push(voice.description);
+    v.push(voice.voice_id);
+    voice_data.push(v);
+  });
+  return voice_data;
+};
 
 const parseAction = (action, scene_number) => {
   let a = [];
@@ -90,34 +108,40 @@ const parseScript = script => {
   return [parse, characters];
 }
 
-const displayHandler = async (req, res) => {
+const convertHandler = async (req, res) => {
   console.log("entering display handler !!!");
   let u = url.parse(req.originalUrl, true);
   let file = u.query.script;
   let script = await getFile(file);
   let parse = parseScript(script);
 
-  let voice_data = [];
-  let v = [];
-  v.push('-');
-  v.push('-');
-  v.push('-');
-  voice_data.push(v);
-console.log(voice_data);
-  voices.voices.forEach(voice => {
-    let v = [];
-    v.push(voice.name);
-    v.push(voice.description);
-    v.push(voice.voice_id);
-    voice_data.push(v);
-  });
+  let voice_data = getVoiceData();
 
   script = parse[0];
   characters = parse[1].sort();
+
+  let title = u.query.script;
+  title = title.split('.');
+  title = title[0];
+  await writeFile(characters.toString(), `${title}.chars`);
+
   api_key = 'd0bf46f1a6940f687634b5fc97c7c018';
+  console.log({title});
+  console.log(({voice_data}))
+
+  const fff = {
+    script: script,
+    characters: characters,
+    api_key: api_key,
+    voice_data: voice_data,
+  }
+
+  console.log({fff});
+
+  writeFile(JSON.stringify(fff), title+'.fff');
 
   res.render('display.njk', {
-    title: u.query.script,
+    title,
     script,
     characters,
     api_key,
@@ -125,4 +149,4 @@ console.log(voice_data);
   });
 };
 
-module.exports = { displayHandler };
+module.exports = { convertHandler };

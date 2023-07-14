@@ -7,7 +7,7 @@ const getFile = (file) => {
         fs.readFile(`${directoryPath}/${file}`,
             (err, data) => {
                 if (err) {
-                    console.log('error=', err);
+                    console.log('error=', 'err');
                     reject(err);
                 } else {
                     resolve(data);
@@ -22,7 +22,7 @@ const getData = (file) => {
         fs.readFile(`${directoryPath}/${file}.json`,
             (err, data) => {
                 if (err) {
-                    console.log('error=', err);
+                    console.log('error=', '/@@@@');
                     reject(err);
                 } else {
                     resolve(data);
@@ -32,13 +32,14 @@ const getData = (file) => {
 };
 
 const writeFile = (data, file) => {
-    const directoryPath = path.join(__dirname, '../music');
+    const directoryPath = path.join(__dirname, '../data');
     return new Promise((resolve, reject) => {
         fs.writeFile(`${directoryPath}/${file}`, data, (err, msg) => {
             if (err) {
-                console.log('error=', err);
+                console.log('error=', 'err');
                 reject(err);
             } else {
+                console.log('written')
                 resolve('ok');
             }
         })
