@@ -48,7 +48,7 @@
                     <tbody>
                         {% for i in range(0, characters.length) -%}
                             <tr>
-                                <td class='data-left' id='char_{{i}}'>{{characters[i]}}</td>
+                                <td class='data-left' id='char_{{i}}'>{{characters[i][0]}}</td>
                                 <td class='data-left'>
                                     <label for="cars">Choose a voice:</label>
                                     <select name="voices" id="voices">
@@ -93,8 +93,6 @@
             }),
             $('select').on('change', function(e) {
                 let num = this.name.substring(7);
-                console.log($(`#char_${num}`)[0].textContent);
-                console.log(this.value);
             }),
             $('.btn-gen').on('click', (e) => {
                 let num = e.target.id.substring(4);

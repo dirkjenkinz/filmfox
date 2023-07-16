@@ -105,7 +105,16 @@ const parseScript = script => {
       };
     };
   };
-  return [parse, characters];
+
+  const chars = [];
+
+  characters.forEach(c => {
+    chars.push([c, '-']);
+  })
+
+  console.log({chars});
+
+  return [parse, chars];
 }
 
 const convertHandler = async (req, res) => {
@@ -119,33 +128,28 @@ const convertHandler = async (req, res) => {
 
   script = parse[0];
   characters = parse[1].sort();
-
   let title = u.query.script;
   title = title.split('.');
   title = title[0];
-  await writeFile(characters.toString(), `${title}.chars`);
+
+  writeFile(JSON.stringify(characters), title+'.ctv');
 
   api_key = 'd0bf46f1a6940f687634b5fc97c7c018';
-  console.log({title});
-  console.log(({voice_data}))
 
   const fff = {
-    script: script,
-    characters: characters,
     api_key: api_key,
     voice_data: voice_data,
+    script: script,
   }
-
-  console.log({fff});
 
   writeFile(JSON.stringify(fff), title+'.fff');
 
   res.render('display.njk', {
     title,
-    script,
-    characters,
     api_key,
+    characters,
     voice_data,
+    script,
   });
 };
 
