@@ -23,7 +23,7 @@ const getData = (file) => {
         fs.readFile(`${directoryPath}/${file}`,
             (err, data) => {
                 if (err) {
-                    console.log('error=', '/@@@@');
+                    console.log('error=', err);
                     reject(err);
                 } else {
                     resolve(JSON.parse(data));
