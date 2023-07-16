@@ -1,10 +1,8 @@
 const express = require('express');
 const app = express();
 const mainRouter = require('./routes/main.js');
-const convertRouter = require('./routes/convert.js');
-const voicesRouter = require('./routes/voices.js');
-const testRouter = require('./routes/test.js');
 const displayRouter = require('./routes/display.js');
+const voicesRouter = require('./routes/voices.js');
 
 const nunjucks = require('nunjucks');
 const bodyParser = require('body-parser');
@@ -21,10 +19,8 @@ app.use(express.static(__dirname + '/'));
 
 app.use('/', mainRouter);
 app.use('/main', mainRouter);
-app.use('/convert', convertRouter);
-app.use('/voices', voicesRouter);
-app.use('/test', testRouter);
 app.use('/display', displayRouter);
+app.use('/voices', voicesRouter);
 
 app.listen(PORT, (err) => {
     console.log(`FilmFox is up & running on port ${PORT}`);

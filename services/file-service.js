@@ -23,7 +23,7 @@ const getData = (file) => {
         fs.readFile(`${directoryPath}/${file}`,
             (err, data) => {
                 if (err) {
-                    console.log('error=', err);
+                    console.log('error=', '/@@@@');
                     reject(err);
                 } else {
                     resolve(JSON.parse(data));
@@ -37,7 +37,7 @@ const writeFile = (data, file) => {
     return new Promise((resolve, reject) => {
         fs.writeFile(`${directoryPath}/${file}`, data, (err, msg) => {
             if (err) {
-                console.log('error=', err);
+                console.log('error=', 'err');
                 reject(err);
             } else {
                 console.log('written')

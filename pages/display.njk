@@ -50,7 +50,8 @@
                             <tr>
                                 <td class='data-left' id='char_{{i}}'>{{characters[i]}}</td>
                                 <td class='data-left'>
-                                    <select name=voices_{{i}} id='voices'>
+                                    <label for="cars">Choose a voice:</label>
+                                    <select name="voices" id="voices">
                                         {% for j in range(0, voice_data.length) -%}
                                             <option value="[{{voice_data[j][0]}}, {{voice_data[j][2]}}]">
                                                 {{voice_data[j][0]}}

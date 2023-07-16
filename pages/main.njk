@@ -49,7 +49,7 @@
                 </div>
                 <div class='col-md-3'>
                     <br>
-                    <button class='btn btn-block btn-edit' id='display'>Display</button>
+                    <button class='btn btn-block btn-edit' id='convert'>Convert</button>
                 </div>
             </div>
         </div>
@@ -60,16 +60,11 @@
                 .val()
                 .substring(12);
             if (s !== '') {
-                window.location.href = `/convert?script=${s}`
+                window.location.href = `/display?script=${s}`
             };
         }),
-         $('#display').on('click', () => {
-                 let f = $('#fff')
-                .val()
-                .substring(12);
-            if (f !== '') {
-                window.location.href = `/display?file=${f}`
-            };
+         $('#test').on('click', () => {
+                window.location.href = `/test`
         }),
          $('#voices').on('click', () => {
                 window.location.href = `/voices`
