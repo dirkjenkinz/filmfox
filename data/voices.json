@@ -1,795 +1,795 @@
 {
-  "voices": [
-    {
-      "voice_id": "21m00Tcm4TlvDq8ikWAM",
-      "name": "Rachel",
-      "samples": null,
-      "category": "premade",
-      "fine_tuning": {
-        "model_id": null,
-        "language": null,
-        "is_allowed_to_fine_tune": false,
-        "fine_tuning_requested": false,
-        "finetuning_state": "not_started",
-        "verification_attempts": null,
-        "verification_failures": [],
-        "verification_attempts_count": 0,
-        "slice_ids": null,
-        "manual_verification": null,
-        "manual_verification_requested": false
-      },
-      "labels": {},
-      "description": null,
-      "preview_url": "https://storage.googleapis.com/eleven-public-prod/premade/voices/21m00Tcm4TlvDq8ikWAM/6edb9076-c3e4-420c-b6ab-11d43fe341c8.mp3",
-      "available_for_tiers": [],
-      "settings": null,
-      "sharing": null
-    },
-    {
-      "voice_id": "AZnzlk1XvdvUeBnXmlld",
-      "name": "Domi",
-      "samples": null,
-      "category": "premade",
-      "fine_tuning": {
-        "model_id": null,
-        "language": null,
-        "is_allowed_to_fine_tune": false,
-        "fine_tuning_requested": false,
-        "finetuning_state": "not_started",
-        "verification_attempts": null,
-        "verification_failures": [],
-        "verification_attempts_count": 0,
-        "slice_ids": null,
-        "manual_verification": null,
-        "manual_verification_requested": false
-      },
-      "labels": {},
-      "description": null,
-      "preview_url": "https://storage.googleapis.com/eleven-public-prod/premade/voices/AZnzlk1XvdvUeBnXmlld/69c5373f-0dc2-4efd-9232-a0140182c0a9.mp3",
-      "available_for_tiers": [],
-      "settings": null,
-      "sharing": null
-    },
-    {
-      "voice_id": "EXAVITQu4vr4xnSDxMaL",
-      "name": "Bella",
-      "samples": null,
-      "category": "premade",
-      "fine_tuning": {
-        "model_id": null,
-        "language": null,
-        "is_allowed_to_fine_tune": false,
-        "fine_tuning_requested": false,
-        "finetuning_state": "not_started",
-        "verification_attempts": null,
-        "verification_failures": [],
-        "verification_attempts_count": 0,
-        "slice_ids": null,
-        "manual_verification": null,
-        "manual_verification_requested": false
-      },
-      "labels": {},
-      "description": null,
-      "preview_url": "https://storage.googleapis.com/eleven-public-prod/premade/voices/EXAVITQu4vr4xnSDxMaL/04365bce-98cc-4e99-9f10-56b60680cda9.mp3",
-      "available_for_tiers": [],
-      "settings": null,
-      "sharing": null
-    },
-    {
-      "voice_id": "ErXwobaYiN019PkySvjV",
-      "name": "Antoni",
-      "samples": null,
-      "category": "premade",
-      "fine_tuning": {
-        "model_id": null,
-        "language": null,
-        "is_allowed_to_fine_tune": false,
-        "fine_tuning_requested": false,
-        "finetuning_state": "not_started",
-        "verification_attempts": null,
-        "verification_failures": [],
-        "verification_attempts_count": 0,
-        "slice_ids": null,
-        "manual_verification": null,
-        "manual_verification_requested": false
-      },
-      "labels": {},
-      "description": null,
-      "preview_url": "https://storage.googleapis.com/eleven-public-prod/premade/voices/ErXwobaYiN019PkySvjV/38d8f8f0-1122-4333-b323-0b87478d506a.mp3",
-      "available_for_tiers": [],
-      "settings": null,
-      "sharing": null
-    },
-    {
-      "voice_id": "MF3mGyEYCl7XYWbV9V6O",
-      "name": "Elli",
-      "samples": null,
-      "category": "premade",
-      "fine_tuning": {
-        "model_id": null,
-        "language": null,
-        "is_allowed_to_fine_tune": false,
-        "fine_tuning_requested": false,
-        "finetuning_state": "not_started",
-        "verification_attempts": null,
-        "verification_failures": [],
-        "verification_attempts_count": 0,
-        "slice_ids": null,
-        "manual_verification": null,
-        "manual_verification_requested": false
-      },
-      "labels": {},
-      "description": null,
-      "preview_url": "https://storage.googleapis.com/eleven-public-prod/premade/voices/MF3mGyEYCl7XYWbV9V6O/f9fd64c3-5d62-45cd-b0dc-ad722ee3284e.mp3",
-      "available_for_tiers": [],
-      "settings": null,
-      "sharing": null
-    },
-    {
-      "voice_id": "TxGEqnHWrfWFTfGW9XjX",
-      "name": "Josh",
-      "samples": null,
-      "category": "premade",
-      "fine_tuning": {
-        "model_id": null,
-        "language": null,
-        "is_allowed_to_fine_tune": false,
-        "fine_tuning_requested": false,
-        "finetuning_state": "not_started",
-        "verification_attempts": null,
-        "verification_failures": [],
-        "verification_attempts_count": 0,
-        "slice_ids": null,
-        "manual_verification": null,
-        "manual_verification_requested": false
-      },
-      "labels": {},
-      "description": null,
-      "preview_url": "https://storage.googleapis.com/eleven-public-prod/premade/voices/TxGEqnHWrfWFTfGW9XjX/c6c80dcd-5fe5-4a4c-a74c-b3fec4c62c67.mp3",
-      "available_for_tiers": [],
-      "settings": null,
-      "sharing": null
-    },
-    {
-      "voice_id": "VR6AewLTigWG4xSOukaG",
-      "name": "Arnold",
-      "samples": null,
-      "category": "premade",
-      "fine_tuning": {
-        "model_id": null,
-        "language": null,
-        "is_allowed_to_fine_tune": false,
-        "fine_tuning_requested": false,
-        "finetuning_state": "not_started",
-        "verification_attempts": null,
-        "verification_failures": [],
-        "verification_attempts_count": 0,
-        "slice_ids": null,
-        "manual_verification": null,
-        "manual_verification_requested": false
-      },
-      "labels": {},
-      "description": null,
-      "preview_url": "https://storage.googleapis.com/eleven-public-prod/premade/voices/VR6AewLTigWG4xSOukaG/66e83dc2-6543-4897-9283-e028ac5ae4aa.mp3",
-      "available_for_tiers": [],
-      "settings": null,
-      "sharing": null
-    },
-    {
-      "voice_id": "pNInz6obpgDQGcFmaJgB",
-      "name": "Adam",
-      "samples": null,
-      "category": "premade",
-      "fine_tuning": {
-        "model_id": null,
-        "language": null,
-        "is_allowed_to_fine_tune": false,
-        "fine_tuning_requested": false,
-        "finetuning_state": "not_started",
-        "verification_attempts": null,
-        "verification_failures": [],
-        "verification_attempts_count": 0,
-        "slice_ids": null,
-        "manual_verification": null,
-        "manual_verification_requested": false
-      },
-      "labels": {},
-      "description": null,
-      "preview_url": "https://storage.googleapis.com/eleven-public-prod/premade/voices/pNInz6obpgDQGcFmaJgB/e0b45450-78db-49b9-aaa4-d5358a6871bd.mp3",
-      "available_for_tiers": [],
-      "settings": null,
-      "sharing": null
-    },
-    {
-      "voice_id": "yoZ06aMxZJJ28mfd3POQ",
-      "name": "Sam",
-      "samples": null,
-      "category": "premade",
-      "fine_tuning": {
-        "model_id": null,
-        "language": null,
-        "is_allowed_to_fine_tune": false,
-        "fine_tuning_requested": false,
-        "finetuning_state": "not_started",
-        "verification_attempts": null,
-        "verification_failures": [],
-        "verification_attempts_count": 0,
-        "slice_ids": null,
-        "manual_verification": null,
-        "manual_verification_requested": false
-      },
-      "labels": {},
-      "description": null,
-      "preview_url": "https://storage.googleapis.com/eleven-public-prod/premade/voices/yoZ06aMxZJJ28mfd3POQ/1c4d417c-ba80-4de8-874a-a1c57987ea63.mp3",
-      "available_for_tiers": [],
-      "settings": null,
-      "sharing": null
-    },
-    {
-      "voice_id": "7XCWpj6v0QsecU8Oi0D7",
-      "name": "Dan Brody",
-      "samples": null,
-      "category": "generated",
-      "fine_tuning": {
-        "model_id": null,
-        "language": null,
-        "is_allowed_to_fine_tune": false,
-        "fine_tuning_requested": false,
-        "finetuning_state": "not_started",
-        "verification_attempts": null,
-        "verification_failures": [],
-        "verification_attempts_count": 0,
-        "slice_ids": null,
-        "manual_verification": null,
-        "manual_verification_requested": false
-      },
-      "labels": {
-        "accent": "british",
-        "age": "young",
-        "gender": "male"
-      },
-      "description": "",
-      "preview_url": "https://storage.googleapis.com/eleven-public-prod/xu6lB73FTSTq3E8x7cPc1l2yTg82/voices/7XCWpj6v0QsecU8Oi0D7/fb0e0a26-b414-4a6d-946a-118cd3bfe30f.mp3",
-      "available_for_tiers": [],
-      "settings": null,
-      "sharing": {
-        "status": "copied",
-        "history_item_sample_id": null,
-        "enabled_in_library": false,
-        "original_voice_id": "NkFKS1b26azPUGPstOo1",
-        "public_owner_id": "a73ca6d475fd58941a94abc1b18ef1bf03492a64774450e0a8d7c3bb48c6e1fd",
-        "liked_by_count": 0,
-        "cloned_by_count": 0,
-        "whitelisted_emails": []
-      }
-    },
-    {
-      "voice_id": "7oXlp8BhpDQmpz2w3oEc",
-      "name": "Faulkner",
-      "samples": [
+    "voices": [
         {
-          "sample_id": "YH0Qzxgr0dB5EerGqkzx",
-          "file_name": "engmale5.mp3",
-          "mime_type": "audio/mpeg",
-          "size_bytes": 589128,
-          "hash": "955106d86c521ae718ee263b1cb4e1cb"
+            "voice_id": "21m00Tcm4TlvDq8ikWAM",
+            "name": "Rachel",
+            "samples": null,
+            "category": "premade",
+            "fine_tuning": {
+                "model_id": null,
+                "language": null,
+                "is_allowed_to_fine_tune": false,
+                "fine_tuning_requested": false,
+                "finetuning_state": "not_started",
+                "verification_attempts": null,
+                "verification_failures": [],
+                "verification_attempts_count": 0,
+                "slice_ids": null,
+                "manual_verification": null,
+                "manual_verification_requested": false
+            },
+            "labels": {},
+            "description": null,
+            "preview_url": "https://storage.googleapis.com/eleven-public-prod/premade/voices/21m00Tcm4TlvDq8ikWAM/6edb9076-c3e4-420c-b6ab-11d43fe341c8.mp3",
+            "available_for_tiers": [],
+            "settings": null,
+            "sharing": null
         },
         {
-          "sample_id": "ZcGWvz0RaOAD6wjxT42u",
-          "file_name": "engmale4.mp3",
-          "mime_type": "audio/mpeg",
-          "size_bytes": 1027286,
-          "hash": "1b0258b4d5197de7837cb581b7212104"
+            "voice_id": "AZnzlk1XvdvUeBnXmlld",
+            "name": "Domi",
+            "samples": null,
+            "category": "premade",
+            "fine_tuning": {
+                "model_id": null,
+                "language": null,
+                "is_allowed_to_fine_tune": false,
+                "fine_tuning_requested": false,
+                "finetuning_state": "not_started",
+                "verification_attempts": null,
+                "verification_failures": [],
+                "verification_attempts_count": 0,
+                "slice_ids": null,
+                "manual_verification": null,
+                "manual_verification_requested": false
+            },
+            "labels": {},
+            "description": null,
+            "preview_url": "https://storage.googleapis.com/eleven-public-prod/premade/voices/AZnzlk1XvdvUeBnXmlld/69c5373f-0dc2-4efd-9232-a0140182c0a9.mp3",
+            "available_for_tiers": [],
+            "settings": null,
+            "sharing": null
         },
         {
-          "sample_id": "aDIWr9yiQg4oBSK4wxoi",
-          "file_name": "engmale6.mp3",
-          "mime_type": "audio/mpeg",
-          "size_bytes": 667055,
-          "hash": "f01ebbb1161fb4aaaeddbf3e8a13c9aa"
+            "voice_id": "EXAVITQu4vr4xnSDxMaL",
+            "name": "Bella",
+            "samples": null,
+            "category": "premade",
+            "fine_tuning": {
+                "model_id": null,
+                "language": null,
+                "is_allowed_to_fine_tune": false,
+                "fine_tuning_requested": false,
+                "finetuning_state": "not_started",
+                "verification_attempts": null,
+                "verification_failures": [],
+                "verification_attempts_count": 0,
+                "slice_ids": null,
+                "manual_verification": null,
+                "manual_verification_requested": false
+            },
+            "labels": {},
+            "description": null,
+            "preview_url": "https://storage.googleapis.com/eleven-public-prod/premade/voices/EXAVITQu4vr4xnSDxMaL/04365bce-98cc-4e99-9f10-56b60680cda9.mp3",
+            "available_for_tiers": [],
+            "settings": null,
+            "sharing": null
+        },
+        {
+            "voice_id": "ErXwobaYiN019PkySvjV",
+            "name": "Antoni",
+            "samples": null,
+            "category": "premade",
+            "fine_tuning": {
+                "model_id": null,
+                "language": null,
+                "is_allowed_to_fine_tune": false,
+                "fine_tuning_requested": false,
+                "finetuning_state": "not_started",
+                "verification_attempts": null,
+                "verification_failures": [],
+                "verification_attempts_count": 0,
+                "slice_ids": null,
+                "manual_verification": null,
+                "manual_verification_requested": false
+            },
+            "labels": {},
+            "description": null,
+            "preview_url": "https://storage.googleapis.com/eleven-public-prod/premade/voices/ErXwobaYiN019PkySvjV/38d8f8f0-1122-4333-b323-0b87478d506a.mp3",
+            "available_for_tiers": [],
+            "settings": null,
+            "sharing": null
+        },
+        {
+            "voice_id": "MF3mGyEYCl7XYWbV9V6O",
+            "name": "Elli",
+            "samples": null,
+            "category": "premade",
+            "fine_tuning": {
+                "model_id": null,
+                "language": null,
+                "is_allowed_to_fine_tune": false,
+                "fine_tuning_requested": false,
+                "finetuning_state": "not_started",
+                "verification_attempts": null,
+                "verification_failures": [],
+                "verification_attempts_count": 0,
+                "slice_ids": null,
+                "manual_verification": null,
+                "manual_verification_requested": false
+            },
+            "labels": {},
+            "description": null,
+            "preview_url": "https://storage.googleapis.com/eleven-public-prod/premade/voices/MF3mGyEYCl7XYWbV9V6O/f9fd64c3-5d62-45cd-b0dc-ad722ee3284e.mp3",
+            "available_for_tiers": [],
+            "settings": null,
+            "sharing": null
+        },
+        {
+            "voice_id": "TxGEqnHWrfWFTfGW9XjX",
+            "name": "Josh",
+            "samples": null,
+            "category": "premade",
+            "fine_tuning": {
+                "model_id": null,
+                "language": null,
+                "is_allowed_to_fine_tune": false,
+                "fine_tuning_requested": false,
+                "finetuning_state": "not_started",
+                "verification_attempts": null,
+                "verification_failures": [],
+                "verification_attempts_count": 0,
+                "slice_ids": null,
+                "manual_verification": null,
+                "manual_verification_requested": false
+            },
+            "labels": {},
+            "description": null,
+            "preview_url": "https://storage.googleapis.com/eleven-public-prod/premade/voices/TxGEqnHWrfWFTfGW9XjX/c6c80dcd-5fe5-4a4c-a74c-b3fec4c62c67.mp3",
+            "available_for_tiers": [],
+            "settings": null,
+            "sharing": null
+        },
+        {
+            "voice_id": "VR6AewLTigWG4xSOukaG",
+            "name": "Arnold",
+            "samples": null,
+            "category": "premade",
+            "fine_tuning": {
+                "model_id": null,
+                "language": null,
+                "is_allowed_to_fine_tune": false,
+                "fine_tuning_requested": false,
+                "finetuning_state": "not_started",
+                "verification_attempts": null,
+                "verification_failures": [],
+                "verification_attempts_count": 0,
+                "slice_ids": null,
+                "manual_verification": null,
+                "manual_verification_requested": false
+            },
+            "labels": {},
+            "description": null,
+            "preview_url": "https://storage.googleapis.com/eleven-public-prod/premade/voices/VR6AewLTigWG4xSOukaG/66e83dc2-6543-4897-9283-e028ac5ae4aa.mp3",
+            "available_for_tiers": [],
+            "settings": null,
+            "sharing": null
+        },
+        {
+            "voice_id": "pNInz6obpgDQGcFmaJgB",
+            "name": "Adam",
+            "samples": null,
+            "category": "premade",
+            "fine_tuning": {
+                "model_id": null,
+                "language": null,
+                "is_allowed_to_fine_tune": false,
+                "fine_tuning_requested": false,
+                "finetuning_state": "not_started",
+                "verification_attempts": null,
+                "verification_failures": [],
+                "verification_attempts_count": 0,
+                "slice_ids": null,
+                "manual_verification": null,
+                "manual_verification_requested": false
+            },
+            "labels": {},
+            "description": null,
+            "preview_url": "https://storage.googleapis.com/eleven-public-prod/premade/voices/pNInz6obpgDQGcFmaJgB/e0b45450-78db-49b9-aaa4-d5358a6871bd.mp3",
+            "available_for_tiers": [],
+            "settings": null,
+            "sharing": null
+        },
+        {
+            "voice_id": "yoZ06aMxZJJ28mfd3POQ",
+            "name": "Sam",
+            "samples": null,
+            "category": "premade",
+            "fine_tuning": {
+                "model_id": null,
+                "language": null,
+                "is_allowed_to_fine_tune": false,
+                "fine_tuning_requested": false,
+                "finetuning_state": "not_started",
+                "verification_attempts": null,
+                "verification_failures": [],
+                "verification_attempts_count": 0,
+                "slice_ids": null,
+                "manual_verification": null,
+                "manual_verification_requested": false
+            },
+            "labels": {},
+            "description": null,
+            "preview_url": "https://storage.googleapis.com/eleven-public-prod/premade/voices/yoZ06aMxZJJ28mfd3POQ/1c4d417c-ba80-4de8-874a-a1c57987ea63.mp3",
+            "available_for_tiers": [],
+            "settings": null,
+            "sharing": null
+        },
+        {
+            "voice_id": "7XCWpj6v0QsecU8Oi0D7",
+            "name": "Dan Brody",
+            "samples": null,
+            "category": "generated",
+            "fine_tuning": {
+                "model_id": null,
+                "language": null,
+                "is_allowed_to_fine_tune": false,
+                "fine_tuning_requested": false,
+                "finetuning_state": "not_started",
+                "verification_attempts": null,
+                "verification_failures": [],
+                "verification_attempts_count": 0,
+                "slice_ids": null,
+                "manual_verification": null,
+                "manual_verification_requested": false
+            },
+            "labels": {
+                "accent": "british",
+                "age": "young",
+                "gender": "male"
+            },
+            "description": "",
+            "preview_url": "https://storage.googleapis.com/eleven-public-prod/xu6lB73FTSTq3E8x7cPc1l2yTg82/voices/7XCWpj6v0QsecU8Oi0D7/fb0e0a26-b414-4a6d-946a-118cd3bfe30f.mp3",
+            "available_for_tiers": [],
+            "settings": null,
+            "sharing": {
+                "status": "copied",
+                "history_item_sample_id": null,
+                "enabled_in_library": false,
+                "original_voice_id": "NkFKS1b26azPUGPstOo1",
+                "public_owner_id": "a73ca6d475fd58941a94abc1b18ef1bf03492a64774450e0a8d7c3bb48c6e1fd",
+                "liked_by_count": 0,
+                "cloned_by_count": 0,
+                "whitelisted_emails": []
+            }
+        },
+        {
+            "voice_id": "7oXlp8BhpDQmpz2w3oEc",
+            "name": "Faulkner",
+            "samples": [
+                {
+                    "sample_id": "YH0Qzxgr0dB5EerGqkzx",
+                    "file_name": "engmale5.mp3",
+                    "mime_type": "audio/mpeg",
+                    "size_bytes": 589128,
+                    "hash": "955106d86c521ae718ee263b1cb4e1cb"
+                },
+                {
+                    "sample_id": "ZcGWvz0RaOAD6wjxT42u",
+                    "file_name": "engmale4.mp3",
+                    "mime_type": "audio/mpeg",
+                    "size_bytes": 1027286,
+                    "hash": "1b0258b4d5197de7837cb581b7212104"
+                },
+                {
+                    "sample_id": "aDIWr9yiQg4oBSK4wxoi",
+                    "file_name": "engmale6.mp3",
+                    "mime_type": "audio/mpeg",
+                    "size_bytes": 667055,
+                    "hash": "f01ebbb1161fb4aaaeddbf3e8a13c9aa"
+                }
+            ],
+            "category": "cloned",
+            "fine_tuning": {
+                "model_id": null,
+                "language": null,
+                "is_allowed_to_fine_tune": false,
+                "fine_tuning_requested": false,
+                "finetuning_state": "not_started",
+                "verification_attempts": null,
+                "verification_failures": [],
+                "verification_attempts_count": 0,
+                "slice_ids": null,
+                "manual_verification": null,
+                "manual_verification_requested": false
+            },
+            "labels": {},
+            "description": "",
+            "preview_url": "https://storage.googleapis.com/eleven-public-prod/xu6lB73FTSTq3E8x7cPc1l2yTg82/voices/7oXlp8BhpDQmpz2w3oEc/24e57721-1b55-451b-8727-f8de5ed15723.mp3",
+            "available_for_tiers": [],
+            "settings": null,
+            "sharing": null
+        },
+        {
+            "voice_id": "BXLhanXyXyjyjNhkveiU",
+            "name": "Tom",
+            "samples": null,
+            "category": "generated",
+            "fine_tuning": {
+                "model_id": null,
+                "language": null,
+                "is_allowed_to_fine_tune": false,
+                "fine_tuning_requested": false,
+                "finetuning_state": "not_started",
+                "verification_attempts": null,
+                "verification_failures": [],
+                "verification_attempts_count": 0,
+                "slice_ids": null,
+                "manual_verification": null,
+                "manual_verification_requested": false
+            },
+            "labels": {
+                "accent": "british",
+                "age": "middle_aged",
+                "gender": "male"
+            },
+            "description": "",
+            "preview_url": "https://storage.googleapis.com/eleven-public-prod/xu6lB73FTSTq3E8x7cPc1l2yTg82/voices/BXLhanXyXyjyjNhkveiU/c5cd51ba-3ded-4b34-a277-a26359630e6c.mp3",
+            "available_for_tiers": [],
+            "settings": null,
+            "sharing": {
+                "status": "copied",
+                "history_item_sample_id": null,
+                "enabled_in_library": false,
+                "original_voice_id": "AUgtEKEWuMEXqNAPnXsa",
+                "public_owner_id": "bcaa51830f09db4ea7689101a79a90e17ba00c202e21a52bfa53477cc077d8b9",
+                "liked_by_count": 0,
+                "cloned_by_count": 0,
+                "whitelisted_emails": []
+            }
+        },
+        {
+            "voice_id": "Bsja4MX4wSWt1eQiOn5n",
+            "name": "chizzo",
+            "samples": [
+                {
+                    "sample_id": "S7P5IB2Pf4J4DqqkFiXH",
+                    "file_name": "it1.mp3",
+                    "mime_type": "audio/mpeg",
+                    "size_bytes": 1048896,
+                    "hash": "56e94f2cb84ff90cad4db441e68ad669"
+                },
+                {
+                    "sample_id": "lZHWDu3s5184IXaGO9ig",
+                    "file_name": "engmale1.mp3",
+                    "mime_type": "audio/mpeg",
+                    "size_bytes": 654684,
+                    "hash": "946913b8e43c1b06b7cef404723ba67d"
+                },
+                {
+                    "sample_id": "y9ufo3lQiMYr5rKDnJZZ",
+                    "file_name": "engmale5.mp3",
+                    "mime_type": "audio/mpeg",
+                    "size_bytes": 589128,
+                    "hash": "955106d86c521ae718ee263b1cb4e1cb"
+                }
+            ],
+            "category": "cloned",
+            "fine_tuning": {
+                "model_id": null,
+                "language": null,
+                "is_allowed_to_fine_tune": false,
+                "fine_tuning_requested": false,
+                "finetuning_state": "not_started",
+                "verification_attempts": null,
+                "verification_failures": [],
+                "verification_attempts_count": 0,
+                "slice_ids": null,
+                "manual_verification": null,
+                "manual_verification_requested": false
+            },
+            "labels": {},
+            "description": "anglo-italian male",
+            "preview_url": "https://storage.googleapis.com/eleven-public-prod/xu6lB73FTSTq3E8x7cPc1l2yTg82/voices/Bsja4MX4wSWt1eQiOn5n/4c97b945-d04d-4464-a165-7c8d82ec6c61.mp3",
+            "available_for_tiers": [],
+            "settings": null,
+            "sharing": null
+        },
+        {
+            "voice_id": "C894Rlpp6ZQr793LKu0r",
+            "name": "Story Teller",
+            "samples": null,
+            "category": "generated",
+            "fine_tuning": {
+                "model_id": null,
+                "language": null,
+                "is_allowed_to_fine_tune": false,
+                "fine_tuning_requested": false,
+                "finetuning_state": "not_started",
+                "verification_attempts": null,
+                "verification_failures": [],
+                "verification_attempts_count": 0,
+                "slice_ids": null,
+                "manual_verification": null,
+                "manual_verification_requested": false
+            },
+            "labels": {
+                "accent": "british",
+                "age": "old",
+                "gender": "male"
+            },
+            "description": null,
+            "preview_url": "https://storage.googleapis.com/eleven-public-prod/xu6lB73FTSTq3E8x7cPc1l2yTg82/voices/C894Rlpp6ZQr793LKu0r/71384dfc-dbe1-4320-9ce2-0ffb5105e31d.mp3",
+            "available_for_tiers": [],
+            "settings": null,
+            "sharing": {
+                "status": "copied",
+                "history_item_sample_id": null,
+                "enabled_in_library": false,
+                "original_voice_id": "Re8G8jEpejgT3rj4iszs",
+                "public_owner_id": "cd1010bdfa7f6e87d8f3f81503fa0e278b7845d9924142287ff004e2010bdc5e",
+                "liked_by_count": 0,
+                "cloned_by_count": 0,
+                "whitelisted_emails": []
+            }
+        },
+        {
+            "voice_id": "KYahJqjUETABsjV3bQWs",
+            "name": "Tom",
+            "samples": null,
+            "category": "generated",
+            "fine_tuning": {
+                "model_id": null,
+                "language": null,
+                "is_allowed_to_fine_tune": false,
+                "fine_tuning_requested": false,
+                "finetuning_state": "not_started",
+                "verification_attempts": null,
+                "verification_failures": [],
+                "verification_attempts_count": 0,
+                "slice_ids": null,
+                "manual_verification": null,
+                "manual_verification_requested": false
+            },
+            "labels": {
+                "accent": "british",
+                "age": "middle_aged",
+                "gender": "male"
+            },
+            "description": null,
+            "preview_url": "https://storage.googleapis.com/eleven-public-prod/kWDUcpicQGVQE0rQnvbcAKMpzSt1/voices/6rApb3VWHHvWNWy0Qars/4efdbf43-2074-4d7c-b845-842e1745e645.mp3",
+            "available_for_tiers": [],
+            "settings": null,
+            "sharing": {
+                "status": "copied",
+                "history_item_sample_id": null,
+                "enabled_in_library": false,
+                "original_voice_id": "6rApb3VWHHvWNWy0Qars",
+                "public_owner_id": "e9169d6a3f47ba0d4878ae9c61f63fd3433a86b6d9098b8d1a9180e69109bd65",
+                "liked_by_count": 0,
+                "cloned_by_count": 0,
+                "whitelisted_emails": []
+            }
+        },
+        {
+            "voice_id": "MTWNMFT6MxuyS5LvJevh",
+            "name": "Morson",
+            "samples": [
+                {
+                    "sample_id": "2uEBEV4OpTo6pMoKwZI4",
+                    "file_name": "and-gentle-friends-let's-kill-him-boldly-but-not-wrathfully-let's-carve-him-as-a-dish-fit-for-the-gods-not-hew-him-as-a-carcass-fit-for-hounds.mp3",
+                    "mime_type": "audio/mpeg",
+                    "size_bytes": 200160,
+                    "hash": "1c6228e0225df9c7571f634e3d65550f"
+                },
+                {
+                    "sample_id": "BiGauhbgypLXhlrqXC8a",
+                    "file_name": "welles1.mp3",
+                    "mime_type": "audio/mpeg",
+                    "size_bytes": 4523488,
+                    "hash": "1edb7d56391fabe4f730271eb18e7e94"
+                },
+                {
+                    "sample_id": "hQ0q2XljkhqJxnWJYqya",
+                    "file_name": "welles2.mp3",
+                    "mime_type": "audio/mpeg",
+                    "size_bytes": 1612804,
+                    "hash": "a95d73a1dafc036a8324d89d380d6f5f"
+                },
+                {
+                    "sample_id": "lcOEldQnCL0RSsUbS6jd",
+                    "file_name": "Mason1.mp3",
+                    "mime_type": "audio/mpeg",
+                    "size_bytes": 770784,
+                    "hash": "6594d5fcaff421e2d08717f3746371e2"
+                }
+            ],
+            "category": "cloned",
+            "fine_tuning": {
+                "model_id": null,
+                "language": null,
+                "is_allowed_to_fine_tune": false,
+                "fine_tuning_requested": false,
+                "finetuning_state": "not_started",
+                "verification_attempts": null,
+                "verification_failures": [],
+                "verification_attempts_count": 0,
+                "slice_ids": null,
+                "manual_verification": null,
+                "manual_verification_requested": false
+            },
+            "labels": {
+                "aaaa": "aaa"
+            },
+            "description": "Mid-atlantic male",
+            "preview_url": "https://storage.googleapis.com/eleven-public-prod/xu6lB73FTSTq3E8x7cPc1l2yTg82/voices/MTWNMFT6MxuyS5LvJevh/5c12b75f-2b93-493e-beea-b586e6aeb4db.mp3",
+            "available_for_tiers": [],
+            "settings": null,
+            "sharing": null
+        },
+        {
+            "voice_id": "OE3oV6GvwZZxmbleiW6e",
+            "name": "English Male 2",
+            "samples": [
+                {
+                    "sample_id": "5eqXzOHd8MMxNTr4VXrc",
+                    "file_name": "engmale2.mp3",
+                    "mime_type": "audio/mpeg",
+                    "size_bytes": 529783,
+                    "hash": "81e6550d1a5574111a8a5c29eaf54218"
+                },
+                {
+                    "sample_id": "caUOR6PSByIjJcEJ2Wbe",
+                    "file_name": "engmale1.mp3",
+                    "mime_type": "audio/mpeg",
+                    "size_bytes": 654684,
+                    "hash": "946913b8e43c1b06b7cef404723ba67d"
+                },
+                {
+                    "sample_id": "hZwpfhiDJC1vVwVjSXLE",
+                    "file_name": "engmale3.mp3",
+                    "mime_type": "audio/mpeg",
+                    "size_bytes": 487685,
+                    "hash": "93aca6546aaed9ee9cff8656bf02c09f"
+                }
+            ],
+            "category": "cloned",
+            "fine_tuning": {
+                "model_id": null,
+                "language": null,
+                "is_allowed_to_fine_tune": false,
+                "fine_tuning_requested": false,
+                "finetuning_state": "not_started",
+                "verification_attempts": null,
+                "verification_failures": [],
+                "verification_attempts_count": 0,
+                "slice_ids": null,
+                "manual_verification": null,
+                "manual_verification_requested": false
+            },
+            "labels": {},
+            "description": "Englishman 2",
+            "preview_url": "https://storage.googleapis.com/eleven-public-prod/xu6lB73FTSTq3E8x7cPc1l2yTg82/voices/OE3oV6GvwZZxmbleiW6e/3e43a7fb-5560-4e32-8237-fe5efc123333.mp3",
+            "available_for_tiers": [],
+            "settings": null,
+            "sharing": null
+        },
+        {
+            "voice_id": "QK9pRG9Kr3p95jN6FaFQ",
+            "name": "[ElevenVoices] African Male Raspy",
+            "samples": null,
+            "category": "generated",
+            "fine_tuning": {
+                "model_id": null,
+                "language": null,
+                "is_allowed_to_fine_tune": false,
+                "fine_tuning_requested": false,
+                "finetuning_state": "not_started",
+                "verification_attempts": null,
+                "verification_failures": [],
+                "verification_attempts_count": 0,
+                "slice_ids": null,
+                "manual_verification": null,
+                "manual_verification_requested": false
+            },
+            "labels": {
+                "accent": "african",
+                "age": "middle_aged",
+                "voicefrom": "ElevenVoices",
+                "gender": "male",
+                "style": "raspy"
+            },
+            "description": "",
+            "preview_url": "https://storage.googleapis.com/eleven-public-prod/PyUBusauIUbpupKTM31Yp4fHtgd2/voices/blP5JEJ3Ur2Lu2sTkTLR/7bdf94ba-02e1-4b34-b957-be6a620b02fc.mp3",
+            "available_for_tiers": [],
+            "settings": null,
+            "sharing": {
+                "status": "copied",
+                "history_item_sample_id": null,
+                "enabled_in_library": false,
+                "original_voice_id": "blP5JEJ3Ur2Lu2sTkTLR",
+                "public_owner_id": "c073d57365bee5082cf125c9a419115de1d6a94b048f6bba2e344827f6b1c1b4",
+                "liked_by_count": 0,
+                "cloned_by_count": 0,
+                "whitelisted_emails": []
+            }
+        },
+        {
+            "voice_id": "lf9YecmHsP0FjHVXW1pl",
+            "name": "Tom",
+            "samples": null,
+            "category": "generated",
+            "fine_tuning": {
+                "model_id": null,
+                "language": null,
+                "is_allowed_to_fine_tune": false,
+                "fine_tuning_requested": false,
+                "finetuning_state": "not_started",
+                "verification_attempts": null,
+                "verification_failures": [],
+                "verification_attempts_count": 0,
+                "slice_ids": null,
+                "manual_verification": null,
+                "manual_verification_requested": false
+            },
+            "labels": {
+                "accent": "british",
+                "age": "middle_aged",
+                "gender": "male"
+            },
+            "description": "",
+            "preview_url": "https://storage.googleapis.com/eleven-public-prod/xu6lB73FTSTq3E8x7cPc1l2yTg82/voices/lf9YecmHsP0FjHVXW1pl/4692d165-bfbc-472c-bfba-b7fe4814fb7f.mp3",
+            "available_for_tiers": [],
+            "settings": null,
+            "sharing": {
+                "status": "copied",
+                "history_item_sample_id": null,
+                "enabled_in_library": false,
+                "original_voice_id": "iJefJXuMPVsy6FzZSdd0",
+                "public_owner_id": "899444b1d9eab0cea6d20686befafde9ccdc46ab4628e79973cf318a9497b138",
+                "liked_by_count": 0,
+                "cloned_by_count": 0,
+                "whitelisted_emails": []
+            }
+        },
+        {
+            "voice_id": "pVMxH1FoLtJHnNqJkbBX",
+            "name": "Barbara",
+            "samples": null,
+            "category": "generated",
+            "fine_tuning": {
+                "model_id": null,
+                "language": null,
+                "is_allowed_to_fine_tune": false,
+                "fine_tuning_requested": false,
+                "finetuning_state": "not_started",
+                "verification_attempts": null,
+                "verification_failures": [],
+                "verification_attempts_count": 0,
+                "slice_ids": null,
+                "manual_verification": null,
+                "manual_verification_requested": false
+            },
+            "labels": {
+                "accent": "british",
+                "age": "young",
+                "gender": "female"
+            },
+            "description": "",
+            "preview_url": "https://storage.googleapis.com/eleven-public-prod/xu6lB73FTSTq3E8x7cPc1l2yTg82/voices/pVMxH1FoLtJHnNqJkbBX/3403da8a-ddbe-4108-a597-4b666e65ce8a.mp3",
+            "available_for_tiers": [],
+            "settings": null,
+            "sharing": {
+                "status": "copied",
+                "history_item_sample_id": null,
+                "enabled_in_library": false,
+                "original_voice_id": "jA6adkQ3dELZtyVBrLe8",
+                "public_owner_id": "5d30d4a2ec6598900481a1f72bab23755468fd157c39bf18814bab6fb2f50c59",
+                "liked_by_count": 0,
+                "cloned_by_count": 0,
+                "whitelisted_emails": []
+            }
+        },
+        {
+            "voice_id": "pXL2iPuFUPZFZTNLRZoC",
+            "name": "English Male 3",
+            "samples": [
+                {
+                    "sample_id": "DZubkzoxdL8PeppQMsZF",
+                    "file_name": "engmale7.mp3",
+                    "mime_type": "audio/mpeg",
+                    "size_bytes": 677707,
+                    "hash": "7161614f315e4f17a65b29d5e139bee4"
+                },
+                {
+                    "sample_id": "HhhTImpSi8A718537See",
+                    "file_name": "engmale2.mp3",
+                    "mime_type": "audio/mpeg",
+                    "size_bytes": 529783,
+                    "hash": "81e6550d1a5574111a8a5c29eaf54218"
+                },
+                {
+                    "sample_id": "vnnhwYwxrl8R0GgehRvs",
+                    "file_name": "engmale8.mp3",
+                    "mime_type": "audio/mpeg",
+                    "size_bytes": 567624,
+                    "hash": "1c3263047861d7ec262c8ab3a4fee78a"
+                }
+            ],
+            "category": "cloned",
+            "fine_tuning": {
+                "model_id": null,
+                "language": null,
+                "is_allowed_to_fine_tune": false,
+                "fine_tuning_requested": false,
+                "finetuning_state": "not_started",
+                "verification_attempts": null,
+                "verification_failures": [],
+                "verification_attempts_count": 0,
+                "slice_ids": null,
+                "manual_verification": null,
+                "manual_verification_requested": false
+            },
+            "labels": {},
+            "description": "Englishman3",
+            "preview_url": "https://storage.googleapis.com/eleven-public-prod/xu6lB73FTSTq3E8x7cPc1l2yTg82/voices/pXL2iPuFUPZFZTNLRZoC/69e45829-cdee-44ca-beea-a2802014948e.mp3",
+            "available_for_tiers": [],
+            "settings": null,
+            "sharing": null
+        },
+        {
+            "voice_id": "vJgomBtyGJZXMjVXYdtN",
+            "name": "English Male 4",
+            "samples": [
+                {
+                    "sample_id": "1PmvmztaVnz1k9JvmDGI",
+                    "file_name": "engmale10.mp3",
+                    "mime_type": "audio/mpeg",
+                    "size_bytes": 580672,
+                    "hash": "f997bfa49dea975bc5ea4ca779d59f7b"
+                },
+                {
+                    "sample_id": "8G6zsmrQ96bKAiNuak3g",
+                    "file_name": "engmale11.mp3",
+                    "mime_type": "audio/mpeg",
+                    "size_bytes": 349331,
+                    "hash": "b5bdc0d66aea588bf24145afead77d2b"
+                },
+                {
+                    "sample_id": "dkOiQteMXIcDERc8ReRD",
+                    "file_name": "Mason1.mp3",
+                    "mime_type": "audio/mpeg",
+                    "size_bytes": 770784,
+                    "hash": "6594d5fcaff421e2d08717f3746371e2"
+                },
+                {
+                    "sample_id": "gHQoNeDSFeRHjHH06b8H",
+                    "file_name": "engmale9.mp3",
+                    "mime_type": "audio/mpeg",
+                    "size_bytes": 594228,
+                    "hash": "abe43f372d997ccbeb6803045d00d3dd"
+                }
+            ],
+            "category": "cloned",
+            "fine_tuning": {
+                "model_id": null,
+                "language": null,
+                "is_allowed_to_fine_tune": false,
+                "fine_tuning_requested": false,
+                "finetuning_state": "not_started",
+                "verification_attempts": null,
+                "verification_failures": [],
+                "verification_attempts_count": 0,
+                "slice_ids": null,
+                "manual_verification": null,
+                "manual_verification_requested": false
+            },
+            "labels": {},
+            "description": "Englishman4",
+            "preview_url": "https://storage.googleapis.com/eleven-public-prod/xu6lB73FTSTq3E8x7cPc1l2yTg82/voices/vJgomBtyGJZXMjVXYdtN/7bebda41-1c01-4df7-8b2a-ce41a955b1c5.mp3",
+            "available_for_tiers": [],
+            "settings": null,
+            "sharing": null
         }
-      ],
-      "category": "cloned",
-      "fine_tuning": {
-        "model_id": null,
-        "language": null,
-        "is_allowed_to_fine_tune": false,
-        "fine_tuning_requested": false,
-        "finetuning_state": "not_started",
-        "verification_attempts": null,
-        "verification_failures": [],
-        "verification_attempts_count": 0,
-        "slice_ids": null,
-        "manual_verification": null,
-        "manual_verification_requested": false
-      },
-      "labels": {},
-      "description": "",
-      "preview_url": "https://storage.googleapis.com/eleven-public-prod/xu6lB73FTSTq3E8x7cPc1l2yTg82/voices/7oXlp8BhpDQmpz2w3oEc/24e57721-1b55-451b-8727-f8de5ed15723.mp3",
-      "available_for_tiers": [],
-      "settings": null,
-      "sharing": null
-    },
-    {
-      "voice_id": "BXLhanXyXyjyjNhkveiU",
-      "name": "Tom",
-      "samples": null,
-      "category": "generated",
-      "fine_tuning": {
-        "model_id": null,
-        "language": null,
-        "is_allowed_to_fine_tune": false,
-        "fine_tuning_requested": false,
-        "finetuning_state": "not_started",
-        "verification_attempts": null,
-        "verification_failures": [],
-        "verification_attempts_count": 0,
-        "slice_ids": null,
-        "manual_verification": null,
-        "manual_verification_requested": false
-      },
-      "labels": {
-        "accent": "british",
-        "age": "middle_aged",
-        "gender": "male"
-      },
-      "description": "",
-      "preview_url": "https://storage.googleapis.com/eleven-public-prod/xu6lB73FTSTq3E8x7cPc1l2yTg82/voices/BXLhanXyXyjyjNhkveiU/c5cd51ba-3ded-4b34-a277-a26359630e6c.mp3",
-      "available_for_tiers": [],
-      "settings": null,
-      "sharing": {
-        "status": "copied",
-        "history_item_sample_id": null,
-        "enabled_in_library": false,
-        "original_voice_id": "AUgtEKEWuMEXqNAPnXsa",
-        "public_owner_id": "bcaa51830f09db4ea7689101a79a90e17ba00c202e21a52bfa53477cc077d8b9",
-        "liked_by_count": 0,
-        "cloned_by_count": 0,
-        "whitelisted_emails": []
-      }
-    },
-    {
-      "voice_id": "Bsja4MX4wSWt1eQiOn5n",
-      "name": "chizzo",
-      "samples": [
-        {
-          "sample_id": "S7P5IB2Pf4J4DqqkFiXH",
-          "file_name": "it1.mp3",
-          "mime_type": "audio/mpeg",
-          "size_bytes": 1048896,
-          "hash": "56e94f2cb84ff90cad4db441e68ad669"
-        },
-        {
-          "sample_id": "lZHWDu3s5184IXaGO9ig",
-          "file_name": "engmale1.mp3",
-          "mime_type": "audio/mpeg",
-          "size_bytes": 654684,
-          "hash": "946913b8e43c1b06b7cef404723ba67d"
-        },
-        {
-          "sample_id": "y9ufo3lQiMYr5rKDnJZZ",
-          "file_name": "engmale5.mp3",
-          "mime_type": "audio/mpeg",
-          "size_bytes": 589128,
-          "hash": "955106d86c521ae718ee263b1cb4e1cb"
-        }
-      ],
-      "category": "cloned",
-      "fine_tuning": {
-        "model_id": null,
-        "language": null,
-        "is_allowed_to_fine_tune": false,
-        "fine_tuning_requested": false,
-        "finetuning_state": "not_started",
-        "verification_attempts": null,
-        "verification_failures": [],
-        "verification_attempts_count": 0,
-        "slice_ids": null,
-        "manual_verification": null,
-        "manual_verification_requested": false
-      },
-      "labels": {},
-      "description": "anglo-italian male",
-      "preview_url": "https://storage.googleapis.com/eleven-public-prod/xu6lB73FTSTq3E8x7cPc1l2yTg82/voices/Bsja4MX4wSWt1eQiOn5n/4c97b945-d04d-4464-a165-7c8d82ec6c61.mp3",
-      "available_for_tiers": [],
-      "settings": null,
-      "sharing": null
-    },
-    {
-      "voice_id": "C894Rlpp6ZQr793LKu0r",
-      "name": "Story Teller",
-      "samples": null,
-      "category": "generated",
-      "fine_tuning": {
-        "model_id": null,
-        "language": null,
-        "is_allowed_to_fine_tune": false,
-        "fine_tuning_requested": false,
-        "finetuning_state": "not_started",
-        "verification_attempts": null,
-        "verification_failures": [],
-        "verification_attempts_count": 0,
-        "slice_ids": null,
-        "manual_verification": null,
-        "manual_verification_requested": false
-      },
-      "labels": {
-        "accent": "british",
-        "age": "old",
-        "gender": "male"
-      },
-      "description": null,
-      "preview_url": "https://storage.googleapis.com/eleven-public-prod/xu6lB73FTSTq3E8x7cPc1l2yTg82/voices/C894Rlpp6ZQr793LKu0r/71384dfc-dbe1-4320-9ce2-0ffb5105e31d.mp3",
-      "available_for_tiers": [],
-      "settings": null,
-      "sharing": {
-        "status": "copied",
-        "history_item_sample_id": null,
-        "enabled_in_library": false,
-        "original_voice_id": "Re8G8jEpejgT3rj4iszs",
-        "public_owner_id": "cd1010bdfa7f6e87d8f3f81503fa0e278b7845d9924142287ff004e2010bdc5e",
-        "liked_by_count": 0,
-        "cloned_by_count": 0,
-        "whitelisted_emails": []
-      }
-    },
-    {
-      "voice_id": "KYahJqjUETABsjV3bQWs",
-      "name": "Tom",
-      "samples": null,
-      "category": "generated",
-      "fine_tuning": {
-        "model_id": null,
-        "language": null,
-        "is_allowed_to_fine_tune": false,
-        "fine_tuning_requested": false,
-        "finetuning_state": "not_started",
-        "verification_attempts": null,
-        "verification_failures": [],
-        "verification_attempts_count": 0,
-        "slice_ids": null,
-        "manual_verification": null,
-        "manual_verification_requested": false
-      },
-      "labels": {
-        "accent": "british",
-        "age": "middle_aged",
-        "gender": "male"
-      },
-      "description": null,
-      "preview_url": "https://storage.googleapis.com/eleven-public-prod/kWDUcpicQGVQE0rQnvbcAKMpzSt1/voices/6rApb3VWHHvWNWy0Qars/4efdbf43-2074-4d7c-b845-842e1745e645.mp3",
-      "available_for_tiers": [],
-      "settings": null,
-      "sharing": {
-        "status": "copied",
-        "history_item_sample_id": null,
-        "enabled_in_library": false,
-        "original_voice_id": "6rApb3VWHHvWNWy0Qars",
-        "public_owner_id": "e9169d6a3f47ba0d4878ae9c61f63fd3433a86b6d9098b8d1a9180e69109bd65",
-        "liked_by_count": 0,
-        "cloned_by_count": 0,
-        "whitelisted_emails": []
-      }
-    },
-    {
-      "voice_id": "MTWNMFT6MxuyS5LvJevh",
-      "name": "Morson",
-      "samples": [
-        {
-          "sample_id": "2uEBEV4OpTo6pMoKwZI4",
-          "file_name": "and-gentle-friends-let's-kill-him-boldly-but-not-wrathfully-let's-carve-him-as-a-dish-fit-for-the-gods-not-hew-him-as-a-carcass-fit-for-hounds.mp3",
-          "mime_type": "audio/mpeg",
-          "size_bytes": 200160,
-          "hash": "1c6228e0225df9c7571f634e3d65550f"
-        },
-        {
-          "sample_id": "BiGauhbgypLXhlrqXC8a",
-          "file_name": "welles1.mp3",
-          "mime_type": "audio/mpeg",
-          "size_bytes": 4523488,
-          "hash": "1edb7d56391fabe4f730271eb18e7e94"
-        },
-        {
-          "sample_id": "hQ0q2XljkhqJxnWJYqya",
-          "file_name": "welles2.mp3",
-          "mime_type": "audio/mpeg",
-          "size_bytes": 1612804,
-          "hash": "a95d73a1dafc036a8324d89d380d6f5f"
-        },
-        {
-          "sample_id": "lcOEldQnCL0RSsUbS6jd",
-          "file_name": "Mason1.mp3",
-          "mime_type": "audio/mpeg",
-          "size_bytes": 770784,
-          "hash": "6594d5fcaff421e2d08717f3746371e2"
-        }
-      ],
-      "category": "cloned",
-      "fine_tuning": {
-        "model_id": null,
-        "language": null,
-        "is_allowed_to_fine_tune": false,
-        "fine_tuning_requested": false,
-        "finetuning_state": "not_started",
-        "verification_attempts": null,
-        "verification_failures": [],
-        "verification_attempts_count": 0,
-        "slice_ids": null,
-        "manual_verification": null,
-        "manual_verification_requested": false
-      },
-      "labels": {
-        "aaaa": "aaa"
-      },
-      "description": "Mid-atlantic male",
-      "preview_url": "https://storage.googleapis.com/eleven-public-prod/xu6lB73FTSTq3E8x7cPc1l2yTg82/voices/MTWNMFT6MxuyS5LvJevh/5c12b75f-2b93-493e-beea-b586e6aeb4db.mp3",
-      "available_for_tiers": [],
-      "settings": null,
-      "sharing": null
-    },
-    {
-      "voice_id": "OE3oV6GvwZZxmbleiW6e",
-      "name": "English Male 2",
-      "samples": [
-        {
-          "sample_id": "5eqXzOHd8MMxNTr4VXrc",
-          "file_name": "engmale2.mp3",
-          "mime_type": "audio/mpeg",
-          "size_bytes": 529783,
-          "hash": "81e6550d1a5574111a8a5c29eaf54218"
-        },
-        {
-          "sample_id": "caUOR6PSByIjJcEJ2Wbe",
-          "file_name": "engmale1.mp3",
-          "mime_type": "audio/mpeg",
-          "size_bytes": 654684,
-          "hash": "946913b8e43c1b06b7cef404723ba67d"
-        },
-        {
-          "sample_id": "hZwpfhiDJC1vVwVjSXLE",
-          "file_name": "engmale3.mp3",
-          "mime_type": "audio/mpeg",
-          "size_bytes": 487685,
-          "hash": "93aca6546aaed9ee9cff8656bf02c09f"
-        }
-      ],
-      "category": "cloned",
-      "fine_tuning": {
-        "model_id": null,
-        "language": null,
-        "is_allowed_to_fine_tune": false,
-        "fine_tuning_requested": false,
-        "finetuning_state": "not_started",
-        "verification_attempts": null,
-        "verification_failures": [],
-        "verification_attempts_count": 0,
-        "slice_ids": null,
-        "manual_verification": null,
-        "manual_verification_requested": false
-      },
-      "labels": {},
-      "description": "Englishman 2",
-      "preview_url": "https://storage.googleapis.com/eleven-public-prod/xu6lB73FTSTq3E8x7cPc1l2yTg82/voices/OE3oV6GvwZZxmbleiW6e/3e43a7fb-5560-4e32-8237-fe5efc123333.mp3",
-      "available_for_tiers": [],
-      "settings": null,
-      "sharing": null
-    },
-    {
-      "voice_id": "QK9pRG9Kr3p95jN6FaFQ",
-      "name": "[ElevenVoices] African Male Raspy",
-      "samples": null,
-      "category": "generated",
-      "fine_tuning": {
-        "model_id": null,
-        "language": null,
-        "is_allowed_to_fine_tune": false,
-        "fine_tuning_requested": false,
-        "finetuning_state": "not_started",
-        "verification_attempts": null,
-        "verification_failures": [],
-        "verification_attempts_count": 0,
-        "slice_ids": null,
-        "manual_verification": null,
-        "manual_verification_requested": false
-      },
-      "labels": {
-        "accent": "african",
-        "age": "middle_aged",
-        "voicefrom": "ElevenVoices",
-        "gender": "male",
-        "style": "raspy"
-      },
-      "description": "",
-      "preview_url": "https://storage.googleapis.com/eleven-public-prod/PyUBusauIUbpupKTM31Yp4fHtgd2/voices/blP5JEJ3Ur2Lu2sTkTLR/7bdf94ba-02e1-4b34-b957-be6a620b02fc.mp3",
-      "available_for_tiers": [],
-      "settings": null,
-      "sharing": {
-        "status": "copied",
-        "history_item_sample_id": null,
-        "enabled_in_library": false,
-        "original_voice_id": "blP5JEJ3Ur2Lu2sTkTLR",
-        "public_owner_id": "c073d57365bee5082cf125c9a419115de1d6a94b048f6bba2e344827f6b1c1b4",
-        "liked_by_count": 0,
-        "cloned_by_count": 0,
-        "whitelisted_emails": []
-      }
-    },
-    {
-      "voice_id": "lf9YecmHsP0FjHVXW1pl",
-      "name": "Tom",
-      "samples": null,
-      "category": "generated",
-      "fine_tuning": {
-        "model_id": null,
-        "language": null,
-        "is_allowed_to_fine_tune": false,
-        "fine_tuning_requested": false,
-        "finetuning_state": "not_started",
-        "verification_attempts": null,
-        "verification_failures": [],
-        "verification_attempts_count": 0,
-        "slice_ids": null,
-        "manual_verification": null,
-        "manual_verification_requested": false
-      },
-      "labels": {
-        "accent": "british",
-        "age": "middle_aged",
-        "gender": "male"
-      },
-      "description": "",
-      "preview_url": "https://storage.googleapis.com/eleven-public-prod/xu6lB73FTSTq3E8x7cPc1l2yTg82/voices/lf9YecmHsP0FjHVXW1pl/4692d165-bfbc-472c-bfba-b7fe4814fb7f.mp3",
-      "available_for_tiers": [],
-      "settings": null,
-      "sharing": {
-        "status": "copied",
-        "history_item_sample_id": null,
-        "enabled_in_library": false,
-        "original_voice_id": "iJefJXuMPVsy6FzZSdd0",
-        "public_owner_id": "899444b1d9eab0cea6d20686befafde9ccdc46ab4628e79973cf318a9497b138",
-        "liked_by_count": 0,
-        "cloned_by_count": 0,
-        "whitelisted_emails": []
-      }
-    },
-    {
-      "voice_id": "pVMxH1FoLtJHnNqJkbBX",
-      "name": "Barbara",
-      "samples": null,
-      "category": "generated",
-      "fine_tuning": {
-        "model_id": null,
-        "language": null,
-        "is_allowed_to_fine_tune": false,
-        "fine_tuning_requested": false,
-        "finetuning_state": "not_started",
-        "verification_attempts": null,
-        "verification_failures": [],
-        "verification_attempts_count": 0,
-        "slice_ids": null,
-        "manual_verification": null,
-        "manual_verification_requested": false
-      },
-      "labels": {
-        "accent": "british",
-        "age": "young",
-        "gender": "female"
-      },
-      "description": "",
-      "preview_url": "https://storage.googleapis.com/eleven-public-prod/xu6lB73FTSTq3E8x7cPc1l2yTg82/voices/pVMxH1FoLtJHnNqJkbBX/3403da8a-ddbe-4108-a597-4b666e65ce8a.mp3",
-      "available_for_tiers": [],
-      "settings": null,
-      "sharing": {
-        "status": "copied",
-        "history_item_sample_id": null,
-        "enabled_in_library": false,
-        "original_voice_id": "jA6adkQ3dELZtyVBrLe8",
-        "public_owner_id": "5d30d4a2ec6598900481a1f72bab23755468fd157c39bf18814bab6fb2f50c59",
-        "liked_by_count": 0,
-        "cloned_by_count": 0,
-        "whitelisted_emails": []
-      }
-    },
-    {
-      "voice_id": "pXL2iPuFUPZFZTNLRZoC",
-      "name": "English Male 3",
-      "samples": [
-        {
-          "sample_id": "DZubkzoxdL8PeppQMsZF",
-          "file_name": "engmale7.mp3",
-          "mime_type": "audio/mpeg",
-          "size_bytes": 677707,
-          "hash": "7161614f315e4f17a65b29d5e139bee4"
-        },
-        {
-          "sample_id": "HhhTImpSi8A718537See",
-          "file_name": "engmale2.mp3",
-          "mime_type": "audio/mpeg",
-          "size_bytes": 529783,
-          "hash": "81e6550d1a5574111a8a5c29eaf54218"
-        },
-        {
-          "sample_id": "vnnhwYwxrl8R0GgehRvs",
-          "file_name": "engmale8.mp3",
-          "mime_type": "audio/mpeg",
-          "size_bytes": 567624,
-          "hash": "1c3263047861d7ec262c8ab3a4fee78a"
-        }
-      ],
-      "category": "cloned",
-      "fine_tuning": {
-        "model_id": null,
-        "language": null,
-        "is_allowed_to_fine_tune": false,
-        "fine_tuning_requested": false,
-        "finetuning_state": "not_started",
-        "verification_attempts": null,
-        "verification_failures": [],
-        "verification_attempts_count": 0,
-        "slice_ids": null,
-        "manual_verification": null,
-        "manual_verification_requested": false
-      },
-      "labels": {},
-      "description": "Englishman3",
-      "preview_url": "https://storage.googleapis.com/eleven-public-prod/xu6lB73FTSTq3E8x7cPc1l2yTg82/voices/pXL2iPuFUPZFZTNLRZoC/69e45829-cdee-44ca-beea-a2802014948e.mp3",
-      "available_for_tiers": [],
-      "settings": null,
-      "sharing": null
-    },
-    {
-      "voice_id": "vJgomBtyGJZXMjVXYdtN",
-      "name": "English Male 4",
-      "samples": [
-        {
-          "sample_id": "1PmvmztaVnz1k9JvmDGI",
-          "file_name": "engmale10.mp3",
-          "mime_type": "audio/mpeg",
-          "size_bytes": 580672,
-          "hash": "f997bfa49dea975bc5ea4ca779d59f7b"
-        },
-        {
-          "sample_id": "8G6zsmrQ96bKAiNuak3g",
-          "file_name": "engmale11.mp3",
-          "mime_type": "audio/mpeg",
-          "size_bytes": 349331,
-          "hash": "b5bdc0d66aea588bf24145afead77d2b"
-        },
-        {
-          "sample_id": "dkOiQteMXIcDERc8ReRD",
-          "file_name": "Mason1.mp3",
-          "mime_type": "audio/mpeg",
-          "size_bytes": 770784,
-          "hash": "6594d5fcaff421e2d08717f3746371e2"
-        },
-        {
-          "sample_id": "gHQoNeDSFeRHjHH06b8H",
-          "file_name": "engmale9.mp3",
-          "mime_type": "audio/mpeg",
-          "size_bytes": 594228,
-          "hash": "abe43f372d997ccbeb6803045d00d3dd"
-        }
-      ],
-      "category": "cloned",
-      "fine_tuning": {
-        "model_id": null,
-        "language": null,
-        "is_allowed_to_fine_tune": false,
-        "fine_tuning_requested": false,
-        "finetuning_state": "not_started",
-        "verification_attempts": null,
-        "verification_failures": [],
-        "verification_attempts_count": 0,
-        "slice_ids": null,
-        "manual_verification": null,
-        "manual_verification_requested": false
-      },
-      "labels": {},
-      "description": "Englishman4",
-      "preview_url": "https://storage.googleapis.com/eleven-public-prod/xu6lB73FTSTq3E8x7cPc1l2yTg82/voices/vJgomBtyGJZXMjVXYdtN/7bebda41-1c01-4df7-8b2a-ce41a955b1c5.mp3",
-      "available_for_tiers": [],
-      "settings": null,
-      "sharing": null
-    }
-  ]
+    ]
 }
