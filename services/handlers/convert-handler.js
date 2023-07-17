@@ -126,12 +126,12 @@ const convertHandler = async (req, res) => {
   let voice_data = getVoiceData();
 
   script = parse[0];
-  characters = parse[1].sort();
+  parse[1].push(['NARRATOR', '-']);
+  let characters = parse[1].sort();
+  console.log({characters});
   let title = u.query.script;
   title = title.split('.');
   title = title[0];
-
- // writeFile(JSON.stringify(characters), title+'.ctv');
 
   api_key = 'd0bf46f1a6940f687634b5fc97c7c018';
 

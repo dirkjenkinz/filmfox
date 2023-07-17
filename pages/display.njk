@@ -43,11 +43,12 @@
               <th></th>
               <th class="data-left">Scene</th>
               <th class="data-left">Character</th>
+              <th class='data-left'>Voice</th>
               <th class="data-left">Verbals</th>
             </tr>
           </thead>
           <tbody>
-            {% for i in range(0, 20) -%}
+            {% for i in range(0, script.length) -%}
             <tr>
               <td class="data-left">
                 <button
@@ -59,6 +60,7 @@
               </td>
               <td class="data-left">{{script[i][2]}}</td>
               <td class="data-left" id="ch_{{i}}">{{script[i][0]}}</td>
+              <td class="data-left" id="vb_{{i}}">{{script[i][3]}}</td>
               <td class="data-left" id="vb_{{i}}">{{script[i][1]}}</td>
             </tr>
             {%- endfor %}
