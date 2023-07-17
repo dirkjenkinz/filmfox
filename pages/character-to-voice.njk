@@ -46,9 +46,15 @@
                 <td class="data-left">
                   <select name="voices_{{i}}" id="voices_{{i}}">
                     {% for j in range(0, voice_data.length) -%}
-                    <option value="{{voice_data[j][0]}}">
-                      {{voice_data[j][0]}}
-                    </option>
+                      {% if characters[i][1] == voice_data[j][0] %}
+                        <option value="{{voice_data[j][0]}}" selected>
+                          {{voice_data[j][0]}}
+                        </option>
+                      {% else %}
+                        <option value="{{voice_data[j][0]}}">
+                          {{voice_data[j][0]}}
+                        </option>
+                      {% endif %}
                     {%- endfor %}
                   </select>
                 </td>
