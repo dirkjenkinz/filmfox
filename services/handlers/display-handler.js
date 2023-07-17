@@ -8,7 +8,7 @@ const displayHandler = async (req, res) => {
   let file = u.query.filmFoxFile;
   let filmFoxFile = await getData(file);
 
-  const {title, api_key, characters, script, voice_data} = filmFoxFile;
+  const {title, api_key, characters, script } = filmFoxFile;
 
   script.forEach(scriptChar => {
     characters.forEach(c => {

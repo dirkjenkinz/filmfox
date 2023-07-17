@@ -38,9 +38,6 @@ const textToSpeech = async () => {
     let response = await axios.post(
         'https://api.elevenlabs.io/v1/text-to-speech/21m00Tcm4TlvDq8ikWAM?optimize_streaming_latency=0', config);
    
-    
-    console.log(response)    
-
     return response.data;
 };
 

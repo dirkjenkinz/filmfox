@@ -43,7 +43,7 @@
               <th></th>
               <th class="data-left">Scene</th>
               <th class="data-left">Character</th>
-              <th class='data-left'>Voice</th>
+              <th class="data-left">Voice</th>
               <th class="data-left">Verbals</th>
             </tr>
           </thead>
@@ -60,7 +60,7 @@
               </td>
               <td class="data-left">{{script[i][2]}}</td>
               <td class="data-left" id="ch_{{i}}">{{script[i][0]}}</td>
-              <td class="data-left" id="vb_{{i}}">{{script[i][3]}}</td>
+              <td class="data-left" id="vc_{{i}}">{{script[i][3]}}</td>
               <td class="data-left" id="vb_{{i}}">{{script[i][1]}}</td>
             </tr>
             {%- endfor %}
@@ -73,11 +73,16 @@
         window.location.href = `/`
       }),
         $("#ctv").on("click", () => {
-          const f = $("#title")[0].innerText
+          const f = $("#title")[0].innerText;
           window.location.href = `/ctv?filmFoxFile=${f}`
         }),
         $("select").on("change", function (e) {
           let num = this.name.substring(7)
+        }),
+        $(".btn-gen").on("click", (e) => {
+          const num = e.target.id.substring(4);
+           const f = $("#title")[0].innerText
+          window.location.href = `/generate-single?filmFoxFile=${f}&element=${num}`
         })
     </script>
   </body>
