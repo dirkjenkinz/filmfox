@@ -1,6 +1,6 @@
-
 const url = require('url');
-const { getData, writeFile } = require('../file-service');
+const { getData } = require('../file-service');
+const { generateSpeech } = require('../elevenLabs');
 
 const generateSingleHandler = async (req, res) => {
   console.log('entering generate single handler');
@@ -10,11 +10,11 @@ const generateSingleHandler = async (req, res) => {
   let file = u.query.filmFoxFile;
   let filmFoxFile = await getData(file + '.fff');
 
-  const {title, api_key, characters, script, voice_data } = filmFoxFile;
+  const { title, api_key, characters, script, voice_data } = filmFoxFile;
 
   script.forEach(scriptChar => {
     characters.forEach(c => {
-      if (c[0] === scriptChar[0]){
+      if (c[0] === scriptChar[0]) {
         scriptChar[3] = c[1];
       };
     })
@@ -24,13 +24,29 @@ const generateSingleHandler = async (req, res) => {
 
   let voice_id = '';
   voice_data.forEach(v => {
-    if (v[0] === character_name){
+    if (v[0] === character_name) {
       voice_id = v[2];
     };
   });
 
-  console.log({voice_id});
-  console.log(script[element][1]);
+  let fileNum = `000000${element}`;
+  fileNum = fileNum.substring(fileNum.length - 6);
+  const fileName = `${title}_${fileNum}.wav`;
+
+  let text = script[element][1];
+
+  if (script[element][0] === 'NARRATOR') {
+    if (text.substring(0, 9) === 'INT./EXT.') {
+      text = 'INTERIOR / EXTERIOR' + text.substring(4);
+    }
+    else if (text.substring(0, 4) === 'INT.') {
+      text = 'INTERIOR' + text.substring(4);
+    } else if (text.substring(0, 4) === 'EXT.') {
+      text = 'EXTERIOR' + text.substring(4);
+    };
+  };
+
+  generateSpeech(api_key, voice_id, fileName, text);
 
   res.render('display.njk', {
     title,
