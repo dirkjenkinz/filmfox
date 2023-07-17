@@ -13,7 +13,7 @@
     </head>
 
     <body>
-        <div class='container'>
+        <div class='container-fluid'>
             <div class='row'>
                 <div class='col-md-2'>
                     <h1>FilmFox</h1>
@@ -45,11 +45,11 @@
             <div class='row show'>
                 <div class='col-md-3'>
                     <label class="form-label" for="fff">Display FilmFox File</label>
-                    <input type="file" class="form-control" accept=".json" id="fff"/>
+                    <input type="file" class="form-control" accept=".fff" id="fff"/>
                 </div>
                 <div class='col-md-3'>
                     <br>
-                    <button class='btn btn-block btn-edit' id='convert'>Convert</button>
+                    <button class='btn btn-block btn-edit' id='display'>Display</button>
                 </div>
             </div>
         </div>
@@ -63,8 +63,13 @@
                 window.location.href = `/convert?script=${s}`
             };
         }),
-         $('#test').on('click', () => {
-                window.location.href = `/test`
+         $('#display').on('click', () => {
+            let f = $('#fff')
+                .val()
+                .substring(12);
+            if (f !== '') {
+                window.location.href = `/display?filmFoxFile=${f}`
+            };
         }),
          $('#voices').on('click', () => {
                 window.location.href = `/voices`

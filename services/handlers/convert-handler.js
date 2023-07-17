@@ -112,7 +112,6 @@ const parseScript = script => {
     chars.push([c, '-']);
   })
 
-  console.log({chars});
 
   return [parse, chars];
 }
@@ -132,14 +131,16 @@ const convertHandler = async (req, res) => {
   title = title.split('.');
   title = title[0];
 
-  writeFile(JSON.stringify(characters), title+'.ctv');
+ // writeFile(JSON.stringify(characters), title+'.ctv');
 
   api_key = 'd0bf46f1a6940f687634b5fc97c7c018';
 
   const fff = {
-    api_key: api_key,
-    voice_data: voice_data,
-    script: script,
+    title,
+    api_key,
+    characters,
+    voice_data,
+    script,
   }
 
   writeFile(JSON.stringify(fff), title+'.fff');
@@ -147,8 +148,6 @@ const convertHandler = async (req, res) => {
   res.render('display.njk', {
     title,
     api_key,
-    characters,
-    voice_data,
     script,
   });
 };
