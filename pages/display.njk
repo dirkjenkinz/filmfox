@@ -1,77 +1,79 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset='UTF-8' />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
     <title>FilmFox</title>
-    <link rel="stylesheet" href="../css/style.css" />
+    <link rel='stylesheet' href='../css/style.css' />
     <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+      rel='stylesheet'
+      href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css'
     />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
+    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js'></script>
   </head>
 
   <body>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-6">
+    <div class='container-fluid'>
+      <div class='row'>
+        <div class='col-md-6'>
           <h1>Film Fox</h1>
         </div>
-        <div class="col-md-6" id="title">{{ title }}</div>
+        <div class='col-md-6 data-right' id='title'><h3>{{ title }}</h3></div>
       </div>
-      <div class="row show">
-        <div class="col-md-4">
-          <button class="btn btn-block btn-edit" id="main">Main Screen</button>
+      <div class='row show'>
+        <div class='col-md-4'>
+          <button class='btn btn-block btn-edit' id='main'>Main Screen</button>
         </div>
-        <div class="col-md-4">
-          <button class="btn btn-block btn-edit" id="ctv">
+        <div class='col-md-4'>
+          <button class='btn btn-block btn-edit' id='ctv'>
             Character To Voice
           </button>
         </div>
-        <div class="col-md-4"></div>
+        <div class='col-md-4'></div>
       </div>
-      <div class="row">
+      <div class='row'>
         <table
-          class="table-bordered table-sm table-dark table-grid"
-          id="script_table"
+          class='table-bordered table-sm table-dark table-grid'
+          id='script_table'
         >
           <thead>
             <tr>
               <th></th>
-              <th class="data-left">Scene</th>
-              <th class="data-left">Character</th>
-              <th class="data-left">Voice</th>
-              <th class="data-left">Verbals</th>
+              <th class='data-left'>Element</th>
+              <th class='data-left'>Scene</th>
+              <th class='data-left'>Character</th>
+              <th class='data-left'>Voice</th>
+              <th class='data-left'>Verbals</th>
             </tr>
           </thead>
           <tbody>
             {% for i in range(0, script.length) -%}
             <tr>
-              <td class="data-left">
+              <td class='data-left'>
                 {% if script[i][3] == '-' %}
                   <button
-                    class="btn btn-block btn-edit btn-small btn-gen"
-                    id="gen_{{i}}"
+                    class='btn btn-block btn-edit btn-small btn-gen'
+                    id='gen_{{i}}'
                     disabled
                   >
                     Gen
                   </button>
                 {% else %}
                   <button
-                    class="btn btn-block btn-edit btn-small btn-gen"
-                    id="gen_{{i}}"
+                    class='btn btn-block btn-edit btn-small btn-gen'
+                    id='gen_{{i}}'
                   >
                     Gen
                   </button>
                 {% endif %}
               </td>
-              <td class="data-left">{{script[i][2]}}</td>
-              <td class="data-left" id="ch_{{i}}">{{script[i][0]}}</td>
-              <td class="data-left" id="vc_{{i}}">{{script[i][3]}}</td>
-              <td class="data-left" id="vb_{{i}}">{{script[i][1]}}</td>
+              <td class='data-right'>{{i}}</td>
+              <td class='data-right'>{{script[i][2]}}</td>
+              <td class='data-left' id='ch_{{i}}'>{{script[i][0]}}</td>
+              <td class='data-left' id='vc_{{i}}'>{{script[i][3]}}</td>
+              <td class='data-left' id='vb_{{i}}'>{{script[i][1]}}</td>
             </tr>
             {%- endfor %}
           </tbody>
@@ -79,19 +81,19 @@
       </div>
     </div>
     <script>
-      $("#main").on("click", () => {
+      $('#main').on('click', () => {
         window.location.href = `/`
       }),
-        $("#ctv").on("click", () => {
-          const f = $("#title")[0].innerText
+        $('#ctv').on('click', () => {
+          const f = $('#title')[0].innerText
           window.location.href = `/ctv?filmFoxFile=${f}`
         }),
-        $("select").on("change", function (e) {
+        $('select').on('change', function (e) {
           let num = this.name.substring(7)
         }),
-        $(".btn-gen").on("click", (e) => {
+        $('.btn-gen').on('click', (e) => {
           const num = e.target.id.substring(4)
-          const f = $("#title")[0].innerText
+          const f = $('#title')[0].innerText
           window.location.href = `/generate-single?filmFoxFile=${f}&element=${num}`
         })
     </script>

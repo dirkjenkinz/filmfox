@@ -1,6 +1,8 @@
 const url = require('url');
 const { getData } = require('../services/file-service');
 const { generateSpeech } = require('../services/elevenLabs');
+const dotenv = require('dotenv');
+dotenv.config();
 
 const generateSingleHandler = async (req, res) => {
   console.log('entering generate single handler');
@@ -9,8 +11,9 @@ const generateSingleHandler = async (req, res) => {
   let element = u.query.element;
   let file = u.query.filmFoxFile;
   let filmFoxFile = await getData(file + '.fff');
+  const api_key = process.env.APIKEY;
 
-  const { title, api_key, characters, script, voice_data } = filmFoxFile;
+  const { title, characters, script, voice_data } = filmFoxFile;
 
   script.forEach(scriptChar => {
     characters.forEach(c => {
@@ -31,7 +34,7 @@ const generateSingleHandler = async (req, res) => {
 
   let fileNum = `000000${element}`;
   fileNum = fileNum.substring(fileNum.length - 6);
-  const fileName = `${title}/sound_${fileNum}.wav`;
+  const fileName = `${title}/sound_${fileNum}.mp3`;
 
   let text = script[element][1];
 

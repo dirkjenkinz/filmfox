@@ -3,10 +3,7 @@
 3. On home page, list all converted ('fff') files
 4. Seek all Final Draft scripts
 5. Add history function
-6. Download voice examples
+6. Download voice samples
 7. Display character usage from 11 Labs
 8. Add voice setting parms
-9. Add ability to set api key on main page
-10. Change 'main' to 'landing'
-11. Indicate which elements have already been generated
-12. Block gen if no voice attached
+9. Change 'main' to 'landing'

@@ -1,11 +1,11 @@
-const url = require('url');
-
+const dotenv = require('dotenv');
+dotenv.config();
 
 const mainHandler = async (req, res) => {
   console.log("entering main handler");
 
   res.render('main.njk', {
-    msg: 'Let us not dally',
+    api_key: process.env.APIKEY,
   });
 };
 

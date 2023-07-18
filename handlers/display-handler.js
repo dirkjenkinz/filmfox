@@ -1,5 +1,7 @@
 const url = require('url');
 const { getData} = require('../services/file-service');
+const dotenv = require('dotenv');
+dotenv.config();
 
 const displayHandler = async (req, res) => {
   console.log("entering display handler");
@@ -8,7 +10,8 @@ const displayHandler = async (req, res) => {
   let file = u.query.filmFoxFile;
   let filmFoxFile = await getData(file);
 
-  const {title, api_key, characters, script } = filmFoxFile;
+  const {title, characters, script } = filmFoxFile;
+  const api_key = process.env.APIKEY;
 
   script.forEach(scriptChar => {
     characters.forEach(c => {

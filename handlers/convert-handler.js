@@ -1,5 +1,7 @@
 const url = require('url');
 const voices = require('../data/voices.json');
+const dotenv = require('dotenv');
+dotenv.config();
 
 const {
   getScript,
@@ -134,7 +136,7 @@ const convertHandler = async (req, res) => {
   title = title.split('.');
   title = title[0];
 
-  api_key = 'd0bf46f1a6940f687634b5fc97c7c018';
+  api_key = process.env.API;
 
   const rc = await createDirectory(title);
 

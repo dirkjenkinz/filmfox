@@ -1,5 +1,5 @@
-const { getVoices } = require('./gecko');
-const {writeFile} = require('../services/file-service');
+const { getVoices } = require('../services/elevenLabs');
+const { writeFile } = require('../services/file-service');
 
 const voicesHandler = async (req, res) => {
   console.log('Entering voice handler');
