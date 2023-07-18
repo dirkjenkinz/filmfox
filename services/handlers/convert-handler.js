@@ -4,6 +4,7 @@ const voices = require('../../data/voices.json');
 const {
   getScript,
   writeFile,
+  createDirectory,
 } = require("../file-service");
 
 const getVoiceData = () => {
@@ -134,6 +135,8 @@ const convertHandler = async (req, res) => {
   title = title[0];
 
   api_key = 'd0bf46f1a6940f687634b5fc97c7c018';
+
+  const rc = await createDirectory(title);
 
   const fff = {
     title,

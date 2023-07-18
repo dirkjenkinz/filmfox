@@ -7,7 +7,7 @@ const getScript = (file) => {
         fs.readFile(`${directoryPath}/${file}`,
             (err, data) => {
                 if (err) {
-                    console.log('error=', 'err');
+                    console.log('error=', err);
                     reject(err);
                 } else {
                     resolve(data);
@@ -47,8 +47,17 @@ const writeFile = (data, file) => {
     })
 };
 
+const createDirectory = (directory => {
+    console.log('create directory');
+    const directoryPath = path.join(__dirname, '../data');
+        if (!fs.existsSync(`${directoryPath}/${directory}`)){
+            fs.mkdirSync(`${directoryPath}/${directory}`);
+        }
+});
+
 module.exports = {
     getScript,
     getData,
     writeFile,
+    createDirectory,
 };

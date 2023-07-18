@@ -1,0 +1,12 @@
+1. Place output files in their own folder withing the data folder.
+2. Generate all
+3. Turn call to 11 Labs into a promise
+4. On home page, list all converted ('fff') files
+5. Seek all Final Draft scripts
+6. Add history function
+7. Download voice examples
+8. Display character usage from 11 Labs
+9. Add voice setting parms
+10. Add ability to set api key on main page
+11. Change 'main' to 'landing'
+12. Indicate which elements have already been generated

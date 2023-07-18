@@ -434,6 +434,82 @@
             }
         },
         {
+            "voice_id": "HQpGCMz1x58FIOUK5nAh",
+            "name": "Billy:  Earnest Character!",
+            "samples": null,
+            "category": "generated",
+            "fine_tuning": {
+                "model_id": null,
+                "language": null,
+                "is_allowed_to_fine_tune": false,
+                "fine_tuning_requested": false,
+                "finetuning_state": "not_started",
+                "verification_attempts": null,
+                "verification_failures": [],
+                "verification_attempts_count": 0,
+                "slice_ids": null,
+                "manual_verification": null,
+                "manual_verification_requested": false
+            },
+            "labels": {
+                "accent": "british",
+                "age": "young",
+                "gender": "male"
+            },
+            "description": null,
+            "preview_url": "https://storage.googleapis.com/eleven-public-prod/xu6lB73FTSTq3E8x7cPc1l2yTg82/voices/HQpGCMz1x58FIOUK5nAh/39aacc99-3809-4184-8e5c-19c37d5640b2.mp3",
+            "available_for_tiers": [],
+            "settings": null,
+            "sharing": {
+                "status": "copied",
+                "history_item_sample_id": null,
+                "enabled_in_library": false,
+                "original_voice_id": "P9aXgJ1cDTM7M5vtZ0TC",
+                "public_owner_id": "5d30d4a2ec6598900481a1f72bab23755468fd157c39bf18814bab6fb2f50c59",
+                "liked_by_count": 0,
+                "cloned_by_count": 0,
+                "whitelisted_emails": []
+            }
+        },
+        {
+            "voice_id": "HWZv11bgPX2kFQXexvy4",
+            "name": "Hannah - Raspy British Female Voice 1",
+            "samples": null,
+            "category": "generated",
+            "fine_tuning": {
+                "model_id": null,
+                "language": null,
+                "is_allowed_to_fine_tune": false,
+                "fine_tuning_requested": false,
+                "finetuning_state": "not_started",
+                "verification_attempts": null,
+                "verification_failures": [],
+                "verification_attempts_count": 0,
+                "slice_ids": null,
+                "manual_verification": null,
+                "manual_verification_requested": false
+            },
+            "labels": {
+                "accent": "british",
+                "age": "middle_aged",
+                "gender": "female"
+            },
+            "description": "",
+            "preview_url": "https://storage.googleapis.com/eleven-public-prod/xu6lB73FTSTq3E8x7cPc1l2yTg82/voices/HWZv11bgPX2kFQXexvy4/feedf29f-b3d1-4a71-8520-369f43a0c31f.mp3",
+            "available_for_tiers": [],
+            "settings": null,
+            "sharing": {
+                "status": "copied",
+                "history_item_sample_id": null,
+                "enabled_in_library": false,
+                "original_voice_id": "2gOMUQMgoECnUxwxsJQ3",
+                "public_owner_id": "9ad8a0e0919d3206eabd2485d79f503178aaad3f993962c01354a8557fd44941",
+                "liked_by_count": 0,
+                "cloned_by_count": 0,
+                "whitelisted_emails": []
+            }
+        },
+        {
             "voice_id": "KYahJqjUETABsjV3bQWs",
             "name": "Tom",
             "samples": null,
