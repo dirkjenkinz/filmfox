@@ -1,7 +1,7 @@
 const express=require('express');
 const router = express.Router();
 
-const {convertHandler} = require('../services/handlers/convert-handler');
+const {convertHandler} = require('../handlers/convert-handler');
 
 router.get('/', convertHandler);
 

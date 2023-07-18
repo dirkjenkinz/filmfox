@@ -1,6 +1,6 @@
 const url = require('url');
-const { getData } = require('../file-service');
-const { generateSpeech } = require('../elevenLabs');
+const { getData } = require('../services/file-service');
+const { generateSpeech } = require('../services/elevenLabs');
 
 const generateSingleHandler = async (req, res) => {
   console.log('entering generate single handler');

@@ -1,7 +1,7 @@
 const express=require('express');
 const router = express.Router();
 
-const {characterUpdateHandler} = require('../services/handlers/character-update-handler');
+const {characterUpdateHandler} = require('../handlers/character-update-handler');
 
 router.get('/', characterUpdateHandler);
 

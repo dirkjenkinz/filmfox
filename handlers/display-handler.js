@@ -1,5 +1,5 @@
 const url = require('url');
-const { getData} = require('../file-service');
+const { getData} = require('../services/file-service');
 
 const displayHandler = async (req, res) => {
   console.log("entering display handler");

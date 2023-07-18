@@ -1,7 +1,7 @@
 const express=require('express');
 const router = express.Router();
 
-const {characterToVoiceHandler} = require('../services/handlers/character-to-voice-handler');
+const {characterToVoiceHandler} = require('../handlers/character-to-voice-handler');
 
 router.get('/', characterToVoiceHandler);
 

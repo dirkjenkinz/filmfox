@@ -1,11 +1,11 @@
 const url = require('url');
-const voices = require('../../data/voices.json');
+const voices = require('../data/voices.json');
 
 const {
   getScript,
   writeFile,
   createDirectory,
-} = require("../file-service");
+} = require("../services/file-service");
 
 const getVoiceData = () => {
   let voice_data = [];

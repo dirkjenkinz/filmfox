@@ -1,6 +1,6 @@
 
 const url = require('url');
-const { getData, writeFile } = require('../file-service');
+const { getData, writeFile } = require('../services/file-service');
 
 const characterUpdateHandler = async (req, res) => {
   console.log('entering character update handler');

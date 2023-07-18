@@ -1,6 +1,6 @@
 
 const url = require('url');
-const { getData } = require('../file-service');
+const { getData } = require('../services/file-service');
 
 const characterToVoiceHandler = async (req, res) => {
   console.log('entering character to voice handler');

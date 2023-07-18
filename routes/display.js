@@ -1,7 +1,7 @@
 const express=require('express');
 const router = express.Router();
 
-const {displayHandler} = require('../services/handlers/display-handler');
+const {displayHandler} = require('../handlers/display-handler');
 
 router.get('/', displayHandler);
 
