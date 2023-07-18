@@ -51,12 +51,22 @@
             {% for i in range(0, script.length) -%}
             <tr>
               <td class="data-left">
-                <button
-                  class="btn btn-block btn-edit btn-small btn-gen"
-                  id="gen_{{i}}"
-                >
-                  Gen
-                </button>
+                {% if script[i][3] == '-' %}
+                  <button
+                    class="btn btn-block btn-edit btn-small btn-gen"
+                    id="gen_{{i}}"
+                    disabled
+                  >
+                    Gen
+                  </button>
+                {% else %}
+                  <button
+                    class="btn btn-block btn-edit btn-small btn-gen"
+                    id="gen_{{i}}"
+                  >
+                    Gen
+                  </button>
+                {% endif %}
               </td>
               <td class="data-left">{{script[i][2]}}</td>
               <td class="data-left" id="ch_{{i}}">{{script[i][0]}}</td>
@@ -73,15 +83,15 @@
         window.location.href = `/`
       }),
         $("#ctv").on("click", () => {
-          const f = $("#title")[0].innerText;
+          const f = $("#title")[0].innerText
           window.location.href = `/ctv?filmFoxFile=${f}`
         }),
         $("select").on("change", function (e) {
           let num = this.name.substring(7)
         }),
         $(".btn-gen").on("click", (e) => {
-          const num = e.target.id.substring(4);
-           const f = $("#title")[0].innerText
+          const num = e.target.id.substring(4)
+          const f = $("#title")[0].innerText
           window.location.href = `/generate-single?filmFoxFile=${f}&element=${num}`
         })
     </script>
