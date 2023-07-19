@@ -8,6 +8,7 @@ const displayHandler = async (req, res) => {
 
   let u = url.parse(req.originalUrl, true);
   let ptr = u.query.ptr;
+  console.log({ptr})
   let file = u.query.filmFoxFile;
   let filmFoxFile = await getData(file);
 
@@ -27,8 +28,6 @@ const displayHandler = async (req, res) => {
   if (ptr > end) ptr = end;
   if (ptr < 0) ptr = 0;
 
-  console.log({ ptr });
-  console.log({ end });
   res.render('display.njk', {
     title,
     api_key,

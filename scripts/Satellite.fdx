@@ -6,7 +6,7 @@
       <Text>FADE IN:</Text>
     </Paragraph>
     <Paragraph Type="Scene Heading">
-      <SceneProperties Length="1 4/8" Page="1" Title="">
+      <SceneProperties Length="1 5/8" Page="1" Title="">
         <SceneArcBeats>
           <CharacterArcBeat Name="BRODY"></CharacterArcBeat>
           <CharacterArcBeat Name="JUDITH"></CharacterArcBeat>
@@ -142,7 +142,7 @@
       <Text>CAMERA tracks up the stairs into -</Text>
     </Paragraph>
     <Paragraph Type="Scene Heading">
-      <SceneProperties Length="4/8" Page="2" Title="">
+      <SceneProperties Length="5/8" Page="2" Title="">
         <SceneArcBeats>
           <CharacterArcBeat Name="BRODY"></CharacterArcBeat>
         </SceneArcBeats>
@@ -177,7 +177,7 @@
       <Text>We follow a reluctant Tom out on to -</Text>
     </Paragraph>
     <Paragraph Type="Scene Heading">
-      <SceneProperties Length="1/8" Page="3" Title="">
+      <SceneProperties Length="2/8" Page="3" Title="">
         <SceneArcBeats/>
       </SceneProperties>
       <Text>INT. LANDING - NIGHT - CONTINUOUS</Text>
@@ -246,7 +246,7 @@
       <Text>Tom hurries into - </Text>
     </Paragraph>
     <Paragraph Type="Scene Heading">
-      <SceneProperties Length="5/8" Page="4" Title="">
+      <SceneProperties Length="6/8" Page="4" Title="">
         <SceneArcBeats/>
       </SceneProperties>
       <Text>Int. Shed - night - contiNUOUS</Text>
@@ -557,7 +557,7 @@
       <Text>Sure.</Text>
     </Paragraph>
     <Paragraph Type="Scene Heading">
-      <SceneProperties Length="1 1/8" Page="8" Title="">
+      <SceneProperties Length="1 2/8" Page="8" Title="">
         <SceneArcBeats>
           <CharacterArcBeat Name="BARBARA"></CharacterArcBeat>
           <CharacterArcBeat Name="TOM"></CharacterArcBeat>
@@ -662,7 +662,7 @@
       <Text>I think that used to be a mushroom.</Text>
     </Paragraph>
     <Paragraph Type="Scene Heading">
-      <SceneProperties Length="7" Page="9" Title="">
+      <SceneProperties Length="7 4/8" Page="9" Title="">
         <SceneArcBeats>
           <CharacterArcBeat Name="CHERI"></CharacterArcBeat>
           <CharacterArcBeat Name="FREDDY"></CharacterArcBeat>
@@ -1147,7 +1147,7 @@
       <Text>Well, well, well. You old sly boots.</Text>
     </Paragraph>
     <Paragraph Type="Scene Heading">
-      <SceneProperties Length="4 6/8" Page="16" Title="">
+      <SceneProperties Length="5 1/8" Page="16" Title="">
         <SceneArcBeats>
           <CharacterArcBeat Name="BARBARA"></CharacterArcBeat>
           <CharacterArcBeat Name="BRODY"></CharacterArcBeat>
@@ -1459,7 +1459,7 @@
       <Text>The madness inflicted by the Black Knight is immune to love and sentiment. We do not know why it only affects some and not others. The next time it passes, it might be you it affects - you it drives crazy. Then again, it may be your partner, you parent, even your child...</Text>
     </Paragraph>
     <Paragraph Type="Scene Heading">
-      <SceneProperties Length="3 4/8" Page="21" Title="">
+      <SceneProperties Length="3 6/8" Page="21" Title="">
         <SceneArcBeats>
           <CharacterArcBeat Name="ANDERSON"></CharacterArcBeat>
           <CharacterArcBeat Name="BARBARA"></CharacterArcBeat>
@@ -1680,7 +1680,7 @@
       <Text>It’s a VISA card... The long number is -</Text>
     </Paragraph>
     <Paragraph Type="Scene Heading">
-      <SceneProperties Length="2 3/8" Page="24" Title="">
+      <SceneProperties Length="2 5/8" Page="24" Title="">
         <SceneArcBeats>
           <CharacterArcBeat Name="CHERI"></CharacterArcBeat>
           <CharacterArcBeat Name="TOM"></CharacterArcBeat>
@@ -1930,7 +1930,7 @@
       <Text>Goes into - </Text>
     </Paragraph>
     <Paragraph Type="Scene Heading">
-      <SceneProperties Length="1/8" Page="28" Title="">
+      <SceneProperties Length="2/8" Page="28" Title="">
         <SceneArcBeats/>
       </SceneProperties>
       <Text>Int. Kitchen - NIGHT - coNTINUOUS</Text>
@@ -1951,7 +1951,7 @@
       <Text>Tom checks the front door and table then hurries up the stairs to -</Text>
     </Paragraph>
     <Paragraph Type="Scene Heading">
-      <SceneProperties Length="1/8" Page="28" Title="">
+      <SceneProperties Length="2/8" Page="28" Title="">
         <SceneArcBeats/>
       </SceneProperties>
       <Text>Int. Landing - NIGHT - conTINUOUS</Text>
@@ -1963,7 +1963,7 @@
       <Text>Enters -</Text>
     </Paragraph>
     <Paragraph Type="Scene Heading">
-      <SceneProperties Length="1" Page="28" Title="">
+      <SceneProperties Length="1 1/8" Page="28" Title="">
         <SceneArcBeats>
           <CharacterArcBeat Name="BARBARA"></CharacterArcBeat>
           <CharacterArcBeat Name="TOM"></CharacterArcBeat>
@@ -2056,7 +2056,7 @@
       <Text>Good. Because as soon as I get my circulation back, I’m going to want a right good seeing to.</Text>
     </Paragraph>
     <Paragraph Type="Scene Heading">
-      <SceneProperties Length="2 7/8" Page="29" Title="">
+      <SceneProperties Length="3 1/8" Page="29" Title="">
         <SceneArcBeats>
           <CharacterArcBeat Name="BATES"></CharacterArcBeat>
           <CharacterArcBeat Name="VOLKOV"></CharacterArcBeat>
@@ -2205,7 +2205,7 @@
       <Text>Incidentally, those things moving about on the edge of the picture are rats enjoying a breakfast of freshly-served human flesh.</Text>
     </Paragraph>
     <Paragraph Type="Scene Heading">
-      <SceneProperties Length="5" Page="32" Title="">
+      <SceneProperties Length="5 3/8" Page="32" Title="">
         <SceneArcBeats>
           <CharacterArcBeat Name="BOB FROM WOLVERHAMPTON"></CharacterArcBeat>
           <CharacterArcBeat Name="ISABELLE"></CharacterArcBeat>
@@ -2278,7 +2278,9 @@
       <Text>(beat)</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
-      <Text>And next on the line is Katie, a housewife from Blackpool, Lancashire.</Text>
+      <Text>And ne </Text>
+      <Text AdornmentStyle="-1" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="">xt</Text>
+      <Text> on the line is Katie, a housewife from Blackpool, Lancashire.</Text>
     </Paragraph>
     <Paragraph Type="Parenthetical">
       <Text>(beat)</Text>
@@ -2325,7 +2327,7 @@
       <Text>Tate</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
-      <Text>Let me finish, Katie. Outer space isn’t London or Hiroshima or Bikini Atoll. As I understand it, most of the damage done by nuclear weapons comes from the blast wave. In space, where’s there’s no atmosphere, you don’t get a blast wave, which means for a nuke to be of any use against the Black Knight it has to explode right in its face, as it were.</Text>
+      <Text>Let me finish, Katie. Outer space isn’t London or Hiroshima or Bikini Atoll. As I understand it, most of the damage done by nuclear weapons comes from the blast wave. In space, where there’s no atmosphere, you don’t get a blast wave, which means for a nuke to be of any use against the Black Knight it has to explode right in its face, as it were.</Text>
     </Paragraph>
     <Paragraph Type="Character">
       <Text>Katie FROM BLACKPOOL (ON RADIO)</Text>
@@ -2334,7 +2336,7 @@
       <Text>Well, lasers then. What about lasers?</Text>
     </Paragraph>
     <Paragraph Type="Character">
-      <Text>TATE (ON RADIO)</Text>
+      <Text> TATE (ON RADIO)</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
       <Text>What about them?</Text>
@@ -2527,7 +2529,7 @@
       <Text>Isabelle cuts the connection.</Text>
     </Paragraph>
     <Paragraph Type="Scene Heading">
-      <SceneProperties Length="4 5/8" Page="37" Title="">
+      <SceneProperties Length="5" Page="37" Title="">
         <SceneArcBeats>
           <CharacterArcBeat Name="BARBARA"></CharacterArcBeat>
           <CharacterArcBeat Name="BRODY"></CharacterArcBeat>
@@ -2854,7 +2856,7 @@
       <Text>They make love with wild abandon.</Text>
     </Paragraph>
     <Paragraph Type="Scene Heading">
-      <SceneProperties Length="2 1/8" Page="42" Title="">
+      <SceneProperties Length="2 2/8" Page="42" Title="">
         <SceneArcBeats>
           <CharacterArcBeat Name="BARBARA"></CharacterArcBeat>
           <CharacterArcBeat Name="BRODY"></CharacterArcBeat>
@@ -3072,7 +3074,7 @@
       <Text>Goes indoors.</Text>
     </Paragraph>
     <Paragraph Type="Scene Heading">
-      <SceneProperties Length="2 3/8" Page="44" Title="">
+      <SceneProperties Length="2 4/8" Page="44" Title="">
         <SceneArcBeats>
           <CharacterArcBeat Name="BARBARA"></CharacterArcBeat>
           <CharacterArcBeat Name="BATES"></CharacterArcBeat>
@@ -3219,7 +3221,7 @@
       <Text>I don’t know whether to laugh or to cry.</Text>
     </Paragraph>
     <Paragraph Type="Scene Heading">
-      <SceneProperties Length="1 7/8" Page="47" Title="">
+      <SceneProperties Length="2" Page="47" Title="">
         <SceneArcBeats>
           <CharacterArcBeat Name="CHERI"></CharacterArcBeat>
           <CharacterArcBeat Name="FREDDY"></CharacterArcBeat>
@@ -3376,7 +3378,7 @@
       <Text>Well done, Freddy. You've just got yourself fired.</Text>
     </Paragraph>
     <Paragraph Type="Scene Heading">
-      <SceneProperties Length="2 4/8" Page="49" Title="">
+      <SceneProperties Length="2 6/8" Page="49" Title="">
         <SceneArcBeats>
           <CharacterArcBeat Name="BARBARA"></CharacterArcBeat>
           <CharacterArcBeat Name="MILLER"></CharacterArcBeat>
@@ -3687,7 +3689,7 @@ The screen goes to the ‘off-air’ sign.</Text>
       <Text>Oh well. You can’t win ‘em all.</Text>
     </Paragraph>
     <Paragraph Type="Scene Heading">
-      <SceneProperties Length="2 3/8" Page="53" Title="">
+      <SceneProperties Length="2 4/8" Page="53" Title="">
         <SceneArcBeats>
           <CharacterArcBeat Name="BARBARA"></CharacterArcBeat>
           <CharacterArcBeat Name="TOM"></CharacterArcBeat>
@@ -3891,7 +3893,7 @@ The screen goes to the ‘off-air’ sign.</Text>
       <Text>BLACKOUT:</Text>
     </Paragraph>
     <Paragraph Type="Scene Heading">
-      <SceneProperties Length="1 6/8" Page="55" Title="">
+      <SceneProperties Length="1 7/8" Page="55" Title="">
         <SceneArcBeats>
           <CharacterArcBeat Name="MR. KEPLER"></CharacterArcBeat>
           <CharacterArcBeat Name="TOM"></CharacterArcBeat>
@@ -4008,7 +4010,7 @@ The screen goes to the ‘off-air’ sign.</Text>
       <Text>Tom stands. Gently lifts Barbara from the bed. Carries her to the door.</Text>
     </Paragraph>
     <Paragraph Type="Scene Heading">
-      <SceneProperties Length="1 2/8" Page="57" Title="">
+      <SceneProperties Length="1 3/8" Page="57" Title="">
         <SceneArcBeats>
           <CharacterArcBeat Name="TOM"></CharacterArcBeat>
           <CharacterArcBeat Name="YOUTUBE VOICEOVER"></CharacterArcBeat>
@@ -4215,7 +4217,7 @@ The screen goes to the ‘off-air’ sign.</Text>
       <Text>That’s better but we’re not there yet.</Text>
     </Paragraph>
     <Paragraph Type="Scene Heading">
-      <SceneProperties Length="2" Page="59" Title="">
+      <SceneProperties Length="2 1/8" Page="59" Title="">
         <SceneArcBeats>
           <CharacterArcBeat Name="BRODY"></CharacterArcBeat>
           <CharacterArcBeat Name="TOM"></CharacterArcBeat>
@@ -4452,7 +4454,7 @@ WE'LL BE BACK SOON</Text>
       <Text>He fetches her make-up bag and touches up her face for her.</Text>
     </Paragraph>
     <Paragraph Type="Scene Heading">
-      <SceneProperties Length="1 2/8" Page="62" Title="">
+      <SceneProperties Length="1 3/8" Page="62" Title="">
         <SceneArcBeats>
           <CharacterArcBeat Name="ANNOUNCER"></CharacterArcBeat>
           <CharacterArcBeat Name="CAVELL"></CharacterArcBeat>
@@ -4536,7 +4538,7 @@ WE'LL BE BACK SOON</Text>
       <Text>Tom flicks through channel after channel. All are blank.</Text>
     </Paragraph>
     <Paragraph Type="Scene Heading">
-      <SceneProperties Length="1 5/8" Page="63" Title="">
+      <SceneProperties Length="1 6/8" Page="63" Title="">
         <SceneArcBeats>
           <CharacterArcBeat Name="MCGREW"></CharacterArcBeat>
           <CharacterArcBeat Name="TOM"></CharacterArcBeat>
@@ -4745,7 +4747,7 @@ WE'LL BE BACK SOON</Text>
       <Text>Tom follows Warburg into -</Text>
     </Paragraph>
     <Paragraph Type="Scene Heading">
-      <SceneProperties Length="6 1/8" Page="66" Title="">
+      <SceneProperties Length="6 5/8" Page="66" Title="">
         <SceneArcBeats>
           <CharacterArcBeat Name="TOM"></CharacterArcBeat>
           <CharacterArcBeat Name="WARBURG"></CharacterArcBeat>
@@ -5271,7 +5273,7 @@ WE'LL BE BACK SOON</Text>
       <Text> bag. And this silky finish - hmmm so smooth, so sexy. I tell you, folks, this cushion is so sensuous I’d happily fuck it! In fact, as soon as my shift is over, I’m off to the stock room to have me a cushion gang bang!</Text>
     </Paragraph>
     <Paragraph Type="Scene Heading">
-      <SceneProperties Length="7/8" Page="73" Title="">
+      <SceneProperties Length="1" Page="73" Title="">
         <SceneArcBeats>
           <CharacterArcBeat Name="BRODY"></CharacterArcBeat>
         </SceneArcBeats>
@@ -5356,7 +5358,7 @@ WE'LL BE BACK SOON</Text>
       <Text>Tom opens a tin of stewing steak. Eats it directly from the can.</Text>
     </Paragraph>
     <Paragraph Type="Scene Heading">
-      <SceneProperties Length="1/8" Page="74" Title="">
+      <SceneProperties Length="2/8" Page="74" Title="">
         <SceneArcBeats/>
       </SceneProperties>
       <Text>Int. HallWAY - DAY</Text>
@@ -5415,7 +5417,7 @@ WE'LL BE BACK SOON</Text>
       <Text>Tom transfers the photos to his PC and uses them to dummy up some promo posters.</Text>
     </Paragraph>
     <Paragraph Type="Scene Heading">
-      <SceneProperties Length="6/8" Page="75" Title="">
+      <SceneProperties Length="7/8" Page="75" Title="">
         <SceneArcBeats>
           <CharacterArcBeat Name="TOM"></CharacterArcBeat>
         </SceneArcBeats>
@@ -5459,7 +5461,7 @@ WE'LL BE BACK SOON</Text>
       <Text>Buck did not read the newspapers, or he would have known that trouble was brewing, not alone for himself, but for every tide-water dog, strong of muscle and with warm, long hair, from Puget Sound to San Diego. Because men, groping in the Arctic darkness, had found a yellow metal, and because steamship and transportation companies were booming the find, thousands of men were rushing into the Northland. These men wanted dogs, and the dogs they wanted were heavy dogs, with strong muscles by which to toil, and furry coats to protect them from the frost.</Text>
     </Paragraph>
     <Paragraph Type="Scene Heading">
-      <SceneProperties Length="3 3/8" Page="76" Title="">
+      <SceneProperties Length="3 5/8" Page="76" Title="">
         <SceneArcBeats>
           <CharacterArcBeat Name="BATES"></CharacterArcBeat>
           <CharacterArcBeat Name="BBC ANNOUNCER"></CharacterArcBeat>
@@ -5772,7 +5774,7 @@ Tom laughs at Bates’ cornball phraseology.</Text>
       <Text>Goes to -</Text>
     </Paragraph>
     <Paragraph Type="Scene Heading">
-      <SceneProperties Length="4 2/8" Page="80" Title="">
+      <SceneProperties Length="4 4/8" Page="80" Title="">
         <SceneArcBeats>
           <CharacterArcBeat Name="ISABELLE"></CharacterArcBeat>
           <CharacterArcBeat Name="RECORDED MESSAGE"></CharacterArcBeat>
@@ -6070,7 +6072,7 @@ Tom laughs at Bates’ cornball phraseology.</Text>
       <Text>Through the letter box comes an avalanche of packages. Each bears the logo of the Great British Shopping Experience.</Text>
     </Paragraph>
     <Paragraph Type="Scene Heading">
-      <SceneProperties Length="1 6/8" Page="84" Title="">
+      <SceneProperties Length="1 7/8" Page="84" Title="">
         <SceneArcBeats>
           <CharacterArcBeat Name="BRODY"></CharacterArcBeat>
         </SceneArcBeats>
@@ -6197,7 +6199,7 @@ Tom laughs at Bates’ cornball phraseology.</Text>
     <Paragraph Type="Action">
       <Text>FREEZE FRAME.</Text>
     </Paragraph>
-    <Paragraph Type="Action">
+    <Paragraph Type="Transition">
       <Text>FINAL FADE OUT.</Text>
     </Paragraph>
   </Content>
@@ -6249,7 +6251,7 @@ Tom laughs at Bates’ cornball phraseology.</Text>
       <Range End="31012" Start="31006"/>
       <Range End="31162" Start="31152"/>
       <Range End="33636" Start="33582"/>
-      <Range End="42137" Start="42127"/>
+      <Range End="42138" Start="42128"/>
       <Range End="71648" Start="71644"/>
       <Range End="75551" Start="75504"/>
       <Range End="85807" Start="85799"/>
@@ -6291,7 +6293,7 @@ Tom laughs at Bates’ cornball phraseology.</Text>
 
   <WindowState Height="635" Left="2" Mode="Maximized" Top="2" Width="649"/>
 
-  <TextState Scaling="100" Selection="149,149" ShowInvisibles="No"/>
+  <TextState Scaling="100" Selection="42608,42608" ShowInvisibles="No"/>
 
   <ElementSettings Type="General">
     <FontSpec AdornmentStyle="0" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style=""/>

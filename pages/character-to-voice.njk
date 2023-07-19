@@ -16,15 +16,22 @@
 
   <body>
     <div class="container-fluid">
-      <div class="col-md-6">
+      <div class="row">
+        <div class="col-md-5">
           <h1>Film Fox</h1>
         </div>
-        <div class="col-md-6" id="title">{{ title }}</div>
+        <div class="col-md-1">
+          <p id="ptr">{{ptr}}</p>
+          <p id="endpoint">{{end}}</p>
         </div>
+        <div class="col-md-6 data-right" id="title"><h3>{{ title }}</h3></div>
+      </div>
       <div class="row show">
         <div class="col-md-4"></div>
         <div class="col-md-4">
-          <button class="btn btn-block btn-edit" id="display">Display Converted Script</button>
+          <button class="btn btn-block btn-edit" id="display">
+            Display Converted Script
+          </button>
         </div>
       </div>
       <div class="row show">
@@ -45,17 +52,16 @@
                 <td class="data-left" id="char_{{i}}">{{characters[i][0]}}</td>
                 <td class="data-left">
                   <select name="voices_{{i}}" id="voices_{{i}}">
-                    {% for j in range(0, voice_data.length) -%}
-                      {% if characters[i][1] == voice_data[j][0] %}
-                        <option value="{{voice_data[j][0]}}" selected>
-                          {{voice_data[j][0]}}
-                        </option>
-                      {% else %}
-                        <option value="{{voice_data[j][0]}}">
-                          {{voice_data[j][0]}}
-                        </option>
-                      {% endif %}
-                    {%- endfor %}
+                    {% for j in range(0, voice_data.length) -%} {% if
+                    characters[i][1] == voice_data[j][0] %}
+                    <option value="{{voice_data[j][0]}}" selected>
+                      {{voice_data[j][0]}}
+                    </option>
+                    {% else %}
+                    <option value="{{voice_data[j][0]}}">
+                      {{voice_data[j][0]}}
+                    </option>
+                    {% endif %} {%- endfor %}
                   </select>
                 </td>
               </tr>
@@ -95,8 +101,11 @@
     <!-- end container-fluid -->
     <script>
       $("#display").on("click", () => {
-        const fff = $('#title')[0].outerText;
-        window.location.href = `/display?filmFoxFile=${fff}.fff`;
+        const fff = $("#title")[0].outerText;
+        let ptr = $("#ptr")[0].innerText;
+        console.log($("#ptr")[0]);
+        console.log({ptr})
+        window.location.href = `/display?filmFoxFile=${fff}.fff&ptr=${ptr}`
       }),
         $("select").on("change", function (e) {
           const num = this.name.substring(7)
@@ -104,8 +113,8 @@
           const cid = `char_${num}`
           const voice = $(`#${id} option:selected`).text().trim()
           const character = $(`#${cid}`)[0].textContent
-          const fff = $('#title')[0].outerText;
-          window.location.href = `/character-update?filmFoxFile=${fff}&character=${character}&voice=${voice}`;
+          const fff = $("#title")[0].outerText
+          window.location.href = `/character-update?filmFoxFile=${fff}&character=${character}&voice=${voice}`
         })
     </script>
   </body>

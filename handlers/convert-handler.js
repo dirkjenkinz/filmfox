@@ -27,17 +27,34 @@ const getVoiceData = () => {
 };
 
 const parseAction = (action, scene_number) => {
+  let text = '';
+
+  for (let i = 1; i < action.length; i++){
+    if (action[i].substring(0, 4) === 'Text');
+    const start = action[i].indexOf('>') + 1;
+    text += action[i].substring(start);
+  }
+
   let a = [];
   a[0] = 'NARRATOR';
-  a[1] = action[1].substring(5);
+  a[1] = text;
   a[2] = scene_number;
   return a;
 };
 
 const parseDialogue = (dialogue, character, scene_number) => {
+
+  let text = '';
+
+  for (let i = 1; i < dialogue.length; i++){
+    if (dialogue[i].substring(0, 4) === 'Text');
+    const start = dialogue[i].indexOf('>') + 1;
+    text += dialogue[i].substring(start);
+  }
+
   let a = [];
   a[0] = character;
-  a[1] = dialogue[1].substring(5);
+  a[1] = text;
   a[2] = scene_number;
   return a;
 };
@@ -80,7 +97,7 @@ const parseCharacter = (character, scene_number) => {
 
 const parseScript = script => {
   let current_character = '';
-  let scene_number = 0;
+  let scene_number = 1;
   let parse = [];
   let characters = [];
   script = script.toString().split('<Paragraph');
@@ -96,8 +113,8 @@ const parseScript = script => {
     } else if (x[0] === 'Dialogue') {
       parse.push(parseDialogue(x, current_character, scene_number));
     } else if (x[0] === 'Scene Heading') {
+      parse.push(parseSceneHeading(x, scene_number));
       scene_number++;
-      parse.push(parseSceneHeading(x, scene_number)); 
     } else if (x[0] === 'Character') {
       let c = parseCharacter(x, scene_number);
       if (c !== '') {
@@ -121,17 +138,15 @@ const parseScript = script => {
 
 const convertHandler = async (req, res) => {
   console.log("entering display handler !!!");
-  let u = url.parse(req.originalUrl, true);
+  const u = url.parse(req.originalUrl, true);
   let file = u.query.script;
   let script = await getScript(file);
   let parse = parseScript(script);
-
   let voice_data = getVoiceData();
 
   script = parse[0];
   parse[1].push(['NARRATOR', '-']);
   let characters = parse[1].sort();
-  console.log({characters});
   let title = u.query.script;
   title = title.split('.');
   title = title[0];
@@ -139,6 +154,12 @@ const convertHandler = async (req, res) => {
   api_key = process.env.API;
 
   const rc = await createDirectory(title);
+
+  ptr = 0;
+  let end = script.length - 10;
+  if (end < 10) end = 10;
+  if (ptr > end) ptr = end;
+  if (ptr < 0) ptr = 0;
 
   const fff = {
     title,
@@ -148,12 +169,14 @@ const convertHandler = async (req, res) => {
     script,
   }
 
-  writeFile(JSON.stringify(fff), title+'.fff');
+  writeFile(JSON.stringify(fff), title + '.fff');
 
   res.render('display.njk', {
     title,
     api_key,
     script,
+    ptr,
+    end,
   });
 };
 

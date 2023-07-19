@@ -27,16 +27,13 @@
         <div class="col-md-6 data-right" id="title"><h3>{{ title }}</h3></div>
       </div>
       <div class="row show">
-        <div class="col-md-3">
+        <div class="col-md-2">
           <button class="btn btn-block btn-edit" id="main">Main Screen</button>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-2">
           <button class="btn btn-block btn-edit" id="ctv">
             Character To Voice
           </button>
-        </div>
-        <div class="col-md-1">
-          <button class="btn btn-block btn-edit" id="start">Start</button>
         </div>
         <div class="col-md-1">
           <button class="btn btn-block btn-edit" id="plus-one">+1</button>
@@ -45,13 +42,26 @@
           <button class="btn btn-block btn-edit" id="plus-ten">+10</button>
         </div>
         <div class="col-md-1">
+          <button class="btn btn-block btn-edit" id="plus-one-hundred">
+            +100
+          </button>
+        </div>
+        <div class="col-md-1">
+          <button class="btn btn-block btn-edit" id="end">End</button>
+        </div>
+        <div class="col-md-1">
           <button class="btn btn-block btn-edit" id="minus-one">-1</button>
         </div>
         <div class="col-md-1">
           <button class="btn btn-block btn-edit" id="minus-ten">-10</button>
         </div>
         <div class="col-md-1">
-          <button class="btn btn-block btn-edit" id="end">End</button>
+          <button class="btn btn-block btn-edit" id="minus-one-hundred">
+            -100
+          </button>
+        </div>
+        <div class="col-md-1">
+          <button class="btn btn-block btn-edit" id="start">Start</button>
         </div>
       </div>
       <div class="row">
@@ -107,7 +117,8 @@
       }),
         $("#ctv").on("click", () => {
           const f = $("#title")[0].innerText
-          window.location.href = `/ctv?filmFoxFile=${f}`
+          let ptr = $("#ptr")[0].innerText
+          window.location.href = `/ctv?filmFoxFile=${f}&ptr=${ptr}`
         }),
         $("select").on("change", function (e) {
           let num = this.name.substring(7)
@@ -119,14 +130,20 @@
         }),
         $("#plus-one").on("click", () => {
           const f = $("#title")[0].innerText + ".fff"
-          let ptr = $("#ptr")[0].innerText
-          ptr++
+          let ptr = $("#ptr")[0].innerText;
+          ptr++;
           window.location.href = `/display?filmFoxFile=${f}&ptr=${ptr}`
         }),
         $("#plus-ten").on("click", () => {
           const f = $("#title")[0].innerText + ".fff"
           let ptr = $("#ptr")[0].innerText
           ptr = parseInt(ptr) + 10
+          window.location.href = `/display?filmFoxFile=${f}&ptr=${ptr}`
+        }),
+        $("#plus-one-hundred").on("click", () => {
+          const f = $("#title")[0].innerText + ".fff"
+          let ptr = $("#ptr")[0].innerText
+          ptr = parseInt(ptr) + 100
           window.location.href = `/display?filmFoxFile=${f}&ptr=${ptr}`
         }),
         $("#minus-one").on("click", () => {
@@ -137,8 +154,14 @@
         }),
         $("#minus-ten").on("click", () => {
           const f = $("#title")[0].innerText + ".fff"
-          let ptr = $("#ptr")[0].innerText;
+          let ptr = $("#ptr")[0].innerText
           ptr = ptr - 10
+          window.location.href = `/display?filmFoxFile=${f}&ptr=${ptr}`
+        }),
+        $("#minus-one-hundred").on("click", () => {
+          const f = $("#title")[0].innerText + ".fff"
+          let ptr = $("#ptr")[0].innerText
+          ptr = ptr - 100
           window.location.href = `/display?filmFoxFile=${f}&ptr=${ptr}`
         }),
         $("#start").on("click", () => {

@@ -18,6 +18,8 @@ const voicesHandler = async (req, res) => {
     voice_data.push(v);
   });
 
+  voice_data.sort();
+
   res.render('voices.njk', {
     voice_data,
   });
