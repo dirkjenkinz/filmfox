@@ -50,14 +50,36 @@ const writeFile = (data, file) => {
 const createDirectory = (directory => {
     console.log('create directory');
     const directoryPath = path.join(__dirname, '../data');
-        if (!fs.existsSync(`${directoryPath}/${directory}`)){
-            fs.mkdirSync(`${directoryPath}/${directory}`);
-        }
+    if (!fs.existsSync(`${directoryPath}/${directory}`)) {
+        fs.mkdirSync(`${directoryPath}/${directory}`);
+    }
 });
+
+const getFileList = async () => {
+    console.log('get file list');
+    const directoryPath = path.join(__dirname, '../data');
+    return new Promise((resolve, reject) => {
+        fs.readdir(directoryPath, (err, files) => {
+            if (err) {
+                console.log('error=', 'err');
+                reject(err);
+            } else {
+                const fList = [];
+                files.forEach(file => {
+                    if (file.substring(file.length - 4) === '.fff') {
+                        fList.push(file);
+                    };
+                });
+                resolve(fList);
+            }
+        })
+    })
+};
 
 module.exports = {
     getScript,
     getData,
     writeFile,
     createDirectory,
+    getFileList,
 };

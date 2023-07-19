@@ -1,75 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FilmFox</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  </head>
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>FilmFox</title>
-        <link rel="stylesheet" href="../css/style.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    </head>
-
-    <body>
-        <div class='container-fluid'>
-            <div class='row'>
-                <div class='col-md-2'>
-                    <h1>FilmFox</h1>
-                </div>
-                <div class='col-md-10'>
-                    <h3>Current API Key = {{api_key}}</h3>
-                    Update .env file to add or change the key
-                </div>
-            </div>
-            <div class='row show'>
-                <div class='col-md-3'>
-                    <br>
-                    <button class='btn btn-block btn-edit' id='voices'>Voices</button>
-                </div>
-            </div>
-            <div class='row show'>
-                <div class='col-md-3'>
-                    <label class="form-label" for="script">Select Script To Convert</label>
-                    <input type="file" class="form-control" accept=".fdx" id="script"/>
-                </div>
-                <div class='col-md-3'>
-                    <br>
-                    <button class='btn btn-block btn-edit' id='convert'>Convert</button>
-                </div>
-            </div>
-            <div class='row show'>
-                <div class='col-md-3'>
-                    <label class="form-label" for="fff">Display FilmFox File</label>
-                    <input type="file" class="form-control" accept=".fff" id="fff"/>
-                </div>
-                <div class='col-md-3'>
-                    <br>
-                    <button class='btn btn-block btn-edit' id='display'>Display</button>
-                </div>
-            </div>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-2">
+          <h1>FilmFox</h1>
         </div>
-    </body>
-    <script>        
-        $('#convert').on('click', () => {
-            let s = $('#script')
-                .val()
-                .substring(12);
-            if (s !== '') {
-                window.location.href = `/convert?script=${s}`
-            };
-        }),
-         $('#display').on('click', () => {
-            let f = $('#fff')
-                .val()
-                .substring(12);
-            if (f !== '') {
-                window.location.href = `/display?filmFoxFile=${f}&ptr=0`
-            };
-        }),
-         $('#voices').on('click', () => {
-                window.location.href = `/voices`
-        });
-    </script>
+        <div class="col-md-10">
+          <h3>Current API Key = {{api_key}}</h3>
+          Update .env file to add or change the key
+        </div>
+      </div>
+      <div class="row show">
+        <div class="col-md-3">
+          <label class="form-label" for="script"
+            >Select Script To Convert</label
+          >
+          <input type="file" class="form-control" accept=".fdx" id="script" />
+        </div>
+        <div class="col-md-3">
+          <br />
+          <button class="btn btn-block btn-edit" id="convert">Convert</button>
+        </div>
+      </div>
+      <div class="row show">
+        <div class="col-md-3">
+          <label class="form-label" for="fff">Display FilmFox File</label>
+          <input type="file" class="form-control" accept=".fff" id="fff" />
+        </div>
+        <div class="col-md-3">
+          <br />
+          <button class="btn btn-block btn-edit" id="display">Display</button>
+        </div>
+      </div>
+      <div class="row show">
+        <div class="col-md-3">
+          {% for i in range(0, fffList.length) -%}
+          <button type="button" class="btn btn-edit">{{fffList[i]}}</button>
+          <br>
+          <br>
+          {%- endfor %}
+        </div>
+        <div class="col-md-3"></div>
+      </div>
+    </div>
+  </body>
+  <script>
+    $("#convert").on("click", () => {
+      let s = $("#script").val().substring(12)
+      if (s !== "") {
+        window.location.href = `/convert?script=${s}`
+      }
+    }),
+      $("#display").on("click", () => {
+        let f = $("#fff").val().substring(12)
+        if (f !== "") {
+          window.location.href = `/display?filmFoxFile=${f}&ptr=0`
+        }
+      })
+  </script>
 </html>
