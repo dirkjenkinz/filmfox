@@ -1,5 +1,5 @@
-const { getVoices } = require('../services/elevenLabs');
-const { writeFile } = require('../services/file-service');
+const { getVoices } = require('./elevenLabs');
+const { writeFile } = require('./file-service');
 
 const voicesHandler = async (req, res) => {
   console.log('Entering voice handler');
@@ -20,6 +20,7 @@ const voicesHandler = async (req, res) => {
 
   voice_data.sort();
 
+  console.log({voice_data});
   res.render('voices.njk', {
     voice_data,
   });

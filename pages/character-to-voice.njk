@@ -83,7 +83,7 @@
               </tr>
             </thead>
             <tbody>
-              {% for i in range(1, characters.length) -%}
+              {% for i in range(1, voice_data.length) -%}
               <tr>
                 <td class="data-left" id="voice_data_{{i}}">
                   {{voice_data[i][0]}}
@@ -103,8 +103,6 @@
       $("#display").on("click", () => {
         const fff = $("#title")[0].outerText;
         let ptr = $("#ptr")[0].innerText;
-        console.log($("#ptr")[0]);
-        console.log({ptr})
         window.location.href = `/display?filmFoxFile=${fff}.fff&ptr=${ptr}`
       }),
         $("select").on("change", function (e) {

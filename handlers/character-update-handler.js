@@ -1,6 +1,21 @@
 
 const url = require('url');
 const { getData, writeFile } = require('../services/file-service');
+const { voices } = require('../data/voices.json');
+
+const getVoiceData = (voices) => {
+  let voice_data = [];
+
+  voices.forEach(voice => {
+    let v = [];
+    v.push(voice.name);
+    v.push(voice.description);
+    v.push(voice.voice_id);
+    voice_data.push(v);
+  });
+
+  return voice_data.sort();
+};
 
 const characterUpdateHandler = async (req, res) => {
   console.log('entering character update handler');
@@ -11,7 +26,11 @@ const characterUpdateHandler = async (req, res) => {
   let file = u.query.filmFoxFile;
   let fff = await getData(file + '.fff');
 
-  const { title, characters, voice_data } = fff;
+  const { title, characters } = fff;
+
+  voice_data = getVoiceData(voices);
+  voice_data.unshift(['-','','']);
+  console.log({voice_data})
 
   characters.forEach(c => {
     if (c[0] === character) {

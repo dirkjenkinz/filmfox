@@ -1,35 +1,23 @@
 const url = require('url');
-const voices = require('../data/voices.json');
 const dotenv = require('dotenv');
 dotenv.config();
-
+const { getVoices } = require('../services/elevenLabs');
 const {
   getScript,
   writeFile,
   createDirectory,
 } = require("../services/file-service");
 
-const getVoiceData = () => {
-  let voice_data = [];
-  let v = [];
-  v.push('-');
-  v.push('-');
-  v.push('-');
-  voice_data.push(v);
-  voices.voices.forEach(voice => {
-    let v = [];
-    v.push(voice.name);
-    v.push(voice.description);
-    v.push(voice.voice_id);
-    voice_data.push(v);
-  });
+const getVoiceData = async () => {
+  let voices = await getVoices();
+  await writeFile(voices, 'voices.json');
   return voice_data;
 };
 
 const parseAction = (action, scene_number) => {
   let text = '';
 
-  for (let i = 1; i < action.length; i++){
+  for (let i = 1; i < action.length; i++) {
     if (action[i].substring(0, 4) === 'Text');
     const start = action[i].indexOf('>') + 1;
     text += action[i].substring(start);
@@ -43,10 +31,9 @@ const parseAction = (action, scene_number) => {
 };
 
 const parseDialogue = (dialogue, character, scene_number) => {
-
   let text = '';
 
-  for (let i = 1; i < dialogue.length; i++){
+  for (let i = 1; i < dialogue.length; i++) {
     if (dialogue[i].substring(0, 4) === 'Text');
     const start = dialogue[i].indexOf('>') + 1;
     text += dialogue[i].substring(start);

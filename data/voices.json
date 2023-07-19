@@ -311,6 +311,44 @@
             "sharing": null
         },
         {
+            "voice_id": "8iOakx12I2plFgbcdFAC",
+            "name": "Penrose (American)",
+            "samples": null,
+            "category": "generated",
+            "fine_tuning": {
+                "model_id": null,
+                "language": null,
+                "is_allowed_to_fine_tune": false,
+                "fine_tuning_requested": false,
+                "finetuning_state": "not_started",
+                "verification_attempts": null,
+                "verification_failures": [],
+                "verification_attempts_count": 0,
+                "slice_ids": null,
+                "manual_verification": null,
+                "manual_verification_requested": false
+            },
+            "labels": {
+                "accent": "american",
+                "age": "middle_aged",
+                "gender": "male"
+            },
+            "description": "",
+            "preview_url": "https://storage.googleapis.com/eleven-public-prod/EjqRMuZ2nrZL47hTwNm1fCCtcgi2/voices/lmE2vE5hyxNVw6uuv9on/36f97b34-03dc-440e-8669-1a5512d626d0.mp3",
+            "available_for_tiers": [],
+            "settings": null,
+            "sharing": {
+                "status": "copied",
+                "history_item_sample_id": null,
+                "enabled_in_library": false,
+                "original_voice_id": "lmE2vE5hyxNVw6uuv9on",
+                "public_owner_id": "9ad8a0e0919d3206eabd2485d79f503178aaad3f993962c01354a8557fd44941",
+                "liked_by_count": 0,
+                "cloned_by_count": 0,
+                "whitelisted_emails": []
+            }
+        },
+        {
             "voice_id": "Bsja4MX4wSWt1eQiOn5n",
             "name": "chizzo",
             "samples": [
@@ -504,6 +542,44 @@
                 "enabled_in_library": false,
                 "original_voice_id": "2gOMUQMgoECnUxwxsJQ3",
                 "public_owner_id": "9ad8a0e0919d3206eabd2485d79f503178aaad3f993962c01354a8557fd44941",
+                "liked_by_count": 0,
+                "cloned_by_count": 0,
+                "whitelisted_emails": []
+            }
+        },
+        {
+            "voice_id": "IQWy3nYrudW8XpkxiTvI",
+            "name": "Fischer",
+            "samples": null,
+            "category": "generated",
+            "fine_tuning": {
+                "model_id": null,
+                "language": null,
+                "is_allowed_to_fine_tune": false,
+                "fine_tuning_requested": false,
+                "finetuning_state": "not_started",
+                "verification_attempts": null,
+                "verification_failures": [],
+                "verification_attempts_count": 0,
+                "slice_ids": null,
+                "manual_verification": null,
+                "manual_verification_requested": false
+            },
+            "labels": {
+                "accent": "american",
+                "age": "middle_aged",
+                "gender": "male"
+            },
+            "description": "",
+            "preview_url": "https://storage.googleapis.com/eleven-public-prod/hfa2zxu5dzM91O2c3sPjGWNK5pG3/voices/9KwAIr6zNMVreLG0Shfc/b1eda086-97d0-4e5c-96b3-406246065d70.mp3",
+            "available_for_tiers": [],
+            "settings": null,
+            "sharing": {
+                "status": "copied",
+                "history_item_sample_id": null,
+                "enabled_in_library": false,
+                "original_voice_id": "9KwAIr6zNMVreLG0Shfc",
+                "public_owner_id": "571b13eb413eeb1f95356edb8369507eea541b9542f914b5b14549163a96d4b4",
                 "liked_by_count": 0,
                 "cloned_by_count": 0,
                 "whitelisted_emails": []
