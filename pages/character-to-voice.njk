@@ -112,7 +112,8 @@
           const voice = $(`#${id} option:selected`).text().trim()
           const character = $(`#${cid}`)[0].textContent
           const fff = $("#title")[0].outerText
-          window.location.href = `/character-update?filmFoxFile=${fff}&character=${character}&voice=${voice}`
+          let ptr = $("#ptr")[0].innerText;
+          window.location.href = `/character-update?filmFoxFile=${fff}&character=${character}&voice=${voice}&ptr=${ptr}`
         })
     </script>
   </body>

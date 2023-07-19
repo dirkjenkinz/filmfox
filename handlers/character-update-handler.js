@@ -20,7 +20,8 @@ const getVoiceData = (voices) => {
 const characterUpdateHandler = async (req, res) => {
   console.log('entering character update handler');
 
-  let u = url.parse(req.originalUrl, true);
+  const u = url.parse(req.originalUrl, true);
+  let ptr = u.query.ptr;
   let voice = u.query.voice;
   let character = u.query.character;
   let file = u.query.filmFoxFile;
@@ -44,6 +45,7 @@ const characterUpdateHandler = async (req, res) => {
     title,
     characters,
     voice_data,
+    ptr,
   });
 };
 

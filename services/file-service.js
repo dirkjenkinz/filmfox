@@ -17,7 +17,7 @@ const getScript = (file) => {
 };
 
 const getData = (file) => {
-    console.log('get data')
+    console.log('get data');
     const directoryPath = path.join(__dirname, '../data');
     return new Promise((resolve, reject) => {
         fs.readFile(`${directoryPath}/${file}`,
