@@ -8,9 +8,20 @@ const {
   createDirectory,
 } = require("../services/file-service");
 
-const getVoiceData = async () => {
-  let voices = await getVoices();
-  await writeFile(voices, 'voices.json');
+const getVoiceData = (voices) => {
+  let voice_data = [];
+  let v = [];
+  v.push('-');
+  v.push('-');
+  v.push('-');
+  voice_data.push(v);
+  voices.forEach(voice => {
+    let v = [];
+    v.push(voice.name);
+    v.push(voice.description);
+    v.push(voice.voice_id);
+    voice_data.push(v);
+  });
   return voice_data;
 };
 
@@ -88,10 +99,12 @@ const parseScript = script => {
   let parse = [];
   let characters = [];
   script = script.toString().split('<Paragraph');
+
   for (let i = 1; i < script.length; i++) {
     script[i] = script[i].trim();
     let x = script[i].split('<');
-    x[0] = x[0].substring(6);
+    let cut = x[0].indexOf('Type=') + 6;
+    x[0] = x[0].substring(cut);
     x[0] = x[0].substring(0, x[0].length - 9);
     if (x[0] === 'Action') {
       parse.push(parseAction(x, scene_number));
