@@ -31,7 +31,6 @@ const characterUpdateHandler = async (req, res) => {
 
   voice_data = getVoiceData(voices);
   voice_data.unshift(['-','','']);
-  console.log({voice_data})
 
   characters.forEach(c => {
     if (c[0] === character) {

@@ -1,49 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset='UTF-8' />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
     <title>FilmFox</title>
-    <link rel="stylesheet" href="../css/style.css" />
+    <link rel='stylesheet' href='../css/style.css' />
     <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+      rel='stylesheet'
+      href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css'
     />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
+    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js'></script>
   </head>
 
   <body>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-5">
+    <div class='container-fluid'>
+      <div class='row'>
+        <div class='col-md-5'>
           <h1>Film Fox</h1>
         </div>
-        <div class="col-md-1">
-          <p id="ptr">{{ptr}}</p>
-          <p id="endpoint">{{end}}</p>
+        <div class='col-md-1' hidden>
+          <p id='ptr'>{{ptr}}</p>
+          <p id='endpoint'>{{end}}</p>
         </div>
-        <div class="col-md-6 data-right" id="title"><h3>{{ title }}</h3></div>
+        <div class='col-md-6 data-right' id='title'><h3>{{ title }}</h3></div>
       </div>
-      <div class="row show">
+      <div class='row show'>
         <table
-          class="table-bordered table-sm table-dark table-grid"
-          id="voice_table"
+          class='table-bordered table-sm table-dark table-grid'
+          id='voice_table'
         >
           <thead>
             <tr>
-              <th class="data-left">Name</th>
-              <th class="data-left">Description</th>
-              <th class="data-left">ID</th>
+              <th class='data-left'>Name</th>
+              <th class='data-left'>Description</th>
+              <th class='data-left'>ID</th>
             </tr>
           </thead>
           <tbody>
             {% for i in range(1, voice_data.length) -%}
             <tr>
-              <td class="data-left">{{voice_data[i][0]}}</td>
-              <td class="data-left">{{voice_data[i][1]}}</td>
-              <td class="data-left">{{voice_data[i][2]}}</td>
+              <td class='data-left'>{{voice_data[i][0]}}</td>
+              <td class='data-left'>{{voice_data[i][1]}}</td>
+              <td class='data-left'>{{voice_data[i][2]}}</td>
             </tr>
             {%- endfor %}
           </tbody>
@@ -52,7 +52,7 @@
     </div>
 
     <script>
-      $("#main").on("click", () => {
+      $('#main').on('click', () => {
         window.location.href = `/`
       })
     </script>

@@ -76,10 +76,26 @@ const getFileList = async () => {
     })
 };
 
+const getListOfElements = async (subdir) => {
+    console.log('getting list of elements');
+    const directoryPath = path.join(__dirname, `../data/${subdir}`);
+    return new Promise((resolve, reject) => {
+        fs.readdir(directoryPath, (err, files) => {
+            if (err) {
+                console.log('error=', 'err');
+                reject(err);
+            } else {
+                resolve(files);
+            }
+        })
+    })
+};
+
 module.exports = {
     getScript,
     getData,
     writeFile,
     createDirectory,
     getFileList,
+    getListOfElements,
 };

@@ -1,5 +1,5 @@
 const url = require('url');
-const { getData } = require('../services/file-service');
+const { getData, getListOfElements } = require('../services/file-service');
 const dotenv = require('dotenv');
 dotenv.config();
 
@@ -8,7 +8,6 @@ const displayHandler = async (req, res) => {
 
   let u = url.parse(req.originalUrl, true);
   let ptr = u.query.ptr;
-  console.log({ptr})
   let file = u.query.filmFoxFile;
   let filmFoxFile = await getData(file);
 
@@ -27,6 +26,21 @@ const displayHandler = async (req, res) => {
   const end = script.length - 10;
   if (ptr > end) ptr = end;
   if (ptr < 0) ptr = 0;
+
+  const elements = await getListOfElements(title);
+  elements.forEach((e, index) => {
+    e = e.substring(6);
+    e = e.substring(0,6);
+    elements[index] = parseInt(e);
+  });
+  
+  script.forEach( (s) => {
+    s.push('No');
+  });
+
+  elements.forEach((num) => {
+    script[num][4] = 'Yes';
+  });
 
   res.render('display.njk', {
     title,

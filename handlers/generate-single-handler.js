@@ -1,5 +1,5 @@
 const url = require('url');
-const { getData } = require('../services/file-service');
+const { getData, getListOfElements } = require('../services/file-service');
 const { generateSpeech } = require('../services/elevenLabs');
 const dotenv = require('dotenv');
 dotenv.config();
@@ -8,6 +8,7 @@ const generateSingleHandler = async (req, res) => {
   console.log('entering generate single handler');
 
   let u = url.parse(req.originalUrl, true);
+  let ptr = u.query.ptr;
   let element = u.query.element;
   let file = u.query.filmFoxFile;
   let filmFoxFile = await getData(file + '.fff');
@@ -51,10 +52,33 @@ const generateSingleHandler = async (req, res) => {
 
   generateSpeech(api_key, voice_id, fileName, text);
 
+  ptr = parseInt(ptr);
+  const end = script.length - 10;
+  if (ptr > end) ptr = end;
+  if (ptr < 0) ptr = 0;
+
+  const elements = await getListOfElements(title);
+  elements.forEach((e, index) => {
+    e = e.substring(6);
+    e = e.substring(0,6);
+    elements[index] = parseInt(e);
+  });
+  
+  script.forEach( (s) => {
+    s.push('No');
+  });
+
+  elements.forEach((num) => {
+    script[num][4] = 'Yes';
+  });
+
+  script[element][4] = 'Yes';
+
   res.render('display.njk', {
     title,
     api_key,
     script,
+    ptr,
   });
 };
 
