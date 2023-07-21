@@ -42,6 +42,8 @@ const displayHandler = async (req, res) => {
     script[num][4] = 'Yes';
   });
 
+  console.log({script});
+  
   res.render('display.njk', {
     title,
     api_key,

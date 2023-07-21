@@ -1,21 +1,25 @@
 const url = require('url');
 const dotenv = require('dotenv');
 dotenv.config();
-const { getVoices } = require('../services/elevenLabs');
+const {getVoices} = require('../services/elevenLabs');
+
+const voices = require('../data/voices.json');
+
 const {
   getScript,
   writeFile,
   createDirectory,
+  getListOfElements,
 } = require("../services/file-service");
 
-const getVoiceData = (voices) => {
+const getVoiceData = () => {
   let voice_data = [];
   let v = [];
   v.push('-');
   v.push('-');
   v.push('-');
   voice_data.push(v);
-  voices.forEach(voice => {
+  voices.voices.forEach(voice => {
     let v = [];
     v.push(voice.name);
     v.push(voice.description);
@@ -127,17 +131,19 @@ const parseScript = script => {
   };
 
   const chars = [];
-
   characters.forEach(c => {
     chars.push([c, '-']);
   })
-
 
   return [parse, chars];
 }
 
 const convertHandler = async (req, res) => {
   console.log("entering display handler !!!");
+
+  let voices = await getVoices();
+  await writeFile(voices, 'voices.json');
+
   const u = url.parse(req.originalUrl, true);
   let file = u.query.script;
   let script = await getScript(file);
@@ -160,6 +166,22 @@ const convertHandler = async (req, res) => {
   if (end < 10) end = 10;
   if (ptr > end) ptr = end;
   if (ptr < 0) ptr = 0;
+
+  const elements = await getListOfElements(title);
+  elements.forEach((e, index) => {
+    e = e.substring(6);
+    e = e.substring(0,6);
+    elements[index] = parseInt(e);
+  });
+  
+  script.forEach( (s) => {
+    s.push('-');
+    s.push('No');
+  });
+
+  elements.forEach((num) => {
+    script[num][4] = 'Yes';
+  })
 
   const fff = {
     title,
