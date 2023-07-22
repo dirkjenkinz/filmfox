@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const mp3Duration = require('mp3-duration');
 
 const getScript = (file) => {
     const directoryPath = path.join(__dirname, '../scripts');
@@ -16,7 +17,7 @@ const getScript = (file) => {
     })
 };
 
-const getData = (file) => {
+const getData = async (file) => {
     console.log('get data');
     const directoryPath = path.join(__dirname, '../data');
     return new Promise((resolve, reject) => {
@@ -32,7 +33,14 @@ const getData = (file) => {
     })
 };
 
-const writeFile = (data, file) => {
+const getSoundFile = (fff, file) => {
+    console.log('getting sound file');
+    const directoryPath = path.join(__dirname, `../data/${fff}`);
+    const data = fs.readFileSync(`${directoryPath}/${file}`, `utf8`);
+    return data;
+};
+
+const writeFile = async (data, file) => {
     const directoryPath = path.join(__dirname, '../data');
     return new Promise((resolve, reject) => {
         fs.writeFile(`${directoryPath}/${file}`, data, (err, msg) => {
@@ -40,7 +48,7 @@ const writeFile = (data, file) => {
                 console.log('error=', 'err');
                 reject(err);
             } else {
-                console.log('written')
+                console.log(`$file} - written`)
                 resolve('ok');
             }
         })
@@ -55,9 +63,24 @@ const createDirectory = (directory => {
     }
 });
 
-const getFileList = async () => {
+const getDuration = (subdirectory, file) => {
+    console.log('getting duration of an MP3 file');
+    const directoryPath = path.join(__dirname, `../data/${subdirectory}/${file}`);
+    return new Promise((resolve, reject) => {
+        mp3Duration(directoryPath, (err, duration) => {
+            if (err) {
+                console.log('error=', 'err');
+                reject(err);
+            } else {
+                resolve(duration);
+            }
+        });
+    });
+};
+
+const getFileList = async (dir, suffix) => {
     console.log('get file list');
-    const directoryPath = path.join(__dirname, '../data');
+    const directoryPath = path.join(__dirname, `../${dir}`);
     return new Promise((resolve, reject) => {
         fs.readdir(directoryPath, (err, files) => {
             if (err) {
@@ -66,14 +89,14 @@ const getFileList = async () => {
             } else {
                 const fList = [];
                 files.forEach(file => {
-                    if (file.substring(file.length - 4) === '.fff') {
+                    if (file.substring(file.length - 4) === `.${suffix}`) {
                         fList.push(file);
                     };
                 });
                 resolve(fList);
             }
         })
-    })
+    });
 };
 
 const getListOfElements = async (subdir) => {
@@ -98,4 +121,6 @@ module.exports = {
     createDirectory,
     getFileList,
     getListOfElements,
+    getSoundFile,
+    getDuration,
 };

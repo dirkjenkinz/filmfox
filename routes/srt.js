@@ -1,8 +1,8 @@
 const express=require('express');
 const router = express.Router();
 
-const {mainHandler} = require('../handlers/main-handler');
+const {srtHandler} = require('../handlers/srt-handler');
 
-router.get('/', mainHandler);
+router.get('/', srtHandler);
 
 module.exports = router;

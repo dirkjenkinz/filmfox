@@ -35,7 +35,7 @@ const generateSingleHandler = async (req, res) => {
 
   let fileNum = `000000${element}`;
   fileNum = fileNum.substring(fileNum.length - 6);
-  const fileName = `${title}/sound_${fileNum}.mp3`;
+  const fileName = `${title}/sound_${fileNum}_${script[element][0]}.mp3`;
 
   let text = script[element][1];
 
