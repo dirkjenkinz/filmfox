@@ -90,10 +90,11 @@
               <th></th>
               <th class="data-left">Element</th>
               <th class="data-left">Scene</th>
-              <th class="data-left">Generated?</th>
+              <th class="data-left">Sound File</th>
               <th class="data-left">Character</th>
               <th class="data-left">Voice</th>
               <th class="data-left">Verbals</th>
+              <th class="data-left">Duration</th>
             </tr>
           </thead>
           <tbody>
@@ -123,6 +124,7 @@
               <td class="data-left" id="ch_{{i}}">{{script[i][0]}}</td>
               <td class="data-left" id="vc_{{i}}">{{script[i][3]}}</td>
               <td class="data-left" id="vb_{{i}}">{{script[i][1]}}</td>
+              <td class="data-left" id="vb_{{i}}">{{script[i][5]}}</td>
             </tr>
             {% endif %} {%- endfor %}
           </tbody>

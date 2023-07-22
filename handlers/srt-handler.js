@@ -47,18 +47,15 @@ const srtHandler = async (req, res) => {
   });
 
   script.forEach((s) => {
-    s.push('No');
+    s.push('-');
   });
-  
+
   const elementNames = await getListOfElements(title);
-/* elements.forEach(async (num) => {
-    const duration = await procureDuration(file, elementNames[num]);
-    script[num].push(duration);
-  }); */
 
 for(const num of elements) {
     const duration = await procureDuration(file, elementNames[num]);
     script[num].push(duration);
+    script[num][4] = elementNames[num];
   };
 
 
