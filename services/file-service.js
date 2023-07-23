@@ -8,7 +8,8 @@ const getScript = (file) => {
         fs.readFile(`${directoryPath}/${file}`,
             (err, data) => {
                 if (err) {
-                    console.log('error=', err);
+                    console.log('error getting script');
+                    console.log(err.cause);
                     reject(err);
                 } else {
                     resolve(data);
@@ -24,7 +25,8 @@ const getData = async (file) => {
         fs.readFile(`${directoryPath}/${file}`,
             (err, data) => {
                 if (err) {
-                    console.log('error=', err);
+                    console.log('error getting data');
+                    console.log(err.cause);
                     reject(err);
                 } else {
                     resolve(JSON.parse(data));
@@ -103,9 +105,10 @@ const getListOfElements = async (subdir) => {
     return new Promise((resolve, reject) => {
         fs.readdir(directoryPath, (err, files) => {
             if (err) {
-                console.log('error=', 'err');
+                console.log('error retrieving list of elements');
                 reject(err);
             } else {
+                console.log('elements retrieved');
                 resolve(files);
             }
         })

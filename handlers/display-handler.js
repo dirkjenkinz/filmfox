@@ -3,6 +3,11 @@ const { getData, getListOfElements, getDuration } = require('../services/file-se
 const dotenv = require('dotenv');
 dotenv.config();
 
+const formatText = (text) => {
+  console.log(text);
+  return text;
+}
+
 const formatTime = (seconds) => {
   const date = new Date(null);
   date.setSeconds(seconds);
@@ -16,7 +21,6 @@ const formatTime = (seconds) => {
 
 const procureDuration = async (file, elementName) => {
   file = file.substring(0, file.length - 4);
-  console.log({file})
   let duration = await getDuration(file, elementName);
   return duration;
 };
@@ -59,20 +63,22 @@ const displayHandler = async (req, res) => {
   let timeStart = 0.000;
   let timeFinish = 0.000;
   const elementNames = await getListOfElements(title);
-  for (const num of elements) {
-    script[num][4] = elementNames[num];
-    const duration = await procureDuration(file, elementNames[num]);
+  for (const element of elementNames) {
+    const duration = await procureDuration(file, element);
+    let num = element.substring(6, 12);
+    num = parseInt(num);
+    
+    timeFinish = timeStart + duration;
+    timeFinish = Math.round(timeFinish * 1000) / 1000;
 
-    script[num].push(formatTime(duration));
 
     let formattedStart = '00:00:00,000';
     if (timeStart !== 0){
       formattedStart = formatTime(timeStart);
     };
+    
     script[num].push(formattedStart);
-
-    timeFinish = timeStart + duration;
-    timeFinish = Math.round(timeFinish * 1000) / 1000;
+    script[num].push(formatTime(duration));
     script[num].push(formatTime(timeFinish));
 
     timeStart = timeFinish + 0.5;
@@ -80,15 +86,14 @@ const displayHandler = async (req, res) => {
   };
 
   let srt = '';
-  for (const s of script) {
-    if ( s[5]){
-      srt += `${s[6]} ---> ${s[7]}\n`
-      srt += `${s[0]}: ${s[1]}\n` 
+  for (let s = 0; s < script.length; s++){
+    if (script[s][6]) {
+      srt += `${s +1}.\n`;
+      srt += `${script[s][6]} ---> ${script[s][8]}\n`;
+      srt += `${script[s][0]}: ${script[s][1]}\n` ;
     };
   };
-
   console.log(srt);
-
 
   res.render('display.njk', {
     title,
