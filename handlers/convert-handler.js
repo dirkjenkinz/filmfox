@@ -56,7 +56,7 @@ const parseDialogue = (dialogue, character, scene_number) => {
 
   let a = [];
   a[0] = character;
-  a[1] = text;
+  a[1] = text.trim();
   a[2] = scene_number;
   return a;
 };

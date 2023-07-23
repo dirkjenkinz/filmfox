@@ -1,12 +1,7 @@
 const url = require('url');
-const { getData, getListOfElements, getDuration } = require('../services/file-service');
+const { getData, getListOfElements, getDuration, writeFile } = require('../services/file-service');
 const dotenv = require('dotenv');
 dotenv.config();
-
-const formatText = (text) => {
-  console.log(text);
-  return text;
-}
 
 const formatTime = (seconds) => {
   const date = new Date(null);
@@ -14,7 +9,7 @@ const formatTime = (seconds) => {
   let h = date.toISOString();
   h = h.substring(11, h.length - 5);
   let micro = (seconds - Math.floor(seconds));
-  micro = micro.toString().substring(2,5);
+  micro = micro.toString().substring(2, 5);
   h = `${h},${micro}`
   return h;
 };
@@ -52,11 +47,11 @@ const displayHandler = async (req, res) => {
   const elements = await getListOfElements(title);
   elements.forEach((e, index) => {
     e = e.substring(6);
-    e = e.substring(0,6);
+    e = e.substring(0, 6);
     elements[index] = parseInt(e);
   });
-  
-  script.forEach( (s) => {
+
+  script.forEach((s) => {
     s.push('-');
   });
 
@@ -67,16 +62,16 @@ const displayHandler = async (req, res) => {
     const duration = await procureDuration(file, element);
     let num = element.substring(6, 12);
     num = parseInt(num);
-    
+
     timeFinish = timeStart + duration;
     timeFinish = Math.round(timeFinish * 1000) / 1000;
 
 
     let formattedStart = '00:00:00,000';
-    if (timeStart !== 0){
+    if (timeStart !== 0) {
       formattedStart = formatTime(timeStart);
     };
-    
+
     script[num].push(formattedStart);
     script[num].push(formatTime(duration));
     script[num].push(formatTime(timeFinish));
@@ -86,14 +81,17 @@ const displayHandler = async (req, res) => {
   };
 
   let srt = '';
-  for (let s = 0; s < script.length; s++){
+  for (let s = 0; s < script.length; s++) {
     if (script[s][6]) {
-      srt += `${s +1}.\n`;
+      const text = script[s][1].trim();
+      srt += `${s + 1}.\n`;
       srt += `${script[s][6]} ---> ${script[s][8]}\n`;
-      srt += `${script[s][0]}: ${script[s][1]}\n` ;
+      srt += `${script[s][0]}: ${text}\n\n`;
     };
   };
-  console.log(srt);
+
+  const response = await writeFile(srt, `${title}.srt`);
+  console.log({ response });
 
   res.render('display.njk', {
     title,
