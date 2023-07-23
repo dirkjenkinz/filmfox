@@ -12,7 +12,11 @@ const procureDuration = async (file, elementName) => {
 const formatTime = (seconds) => {
   const date = new Date(null);
   date.setSeconds(seconds);
-  const h = date.toISOString();
+  let h = date.toISOString();
+  h = h.substring(11, h.length - 5);
+  let micro = (seconds - Math.floor(seconds));
+  micro = micro.toString().substring(2,5);
+  h = `${h},${micro}`
   return h;
 };
 
@@ -50,35 +54,36 @@ const srtHandler = async (req, res) => {
     s.push('-');
   });
 
+  let timeStart = 0.000;
+  let timeFinish = 0.000;
   const elementNames = await getListOfElements(title);
-
-for(const num of elements) {
-    const duration = await procureDuration(file, elementNames[num]);
-    script[num].push(duration);
+  for (const num of elements) {
     script[num][4] = elementNames[num];
+    const duration = await procureDuration(file, elementNames[num]);
+
+    script[num].push(formatTime(duration));
+
+    let formattedStart = '00:00:00,000';
+    if (timeStart !== 0){
+      formattedStart = formatTime(timeStart);
+    };
+    script[num].push(formattedStart);
+
+    timeFinish = timeStart + duration;
+    timeFinish = Math.round(timeFinish * 1000) / 1000;
+    script[num].push(formatTime(timeFinish));
+
+    timeStart = timeFinish + 0.5;
+    timeStart = Math.round(timeStart * 1000) / 1000;
   };
 
-
-  let srt = [];
-  let startTime = 0;
-  let endTime = 0;
-
-  script.forEach((s, index) => {
-    startTime = endTime;
-    const st = formatTime(startTime);
-    const et = formatTime(endTime);
-    item = [];
-    item.push(index + 1);
-    item.push(st);
-    item.push(et);
-    item.push(s[0]);
-    item.push(s[1]);
-    srt.push(item);
-  });
-
-  console.log('---------')
-  console.log(script[0]);
-  console.log('---------')
+  let srt = '';
+  for (const s of script) {
+    if ( s[5]){
+      srt += `${s[6]} ---> ${s[7]}\n`
+      srt += `${s[0]}: ${s[1]}\n` 
+    };
+  };
 
   res.render('display.njk', {
     title,

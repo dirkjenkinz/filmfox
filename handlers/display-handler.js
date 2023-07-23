@@ -1,7 +1,25 @@
 const url = require('url');
-const { getData, getListOfElements } = require('../services/file-service');
+const { getData, getListOfElements, getDuration } = require('../services/file-service');
 const dotenv = require('dotenv');
 dotenv.config();
+
+const formatTime = (seconds) => {
+  const date = new Date(null);
+  date.setSeconds(seconds);
+  let h = date.toISOString();
+  h = h.substring(11, h.length - 5);
+  let micro = (seconds - Math.floor(seconds));
+  micro = micro.toString().substring(2,5);
+  h = `${h},${micro}`
+  return h;
+};
+
+const procureDuration = async (file, elementName) => {
+  file = file.substring(0, file.length - 4);
+  console.log({file})
+  let duration = await getDuration(file, elementName);
+  return duration;
+};
 
 const displayHandler = async (req, res) => {
   console.log("entering display handler");
@@ -35,12 +53,42 @@ const displayHandler = async (req, res) => {
   });
   
   script.forEach( (s) => {
-    s.push('No');
+    s.push('-');
   });
 
-  elements.forEach((num) => {
-    script[num][4] = 'Yes';
-  });
+  let timeStart = 0.000;
+  let timeFinish = 0.000;
+  const elementNames = await getListOfElements(title);
+  for (const num of elements) {
+    script[num][4] = elementNames[num];
+    const duration = await procureDuration(file, elementNames[num]);
+
+    script[num].push(formatTime(duration));
+
+    let formattedStart = '00:00:00,000';
+    if (timeStart !== 0){
+      formattedStart = formatTime(timeStart);
+    };
+    script[num].push(formattedStart);
+
+    timeFinish = timeStart + duration;
+    timeFinish = Math.round(timeFinish * 1000) / 1000;
+    script[num].push(formatTime(timeFinish));
+
+    timeStart = timeFinish + 0.5;
+    timeStart = Math.round(timeStart * 1000) / 1000;
+  };
+
+  let srt = '';
+  for (const s of script) {
+    if ( s[5]){
+      srt += `${s[6]} ---> ${s[7]}\n`
+      srt += `${s[0]}: ${s[1]}\n` 
+    };
+  };
+
+  console.log(srt);
+
 
   res.render('display.njk', {
     title,

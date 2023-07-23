@@ -48,7 +48,6 @@ const writeFile = async (data, file) => {
                 console.log('error=', 'err');
                 reject(err);
             } else {
-                console.log(`$file} - written`)
                 resolve('ok');
             }
         })
@@ -64,7 +63,6 @@ const createDirectory = (directory => {
 });
 
 const getDuration = (subdirectory, file) => {
-    console.log('getting duration of an MP3 file');
     const directoryPath = path.join(__dirname, `../data/${subdirectory}/${file}`);
     return new Promise((resolve, reject) => {
         mp3Duration(directoryPath, (err, duration) => {

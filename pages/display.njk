@@ -77,7 +77,9 @@
         </div>
         <div class="col-md-1"></div>
         <div class="col-md-1">
-          <button class="btn btn-block btn-edit btn-sm" id="btn-srt">SRT</button>
+          <button class="btn btn-block btn-edit btn-sm" id="btn-srt">
+            SRT
+          </button>
         </div>
       </div>
       <div class="row">
@@ -94,7 +96,9 @@
               <th class="data-left">Character</th>
               <th class="data-left">Voice</th>
               <th class="data-left">Verbals</th>
+              <th class="data-left">Start</th>
               <th class="data-left">Duration</th>
+              <th class="data-left">Finish</th>
             </tr>
           </thead>
           <tbody>
@@ -124,7 +128,9 @@
               <td class="data-left" id="ch_{{i}}">{{script[i][0]}}</td>
               <td class="data-left" id="vc_{{i}}">{{script[i][3]}}</td>
               <td class="data-left" id="vb_{{i}}">{{script[i][1]}}</td>
+              <td class="data-left" id="vb_{{i}}">{{script[i][6]}}</td>
               <td class="data-left" id="vb_{{i}}">{{script[i][5]}}</td>
+              <td class="data-left" id="vb_{{i}}">{{script[i][7]}}</td>
             </tr>
             {% endif %} {%- endfor %}
           </tbody>
@@ -195,7 +201,7 @@
           const f = $("#title")[0].innerText
           let ptr = $("#ptr")[0].innerText
           window.location.href = `/srt?filmFoxFile=${f}&ptr=${ptr}`
-        });
+        })
     </script>
   </body>
 </html>
