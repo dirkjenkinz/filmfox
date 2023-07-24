@@ -2,6 +2,7 @@ const url = require('url');
 const { getData, getListOfElements, getDuration, writeFile } = require('../services/file-service');
 const dotenv = require('dotenv');
 dotenv.config();
+const logger = require('../services/logger');
 
 const formatTime = (seconds) => {
   const date = new Date(null);
@@ -21,7 +22,7 @@ const procureDuration = async (file, elementName) => {
 };
 
 const displayHandler = async (req, res) => {
-  console.log("entering display handler");
+  logger.log('info', 'entering display handler');
 
   let u = url.parse(req.originalUrl, true);
   let ptr = u.query.ptr;

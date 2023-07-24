@@ -2,6 +2,7 @@
 const url = require('url');
 const { getData, writeFile } = require('../services/file-service');
 const { voices } = require('../data/voices.json');
+const logger = require('../services/logger');
 
 const getVoiceData = (voices) => {
   let voice_data = [];
@@ -18,7 +19,7 @@ const getVoiceData = (voices) => {
 };
 
 const characterUpdateHandler = async (req, res) => {
-  console.log('entering character update handler');
+  logger.log('info', 'entering character update handler');
 
   const u = url.parse(req.originalUrl, true);
   let ptr = u.query.ptr;

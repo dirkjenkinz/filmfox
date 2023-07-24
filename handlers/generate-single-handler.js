@@ -3,9 +3,10 @@ const { getData, getListOfElements } = require('../services/file-service');
 const { generateSpeech } = require('../services/elevenLabs');
 const dotenv = require('dotenv');
 dotenv.config();
+const logger = require('../services/logger');
 
 const generateSingleHandler = async (req, res) => {
-  console.log('entering generate single handler');
+  logger.log('info', 'entering generate single handler');
 
   let u = url.parse(req.originalUrl, true);
   let ptr = u.query.ptr;

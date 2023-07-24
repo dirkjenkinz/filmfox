@@ -2,6 +2,7 @@ const url = require('url');
 const dotenv = require('dotenv');
 dotenv.config();
 const {getVoices} = require('../services/elevenLabs');
+const logger = require('../services/logger');
 
 const voices = require('../data/voices.json');
 
@@ -139,7 +140,7 @@ const parseScript = script => {
 }
 
 const convertHandler = async (req, res) => {
-  console.log("entering display handler !!!");
+  logger.log('info', "entering display handler !!!");
 
   let voices = await getVoices();
   await writeFile(voices, 'voices.json');

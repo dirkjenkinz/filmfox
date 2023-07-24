@@ -1,6 +1,7 @@
 const url = require('url');
 const { getData } = require('../services/file-service');
 const { voices } = require('../data/voices.json');
+const logger = require('../services/logger');
 
 const getVoiceData = (voices) => {
   let voice_data = [];
@@ -17,7 +18,7 @@ const getVoiceData = (voices) => {
 };
 
 const characterToVoiceHandler = async (req, res) => {
-  console.log('entering character to voice handler');
+  logger.log('info', 'entering character to voice handler');
   const u = url.parse(req.originalUrl, true);
   const ptr = u.query.ptr;
   let file = u.query.filmFoxFile;

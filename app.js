@@ -14,6 +14,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 const PORT = 3000;
 
+const logger = require('./services/logger');
+
 nunjucks.configure('pages', {
     autoescape: true,
     express: app
@@ -31,5 +33,5 @@ app.use('/generate-single', generateSingleRouter);
 app.use('/srt', srtRouter);
 
 app.listen(PORT, (err) => {
-    console.log(`FilmFox is up & running on port ${PORT}`);
+    logger.log('info', `FilmFox is up & running on port ${PORT}`);
 });

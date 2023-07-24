@@ -2,16 +2,17 @@ const voice = require('elevenlabs-node');
 const path = require('path');
 const axios = require('axios');
 const directoryPath = path.join(__dirname, '../data');
+const logger = require('../services/logger');
 
 const  generateSpeech = (apiKey, voiceID, fileName, textInput) => {
-    console.log('generate speech');
+    logger.log('info','generate speech');
     voice.textToSpeech(apiKey, voiceID, `${directoryPath}/${fileName}`, textInput).then(res => {
-        console.log(res);
+        logger.log('info', res);
     })
 };
 
 const getVoices = async () => {
-    console.log('get voices');
+    logger.log('info', 'get voices');
     const config = {
         headers: {
             'accept': 'application/json',
