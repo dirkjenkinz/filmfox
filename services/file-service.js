@@ -51,11 +51,12 @@ const getSRT = (file) => {
 };
 
 const writeFile = async (data, file) => {
+    logger.log('info', `writing ${file}`)
     const directoryPath = path.join(__dirname, '../data');
     return new Promise((resolve, reject) => {
         fs.writeFile(`${directoryPath}/${file}`, data, (err, msg) => {
             if (err) {
-                logger.error('error=', 'err');
+                logger.error(err.cause);
                 reject(err);
             } else {
                 resolve('ok');
@@ -73,11 +74,12 @@ const createDirectory = (directory => {
 });
 
 const getDuration = (subdirectory, file) => {
+    logger.log('info', `getting duration of ${file}`);
     const directoryPath = path.join(__dirname, `../data/${subdirectory}/${file}`);
     return new Promise((resolve, reject) => {
         mp3Duration(directoryPath, (err, duration) => {
             if (err) {
-                logger.error('error=', 'err');
+                logger.error(`${err.cause}`);
                 reject(err);
             } else {
                 resolve(duration);

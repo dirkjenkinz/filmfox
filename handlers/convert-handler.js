@@ -3,8 +3,24 @@ const dotenv = require('dotenv');
 dotenv.config();
 const {getVoices} = require('../services/elevenLabs');
 const logger = require('../services/logger');
-
 const voices = require('../data/voices.json');
+
+const formatTime = (seconds) => {
+  const date = new Date(null);
+  date.setSeconds(seconds);
+  let h = date.toISOString();
+  h = h.substring(11, h.length - 5);
+  let micro = (seconds - Math.floor(seconds));
+  micro = micro.toString().substring(2, 5);
+  h = `${h},${micro}`
+  return h;
+};
+
+const procureDuration = async (file, elementName) => {
+  file = file.substring(0, file.length - 4);
+  let duration = await getDuration(file, elementName);
+  return duration;
+};
 
 const {
   getScript,
@@ -175,13 +191,14 @@ const convertHandler = async (req, res) => {
     elements[index] = parseInt(e);
   });
   
-  script.forEach( (s) => {
+  script.forEach((s) => {
     s.push('-');
-    s.push('No');
+    s.push('');
   });
 
+  const elementNames = await getListOfElements(title);
   elements.forEach((num) => {
-    script[num][4] = 'Yes';
+    script[num][4] = elementNames[num];
   });
 
   const response = await writeFile('', `${title}.srt`);

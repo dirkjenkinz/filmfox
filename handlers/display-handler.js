@@ -53,12 +53,16 @@ const displayHandler = async (req, res) => {
   });
 
   script.forEach((s) => {
-    s.push('-');
+    s.push('');
+  });
+
+  const elementNames = await getListOfElements(title);
+  elements.forEach((num) => {
+    script[num][4] = elementNames[num];
   });
 
   let timeStart = 0.000;
   let timeFinish = 0.000;
-  const elementNames = await getListOfElements(title);
   for (const element of elementNames) {
     const duration = await procureDuration(file, element);
     let num = element.substring(6, 12);
@@ -92,7 +96,6 @@ const displayHandler = async (req, res) => {
   };
 
   const response = await writeFile(srt, `${title}.srt`);
-
 
   res.render('display.njk', {
     title,
