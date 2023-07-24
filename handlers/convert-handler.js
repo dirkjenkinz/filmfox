@@ -181,7 +181,9 @@ const convertHandler = async (req, res) => {
 
   elements.forEach((num) => {
     script[num][4] = 'Yes';
-  })
+  });
+
+  const response = await writeFile('', `${title}.srt`);
 
   const fff = {
     title,
