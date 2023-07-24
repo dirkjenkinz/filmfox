@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8' />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <title>FilmFox</title>
+    <link rel='stylesheet' href='../css/style.css' />
+    <link
+      rel='stylesheet'
+      href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css'
+    />
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
+    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js'></script>
+  </head>
+
+  <body>
+    <div class='container-fluid'>
+      <div class="row">
+        <div class="col-md-5">
+          <h1>Film Fox</h1>
+        </div>
+        <div class="col-md-1" hidden>
+          <p id="ptr">{{ptr}}</p>
+          <p id="endpoint">{{end}}</p>
+        </div>
+        <div class="col-md-6 data-right" id="title"><h3>{{ title }}</h3></div>
+      </div>
+      <div class="row show">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <button class="btn btn-block btn-edit" id="display">
+            Display Converted Script
+          </button>
+        </div>
+      </div>
+      <div class='row show'>
+       {% for i in range(0, srt.length) -%}
+       <p class='para-srt'>{{srt[i]}}</p>
+       {% if i % 4 == 3 %}
+       <p>-----------------------------------</p>
+       {% endif %}
+       {%- endfor %}
+    </div>
+
+    <script>
+      $("#display").on("click", () => {
+        const fff = $("#title")[0].outerText
+        let ptr = $("#ptr")[0].innerText
+        window.location.href = `/display?filmFoxFile=${fff}.fff&ptr=${ptr}`
+      })
+    </script>
+  </body>
+</html>

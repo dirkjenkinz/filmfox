@@ -42,6 +42,15 @@ const getSoundFile = (fff, file) => {
     return data;
 };
 
+const getSRT = (file) => {
+    console.log('getting SRT file');
+    const directoryPath = path.join(__dirname, `../data`);
+    console.log({directoryPath});
+    console.log({file})
+    const data = fs.readFileSync(`${directoryPath}/${file}.srt`, `utf8`);
+    return data;
+};
+
 const writeFile = async (data, file) => {
     const directoryPath = path.join(__dirname, '../data');
     return new Promise((resolve, reject) => {
@@ -124,4 +133,5 @@ module.exports = {
     getListOfElements,
     getSoundFile,
     getDuration,
+    getSRT,
 };

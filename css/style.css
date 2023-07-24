@@ -131,6 +131,10 @@ textarea {
     color: black;
 }
 
+.para-srt {
+    margin: 0;
+}
+
 .btn-edit {
     background: red;
     color: white;

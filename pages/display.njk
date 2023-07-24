@@ -75,6 +75,11 @@
         <div class='col-md-1'>
           <button class='btn btn-block btn-edit btn-sm' id='end'>End</button>
         </div>
+        <div class='col-md-1'>
+        </div>
+        <div class='col-md-1'>
+          <button class='btn btn-block btn-edit btn-sm' id='srt'>SRT</button>
+        </div>
       </div>
       <div class='row'>
         <table
@@ -96,7 +101,8 @@
             </tr>
           </thead>
           <tbody>
-            {% for i in range(ptr, ptr + 10) -%} {% if script[i][4] %}
+            {% for i in range(ptr, ptr + 10) -%} 
+            {% if script[i][4] %}
             <tr>
               <td class='data-left'>
                 {% if script[i][3] == '-' %}
@@ -126,7 +132,8 @@
               <td class='data-left' id='vb_{{i}}'>{{script[i][7]}}</td>
               <td class='data-left' id='vb_{{i}}'>{{script[i][8]}}</td>
             </tr>
-            {% endif %} {%- endfor %}
+            {% endif %} 
+            {%- endfor %}
           </tbody>
         </table>
       </div>
@@ -190,7 +197,12 @@
           const f = $('#title')[0].innerText + '.fff'
           const ptr = $('#endpoint')[0].innerText
           window.location.href = `/display?filmFoxFile=${f}&ptr=${ptr}`
-        })
+        }),
+        $('#srt').on('click', () => {
+           const f = $('#title')[0].innerText
+          let ptr = $('#ptr')[0].innerText
+          window.location.href = `/srt?title=${f}&ptr=${ptr}`
+        });
     </script>
   </body>
 </html>
