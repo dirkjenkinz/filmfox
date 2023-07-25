@@ -105,7 +105,7 @@
             {% if script[i] %}
             <tr>
               <td class='data-left'>
-                {% if script[i][3] == '-' %}
+                {% if (script[i][3] == '-') or (script[i][4]) %}
                 <button
                   class='btn btn-block btn-edit btn-sm btn-small btn-gen'
                   id='gen_{{i}}'
@@ -124,13 +124,13 @@
               </td>
               <td class='data-right'>{{i}}</td>
               <td class='data-right'>{{script[i][2]}}</td>
-              <td class='data-left' id='ch_{{i}}'>{{script[i][0]}}</td>
-              <td class='data-left' id='vc_{{i}}'>{{script[i][3]}}</td>
-              <td class='data-left' id='vb_{{i}}'>{{script[i][1]}}</td>
+              <td class='data-left'>{{script[i][0]}}</td>
+              <td class='data-left'>{{script[i][3]}}</td>
+              <td class='data-left'>{{script[i][1]}}</td>
               <td class='data-left'>{{script[i][4]}}</td>
-              <td class='data-left' id='vb_{{i}}'>{{script[i][6]}}</td>
-              <td class='data-left' id='vb_{{i}}'>{{script[i][7]}}</td>
-              <td class='data-left' id='vb_{{i}}'>{{script[i][8]}}</td>
+              <td class='data-left'>{{script[i][6]}}</td>
+              <td class='data-left'>{{script[i][7]}}</td>
+              <td class='data-left'>{{script[i][8]}}</td>
             </tr>
             {% endif %} 
             {%- endfor %}
