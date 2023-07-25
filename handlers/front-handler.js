@@ -9,8 +9,6 @@ const frontHandler = async (req, res) => {
   const fffList = await getFileList('data', 'fff');
   const fdxList = await getFileList('scripts', 'fdx');
 
-  logger.log('info', {fdxList});
-
   res.render('front.njk', {
     api_key: process.env.APIKEY,
     fffList,

@@ -1,7 +1,7 @@
 const url = require('url');
 const dotenv = require('dotenv');
 dotenv.config();
-const {getVoices} = require('../services/elevenLabs');
+const { getVoices } = require('../services/elevenLabs');
 const logger = require('../services/logger');
 const voices = require('../data/voices.json');
 
@@ -14,12 +14,6 @@ const formatTime = (seconds) => {
   micro = micro.toString().substring(2, 5);
   h = `${h},${micro}`
   return h;
-};
-
-const procureDuration = async (file, elementName) => {
-  file = file.substring(0, file.length - 4);
-  let duration = await getDuration(file, elementName);
-  return duration;
 };
 
 const {
@@ -165,8 +159,7 @@ const convertHandler = async (req, res) => {
   let file = u.query.script;
   let script = await getScript(file);
   let parse = parseScript(script);
-  let voice_data = getVoiceData();
-
+ 
   script = parse[0];
   parse[1].push(['NARRATOR', '-']);
   let characters = parse[1].sort();
@@ -175,22 +168,17 @@ const convertHandler = async (req, res) => {
   title = title[0];
 
   api_key = process.env.API;
+  let voice_data = getVoiceData();
 
   const rc = await createDirectory(title);
-
-  ptr = 0;
-  let end = script.length - 10;
-  if (end < 10) end = 10;
-  if (ptr > end) ptr = end;
-  if (ptr < 0) ptr = 0;
 
   const elements = await getListOfElements(title);
   elements.forEach((e, index) => {
     e = e.substring(6);
-    e = e.substring(0,6);
+    e = e.substring(0, 6);
     elements[index] = parseInt(e);
   });
-  
+
   script.forEach((s) => {
     s.push('-');
     s.push('');
@@ -211,15 +199,10 @@ const convertHandler = async (req, res) => {
     script,
   }
 
-  writeFile(JSON.stringify(fff), title + '.fff');
+  await writeFile(JSON.stringify(fff), title + '.fff');
 
-  res.render('display.njk', {
-    title,
-    api_key,
-    script,
-    ptr,
-    end,
-  });
+  res.redirect(`/display?filmFoxFile=${title}.fff&ptr=0`);
+
 };
 
 module.exports = { convertHandler };

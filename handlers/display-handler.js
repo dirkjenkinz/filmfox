@@ -95,7 +95,7 @@ const displayHandler = async (req, res) => {
     };
   };
 
-  const response = await writeFile(srt, `${title}.srt`);
+  await writeFile(srt, `${title}.srt`);
 
   res.render('display.njk', {
     title,

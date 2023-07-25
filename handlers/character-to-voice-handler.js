@@ -92,12 +92,7 @@ const characterToVoiceHandler = async (req, res) => {
     };
   };
 
-  const response = await writeFile(srt, `${title}.srt`);
-
-
-  
-
-
+  await writeFile(srt, `${title}.srt`);
 
   res.render('character-to-voice.njk', {
     title,
