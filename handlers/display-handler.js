@@ -57,10 +57,16 @@ const displayHandler = async (req, res) => {
   });
 
   const elementNames = await getListOfElements(title);
-  elements.forEach((num) => {
-    script[num][4] = elementNames[num];
+
+  script.forEach( (s) => {
+    s[4] = '';
   });
 
+  elementNames.forEach(name => {
+    const num = parseInt(name.substring(6, 12));
+    script[num][4] = name;
+  })
+ 
   let timeStart = 0.000;
   let timeFinish = 0.000;
   for (const element of elementNames) {
@@ -70,7 +76,6 @@ const displayHandler = async (req, res) => {
 
     timeFinish = timeStart + duration;
     timeFinish = Math.round(timeFinish * 1000) / 1000;
-
 
     let formattedStart = '00:00:00,000';
     if (timeStart !== 0) {

@@ -51,7 +51,7 @@ const generateSingleHandler = async (req, res) => {
     };
   };
 
-  generateSpeech(api_key, voice_id, fileName, text);
+  await generateSpeech(api_key, voice_id, fileName, text);
 
   res.redirect(`/display?filmFoxFile=${file}.fff&ptr=${ptr}`);
 

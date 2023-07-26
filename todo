@@ -1,9 +1,7 @@
 1. Generate all (both types)
-3. Generate a range
-2. Turn call to 11 Labs into a promise
-4. Allow for scripts to be anywhere
-5. Add history function
-6. Download voice samples
-7. Display character usage from 11 Labs
-8. Add voice setting parms
-9. refactor display
+2. Generate a range
+3. Add history function
+4. Download voice samples
+5. Display character usage from 11 Labs
+6. Add voice setting parms
+7. Title page

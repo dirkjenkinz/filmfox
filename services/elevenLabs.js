@@ -4,10 +4,11 @@ const axios = require('axios');
 const directoryPath = path.join(__dirname, '../data');
 const logger = require('../services/logger');
 
-const  generateSpeech = (apiKey, voiceID, fileName, textInput) => {
-    logger.log('info','generate speech');
-    voice.textToSpeech(apiKey, voiceID, `${directoryPath}/${fileName}`, textInput).then(res => {
-        logger.log('info', res);
+const generateSpeech = async (apiKey, voiceID, fileName, textInput) => {
+    logger.log('info', 'generate speech');
+    await voice.textToSpeech(apiKey, voiceID, `${directoryPath}/${fileName}`, textInput).then(res => {
+        console.log({res});
+        logger.log('info', `sound file generated for ${fileName}`);
     })
 };
 

@@ -5,17 +5,6 @@ const { getVoices } = require('../services/elevenLabs');
 const logger = require('../services/logger');
 const voices = require('../data/voices.json');
 
-const formatTime = (seconds) => {
-  const date = new Date(null);
-  date.setSeconds(seconds);
-  let h = date.toISOString();
-  h = h.substring(11, h.length - 5);
-  let micro = (seconds - Math.floor(seconds));
-  micro = micro.toString().substring(2, 5);
-  h = `${h},${micro}`
-  return h;
-};
-
 const {
   getScript,
   writeFile,
@@ -64,6 +53,8 @@ const parseDialogue = (dialogue, character, scene_number) => {
     const start = dialogue[i].indexOf('>') + 1;
     text += dialogue[i].substring(start);
   }
+
+  text = text.replace(/\n /g, '');
 
   let a = [];
   a[0] = character;
@@ -151,15 +142,12 @@ const parseScript = script => {
 
 const convertHandler = async (req, res) => {
   logger.log('info', "entering display handler !!!");
-
   let voices = await getVoices();
   await writeFile(voices, 'voices.json');
-
   const u = url.parse(req.originalUrl, true);
   let file = u.query.script;
   let script = await getScript(file);
   let parse = parseScript(script);
- 
   script = parse[0];
   parse[1].push(['NARRATOR', '-']);
   let characters = parse[1].sort();
