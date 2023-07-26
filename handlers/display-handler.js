@@ -31,6 +31,7 @@ const displayHandler = async (req, res) => {
 
   const { title, characters, script } = filmFoxFile;
   const api_key = process.env.APIKEY;
+  const offset= filmFoxFile.offset;
 
   script.forEach(scriptChar => {
     characters.forEach(c => {
@@ -108,6 +109,7 @@ const displayHandler = async (req, res) => {
     script,
     ptr,
     end,
+    offset,
   });
 };
 

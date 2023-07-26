@@ -178,6 +178,9 @@ const convertHandler = async (req, res) => {
   });
 
   const response = await writeFile('', `${title}.srt`);
+  logger.log('info', response);
+
+  offset = 12;
 
   const fff = {
     title,
@@ -185,6 +188,7 @@ const convertHandler = async (req, res) => {
     characters,
     voice_data,
     script,
+    offset
   }
 
   await writeFile(JSON.stringify(fff), title + '.fff');
