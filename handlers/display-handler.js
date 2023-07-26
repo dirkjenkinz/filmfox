@@ -72,6 +72,7 @@ const displayHandler = async (req, res) => {
   let timeStart = `${offset}.000`;
   timeStart = parseFloat(timeStart);
   let timeFinish = 0.000;
+  logger.log('info', 'building srt data');
   for (const element of elementNames) {
     const duration = await procureDuration(file, element);
     let num = element.substring(6, 12);
@@ -101,6 +102,8 @@ const displayHandler = async (req, res) => {
   };
 
   await writeFile(srt, `${title}.srt`);
+
+  logger.log('info', 'srt complete');
 
   res.render('display.njk', {
     title,

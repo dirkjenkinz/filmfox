@@ -74,7 +74,6 @@ const createDirectory = (directory => {
 });
 
 const getDuration = (subdirectory, file) => {
-    logger.log('info', `getting duration of ${file}`);
     const directoryPath = path.join(__dirname, `../data/${subdirectory}/${file}`);
     return new Promise((resolve, reject) => {
         mp3Duration(directoryPath, (err, duration) => {
