@@ -94,8 +94,8 @@ const displayHandler = async (req, res) => {
   for (let s = 0; s < script.length; s++) {
     if (script[s][6]) {
       const text = script[s][1].trim();
-      srt += `${s + 1}.\n`;
-      srt += `${script[s][6]} ---> ${script[s][8]}\n`;
+      srt += `${s + 1}\n`;
+      srt += `${script[s][6]} --> ${script[s][8]}\n`;
       srt += `${script[s][0]}: ${text}\n\n`;
     };
   };
