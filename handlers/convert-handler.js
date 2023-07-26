@@ -177,10 +177,9 @@ const convertHandler = async (req, res) => {
     script[num][4] = elementNames[num];
   });
 
-  const response = await writeFile('', `${title}.srt`);
-  logger.log('info', response);
+  await writeFile('', `${title}.srt`);
 
-  offset = 12;
+  offset = 0;
 
   const fff = {
     title,

@@ -17,15 +17,27 @@
   <body>
     <div class='container-fluid'>
       <div class='row'>
-        <div class='col-md-5'>
+        <div class='col-md-2'>
           <h3>Film Fox</h3>
         </div>
         <div class='col-md-1' hidden>
           <p id='ptr'>{{ptr}}</p>
           <p id='endpoint'>{{end}}</p>
         </div>
-        <div class='col-md-4 data-right show' id='title'><h4>{{ title }}</h4></div>
-        <div class='col-md-2 show' id = 'offset'>Offset = {{offset}} seconds</div>
+        <div class='col-md-3 data-right show' id='title'><h4>{{ title }}</h4></div>
+        <div class='col-md-1'></div>
+        <div class='col-md-2 data-right show'>SRT offset in seconds:</div>
+         <div class='col-md-1 show' id='offset'>{{offset}}</div>
+         <div class='col-md-1 data-right'>
+          <button class='btn btn-edit btn-sm' id='offset-plus'>
+            +1 Second
+          </button>
+        </div>
+         <div class='col-md-1 data-left'>
+          <button class='btn btn-edit btn-sm' id='offset-minus'>
+            -1 Second
+          </button>
+        </div>
       </div>
       <div class='row show'>
         <div class='col-md-1'>
@@ -154,11 +166,26 @@
           const ptr = $('#ptr')[0].innerText
           window.location.href = `/generate-single?filmFoxFile=${f}&element=${num}&ptr=${ptr}`
         }),
+        $('#offset-plus').on('click', () => {
+          const f = $('#title')[0].innerText + '.fff';
+          const ptr = $('#ptr')[0].innerText;
+          let offset = $('#offset')[0].innerText;
+          offset ++;
+          window.location.href = `/offset?filmFoxFile=${f}&ptr=${ptr}&offset=${offset}`;
+        }),
+         $('#offset-minus').on('click', () => {
+          const f = $('#title')[0].innerText + '.fff';
+          const ptr = $('#ptr')[0].innerText;
+          let offset = $('#offset')[0].innerText;
+          offset --;
+          if (offset < 0 ) offset = 0;
+          window.location.href = `/offset?filmFoxFile=${f}&ptr=${ptr}&offset=${offset}`;
+        }),
         $('#plus-one').on('click', () => {
-          const f = $('#title')[0].innerText + '.fff'
-          let ptr = $('#ptr')[0].innerText
-          ptr++
-          window.location.href = `/display?filmFoxFile=${f}&ptr=${ptr}`
+          const f = $('#title')[0].innerText + '.fff';
+          let ptr = $('#ptr')[0].innerText;
+          ptr++;
+          window.location.href = `/display?filmFoxFile=${f}&ptr=${ptr}`;
         }),
         $('#plus-ten').on('click', () => {
           const f = $('#title')[0].innerText + '.fff'

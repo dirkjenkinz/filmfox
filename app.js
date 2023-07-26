@@ -7,6 +7,7 @@ const characterToVoiceRouter = require('./routes/character-to-voice.js');
 const characterUpdateRouter = require('./routes/character-update.js');
 const generateSingleRouter = require('./routes/generate-single.js');
 const srtRouter = require('./routes/srt.js');
+const offsetRouter = require('./routes/offset.js');
 
 const nunjucks = require('nunjucks');
 const bodyParser = require('body-parser');
@@ -31,6 +32,7 @@ app.use('/ctv', characterToVoiceRouter);
 app.use('/character-update', characterUpdateRouter);
 app.use('/generate-single', generateSingleRouter);
 app.use('/srt', srtRouter);
+app.use('/offset', offsetRouter);
 
 app.listen(PORT, (err) => {
     logger.log('info', `FilmFox is up & running on port ${PORT}`);

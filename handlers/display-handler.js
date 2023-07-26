@@ -11,7 +11,8 @@ const formatTime = (seconds) => {
   h = h.substring(11, h.length - 5);
   let micro = (seconds - Math.floor(seconds));
   micro = micro.toString().substring(2, 5);
-  h = `${h},${micro}`
+  if (!micro) micro = '000';
+  h = `${h},${micro}`;
   return h;
 };
 
@@ -68,7 +69,8 @@ const displayHandler = async (req, res) => {
     script[num][4] = name;
   })
  
-  let timeStart = 0.000;
+  let timeStart = `${offset}.000`;
+  timeStart = parseFloat(timeStart);
   let timeFinish = 0.000;
   for (const element of elementNames) {
     const duration = await procureDuration(file, element);
@@ -78,10 +80,7 @@ const displayHandler = async (req, res) => {
     timeFinish = timeStart + duration;
     timeFinish = Math.round(timeFinish * 1000) / 1000;
 
-    let formattedStart = '00:00:00,000';
-    if (timeStart !== 0) {
-      formattedStart = formatTime(timeStart);
-    };
+    let formattedStart = formatTime(timeStart);
 
     script[num].push(formattedStart);
     script[num].push(formatTime(duration));
