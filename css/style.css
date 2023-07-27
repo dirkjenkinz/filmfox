@@ -131,6 +131,10 @@ textarea {
     color: black;
 }
 
+.sub-show {
+    background: darkgoldenrod;
+}
+
 .para-srt {
     margin: 0;
 }

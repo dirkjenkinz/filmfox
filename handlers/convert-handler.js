@@ -142,10 +142,11 @@ const parseScript = script => {
 
 const convertHandler = async (req, res) => {
   logger.log('info', "entering display handler !!!");
-  let voices = await getVoices();
-  await writeFile(voices, 'voices.json');
   const u = url.parse(req.originalUrl, true);
   let file = u.query.script;
+  api_key = process.env.API;
+  let voices = await getVoices(api_key);
+  await writeFile(voices, 'voices.json');
   let script = await getScript(file);
   let parse = parseScript(script);
   script = parse[0];
@@ -155,7 +156,6 @@ const convertHandler = async (req, res) => {
   title = title.split('.');
   title = title[0];
 
-  api_key = process.env.API;
   let voice_data = getVoiceData();
 
   const rc = await createDirectory(title);

@@ -1,48 +1,115 @@
 <!DOCTYPE html>
-<html lang='en'>
+<html lang="en">
   <head>
-    <meta charset='UTF-8' />
-    <meta http-equiv='X-UA-Compatible' content='IE=edge' />
-    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FilmFox</title>
-    <link rel='stylesheet' href='../css/style.css' />
+    <link rel="stylesheet" href="../css/style.css" />
     <link
-      rel='stylesheet'
-      href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css'
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
     />
-    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
-    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   </head>
   <body>
-    <div class='container-fluid'>
-      <div class='row'>
-        <div class='col-md-2'>
-          <h1>FilmFox</h1>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-2">
+          <h3>FilmFox</h3>
         </div>
-        <div class='col-md-10'>
-          <h3>Current API Key = {{api_key}}</h3>
+        <div class="col-md-8">
+          <h2>Current API Key = {{api_key}}</h2>
           Update .env file to add or change the key
         </div>
       </div>
-      <div class='row show'>
-        <div class='col-md-4 show'>
-          <p>Converted scripts. Click to display.</p>
+      <div class="row show">
+        <div class="col-md-4 show">
+          <p><b>Converted scripts. Click to display.</b></p>
           {% for i in range(0, fffList.length) -%}
-          <div class='row show'>
-            <button type='button' class='btn btn-edit btn-block btn-sm btn-fff'>
+          <div class="row show">
+            <button type="button" class="btn btn-edit btn-block btn-sm btn-fff">
               {{fffList[i]}}
             </button>
           </div>
           {%- endfor %}
         </div>
 
-        <div class='col-md-4'></div>
+        <div class="col-md-4 sub-show">
+          <p><b>Subscription Details.</b></p>
+          <div class="row">
+            <table
+              class="table-bordered table-sm table-dark table-grid"
+              id="subscription_table"
+            >
+              <tbody>
+                <tr>
+                  <th class="data-left">Tier</th>
+                  <td class="data-left">{{subscription.tier}}</td>
+                </tr>
+                <tr>
+                  <th class="data-left">Character Count</th>
+                  <td class="data-left">{{subscription.character_count}}</td>
+                </tr>
+                <tr>
+                  <th class="data-left">Character Limit</th>
+                  <td class="data-left">{{subscription.character_limit}}</td>
+                </tr>
+                <tr>
+                  <th class="data-left">Can Extend Character</th>
+                  <td class="data-left">
+                    {{subscription.can_extend_character_limit}}
+                  </td>
+                </tr>
+                <tr>
+                  <th class="data-left">Allowed to Extend Character</th>
+                  <td class="data-left">
+                    {{subscription.allowed_to_extend_character_limit}}
+                  </td>
+                </tr>
+                <tr>
+                  <th class="data-left">Next Character Count Reset</th>
+                  <td class="data-left">
+                    {{subscription.next_character_count_reset}}
+                  </td>
+                </tr>
+                <tr>
+                  <th class="data-left">Voice Limit</th>
+                  <td>{{subscription.voice_limit}}</td>
+                </tr>
+                <tr>
+                  <th class="data-left">Professional Voice Limit</th>
+                  <td>{{subscription.professional_voice_limit}}</td>
+                </tr>
+                <tr>
+                  <th class="data-left">Currency</th>
+                  <td>{{subscription.currency}}</td>
+                </tr>
+                <tr>
+                  <th class="data-left">Status</th>
+                  <td>{{subscription.status}}</td>
+                </tr>
+                <tr>
+                  <th class="data-left">Next Payment Due On</th>
+                  <td>
+                    {{subscription.next_invoice.next_payment_attempt}}
+                  </td>
+                </tr>
+                <tr>
+                  <th class="data-left">Amount Due</th>
+                  <td>${{subscription.next_invoice.amount_due_cents / 100}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
 
-        <div class='col-md-4 show2'>
-          <p>Raw Final Draft Scripts. Click to create Film Fox File.</p>
+        <div class="col-md-4 show2">
+          <p><b>Raw Final Draft Scripts. Click to create Film Fox File.</b></p>
           {% for i in range(0, fdxList.length) -%}
-          <div class='row show2'>
-            <button type='button' class='btn btn-edit btn-block btn-sm btn-fdx'>
+          <div class="row show2">
+            <button type="button" class="btn btn-edit btn-block btn-sm btn-fdx">
               {{fdxList[i]}}
             </button>
           </div>
@@ -51,23 +118,23 @@
       </div>
     </div>
     <script>
-      $('#convert').on('click', () => {
-        let s = $('#script').val().substring(12)
-        if (s !== '') {
+      $("#convert").on("click", () => {
+        let s = $("#script").val().substring(12)
+        if (s !== "") {
           window.location.href = `/convert?script=${s}`
         }
       }),
-        $('#display').on('click', () => {
-          let f = $('#fff').val().substring(12)
-          if (f !== '') {
+        $("#display").on("click", () => {
+          let f = $("#fff").val().substring(12)
+          if (f !== "") {
             window.location.href = `/display?filmFoxFile=${f}&ptr=0`
           }
         }),
-        $('.btn-fff').on('click', (e) => {
+        $(".btn-fff").on("click", (e) => {
           let f = e.target.textContent.trim()
           window.location.href = `/display?filmFoxFile=${f}&ptr=0`
         }),
-        $('.btn-fdx').on('click', (e) => {
+        $(".btn-fdx").on("click", (e) => {
           let s = e.target.textContent.trim()
           window.location.href = `/convert?script=${s}`
         })

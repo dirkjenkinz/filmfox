@@ -1,18 +1,28 @@
 const dotenv = require('dotenv');
 dotenv.config();
 const {getFileList} = require('../services/file-service');
+const {getUserSubscriptionInfo} = require('../services/elevenLabs');
 const logger = require('../services/logger');
 
 const frontHandler = async (req, res) => {
   logger.log('info', "entering front handler");
-
+  const api_key = process.env.APIKEY;
   const fffList = await getFileList('data', 'fff');
   const fdxList = await getFileList('scripts', 'fdx');
+  let subscription = await getUserSubscriptionInfo(api_key);
+  subscription = JSON.parse(subscription);
+  let reset = subscription.next_character_count_reset_unix * 1000;
+  const resetDate = new Date(reset);
+  subscription.next_character_count_reset = resetDate.toLocaleString();
+  let payment = subscription.next_invoice.next_payment_attempt_unix * 1000;
+  const paymentDate = new Date(payment);
+  subscription.next_invoice.next_payment_attempt = paymentDate.toLocaleString();
 
   res.render('front.njk', {
-    api_key: process.env.APIKEY,
+    api_key,
     fffList,
     fdxList,
+    subscription,
   });
 };
 

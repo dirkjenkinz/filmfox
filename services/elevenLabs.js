@@ -12,19 +12,33 @@ const generateSpeech = async (apiKey, voiceID, fileName, textInput) => {
     })
 };
 
-const getVoices = async () => {
+const getVoices = async (apiKey) => {
     logger.log('info', 'get voices');
     const config = {
         headers: {
             'accept': 'application/json',
-            'xi-api-key': 'd0bf46f1a6940f687634b5fc97c7c018'
+            'xi-api-key': apiKey
         }
     };
     let response = await axios.get('https://api.elevenlabs.io/v1/voices', config);
+    return response;
+};
+
+const getUserSubscriptionInfo = async (apiKey) => {
+    logger.log('info', 'get subscription');
+    const config = {
+        headers: {
+            'accept': 'application/json',
+            'xi-api-key': apiKey
+        }
+    };
+    let response = await axios.get('https://api.elevenlabs.io/v1/user/subscription', config);
     return JSON.stringify(response.data, null, 4);
 };
+
 
 module.exports = {
     generateSpeech,
     getVoices,
-}
+    getUserSubscriptionInfo,
+};
