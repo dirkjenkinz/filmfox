@@ -1,5 +1,5 @@
 const url = require('url');
-const { getData } = require('../services/file-service');
+const { getData, getFile } = require('../services/file-service');
 const { voices } = require('../data/voices.json');
 const logger = require('../services/logger');
 
@@ -22,7 +22,9 @@ const characterToVoiceHandler = async (req, res) => {
   let file = u.query.filmFoxFile;
   let filmFoxFile = await getData(file + '.fff');
 
-  const { characters, title, script } = filmFoxFile;
+  const { title, script } = filmFoxFile;
+
+  let characters = await getData(file + '.chrs');
 
   voice_data = getVoiceData(voices);
   voice_data.unshift(['-','','']);

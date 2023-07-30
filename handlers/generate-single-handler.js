@@ -13,9 +13,10 @@ const generateSingleHandler = async (req, res) => {
   let element = u.query.element;
   let file = u.query.filmFoxFile;
   let filmFoxFile = await getData(file + '.fff');
+  const characters = await getData(file + '.chrs');
   const api_key = process.env.APIKEY;
 
-  const { title, characters, script, voice_data } = filmFoxFile;
+  const { title, script, voice_data } = filmFoxFile;
 
   script.forEach(scriptChar => {
     characters.forEach(c => {

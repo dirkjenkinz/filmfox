@@ -30,7 +30,10 @@ const displayHandler = async (req, res) => {
   let file = u.query.filmFoxFile;
   let filmFoxFile = await getData(file);
 
-  const { title, characters, script } = filmFoxFile;
+  const { title, script } = filmFoxFile;
+  const chrs = file.substring(0, file.length - 4) +'.chrs';
+  console.log({chrs});
+  const characters = await getData(chrs)
   const api_key = process.env.APIKEY;
   const offset= filmFoxFile.offset;
 

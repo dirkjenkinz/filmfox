@@ -1,3 +1,5 @@
+const fs = require('fs');
+const path = require('path');
 const url = require('url');
 const dotenv = require('dotenv');
 dotenv.config();
@@ -145,8 +147,9 @@ const convertHandler = async (req, res) => {
   const u = url.parse(req.originalUrl, true);
   let file = u.query.script;
   api_key = process.env.API;
+  console.log(api_key);
   let voices = await getVoices(api_key);
-  await writeFile(voices, 'voices.json');
+  await writeFile(JSON.stringify(voices.data), 'voices.json');
   let script = await getScript(file);
   let parse = parseScript(script);
   script = parse[0];
@@ -184,13 +187,17 @@ const convertHandler = async (req, res) => {
   const fff = {
     title,
     api_key,
-    characters,
     voice_data,
     script,
     offset
   }
 
   await writeFile(JSON.stringify(fff), title + '.fff');
+
+  const directoryPath = path.join(__dirname, '../data');
+  if (!fs.existsSync(`${directoryPath}/${title}.chrs`)) {
+    await writeFile(JSON.stringify(characters), title + '.chrs');
+  };
 
   res.redirect(`/display?filmFoxFile=${title}.fff&ptr=0`);
 

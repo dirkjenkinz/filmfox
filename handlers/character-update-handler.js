@@ -27,8 +27,8 @@ const characterUpdateHandler = async (req, res) => {
   let character = u.query.character;
   let file = u.query.filmFoxFile;
   let fff = await getData(file + '.fff');
-
-  const { title, characters } = fff;
+  const { title } = fff;
+  const characters = await getData(file + '.chrs');
 
   voice_data = getVoiceData(voices);
   voice_data.unshift(['-','','']);
@@ -40,6 +40,7 @@ const characterUpdateHandler = async (req, res) => {
   })
 
   writeFile(JSON.stringify(fff), title + '.fff');
+  writeFile(JSON.stringify(characters), title + '.chrs');
 
   res.render('character-to-voice.njk', {
     title,
