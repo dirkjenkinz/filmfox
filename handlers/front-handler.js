@@ -1,11 +1,11 @@
 const dotenv = require('dotenv');
 dotenv.config();
-const {getFileList} = require('../services/file-service');
-const {getUserSubscriptionInfo} = require('../services/elevenLabs');
-const logger = require('../services/logger');
+const { getFileList } = require('../services/file-service');
+const { getUserSubscriptionInfo } = require('../services/elevenLabs');
+const { smartLog } = require('../services/smart-log');
 
 const frontHandler = async (req, res) => {
-  logger.log('info', "entering front handler");
+  smartLog('info', 'entering front handler');
   const api_key = process.env.APIKEY;
   const fffList = await getFileList('data', 'fff');
   const fdxList = await getFileList('scripts', 'fdx');

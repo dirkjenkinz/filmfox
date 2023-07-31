@@ -4,8 +4,8 @@ const url = require('url');
 const dotenv = require('dotenv');
 dotenv.config();
 const { getVoices } = require('../services/elevenLabs');
-const logger = require('../services/logger');
 const voices = require('../data/voices.json');
+const { smartLog } = require('../services/smart-log');
 
 const {
   getScript,
@@ -143,11 +143,10 @@ const parseScript = script => {
 }
 
 const convertHandler = async (req, res) => {
-  logger.log('info', "entering display handler !!!");
+  smartLog('info', 'entering display handler');
   const u = url.parse(req.originalUrl, true);
   let file = u.query.script;
   api_key = process.env.API;
-  console.log(api_key);
   let voices = await getVoices(api_key);
   await writeFile(JSON.stringify(voices.data), 'voices.json');
   let script = await getScript(file);
@@ -190,7 +189,7 @@ const convertHandler = async (req, res) => {
     voice_data,
     script,
     offset
-  }
+  };
 
   await writeFile(JSON.stringify(fff), title + '.fff');
 
@@ -200,7 +199,6 @@ const convertHandler = async (req, res) => {
   };
 
   res.redirect(`/display?filmFoxFile=${title}.fff&ptr=0`);
-
 };
 
 module.exports = { convertHandler };

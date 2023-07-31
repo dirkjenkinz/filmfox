@@ -1,9 +1,9 @@
 const url = require('url');
-const logger = require('../services/logger');
 const { getData, writeFile } = require('../services/file-service');
+const { smartLog } = require('../services/smart-log');
 
 const offsetHandler = async (req, res) => {
-  logger.log('info', "entering offset handler");
+  smartLog('info', 'entering offset handler');
   let u = url.parse(req.originalUrl, true);
   const ptr = u.query.ptr;
   let file = u.query.filmFoxFile;

@@ -1,8 +1,8 @@
 const url = require('url');
 const { getData, getListOfElements, getDuration, writeFile } = require('../services/file-service');
+const { smartLog } = require('../services/smart-log');
 const dotenv = require('dotenv');
 dotenv.config();
-const logger = require('../services/logger');
 
 const formatTime = (seconds) => {
   const date = new Date(null);
@@ -23,7 +23,7 @@ const procureDuration = async (file, elementName) => {
 };
 
 const displayHandler = async (req, res) => {
-  logger.log('info', 'entering display handler');
+  smartLog('info', 'ENTERING DISPLAY HANDLER');
 
   let u = url.parse(req.originalUrl, true);
   let ptr = u.query.ptr;
@@ -31,11 +31,10 @@ const displayHandler = async (req, res) => {
   let filmFoxFile = await getData(file);
 
   const { title, script } = filmFoxFile;
-  const chrs = file.substring(0, file.length - 4) +'.chrs';
-  console.log({chrs});
+  const chrs = file.substring(0, file.length - 4) + '.chrs';
   const characters = await getData(chrs)
   const api_key = process.env.APIKEY;
-  const offset= filmFoxFile.offset;
+  const offset = filmFoxFile.offset;
 
   script.forEach(scriptChar => {
     characters.forEach(c => {
@@ -63,7 +62,7 @@ const displayHandler = async (req, res) => {
 
   const elementNames = await getListOfElements(title);
 
-  script.forEach( (s) => {
+  script.forEach((s) => {
     s[4] = '';
   });
 
@@ -71,11 +70,11 @@ const displayHandler = async (req, res) => {
     const num = parseInt(name.substring(6, 12));
     script[num][4] = name;
   })
- 
+
   let timeStart = `${offset}.000`;
   timeStart = parseFloat(timeStart);
   let timeFinish = 0.000;
-  logger.log('info', 'building srt data');
+  smartLog('info', 'building srt data');
   for (const element of elementNames) {
     const duration = await procureDuration(file, element);
     let num = element.substring(6, 12);
@@ -106,7 +105,7 @@ const displayHandler = async (req, res) => {
 
   await writeFile(srt, `${title}.srt`);
 
-  logger.log('info', 'srt complete');
+  smartLog('info', 'srt complete');
 
   res.render('display.njk', {
     title,

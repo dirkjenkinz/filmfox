@@ -3,10 +3,10 @@ const { getData } = require('../services/file-service');
 const { generateSpeech } = require('../services/elevenLabs');
 const dotenv = require('dotenv');
 dotenv.config();
-const logger = require('../services/logger');
+const { smartLog } = require('../services/smart-log');
 
 const generateSingleHandler = async (req, res) => {
-  logger.log('info', 'entering generate single handler');
+  smartLog('info', 'entering generate single handler');
 
   let u = url.parse(req.originalUrl, true);
   let ptr = u.query.ptr;

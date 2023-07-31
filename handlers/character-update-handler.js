@@ -2,7 +2,7 @@
 const url = require('url');
 const { getData, writeFile } = require('../services/file-service');
 const { voices } = require('../data/voices.json');
-const logger = require('../services/logger');
+const { smartLog } = require('../services/smart-log');
 
 const getVoiceData = (voices) => {
   let voice_data = [];
@@ -19,7 +19,7 @@ const getVoiceData = (voices) => {
 };
 
 const characterUpdateHandler = async (req, res) => {
-  logger.log('info', 'entering character update handler');
+  smartLog('info', 'entering character update handler');
 
   const u = url.parse(req.originalUrl, true);
   let ptr = u.query.ptr;
@@ -31,7 +31,7 @@ const characterUpdateHandler = async (req, res) => {
   const characters = await getData(file + '.chrs');
 
   voice_data = getVoiceData(voices);
-  voice_data.unshift(['-','','']);
+  voice_data.unshift(['-', '', '']);
 
   characters.forEach(c => {
     if (c[0] === character) {

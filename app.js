@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 const PORT = 3000;
 
-const logger = require('./services/logger');
+const { smartLog } = require('./services/smart-log.js');
 
 nunjucks.configure('pages', {
     autoescape: true,
@@ -35,5 +35,5 @@ app.use('/srt', srtRouter);
 app.use('/offset', offsetRouter);
 
 app.listen(PORT, (err) => {
-    logger.log('info', `FilmFox is up & running on port ${PORT}`);
+    smartLog('paramount', `FilmFox is up & running on port ${PORT}`);
 });
