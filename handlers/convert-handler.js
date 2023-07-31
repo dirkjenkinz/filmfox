@@ -3,8 +3,6 @@ const path = require('path');
 const url = require('url');
 const dotenv = require('dotenv');
 dotenv.config();
-const { getVoices } = require('../services/elevenLabs');
-const voices = require('../data/voices.json');
 const { smartLog } = require('../services/smart-log');
 
 const {
@@ -12,16 +10,17 @@ const {
   writeFile,
   createDirectory,
   getListOfElements,
+  getData,
 } = require("../services/file-service");
 
-const getVoiceData = () => {
+const getVoiceData = (voices) => {
   let voice_data = [];
   let v = [];
   v.push('-');
   v.push('-');
   v.push('-');
   voice_data.push(v);
-  voices.voices.forEach(voice => {
+  voices.forEach(voice => {
     let v = [];
     v.push(voice.name);
     v.push(voice.description);
@@ -147,8 +146,7 @@ const convertHandler = async (req, res) => {
   const u = url.parse(req.originalUrl, true);
   let file = u.query.script;
   api_key = process.env.API;
-  let voices = await getVoices(api_key);
-  await writeFile(JSON.stringify(voices.data), 'voices.json');
+  const voices= await getData('voices.json');
   let script = await getScript(file);
   let parse = parseScript(script);
   script = parse[0];
@@ -158,7 +156,7 @@ const convertHandler = async (req, res) => {
   title = title.split('.');
   title = title[0];
 
-  let voice_data = getVoiceData();
+  let voice_data = await getVoiceData(voices);
 
   const rc = await createDirectory(title);
 

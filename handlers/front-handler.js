@@ -1,7 +1,7 @@
 const dotenv = require('dotenv');
 dotenv.config();
-const { getFileList } = require('../services/file-service');
-const { getUserSubscriptionInfo } = require('../services/elevenLabs');
+const { getFileList, writeFile } = require('../services/file-service');
+const { getUserSubscriptionInfo, getVoices } = require('../services/elevenLabs');
 const { smartLog } = require('../services/smart-log');
 
 const frontHandler = async (req, res) => {
@@ -17,6 +17,9 @@ const frontHandler = async (req, res) => {
   let payment = subscription.next_invoice.next_payment_attempt_unix * 1000;
   const paymentDate = new Date(payment);
   subscription.next_invoice.next_payment_attempt = paymentDate.toLocaleString();
+
+  const voices = await getVoices(api_key);
+  await writeFile(JSON.stringify(voices), 'voices.json');
 
   res.render('front.njk', {
     api_key,

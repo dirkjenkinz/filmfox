@@ -1,5 +1,4 @@
 const url = require('url');
-const { voices } = require('../data/voices.json');
 const { smartLog } = require('../services/smart-log');
 
 const {

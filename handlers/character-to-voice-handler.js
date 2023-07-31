@@ -1,6 +1,5 @@
 const url = require('url');
 const { getData, getFile } = require('../services/file-service');
-const { voices } = require('../data/voices.json');
 const { smartLog } = require('../services/smart-log');
 
 const getVoiceData = (voices) => {
@@ -26,6 +25,7 @@ const characterToVoiceHandler = async (req, res) => {
 
   let characters = await getData(file + '.chrs');
 
+  const voices = await getData('voices.json');
   voice_data = getVoiceData(voices);
   voice_data.unshift(['-', '', '']);
 
