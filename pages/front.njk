@@ -41,6 +41,7 @@
         <div class='col-md-3 sub-show'>
           <p><b>Subscription Details.</b></p>
           <div class='row'>
+            {% if subscription!== '' %}
             <table
               class='table-bordered table-sm table-dark table-grid'
               id='subscription_table'
@@ -104,6 +105,10 @@
                 </tr>
               </tbody>
             </table>
+            {% else %}
+              <br>
+              <p>&nbsp; Unable to retrieve subscription details</p>
+            {% endif %}
           </div>
         </div>
         

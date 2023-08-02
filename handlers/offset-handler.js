@@ -9,9 +9,6 @@ const offsetHandler = async (req, res) => {
   let file = u.query.filmFoxFile;
   let filmFoxFile = await getData(file);
   filmFoxFile.offset = u.query.offset;
-
-  console.log(u.query);
-
   await writeFile(JSON.stringify(filmFoxFile), file);
   res.redirect(`/display?filmFoxFile=${file}&ptr=${ptr}`);
 };

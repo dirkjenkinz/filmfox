@@ -50,6 +50,7 @@ const generateSingleHandler = async (req, res) => {
     } else if (text.substring(0, 4) === 'EXT.') {
       text = 'EXTERIOR' + text.substring(4);
     };
+    text = text.replace(/\.\.\./g, '');
   };
 
   await generateSpeech(api_key, voice_id, fileName, text);

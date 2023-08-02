@@ -6,10 +6,15 @@ const { smartLog } = require('../services/smart-log');
 
 const generateSpeech = async (apiKey, voiceID, fileName, textInput) => {
     smartLog('info', 'generate speech');
-    await voice.textToSpeech(apiKey, voiceID, `${directoryPath}/${fileName}`, textInput).then(res => {
-        smartLog('info', {res});
-        smartLog('info', `sound file generated for ${fileName}`);
-    })
+    try {
+        await voice.textToSpeech(apiKey, voiceID, `${directoryPath}/${fileName}`, textInput).then(res => {
+            smartLog('info', { res });
+            smartLog('info', `sound file generated for ${fileName}`);
+        });
+    } catch (error) {
+        smartLog('error', 'error generating speech');
+        smartLog('error', error.message);
+    }
 };
 
 const getVoices = async (apiKey) => {
@@ -20,8 +25,14 @@ const getVoices = async (apiKey) => {
             'xi-api-key': apiKey
         }
     };
-    let response = await axios.get('https://api.elevenlabs.io/v1/voices', config);
-    return response.data.voices;
+    try {
+        let response = await axios.get('https://api.elevenlabs.io/v1/voices', config);
+        return response.data.voices;
+    } catch (error) {
+        smartLog('error', 'error getting voices');
+        smartLog('error', error.message);
+        return '';
+    };
 };
 
 const getUserSubscriptionInfo = async (apiKey) => {
@@ -32,10 +43,15 @@ const getUserSubscriptionInfo = async (apiKey) => {
             'xi-api-key': apiKey
         }
     };
-    let response = await axios.get('https://api.elevenlabs.io/v1/user/subscription', config);
-    return JSON.stringify(response.data, null, 4);
+    try {
+        let response = await axios.get('https://api.elevenlabs.io/v1/user/subscription', config);
+        return JSON.stringify(response.data, null, 4);
+    } catch (error) {
+        smartLog('error', 'error getting subscription details');
+        smartLog('error', error.message);
+        return '';
+    };
 };
-
 
 module.exports = {
     generateSpeech,
