@@ -42,15 +42,17 @@ const generateSingleHandler = async (req, res) => {
   let text = script[element][1];
 
   if (script[element][0] === 'NARRATOR') {
-    if (text.substring(0, 9) === 'INT./EXT.') {
+    const t = text.toUpperCase();
+    if (t.substring(0, 9) === 'INT./EXT.') {
       text = 'INTERIOR / EXTERIOR' + text.substring(4);
     }
-    else if (text.substring(0, 4) === 'INT.') {
+    else if (t.substring(0, 4) === 'INT.') {
       text = 'INTERIOR' + text.substring(4);
-    } else if (text.substring(0, 4) === 'EXT.') {
+    } else if (t.substring(0, 4) === 'EXT.') {
       text = 'EXTERIOR' + text.substring(4);
     };
     text = text.replace(/\.\.\./g, '');
+    console.log({text});
   };
 
   await generateSpeech(api_key, voice_id, fileName, text);
