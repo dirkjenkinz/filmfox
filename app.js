@@ -8,6 +8,7 @@ const characterUpdateRouter = require('./routes/character-update.js');
 const generateSingleRouter = require('./routes/generate-single.js');
 const srtRouter = require('./routes/srt.js');
 const offsetRouter = require('./routes/offset.js');
+const deleteRouter = require('./routes/delete.js');
 
 const nunjucks = require('nunjucks');
 const bodyParser = require('body-parser');
@@ -33,6 +34,7 @@ app.use('/character-update', characterUpdateRouter);
 app.use('/generate-single', generateSingleRouter);
 app.use('/srt', srtRouter);
 app.use('/offset', offsetRouter);
+app.use('/delete', deleteRouter);
 
 app.listen(PORT, (err) => {
     smartLog('paramount', `FilmFox is up & running on port ${PORT}`);

@@ -111,6 +111,7 @@
               <th class='data-left'>Start</th>
               <th class='data-left'>Duration</th>
               <th class='data-left'>Finish</th>
+              <th class='data-left'>Delete</th>
             </tr>
           </thead>
           <tbody>
@@ -144,6 +145,25 @@
               <td class='data-left'>{{script[i][6]}}</td>
               <td class='data-left'>{{script[i][7]}}</td>
               <td class='data-left'>{{script[i][8]}}</td>
+               <td class='data-left'>
+                {% if (script[i][3] == '-') or (script[i][4]) %}
+                <button
+                  class='btn btn-block btn-edit btn-sm btn-small btn-del'
+                  id='del_{{i}}',
+                  value = {{script[i][0]}}
+                >
+                  Delete
+                </button>
+                {% else %}
+                <button
+                  class='btn btn-block btn-edit btn-sm btn-small btn-del'
+                  id='del_{{i}}'
+                  disabled
+                >
+                  Delete
+                </button>
+                {% endif %}
+              </td>
             </tr>
             {% endif %} 
             {%- endfor %}
@@ -165,6 +185,13 @@
           const f = $('#title')[0].innerText
           const ptr = $('#ptr')[0].innerText
           window.location.href = `/generate-single?filmFoxFile=${f}&element=${num}&ptr=${ptr}`
+        }),
+         $('.btn-del').on('click', (e) => {
+          const num = e.target.id.substring(4)
+          const f = $('#title')[0].innerText
+          const ptr = $('#ptr')[0].innerText
+          const char = e.target.value;
+          window.location.href = `/delete?script=${f}&element=${num}&ptr=${ptr}&char=${char}`
         }),
         $('#offset-plus').on('click', () => {
           const f = $('#title')[0].innerText + '.fff';

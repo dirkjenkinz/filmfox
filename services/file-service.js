@@ -65,6 +65,21 @@ const writeFile = async (data, file) => {
     })
 };
 
+const deleteFile = async (script, file) => {
+    smartLog('info', `deleting ${file}`)
+    const directoryPath = path.join(__dirname, `../data/${script}`);
+    return new Promise((resolve, reject) => {
+        fs.unlink(`${directoryPath}/${file}`, (err, msg) => {
+            if (err) {
+                smartLog('error', err.cause);
+                reject(err);
+            } else {
+                resolve('ok');
+            }
+        })
+    })
+};
+
 const createDirectory = (directory => {
     smartLog('info', 'create directory');
     const directoryPath = path.join(__dirname, '../data');
@@ -134,4 +149,5 @@ module.exports = {
     getSoundFile,
     getDuration,
     getSRT,
+    deleteFile,
 };

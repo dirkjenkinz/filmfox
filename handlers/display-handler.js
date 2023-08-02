@@ -68,7 +68,7 @@ const displayHandler = async (req, res) => {
 
   elementNames.forEach(name => {
     const num = parseInt(name.substring(6, 12));
-    script[num][4] = name;
+    script[num][4] = name.substring(0, name.length - 4);
   })
 
   let timeStart = `${offset}.000`;
