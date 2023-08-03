@@ -39,6 +39,8 @@ const parseAction = (action, scene_number) => {
     text += action[i].substring(start);
   }
 
+  text = text.replace(/\n/g,'')
+
   let a = [];
   a[0] = 'NARRATOR';
   a[1] = text;

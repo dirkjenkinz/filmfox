@@ -139,10 +139,22 @@ textarea {
     margin: 0;
 }
 
+.seperator {
+    text-align: center;    
+}
+
 .btn-edit {
     background: red;
     color: white;
     border: black 2px solid;
+}
+
+.btn-side {
+    background: blue;
+    color: white;
+    border: black 2px solid;
+    margin: 2px 2px 0 0;
+    width: 94%;
 }
 
 .white-border {
