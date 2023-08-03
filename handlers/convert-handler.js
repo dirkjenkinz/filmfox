@@ -77,7 +77,7 @@ const parseSceneHeading = (heading, scene_number) => {
   a[0] = 'NARRATOR';
   for (let i = 1; i < heading.length; i++) {
     if (heading[i].substring(0, 5) === 'Text>') {
-      a[1] = heading[i].substring(5).trim();
+      a[1] = heading[i].substring(5).trim().toUpperCase();
     };
   };
   a[2] = scene_number;
