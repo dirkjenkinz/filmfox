@@ -1,7 +1,12 @@
-const url = require('url');
-const { getData, getListOfElements, getDuration, writeFile } = require('../services/file-service');
-const { smartLog } = require('../services/smart-log');
-const dotenv = require('dotenv');
+const url = require("url");
+const {
+  getData,
+  getListOfElements,
+  getDuration,
+  writeFile,
+} = require("../services/file-service");
+const { smartLog } = require("../services/smart-log");
+const dotenv = require("dotenv");
 dotenv.config();
 
 const formatTime = (seconds) => {
@@ -9,9 +14,9 @@ const formatTime = (seconds) => {
   date.setSeconds(seconds);
   let h = date.toISOString();
   h = h.substring(11, h.length - 5);
-  let micro = (seconds - Math.floor(seconds));
+  let micro = seconds - Math.floor(seconds);
   micro = micro.toString().substring(2, 5);
-  if (!micro) micro = '000';
+  if (!micro) micro = "000";
   h = `${h},${micro}`;
   return h;
 };
@@ -23,7 +28,7 @@ const procureDuration = async (file, elementName) => {
 };
 
 const displayHandler = async (req, res) => {
-  smartLog('info', 'ENTERING DISPLAY HANDLER');
+  smartLog("info", "ENTERING DISPLAY HANDLER");
 
   let u = url.parse(req.originalUrl, true);
   let ptr = u.query.ptr;
@@ -31,20 +36,21 @@ const displayHandler = async (req, res) => {
   let filmFoxFile = await getData(file);
 
   const { title, script } = filmFoxFile;
-  const chrs = file.substring(0, file.length - 4) + '.chrs';
-  const characters = await getData(chrs)
+  const chrs = file.substring(0, file.length - 4) + ".chrs";
+  const characters = await getData(chrs);
   const api_key = process.env.APIKEY;
   const offset = filmFoxFile.offset;
 
-  script.forEach(scriptChar => {
-    characters.forEach(c => {
+  script.forEach((scriptChar) => {
+    characters.forEach((c) => {
       if (c[0] === scriptChar[0]) {
         scriptChar[3] = c[1];
-      };
-    })
+      }
+    });
   });
 
   ptr = parseInt(ptr);
+
   const end = script.length - 10;
   if (ptr > end) ptr = end;
   if (ptr < 0) ptr = 0;
@@ -57,24 +63,24 @@ const displayHandler = async (req, res) => {
   });
 
   script.forEach((s) => {
-    s.push('');
+    s.push("");
   });
 
   const elementNames = await getListOfElements(title);
 
   script.forEach((s) => {
-    s[4] = '';
+    s[4] = "";
   });
 
-  elementNames.forEach(name => {
+  elementNames.forEach((name) => {
     const num = parseInt(name.substring(6, 12));
     script[num][4] = name.substring(0, name.length - 4);
-  })
+  });
 
   let timeStart = `${offset}.000`;
   timeStart = parseFloat(timeStart);
-  let timeFinish = 0.000;
-  smartLog('info', 'building srt data');
+  let timeFinish = 0.0;
+  smartLog("info", "building srt data");
   for (const element of elementNames) {
     const duration = await procureDuration(file, element);
     let num = element.substring(6, 12);
@@ -91,23 +97,23 @@ const displayHandler = async (req, res) => {
 
     timeStart = timeFinish + 0.5;
     timeStart = Math.round(timeStart * 1000) / 1000;
-  };
+  }
 
-  let srt = '';
+  let srt = "";
   for (let s = 0; s < script.length; s++) {
     if (script[s][6]) {
       const text = script[s][1].trim();
       srt += `${s + 1}\n`;
       srt += `${script[s][6]} --> ${script[s][8]}\n`;
       srt += `${script[s][0]}: ${text}\n\n`;
-    };
-  };
+    }
+  }
 
   await writeFile(srt, `${title}.srt`);
 
-  smartLog('info', 'srt complete');
+  smartLog("info", "srt complete");
 
-  res.render('display.njk', {
+  res.render("display.njk", {
     title,
     api_key,
     script,

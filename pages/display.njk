@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang='en'>
   <head>
-    <meta charset='UTF-8' />
-    <meta http-equiv='X-UA-Compatible' content='IE=edge' />
-    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <meta charset='UTF-8'/>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'/>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
     <title>FilmFox</title>
-    <link rel='stylesheet' href='../css/style.css' />
+    <link rel='stylesheet' href='../css/style.css'/>
     <link
       rel='stylesheet'
       href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css'
-    />
+/>
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
     <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js'></script>
   </head>
@@ -22,117 +22,129 @@
         </div>
         <div class='col-md-1' hidden>
           <p id='ptr'>{{ptr}}</p>
-          <p id='endpoint'>{{end}}</p>
-        </div>
-        <div class='col-md-3 data-right' id='title'>
-          <h5>{{ title }}</h5>
-        </div>
+          <p id='endpoint'>
+          {{end}}
+        </p>
       </div>
-      <div class='row show'>
-        <div class='col-md-1'>
-          <button class='btn btn-block btn-edit btn-sm' id='front'>
+      <div class='col-md-3 data-right' id='title'>
+        <h5>{{ title }}</h5>
+      </div>
+    </div>
+    <div class='row show'>
+      <div class='col-md-1'>
+        <button class='btn btn-block btn-edit btn-sm' id='front'>
             Front
           </button>
-        </div>
-        <div class='col-md-1'>
-          <button class='btn btn-block btn-edit btn-sm' id='ctv'>
+      </div>
+      <div class='col-md-1'>
+        <button class='btn btn-block btn-edit btn-sm' id='ctv'>
             Voice Map
           </button>
-        </div>
-        <div class='col-md-1'>
-          <button class='btn btn-block btn-edit btn-sm' id='srt'>SRT</button>
-        </div>
-        <div class='col-md-4'></div>
-        <div class='col-md-1 data-left'>
-          <button class='btn btn-edit btn-sm' id='offset-minus'>
+      </div>
+      <div class='col-md-1'>
+        <button class='btn btn-block btn-edit btn-sm' id='srt'>SRT</button>
+      </div>
+      <div class='col-md-4'></div>
+      <div class='col-md-1 data-left'>
+        <button class='btn btn-edit btn-sm' id='offset-minus'>
             -1 Second
           </button>
-        </div>
-        <div class='col-md-2 data-right show'>SRT offset in seconds:</div>
-        <div class='col-md-1 show' id='offset'>{{offset}}</div>
-        <div class='col-md-1 data-right'>
-          <button class='btn btn-edit btn-sm' id='offset-plus'>
+      </div>
+      <div class='col-md-2 data-right show'>SRT offset in seconds:</div>
+      <div class='col-md-1 show' id='offset'>{{offset}}</div>
+      <div class='col-md-1 data-right'>
+        <button class='btn btn-edit btn-sm' id='offset-plus'>
             +1 Second
           </button>
-        </div>
       </div>
-      <div class='row'>
-        <div class='col-md-11'>
-          <table
+    </div>
+    <div class='row'>
+      <div class='col-md-11'>
+        <table
             class='table-bordered table-sm table-dark table-grid'
             id='script_table'
           >
-            <thead>
-              <tr>
-                <th></th>
-                <th class='data-left'>Element</th>
-                <th class='data-left'>Scene</th>
-                <th class='data-left'>Character</th>
-                <th class='data-left'>Voice</th>
-                <th class='data-left'>Verbals</th>
-                <th class='data-left'>Sound File</th>
-                <th class='data-left'>Start</th>
-                <th class='data-left'>Delete</th>
-              </tr>
-            </thead>
-            <tbody>
-              {% for i in range(ptr, ptr + 10) -%} {% if script[i] %}
-              <tr>
-                <td class='data-left'>
-                  {% if (script[i][3] == '-') or (script[i][4]) %}
-                  <button
+          <thead>
+            <tr>
+              <th></th>
+              <th class='data-left'>Element</th>
+              <th class='data-left'>Scene</th>
+              <th class='data-left'>Character</th>
+              <th class='data-left'>Voice</th>
+              <th class='data-left'>Verbals</th>
+              <th class='data-left'>Sound File</th>
+              <th class='data-left'>Start</th>
+              <th class='data-left'>Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for i in range(ptr, ptr + 10) -%}
+              {% if script[i] %}
+                <tr>
+                  <td class='data-left'>
+                    {% if (script[i][3] == '-') or (script[i][4]) %}
+                      <button
                     class='btn btn-block btn-edit btn-sm btn-small btn-gen'
                     id='gen_{{i}}'
                     disabled
                   >
                     Gen
                   </button>
-                  {% else %}
-                  <button
+                    {% else %}
+                      <button
                     class='btn btn-block btn-edit btn-sm btn-small btn-gen'
                     id='gen_{{i}}'
                   >
                     Gen
                   </button>
-                  {% endif %}
-                </td>
-                <td class='data-right'>{{i}}</td>
-                <td class='data-right'>{{script[i][2]}}</td>
-                <td class='data-left'>{{script[i][0]}}</td>
-                <td class='data-left'>{{script[i][3]}}</td>
-                <td class='data-left'>{{script[i][1]}}</td>
-                <td class='data-left'>{{script[i][4]}}</td>
-                <td class='data-left'>{{script[i][6]}}</td>
-                <td class='data-left'>
-                  {% if (script[i][3] == '-') or (script[i][4]) %}
-                  <button
+                    {% endif %}
+                  </td>
+                  <td class='data-right'>{{i}}</td>
+                  <td class='data-right'>{{script[i][2]}}</td>
+                  <td class='data-left'>{{script[i][0]}}</td>
+                  <td class='data-left'>{{script[i][3]}}</td>
+                  <td class='data-left'>{{script[i][1]}}</td>
+                  <td class='data-left'>{{script[i][4]}}</td>
+                  <td class='data-left'>{{script[i][6]}}</td>
+                  <td class='data-left'>
+                    {% if (script[i][3] == '-') or (script[i][4]) %}
+                      <button
                     class='btn btn-block btn-edit btn-sm btn-small btn-del'
                     id='del_{{i}}'
                     value='{{script[i][0]}}'
                   >
                     Delete
                   </button>
-                  {% else %}
-                  <button
+                    {% else %}
+                      <button
                     class='btn btn-block btn-edit btn-sm btn-small btn-del'
                     id='del_{{i}}'
                     disabled
                   >
                     Delete
                   </button>
-                  {% endif %}
-                </td>
-              </tr>
-              {% endif %} {%- endfor %}
-            </tbody>
-          </table>
-        </div>
-        <div class='col-md-1'>
-          <div class='row'>
-            <button class='btn btn-side btn-sm' id='start'>Start</button>
-          </div>
+                    {% endif %}
+                  </td>
+                </tr>
+              {% endif %}
+            {%- endfor %}
+          </tbody>
+        </table>
+      </div>
+      <div class='col-md-1'>
         <div class='row'>
-          <p class='seperator'>-------</p>
+          <p class='seperator'>&nbsp;</p>
+        </div>
+        <div class='row'>
+          <p class='seperator'>
+            -------</p>
+        </div>
+        <div class='row'>
+          <button class='btn btn-side btn-sm' id='start'>Start</button>
+        </div>
+        <div class='row'>
+          <p class='seperator'>
+            -------</p>
         </div>
         <div class='row'>
           <button class='btn btn-side btn-sm' id='plus-one'>+1</button>
@@ -146,9 +158,10 @@
           </button>
         </div>
         <div class='row'>
-          <p class='seperator'>-------</p>
-          </div>
-          <div class='row'>
+          <p class='seperator'>
+            -------</p>
+        </div>
+        <div class='row'>
           <button class='btn btn-side btn-sm' id='minus-one-hundred'>-100</button>
         </div>
         <div class='row'>
@@ -159,102 +172,110 @@
             -1
           </button>
         </div>
-         <div class='row'>
-          <p class='seperator'>-------</p>
-          </div>
         <div class='row'>
-            <button class='btn btn-side btn-sm' id='end'>End</button>
+          <p class='seperator'>
+            -------</p>
         </div>
+        <div class='row'>
+          <button class='btn btn-side btn-sm' id='end'>End</button>
         </div>
       </div>
     </div>
-    <script>
-      $('#front').on('click', () => {
-        window.location.href = `/`
-      }),
-        $('#ctv').on('click', () => {
-          const f = $('#title')[0].innerText
-          let ptr = $('#ptr')[0].innerText
-          window.location.href = `/ctv?filmFoxFile=${f}&ptr=${ptr}`
-        }),
-        $('.btn-gen').on('click', (e) => {
-          const num = e.target.id.substring(4)
-          const f = $('#title')[0].innerText
-          const ptr = $('#ptr')[0].innerText
-          window.location.href = `/generate-single?filmFoxFile=${f}&element=${num}&ptr=${ptr}`
-        }),
-        $('.btn-del').on('click', (e) => {
-          const num = e.target.id.substring(4)
-          const f = $('#title')[0].innerText
-          const ptr = $('#ptr')[0].innerText
-          const char = e.target.value
-          window.location.href = `/delete?script=${f}&element=${num}&ptr=${ptr}&char=${char}`
-        }),
-        $('#offset-plus').on('click', () => {
-          const f = $('#title')[0].innerText + '.fff'
-          const ptr = $('#ptr')[0].innerText
-          let offset = $('#offset')[0].innerText
-          offset++
-          window.location.href = `/offset?filmFoxFile=${f}&ptr=${ptr}&offset=${offset}`
-        }),
-        $('#offset-minus').on('click', () => {
-          const f = $('#title')[0].innerText + '.fff'
-          const ptr = $('#ptr')[0].innerText
-          let offset = $('#offset')[0].innerText
-          offset--
-          if (offset < 0) offset = 0
-          window.location.href = `/offset?filmFoxFile=${f}&ptr=${ptr}&offset=${offset}`
-        }),
-        $('#plus-one').on('click', () => {
-          const f = $('#title')[0].innerText + '.fff'
-          let ptr = $('#ptr')[0].innerText
-          ptr++
-          window.location.href = `/display?filmFoxFile=${f}&ptr=${ptr}`
-        }),
-        $('#plus-ten').on('click', () => {
-          const f = $('#title')[0].innerText + '.fff'
-          let ptr = $('#ptr')[0].innerText
-          ptr = parseInt(ptr) + 10
-          window.location.href = `/display?filmFoxFile=${f}&ptr=${ptr}`
-        }),
-        $('#plus-one-hundred').on('click', () => {
-          const f = $('#title')[0].innerText + '.fff'
-          let ptr = $('#ptr')[0].innerText
-          ptr = parseInt(ptr) + 100
-          window.location.href = `/display?filmFoxFile=${f}&ptr=${ptr}`
-        }),
-        $('#minus-one').on('click', () => {
-          const f = $('#title')[0].innerText + '.fff'
-          let ptr = $('#ptr')[0].innerText
-          ptr--
-          window.location.href = `/display?filmFoxFile=${f}&ptr=${ptr}`
-        }),
-        $('#minus-ten').on('click', () => {
-          const f = $('#title')[0].innerText + '.fff'
-          let ptr = $('#ptr')[0].innerText
-          ptr = ptr - 10
-          window.location.href = `/display?filmFoxFile=${f}&ptr=${ptr}`
-        }),
-        $('#minus-one-hundred').on('click', () => {
-          const f = $('#title')[0].innerText + '.fff'
-          let ptr = $('#ptr')[0].innerText
-          ptr = ptr - 100
-          window.location.href = `/display?filmFoxFile=${f}&ptr=${ptr}`
-        }),
-        $('#start').on('click', () => {
-          const f = $('#title')[0].innerText + '.fff'
-          window.location.href = `/display?filmFoxFile=${f}&ptr=0`
-        }),
-        $('#end').on('click', () => {
-          const f = $('#title')[0].innerText + '.fff'
-          const ptr = $('#endpoint')[0].innerText
-          window.location.href = `/display?filmFoxFile=${f}&ptr=${ptr}`
-        }),
-        $('#srt').on('click', () => {
-          const f = $('#title')[0].innerText
-          let ptr = $('#ptr')[0].innerText
-          window.location.href = `/srt?title=${f}&ptr=${ptr}`
-        })
-    </script>
-  </body>
+  </div>
+  <script>
+    $('#front').on('click', () => {
+      window.location.href = `/`
+    }),
+    $('#ctv').on('click', () => {
+      const f = $('#title')[0].innerText
+      let ptr = $('#ptr')[0].innerText
+      window.location.href = `/ctv?filmFoxFile=${f}&ptr=${ptr}`
+    }),
+    $('.btn-gen').on('click', (e) => {
+      const num = e
+        .target
+        .id
+        .substring(4)
+      const f = $('#title')[0].innerText
+      const ptr = $('#ptr')[0].innerText
+      window.location.href = `/generate-single?filmFoxFile=${f}&element=${num}&ptr=${ptr}`
+    }),
+    $('.btn-del').on('click', (e) => {
+      const num = e
+        .target
+        .id
+        .substring(4)
+      const f = $('#title')[0].innerText
+      const ptr = $('#ptr')[0].innerText
+      const char = e.target.value
+      window.location.href = `/delete?script=${f}&element=${num}&ptr=${ptr}&char=${char}`
+    }),
+    $('#offset-plus').on('click', () => {
+      const f = $('#title')[0].innerText + '.fff'
+      const ptr = $('#ptr')[0].innerText
+      let offset = $('#offset')[0].innerText
+      offset++
+      window.location.href = `/offset?filmFoxFile=${f}&ptr=${ptr}&offset=${offset}`
+    }),
+    $('#offset-minus').on('click', () => {
+      const f = $('#title')[0].innerText + '.fff'
+      const ptr = $('#ptr')[0].innerText
+      let offset = $('#offset')[0].innerText
+      offset--
+      if (offset < 0) 
+        offset = 0
+      window.location.href = `/offset?filmFoxFile=${f}&ptr=${ptr}&offset=${offset}`
+    }),
+    $('#plus-one').on('click', () => {
+      const f = $('#title')[0].innerText + '.fff'
+      let ptr = $('#ptr')[0].innerText
+      ptr++
+      window.location.href = `/display?filmFoxFile=${f}&ptr=${ptr}`
+    }),
+    $('#plus-ten').on('click', () => {
+      const f = $('#title')[0].innerText + '.fff'
+      let ptr = $('#ptr')[0].innerText
+      ptr = parseInt(ptr) + 10
+      window.location.href = `/display?filmFoxFile=${f}&ptr=${ptr}`
+    }),
+    $('#plus-one-hundred').on('click', () => {
+      const f = $('#title')[0].innerText + '.fff'
+      let ptr = $('#ptr')[0].innerText
+      ptr = parseInt(ptr) + 100
+      window.location.href = `/display?filmFoxFile=${f}&ptr=${ptr}`
+    }),
+    $('#minus-one').on('click', () => {
+      const f = $('#title')[0].innerText + '.fff'
+      let ptr = $('#ptr')[0].innerText
+      ptr--
+      window.location.href = `/display?filmFoxFile=${f}&ptr=${ptr}`
+    }),
+    $('#minus-ten').on('click', () => {
+      const f = $('#title')[0].innerText + '.fff'
+      let ptr = $('#ptr')[0].innerText
+      ptr = ptr - 10
+      window.location.href = `/display?filmFoxFile=${f}&ptr=${ptr}`
+    }),
+    $('#minus-one-hundred').on('click', () => {
+      const f = $('#title')[0].innerText + '.fff'
+      let ptr = $('#ptr')[0].innerText
+      ptr = ptr - 100
+      window.location.href = `/display?filmFoxFile=${f}&ptr=${ptr}`
+    }),
+    $('#start').on('click', () => {
+      const f = $('#title')[0].innerText + '.fff'
+      window.location.href = `/display?filmFoxFile=${f}&ptr=0`
+    }),
+    $('#end').on('click', () => {
+      const f = $('#title')[0].innerText + '.fff'
+      const ptr = $('#endpoint')[0].innerText
+      window.location.href = `/display?filmFoxFile=${f}&ptr=${ptr}`
+    }),
+    $('#srt').on('click', () => {
+      const f = $('#title')[0].innerText
+      let ptr = $('#ptr')[0].innerText
+      window.location.href = `/srt?title=${f}&ptr=${ptr}`
+    })
+  </script>
+</body>
 </html>

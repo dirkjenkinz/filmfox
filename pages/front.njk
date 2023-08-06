@@ -49,7 +49,7 @@
               <tbody>
                 <tr>
                   <th class='data-left'>Tier</th>
-                  <td class='data-left'>{{subscription.tier}}</td>
+                  <td class='data-left'>{{subscription.tier.toUpperCase()}}</td>
                 </tr>
                 <tr>
                   <th class='data-left'>Character Count</th>
@@ -58,6 +58,10 @@
                 <tr>
                   <th class='data-left'>Character Limit</th>
                   <td class='data-left'>{{subscription.character_limit}}</td>
+                </tr>
+                <tr>
+                  <th class='data-left'>Characters Left</th>
+                  <td class='data-left'>{{subscription.character_limit - subscription.character_count}}</td>
                 </tr>
                 <tr>
                   <th class='data-left'>Can Extend Character Limit</th>
@@ -87,11 +91,11 @@
                 </tr>
                 <tr>
                   <th class='data-left'>Currency</th>
-                  <td>{{subscription.currency}}</td>
+                  <td>{{subscription.currency.toUpperCase()}}</td>
                 </tr>
                 <tr>
                   <th class='data-left'>Status</th>
-                  <td>{{subscription.status}}</td>
+                  <td>{{subscription.status.toUpperCase()}}</td>
                 </tr>
                 <tr>
                   <th class='data-left'>Next Payment Due On</th>
