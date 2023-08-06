@@ -2,30 +2,10 @@ const url = require("url");
 const {
   getData,
   getListOfElements,
-  getDuration,
-  writeFile,
 } = require("../services/file-service");
 const { smartLog } = require("../services/smart-log");
 const dotenv = require("dotenv");
 dotenv.config();
-
-const formatTime = (seconds) => {
-  const date = new Date(null);
-  date.setSeconds(seconds);
-  let h = date.toISOString();
-  h = h.substring(11, h.length - 5);
-  let micro = seconds - Math.floor(seconds);
-  micro = micro.toString().substring(2, 5);
-  if (!micro) micro = "000";
-  h = `${h},${micro}`;
-  return h;
-};
-
-const procureDuration = async (file, elementName) => {
-  file = file.substring(0, file.length - 4);
-  let duration = await getDuration(file, elementName);
-  return duration;
-};
 
 const displayHandler = async (req, res) => {
   smartLog("info", "ENTERING DISPLAY HANDLER");
@@ -77,6 +57,7 @@ const displayHandler = async (req, res) => {
     script[num][4] = name.substring(0, name.length - 4);
   });
 
+  /*
   let timeStart = `${offset}.000`;
   timeStart = parseFloat(timeStart);
   let timeFinish = 0.0;
@@ -112,7 +93,7 @@ const displayHandler = async (req, res) => {
   await writeFile(srt, `${title}.srt`);
 
   smartLog("info", "srt complete");
-
+*/
   res.render("display.njk", {
     title,
     api_key,

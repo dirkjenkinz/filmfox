@@ -132,20 +132,12 @@
         </table>
       </div>
       <div class='col-md-1'>
-        <div class='row'>
-          <p class='seperator'>&nbsp;</p>
-        </div>
-        <div class='row'>
-          <p class='seperator'>
-            -------</p>
-        </div>
+        <div class='row'><p class='seperator'>&nbsp;</div>
         <div class='row'>
           <button class='btn btn-side btn-sm' id='start'>Start</button>
         </div>
         <div class='row'>
-          <p class='seperator'>
-            -------</p>
-        </div>
+          <p class='seperator'>&nbsp;</div>
         <div class='row'>
           <button class='btn btn-side btn-sm' id='plus-one'>+1</button>
         </div>
@@ -153,16 +145,20 @@
           <button class='btn btn-side btn-sm' id='plus-ten'>+10</button>
         </div>
         <div class='row'>
+          <button class='btn btn-side btn-sm' id='plus-fifty'>+50</button>
+        </div>
+        <div class='row'>
           <button class='btn btn-side btn-edit btn-sm' id='plus-one-hundred'>
             +100
           </button>
         </div>
         <div class='row'>
-          <p class='seperator'>
-            -------</p>
-        </div>
+          <p class='seperator'>&nbsp;</div>
         <div class='row'>
           <button class='btn btn-side btn-sm' id='minus-one-hundred'>-100</button>
+        </div>
+        <div class='row'>
+          <button class='btn btn-side btn-sm' id='minus-fifty'>-50</button>
         </div>
         <div class='row'>
           <button class='btn btn-side btn-sm' id='minus-ten'>-10</button>
@@ -173,9 +169,7 @@
           </button>
         </div>
         <div class='row'>
-          <p class='seperator'>
-            -------</p>
-        </div>
+          <p class='seperator'>&nbsp</div>
         <div class='row'>
           <button class='btn btn-side btn-sm' id='end'>End</button>
         </div>
@@ -238,6 +232,12 @@
       ptr = parseInt(ptr) + 10
       window.location.href = `/display?filmFoxFile=${f}&ptr=${ptr}`
     }),
+      $('#plus-fifty').on('click', () => {
+      const f = $('#title')[0].innerText + '.fff';
+      let ptr = $('#ptr')[0].innerText;
+      ptr = parseInt(ptr) + 50;
+      window.location.href = `/display?filmFoxFile=${f}&ptr=${ptr}`;
+    }),
     $('#plus-one-hundred').on('click', () => {
       const f = $('#title')[0].innerText + '.fff'
       let ptr = $('#ptr')[0].innerText
@@ -255,6 +255,12 @@
       let ptr = $('#ptr')[0].innerText
       ptr = ptr - 10
       window.location.href = `/display?filmFoxFile=${f}&ptr=${ptr}`
+    }),
+     $('#minus-fifty').on('click', () => {
+      const f = $('#title')[0].innerText + '.fff';
+      let ptr = $('#ptr')[0].innerText;
+      ptr = ptr - 50;
+      window.location.href = `/display?filmFoxFile=${f}&ptr=${ptr}`;
     }),
     $('#minus-one-hundred').on('click', () => {
       const f = $('#title')[0].innerText + '.fff'
@@ -274,7 +280,8 @@
     $('#srt').on('click', () => {
       const f = $('#title')[0].innerText
       let ptr = $('#ptr')[0].innerText
-      window.location.href = `/srt?title=${f}&ptr=${ptr}`
+      let offset = $('#offset')[0].innerText;
+      window.location.href = `/srt?title=${f}&ptr=${ptr}&offset=${offset}`
     })
   </script>
 </body>
