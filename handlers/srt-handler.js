@@ -58,13 +58,13 @@ const srtHandler = async (req, res) => {
 
   let srt = "";
   for (let s = 0; s < script.length; s++) {
-    if (script[s][6]) {
+    if (script[s][5]) {
       const text = script[s][1].trim();
       srt += `${s + 1}\n`;
-      srt += `${script[s][6]} --> ${script[s][8]}\n`;
-      srt += `${script[s][0]}: ${text}\n\n`;
+      srt += `${script[s][5]} --> ${script[s][7]}\n`;
+      srt += `<b>${script[s][0]}:</b> ${text}\n\n`;
     }
-  }
+  };
 
   await writeFile(srt, `${title}.srt`);
 

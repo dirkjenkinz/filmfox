@@ -37,9 +37,6 @@
       <div class='row show'>
        {% for i in range(0, srt.length) -%}
        <p class='para-srt'>{{srt[i]}}</p>
-       {% if i % 4 == 3 %}
-       <p>-----------------------------------</p>
-       {% endif %}
        {%- endfor %}
     </div>
 
