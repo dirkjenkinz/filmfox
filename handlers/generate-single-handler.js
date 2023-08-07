@@ -52,7 +52,6 @@ const generateSingleHandler = async (req, res) => {
       text = 'EXTERIOR' + text.substring(4);
     };
     text = text.replace(/\.\.\./g, '');
-    console.log({text});
   };
 
   await generateSpeech(api_key, voice_id, fileName, text);

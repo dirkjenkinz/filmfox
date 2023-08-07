@@ -52,7 +52,7 @@ const srtHandler = async (req, res) => {
     script[num].push(formatTime(duration));
     script[num].push(formatTime(timeFinish));
 
-    timeStart = timeFinish + 0.5;
+    timeStart = timeFinish;
     timeStart = Math.round(timeStart * 1000) / 1000;
   }
 

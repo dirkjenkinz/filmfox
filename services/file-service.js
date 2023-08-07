@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const mp3Duration = require('mp3-duration');
 const { smartLog } = require('../services/smart-log');
+const sound = require('sound-play');
 
 const getScript = (file) => {
     const directoryPath = path.join(__dirname, '../scripts');
@@ -20,7 +21,8 @@ const getScript = (file) => {
 };
 
 const getData = async (file) => {
-    smartLog('info', `getting data for ${file}`);
+    smartLog('info', `getData - getting data for ${file}`);
+    console.log({file})
     const directoryPath = path.join(__dirname, '../data');
     return new Promise((resolve, reject) => {
         fs.readFile(`${directoryPath}/${file}`,
@@ -37,6 +39,14 @@ const getData = async (file) => {
 };
 
 const getSoundFile = (fff, file) => {
+    smartLog('info', 'playing sound file');
+    const sFile = path.join(__dirname, `../data/${fff}/${file}`);
+    console.log({sFile});
+    sound.play(sFile);
+};
+
+const playSoundFile = (fff, file) => {
+    console.log({fff}, {file});
     smartLog('info', 'getting sound file');
     const directoryPath = path.join(__dirname, `../data/${fff}`);
     const data = fs.readFileSync(`${directoryPath}/${file}`, `utf8`);
@@ -150,4 +160,5 @@ module.exports = {
     getDuration,
     getSRT,
     deleteFile,
+    playSoundFile,
 };

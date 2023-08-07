@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "audic": "^3.0.2",
     "audioconcat": "^0.1.4",
     "axios": "^1.4.0",
     "body-parser": "^1.19.0",
@@ -21,8 +22,10 @@
     "node-wav-player": "^0.2.0",
     "nodemon": "^2.0.12",
     "nunjucks": "^3.2.3",
+    "play-sound": "^1.1.5",
     "rimraf": "^3.0.2",
     "say": "^0.16.0",
+    "sound-play": "^1.1.0",
     "winston": "^3.10.0"
   }
 }
