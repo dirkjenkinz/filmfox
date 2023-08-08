@@ -87,10 +87,12 @@ const parseSceneHeading = (heading, scene_number) => {
 };
 
 const parseCharacter = (character, scene_number) => {
+  console.log('1.', {character})
   let c = '';
   for (let i = 1; i < character.length; i++) {
-    if (character[i].substring(0, 5) === 'Text>') {
-      c = character[i].substring(5);
+    if (character[i].substring(0, 4) === 'Text') {
+      const l = character[i].indexOf('>') + 1;
+      c = character[i].substring(l);
       if (c.indexOf('(') > 0) {
         c = c.substring(0, c.indexOf('('));
       };
@@ -98,6 +100,7 @@ const parseCharacter = (character, scene_number) => {
   };
   c = c.trim();
   c = c.toUpperCase();
+  console.log({c})
   c[2] = scene_number;
   return c;
 };

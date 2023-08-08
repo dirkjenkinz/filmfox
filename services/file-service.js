@@ -22,7 +22,6 @@ const getScript = (file) => {
 
 const getData = async (file) => {
     smartLog('info', `getData - getting data for ${file}`);
-    console.log({file})
     const directoryPath = path.join(__dirname, '../data');
     return new Promise((resolve, reject) => {
         fs.readFile(`${directoryPath}/${file}`,
@@ -32,6 +31,7 @@ const getData = async (file) => {
                     smartLog('error', err.cause);
                     reject(err);
                 } else {
+                    console.log('>>>>>', JSON.parse(data))
                     resolve(JSON.parse(data));
                 }
             })
@@ -41,12 +41,10 @@ const getData = async (file) => {
 const getSoundFile = (fff, file) => {
     smartLog('info', 'playing sound file');
     const sFile = path.join(__dirname, `../data/${fff}/${file}`);
-    console.log({sFile});
     sound.play(sFile);
 };
 
 const playSoundFile = (fff, file) => {
-    console.log({fff}, {file});
     smartLog('info', 'getting sound file');
     const directoryPath = path.join(__dirname, `../data/${fff}`);
     const data = fs.readFileSync(`${directoryPath}/${file}`, `utf8`);
