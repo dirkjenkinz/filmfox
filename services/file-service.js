@@ -31,24 +31,16 @@ const getData = async (file) => {
                     smartLog('error', err.cause);
                     reject(err);
                 } else {
-                    console.log('>>>>>', JSON.parse(data))
                     resolve(JSON.parse(data));
-                }
-            })
-    })
-};
-
-const getSoundFile = (fff, file) => {
-    smartLog('info', 'playing sound file');
-    const sFile = path.join(__dirname, `../data/${fff}/${file}`);
-    sound.play(sFile);
+                };
+            });
+    });
 };
 
 const playSoundFile = (fff, file) => {
-    smartLog('info', 'getting sound file');
-    const directoryPath = path.join(__dirname, `../data/${fff}`);
-    const data = fs.readFileSync(`${directoryPath}/${file}`, `utf8`);
-    return data;
+    smartLog('info', 'playing sound file');
+    const sFile = path.join(__dirname, `../data/${fff}/${file}`);
+    sound.play(sFile);
 };
 
 const getSRT = (file) => {
@@ -154,9 +146,8 @@ module.exports = {
     createDirectory,
     getFileList,
     getListOfElements,
-    getSoundFile,
+    playSoundFile,
     getDuration,
     getSRT,
     deleteFile,
-    playSoundFile,
 };

@@ -58,6 +58,18 @@ const parseDialogue = (dialogue, character, scene_number) => {
   }
 
   text = text.replace(/\n /g, '');
+  text = text.replace(/\n /g, '');
+  console.log({text})
+  text = text.replace(/    /g, ' ');
+  text = text.replace(/    /g, ' ');
+  text = text.replace(/   /g, ' ');
+  text = text.replace(/   /g, ' ');
+  text = text.replace(/  /g, ' ');
+  text = text.replace(/  /g, ' ');
+  text = text.replace(/ \,/g, ',');
+  text = text.replace(/ \./g, '.');
+  text = text.replace(/ \!/g, '!');
+  text = text.replace(/ \?/g, '?');
 
   let a = [];
   a[0] = character;
@@ -87,7 +99,6 @@ const parseSceneHeading = (heading, scene_number) => {
 };
 
 const parseCharacter = (character, scene_number) => {
-  console.log('1.', {character})
   let c = '';
   for (let i = 1; i < character.length; i++) {
     if (character[i].substring(0, 4) === 'Text') {
@@ -100,7 +111,6 @@ const parseCharacter = (character, scene_number) => {
   };
   c = c.trim();
   c = c.toUpperCase();
-  console.log({c})
   c[2] = scene_number;
   return c;
 };
