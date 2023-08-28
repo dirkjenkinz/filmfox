@@ -57,43 +57,6 @@ const displayHandler = async (req, res) => {
     script[num][4] = name.substring(0, name.length - 4);
   });
 
-  /*
-  let timeStart = `${offset}.000`;
-  timeStart = parseFloat(timeStart);
-  let timeFinish = 0.0;
-  smartLog("info", "building srt data");
-  for (const element of elementNames) {
-    const duration = await procureDuration(file, element);
-    let num = element.substring(6, 12);
-    num = parseInt(num);
-
-    timeFinish = timeStart + duration;
-    timeFinish = Math.round(timeFinish * 1000) / 1000;
-
-    let formattedStart = formatTime(timeStart);
-
-    script[num].push(formattedStart);
-    script[num].push(formatTime(duration));
-    script[num].push(formatTime(timeFinish));
-
-    timeStart = timeFinish + 0.5;
-    timeStart = Math.round(timeStart * 1000) / 1000;
-  }
-
-  let srt = "";
-  for (let s = 0; s < script.length; s++) {
-    if (script[s][6]) {
-      const text = script[s][1].trim();
-      srt += `${s + 1}\n`;
-      srt += `${script[s][6]} --> ${script[s][8]}\n`;
-      srt += `${script[s][0]}: ${text}\n\n`;
-    }
-  }
-
-  await writeFile(srt, `${title}.srt`);
-
-  smartLog("info", "srt complete");
-*/
   res.render("display.njk", {
     title,
     api_key,
