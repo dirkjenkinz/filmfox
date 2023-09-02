@@ -1,8 +1,5 @@
 const url = require("url");
-const {
-  getData,
-  getListOfElements,
-} = require("../services/file-service");
+const { getData, getListOfElements } = require("../services/file-service");
 const { smartLog } = require("../services/smart-log");
 const dotenv = require("dotenv");
 dotenv.config();
@@ -57,6 +54,17 @@ const displayHandler = async (req, res) => {
     script[num][4] = name.substring(0, name.length - 4);
   });
 
+  let imageType = [];
+  for (let i = 0; i < script.length; i++) {
+    if (script[i][5].substring(script[i][5].length - 4) === ".mov") {
+      imageType.push("movie");
+    } else if (script[i][5].substring(script[i][5].length - 4) === ".mp4") {
+      imageType.push("movie");
+    } else {
+      imageType.push("still");
+    }
+  }
+
   res.render("display.njk", {
     title,
     api_key,
@@ -64,6 +72,7 @@ const displayHandler = async (req, res) => {
     ptr,
     end,
     offset,
+    imageType,
   });
 };
 

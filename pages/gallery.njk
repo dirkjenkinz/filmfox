@@ -33,7 +33,7 @@
                 <tr>
                   <td class='data-left'>
                     {% if imageType[i] === 'movie' %}
-                      <video width="160" height="90" controls="controls" autoplay="autoplay" muted>
+                      <video width="160" height="90" controls="controls" autoplay="autoplay" muted id="img_{{i}}" class="img">
                         <source src="../data/{{title}}/images/{{imageList[i]}}" type="video/mp4">
                       </video>
                     {% else %}
@@ -44,7 +44,7 @@
                   {% if imageList[i + 1] %}
                     <td class='data-left'>
                       {% if imageType[i +1] === 'movie' %}
-                      <video width="160" height="90" controls="controls" autoplay="autoplay" muted>
+                      <video width="160" height="90" controls="controls" autoplay="autoplay" id="img_{{i + 1}}" class="img" muted>
                         <source src="../data/{{title}}/images/{{imageList[i +1]}}" type="video/mp4">
                       </video>
                       {% else %}
@@ -56,7 +56,7 @@
                   {% if imageList[i + 2] %}
                     <td class='data-left'>
                       {% if imageType[i +2] === 'movie' %}
-                      <video width="160" height="90" controls="controls" autoplay="autoplay" muted>
+                      <video width="160" height="90" controls="controls" autoplay="autoplay" id="img_{{i + 2}}" class="img" muted>
                         <source src="../data/{{title}}/images/{{imageList[i +2]}}" type="video/mp4">
                       </video>
                       {% else %}
@@ -68,7 +68,7 @@
                   {% if imageList[i + 3] %}
                     <td class='data-left'>
                       {% if imageType[i +3] === 'movie' %}
-                      <video width="160" height="90" controls="controls" autoplay="autoplay" muted>
+                      <video width="160" height="90" controls="controls" autoplay="autoplay" id="img_{{i + 3}}" class="img" muted>
                         <source src="../data/{{title}}/images/{{imageList[i+3]}}" type="video/mp4">
                       </video>
                       {% else %}
@@ -80,7 +80,7 @@
                   {% if imageList[i + 4] %}
                     <td class='data-left'>
                       {% if imageType[i + 4] === 'movie' %}
-                      <video width="160" height="90" controls="controls" autoplay="autoplay" muted>
+                      <video width="160" height="90" controls="controls" autoplay="autoplay" id="img_{{i + 4}}" class="img" muted>
                         <source src="../data/{{title}}/images/{{imageList[i+4]}}" type="video/mp4">
                       </video>
                       {% else %}
@@ -92,7 +92,7 @@
                   {% if imageList[i + 5] %}
                     <td class='data-left'>
                       {% if imageType[i +5] === 'movie' %}
-                      <video width="160" height="90" controls="controls" autoplay="autoplay" muted>
+                      <video width="160" height="90" controls="controls" autoplay="autoplay" id="img_{{i + 5}}" class="img" muted>
                         <source src="../data/{{title}}/images/{{imageList[i + 5]}}" type="video/mp4">
                       </video>
                       {% else %}

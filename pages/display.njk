@@ -110,8 +110,14 @@
                         {% endif %}
                       </td>
                       <td class='data-left'>
-                        <img width="160" height="90" src="../data/Satellite/images/{{script[i][5]}}" id="img_{{i}}" class="img"
+                      {% if imageType[i +1] === 'movie' %}
+                        <video width="160" height="90" controls="controls" autoplay="autoplay" id="img_{{i}}" class="img" muted>
+                          <source src="../data/{{title}}/images/{{script[i}[5]}}" type="video/mp4">
+                        </video>
+                      {% else %}
+                        <img width="160" height="90" src="../data/{{title}}/images/{{script[i][5]}}" id="img_{{i}}" class="img"
                         alt="{{script[i][5]}}"/>
+                      {% endif %}
                       </td>
                     </tr>
                   {% endif %}

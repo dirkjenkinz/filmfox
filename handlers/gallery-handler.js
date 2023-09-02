@@ -23,10 +23,6 @@ const galleryHandler = async (req, res) => {
     }
   }
 
-  for (let i = 0; i < imageList.length; i++){
-    console.log(imageList[i], imageType[i])
-  };
-
   res.render("gallery.njk", {
     title,
     img,
