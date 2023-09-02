@@ -24,19 +24,18 @@ const procureDuration = async (file, elementName) => {
   return duration;
 };
 
-const srtHandler = async (req, res) => {
-  smartLog("info", "entering srt handler");
+const showreelHandler = async (req, res) => {
+  smartLog("info", "entering showreel handler");
   const u = url.parse(req.originalUrl, true);
   let title = u.query.title;
   let ptr = u.query.ptr;
   let offset = u.query.offset;
   let filmFoxFile = await getData(`${title}.fff`);
   const { script } = filmFoxFile;
-
   let timeStart = `${offset}.000`;
   timeStart = parseFloat(timeStart);
   let timeFinish = 0.0;
-  smartLog("info", "building srt data");
+  smartLog("info", "building showreel data");
   const elementNames = await getListOfElements(title);
   for (const element of elementNames) {
     const duration = await procureDuration(title, element);
@@ -56,25 +55,29 @@ const srtHandler = async (req, res) => {
     timeStart = Math.round(timeStart * 1000) / 1000;
   }
 
-  let srt = "";
+  let showreel = [];
   for (let s = 0; s < script.length; s++) {
     if (script[s][6]) {
-      const text = script[s][1].trim();
-      srt += `${s + 1}\n`;
-      srt += `${script[s][6]} --> ${script[s][8]}\n`;
-      srt += `<b>${script[s][0]}:</b> ${text}\n\n`;
+        const obj = {
+        start: `${script[s][6]}`,
+        finish: `${script[s][8]}`,
+        character: `${script[s][0]}`,
+        dialogue: `${script[s][1].trim()}`,
+        card: `${script[s][5]}`,
+        sound: `${script[s][4]}`,
+      };
+      showreel.push(obj);
     }
-  };
+  }
 
-  await writeFile(srt, `${title}.srt`);
+  await writeFile(JSON.stringify(showreel), `${title}.shw`);
 
-  smartLog("info", "srt complete");
-  srt = srt.split("\n");
-  res.render("srt.njk", {
-    srt,
+  smartLog("info", "showreel complete");
+  res.render("showreel.njk", {
+    showreel,
     ptr,
     title,
   });
 };
 
-module.exports = { srtHandler };
+module.exports = { showreelHandler };

@@ -39,7 +39,10 @@ const getData = async (file) => {
 
 const playSoundFile = (fff, file) => {
     smartLog('info', 'playing sound file');
+    console.log('>'+fff+'<');
+    console.log('>'+file+'<');
     const sFile = path.join(__dirname, `../data/${fff}/${file}`);
+    console.log({sFile});
     sound.play(sFile);
 };
 
@@ -133,6 +136,29 @@ const getListOfElements = async (subdir) => {
                 reject(err);
             } else {
                 smartLog('info', 'elements retrieved');
+                const fList = [];
+                files.forEach(file => {
+                    if (file.substring(file.length - 4) === `.mp3`) {
+                        fList.push(file);
+                    };
+                });
+                resolve(fList);
+            }
+        })
+    })
+};
+
+const getListOfImages = async (subdir) => {
+    smartLog('info', 'getting list of elements');
+    const directoryPath = path.join(__dirname, `../data/${subdir}/images`);
+    return new Promise((resolve, reject) => {
+        fs.readdir(directoryPath, (err, files) => {
+            if (err) {
+                smartLog('error', 'error retrieving list of elements');
+                reject(err);
+            } else {
+                smartLog('info', 'elements retrieved');
+                const fList = [];
                 resolve(files);
             }
         })
@@ -146,6 +172,7 @@ module.exports = {
     createDirectory,
     getFileList,
     getListOfElements,
+    getListOfImages,
     playSoundFile,
     getDuration,
     getSRT,

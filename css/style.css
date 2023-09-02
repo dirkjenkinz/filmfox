@@ -1,220 +1,222 @@
-.container, .container-fluid {
-    background: black;
-    color: white;
-    border: darkslategrey 12px solid;
+.container,
+.container-fluid {
+  background: black;
+  color: white;
+  border: darkslategrey 12px solid;
 }
 
 #top-row {
-    padding-bottom: 3px;
+  padding-bottom: 3px;
 }
 
 .red-row {
-    background: red;
+  background: red;
 }
 
 .cell-filler {
-    width: 1%;
+  width: 1%;
 }
 
 .cell-left {
-    padding: 0px 5px;
-    text-align: right;
+  padding: 0px 5px;
+  text-align: right;
 }
 
 .cell-right {
-    padding: 0px 5px;
-    text-align: right;
+  padding: 0px 5px;
+  text-align: right;
 }
 
 .show {
-    background: paleturquoise;
-    border: 4px blue solid;
-    color: black;
-    padding: 4px;
+  background: paleturquoise;
+  border: 4px blue solid;
+  color: black;
+  padding: 4px;
 }
 
 .show2 {
-    background: steelblue;
-    border: 4px blue solid;
-    color: black;
-    padding: 4px;
+  background: steelblue;
+  border: 4px blue solid;
+  color: black;
+  padding: 4px;
 }
 
 .display {
-    border: 4px red solid;
+  border: 4px red solid;
 }
 
 html {
-    background: #555;
+  background: #555;
 }
 
 #heading {
-    font-size: 200%;
+  font-size: 200%;
 }
 
 .data-right {
-    text-align: right;
+  text-align: right;
 }
 
 .data-left {
-    text-align: left;
-    padding: 0px 4px;
+  text-align: left;
+  padding: 0px 4px;
 }
 
 .h-chars {
-    background: red;
+  background: red;
 }
 
 .voice {
-    background: black;
-    color: white;
+  background: black;
+  color: white;
 }
 
 #voices {
-    background: black;
-    color: white;
+  background: black;
+  color: white;
 }
 
-input[type=range][orient=vertical]
-{
-    writing-mode: bt-lr; /* IE */
-    -webkit-appearance: slider-vertical; /* WebKit */
-    width: 20px;
-    height: 600px;
-    padding: 100pxs 5px;
+input[type="range"][orient="vertical"] {
+  writing-mode: bt-lr; /* IE */
+  -webkit-appearance: slider-vertical; /* WebKit */
+  width: 20px;
+  height: 600px;
+  padding: 100pxs 5px;
 }
 
-
-input, textarea {
-    background: black;
-    border: 2px white solid;
+input,
+textarea {
+  background: black;
+  border: 2px white solid;
 }
 
 textarea {
-    resize: vertical;
+  resize: vertical;
 }
 
 .txt {
-    background: white;
+  background: white;
 }
 
 #module-text {
-    background: blue;
-    color: red;
-    border: 6px solid black;
-    margin: 0 60px;
+  background: blue;
+  color: red;
+  border: 6px solid black;
+  margin: 0 60px;
 }
 
-.hdr{
-    background: silver;
-    color: white;
-    font-weight: bold;
-    text-align: center;
-    font-size: 150%;
+.hdr {
+  background: silver;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  font-size: 150%;
 }
 
-#list{
-    text-align:center;
+#list {
+  text-align: center;
 }
 
-#error-response{
-    text-align:center;
+#error-response {
+  text-align: center;
 }
 
-.chars, .txt {
-    color: black;
-    text-align:left;
+.chars,
+.txt {
+  color: black;
+  text-align: left;
 }
 
 #newchar {
-    background: white;
-    color: black;
+  background: white;
+  color: black;
 }
 
 .sub-show {
-    background: darkgoldenrod;
+  background: darkgoldenrod;
 }
 
 .para-srt {
-    margin: 0;
+  margin: 0;
 }
 
 .seperator {
-    text-align: center;    
+  text-align: center;
 }
 
 .btn-edit {
-    background: red;
-    color: white;
-    border: black 2px solid;
+  background: red;
+  color: white;
+  border: black 2px solid;
 }
 
 .btn-side {
-    background: blue;
-    color: white;
-    border: black 2px solid;
-    margin: 2px 2px 0 0;
-    width: 94%;
+  background: blue;
+  color: white;
+  border: black 2px solid;
+  margin: 2px 2px 0 0;
+  width: 94%;
 }
 
 .white-border {
-    padding: 2px 10px;
-    background: red;
-    color: white;
-    border: white 4px solid;
-    text-align:center;
+  padding: 2px 10px;
+  background: red;
+  color: white;
+  border: white 4px solid;
+  text-align: center;
 }
 
 #characters {
-    background: #555;
-    color: black;
+  background: #555;
+  color: black;
 }
 
 #title-head {
-    text-align: right;
+  text-align: right;
 }
 
-#title, #summary, #fname { 
-    background: white;
-    color: black;
+#title,
+#summary,
+#fname {
+  background: white;
+  color: black;
 }
 
 .slidecontainer {
-    width: 100%; /* Width of the outside container */
-  }
-  
-  /* The slider itself */
-  .slider {
-    -webkit-appearance: none;  /* Override default CSS styles */
-    appearance: none;
-    width: 100%; /* Full-width */
-    height: 25px; /* Specified height */
-    background: #d3d3d3; /* Grey background */
-    outline: none; /* Remove outline */
-    opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
-    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
-    transition: opacity .2s;
-  }
-  
-  /* Mouse-over effects */
-  .slider:hover {
-    opacity: 1; /* Fully shown on mouse-over */
-  }
-  
-  /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
-  .slider::-webkit-slider-thumb {
-    -webkit-appearance: none; /* Override default look */
-    appearance: none;
-    width: 25px; /* Set a specific slider handle width */
-    height: 25px; /* Slider handle height */
-    background: #04AA6D; /* Green background */
-    cursor: pointer; /* Cursor on hover */
-  }
-  
-  .slider::-moz-range-thumb {
-    width: 25px; /* Set a specific slider handle width */
-    height: 25px; /* Slider handle height */
-    background: #04AA6D; /* Green background */
-    cursor: pointer; /* Cursor on hover */
-  }
-  
+  width: 100%; /* Width of the outside container */
+}
+
+/* The slider itself */
+.slider {
+  -webkit-appearance: none; /* Override default CSS styles */
+  appearance: none;
+  width: 100%; /* Full-width */
+  height: 25px; /* Specified height */
+  background: #d3d3d3; /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: 0.2s; /* 0.2 seconds transition on hover */
+  transition: opacity 0.2s;
+}
+
+/* Mouse-over effects */
+.slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #04aa6d; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.slider::-moz-range-thumb {
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #04aa6d; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}

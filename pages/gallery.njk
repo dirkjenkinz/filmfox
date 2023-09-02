@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8'/>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'/>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
+    <title>FilmFox</title>
+    <link rel='stylesheet' href='../css/style.css'/>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css'/>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
+    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js'></script>
+  </head>
+
+  <body>
+    <div class='container-fluid'>
+      <div class='row'>
+        <div class='col-md-2'>
+          <h4>Film Fox</h4>
+        </div>
+        <div class='col-md-1' hidden="hidden">
+          <p id='ptr'>{{ptr}}</p>
+          <p id='img'>{{img}}</p>
+        </div>
+        <div class='col-md-3 data-right' id='title'>
+          <h5>{{ title }}</h5>
+        </div>
+      </div>
+      <div class='row show'>
+        <div class='col-md-12'>
+          <table class='table-bordered table-sm table-dark table-grid' id='tab_img'>
+            <tbody>
+              {% for i in range(0, imageList.length, 6) -%}
+                <tr>
+                  <td class='data-left'>
+                    {% if imageType[i] === 'movie' %}
+                      <video width="160" height="90" controls="controls" autoplay="autoplay" muted>
+                        <source src="../data/{{title}}/images/{{imageList[i]}}" type="video/mp4">
+                      </video>
+                    {% else %}
+                      <img width="160" height="90" src="../data/{{title}}/images/{{imageList[i]}}" id="img_{{i}}" class="img" alt="imageList[i]" value="{{imageList[i]}}"/>
+                    {% endif %}
+                  </td>
+
+                  {% if imageList[i + 1] %}
+                    <td class='data-left'>
+                      {% if imageType[i +1] === 'movie' %}
+                      <video width="160" height="90" controls="controls" autoplay="autoplay" muted>
+                        <source src="../data/{{title}}/images/{{imageList[i +1]}}" type="video/mp4">
+                      </video>
+                      {% else %}
+                        <img width="160" height="90" src="../data/{{title}}/images/{{imageList[i + 1]}}" id="img_{{i + 1}}" class="img" alt="imageList[i +1]"/>
+                      {% endif %}
+                    </td>
+                  {% endif %}
+
+                  {% if imageList[i + 2] %}
+                    <td class='data-left'>
+                      {% if imageType[i +2] === 'movie' %}
+                      <video width="160" height="90" controls="controls" autoplay="autoplay" muted>
+                        <source src="../data/{{title}}/images/{{imageList[i +2]}}" type="video/mp4">
+                      </video>
+                      {% else %}
+                        <img width="160" height="90" src="../data/{{title}}/images/{{imageList[i + 2]}}" id="img_{{i + 2}}" class="img" alt="imageList[i +2]"/>
+                      {% endif %}
+                    </td>
+                  {% endif %}
+
+                  {% if imageList[i + 3] %}
+                    <td class='data-left'>
+                      {% if imageType[i +3] === 'movie' %}
+                      <video width="160" height="90" controls="controls" autoplay="autoplay" muted>
+                        <source src="../data/{{title}}/images/{{imageList[i+3]}}" type="video/mp4">
+                      </video>
+                      {% else %}
+                        <img width="160" height="90" src="../data/{{title}}/images/{{imageList[i + 3]}}" id="img_{{i + 3}}" class="img" alt="imageList[i +3]"/>
+                      {% endif %}
+                    </td>
+                  {% endif %}
+
+                  {% if imageList[i + 4] %}
+                    <td class='data-left'>
+                      {% if imageType[i + 4] === 'movie' %}
+                      <video width="160" height="90" controls="controls" autoplay="autoplay" muted>
+                        <source src="../data/{{title}}/images/{{imageList[i+4]}}" type="video/mp4">
+                      </video>
+                      {% else %}
+                        <img width="160" height="90" src="../data/{{title}}/images/{{imageList[i + 4]}}" id="img_{{i + 4}}" class="img" alt="imageList[i +4]"/>
+                      {% endif %}
+                    </td>
+                  {% endif %}
+
+                  {% if imageList[i + 5] %}
+                    <td class='data-left'>
+                      {% if imageType[i +5] === 'movie' %}
+                      <video width="160" height="90" controls="controls" autoplay="autoplay" muted>
+                        <source src="../data/{{title}}/images/{{imageList[i + 5]}}" type="video/mp4">
+                      </video>
+                      {% else %}
+                        <img width="160" height="90" src="../data/{{title}}/images/{{imageList[i + 5]}}" id="img_{{i + 5}}" class="img" alt="imageList[i +5]"/>
+                      {% endif %}
+                    </td>
+                  {% endif %}
+
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <script>
+      $('.img').on('click', (e) => {
+        const f = $('#title')[0].innerText
+        const ptr = $('#ptr')[0].innerText
+        const i = $('#img')[0].innerText;
+        num = e
+          .target
+          .id
+          .substring(4);
+        window.location.href = `/update-image?title=${f}&ptr=${ptr}&img=${i}&num=${num}`
+      })
+    </script>
+  </body>
+</html>
