@@ -194,14 +194,11 @@ const convertHandler = async (req, res) => {
 
   await writeFile('', `${title}.srt`);
 
-  offset = 0;
-
   const fff = {
     title,
     api_key,
     voice_data,
     script,
-    offset
   };
 
   await writeFile(JSON.stringify(fff), title + '.fff');
@@ -211,7 +208,7 @@ const convertHandler = async (req, res) => {
     await writeFile(JSON.stringify(characters), title + '.chrs');
   };
 
-  res.redirect(`/display?filmFoxFile=${title}.fff&ptr=0`);
+  res.redirect(`/display?filmFoxFile=${title}.fff&ptr=0,&locked=yes`);
 };
 
 module.exports = { convertHandler };

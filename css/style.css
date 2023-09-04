@@ -47,7 +47,12 @@ html {
 .data-left {
   text-align: left;
   padding: 0px 4px;
+  background: slategrey;
+}
+
+.data-display {
   background: black;
+  padding: 0px 8px;
 }
 
 .h-chars {
@@ -62,6 +67,15 @@ html {
 #voices {
   background: black;
   color: white;
+}
+
+.card {
+  text-align:center;
+  background-color: skyblue;
+}
+
+.img {
+  border: 5px solid #555;
 }
 
 input[type="range"][orient="vertical"] {
@@ -161,7 +175,7 @@ textarea {
 .table-scroll tbody {
   position: absolute;
   overflow-y: scroll;
-  height: 400px;
+  height: 450px;
 }
 
 .table-scroll tr {
@@ -172,4 +186,8 @@ textarea {
 
 .table-scroll thead > tr > th {
   border: none;
+}
+
+#sound-data {
+  font-size: 60%;
 }

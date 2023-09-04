@@ -26,81 +26,87 @@
         </div>
       </div>
       <div class='row show'>
-        <div class='col-md-12'>
+        <div class='col-md-6'>
           <table class='table-bordered table-sm table-dark table-grid' id='tab_img'>
             <tbody>
-              {% for i in range(0, imageList.length, 6) -%}
+              {% for i in range(0, unused.length, 3) -%}
                 <tr>
                   <td class='data-left'>
-                    {% if imageType[i] === 'movie' %}
-                      <video width="160" height="90" controls="controls" autoplay="autoplay" muted id="img_{{i}}" class="img">
-                        <source src="../data/{{title}}/images/{{imageList[i]}}" type="video/mp4">
+                    {% if unused[i][1] === 'movie' %}
+                      <video width="160" height="90" controls="controls" autoplay="autoplay" muted="muted" id="img_{{i}}" class="img">
+                        <source src="../data/{{title}}/images/{{unused[i][0]}}" type="video/mp4">
                       </video>
                     {% else %}
-                      <img width="160" height="90" src="../data/{{title}}/images/{{imageList[i]}}" id="img_{{i}}" class="img" alt="imageList[i]" value="{{imageList[i]}}"/>
+                      <img width="160" height="90" src="../data/{{title}}/images/{{unused[i][0]}}" id="img_{{i}}" class="img" alt="unused[i][0]" value="{{unused[i][0]}}"/>
                     {% endif %}
                   </td>
 
-                  {% if imageList[i + 1] %}
+                  {% if unused[i + 1][0] %}
                     <td class='data-left'>
-                      {% if imageType[i +1] === 'movie' %}
-                      <video width="160" height="90" controls="controls" autoplay="autoplay" id="img_{{i + 1}}" class="img" muted>
-                        <source src="../data/{{title}}/images/{{imageList[i +1]}}" type="video/mp4">
-                      </video>
+                      {% if unused[i + 1][1] === 'movie' %}
+                        <video width="160" height="90" controls="controls" autoplay="autoplay" id="img_{{i + 1}}" class="img" muted="muted">
+                          <source src="../data/{{title}}/images/{{used[i +1][0]}}" type="video/mp4">
+                        </video>
                       {% else %}
-                        <img width="160" height="90" src="../data/{{title}}/images/{{imageList[i + 1]}}" id="img_{{i + 1}}" class="img" alt="imageList[i +1]"/>
+                        <img width="160" height="90" src="../data/{{title}}/images/{{unused[i + 1][0]}}" id="img_{{i + 1}}" class="img" alt="unused[i +1][0]"/>
                       {% endif %}
                     </td>
                   {% endif %}
 
-                  {% if imageList[i + 2] %}
+                  {% if unused[i + 2][0] %}
                     <td class='data-left'>
-                      {% if imageType[i +2] === 'movie' %}
-                      <video width="160" height="90" controls="controls" autoplay="autoplay" id="img_{{i + 2}}" class="img" muted>
-                        <source src="../data/{{title}}/images/{{imageList[i +2]}}" type="video/mp4">
-                      </video>
+                      {% if unused[i + 2][1] === 'movie' %}
+                        <video width="160" height="90" controls="controls" autoplay="autoplay" id="img_{{i + 2}}" class="img" muted="muted">
+                          <source src="../data/{{title}}/images/{{unused[i +2][0]}}" type="video/mp4">
+                        </video>
                       {% else %}
-                        <img width="160" height="90" src="../data/{{title}}/images/{{imageList[i + 2]}}" id="img_{{i + 2}}" class="img" alt="imageList[i +2]"/>
+                        <img width="160" height="90" src="../data/{{title}}/images/{{unused[i + 2][0]}}" id="img_{{i + 2}}" class="img" alt="unused[i +2][0]"/>
+                      {% endif %}
+                    </td>
+                  {% endif %}
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        <div class='col-md-6'>
+          <table class='table-bordered table-sm table-dark table-grid' id='tab_img'>
+            <tbody>
+              {% for i in range(0, used.length, 3) -%}
+                <tr>
+                  <td class='data-left'>
+                    {% if used[i][1] === 'movie' %}
+                      <video width="160" height="90" controls="controls" autoplay="autoplay" muted="muted" id="img_{{i}}" class="img">
+                        <source src="../data/{{title}}/images/{{used[i][0]}}" type="video/mp4">
+                      </video>
+                    {% else %}
+                      <img width="160" height="90" src="../data/{{title}}/images/{{used[i][0]}}" id="img_{{i}}" class="img" alt="used[i][0]" value="{{used[i][0]}}"/>
+                    {% endif %}
+                  </td>
+
+                  {% if used[i + 1][0] %}
+                    <td class='data-left'>
+                      {% if used[i + 1][1] === 'movie' %}
+                        <video width="160" height="90" controls="controls" autoplay="autoplay" id="img_{{i + 1}}" class="img" muted="muted">
+                          <source src="../data/{{title}}/images/{{used[i +1][0]}}" type="video/mp4">
+                        </video>
+                      {% else %}
+                        <img width="160" height="90" src="../data/{{title}}/images/{{used[i + 1][0]}}" id="img_{{i + 1}}" class="img" alt="used[i +1][0]"/>
                       {% endif %}
                     </td>
                   {% endif %}
 
-                  {% if imageList[i + 3] %}
+                  {% if used[i + 2][0] %}
                     <td class='data-left'>
-                      {% if imageType[i +3] === 'movie' %}
-                      <video width="160" height="90" controls="controls" autoplay="autoplay" id="img_{{i + 3}}" class="img" muted>
-                        <source src="../data/{{title}}/images/{{imageList[i+3]}}" type="video/mp4">
-                      </video>
+                      {% if used[i + 2][1] === 'movie' %}
+                        <video width="160" height="90" controls="controls" autoplay="autoplay" id="img_{{i + 2}}" class="img" muted="muted">
+                          <source src="../data/{{title}}/images/{{used[i +2][0]}}" type="video/mp4">
+                        </video>
                       {% else %}
-                        <img width="160" height="90" src="../data/{{title}}/images/{{imageList[i + 3]}}" id="img_{{i + 3}}" class="img" alt="imageList[i +3]"/>
+                        <img width="160" height="90" src="../data/{{title}}/images/{{used[i + 2][0]}}" id="img_{{i + 2}}" class="img" alt="used[i +2][0]"/>
                       {% endif %}
                     </td>
                   {% endif %}
-
-                  {% if imageList[i + 4] %}
-                    <td class='data-left'>
-                      {% if imageType[i + 4] === 'movie' %}
-                      <video width="160" height="90" controls="controls" autoplay="autoplay" id="img_{{i + 4}}" class="img" muted>
-                        <source src="../data/{{title}}/images/{{imageList[i+4]}}" type="video/mp4">
-                      </video>
-                      {% else %}
-                        <img width="160" height="90" src="../data/{{title}}/images/{{imageList[i + 4]}}" id="img_{{i + 4}}" class="img" alt="imageList[i +4]"/>
-                      {% endif %}
-                    </td>
-                  {% endif %}
-
-                  {% if imageList[i + 5] %}
-                    <td class='data-left'>
-                      {% if imageType[i +5] === 'movie' %}
-                      <video width="160" height="90" controls="controls" autoplay="autoplay" id="img_{{i + 5}}" class="img" muted>
-                        <source src="../data/{{title}}/images/{{imageList[i + 5]}}" type="video/mp4">
-                      </video>
-                      {% else %}
-                        <img width="160" height="90" src="../data/{{title}}/images/{{imageList[i + 5]}}" id="img_{{i + 5}}" class="img" alt="imageList[i +5]"/>
-                      {% endif %}
-                    </td>
-                  {% endif %}
-
                 </tr>
               {% endfor %}
             </tbody>

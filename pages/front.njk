@@ -137,15 +137,9 @@
           window.location.href = `/convert?script=${s}`
         }
       }),
-  //      $('#display').on('click', () => {
-  //        let f = $('#fff').val().substring(12)
-  //        if (f !== '') {
-  //          window.location.href = `/display?filmFoxFile=${f}&ptr=0`
-  //        }
-  //      }),
         $('.btn-fff').on('click', (e) => {
           let f = e.target.value;
-          window.location.href = `/display?filmFoxFile=${f}&ptr=0`
+          window.location.href = `/display?filmFoxFile=${f}&ptr=0&locked=yes`
         }),
         $('.btn-fdx').on('click', (e) => {
           let s = e.target.value;

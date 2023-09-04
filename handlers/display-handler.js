@@ -7,16 +7,21 @@ dotenv.config();
 const displayHandler = async (req, res) => {
   smartLog("info", "ENTERING DISPLAY HANDLER");
 
-  let u = url.parse(req.originalUrl, true);
-  let ptr = u.query.ptr;
-  let file = u.query.filmFoxFile;
+  const u = url.parse(req.originalUrl, true);
+  const ptr = u.query.ptr;
+  const locked = u.query.locked;
+  const file = u.query.filmFoxFile;
   let filmFoxFile = await getData(file);
+
+  let lock = 'Unlock';
+  if (locked === 'no') {
+    lock = 'Lock'
+  };
 
   const { title, script } = filmFoxFile;
   const chrs = file.substring(0, file.length - 4) + ".chrs";
   const characters = await getData(chrs);
   const api_key = process.env.APIKEY;
-  const offset = filmFoxFile.offset;
 
   script.forEach((scriptChar) => {
     characters.forEach((c) => {
@@ -26,11 +31,6 @@ const displayHandler = async (req, res) => {
     });
   });
 
-  ptr = parseInt(ptr);
-
-  const end = script.length - 10;
-  if (ptr > end) ptr = end;
-  if (ptr < 0) ptr = 0;
 
   const elements = await getListOfElements(title);
   elements.forEach((e, index) => {
@@ -70,9 +70,8 @@ const displayHandler = async (req, res) => {
     api_key,
     script,
     ptr,
-    end,
-    offset,
     imageType,
+    lock,
   });
 };
 

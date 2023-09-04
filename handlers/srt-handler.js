@@ -29,12 +29,10 @@ const srtHandler = async (req, res) => {
   const u = url.parse(req.originalUrl, true);
   let title = u.query.title;
   let ptr = u.query.ptr;
-  let offset = u.query.offset;
   let filmFoxFile = await getData(`${title}.fff`);
   const { script } = filmFoxFile;
 
-  let timeStart = `${offset}.000`;
-  timeStart = parseFloat(timeStart);
+  timeStart = 0.0;
   let timeFinish = 0.0;
   smartLog("info", "building srt data");
   const elementNames = await getListOfElements(title);
