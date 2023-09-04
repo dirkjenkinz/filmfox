@@ -37,8 +37,11 @@
                         <source src="../data/{{title}}/images/{{unused[i][0]}}" type="video/mp4">
                       </video>
                     {% else %}
-                      <img width="160" height="90" src="../data/{{title}}/images/{{unused[i][0]}}" id="img_{{i}}" class="img" alt="unused[i][0]" value="{{unused[i][0]}}"/>
+                      <img width="160" height="90" src="../data/{{title}}/images/{{unused[i][0]}}" id="img_{{i}}" class="img" alt="unused[i][0]"/>
                     {% endif %}
+                    <button type='button' class='btn btn-edit btn-block btn-sm btn-select' value="{{unused[i][0]}}">
+                      Select
+                    </button>
                   </td>
 
                   {% if unused[i + 1][0] %}
@@ -50,6 +53,9 @@
                       {% else %}
                         <img width="160" height="90" src="../data/{{title}}/images/{{unused[i + 1][0]}}" id="img_{{i + 1}}" class="img" alt="unused[i +1][0]"/>
                       {% endif %}
+                      <button type='button' class='btn btn-edit btn-block btn-sm btn-select' value="{{unused[i + 1][0]}}">
+                        Select
+                      </button>
                     </td>
                   {% endif %}
 
@@ -62,6 +68,9 @@
                       {% else %}
                         <img width="160" height="90" src="../data/{{title}}/images/{{unused[i + 2][0]}}" id="img_{{i + 2}}" class="img" alt="unused[i +2][0]"/>
                       {% endif %}
+                      <button type='button' class='btn btn-edit btn-block btn-sm btn-select' value="{{unused[i + 2][0]}}">
+                        Select
+                      </button>
                     </td>
                   {% endif %}
                 </tr>
@@ -80,8 +89,11 @@
                         <source src="../data/{{title}}/images/{{used[i][0]}}" type="video/mp4">
                       </video>
                     {% else %}
-                      <img width="160" height="90" src="../data/{{title}}/images/{{used[i][0]}}" id="img_{{i}}" class="img" alt="used[i][0]" value="{{used[i][0]}}"/>
+                      <img width="160" height="90" src="../data/{{title}}/images/{{used[i][0]}}" id="img_{{i}}" class="img" alt="used[i][0]"/>
                     {% endif %}
+                    <button type='button' class='btn btn-edit btn-block btn-sm btn-select' value="{{used[i][0]}}">
+                      Select
+                    </button>
                   </td>
 
                   {% if used[i + 1][0] %}
@@ -93,6 +105,9 @@
                       {% else %}
                         <img width="160" height="90" src="../data/{{title}}/images/{{used[i + 1][0]}}" id="img_{{i + 1}}" class="img" alt="used[i +1][0]"/>
                       {% endif %}
+                      <button type='button' class='btn btn-edit btn-block btn-sm btn-select' value="{{used[i + 1][0]}}">
+                        Select
+                      </button>
                     </td>
                   {% endif %}
 
@@ -105,6 +120,9 @@
                       {% else %}
                         <img width="160" height="90" src="../data/{{title}}/images/{{used[i + 2][0]}}" id="img_{{i + 2}}" class="img" alt="used[i +2][0]"/>
                       {% endif %}
+                      <button type='button' class='btn btn-edit btn-block btn-sm btn-select' value="{{used[i + 2][0]}}">
+                        Select
+                      </button>
                     </td>
                   {% endif %}
                 </tr>
@@ -115,15 +133,24 @@
       </div>
     </div>
     <script>
-      $('.img').on('click', (e) => {
+      $('.imcg').on('click', (e) => {
         const f = $('#title')[0].innerText
         const ptr = $('#ptr')[0].innerText
         const i = $('#img')[0].innerText;
-        num = e
+
+        const source = e
           .target
-          .id
-          .substring(4);
-        window.location.href = `/update-image?title=${f}&ptr=${ptr}&img=${i}&num=${num}`
+          .src
+          .substring(e.target.src.lastIndexOf('/') + 1);
+
+        window.location.href = `/update-image?title=${f}&ptr=${ptr}&img=${i}&src=${source}`
+      }),
+      $('.btn-select').on('click', (e) => {
+        const source = e.target.value;
+        const f = $('#title')[0].innerText
+        const ptr = $('#ptr')[0].innerText
+        const i = $('#img')[0].innerText;
+        window.location.href = `/update-image?title=${f}&ptr=${ptr}&img=${i}&src=${source}`
       })
     </script>
   </body>

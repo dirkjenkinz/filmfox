@@ -55,13 +55,17 @@ const displayHandler = async (req, res) => {
   });
 
   let imageType = [];
+  let images = [0];
   for (let i = 0; i < script.length; i++) {
     if (script[i][5].substring(script[i][5].length - 4) === ".mov") {
       imageType.push("movie");
+      images.push([script[i][5], "movie"])
     } else if (script[i][5].substring(script[i][5].length - 4) === ".mp4") {
       imageType.push("movie");
+      images.push([script[i][5], "movie"])
     } else {
       imageType.push("still");
+      images.push([script[i][5], "still"])
     }
   }
 

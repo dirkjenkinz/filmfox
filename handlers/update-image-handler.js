@@ -13,18 +13,16 @@ const updateImageHandler = async (req, res) => {
   const ptr = u.query.ptr;
   const title = u.query.title;
   const img = u.query.img.substring(4);
-  const num = u.query.num;
+  const src = u.query.src;
 
+  console.log({src});
   let filmFoxFile = await getData(title + ".fff");
 
   const { script } = filmFoxFile;
 
-  const imageList = await getListOfImages(title);
-  imageList.unshift("blank.jpg");
-
   const holdImage = script[img][5];
 
-  script[img][5] = imageList[num];
+  script[img][5] = src;
 
   let carryOn = true;
   for (let i = parseInt(img) + 1; i < script.length; i++) {
@@ -38,7 +36,7 @@ const updateImageHandler = async (req, res) => {
     }
 
     if (script[i][5] === holdImage && carryOn) {
-      script[i][5] = imageList[num];
+      script[i][5] = src;
     } else {
       carryOn = false;
     }
