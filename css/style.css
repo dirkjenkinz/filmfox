@@ -42,6 +42,7 @@ html {
 .data-right {
   text-align: right;
   background: black;
+  padding: 0px 4px;
 }
 
 .data-left {
@@ -53,6 +54,10 @@ html {
 .data-display {
   background: black;
   padding: 0px 8px;
+}
+
+.break {
+  background: silver;
 }
 
 .h-chars {
@@ -71,7 +76,6 @@ html {
 
 .card {
   text-align:center;
-  background-color: skyblue;
 }
 
 .img {

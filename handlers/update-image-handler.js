@@ -12,7 +12,7 @@ const updateImageHandler = async (req, res) => {
   let u = url.parse(req.originalUrl, true);
   const ptr = u.query.ptr;
   const title = u.query.title;
-  const img = u.query.img.substring(4);
+  const img = u.query.img;
   const src = u.query.src;
 
   console.log({src});

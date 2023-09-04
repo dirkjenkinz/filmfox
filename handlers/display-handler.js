@@ -55,7 +55,7 @@ const displayHandler = async (req, res) => {
   });
 
   let imageType = [];
-  let images = [0];
+  let images = [];
   for (let i = 0; i < script.length; i++) {
     if (script[i][5].substring(script[i][5].length - 4) === ".mov") {
       imageType.push("movie");
@@ -74,8 +74,8 @@ const displayHandler = async (req, res) => {
     api_key,
     script,
     ptr,
-    imageType,
     lock,
+    images,
   });
 };
 
