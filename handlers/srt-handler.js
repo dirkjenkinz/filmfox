@@ -29,7 +29,7 @@ const srtHandler = async (req, res) => {
   const u = url.parse(req.originalUrl, true);
   let title = u.query.title;
   let ptr = u.query.ptr;
-  let filmFoxFile = await getData(`${title}.fff`);
+  let filmFoxFile = await getData(`${title}/${title}.fff`);
   const { script } = filmFoxFile;
 
   timeStart = 0.0;
@@ -53,7 +53,6 @@ const srtHandler = async (req, res) => {
     timeStart = timeFinish;
     timeStart = Math.round(timeStart * 1000) / 1000;
   }
-
   let srt = "";
   for (let s = 0; s < script.length; s++) {
     if (script[s][6]) {
@@ -63,9 +62,7 @@ const srtHandler = async (req, res) => {
       srt += `<b>${script[s][0]}:</b> ${text}\n\n`;
     }
   };
-
   await writeFile(srt, `${title}.srt`);
-
   smartLog("info", "srt complete");
   srt = srt.split("\n");
   res.render("srt.njk", {

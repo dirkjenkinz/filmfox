@@ -11,7 +11,8 @@ const srtRouter = require('./routes/srt.js');
 const deleteRouter = require('./routes/delete.js');
 const galleryRouter = require('./routes/gallery.js');
 const updateImageRouter = require('./routes/update-image.js');
-const showreelRouter = require('./routes/showreel.js');
+const buildShowreelRouter = require('./routes/build-showreel.js');
+const runShowreelRouter = require('./routes/run-showreel.js');
 
 const nunjucks = require('nunjucks');
 const bodyParser = require('body-parser');
@@ -40,7 +41,9 @@ app.use('/srt', srtRouter);
 app.use('/delete', deleteRouter);
 app.use('/gallery', galleryRouter);
 app.use('/update-image', updateImageRouter);
-app.use('/showreel', showreelRouter);
+app.use('/build-showreel', buildShowreelRouter);
+app.use('/run-showreel', runShowreelRouter);
+
 
 app.listen(PORT, (err) => {
     smartLog('paramount', `FilmFox is up & running on port ${PORT}`);

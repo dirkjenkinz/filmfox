@@ -8,13 +8,11 @@ const deleteHandler = async (req, res) => {
   let u = url.parse(req.originalUrl, true);
   const ptr = u.query.ptr;
   let element = u.query.element;
-  element = '000000' + element;
-  element = element.substring(element.length - 6);
+  console.log({element})
   const script = u.query.script;
-  const char = u.query.char;
-  const el = `sound_${element}_${char}.mp3`
-  await deleteFile(script, el);
-  res.redirect(`/display?filmFoxFile=${script}.fff&ptr=${ptr}`);
+
+  await deleteFile(script, `sounds/${element}.mp3`);
+  res.redirect(`/display?filmFoxFile=${script}&ptr=${ptr}`);
 };
 
 module.exports = { deleteHandler };

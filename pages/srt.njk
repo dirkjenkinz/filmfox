@@ -17,21 +17,17 @@
   <body>
     <div class='container-fluid'>
       <div class="row">
-        <div class="col-md-5">
+        <div class="col-md-3">
           <h4>Film Fox</h4>
         </div>
         <div class="col-md-1" hidden>
           <p id="ptr">{{ptr}}</p>
           <p id="endpoint">{{end}}</p>
         </div>
-        <div class="col-md-6 data-right" id="title"><h5>{{ title }}</h5></div>
-      </div>
-      <div class="row show">
-        <div class="col-md-4"></div>
-        <div class="col-md-4">
-          <button class="btn btn-block btn-edit" id="display">
-            Display Converted Script
-          </button>
+        <div class="col-md-4 data-right" id="title"><h5>{{ title }}</h5></div>
+        <div class='col-md-1'></div>
+        <div class='col-md-4'>
+          <button type='button' class='btn btn-edit btn-block btn-sm' onclick="history.back()">Go Back</button>
         </div>
       </div>
       <div class='row show'>
@@ -42,13 +38,7 @@
         {% endif %}
        {%- endfor %}
     </div>
-
     <script>
-      $("#display").on("click", () => {
-        const fff = $("#title")[0].outerText
-        let ptr = $("#ptr")[0].innerText
-        window.location.href = `/display?filmFoxFile=${fff}.fff&ptr=${ptr}`
-      })
     </script>
   </body>
 </html>

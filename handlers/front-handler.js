@@ -1,13 +1,13 @@
 const dotenv = require('dotenv');
 dotenv.config();
-const { getFileList, writeFile } = require('../services/file-service');
+const { getFileList, writeFile, getFFFList } = require('../services/file-service');
 const { getUserSubscriptionInfo, getVoices } = require('../services/elevenLabs');
 const { smartLog } = require('../services/smart-log');
 
 const frontHandler = async (req, res) => {
   smartLog('info', 'entering front handler');
   const api_key = process.env.APIKEY;
-  const fffList = await getFileList('data', 'fff');
+  const fffList = await getFFFList();
   const fdxList = await getFileList('scripts', 'fdx');
   let subscription = await getUserSubscriptionInfo(api_key);
   if (subscription !== '') {

@@ -36,7 +36,7 @@ const galleryHandler = async (req, res) => {
     }
   };
 
-  const filmFoxFile = await getData(`${title}.fff`)
+  const filmFoxFile = await getData(`${title}/${title}.fff`);
   const {script} = filmFoxFile;
   const usedImages = getUsed(script);
 

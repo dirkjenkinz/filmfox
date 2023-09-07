@@ -1,5 +1,5 @@
 const url = require('url');
-const { getData, getFile } = require('../services/file-service');
+const { getData } = require('../services/file-service');
 const { smartLog } = require('../services/smart-log');
 
 const getVoiceData = (voices) => {
@@ -19,11 +19,11 @@ const characterToVoiceHandler = async (req, res) => {
   const u = url.parse(req.originalUrl, true);
   let ptr = u.query.ptr;
   let file = u.query.filmFoxFile;
-  let filmFoxFile = await getData(file + '.fff');
+  let filmFoxFile = await getData(`${file}/${file}.fff`);
 
   const { title, script } = filmFoxFile;
 
-  let characters = await getData(file + '.chrs');
+  let characters = await getData(`${file}/${file}.chrs`);
 
   const voices = await getData('voices.json');
   voice_data = getVoiceData(voices);

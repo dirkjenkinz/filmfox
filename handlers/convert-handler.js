@@ -201,7 +201,7 @@ const convertHandler = async (req, res) => {
     script,
   };
 
-  await writeFile(JSON.stringify(fff), title + '.fff');
+  await writeFile(JSON.stringify(fff), `${file}/${file}.fff`);
 
   const directoryPath = path.join(__dirname, '../data');
   if (!fs.existsSync(`${directoryPath}/${title}.chrs`)) {

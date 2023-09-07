@@ -11,7 +11,7 @@ const displayHandler = async (req, res) => {
   const ptr = u.query.ptr;
   const locked = u.query.locked;
   const file = u.query.filmFoxFile;
-  let filmFoxFile = await getData(file);
+  let filmFoxFile = await getData(`${file}/${file}.fff`);
 
   let lock = 'Unlock';
   if (locked === 'no') {
@@ -19,8 +19,7 @@ const displayHandler = async (req, res) => {
   };
 
   const { title, script } = filmFoxFile;
-  const chrs = file.substring(0, file.length - 4) + ".chrs";
-  const characters = await getData(chrs);
+  const characters = await getData(`${file}/${file}.chrs`);
   const api_key = process.env.APIKEY;
 
   script.forEach((scriptChar) => {

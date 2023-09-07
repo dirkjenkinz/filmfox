@@ -1,7 +1,6 @@
 const url = require("url");
 const { smartLog } = require("../services/smart-log");
 const {
-  getListOfImages,
   getData,
   writeFile,
 } = require("../services/file-service");
@@ -15,8 +14,7 @@ const updateImageHandler = async (req, res) => {
   const img = u.query.img;
   const src = u.query.src;
 
-  console.log({src});
-  let filmFoxFile = await getData(title + ".fff");
+  let filmFoxFile = await getData(`${title}/${title}.fff`);
 
   const { script } = filmFoxFile;
 
@@ -42,9 +40,9 @@ const updateImageHandler = async (req, res) => {
     }
   }
 
-  await writeFile(JSON.stringify(filmFoxFile), `${title}.fff`);
+  await writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
 
-  res.redirect(`/display?filmFoxFile=${title}.fff&ptr=${ptr}&locked=no`);
+  res.redirect(`/display?filmFoxFile=${title}&ptr=${ptr}&locked=no`);
 };
 
 module.exports = { updateImageHandler };

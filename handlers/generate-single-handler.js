@@ -6,14 +6,14 @@ dotenv.config();
 const { smartLog } = require('../services/smart-log');
 
 const generateSingleHandler = async (req, res) => {
-  smartLog('info', 'entering generate single handler');
+  smartLog('info', 'ENTERING GENERATE SINGLE HANDLER');
 
   let u = url.parse(req.originalUrl, true);
   let ptr = u.query.ptr;
   let element = u.query.element;
   let file = u.query.filmFoxFile;
-  let filmFoxFile = await getData(file + '.fff');
-  const characters = await getData(file + '.chrs');
+  let filmFoxFile = await getData(`${file}/${file}.fff`);
+  const characters = await getData(`${file}/${file}.chrs`);
   const api_key = process.env.APIKEY;
 
   const { title, script, voice_data } = filmFoxFile;
@@ -37,7 +37,7 @@ const generateSingleHandler = async (req, res) => {
 
   let fileNum = `000000${element}`;
   fileNum = fileNum.substring(fileNum.length - 6);
-  const fileName = `${title}/sound_${fileNum}_${script[element][0]}.mp3`;
+  const fileName = `${title}/sounds/sound_${fileNum}_${script[element][0]}.mp3`;
 
   let text = script[element][1];
 
@@ -55,9 +55,7 @@ const generateSingleHandler = async (req, res) => {
   };
 
   await generateSpeech(api_key, voice_id, fileName, text);
-
-  res.redirect(`/display?filmFoxFile=${file}.fff&ptr=${ptr}`);
-
+  res.redirect(`/display?filmFoxFile=${file}&ptr=${ptr}`);
 };
 
 module.exports = { generateSingleHandler };

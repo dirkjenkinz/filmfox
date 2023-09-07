@@ -39,7 +39,7 @@ const characterUpdateHandler = async (req, res) => {
     }
   })
 
-  writeFile(JSON.stringify(fff), title + '.fff');
+  writeFile(JSON.stringify(fff), `${file}/${file}.fff`);
   writeFile(JSON.stringify(characters), title + '.chrs');
 
   res.render('character-to-voice.njk', {
