@@ -8,7 +8,6 @@ const deleteHandler = async (req, res) => {
   let u = url.parse(req.originalUrl, true);
   const ptr = u.query.ptr;
   let element = u.query.element;
-  console.log({element})
   const script = u.query.script;
 
   await deleteFile(script, `sounds/${element}.mp3`);

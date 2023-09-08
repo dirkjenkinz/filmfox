@@ -18,6 +18,7 @@ const galleryHandler = async (req, res) => {
   let u = url.parse(req.originalUrl, true);
   const ptr = u.query.ptr;
   const title = u.query.title;
+  const caller = u.query.caller;
   let img = u.query.img;
   const crd = u.query.crd;
   const imageList = await getListOfImages(title);
@@ -57,6 +58,7 @@ const galleryHandler = async (req, res) => {
     ptr,
     used,
     unused,
+    caller
   });
 };
 

@@ -59,7 +59,6 @@ const parseDialogue = (dialogue, character, scene_number) => {
 
   text = text.replace(/\n /g, '');
   text = text.replace(/\n /g, '');
-  console.log({text})
   text = text.replace(/    /g, ' ');
   text = text.replace(/    /g, ' ');
   text = text.replace(/   /g, ' ');

@@ -30,7 +30,6 @@ const chopItUp = (block) => {
 };
 
 const modifyImage = (title, original, cnt, speaker, text) => {
-  console.log({text});
   const dataPath = path.join(__dirname, `../data/${title}`);
 
   const lineBreaks = (text.match(/\n/g) || []).length;
@@ -100,7 +99,6 @@ const buildShowreelHandler = async (req, res) => {
   let timeFinish = 0.0;
   smartLog("info", "building showreel data");
   const elementNames = await getListOfElements(title);
-  console.log({title})
   for (const element of elementNames) {
     const duration = await procureDuration(title, element);
     let num = element.substring(6, 12);

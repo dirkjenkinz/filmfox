@@ -5,8 +5,8 @@ const {
   writeFile,
 } = require("../services/file-service");
 
-const updateImageHandler = async (req, res) => {
-  smartLog("info", "entering updateImage handler");
+const updateImageSceneHandler = async (req, res) => {
+  smartLog("info", "entering UPDATE IMAGE SCENE handler");
 
   let u = url.parse(req.originalUrl, true);
   const ptr = u.query.ptr;
@@ -40,9 +40,9 @@ const updateImageHandler = async (req, res) => {
     }
   }
 
-  await writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
+//await writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
 
-  res.redirect(`/display?filmFoxFile=${title}&ptr=${ptr}&locked=no`);
+  res.redirect(`/scenes?filmFoxFile=${title}&ptr=${ptr}`);
 };
 
-module.exports = { updateImageHandler };
+module.exports = { updateImageSceneHandler };

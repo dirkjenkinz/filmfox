@@ -20,6 +20,7 @@
         <div class='col-md-1' hidden="hidden">
           <p id='ptr'>{{ptr}}</p>
           <p id='img'>{{img}}</p>
+          <p id='caller'>{{caller}}</p>
         </div>
         <div class='col-md-3 data-right' id='title'>
           <h5>{{ title }}</h5>
@@ -151,10 +152,11 @@
       }),
       $('.btn-select').on('click', (e) => {
         const source = e.target.value;
-        const f = $('#title')[0].innerText
-        const ptr = $('#ptr')[0].innerText
+        const f = $('#title')[0].innerText;
+        const ptr = $('#ptr')[0].innerText; 
         const i = $('#img')[0].innerText;
-        window.location.href = `/update-image?title=${f}&ptr=${ptr}&img=${i}&src=${source}`
+        const caller = $('#caller')[0].innerText;
+          window.location.href = `/update-image-display?title=${f}&ptr=${ptr}&img=${i}&src=${source}&caller=${caller}`
       })
     </script>
   </body>
