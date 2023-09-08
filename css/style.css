@@ -179,7 +179,7 @@ textarea {
 .table-scroll tbody {
   position: absolute;
   overflow-y: scroll;
-  height: 450px;
+  width: 1200px;
 }
 
 .table-scroll tr {

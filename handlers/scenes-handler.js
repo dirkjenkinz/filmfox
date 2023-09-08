@@ -7,8 +7,9 @@ const scenesHandler = async (req, res) => {
 
   const u = url.parse(req.originalUrl, true);
   const ptr = u.query.ptr;
+  const num = u.query.num;
   const title = u.query.title;
-  let filmFoxFile = await getData(`${title}/${title}.fff`);
+  const filmFoxFile = await getData(`${title}/${title}.fff`);
   const { script } = filmFoxFile;
 
   const scenes = [];
@@ -37,13 +38,13 @@ const scenesHandler = async (req, res) => {
       images.push([scenes[i][5], "still"])
     }
   }
-
   res.render("scenes.njk", {
     title,
     scenes,
     ptr,
     images,
     elements,
+    num,
   });
 };
 

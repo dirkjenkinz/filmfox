@@ -9,9 +9,8 @@ const playHandler = async (req, res) => {
   let u = url.parse(req.originalUrl, true);
   let ptr = u.query.ptr;
   const element = u.query.element;
-  const file = u.query.filmFoxFile;
-  playSoundFile(file,`${element}.mp3`);
- // res.redirect(`/display?filmFoxFile=${file}.fff&ptr=${ptr}`);
+  const title = u.query.title;
+  playSoundFile(title,`${element}`);
 };
 
 module.exports = { playHandler };

@@ -139,10 +139,10 @@
       window.location.href = `/generate-single?filmFoxFile=${f}&element=${num}&ptr=${ptr}`
     }),
     $('.btn-play').on('click', (e) => {
-      const f = $('#title')[0].innerText;
+      const title = $('#title')[0].innerText;
       const ptr = $('#ptr')[0].innerText;
       element = e.target.value;
-      window.location.href = `/play?filmFoxFile=${f}&element=${element}&ptr=${ptr}`
+      window.location.href = `/play?title=${title}&element=${element}&ptr=${ptr}`
     }),
     $('.btn-del').on('click', (e) => {
       const num = e
@@ -167,7 +167,7 @@
     $('#btn-scenes').on('click', () => {
       const f = $('#title')[0].innerText
       let ptr = $('#ptr')[0].innerText
-      window.location.href = `/scenes?title=${f}&ptr=${ptr}`
+      window.location.href = `/scenes?title=${f}&ptr=${ptr}&num=0`
     }),
     $('.btn-change').on('click', (e) => {
       const f = $('#title')[0].innerText;
