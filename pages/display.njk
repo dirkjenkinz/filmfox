@@ -61,7 +61,7 @@
               <th class='data-display'>Character</th>
               <th class='data-display'>Voice</th>
               <th class='data-display' colspan='3'>Dialogue</th>
-              <th class='data-display'>Sound</th>
+              <th class='sound-display'>Sound</th>
               <th>
                 <button class='btn btn-block btn-edit btn-sm' id='btn-sound-lock'>Unlock</button>
               </th>
@@ -80,9 +80,9 @@
                     <td class='data-display'>{{script[i][3]}}</td>
                     <td class='data-display' colspan='3'>{{script[i][1]}}</td>
 
-                    <td class='data-display' id='sound-data'>{{script[i][4]}}</td>
+                    <td class='sound-display' id='sound-data'>{{script[i][4]}}</td>
 
-                    <td class='data-display'>
+                    <td class='sound-display'>
                       {% if (script[i][3] == '-') or (script[i][4]) %}
                         <button type='button' class='btn btn-edit btn-block btn-sm btn-play' id="play_{{i}}" value='{{script[i][4]}}'>
                           Play
@@ -92,6 +92,7 @@
                           Gen
                         </button>
                       {% endif %}
+                      <br>
                       <button class='btn btn-block btn-edit btn-sm btn-small btn-del' id='del_{{i}}' disabled="disabled" value={{script[i][4]}}>
                         Delete
                       </button>
@@ -167,9 +168,10 @@
       const f = $('#title')[0].innerText
       let ptr = $('#ptr')[0].innerText
       let headersOnly = 'no';
-      if ($('#btn-headers')){
+      if ($('#btn-headers')[0].innerText === 'Show Headers Only'){
         headersOnly = 'yes'
       };
+      console.log({headersOnly})
       window.location.href = `/display?title=${f}&ptr=${ptr}&num=0&headersOnly=${headersOnly}`
     }),
     $('.btn-change').on('click', (e) => {

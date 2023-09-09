@@ -56,6 +56,11 @@ html {
   padding: 0px 8px;
 }
 
+.sound-display {
+  background: slategrey;
+  padding: 0px 8px;
+}
+
 .break {
   background: silver;
 }
