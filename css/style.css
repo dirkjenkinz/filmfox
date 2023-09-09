@@ -13,6 +13,10 @@
   background: red;
 }
 
+#piccy {
+  border: 5px solid red;
+}
+
 .show {
   background: paleturquoise;
   border: 4px blue solid;

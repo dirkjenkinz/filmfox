@@ -35,10 +35,17 @@ const getData = async (file) => {
   });
 };
 
-const playSoundFile = (title, file) => {
+const playSoundFile = async (title, file) => {
   smartLog("info", "playing sound file");
   const sFile = path.join(__dirname, `../data/${title}/sounds/${file}`);
-  sound.play(sFile);
+  try {
+    await sound.play(sFile);
+    console.log("done");
+  } catch (error) {
+    console.error(error);
+  }
+  // sound.play(sFile).then((response) => console.log("done"));
+ // sound.play(sFile);
 };
 
 const getSRT = (file) => {

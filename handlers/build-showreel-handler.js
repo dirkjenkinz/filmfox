@@ -12,65 +12,6 @@ const {
   writeFile,
 } = require("../services/file-service");
 
-const chopItUp = (block) => {
-  if (block.length < 31) return block;
-
-  let text = "";
-  let bit;
-
-  do {
-    bit = block.substring(0, 70);
-    let lastSpace = bit.lastIndexOf(" ");
-    text = text + bit.substring(0, lastSpace);
-    text = text + "\n";
-    block = block.substring(lastSpace + 1);
-  } while (block.length > 70);
-  text = text + block;
-  return text;
-};
-
-const modifyImage = (title, original, cnt, speaker, text) => {
-  const dataPath = path.join(__dirname, `../data/${title}`);
-
-  const lineBreaks = (text.match(/\n/g) || []).length;
-  const speakerPos = 450 - lineBreaks * 30;
-
-  loadImage(`${dataPath}/images/${original}`).then((img) => {
-    const canvas = createCanvas(img.width, img.height);
-    const ctx = canvas.getContext("2d");
-
-    ctx.drawImage(img, 0, 0);
-
-    ctx.font = '72px "Arial Bold"';
-    ctx.fillStyle = "White";
-    ctx.lineWidth = 2;
-    ctx.strokeStyle = "rgb(0, 0, 0)";
-    ctx.fillText("Satellite", 80, 120);
-    ctx.strokeText("Satellite", 80, 120);
-
-    ctx.font = '45px "Arial Bold"';
-    ctx.fillStyle = "white";
-    ctx.lineWidth = 2;
-    ctx.strokeStyle = "rgb(0, 0, 0)";
-    ctx.fillText(speaker, 80, speakerPos);
-    ctx.strokeText(speaker, 80, speakerPos);
-
-    ctx.font = '36px "Arial Bold"';
-    ctx.fillStyle = "white";
-    ctx.lineWidth = 2;
-    ctx.strokeStyle = "rgb(0, 0, 0)";
-    ctx.fillText(text, 80, speakerPos + 50);
-    ctx.strokeText(text, 80, speakerPos + 50);
-
-    let sSave = "00000" + cnt + ".png";
-    sSave = sSave.substring(sSave.length - 10);
-
-    const out = fs.createWriteStream(`${dataPath}/cards/${sSave}`);
-    const stream = canvas.createPNGStream();
-    stream.pipe(out);
-  });
-};
-
 const formatTime = (seconds) => {
   const date = new Date(null);
   date.setSeconds(seconds);
@@ -94,6 +35,7 @@ const buildShowreelHandler = async (req, res) => {
   let title = u.query.title;
   let ptr = u.query.ptr;
   let filmFoxFile = await getData(`${title}/${title}.fff`);
+  console.log(u.query)
   const { script } = filmFoxFile;
   let timeStart = 0.0;
   let timeFinish = 0.0;
@@ -149,7 +91,9 @@ const buildShowreelHandler = async (req, res) => {
   await writeFile(JSON.stringify(showreel), `/${title}/${title}.shw`);
 
   smartLog("info", "showreel complete");
-  res.redirect(`/display?filmFoxFile=${title}&ptr=${ptr}`);
+  console.log({title});
+  res.redirect(`/display?title=${title}&ptr=0,&locked=yes,&headersOnly=no`);
+
 };
 
 module.exports = { buildShowreelHandler };

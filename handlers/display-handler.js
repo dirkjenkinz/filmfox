@@ -11,9 +11,9 @@ const displayHandler = async (req, res) => {
   const locked = u.query.locked;
   const title = u.query.title;
   const headersOnly = u.query.headersOnly;
-
+console.log({title})
   let filmFoxFile = await getData(`${title}/${title}.fff`);
-
+console.log('ase')
   let lock = 'Unlock';
   if (locked === 'no') {
     lock = 'Lock'

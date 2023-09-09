@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8'/>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'/>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
+    <title>FilmFox</title>
+    <link rel='stylesheet' href='../css/style.css'/>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css'/>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
+    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js'></script>
+  </head>
+
+  <body>
+    <div class='container-fluid'>
+    <div class='row'>
+        <div class='col-md-1'>
+        </div>
+        <div class='col-md-11'>
+          {{slug[current]}}
+        </div>
+      </div>
+      <div class="row">
+        <div class='col-md-1'>
+          <p id='current'>{{current}}</p>
+          <p id='ptr' hidden="hidden">{{ptr}}</p>
+        </div>
+        <div class='col-md-8'>
+          <img id='piccy' width="800" height="450" src="../data/{{title}}/images/{{showreel[current].card}}" alt="card"/>
+        </div>
+        <div class='col-md-3'>
+          <p style='text-align : center;' id='title'>{{title}}</p>
+          <br>
+          <p style='text-align : center;'>
+            {{showreel[current].character}}
+          </p>
+          <p>{{showreel[current].dialogue}}</p>
+        </div>
+      </div>
+      
+      <div class='row'>
+        <div class='col-md-1'></div>
+        <div class='col-md-2'>
+          <button class='btn btn-block btn-edit btn-sm' id='btn-previous'>
+            PREVIOUS
+          </button>
+        </div>
+        <div class='col-md-4'></div>
+        <div class='col-md-2'>
+          <button class='btn btn-block btn-edit btn-sm' id='btn-next'>
+            NEXT
+          </button>
+        </div>
+      </div>
+    </div>
+    <script>
+      $("#display").on("click", () => {
+        const fff = $("#title")[0].outerText;
+        const ptr = $("#ptr")[0].innerText;
+        window.location.href = `/display?title=${title}.fff&ptr=${ptr}`
+      }),
+      $("#btn-next").on("click", () => {
+        const title = $("#title")[0].innerText;
+        const ptr = $("#ptr")[0].innerText;
+        let current = $("#current")[0].innerText;
+        current++;
+        window.location.href = `/play-showreel?title=${title}&ptr=${ptr}&current=${current}`
+      }),
+      $("#btn-previous").on("click", () => {
+        const title = $("#title")[0].innerText;
+        const ptr = $("#ptr")[0].innerText;
+        let current = $("#current")[0].innerText;
+        current--;
+        if (current < 0) current =0;
+        window.location.href = `/play-showreel?title=${title}&ptr=${ptr}&current=${current}`
+      })
+    </script>
+  </body>
+</html>

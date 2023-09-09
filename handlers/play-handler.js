@@ -10,8 +10,6 @@ const playHandler = async (req, res) => {
   let ptr = u.query.ptr;
   const element = u.query.element;
   const title = u.query.title;
-  console.log({title})
-  console.log(({element}))
   playSoundFile(title,element);
 };
 

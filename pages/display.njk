@@ -13,7 +13,7 @@
   <body>
     <div class='container-fluid'>
       <div class='row'>
-        <div class='col-md-2'>
+        <div class='col-md-1'>
           <h4>Film Fox</h4>
         </div>
         <div class='col-md-1' hidden="hidden">
@@ -40,6 +40,9 @@
       </div>
       <div class='col-md-2'>
         <button class='btn btn-block btn-edit btn-sm' id='btn-build-showreel'>Build Showreel</button>
+      </div>
+      <div class='col-md-1'>
+        <button class='btn btn-block btn-edit btn-sm' id='btn-play-showreel'>Showreel</button>
       </div>
       <div class='col-md-2'>
         {% if headersOnly == 'yes' %}
@@ -161,8 +164,12 @@
     $('#btn-build-showreel').on('click', () => {
       const f = $('#title')[0].innerText;
       const ptr = $('#ptr')[0].innerText;
-   
       window.location.href = `/build-showreel?title=${f}&ptr=${ptr}`
+    }),
+    $('#btn-play-showreel').on('click', () => {
+      const f = $('#title')[0].innerText;
+      const ptr = $('#ptr')[0].innerText;
+      window.location.href = `/play-showreel?title=${f}&ptr=${ptr}&current=0`
     }),
     $('#btn-headers').on('click', () => {
       const f = $('#title')[0].innerText
