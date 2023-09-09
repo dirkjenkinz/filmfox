@@ -38,7 +38,7 @@ const getData = async (file) => {
 const playSoundFile = (title, file) => {
   smartLog("info", "playing sound file");
   const sFile = path.join(__dirname, `../data/${title}/sounds/${file}`);
-  console.log(({sFile}))
+  console.log({sFile});
   sound.play(sFile);
 };
 

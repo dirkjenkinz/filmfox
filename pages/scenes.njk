@@ -94,10 +94,10 @@
   </div>
   <script>
     $('.btn-play').on('click', (e) => {
-      const f = $('#title')[0].innerText;
+      const title = $('#title')[0].innerText;
       const ptr = $('#ptr')[0].innerText;
       element = e.target.value;
-      window.location.href = `/play?filmFoxFile=${f}&element=${element}&ptr=${ptr}`
+      window.location.href = `/play?title=${title}&element=${element}&ptr=${ptr}`
     }),
     $('.btn-change').on('click', (e) => {
       const f = $('#title')[0].innerText;

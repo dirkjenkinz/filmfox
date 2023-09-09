@@ -28,6 +28,7 @@ const frontHandler = async (req, res) => {
     fffList,
     fdxList,
     subscription,
+    headersOnly: 'no'
   });
 };
 

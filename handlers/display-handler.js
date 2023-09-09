@@ -6,20 +6,21 @@ dotenv.config();
 
 const displayHandler = async (req, res) => {
   smartLog("info", "ENTERING DISPLAY HANDLER");
-
   const u = url.parse(req.originalUrl, true);
   const ptr = u.query.ptr;
   const locked = u.query.locked;
-  const file = u.query.filmFoxFile;
-  let filmFoxFile = await getData(`${file}/${file}.fff`);
+  const title = u.query.title;
+  const headersOnly = u.query.headersOnly;
+
+  let filmFoxFile = await getData(`${title}/${title}.fff`);
 
   let lock = 'Unlock';
   if (locked === 'no') {
     lock = 'Lock'
   };
 
-  const { title, script } = filmFoxFile;
-  const characters = await getData(`${file}/${file}.chrs`);
+  const { script } = filmFoxFile;
+  const characters = await getData(`${title}/${title}.chrs`);
   const api_key = process.env.APIKEY;
 
   script.forEach((scriptChar) => {
@@ -68,6 +69,21 @@ const displayHandler = async (req, res) => {
     }
   }
 
+  let scenePtr = -1
+  let headers = [];
+  script.forEach((s, index) => {
+    if (headersOnly === 'yes' ){
+    if (s[2] !== scenePtr) {
+      headers.push('yes');
+      scenePtr = s[2];
+    } else {
+      headers.push('no');
+    }
+  } else {
+    headers.push('yes');
+  }
+  });
+
   res.render("display.njk", {
     title,
     api_key,
@@ -75,6 +91,8 @@ const displayHandler = async (req, res) => {
     ptr,
     lock,
     images,
+    headersOnly,
+    headers,
   });
 };
 
