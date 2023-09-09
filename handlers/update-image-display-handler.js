@@ -10,12 +10,11 @@ const updateImageDisplayHandler = async (req, res) => {
   const title = u.query.title;
   const img = u.query.img;
   const src = u.query.src;
-  const caller = u.query.caller;
+  const headersOnly = u.query.headersOnly;
 
   let filmFoxFile = await getData(`${title}/${title}.fff`);
 
   const { script } = filmFoxFile;
-
   const holdImage = script[img][5];
 
   script[img][5] = src;
@@ -37,14 +36,8 @@ const updateImageDisplayHandler = async (req, res) => {
       carryOn = false;
     }
   }
-
   await writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
-
-  if (caller === "display") {
-    res.redirect(`/display?title=${title}&ptr=${ptr}&locked=no`);
-  } else {
-    res.redirect(`/scenes?title=${title}&ptr=${ptr}`);
-  }
+  res.redirect(`/display?title=${title}&ptr=${ptr}&locked=no&headersOnly=${headersOnly}`);
 };
 
 module.exports = { updateImageDisplayHandler };

@@ -19,8 +19,8 @@
         </div>
         <div class='col-md-1' hidden="hidden">
           <p id='ptr'>{{ptr}}</p>
-          <p id='img'>{{img}}</p>
-          <p id='caller'>{{caller}}</p>
+          <p id='element'>{{element}}</p>
+          <p id='headersOnly'>{{headersOnly}}</p>
         </div>
         <div class='col-md-3 data-right' id='title'>
           <h5>{{ title }}</h5>
@@ -141,7 +141,7 @@
       $('.imcg').on('click', (e) => {
         const f = $('#title')[0].innerText
         const ptr = $('#ptr')[0].innerText
-        const i = $('#img')[0].innerText;
+        const i = $('#element')[0].innerText;
 
         const source = e
           .target
@@ -154,9 +154,9 @@
         const source = e.target.value;
         const f = $('#title')[0].innerText;
         const ptr = $('#ptr')[0].innerText; 
-        const i = $('#img')[0].innerText;
-        const caller = $('#caller')[0].innerText;
-          window.location.href = `/update-image-display?title=${f}&ptr=${ptr}&img=${i}&src=${source}&caller=${caller}`
+        const i = $('#element')[0].innerText;
+        const h = $('#headersOnly')[0].innerText;
+          window.location.href = `/update-image-display?title=${f}&ptr=${ptr}&img=${i}&src=${source}&headersOnly=${h}`
       })
     </script>
   </body>

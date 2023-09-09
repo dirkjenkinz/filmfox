@@ -18,13 +18,10 @@ const galleryHandler = async (req, res) => {
   let u = url.parse(req.originalUrl, true);
   const ptr = u.query.ptr;
   const title = u.query.title;
-  const caller = u.query.caller;
-  let img = u.query.img;
-  const crd = u.query.crd;
+  const element = u.query.element;
+  const headersOnly = u.query.headersOnly;
   const imageList = await getListOfImages(title);
   imageList.unshift("blank.jpg");
-
-  if (!img) img = crd;
 
   const images = [];
   for (let i = 0; i < imageList.length; i++) {
@@ -54,11 +51,11 @@ const galleryHandler = async (req, res) => {
 
   res.render("gallery.njk", {
     title,
-    img,
+    element,
     ptr,
     used,
     unused,
-    caller
+    headersOnly,
   });
 };
 

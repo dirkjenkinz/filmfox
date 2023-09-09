@@ -72,8 +72,10 @@
                 {% if headers[i] == 'yes' %}
                   <tr id='row_{{i}}'>
                     <td class='data-right'>Scene
-                      {{script[i][2]}}<br>Element
-                      {{i}}</td>
+                      {{script[i][2]}}
+                      <br>Element
+                      {{i}}
+                      </td>
                     <td class='data-display'>{{script[i][0]}}</td>
                     <td class='data-display'>{{script[i][3]}}</td>
                     <td class='data-display' colspan='3'>{{script[i][1]}}</td>
@@ -103,6 +105,9 @@
                       {% else %}
                         <img width="160" height="90" src="../data/{{title}}/images/{{images[i][0]}}" id="img_{{i}}" class="img" alt="{{images[i][0]}}"/>
                       {% endif %}
+                      <button type='button' class='btn btn-edit btn-block btn-sm btn-change' id="change_{{i}}" value='{{i}}'>
+                        Change
+                      </button>
                     </td>
                   </tr>
                 {% endif %}
@@ -153,16 +158,16 @@
       window.location.href = `/srt?title=${f}&ptr=${ptr}`
     }),
     $('#btn-build-showreel').on('click', () => {
-      const f = $('#title')[0].innerText
-      let ptr = $('#ptr')[0].innerText
+      const f = $('#title')[0].innerText;
+      const ptr = $('#ptr')[0].innerText;
+   
       window.location.href = `/build-showreel?title=${f}&ptr=${ptr}`
     }),
     $('#btn-headers').on('click', () => {
       const f = $('#title')[0].innerText
       let ptr = $('#ptr')[0].innerText
       let headersOnly = 'no';
-      
-      if ($('#btn-headers')[0].innerText === 'Show Headers Only'){
+      if ($('#btn-headers')){
         headersOnly = 'yes'
       };
       window.location.href = `/display?title=${f}&ptr=${ptr}&num=0&headersOnly=${headersOnly}`
@@ -170,9 +175,10 @@
     $('.btn-change').on('click', (e) => {
       const f = $('#title')[0].innerText;
       const ptr = $('#ptr')[0].innerText;
-      const i = e.target.value;
-      var p = $('#script-table').first();
-      window.location.href = `/gallery?title=${f}&ptr=${ptr}&img=${i}&caller=display`
+      const element = e.target.value;
+      let h = 'no';
+      if ($('#btn-headers')[0].innerText === 'Show All') h = 'yes';
+      window.location.href = `/gallery?title=${f}&ptr=${ptr}&element=${element}&headersOnly=${h}`
     }),
     $('#btn-sound-lock').on('click', () => {
       const l = $('#length')[0].innerText;

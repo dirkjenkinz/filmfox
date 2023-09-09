@@ -207,7 +207,7 @@ const convertHandler = async (req, res) => {
     await writeFile(JSON.stringify(characters), title + '.chrs');
   };
 
-  res.redirect(`/display?filmFoxFile=${title}.fff&ptr=0,&locked=yes`);
+  res.redirect(`/display?filmFoxFile=${title}.fff&ptr=0,&locked=yes,&headersOnly=no`);
 };
 
 module.exports = { convertHandler };
