@@ -35,7 +35,6 @@ const buildShowreelHandler = async (req, res) => {
   let title = u.query.title;
   let ptr = u.query.ptr;
   let filmFoxFile = await getData(`${title}/${title}.fff`);
-  console.log(u.query)
   const { script } = filmFoxFile;
   let timeStart = 0.0;
   let timeFinish = 0.0;
@@ -74,24 +73,9 @@ const buildShowreelHandler = async (req, res) => {
     }
   }
 
-  /*
-  showreel.forEach(async (s, index) => {
-    text = chopItUp(s.dialogue);
-    if (
-      s.card.substring(s.card.length - 4) !== ".mp3" &&
-      s.card.substring(s.card.length - 4) !== ".mov" &&
-      s.card.substring(s.card.length - 4) !== ".avi"
-    ) {
-      modifyImage(title, s.card, index, s.character, text);
-    } else {
-      modifyImage(title, "blank.jpg", index, s.character, text);
-    }
-  });
-*/
   await writeFile(JSON.stringify(showreel), `/${title}/${title}.shw`);
 
   smartLog("info", "showreel complete");
-  console.log({title});
   res.redirect(`/display?title=${title}&ptr=0,&locked=yes,&headersOnly=no`);
 
 };

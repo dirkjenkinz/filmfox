@@ -13,20 +13,27 @@
 
   <body>
     <div class='container-fluid'>
-    <div class='row'>
-        <div class='col-md-1'>
-        </div>
+      <div class='row'>
+        <div class='col-md-1'></div>
         <div class='col-md-11'>
           {{slug[current]}}
         </div>
       </div>
-      <div class="row">
+      <div class="row" style='background: silver; color: black;'>
         <div class='col-md-1'>
           <p id='current'>{{current}}</p>
+          <p id='start'>{{showreel[current].start}}</p>
+          <p id='finsih'>{{showreel[current].finish}}</p>
           <p id='ptr' hidden="hidden">{{ptr}}</p>
         </div>
         <div class='col-md-8'>
-          <img id='piccy' width="800" height="450" src="../data/{{title}}/images/{{showreel[current].card}}" alt="card"/>
+          {% if imageType[current] === 'movie' %}
+            <video width="800" height="450" controls="controls" autoplay="autoplay" id="img_{{i}}" class="img" muted="muted">
+              <source src="../data/{{title}}/images/{{showreel[current].card}}" type="video/mp4">
+            </video>
+          {% else %}
+            <img id='piccy' width="800" height="450" src="../data/{{title}}/images/{{showreel[current].card}}" alt="card"/>
+          {% endif %}
         </div>
         <div class='col-md-3'>
           <p style='text-align : center;' id='title'>{{title}}</p>
@@ -37,7 +44,7 @@
           <p>{{showreel[current].dialogue}}</p>
         </div>
       </div>
-      
+      <div class='row'>&nbsp;</div>
       <div class='row'>
         <div class='col-md-1'></div>
         <div class='col-md-2'>
@@ -51,7 +58,20 @@
             NEXT
           </button>
         </div>
+        <div class='col-md-3'></div>
+        <div class='col-md-1'>
+          {% if muted == 'no' %}
+            <button class='btn btn-block btn-edit btn-sm' id='btn-mute'>
+              MUTE
+            </button>
+          {% else %}
+            <button class='btn btn-block btn-edit btn-sm' id='btn-mute'>
+              UNMUTE
+            </button>
+          {% endif %}
+        </div>
       </div>
+      <div class='row'>&nbsp;</div>
     </div>
     <script>
       $("#display").on("click", () => {
@@ -64,15 +84,46 @@
         const ptr = $("#ptr")[0].innerText;
         let current = $("#current")[0].innerText;
         current++;
-        window.location.href = `/play-showreel?title=${title}&ptr=${ptr}&current=${current}`
+
+        if ($('#btn-mute')[0].innerText === 'MUTE') {
+          muted = 'no';
+        } else {
+          muted = 'yes';
+        };
+
+        window.location.href = `/play-showreel?title=${title}&ptr=${ptr}&current=${current}&muted=${muted}`
       }),
       $("#btn-previous").on("click", () => {
         const title = $("#title")[0].innerText;
         const ptr = $("#ptr")[0].innerText;
         let current = $("#current")[0].innerText;
         current--;
-        if (current < 0) current =0;
-        window.location.href = `/play-showreel?title=${title}&ptr=${ptr}&current=${current}`
+
+        if (current < 0) {
+          current = 0;
+        }
+
+        if ($('#btn-mute')[0].innerText === 'MUTE') {
+          muted = 'no';
+        } else {
+          muted = 'yes';
+        };
+
+        window.location.href = `/play-showreel?title=${title}&ptr=${ptr}&current=${current}&muted=${muted}`
+      }),
+      $("#btn-mute").on("click", () => {
+        const title = $("#title")[0].innerText;
+        const ptr = $("#ptr")[0].innerText;
+        const current = $("#current")[0].innerText;
+        let mute;
+
+        if ($('#btn-mute')[0].innerText === 'MUTE') {
+          muted = 'yes';
+        } else {
+          muted = 'no';
+        };
+
+        window.location.href = `/play-showreel?title=${title}&ptr=${ptr}&current=${current}&muted=${muted}`;
       })
     </script>
   </body>

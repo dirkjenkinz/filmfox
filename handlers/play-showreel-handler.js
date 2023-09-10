@@ -7,22 +7,42 @@ const playShowreelHandler = async (req, res) => {
   const u = url.parse(req.originalUrl, true);
   const title = u.query.title;
   const ptr = u.query.ptr;
+  const muted = u.query.muted;
   const current = u.query.current;
   const showreel = await getData(`${title}/${title}.shw`);
 
   const slug = [];
 
-  let line = 'FADE IN:'
+  let line = "FADE IN:";
+  let sceneNumber = 0;
 
   showreel.forEach((s) => {
-    if (s.dialogue.substring(0, 3) === 'INT' || s.dialogue.substring(0, 3) === 'EXT'){
-      line = s.dialogue;
+    if (
+      s.dialogue.substring(0, 3) === "INT" ||
+      s.dialogue.substring(0, 3) === "EXT"
+    ) {
+      sceneNumber++;
+      line = `SCENE ${sceneNumber}: ${s.dialogue}`;
     }
     slug.push(line);
   });
 
+  let imageType = [];
+  for (let i = 0; i < showreel.length; i++) {
+    if (showreel[i].card.substring(showreel[i].card.length - 4) === ".mov") {
+      imageType.push("movie");
+    } else if (showreel[i].card.substring(showreel[i].card.length - 4) === ".mp4") {
+      imageType.push("movie");
+    } else {
+      imageType.push("still");
+    }
+  }
+
   const soundFile = showreel[current].sound;
-  playSoundFile(title, soundFile)
+
+  if (muted === "no") {
+    playSoundFile(title, soundFile);
+  }
 
   res.render("play-showreel.njk", {
     title,
@@ -30,6 +50,8 @@ const playShowreelHandler = async (req, res) => {
     ptr,
     current,
     slug,
+    muted,
+    imageType,
   });
 };
 
