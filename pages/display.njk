@@ -21,10 +21,14 @@
           <p id='endpoint'>
           {{end}}
         </p>
+        <p id='length'>{{script.length}}</p>
       </div>
       <div class='col-md-3 data-right' id='title'>
         <h5>{{ title }}</h5>
       </div>
+    </div>
+
+    <div class='row'>
       <div class='col-md-1'>
         <button class='btn btn-block btn-edit btn-sm' id='front'>
           Front
@@ -51,10 +55,11 @@
           <button class='btn btn-block btn-edit btn-sm' id='btn-headers'>Show Headers Only</button>
         {% endif %}
       </div>
-      <div class='col-md-1'>
-        <p id='length' hidden="hidden">{{script.length}}</p>
+      <div class='col-md-2'>
+        <button class='btn btn-block btn-edit btn-sm' id='btn-merge'>Sound Merge</button>
       </div>
     </div>
+
     <div class='row'>
       <div class='col-md-12 well'>
         <table class='table-bordered table-sm table-dark table-grid table-scroll' id='script-table'>
@@ -78,7 +83,7 @@
                       {{script[i][2]}}
                       <br>Element
                       {{i}}
-                      </td>
+                    </td>
                     <td class='data-display'>{{script[i][0]}}</td>
                     <td class='data-display'>{{script[i][3]}}</td>
                     <td class='data-display' colspan='3'>{{script[i][1]}}</td>
@@ -136,25 +141,25 @@
         .target
         .id
         .substring(4)
-      let f = $('#title')[0].innerText
+      let title = $('#title')[0].innerText
       const ptr = $('#ptr')[0].innerText
-      window.location.href = `/generate-single?filmFoxFile=${f}&element=${num}&ptr=${ptr}`
+      window.location.href = `/generate-single?title=${title}&element=${num}&ptr=${ptr}`
     }),
     $('.btn-play').on('click', (e) => {
       const title = $('#title')[0].innerText;
       const ptr = $('#ptr')[0].innerText;
       element = `${e.target.value}.mp3`;
-      window.location.href = `/play?title=${title}&element=${element}&ptr=${ptr}`
+      window.location.href = `/play?title=${title}&element=${element}&ptr=${ptr}&sub=sounds`
     }),
     $('.btn-del').on('click', (e) => {
       const num = e
         .target
         .id
-        .substring(4)
-      const f = $('#title')[0].innerText
-      const ptr = $('#ptr')[0].innerText
-      const element = e.target.value
-      window.location.href = `/delete?script=${f}&element=${element}&ptr=${ptr}`
+        .substring(4);
+      const title = $('#title')[0].innerText;
+      const ptr = $('#ptr')[0].innerText;
+      const element = `${e.target.value}.mp3`;
+      window.location.href = `/delete?title=${title}&element=${element}&ptr=${ptr}&sub=sounds&num=${num}`;
     }),
     $('#btn-srt').on('click', () => {
       const f = $('#title')[0].innerText
@@ -171,14 +176,19 @@
       const ptr = $('#ptr')[0].innerText;
       window.location.href = `/play-showreel?title=${f}&ptr=${ptr}&current=0&muted=no`;
     }),
+    $('#btn-merge').on('click', () => {
+      const f = $('#title')[0].innerText;
+      const ptr = $('#ptr')[0].innerText;
+      window.location.href = `/merge?title=${f}&ptr=${ptr}`;
+    }),
     $('#btn-headers').on('click', () => {
       const f = $('#title')[0].innerText;
       let ptr = $('#ptr')[0].innerText;
       let headersOnly = 'no';
-      if ($('#btn-headers')[0].innerText === 'Show Headers Only'){
+      if ($('#btn-headers')[0].innerText === 'Show Headers Only') {
         headersOnly = 'yes'
       };
-      console.log({headersOnly})
+      
       window.location.href = `/display?title=${f}&ptr=${ptr}&num=0&headersOnly=${headersOnly}`
     }),
     $('.btn-change').on('click', (e) => {
@@ -186,7 +196,8 @@
       const ptr = $('#ptr')[0].innerText;
       const element = e.target.value;
       let h = 'no';
-      if ($('#btn-headers')[0].innerText === 'Show All') h = 'yes';
+      if ($('#btn-headers')[0].innerText === 'Show All') 
+        h = 'yes';
       window.location.href = `/gallery?title=${f}&ptr=${ptr}&element=${element}&headersOnly=${h}`
     }),
     $('#btn-sound-lock').on('click', () => {

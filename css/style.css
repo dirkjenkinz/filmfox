@@ -9,6 +9,11 @@
   padding-bottom: 3px;
 }
 
+.padded {
+  padding: 0 8px;
+  background: slategrey;
+}
+
 .red-row {
   background: red;
 }

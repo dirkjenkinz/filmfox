@@ -6,11 +6,12 @@ const { smartLog } = require('../services/smart-log');
 
 const playHandler = async (req, res) => {
   smartLog('info', 'entering play handler');
-  let u = url.parse(req.originalUrl, true);
-  let ptr = u.query.ptr;
+  const u = url.parse(req.originalUrl, true);
+  const ptr = u.query.ptr;
+  const sub = u.query.sub;
   const element = u.query.element;
   const title = u.query.title;
-  playSoundFile(title,element);
+  playSoundFile(title,element, sub);
 };
 
 module.exports = { playHandler };

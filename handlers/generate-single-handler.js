@@ -1,5 +1,5 @@
 const url = require('url');
-const { getData } = require('../services/file-service');
+const { getData, writeFile } = require('../services/file-service');
 const { generateSpeech } = require('../services/elevenLabs');
 const dotenv = require('dotenv');
 dotenv.config();
@@ -11,12 +11,12 @@ const generateSingleHandler = async (req, res) => {
   let u = url.parse(req.originalUrl, true);
   let ptr = u.query.ptr;
   let element = u.query.element;
-  let file = u.query.filmFoxFile;
-  let filmFoxFile = await getData(`${file}/${file}.fff`);
-  const characters = await getData(`${file}/${file}.chrs`);
+  let title = u.query.title;
+  let filmFoxFile = await getData(`${title}/${title}.fff`);
+  const characters = await getData(`${title}/${title}.chrs`);
   const api_key = process.env.APIKEY;
 
-  const { title, script, voice_data } = filmFoxFile;
+  const { script, voice_data } = filmFoxFile;
 
   script.forEach(scriptChar => {
     characters.forEach(c => {
@@ -38,7 +38,6 @@ const generateSingleHandler = async (req, res) => {
   let fileNum = `000000${element}`;
   fileNum = fileNum.substring(fileNum.length - 6);
   const fileName = `${title}/sounds/sound_${fileNum}_${script[element][0]}.mp3`;
-
   let text = script[element][1];
 
   if (script[element][0] === 'NARRATOR') {
@@ -54,8 +53,15 @@ const generateSingleHandler = async (req, res) => {
     text = text.replace(/\.\.\./g, '');
   };
 
-  await generateSpeech(api_key, voice_id, fileName, text);
-  res.redirect(`/display?filmFoxFile=${file}&ptr=${ptr}`);
+ 
+const msg =  await generateSpeech(api_key, voice_id, fileName, text);
+
+if (msg !== 'Failed'){
+  script[element][4] = `sound_${fileNum}_${script[element][0]}`;
+  await writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
+}
+
+  res.redirect(`/display?title=${title}&ptr=${ptr}`);
 };
 
 module.exports = { generateSingleHandler };

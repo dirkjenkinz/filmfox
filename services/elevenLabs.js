@@ -8,12 +8,13 @@ const generateSpeech = async (apiKey, voiceID, fileName, textInput) => {
     smartLog('info', 'generate speech');
     try {
         await voice.textToSpeech(apiKey, voiceID, `${directoryPath}/${fileName}`, textInput).then(res => {
-            smartLog('info', { res });
             smartLog('info', `sound file generated for ${fileName}`);
+            return 'Generated';
         });
     } catch (error) {
         smartLog('error', 'error generating speech');
         smartLog('error', error.message);
+        return 'Failed';
     }
 };
 

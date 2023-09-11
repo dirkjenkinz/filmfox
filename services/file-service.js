@@ -35,17 +35,15 @@ const getData = async (file) => {
   });
 };
 
-const playSoundFile = async (title, file) => {
-  smartLog("info", "playing sound file");
-  const sFile = path.join(__dirname, `../data/${title}/sounds/${file}`);
+const playSoundFile = async (title, file, sub) => {
+  smartLog("info", `playing sound file - ${title}/${sub}/${file}`);
+  const sFile = path.join(__dirname, `../data/${title}/${sub}/${file}`);
   try {
     await sound.play(sFile);
     console.log("done");
   } catch (error) {
     console.error(error);
   }
-  // sound.play(sFile).then((response) => console.log("done"));
- // sound.play(sFile);
 };
 
 const getSRT = (file) => {
@@ -70,11 +68,11 @@ const writeFile = async (data, file) => {
   });
 };
 
-const deleteFile = async (script, file) => {
-  smartLog("info", `deleting ${script}/${file}`);
+const deleteFile = async (script, file, sub) => {
+  smartLog("info", `deleting ${sub}/${script}/${file}`);
   const directoryPath = path.join(__dirname, `../data/${script}`);
   return new Promise((resolve, reject) => {
-    fs.unlink(`${directoryPath}/${file}`, (err, msg) => {
+    fs.unlink(`${directoryPath}/${sub}/${file}`, (err, msg) => {
       if (err) {
         smartLog("error", err.cause);
         reject(err);
@@ -111,7 +109,7 @@ const getDuration = (subdirectory, file) => {
 };
 
 const getFileList = async (dir, suffix) => {
-  smartLog("info", "get file list");
+  smartLog("info", `get file list for ${dir} - ${suffix}`);
   const directoryPath = path.join(__dirname, `../${dir}`);
   return new Promise((resolve, reject) => {
     fs.readdir(directoryPath, (err, files) => {

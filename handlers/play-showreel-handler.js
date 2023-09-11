@@ -41,7 +41,7 @@ const playShowreelHandler = async (req, res) => {
   const soundFile = showreel[current].sound;
 
   if (muted === "no") {
-    playSoundFile(title, soundFile);
+    playSoundFile(title, soundFile, 'sounds');
   }
 
   res.render("play-showreel.njk", {

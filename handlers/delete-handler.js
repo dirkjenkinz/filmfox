@@ -1,17 +1,28 @@
-const url = require('url');
-const { smartLog } = require('../services/smart-log');
-const { deleteFile } = require('../services/file-service');
+const url = require("url");
+const { smartLog } = require("../services/smart-log");
+const { deleteFile, getData, writeFile } = require("../services/file-service");
 
 const deleteHandler = async (req, res) => {
-  smartLog('info', 'entering delete handler');
-
-  let u = url.parse(req.originalUrl, true);
+  smartLog("info", "entering delete handler");
+  const u = url.parse(req.originalUrl, true);
   const ptr = u.query.ptr;
-  let element = u.query.element;
-  const script = u.query.script;
+  const element = u.query.element;
+  const title = u.query.title;
+  const sub = u.query.sub;
+  const num = u.query.num;
+  await deleteFile(title, element, sub);
 
-  await deleteFile(script, `sounds/${element}.mp3`);
-  res.redirect(`/display?filmFoxFile=${script}&ptr=${ptr}`);
+  const filmFoxFile = await getData(`${title}/${title}.fff`);
+  let {script} = filmFoxFile;
+  script[num][4] = '';
+
+  await writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
+
+  if (sub === "sounds") {
+    res.redirect(`/display?title=${title}&ptr=${ptr}`);
+  } else {
+    res.redirect(`/merge?title=${title}&ptr=${ptr}`);
+  };
 };
 
 module.exports = { deleteHandler };
