@@ -58,6 +58,9 @@
       <div class='col-md-2'>
         <button class='btn btn-block btn-edit btn-sm' id='btn-merge'>Sound Merge</button>
       </div>
+      <div class='col-md-2'>
+        <button class='btn btn-block btn-edit btn-sm' id='btn-video'>Create Video</button>
+      </div>
     </div>
 
     <div class='row'>
@@ -180,6 +183,11 @@
       const f = $('#title')[0].innerText;
       const ptr = $('#ptr')[0].innerText;
       window.location.href = `/merge?title=${f}&ptr=${ptr}`;
+    }),
+    $('#btn-video').on('click', () => {
+      const f = $('#title')[0].innerText;
+      const ptr = $('#ptr')[0].innerText;
+      window.location.href = `/video?title=${f}&ptr=${ptr}`;
     }),
     $('#btn-headers').on('click', () => {
       const f = $('#title')[0].innerText;

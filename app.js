@@ -15,6 +15,7 @@ const buildShowreelRouter = require('./routes/build-showreel.js');
 const playShowreelRouter = require('./routes/play-showreel.js');
 const mergeRouter = require('./routes/merge.js');
 const concatRouter = require('./routes/concat.js');
+const videoRouter = require('./routes/video.js');
 
 const nunjucks = require('nunjucks');
 const bodyParser = require('body-parser');
@@ -47,6 +48,7 @@ app.use('/build-showreel', buildShowreelRouter);
 app.use('/play-showreel', playShowreelRouter);
 app.use('/merge', mergeRouter);
 app.use('/concat', concatRouter);
+app.use('/video', videoRouter);
 
 app.listen(PORT, (err) => {
     smartLog('paramount', `FilmFox is up & running on port ${PORT}`);
