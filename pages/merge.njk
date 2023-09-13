@@ -25,48 +25,39 @@
         </div>
         <div class='col-md-1'></div>
         <div class='col-md-4'>
-          <button type='button' class='btn btn-edit btn-block btn-sm' onclick="history.back()">Go Back</button>
+          <button type='button' class='btn btn-edit btn-block btn-sm' id='btn-back'>Go Back</button>
         </div>
       </div>
+
       <div class='row show'>
         <div class='col-md-12'>
           <table class='table-bordered table-sm table-dark table-grid' id='tab_img'>
-            <thead>
-              <tr>
-                <th class='padded'>&nbsp;</th>
-                <th class='padded'>Scene</th>
-                <th class='padded'>Start</th>
-                <th class='padded'>Finish</th>
-                <th class='padded'>&nbsp;</th>
-              </tr>
-            </thead>
             <tbody>
-              {% for i in range(0, comp.length) -%}
-                {% set last = comp[i].length - 1 %}
+              {% for i in range(0, comp.length, 7) -%}
                 <tr>
-                  <td class='data-left'>
-                    {% if merged[i] != 'yes' %}
-                      <button type='button' class='btn btn-edit btn-block btn-sm btn-merge' id='btn-merge_{{i}}' value='{{i}}'>MERGE</button>
-                    {% else %}
-                      <button type='button' class='btn btn-edit btn-block btn-sm btn-delete' id='btn-delete_{{i}}' value='{{i}}'>DELETE</button>
+                  {% for num in range(0, 7) -%}
+                    {% if i + num < comp.length %}
+                      <td class='data-left'>
+                        {% if merged[i + num] != 'yes' %}
+                          <button type='button' class='btn btn-edit btn-block btn-sm btn-merge' id='btn-merge_{{i + num}}' value='{{i + num}}'>MERGE</button>
+                        {% else %}
+                          <button type='button' class='btn btn-edit btn-block btn-sm btn-delete' id='btn-delete_{{i + num}}' value='{{i + num}}'>DELETE</button>
+                        {% endif %}
+                      </td>
+                      <td class='data-right' style='color: white;'>
+                        {{i + num}}
+                      </td>
+                      <td class='padded'>
+                        {% if merged[i + num] == 'yes' %}
+                          <button type='button' class='btn btn-edit btn-block btn-sm btn-play' id="play_{{i + num}}" value='{{i + num}}'>
+                            Play
+                          </button>
+                        {% endif %}
+                      </td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
                     {% endif %}
-                  </td>
-                  <td class='data-right' style='color: white;'>
-                    {{i}}
-                  </td>
-                  <td class='padded'>
-                    {{comp[i][0]}}
-                  </td>
-                  <td class='padded'>
-                    {{comp[i][last]}}
-                  </td>
-                  <td class='padded'>
-                    {% if merged[i] == 'yes' %}
-                      <button type='button' class='btn btn-edit btn-block btn-sm btn-play' id="play_{{i}}" value='{{i}}'>
-                        Play
-                      </button>
-                    {% endif %}
-                  </td>
+                  {% endfor %}
                 </tr>
               {% endfor %}
             </tbody>
@@ -75,27 +66,32 @@
       </div>
     </div>
     <script>
+      $('#btn-back').on('click', () => {
+        const title = $('#title')[0].innerText;
+        const ptr = $('#ptr')[0].innerText;
+        window.location.href = `/display?title=${title}&ptr=${ptr}`;
+      }),
       $('.btn-merge').on('click', (e) => {
         let scene = e.target.value;
         const title = $('#title')[0].innerText;
         window.location.href = `/concat?title=${title}&scene=${scene}`;
       }),
       $('.btn-play').on('click', (e) => {
-      const title = $('#title')[0].innerText;
-      const ptr = $('#ptr')[0].innerText;
-      let num = '000000' + e.target.value;
-      num = num.substring(num.length - 5);
-      element = `s${num}.mp3`;
-      window.location.href = `/play?title=${title}&element=${element}&ptr=${ptr}&sub=scenes`;
-    }),
-    $('.btn-delete').on('click', (e) => {
-      const title = $('#title')[0].innerText;
-      const ptr = $('#ptr')[0].innerText;
-      let num = '000000' + e.target.value;
-      num = num.substring(num.length - 5);
-      element = `s${num}.mp3`;
-      window.location.href = `/delete?title=${title}&element=${element}&ptr=${ptr}&sub=scenes`;
-    })
+        const title = $('#title')[0].innerText;
+        const ptr = $('#ptr')[0].innerText;
+        let num = '000000' + e.target.value;
+        num = num.substring(num.length - 5);
+        element = `s${num}.mp3`;
+        window.location.href = `/play?title=${title}&element=${element}&ptr=${ptr}&sub=scenes`;
+      }),
+      $('.btn-delete').on('click', (e) => {
+        const title = $('#title')[0].innerText;
+        const ptr = $('#ptr')[0].innerText;
+        let num = '000000' + e.target.value;
+        num = num.substring(num.length - 5);
+        element = `s${num}.mp3`;
+        window.location.href = `/delete?title=${title}&element=${element}&ptr=${ptr}&sub=scenes`;
+      })
     </script>
   </body>
 </html>

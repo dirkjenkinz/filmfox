@@ -40,7 +40,7 @@ const concatHandler = async (req, res) => {
 
   setTimeout(function() {
     res.redirect(`/merge?title=${title}&ptr=${ptr}`)
-  }, 10000);
+  }, 5000);
 
 };
 

@@ -12,6 +12,13 @@ const playHandler = async (req, res) => {
   const element = u.query.element;
   const title = u.query.title;
   playSoundFile(title,element, sub);
+
+  if (sub === 'scenes'){
+    res.redirect(`/merge?title=${title}&ptr=${ptr}`)
+  } else {
+    res.redirect(`/display?title=${title}&ptr=${ptr}`)
+  }
+
 };
 
 module.exports = { playHandler };
