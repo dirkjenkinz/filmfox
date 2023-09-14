@@ -12,17 +12,18 @@ const deleteHandler = async (req, res) => {
   const num = u.query.num;
   await deleteFile(title, element, sub);
 
-  const filmFoxFile = await getData(`${title}/${title}.fff`);
-  let {script} = filmFoxFile;
-  script[num][4] = '';
-
-  await writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
+  if (sub === "sounds") {
+    const filmFoxFile = await getData(`${title}/${title}.fff`);
+    let { script } = filmFoxFile;
+    script[num][4] = "";
+    await writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
+  }
 
   if (sub === "sounds") {
     res.redirect(`/display?title=${title}&ptr=${ptr}`);
   } else {
     res.redirect(`/merge?title=${title}&ptr=${ptr}`);
-  };
+  }
 };
 
 module.exports = { deleteHandler };

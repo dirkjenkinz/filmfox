@@ -3,6 +3,18 @@ const path = require("path");
 const mp3Duration = require("mp3-duration");
 const { smartLog } = require("../services/smart-log");
 const sound = require("sound-play");
+const fileExists = (file) => {
+  try {
+    if (fs.existsSync(file)) {
+      return true;
+    } else {
+      return false;
+    }
+  } catch(err) {
+    console.error(err)
+    return false;
+  }
+};
 
 const getScript = (file) => {
   const directoryPath = path.join(__dirname, "../scripts");
@@ -38,6 +50,8 @@ const getData = async (file) => {
 const playSoundFile = async (title, file, sub) => {
   smartLog("info", `playing sound file - ${title}/${sub}/${file}`);
   const sFile = path.join(__dirname, `../data/${title}/${sub}/${file}`);
+  console.log({sFile})
+
   try {
     await sound.play(sFile);
     console.log("done");
@@ -194,4 +208,5 @@ module.exports = {
   getSRT,
   deleteFile,
   getFFFList,
+  fileExists,
 };

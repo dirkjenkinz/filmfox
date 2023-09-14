@@ -1,7 +1,6 @@
 const url = require("url");
 const { smartLog } = require("../services/smart-log");
 const {
-  getDuration,
   getListOfElements,
   getData,
   writeFile,
@@ -18,11 +17,12 @@ const formatTime = (seconds) => {
   h = `${h},${micro}`;
   return h;
 };
-
+/*
 const procureDuration = async (file, elementName) => {
-  let duration = await getDuration(file, elementName);
+  const duration = await getDuration(file, elementName);
   return duration;
 };
+*/
 
 const srtHandler = async (req, res) => {
   smartLog("info", "entering srt handler");
@@ -35,34 +35,28 @@ const srtHandler = async (req, res) => {
   timeStart = 0.0;
   let timeFinish = 0.0;
   smartLog("info", "building srt data");
-  const elementNames = await getListOfElements(title);
-  for (const element of elementNames) {
-    const duration = await procureDuration(title, element);
-    let num = element.substring(6, 12);
-    num = parseInt(num);
 
-    timeFinish = timeStart + duration;
-    timeFinish = Math.round(timeFinish * 1000) / 1000;
+  let t = 0.00;
+  const sub = [];
+  script.forEach((s, index)=>{
+    sub.push({
+      duration: s[6],
+      speaker: s[0],
+      dialogue: s[1],
+      start: formatTime(t),
+      finish: formatTime(t + s[6]),
+    })
+    t = t + s[6];
+  });
 
-    let formattedStart = formatTime(timeStart);
+  let srt = '';
+  sub.forEach((s, index) => {
+    srt += `${index + 1}\n`;
+    srt += `${s.start} --> ${s.finish}\n`;
+    srt += `<b>${s.speaker}:</b> ${s.dialogue}\n\n`;
+  });
 
-    script[num].push(formattedStart);
-    script[num].push(formatTime(duration));
-    script[num].push(formatTime(timeFinish));
-
-    timeStart = timeFinish;
-    timeStart = Math.round(timeStart * 1000) / 1000;
-  }
-  let srt = "";
-  for (let s = 0; s < script.length; s++) {
-    if (script[s][6]) {
-      const text = script[s][1].trim();
-      srt += `${s + 1}\n`;
-      srt += `${script[s][6]} --> ${script[s][8]}\n`;
-      srt += `<b>${script[s][0]}:</b> ${text}\n\n`;
-    }
-  };
-  await writeFile(srt, `${title}.srt`);
+  await writeFile(srt, `${title}/${title}.srt`);
   smartLog("info", "srt complete");
   srt = srt.split("\n");
   res.render("srt.njk", {
