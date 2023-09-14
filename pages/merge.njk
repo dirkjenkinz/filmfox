@@ -41,23 +41,25 @@
           <table class='table-bordered table-sm table-dark table-grid' id='tab_img'>
             <tbody>
               <tr>
-                <td colspan='8'>
+                <td colspan='7'>
                   {% if masterExists == 'yes' %}
-                    <button type='button' class='btn btn-edit btn-block btn-sm' id='btn-play-master'>Select Master</button>
+                    <button type='button' class='btn btn-edit btn-block btn-sm' id='btn-play-master'>Play Master</button>
                   {% endif %}
                 </td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
+                <td>&nbsp;</td>
                 <td colspan='4' style='padding: 0 8px;'>
-                <h4 id='selected'></h4>
+                  <h4 id='selected'></h4>
                 </td>
                 <td colspan='5'>
-                  <audio id='master-play' controls="controls">
-                    <source src='../data' type="audio/mpeg">
+                  <audio id='master-play' controls>
+                    <source src='' type="audio/mpeg">
                   </audio>
                 </td>
                 <td></td>
-                <td colspan='8'>
+                <td></td>
+                <td colspan='7'>
                   <button type='button' class='btn btn-edit btn-block btn-sm' id='btn-enable'>Enable DELETE</button>
                 </td>
               </tr>
@@ -79,7 +81,7 @@
                         <td class='padded'>
                           {% if merged[i + num] == 'yes' %}
                             <button type='button' class='btn btn-edit btn-block btn-sm btn-play' id="play_{{i + num}}" value='{{i + num}}'>
-                              Select
+                              Play
                             </button>
                           {% endif %}
                         </td>
@@ -115,6 +117,9 @@
           document
             .getElementById("master-play")
             .setAttribute('src', s);
+          document
+            .getElementById("master-play")
+            .play();
         }),
         $('#btn-enable').on('click', (e) => {
           const l = $('#size')[0].innerText;
@@ -151,6 +156,9 @@
           document
             .getElementById("master-play")
             .setAttribute('src', s)
+          document
+            .getElementById("master-play")
+            .play();
         })
       </script>
     </body>
