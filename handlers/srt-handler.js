@@ -1,7 +1,6 @@
 const url = require("url");
 const { smartLog } = require("../services/smart-log");
 const {
-  getListOfElements,
   getData,
   writeFile,
 } = require("../services/file-service");
@@ -17,12 +16,6 @@ const formatTime = (seconds) => {
   h = `${h},${micro}`;
   return h;
 };
-/*
-const procureDuration = async (file, elementName) => {
-  const duration = await getDuration(file, elementName);
-  return duration;
-};
-*/
 
 const srtHandler = async (req, res) => {
   smartLog("info", "entering srt handler");

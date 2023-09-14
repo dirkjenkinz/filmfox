@@ -13,18 +13,35 @@
 
   <body>
     <div class='container-fluid'>
-      <div class='row'>
-        <div class='col-md-1'></div>
-        <div class='col-md-11'>
+      <div class='row top'>
+        <div class='col-md-2'>
+          <h4>Film Fox</h4>
+        </div>
+        <div class='col-md-3' id='title'>{{title}}</div>
+        <div class='col-md-5'>
           {{slug[current]}}
+        </div>
+        <div class='col-md-2'>
+          <button type='button' class='btn btn-edit btn-block btn-sm' id='btn-back'>Go Back</button>
         </div>
       </div>
       <div class="row" style='background: silver; color: black;'>
         <div class='col-md-1'>
           <p id='current'>{{current}}</p>
           <p id='start'>{{showreel[current].start}}</p>
-          <p id='finsih'>{{showreel[current].finish}}</p>
+          <p id='finish'>{{showreel[current].finish}}</p>
           <p id='ptr' hidden="hidden">{{ptr}}</p>
+          <br><br><br><br>
+          <br><br><br><br>
+          {% if muted == 'no' %}
+            <button class='btn btn-block btn-edit btn-sm' id='btn-mute'>
+              MUTE
+            </button>
+          {% else %}
+            <button class='btn btn-block btn-edit btn-sm' id='btn-mute'>
+              UNMUTE
+            </button>
+          {% endif %}
         </div>
         <div class='col-md-8'>
           {% if imageType[current] === 'movie' %}
@@ -36,7 +53,6 @@
           {% endif %}
         </div>
         <div class='col-md-3'>
-          <p style='text-align : center;' id='title'>{{title}}</p>
           <br>
           <p style='text-align : center;'>
             {{showreel[current].character}}
@@ -59,21 +75,15 @@
           </button>
         </div>
         <div class='col-md-3'></div>
-        <div class='col-md-1'>
-          {% if muted == 'no' %}
-            <button class='btn btn-block btn-edit btn-sm' id='btn-mute'>
-              MUTE
-            </button>
-          {% else %}
-            <button class='btn btn-block btn-edit btn-sm' id='btn-mute'>
-              UNMUTE
-            </button>
-          {% endif %}
-        </div>
       </div>
       <div class='row'>&nbsp;</div>
     </div>
     <script>
+      $('#btn-back').on('click', () => {
+        const title = $('#title')[0].innerText;
+        const ptr = $('#ptr')[0].innerText;
+        window.location.href = `/display?title=${title}&ptr=${ptr}`;
+      }),
       $("#display").on("click", () => {
         const fff = $("#title")[0].outerText;
         const ptr = $("#ptr")[0].innerText;
