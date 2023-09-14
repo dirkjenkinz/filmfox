@@ -6,7 +6,6 @@ const { createCanvas, loadImage, registerFont } = require("canvas");
 registerFont("C:/Windows/Fonts/arialbd.ttf", { family: "Arial Bold" });
 registerFont("C:/Windows/Fonts/timesbd.ttf", { family: "Times Bold" });
 const {
-  getDuration,
   getData,
   writeFile,
 } = require("../services/file-service");
@@ -51,9 +50,8 @@ const buildShowreelHandler = async (req, res) => {
   });
 
   await writeFile(JSON.stringify(showreel), `/${title}/${title}.shw`)
-
-  smartLog("info", "showreel complete");
-  res.redirect(`/display?title=${title}&ptr=0&locked=yes&headersOnly=no&ptr=ptr`);
+  smartLog("info", "showreel built");
+  res.redirect(`/play-showreel?title=${title}&ptr=${ptr}&current=0&muted=no`);
 };
 
 module.exports = { buildShowreelHandler };

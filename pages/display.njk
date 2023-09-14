@@ -42,11 +42,8 @@
       <div class='col-md-1'>
         <button class='btn btn-block btn-edit btn-sm' id='btn-srt'>SRT</button>
       </div>
-      <div class='col-md-2'>
-        <button class='btn btn-block btn-edit btn-sm' id='btn-build-showreel'>Build Showreel</button>
-      </div>
       <div class='col-md-1'>
-        <button class='btn btn-block btn-edit btn-sm' id='btn-play-showreel'>Showreel</button>
+        <button class='btn btn-block btn-edit btn-sm' id='btn-build-showreel'>Showreel</button>
       </div>
       <div class='col-md-2'>
         {% if headersOnly == 'yes' %}
@@ -173,11 +170,6 @@
       const f = $('#title')[0].innerText;
       const ptr = $('#ptr')[0].innerText;
       window.location.href = `/build-showreel?title=${f}&ptr=${ptr}`;
-    }),
-    $('#btn-play-showreel').on('click', () => {
-      const f = $('#title')[0].innerText;
-      const ptr = $('#ptr')[0].innerText;
-      window.location.href = `/play-showreel?title=${f}&ptr=${ptr}&current=0&muted=no`;
     }),
     $('#btn-merge').on('click', () => {
       const f = $('#title')[0].innerText;
