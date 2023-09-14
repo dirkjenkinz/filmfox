@@ -6,7 +6,9 @@
 }
 
 .top {
-  padding: 8px 0 0 0;
+  padding: 4px;
+  font-size: 130%;
+  border: cornflowerblue 4px double;
 }
 
 #top-row {
@@ -182,7 +184,6 @@ textarea {
   text-align: right;
 }
 
-#title,
 #summary,
 #fname {
   background: white;

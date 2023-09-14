@@ -15,7 +15,6 @@ const buildShowreelRouter = require('./routes/build-showreel.js');
 const playShowreelRouter = require('./routes/play-showreel.js');
 const mergeRouter = require('./routes/merge.js');
 const concatRouter = require('./routes/concat.js');
-const videoRouter = require('./routes/video.js');
 const masterRouter = require('./routes/master.js');
 const playMasterRouter = require('./routes/play-master.js');
 
@@ -51,7 +50,6 @@ app.use('/build-showreel', buildShowreelRouter);
 app.use('/play-showreel', playShowreelRouter);
 app.use('/merge', mergeRouter);
 app.use('/concat', concatRouter);
-app.use('/video', videoRouter);
 app.use('/master', masterRouter);
 app.use('/play-master', playMasterRouter);
 
