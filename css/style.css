@@ -5,6 +5,10 @@
   border: darkslategrey 12px solid;
 }
 
+.white-text {
+  color: white;
+}
+
 .top {
   padding: 4px;
   font-size: 130%;
@@ -22,6 +26,9 @@
 
 .red-row {
   background: red;
+}
+.small-text {
+  font-size: 60%;
 }
 
 #piccy {
@@ -58,6 +65,7 @@ html {
   text-align: right;
   background: black;
   padding: 0px 4px;
+  color: white;
 }
 
 .data-left {

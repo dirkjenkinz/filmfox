@@ -17,8 +17,7 @@
         <div class='col-md-2'>
           <h4>Film Fox</h4>
         </div>
-        <div class='col-md-3' id='title'>{{title}}</div>
-        <div class='col-md-5' id='slug'></div>
+        <div class='col-md-8 small-text'><p id='title'>{{title}}</p><p id='slug'>{{showreel[current].slug}}</p></div>
         <div class='col-md-2'>
           <button type='button' class='btn btn-edit btn-block btn-sm' id='btn-back'>Go Back</button>
         </div>
@@ -29,6 +28,7 @@
           <p id='start'>{{showreel[current].start}}</p>
           <p id='finish'>{{showreel[current].finish}}</p>
           <p id='ptr' hidden='hidden'>{{ptr}}</p>
+          <p id='size' hidden='hidden'>{{showreel.length}}</p>
           {% for i in range(0, showreel.length) -%}
             <p id='card{{i}}' hidden='hidden'>{{showreel[i].card}}</p>
             <p id='sound{{i}}' hidden='hidden'>{{showreel[i].sound}}</p>
@@ -68,11 +68,12 @@
           </button>
         </div>
         <div class='col-md-1'></div>
-        <div class='col-md-2'>
+        <div class='col-md-3'>
           <audio id='master-play' controls='controls' style='width: 100%;'>
             <source src='' type='audio/mpeg'>
           </audio>
         </div>
+        <div class='col-md-1'></div>
         <div class='col-md-2'>
           <button class='btn btn-block btn-edit btn-sm' id='btn-next'>
             NEXT
@@ -81,69 +82,6 @@
       </div>
       <div class='row'>&nbsp;</div>
     </div>
-    <script>
-      $('#btn-back').on('click', () => {
-        const title = $('#title')[0].innerText;
-        const ptr = $('#ptr')[0].innerText;
-        window.location.href = `/display?title=${title}&ptr=${ptr}`;
-      }),
-      $('#display').on('click', () => {
-        const fff = $('#title')[0].outerText;
-        const ptr = $('#ptr')[0].innerText;
-        window.location.href = `/display?title=${title}.fff&ptr=${ptr}`
-      }),
-      $('#btn-next').on('click', () => {
-        const title = $('#title')[0].innerText;
-        const ptr = $('#ptr')[0].innerText;
-        let current = $('#current')[0].innerText;
-        current++;
-        $('#current')[0].innerText = current;
-
-        const card = $(`#card${current}`)[0].innerText;
-        const sound = $(`#sound${current}`)[0].innerText;
-        const start = $(`#start${current}`)[0].innerText;
-        const finish = $(`#finish${current}`)[0].innerText;
-        const character = $(`#character${current}`)[0].innerText;
-        const dialogue = $(`#dialogue${current}`)[0].innerText;
-        const slug = $(`#slug${current}`)[0].innerText;
-        const imageType = $(`#imageType${current}`)[0].innerText;
-
-        $('#start')[0].innerText = start;
-        $('#finish')[0].innerText = finish;
-        $('#character')[0].innerText = character;
-        $('#dialogue')[0].innerText = dialogue;
-        $('#slug')[0].innerText = slug;
-
-        if (imageType === 'movie') {
-               document
-                 .getElementById('viddy')
-                 .src = `../data/${title}/images/${card}`;
-        } else {
-          document
-            .getElementById('piccy')
-            .src = `../data/${title}/images/${card}`;
-        };
-
-        const s = `../data/${title}/sounds/${sound}`;
-        document
-          .getElementById('master-play')
-          .setAttribute('src', s);
-        document
-          .getElementById('master-play')
-          .play();
-      }),
-      $('#btn-previous').on('click', () => {
-        const title = $('#title')[0].innerText;
-        const ptr = $('#ptr')[0].innerText;
-        let current = $('#current')[0].innerText;
-        current--;
-
-        if (current < 0) {
-          current = 0;
-        }
-
-        window.location.href = `/play-showreel?title=${title}&ptr=${ptr}&current=${current}`
-      })
-    </script>
+    <script src='../js/play-showreel.js'></script>
   </body>
 </html>
