@@ -18,46 +18,45 @@
           <h4>Film Fox</h4>
         </div>
         <div class='col-md-3' id='title'>{{title}}</div>
-        <div class='col-md-5'>
-          {{slug[current]}}
-        </div>
+        <div class='col-md-5' id='slug'></div>
         <div class='col-md-2'>
           <button type='button' class='btn btn-edit btn-block btn-sm' id='btn-back'>Go Back</button>
         </div>
       </div>
-      <div class="row" style='background: silver; color: black;'>
+      <div class='row' style='background: silver; color: black;'>
         <div class='col-md-1'>
           <p id='current'>{{current}}</p>
           <p id='start'>{{showreel[current].start}}</p>
           <p id='finish'>{{showreel[current].finish}}</p>
-          <p id='ptr' hidden="hidden">{{ptr}}</p>
-          <br><br><br><br>
-          <br><br><br><br>
-          {% if muted == 'no' %}
-            <button class='btn btn-block btn-edit btn-sm' id='btn-mute'>
-              MUTE
-            </button>
-          {% else %}
-            <button class='btn btn-block btn-edit btn-sm' id='btn-mute'>
-              UNMUTE
-            </button>
-          {% endif %}
+          <p id='ptr' hidden='hidden'>{{ptr}}</p>
+          {% for i in range(0, showreel.length) -%}
+            <p id='card{{i}}' hidden='hidden'>{{showreel[i].card}}</p>
+            <p id='sound{{i}}' hidden='hidden'>{{showreel[i].sound}}</p>
+            <p id='start{{i}}' hidden='hidden'>{{showreel[i].start}}</p>
+            <p id='finish{{i}}' hidden='hidden'>{{showreel[i].finish}}</p>
+            <p id='character{{i}}' hidden='hidden'>{{showreel[i].character}}</p>
+            <p id='dialogue{{i}}' hidden='hidden'>{{showreel[i].dialogue}}</p>
+            <p id='slug{{i}}' hidden='hidden'>{{showreel[i].slug}}</p>
+            <p id='imageType{{i}}' hidden='hidden'>{{showreel[i].imageType}}</p>
+          {% endfor %}
         </div>
-        <div class='col-md-8'>
-          {% if imageType[current] === 'movie' %}
-            <video width="800" height="450" controls="controls" autoplay="autoplay" id="img_{{i}}" class="img" muted="muted">
-              <source src="../data/{{title}}/images/{{showreel[current].card}}" type="video/mp4">
+        <div class='col-md-7'>
+          {% if showreel[current].imageType === 'movie' %}
+            <video id="viddy" controls="controls" autoplay="autoplay">
+              <source id="mp4_src" src="mov_bbb.mp4" type="video/mp4">
+              <source id="ogg_src" src="mov_bbb.ogg" type="video/ogg">
+              Your browser does not support HTML5 video.
             </video>
           {% else %}
-            <img id='piccy' width="800" height="450" src="../data/{{title}}/images/{{showreel[current].card}}" alt="card"/>
+            <img id='piccy' width='720' height='405' src='../data/{{title}}/images/{{showreel[current].card}}' alt='card'/>
           {% endif %}
         </div>
-        <div class='col-md-3'>
+        <div class='col-md-4' style='padding: 0 0 0 16px;'>
           <br>
-          <p style='text-align : center;'>
+          <p style='text-align : center;' id='character'>
             {{showreel[current].character}}
           </p>
-          <p>{{showreel[current].dialogue}}</p>
+          <p id='dialogue'>{{showreel[current].dialogue}}</p>
         </div>
       </div>
       <div class='row'>&nbsp;</div>
@@ -68,13 +67,17 @@
             PREVIOUS
           </button>
         </div>
-        <div class='col-md-4'></div>
+        <div class='col-md-1'></div>
+        <div class='col-md-2'>
+          <audio id='master-play' controls='controls' style='width: 100%;'>
+            <source src='' type='audio/mpeg'>
+          </audio>
+        </div>
         <div class='col-md-2'>
           <button class='btn btn-block btn-edit btn-sm' id='btn-next'>
             NEXT
           </button>
         </div>
-        <div class='col-md-3'></div>
       </div>
       <div class='row'>&nbsp;</div>
     </div>
@@ -84,56 +87,62 @@
         const ptr = $('#ptr')[0].innerText;
         window.location.href = `/display?title=${title}&ptr=${ptr}`;
       }),
-      $("#display").on("click", () => {
-        const fff = $("#title")[0].outerText;
-        const ptr = $("#ptr")[0].innerText;
+      $('#display').on('click', () => {
+        const fff = $('#title')[0].outerText;
+        const ptr = $('#ptr')[0].innerText;
         window.location.href = `/display?title=${title}.fff&ptr=${ptr}`
       }),
-      $("#btn-next").on("click", () => {
-        const title = $("#title")[0].innerText;
-        const ptr = $("#ptr")[0].innerText;
-        let current = $("#current")[0].innerText;
+      $('#btn-next').on('click', () => {
+        const title = $('#title')[0].innerText;
+        const ptr = $('#ptr')[0].innerText;
+        let current = $('#current')[0].innerText;
         current++;
+        $('#current')[0].innerText = current;
 
-        if ($('#btn-mute')[0].innerText === 'MUTE') {
-          muted = 'no';
+        const card = $(`#card${current}`)[0].innerText;
+        const sound = $(`#sound${current}`)[0].innerText;
+        const start = $(`#start${current}`)[0].innerText;
+        const finish = $(`#finish${current}`)[0].innerText;
+        const character = $(`#character${current}`)[0].innerText;
+        const dialogue = $(`#dialogue${current}`)[0].innerText;
+        const slug = $(`#slug${current}`)[0].innerText;
+        const imageType = $(`#imageType${current}`)[0].innerText;
+
+        $('#start')[0].innerText = start;
+        $('#finish')[0].innerText = finish;
+        $('#character')[0].innerText = character;
+        $('#dialogue')[0].innerText = dialogue;
+        $('#slug')[0].innerText = slug;
+
+        if (imageType === 'movie') {
+               document
+                 .getElementById('viddy')
+                 .src = `../data/${title}/images/${card}`;
         } else {
-          muted = 'yes';
+          document
+            .getElementById('piccy')
+            .src = `../data/${title}/images/${card}`;
         };
 
-        window.location.href = `/play-showreel?title=${title}&ptr=${ptr}&current=${current}&muted=${muted}`
+        const s = `../data/${title}/sounds/${sound}`;
+        document
+          .getElementById('master-play')
+          .setAttribute('src', s);
+        document
+          .getElementById('master-play')
+          .play();
       }),
-      $("#btn-previous").on("click", () => {
-        const title = $("#title")[0].innerText;
-        const ptr = $("#ptr")[0].innerText;
-        let current = $("#current")[0].innerText;
+      $('#btn-previous').on('click', () => {
+        const title = $('#title')[0].innerText;
+        const ptr = $('#ptr')[0].innerText;
+        let current = $('#current')[0].innerText;
         current--;
 
         if (current < 0) {
           current = 0;
         }
 
-        if ($('#btn-mute')[0].innerText === 'MUTE') {
-          muted = 'no';
-        } else {
-          muted = 'yes';
-        };
-
-        window.location.href = `/play-showreel?title=${title}&ptr=${ptr}&current=${current}&muted=${muted}`
-      }),
-      $("#btn-mute").on("click", () => {
-        const title = $("#title")[0].innerText;
-        const ptr = $("#ptr")[0].innerText;
-        const current = $("#current")[0].innerText;
-        let mute;
-
-        if ($('#btn-mute')[0].innerText === 'MUTE') {
-          muted = 'yes';
-        } else {
-          muted = 'no';
-        };
-
-        window.location.href = `/play-showreel?title=${title}&ptr=${ptr}&current=${current}&muted=${muted}`;
+        window.location.href = `/play-showreel?title=${title}&ptr=${ptr}&current=${current}`
       })
     </script>
   </body>

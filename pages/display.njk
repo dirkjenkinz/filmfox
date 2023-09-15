@@ -227,11 +227,14 @@
   $('.btn-change').on('click', (e) => {
     const f = $('#title')[0].innerText;
     const ptr = $('#ptr')[0].innerText;
+    const row = e.target.id.substring(7);
     const element = e.target.value;
     let h = 'no';
     if ($('#btn-headers')[0].innerText === 'Show All') 
       h = 'yes';
-    window.location.href = `/gallery?title=${f}&ptr=${ptr}&element=${element}&headersOnly=${h}`
+//var elm = document.getElementById("row_100");
+  // elm.scrollIntoView(true);
+    window.location.href = `/gallery?title=${f}&ptr=${ptr}&element=${element}&headersOnly=${h}&row=${row}`
   }),
   $('#btn-sound-lock').on('click', () => {
     const l = $('#length')[0].innerText;

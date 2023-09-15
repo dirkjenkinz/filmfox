@@ -1,6 +1,6 @@
 const url = require("url");
 const { smartLog } = require("../services/smart-log");
-const { getData, playSoundFile } = require("../services/file-service");
+const { getData } = require("../services/file-service");
 
 const playShowreelHandler = async (req, res) => {
   smartLog("info", "entering play showreel handler");
@@ -11,37 +11,32 @@ const playShowreelHandler = async (req, res) => {
   const current = u.query.current;
   const showreel = await getData(`${title}/${title}.shw`);
 
-  const slug = [];
-
   let line = "FADE IN:";
   let sceneNumber = 0;
 
-  showreel.forEach((s) => {
+  let slug = showreel[0].dialogue
+  
+  showreel.forEach((s, index) => {
     if (
       s.dialogue.substring(0, 3) === "INT" ||
       s.dialogue.substring(0, 3) === "EXT"
     ) {
       sceneNumber++;
-      line = `SCENE ${sceneNumber}: ${s.dialogue}`;
+      slug = `SCENE ${sceneNumber}: ${s.dialogue}`;
     }
-    slug.push(line);
+    s.slug = slug;
   });
 
-  let imageType = [];
   for (let i = 0; i < showreel.length; i++) {
     if (showreel[i].card.substring(showreel[i].card.length - 4) === ".mov") {
-      imageType.push("movie");
-    } else if (showreel[i].card.substring(showreel[i].card.length - 4) === ".mp4") {
-      imageType.push("movie");
+      showreel[i].imageType = "movie";
+    } else if (
+      showreel[i].card.substring(showreel[i].card.length - 4) === ".mp4"
+    ) {
+      showreel[i].imageType = "movie";
     } else {
-      imageType.push("still");
+      showreel[i].imageType = "still";
     }
-  }
-
-  const soundFile = showreel[current].sound;
-
-  if (muted === "no") {
-    playSoundFile(title, soundFile, 'sounds');
   }
 
   res.render("play-showreel.njk", {
@@ -49,9 +44,6 @@ const playShowreelHandler = async (req, res) => {
     showreel,
     ptr,
     current,
-    slug,
-    muted,
-    imageType,
   });
 };
 
