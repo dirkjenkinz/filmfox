@@ -3,6 +3,7 @@ const { smartLog } = require("../services/smart-log");
 const {
   getData,
   writeFile,
+  getDuration,
 } = require("../services/file-service");
 
 const formatTime = (seconds) => {
@@ -25,13 +26,18 @@ const srtHandler = async (req, res) => {
   const filmFoxFile = await getData(`${title}/${title}.fff`);
   const { script } = filmFoxFile;
 
-  timeStart = 0.0;
-  let timeFinish = 0.0;
+  for (i = 0; i < script.length; i++ ){
+    script[i][6] = await getDuration(title, `${script[i][4]}.mp3`);
+  };
+
+  await writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
+
+  timeStart = 0.000;
   smartLog("info", "building srt data");
 
   let t = 0.00;
   const sub = [];
-  script.forEach((s, index)=>{
+  script.forEach((s)=>{
     sub.push({
       duration: s[6],
       speaker: s[0],
@@ -44,6 +50,7 @@ const srtHandler = async (req, res) => {
 
   let srt = '';
   sub.forEach((s, index) => {
+    console.log({s})
     srt += `${index + 1}\n`;
     srt += `${s.start} --> ${s.finish}\n`;
     srt += `<b>${s.speaker}:</b> ${s.dialogue}\n\n`;

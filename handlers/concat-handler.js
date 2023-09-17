@@ -19,7 +19,7 @@ const concatFiles = (clips, scene, title) => {
 
   concat
     .on("end", function () {
-      smartlog("info", "Concatenation finished.");
+      smartLog("info", "Concatenation finished.");
     })
     .on("error", function (err) {
       smartLog("error:", err);
