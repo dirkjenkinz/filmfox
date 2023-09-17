@@ -50,7 +50,6 @@ const srtHandler = async (req, res) => {
 
   let srt = '';
   sub.forEach((s, index) => {
-    console.log({s})
     srt += `${index + 1}\n`;
     srt += `${s.start} --> ${s.finish}\n`;
     srt += `<b>${s.speaker}:</b> ${s.dialogue}\n\n`;

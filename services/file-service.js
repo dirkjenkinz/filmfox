@@ -11,7 +11,7 @@ const fileExists = (file) => {
       return false;
     }
   } catch(err) {
-    console.error(err)
+    smartLog("error", "err");
     return false;
   }
 };
@@ -55,7 +55,7 @@ const playSoundFile = async (title, file, sub) => {
     await sound.play(sFile);
     smartLog("info", "done");
   } catch (error) {
-    console.error(error);
+    smartLog("error", error);
   }
 };
 

@@ -1,5 +1,5 @@
 const url = require('url');
-const { getData, writeFile } = require('../services/file-service');
+const { getData, writeFile, getDuration } = require('../services/file-service');
 const { generateSpeech } = require('../services/elevenLabs');
 const dotenv = require('dotenv');
 dotenv.config();
@@ -58,6 +58,7 @@ const msg =  await generateSpeech(api_key, voice_id, fileName, text);
 
 if (msg !== 'Failed'){
   script[element][4] = `sound_${fileNum}_${script[element][0]}`;
+  script[element][6] = await getDuration(title, `${script[element][4]}.mp3`);
   await writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
 }
 

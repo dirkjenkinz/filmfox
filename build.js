@@ -9,9 +9,8 @@ const concatFiles = (clips, title) => {
   const fileName = `aaaaaa.mpg`;
   const dirPath = path.join(__dirname, `./data/${title}/images`);
   const concat = ffmpeg();
-console.log({clips})
+
   clips.forEach((clip) => {
-    console.log(`${dirPath}/${clip}`)
     concat.input(`${dirPath}/${clip}`);
   });
 
@@ -31,7 +30,7 @@ const concatHandler = async (req, res) => {
 clips = ['A cinematic close up.jpg ', 'darkpatio.jpg', 'egg.jpg']
 
 concatFiles(clips, 'Satellite');
-console.log('done');
+smartLog.log('info','done');
 };
 
 concatHandler();
