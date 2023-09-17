@@ -105,7 +105,8 @@
         $('.btn-merge').on('click', (e) => {
           let scene = e.target.value;
           const title = $('#title')[0].innerText;
-          window.location.href = `/concat?title=${title}&scene=${scene}`;
+          const ptr = $('#ptr')[0].innerText;
+          window.location.href = `/concat?title=${title}&scene=${scene}&ptr=${ptr}`;
         }),
         $('.btn-play').on('click', (e) => {
           const title = $('#title')[0].innerText;

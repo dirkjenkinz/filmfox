@@ -25,13 +25,12 @@ const formatTime = (seconds) => {
 const buildShowreelHandler = async (req, res) => {
   smartLog("info", "entering build showreel handler");
   const u = url.parse(req.originalUrl, true);
-  let title = u.query.title;
-  let ptr = u.query.ptr;
-  let filmFoxFile = await getData(`${title}/${title}.fff`);
+  const title = u.query.title;
+  const ptr = u.query.ptr;
+  const filmFoxFile = await getData(`${title}/${title}.fff`);
   const { script } = filmFoxFile;
 
   timeStart = 0.0;
-  let timeFinish = 0.0;
   smartLog("info", "building showreel data");
 
   let t = 0.00;

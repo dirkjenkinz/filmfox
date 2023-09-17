@@ -17,14 +17,14 @@ const getVoiceData = (voices) => {
 const characterToVoiceHandler = async (req, res) => {
   smartLog('info', 'entering character to voice handler');
   const u = url.parse(req.originalUrl, true);
-  let ptr = u.query.ptr;
-  let file = u.query.filmFoxFile;
+  const ptr = u.query.ptr;
+  const title = u.query.filmFoxFile;
   
-  let filmFoxFile = await getData(`${file}/${file}.fff`);
+  const filmFoxFile = await getData(`${title}/${title}.fff`);
 
-  const { title, script } = filmFoxFile;
+  const { script } = filmFoxFile;
 
-  let characters = await getData(`${file}/${file}.chrs`);
+  let characters = await getData(`${title}/${title}.chrs`);
 
   const voices = await getData('voices.json');
   voice_data = getVoiceData(voices);

@@ -20,9 +20,9 @@ const formatTime = (seconds) => {
 const srtHandler = async (req, res) => {
   smartLog("info", "entering srt handler");
   const u = url.parse(req.originalUrl, true);
-  let title = u.query.title;
-  let ptr = u.query.ptr;
-  let filmFoxFile = await getData(`${title}/${title}.fff`);
+  const title = u.query.title;
+  const ptr = u.query.ptr;
+  const filmFoxFile = await getData(`${title}/${title}.fff`);
   const { script } = filmFoxFile;
 
   timeStart = 0.0;

@@ -19,17 +19,6 @@ const playHandler = async (req, res) => {
   const element = u.query.element;
   const title = u.query.title;
   playSoundFile(title,element, sub);
-/*
-  let filmFoxFile = await getData(`${title}/${title}.fff`);
-  const { script  } = filmFoxFile;
-
-  for (let i = 0; i < script.length; i++){
-    const duration = await procureDuration(title, `${script[i][4]}.mp3`);
-    script[i][6] = duration;
-  }
-
-  await writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
-*/
 
   if (sub === 'scenes'){
     res.redirect(`/merge?title=${title}&ptr=${ptr}`)
