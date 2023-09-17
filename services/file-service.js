@@ -53,7 +53,7 @@ const playSoundFile = async (title, file, sub) => {
 
   try {
     await sound.play(sFile);
-    console.log("done");
+    smartLog("info", "done");
   } catch (error) {
     console.error(error);
   }

@@ -19,6 +19,7 @@ const characterToVoiceHandler = async (req, res) => {
   const u = url.parse(req.originalUrl, true);
   let ptr = u.query.ptr;
   let file = u.query.filmFoxFile;
+  
   let filmFoxFile = await getData(`${file}/${file}.fff`);
 
   const { title, script } = filmFoxFile;

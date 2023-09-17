@@ -35,23 +35,6 @@ const displayHandler = async (req, res) => {
     e = e.substring(0, 6);
     elements[index] = parseInt(e);
   });
-/*
-  script.forEach((s) => {
-    s.push("");
-  });
-
-  const elementNames = await getListOfElements(title);
-
-  script.forEach((s) => {
-    s[4] = "";
-  });
-
-  elementNames.forEach((name) => {
-    const num = parseInt(name.substring(6, 12));
-    script[num][4] = name.substring(0, name.length - 4);
-  });
-
-  */
 
   let imageType = [];
   let images = [];
@@ -71,18 +54,14 @@ const displayHandler = async (req, res) => {
   let scenePtr = -1;
   let headers = [];
   script.forEach((s) => {
-    if (headersOnly === "yes") {
       if (s[2] !== scenePtr) {
         headers.push("yes");
         scenePtr = s[2];
       } else {
         headers.push("no");
       }
-    } else {
-      headers.push("yes");
-    }
   });
-
+  
   res.render("display.njk", {
     title,
     api_key,

@@ -5,26 +5,6 @@ dotenv.config();
 const path = require("path");
 const ffmpeg = require("fluent-ffmpeg");
 
-const concatFiles = (clips, scene, title) => {
-  const fNum = `00000${scene}`;
-  const fileName = `s${fNum.substring(fNum.length - 5, fNum.length)}.mp3`;
-  const dirPath = path.join(__dirname, `../data/${title}/scenes`);
-  const master = ffmpeg();
-
-  clips.forEach((clip) => { 
-    master.input(`${dirPath}/${clip}.mp3`);
-  });
-
-  master
-    .on("end", function () {
-      console.log("Concatenation finished.");
-    })
-    .on("error", function (err) {
-      console.error("Error:", err);
-    })
-    .mergeToFile(`${outPath}/${fileName}`, outPath);
-};
-
 const masterHandler = async (req, res) => {
   smartLog("info", "ENTERING MASTER HANDLER");
   const u = url.parse(req.originalUrl, true);
@@ -42,10 +22,10 @@ const masterHandler = async (req, res) => {
 
   concat
     .on("end", function () {
-      console.log("Concatenation finished.");
+      smartLog("info", "Concatenation finished.");
     })
     .on("error", function (err) {
-      console.error("Error:", err);
+      smartLog("error", err);
     })
     .mergeToFile(`${dirPath}/master.mp3`, dirPath);
 

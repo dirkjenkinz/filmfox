@@ -12,7 +12,6 @@
     <style>
       .tableFixHead {
         overflow-y: auto;
-        /* make the table scrollable if height is more than 200 px  */
         height: 420px;
       }
       .tableFixHead thead th {
@@ -21,7 +20,7 @@
       }
       table {
         border-collapse: collapse;
-        width: 100%;
+        width: 99%;
       }
       td,
       th {
@@ -50,8 +49,8 @@
         <div class='col-md-1'></div>
         <div class='col-md-5' id='title'>
           {{ title }}
-          <p id='ptr' hidden="hidden">{{ptr}}</p>
-          <p id='length' hidden="hidden">{{script.length}}</p>
+          <p id='ptr' hidden='hidden'>{{ptr}}</p>
+          <p id='length' hidden='hidden'>{{script.length}}</p>
         </div>
         <div class='col-md-2 small-text'>
           <button class='btn btn-block btn-edit btn-sm' id='btn-go-to-element'>
@@ -59,7 +58,7 @@
           </button>
         </div>
         <div class='col-md-1'>
-          <input type="number" class='white-text' id="go-to-element" name="go-to-element" min="10" max="{{script.length -1}}"/>
+          <input type='number' class='white-text' id='go-to-element' name='go-to-element' min='0' max='{{script.length -1}}'/>
         </div>
       </div>
 
@@ -81,80 +80,73 @@
           <button class='btn btn-block btn-edit btn-sm' id='btn-build-showreel'>Showreel</button>
         </div>
         <div class='col-md-2'>
-          {% if headersOnly == 'yes' %}
-            <button class='btn btn-block btn-edit btn-sm' id='btn-headers'>Show All</button>
-          {% else %}
-            <button class='btn btn-block btn-edit btn-sm' id='btn-headers'>Show Headers Only</button>
-          {% endif %}
-        </div>
-        <div class='col-md-2'>
           <button class='btn btn-block btn-edit btn-sm' id='btn-merge'>Sound Merge</button>
         </div>
         <audio id='master-play' style='width: 100%;'>
-          <source src='' type="audio/mpeg">
+          <source src='' type='audio/mpeg'>
         </audio>
+        <div class='col-md-2'></div>
+        <div class='col-md-2'>
+          <button class='btn btn-block btn-edit btn-sm' id='btn-sound-lock'>Unlock Delete</button>
+        </div>
       </div>
     </div>
 
     <div class='row tableFixHead' id='tabhead'>
       <div class='col-md-12'>
-        <table id='script-table'>
-          <thead>
-            <tr>
-              <th class='head-display' style='width: 8%;'></th>
-              <th class='head-display'>Character</th>
-              <th class='head-display'>Voice</th>
-              <th class='head-display' colspan='3'>Dialogue</th>
-              <th class='head-display'>Sound</th>
-              <th class='head-display'>
-                <button class='btn btn-block btn-edit btn-sm' id='btn-sound-lock'>Unlock</button>
-              </th>
-              <th class='head-display' colspan='2'>Card</th>
-            </tr>
-          </thead>
+        <table id='script-table' style='margin-left: 18px;'>
           <tbody id='bod'>
             {% for i in range(0, script.length) -%}
               {% if script[i] %}
                 {% if headers[i] == 'yes' %}
-                  <tr id='row_{{i}}'>
-                    <td class='data-right' style='width: 8%;'>Scene
-                      {{script[i][2]}}
-                      <br>Element
-                      {{i}}
-                    </td>
-                    <td class='sound-display'>{{script[i][0]}}</td>
-                    <td class='sound-display'>{{script[i][3]}}</td>
-                    <td class='sound-display' colspan='3'>{{script[i][1]}}</td>
-                    <td class='sound-display' colspan='2'>
-                      <p style='font-size: 60%; color: black'>{{script[i][4]}}</p>
-                      {% if (script[i][3] == '-') or (script[i][4]) %}
-                        <button type='button' class='btn btn-edit btn-block btn-sm btn-play' id='play_{{i}}' value={{script[i][4]}}>
-                          Play
-                        </button>
-                        <br>
-                        <button class='btn btn-block btn-edit btn-sm btn-small btn-del' id='del_{{i}}' disabled="disabled" value={{script[i][4]}}>
-                          Delete
-                        </button>
-                      {% else %}
-                        <button type='button' class='btn btn-edit btn-block btn-sm btn-gen' id='gen_{{i}}'>
-                          Gen
-                        </button>
-                      {% endif %}
-                    </td>
-                    <td class='data-display card' colspan='2' id="crd_{{i}}">
-                      {% if images[i][1] === 'movie' %}
-                        <video width="160" height="90" controls="controls" autoplay="autoplay" id="img_{{i}}" class="img" muted="muted">
-                          <source src="../data/{{title}}/images/{{images[i][0]}}" type="video/mp4">
-                        </video>
-                      {% else %}
-                        <img width="160" height="90" src="../data/{{title}}/images/{{images[i][0]}}" id="img_{{i}}" class="img" alt="{{images[i][0]}}"/>
-                      {% endif %}
-                      <button type='button' class='btn btn-edit btn-block btn-sm btn-change' id="change_{{i}}" value='{{i}}'>
-                        Change
-                      </button>
-                    </td>
+                  <tr id='tr_sc_{{i}}'>
+                    <td colspan='6' class='header-line'>Scene
+                      {{script[i][2]}}</td>
                   </tr>
                 {% endif %}
+                <tr id='row_{{i}}'>
+                  <td class='non-header-display' style='width: 12%;'>Scene
+                    {{script[i][2]}}
+                    <br>Element
+                    {{i}}
+                  </td>
+                  <td class='non-header-display'>
+                    Character:
+                    {{script[i][0]}}
+                    <br><br>
+                    Voice:
+                    {{script[i][3]}}
+                  </td>
+                  <td class='non-header-display'>{{script[i][1]}}</td>
+                  <td class='non-header-display'>
+                    <p style='font-size: 60%; color: black'>{{script[i][4]}}</p>
+                    {% if (script[i][3] == '-') or (script[i][4]) %}
+                      <button type='button' class='btn btn-edit btn-block btn-sm btn-play' id='play_{{i}}' value='{{script[i][4]}}'>
+                        Play
+                      </button>
+                      <br>
+                      <button class='btn btn-block btn-edit btn-sm btn-small btn-del' id='del_{{i}}' disabled='disabled' value='{{script[i][4]}}'>
+                        Delete
+                      </button>
+                    {% else %}
+                      <button type='button' class='btn btn-edit btn-block btn-sm btn-gen' id='gen_{{i}}'>
+                        Gen
+                      </button>
+                    {% endif %}
+                  </td>
+                  <td class='data-display card' id='crd_{{i}}'>
+                    {% if images[i][1] === 'movie' %}
+                      <video width='160' height='90' controls='controls' autoplay='autoplay' id='img_{{i}}' class='img' muted='muted'>
+                        <source src='../data/{{title}}/images/{{images[i][0]}}' type='video/mp4'>
+                      </video>
+                    {% else %}
+                      <img width='160' height='90' src='../data/{{title}}/images/{{images[i][0]}}' id='img_{{i}}' class='img' alt='{{images[i][0]}}'/>
+                    {% endif %}
+                    <button type='button' class='btn btn-edit btn-block btn-sm btn-change' id='change_{{i}}' value='{{i}}'>
+                      Change
+                    </button>
+                  </td>
+                </tr>
               {% endif %}
             {%- endfor %}
           </tbody>
@@ -162,104 +154,6 @@
       </div>
     </div>
   </div>
-  <script>
-    $('#front').on('click', () => {
-      window.location.href = `/`
-    }),
-    $('#ctv').on('click', () => {
-      const f = $('#title')[0].innerText
-      let ptr = $('#ptr')[0].innerText
-      window.location.href = `/ctv?filmFoxFile=${f}&ptr=${ptr}`
-    }),
-    $('.btn-gen').on('click', (e) => {
-      const num = e
-        .target
-        .id
-        .substring(4)
-      let title = $('#title')[0].innerText
-      const ptr = $('#ptr')[0].innerText
-      window.location.href = `/generate-single?title=${title}&element=${num}&ptr=${ptr}`
-    }),
-    $('.btn-play').on('click', (e) => {
-      const title = $('#title')[0].innerText;
-      const s = `../data/${title}/sounds/${e.target.value}.mp3`;
-      document
-        .getElementById("master-play")
-        .setAttribute('src', s);
-      document
-        .getElementById("master-play")
-        .play();
-    }),
-    $('.btn-del').on('click', (e) => {
-      const num = e
-        .target
-        .id
-        .substring(4);
-      const title = $('#title')[0].innerText;
-      const ptr = $('#ptr')[0].innerText;
-      const element = `${e.target.value}.mp3`;
-      window.location.href = `/delete?title=${title}&element=${element}&ptr=${ptr}&sub=sounds&num=${num}`;
-    }),
-    $('#btn-srt').on('click', () => {
-      const f = $('#title')[0].innerText
-      let ptr = $('#ptr')[0].innerText
-      window.location.href = `/srt?title=${f}&ptr=${ptr}`
-    }),
-    $('#btn-build-showreel').on('click', () => {
-      const f = $('#title')[0].innerText;
-      const ptr = $('#ptr')[0].innerText;
-      window.location.href = `/build-showreel?title=${f}&ptr=${ptr}`;
-    }),
-    $('#btn-merge').on('click', () => {
-      const f = $('#title')[0].innerText;
-      const ptr = $('#ptr')[0].innerText;
-      window.location.href = `/merge?title=${f}&ptr=${ptr}`;
-    }),
-    $('#btn-headers').on('click', () => {
-      const f = $('#title')[0].innerText;
-      let ptr = $('#ptr')[0].innerText;
-      let headersOnly = 'no';
-      if ($('#btn-headers')[0].innerText === 'Show Headers Only') {
-        headersOnly = 'yes'
-      };
-
-      window.location.href = `/display?title=${f}&ptr=${ptr}&num=0&headersOnly=${headersOnly}`
-    }),
-    $('.btn-change').on('click', (e) => {
-      const f = $('#title')[0].innerText;
-      const ptr = $('#ptr')[0].innerText;
-      const row = e
-        .target
-        .id
-        .substring(7);
-      const element = e.target.value;
-      let h = 'no';
-      if ($('#btn-headers')[0].innerText === 'Show All') 
-        h = 'yes';
-      window.location.href = `/gallery?title=${f}&ptr=${ptr}&element=${element}&headersOnly=${h}&row=${row}`
-    }),
-    $('#btn-sound-lock').on('click', () => {
-      const l = $('#length')[0].innerText;
-      if ($('#btn-sound-lock')[0].innerText === 'Lock') {
-        $('#btn-sound-lock')[0].innerText = 'Unlock';
-        for (let i = 0; i < l; i++) {
-          $(`#del_${i}`).attr("disabled", true)
-        }
-      } else {
-        $('#btn-sound-lock')[0].innerText = 'Lock';
-        for (let i = 0; i < l; i++) {
-          $(`#del_${i}`).attr("disabled", false)
-        }
-      };
-    }),
-    $('#btn-go-to-element').on('click', () => {
-      const e = $('#go-to-element')[0].value;
-      const element = `row_${e}`;
-      console.log({element})
-      const elm = document.getElementById(element);
-      console.log({elm})
-      elm.scrollIntoView(true);
-    })
-  </script>
+  <script src='../js/display.js'></script>
 </body>
 </html>

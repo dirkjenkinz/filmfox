@@ -152,11 +152,11 @@
       }),
       $('.btn-select').on('click', (e) => {
         const source = e.target.value;
-        const f = $('#title')[0].innerText;
+        const title = $('#title')[0].innerText;
         const ptr = $('#ptr')[0].innerText; 
         const i = $('#element')[0].innerText;
         const h = $('#headersOnly')[0].innerText;
-          window.location.href = `/update-image-display?title=${f}&ptr=${ptr}&img=${i}&src=${source}&headersOnly=${h}`
+          window.location.href = `/update-image-display?title=${title}&ptr=${ptr}&img=${i}&src=${source}&headersOnly=${h}`
       })
     </script>
   </body>

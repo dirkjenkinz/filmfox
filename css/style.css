@@ -10,7 +10,7 @@
 }
 
 .top {
-  padding: 4px;
+  padding: 4px 0;
   font-size: 130%;
   border: cornflowerblue 4px double;
 }
@@ -68,6 +68,14 @@ html {
   color: white;
 }
 
+.data-header {
+  text-align: right;
+  background: white;
+  padding: 0px 4px;
+  color: black;
+  font-weight: bolder;
+}
+
 .data-left {
   text-align: left;
   padding: 0px 4px;
@@ -79,9 +87,22 @@ html {
   padding: 0px 8px;
 }
 
-.sound-display {
+.header-display {
   background: slategrey;
   padding: 0px 8px;
+}
+
+.header-line {
+  background: red;
+  font-weight: bold;
+  font-size:120%;
+  text-align: center;
+}
+
+.non-header-display {
+  background: cornflowerblue;
+  padding: 0px 8px;
+  font-weight:bold;
 }
 
 .break {

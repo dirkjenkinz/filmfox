@@ -25,9 +25,9 @@ const characterUpdateHandler = async (req, res) => {
   let voice = u.query.voice;
   let character = u.query.character;
   let file = u.query.filmFoxFile;
-  let fff = await getData(file + '.fff');
+  let fff = await getData(`${file}/${file}.fff`);
   const { title } = fff;
-  const characters = await getData(file + '.chrs');
+  const characters = await getData(`${file}/${file}.chrs`);
 
   const voices = await getData('voices.json');
   voice_data = getVoiceData(voices);

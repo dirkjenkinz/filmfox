@@ -13,16 +13,16 @@ const concatFiles = (clips, scene, title) => {
   const dirPath = path.join(__dirname, `../data/${title}/sounds`);
   const concat = ffmpeg();
 
-  clips.forEach((clip) => { 
+  clips.forEach((clip) => {
     concat.input(`${dirPath}/${clip}.mp3`);
   });
 
   concat
     .on("end", function () {
-      console.log("Concatenation finished.");
+      smartlog("info", "Concatenation finished.");
     })
     .on("error", function (err) {
-      console.error("Error:", err);
+      smartLog("error:", err);
     })
     .mergeToFile(`${outPath}/${fileName}`, outPath);
 };
@@ -38,10 +38,9 @@ const concatHandler = async (req, res) => {
 
   concatFiles(comp[scene], scene, title);
 
-  setTimeout(function() {
-    res.redirect(`/merge?title=${title}&ptr=${ptr}`)
+  setTimeout(function () {
+    res.redirect(`/merge?title=${title}&ptr=${ptr}`);
   }, 5000);
-
 };
 
 module.exports = { concatHandler };
