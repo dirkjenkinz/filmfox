@@ -14,6 +14,8 @@ const concatFiles = (clips, title) => {
     concat.input(`${dirPath}/${clip}`);
   });
 
+console.log(`${dirPath}/${fileName}`)
+
   concat
     .on("end", function () {
       smartlog("info", "Concatenation finished.");
@@ -21,7 +23,7 @@ const concatFiles = (clips, title) => {
     .on("error", function (err) {
       smartLog("error:", err);
     })
-    .mergeToFile(`${dirPath}/${fileName}`, dirPath);
+    .mergeToFile(`${dirPath}/${fileName}`, './');
 };
 
 const concatHandler = async (req, res) => {
@@ -30,7 +32,7 @@ const concatHandler = async (req, res) => {
 clips = ['A cinematic close up.jpg ', 'darkpatio.jpg', 'egg.jpg']
 
 concatFiles(clips, 'Satellite');
-smartLog.log('info','done');
+smartLog('info','done');
 };
 
 concatHandler();
