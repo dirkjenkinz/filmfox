@@ -87,4 +87,9 @@ $(() => {
     const element = `row_${e}`;
     const elm = document.getElementById(element);
     elm.scrollIntoView(true);
+  }),
+  $('#btn-video').on('click', () => {
+    const f = $('#title')[0].innerText;
+    const ptr = $('#ptr')[0].innerText;
+    window.location.href = `/video?title=${f}&ptr=${ptr}`;
   })

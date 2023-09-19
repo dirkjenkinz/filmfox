@@ -16,7 +16,8 @@ const mergeRouter = require('./routes/merge.js');
 const concatRouter = require('./routes/concat.js');
 const masterRouter = require('./routes/master.js');
 const playMasterRouter = require('./routes/play-master.js');
-
+const videoRouter = require('./routes/video.js');
+const createVideoRouter = require('./routes/create-video.js');
 
 const nunjucks = require('nunjucks');
 const bodyParser = require('body-parser');
@@ -50,6 +51,8 @@ app.use('/merge', mergeRouter);
 app.use('/concat', concatRouter);
 app.use('/master', masterRouter);
 app.use('/play-master', playMasterRouter);
+app.use('/video', videoRouter);
+app.use('/create-video', createVideoRouter);
 
 app.listen(PORT, (err) => {
     smartLog('paramount', `FilmFox is up & running on port ${PORT}`);

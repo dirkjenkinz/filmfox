@@ -79,8 +79,11 @@
         <div class='col-md-1'>
           <button class='btn btn-block btn-edit btn-sm' id='btn-build-showreel'>Showreel</button>
         </div>
-        <div class='col-md-2'>
-          <button class='btn btn-block btn-edit btn-sm' id='btn-merge'>Sound Merge</button>
+        <div class='col-md-1'>
+          <button class='btn btn-block btn-edit btn-sm' id='btn-merge'>Merge</button>
+        </div>
+         <div class='col-md-1'>
+          <button class='btn btn-block btn-edit btn-sm' id='btn-video'>Video</button>
         </div>
         <audio id='master-play' style='width: 100%;'>
           <source src='' type='audio/mpeg'>
@@ -133,6 +136,8 @@
                         Gen
                       </button>
                     {% endif %}
+                    <br>
+                    <p style='font-size: 60%; color: black'>{{script[i][6]}}</p>
                   </td>
                   <td class='data-display card' id='crd_{{i}}'>
                     {% if images[i][1] === 'movie' %}
