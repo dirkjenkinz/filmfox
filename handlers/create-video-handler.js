@@ -28,7 +28,7 @@ const imgToMP4 = (img, dur, num, inPath, outPath) => {
   videoshow(images, videoOptions)
     .save(`${outPath}/${num}.mp4`)
     .on("start", function (command) {
-      smartLog("info", "ffmpeg process started:", command);
+      smartLog("info", `ffmpeg process started: ${command}`);
     })
     .on("error", function (err, stdout, stderr) {
       smartLog("error", err);
