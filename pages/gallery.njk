@@ -36,48 +36,22 @@
             <tbody>
               {% for i in range(0, unused.length, 3) -%}
                 <tr>
-                  <td class='data-left'>
-                    {% if unused[i][1] === 'movie' %}
-                      <video width="160" height="90" controls="controls" autoplay="autoplay" muted="muted" id="img_{{i}}" class="img">
-                        <source src="../data/{{title}}/images/{{unused[i][0]}}" type="video/mp4">
-                      </video>
-                    {% else %}
-                      <img width="160" height="90" src="../data/{{title}}/images/{{unused[i][0]}}" id="img_{{i}}" class="img" alt="unused[i][0]"/>
-                    {% endif %}
-                    <button type='button' class='btn btn-edit btn-block btn-sm btn-select' value="{{unused[i][0]}}">
-                      Select
-                    </button>
-                  </td>
-
-                  {% if unused[i + 1][0] %}
+                {% for num in range(0, 3) -%}
+                  {% if unused[i + num][0] %}
                     <td class='data-left'>
-                      {% if unused[i + 1][1] === 'movie' %}
-                        <video width="160" height="90" controls="controls" autoplay="autoplay" id="img_{{i + 1}}" class="img" muted="muted">
-                          <source src="../data/{{title}}/images/{{used[i +1][0]}}" type="video/mp4">
+                      {% if unused[i + num][1] === 'movie' %}
+                        <video width="160" height="90" controls="controls" autoplay="autoplay" id="img_{{i + num}}" class="img" muted="muted">
+                          <source src="../data/{{title}}/images/{{unused[i + num][0]}}" type="video/mp4">
                         </video>
                       {% else %}
-                        <img width="160" height="90" src="../data/{{title}}/images/{{unused[i + 1][0]}}" id="img_{{i + 1}}" class="img" alt="unused[i +1][0]"/>
+                        <img width="160" height="90" src="../data/{{title}}/images/{{unused[i + num][0]}}" id="img_{{i + num}}" class="img" alt="unused[i + num][0]"/>
                       {% endif %}
-                      <button type='button' class='btn btn-edit btn-block btn-sm btn-select' value="{{unused[i + 1][0]}}">
+                      <button type='button' class='btn btn-edit btn-block btn-sm btn-select' value="{{unused[i + num][0]}}">
                         Select
                       </button>
                     </td>
                   {% endif %}
-
-                  {% if unused[i + 2][0] %}
-                    <td class='data-left'>
-                      {% if unused[i + 2][1] === 'movie' %}
-                        <video width="160" height="90" controls="controls" autoplay="autoplay" id="img_{{i + 2}}" class="img" muted="muted">
-                          <source src="../data/{{title}}/images/{{unused[i +2][0]}}" type="video/mp4">
-                        </video>
-                      {% else %}
-                        <img width="160" height="90" src="../data/{{title}}/images/{{unused[i + 2][0]}}" id="img_{{i + 2}}" class="img" alt="unused[i +2][0]"/>
-                      {% endif %}
-                      <button type='button' class='btn btn-edit btn-block btn-sm btn-select' value="{{unused[i + 2][0]}}">
-                        Select
-                      </button>
-                    </td>
-                  {% endif %}
+                  {% endfor %}
                 </tr>
               {% endfor %}
             </tbody>
@@ -88,48 +62,22 @@
             <tbody>
               {% for i in range(0, used.length, 3) -%}
                 <tr>
-                  <td class='data-left'>
-                    {% if used[i][1] === 'movie' %}
-                      <video width="160" height="90" controls="controls" autoplay="autoplay" muted="muted" id="img_{{i}}" class="img">
-                        <source src="../data/{{title}}/images/{{used[i][0]}}" type="video/mp4">
-                      </video>
-                    {% else %}
-                      <img width="160" height="90" src="../data/{{title}}/images/{{used[i][0]}}" id="img_{{i}}" class="img" alt="used[i][0]"/>
-                    {% endif %}
-                    <button type='button' class='btn btn-edit btn-block btn-sm btn-select' value="{{used[i][0]}}">
-                      Select
-                    </button>
-                  </td>
-
-                  {% if used[i + 1][0] %}
+                {% for num in range(0, 3) -%}
+                  {% if used[i + num][0] %}
                     <td class='data-left'>
-                      {% if used[i + 1][1] === 'movie' %}
-                        <video width="160" height="90" controls="controls" autoplay="autoplay" id="img_{{i + 1}}" class="img" muted="muted">
-                          <source src="../data/{{title}}/images/{{used[i +1][0]}}" type="video/mp4">
+                      {% if used[i + num][1] === 'movie' %}
+                        <video width="160" height="90" controls="controls" autoplay="autoplay" id="img_{{i + num}}" class="img" muted="muted">
+                          <source src="../data/{{title}}/images/{{used[i + num][0]}}" type="video/mp4">
                         </video>
                       {% else %}
-                        <img width="160" height="90" src="../data/{{title}}/images/{{used[i + 1][0]}}" id="img_{{i + 1}}" class="img" alt="used[i +1][0]"/>
+                        <img width="160" height="90" src="../data/{{title}}/images/{{used[i + num][0]}}" id="img_{{i + num}}" class="img" alt="used[i + num][0]"/>
                       {% endif %}
-                      <button type='button' class='btn btn-edit btn-block btn-sm btn-select' value="{{used[i + 1][0]}}">
+                      <button type='button' class='btn btn-edit btn-block btn-sm btn-select' value="{{used[i + num][0]}}">
                         Select
                       </button>
                     </td>
                   {% endif %}
-
-                  {% if used[i + 2][0] %}
-                    <td class='data-left'>
-                      {% if used[i + 2][1] === 'movie' %}
-                        <video width="160" height="90" controls="controls" autoplay="autoplay" id="img_{{i + 2}}" class="img" muted="muted">
-                          <source src="../data/{{title}}/images/{{used[i +2][0]}}" type="video/mp4">
-                        </video>
-                      {% else %}
-                        <img width="160" height="90" src="../data/{{title}}/images/{{used[i + 2][0]}}" id="img_{{i + 2}}" class="img" alt="used[i +2][0]"/>
-                      {% endif %}
-                      <button type='button' class='btn btn-edit btn-block btn-sm btn-select' value="{{used[i + 2][0]}}">
-                        Select
-                      </button>
-                    </td>
-                  {% endif %}
+                  {% endfor %}
                 </tr>
               {% endfor %}
             </tbody>

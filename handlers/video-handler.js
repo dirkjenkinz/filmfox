@@ -23,7 +23,6 @@ const videoHandler = async (req, res) => {
   }
 
   let times = [];
- // times.push(script[0][6]);
   let duration = parseFloat(script[0][6]);
   for (let i = 1; i < script.length; i++) {
     if (script[i][5] === script[i - 1][5]){
@@ -33,6 +32,8 @@ const videoHandler = async (req, res) => {
       duration = parseFloat(script[i][6]);
     }
   }
+
+  times.push(script[script.length - 1][6]);
 
   for (let i = 0; i < imageList.length; i++) {
     if (imageList[i].substring(imageList[i].length - 4) === ".mov") {

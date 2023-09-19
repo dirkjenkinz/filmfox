@@ -103,8 +103,12 @@
               {% if script[i] %}
                 {% if headers[i] == 'yes' %}
                   <tr id='tr_sc_{{i}}'>
-                    <td colspan='6' class='header-line'>Scene
-                      {{script[i][2]}}</td>
+                    <td class='header-line'>Scene
+                      {{script[i][2]}}
+                      </td>
+                      <td colspan='3' class='header-line'>
+                        {{script[i][1]}}
+                      </td>
                   </tr>
                 {% endif %}
                 <tr id='row_{{i}}'>
@@ -112,8 +116,7 @@
                     {{script[i][2]}}
                     <br>Element
                     {{i}}
-                  </td>
-                  <td class='non-header-display'>
+                    <br><br>
                     Character:
                     {{script[i][0]}}
                     <br><br>
