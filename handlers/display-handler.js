@@ -61,7 +61,16 @@ const displayHandler = async (req, res) => {
         headers.push('no');
       }
   });
-  
+
+  let runningTime = 0.000;
+  let time = [];
+  script.forEach((s) => {
+    if (s[6] !== ''){
+      runningTime = runningTime + parseFloat(s[6]);
+      time.push(runningTime.toFixed(3));
+      }
+  })
+
   res.render('display.njk', {
     title,
     api_key,
@@ -71,6 +80,7 @@ const displayHandler = async (req, res) => {
     images,
     headersOnly,
     headers,
+    time,
   });
 };
 

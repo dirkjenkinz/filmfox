@@ -56,6 +56,11 @@ $(() => {
     const ptr = $('#ptr')[0].innerText;
     window.location.href = `/merge?title=${f}&ptr=${ptr}`;
   }),
+  $('#btn-scenes').on('click', () => {
+    const f = $('#title')[0].innerText;
+    const ptr = $('#ptr')[0].innerText;
+    window.location.href = `/scenes?title=${f}&ptr=${ptr}`;
+  }),
   $('.btn-change').on('click', (e) => {
     const title = $('#title')[0].innerText;
     let ptr = e
@@ -66,7 +71,7 @@ $(() => {
     if (ptr < 0) 
       ptr = 0;
     const element = e.target.value;
-    window.location.href = `/gallery?title=${title}&ptr=${ptr}&element=${element}`
+    window.location.href = `/gallery?title=${title}&ptr=${ptr}&element=${element}&caller=display`
   }),
   $('#btn-sound-lock').on('click', () => {
     const l = $('#length')[0].innerText;

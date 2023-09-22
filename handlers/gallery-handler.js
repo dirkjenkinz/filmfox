@@ -13,13 +13,13 @@ const getUsed = (script) => {
 };
 
 const galleryHandler = async (req, res) => {
-  smartLog("info", "entering gallery handler");
-
+  smartLog("info", "ENTERING GALLERY HANDLER");
   let u = url.parse(req.originalUrl, true);
   const ptr = u.query.ptr;
   const title = u.query.title;
   const element = u.query.element;
-  const headersOnly = u.query.headersOnly;
+  const scene = u.query.scene;
+  const caller = u.query.caller;
   const imageList = await getListOfImages(title);
   imageList.unshift("blank.jpg");
 
@@ -33,6 +33,7 @@ const galleryHandler = async (req, res) => {
       images.push([imageList[i], "still"]);
     }
   };
+
 
   const filmFoxFile = await getData(`${title}/${title}.fff`);
   const {script} = filmFoxFile;
@@ -55,7 +56,8 @@ const galleryHandler = async (req, res) => {
     ptr,
     used,
     unused,
-    headersOnly,
+    caller,
+    scene,
   });
 };
 

@@ -2,7 +2,6 @@ $('.imcg').on('click', (e) => {
     const f = $('#title')[0].innerText
     const ptr = $('#ptr')[0].innerText
     const i = $('#element')[0].innerText;
-
     const source = e
       .target
       .src
@@ -11,15 +10,20 @@ $('.imcg').on('click', (e) => {
     window.location.href = `/update-image?title=${f}&ptr=${ptr}&img=${i}&src=${source}`
   }),
   $('.btn-select').on('click', (e) => {
-    const source = e.target.value;
+    const image = e.target.value;
     const title = $('#title')[0].innerText;
     const ptr = $('#ptr')[0].innerText;
-    const i = $('#element')[0].innerText;
-    const h = $('#headersOnly')[0].innerText;
-    window.location.href = `/update-image-display?title=${title}&ptr=${ptr}&img=${i}&src=${source}&headersOnly=${h}`
+    const element = $('#element')[0].innerText
+    const caller = $('#caller')[0].innerText;
+    const scene = $('#scene')[0].innerText;
+   window.location.href = `/update-image-display?title=${title}&ptr=${ptr}&scene=${scene}&element=${element}&image=${image}&caller=${caller}`
   }),
   $('#btn-back').on('click', () => {
     const title = $('#title')[0].innerText;
     const ptr = $('#ptr')[0].innerText;
-    window.location.href = `/display?title=${title}&ptr=${ptr}`;
+    if (caller == 'display'){
+      window.location.href = `/update-image-display?title=${title}&ptr=${ptr}`
+      } else {
+        window.location.href = `/scenes?title=${title}&ptr=${ptr}`
+      }
   })

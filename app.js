@@ -18,6 +18,8 @@ const masterRouter = require('./routes/master.js');
 const playMasterRouter = require('./routes/play-master.js');
 const videoRouter = require('./routes/video.js');
 const createVideoRouter = require('./routes/create-video.js');
+const scenesRouter = require('./routes/scenes.js');
+const editSceneRouter = require('./routes/edit-scene.js');
 
 const nunjucks = require('nunjucks');
 const bodyParser = require('body-parser');
@@ -53,6 +55,8 @@ app.use('/master', masterRouter);
 app.use('/play-master', playMasterRouter);
 app.use('/video', videoRouter);
 app.use('/create-video', createVideoRouter);
+app.use('/scenes', scenesRouter);
+app.use('/edit-scene', editSceneRouter);
 
 app.listen(PORT, (err) => {
     smartLog('paramount', `FilmFox is up & running on port ${PORT}`);
