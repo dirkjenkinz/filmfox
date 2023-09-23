@@ -35,13 +35,11 @@
         border-width: 0 0 5px 0;
         color: black;
         background: #eee;
-      };
+      }
     </style>
-
   </head>
   <body>
     <div class='container-fluid'>
-
       <div class='row top'>
         <div class='col-md-2'>
           Film Fox
@@ -85,7 +83,7 @@
         <div class='col-md-1'>
           <button class='btn btn-block btn-edit btn-sm' id='btn-video'>Video</button>
         </div>
-         <div class='col-md-1'>
+        <div class='col-md-1'>
           <button class='btn btn-block btn-edit btn-sm' id='btn-scenes'>Scenes</button>
         </div>
         <audio id='master-play' style='width: 100%;'>
@@ -96,80 +94,79 @@
           <button class='btn btn-block btn-edit btn-sm' id='btn-sound-lock'>Unlock Delete</button>
         </div>
       </div>
-    </div>
 
-    <div class='row tableFixHead' id='tabhead'>
-      <div class='col-md-12'>
-        <table id='script-table' style='margin-left: 18px;'>
-          <tbody id='bod'>
-            {% for i in range(0, script.length) -%}
-              {% if script[i] %}
-                {% if headers[i] == 'yes' %}
-                  <tr id='tr_sc_{{i}}'>
-                    <td class='header-line'>Scene
+      <div class='row tableFixHead' id='tabhead'>
+        <div class='col-md-12'>
+          <table id='script-table'>
+            <tbody id='bod'>
+              {% for i in range(0, script.length) -%}
+                {% if script[i] %}
+                  {% if headers[i] == 'yes' %}
+                    <tr id='tr_sc_{{i}}'>
+                      <td class='header-line'>Scene
+                        {{script[i][2]}}
+                      </td>
+                      <td colspan='3' class='header-line'>
+                        {{script[i][1]}}
+                      </td>
+                    </tr>
+                  {% endif %}
+                  <tr id='row_{{i}}'>
+                    <td class='non-header-display' style='width: 12%;'>Scene
                       {{script[i][2]}}
+                      <br>Element
+                      {{i}}
+                      <br><br>
+                      Character:
+                      {{script[i][0]}}
+                      <br><br>
+                      Voice:
+                      {{script[i][3]}}
                     </td>
-                    <td colspan='3' class='header-line'>
-                      {{script[i][1]}}
+                    <td class='non-header-display'>{{script[i][1]}}</td>
+                    <td class='non-header-display'>
+                      <p style='font-size: 60%; color: black'>{{script[i][4]}}</p>
+                      {% if (script[i][3] == '-') or (script[i][4]) %}
+                        <button type='button' class='btn btn-edit btn-block btn-sm btn-play' id='play_{{i}}' value='{{script[i][4]}}'>
+                          Play
+                        </button>
+                        <br>
+                        <button class='btn btn-block btn-edit btn-sm btn-small btn-del' id='del_{{i}}' disabled='disabled' value='{{script[i][4]}}'>
+                          Delete
+                        </button>
+                      {% else %}
+                        <button type='button' class='btn btn-edit btn-block btn-sm btn-gen' id='gen_{{i}}'>
+                          Gen
+                        </button>
+                      {% endif %}
+                      <br>
+                      <p style='font-size: 60%; color: black;'>{{script[i][6]}}
+                        -
+                        {{time[i]}}</p>
+                    </td>
+                    <td class='data-display card' id='crd_{{i}}'>
+                      {% if images[i][1] === 'movie' %}
+                        <video width='160' height='90' controls='controls' autoplay='autoplay' id='img_{{i}}' class='img' muted='muted'>
+                          <source src='../data/{{title}}/images/{{images[i][0]}}' type='video/mp4'>
+                        </video>
+                      {% else %}
+                        <img width='160' height='90' src='../data/{{title}}/images/{{images[i][0]}}' id='img_{{i}}' class='img' alt='{{images[i][0]}}'>
+                      {% endif %}
+                      <p style='font-size: 80%; color: white;'>
+                        {{images[i][0].substring(0,28)}}
+                      </p>
+                      <button type='button' class='btn btn-edit btn-block btn-sm btn-change' id='change_{{i}}' value='{{i}}'>
+                        Change
+                      </button>
                     </td>
                   </tr>
                 {% endif %}
-                <tr id='row_{{i}}'>
-                  <td class='non-header-display' style='width: 12%;'>Scene
-                    {{script[i][2]}}
-                    <br>Element
-                    {{i}}
-                    <br><br>
-                    Character:
-                    {{script[i][0]}}
-                    <br><br>
-                    Voice:
-                    {{script[i][3]}}
-                  </td>
-                  <td class='non-header-display'>{{script[i][1]}}</td>
-                  <td class='non-header-display'>
-                    <p style='font-size: 60%; color: black'>{{script[i][4]}}</p>
-                    {% if (script[i][3] == '-') or (script[i][4]) %}
-                      <button type='button' class='btn btn-edit btn-block btn-sm btn-play' id='play_{{i}}' value='{{script[i][4]}}'>
-                        Play
-                      </button>
-                      <br>
-                      <button class='btn btn-block btn-edit btn-sm btn-small btn-del' id='del_{{i}}' disabled='disabled' value='{{script[i][4]}}'>
-                        Delete
-                      </button>
-                    {% else %}
-                      <button type='button' class='btn btn-edit btn-block btn-sm btn-gen' id='gen_{{i}}'>
-                        Gen
-                      </button>
-                    {% endif %}
-                    <br>
-                    <p style='font-size: 60%; color: black;'>{{script[i][6]}}
-                      -
-                      {{time[i]}}</p>
-                  </td>
-                  <td class='data-display card' id='crd_{{i}}'>
-                    {% if images[i][1] === 'movie' %}
-                      <video width='160' height='90' controls='controls' autoplay='autoplay' id='img_{{i}}' class='img' muted='muted'>
-                        <source src='../data/{{title}}/images/{{images[i][0]}}' type='video/mp4'>
-                      </video>
-                    {% else %}
-                      <img width='160' height='90' src='../data/{{title}}/images/{{images[i][0]}}' id='img_{{i}}' class='img' alt='{{images[i][0]}}'/>
-                    {% endif %}
-                    <p style='font-size: 80%; color: white;'>
-                      {{images[i][0].substring(0,28)}}
-                    </p>
-                    <button type='button' class='btn btn-edit btn-block btn-sm btn-change' id='change_{{i}}' value='{{i}}'>
-                      Change
-                    </button>
-                  </td>
-                </tr>
-              {% endif %}
-            {%- endfor %}
-          </tbody>
-        </table>
+              {%- endfor %}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-  </div>
-  <script src='../js/display.js'></script>
-</body>
+    <script src='../js/display.js'></script>
+  </body>
 </html>

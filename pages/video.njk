@@ -42,11 +42,11 @@
                     </td>
                     <td class='data-left'>
                       {% if package[i + num][0][1] == 'movie' %}
-                        <video width="80" height="45" controls="controls" autoplay="autoplay" muted="muted" id="img_{{i}}" class="img">
+                        <video width="80" height="45" controls="controls" autoplay="autoplay" muted="muted" class="img">
                           <source src="../data/{{title}}/images/{{package[i + num][0][0]}}" type="video/mp4">
                         </video>
                       {% else %}
-                        <img width="80" height="45" src="../data/{{title}}/images/{{package[i + num][0][0]}}" id="img_{{i}}" class="img" alt="img_{{i}}"/>
+                        <img width="80" height="45" src="../data/{{title}}/images/{{package[i + num][0][0]}}" class="img" alt="img_{{i}}"/>
                       {% endif %}
                     </td>
                     <td class='data-left'>

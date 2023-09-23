@@ -13,4 +13,9 @@
     const title = $('#title')[0].innerText;
     const ptr = $('#ptr')[0].innerText;
     window.location.href = `/edit-scene?title=${title}&scene=${scene}&ptr=${ptr}`
+  }),
+  $('#btn-back').on('click', (e) => {
+    const title = $('#title')[0].innerText;
+    const ptr = $('#ptr')[0].innerText;
+    window.location.href = `/display?title=${title}&ptr=${ptr}`
   })

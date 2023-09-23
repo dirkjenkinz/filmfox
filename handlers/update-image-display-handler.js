@@ -40,8 +40,14 @@ const updateImageDisplayHandler = async (req, res) => {
   await writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
   if (caller === "scenes") {
     res.redirect(`/scenes?title=${title}&ptr=${ptr}`);
+  } else if ((caller === "edit-scene")) {
+    res.redirect(
+      `/edit-scene?title=${title}&ptr=${ptr}&element=${element}&scene=${scene}`
+    );
   } else {
-    res.redirect(`/edit-scene?title=${title}&ptr=${ptr}&element=${element}&scene=${scene}`);
+    res.redirect(
+      `/display?title=${title}&ptr=${ptr}`
+    );
   }
 };
 

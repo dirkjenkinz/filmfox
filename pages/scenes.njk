@@ -45,11 +45,11 @@
                       {{sceneList[i+num].slug}}
                       <br>
                       {% if sceneList[i + num].type === 'movie' %}
-                        <video width="160" height="90" controls="controls" autoplay="autoplay" id="img_{{i + num}}" class="img" muted="muted">
+                        <video width="160" height="90" controls="controls" autoplay="autoplay" class="img" muted="muted">
                           <source src="../data/{{title}}/images/{{sceneList[i + num].image}}" type="video/mp4">
                         </video>
                       {% else %}
-                        <img width="160" height="90" src="../data/{{title}}/images/{{sceneList[i + num].image}}" id="img_{{i + num}}" class="img" alt="sceneList[i + num][0]"/>
+                        <img width="160" height="90" src="../data/{{title}}/images/{{sceneList[i + num].image}}" class="img" alt="sceneList[i + num][0]"/>
                       {% endif %}
                     </td>
                   {% endfor %}
