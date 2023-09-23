@@ -16,23 +16,23 @@ const updateImageDisplayHandler = async (req, res) => {
   let filmFoxFile = await getData(`${title}/${title}.fff`);
 
   const { script } = filmFoxFile;
-  const holdImage = script[element][5];
+  const holdImage = script[element].image;
 
-  script[element][5] = image;
+  script[element].image = image;
 
   let carryOn = true;
   for (let i = parseInt(element) + 1; i < script.length; i++) {
-    if (script[i][0] === "NARRATOR") {
+    if (script[i].character === "NARRATOR") {
       if (
-        script[i][1].substring(0, 3) === "INT" ||
-        script[i][1].substring(0, 3) === "EXT"
+        script[i].dialogue.substring(0, 3) === "INT" ||
+        script[i].dialogue.substring(0, 3) === "EXT"
       ) {
         carryOn = false;
       }
     }
 
-    if (script[i][5] === holdImage && carryOn) {
-      script[i][5] = image;
+    if (script[i].image === holdImage && carryOn) {
+      script[i].image = image;
     } else {
       carryOn = false;
     }

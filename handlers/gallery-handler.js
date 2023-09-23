@@ -6,7 +6,7 @@ const {getData} = require('../services/file-service');
 const getUsed = (script) => {
   const used = [];
   script.forEach((s) => {
-    used.push(s[5]);
+    used.push(s.image);
   });
   const unique = [...new Set(used)];
   return unique;

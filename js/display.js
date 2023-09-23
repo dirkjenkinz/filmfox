@@ -13,17 +13,14 @@ $(() => {
     window.location.href = `/ctv?filmFoxFile=${f}&ptr=${ptr}`
   }),
   $('.btn-gen').on('click', (e) => {
-    const num = e
-      .target
-      .id
-      .substring(4)
-    let title = $('#title')[0].innerText
-    const ptr = $('#ptr')[0].innerText
-    window.location.href = `/generate-single?title=${title}&element=${num}&ptr=${ptr}`
+    const file = e.target.value;
+    const title = $('#title')[0].innerText;
+    const ptr = $('#ptr')[0].innerText;
+    window.location.href = `/generate-single?title=${title}&file=${file}&ptr=${ptr}`
   }),
   $('.btn-play').on('click', (e) => {
     const title = $('#title')[0].innerText;
-    const s = `../data/${title}/sounds/${e.target.value}.mp3`;
+    const s = `../data/${title}/sounds/${e.target.value}`;
     document
       .getElementById("master-play")
       .setAttribute('src', s);
@@ -38,7 +35,7 @@ $(() => {
       .substring(4);
     const title = $('#title')[0].innerText;
     const ptr = $('#ptr')[0].innerText;
-    const element = `${e.target.value}.mp3`;
+    const element = `${e.target.value}`;
     window.location.href = `/delete?title=${title}&element=${element}&ptr=${ptr}&sub=sounds&num=${num}`;
   }),
   $('#btn-srt').on('click', () => {

@@ -10,7 +10,7 @@ const createPackage = (sceneList, imageList, script) => {
   }
  
   const package = [];
-  for (let i = 0; i <= script[script.length - 1][2]; i++){
+  for (let i = 0; i <= script[script.length - 1].scene; i++){
     package.push([]);
   };
 
@@ -33,28 +33,28 @@ const videoHandler = async (req, res) => {
 
   const imageList = [];
   const sceneList = []; 
-  imageList.push(script[0][5]);
-  sceneList.push(script[0][2]);
+  imageList.push(script[0].image);
+  sceneList.push(script[0].scene);
 
   for (let i = 1; i < script.length; i++) {
-    if (script[i][5] !== script[i - 1][5] || script[i][2] !== script[i - 1][2]) {
-      imageList.push(script[i][5]);
-      sceneList.push(script[i][2]);
+    if (script[i].image !== script[i - 1].image || script[i].scene !== script[i - 1].scene) {
+      imageList.push(script[i].image);
+      sceneList.push(script[i].scene);
     }
   }
 
   let times = [];
-  let duration = parseFloat(script[0][6]);
+  let duration = parseFloat(script[0].duration);
   for (let i = 1; i < script.length; i++) {
-    if (script[i][5] === script[i - 1][5]){
-      duration += parseFloat(script[i][6]);
+    if (script[i] === script[i - 1].image){
+      duration += parseFloat(script[i].duration);
     }else{
       times.push(duration.toFixed(3));
-      duration = parseFloat(script[i][6]);
+      duration = parseFloat(script[i].duration);
     }
   }
 
-  times.push(script[script.length - 1][6]);
+  times.push(script[script.length - 1].duration);
 
   for (let i = 0; i < imageList.length; i++) {
     if (imageList[i].substring(imageList[i].length - 4) === ".mov") {
@@ -67,7 +67,7 @@ const videoHandler = async (req, res) => {
   }
 
   const gen = [];
-  const top = script[script.length - 1][2];
+  const top = script[script.length - 1].scene;
 
   for (let i = 0; i <= top; i++){
     gen.push('no');

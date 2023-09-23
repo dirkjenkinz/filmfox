@@ -67,26 +67,23 @@ const createVideoHandler = async (req, res) => {
   const { script } = filmFoxFile;
 
   script.forEach((s, index) => {
-    if (s[2] == parseInt(scene)) {
+    if (s.scene == parseInt(scene)) {
         let num = "0000" + scene;
         num = num.substring(num.length - 4);
         let sub = "0000" + index;
         sub = sub.substring(sub.length - 4);
       if (
-        s[5].substring(s[5].length - 4) === ".mov" ||
-        s[5].substring(s[5].length - 4) === ".mpg" ||
-        s[5].substring(s[5].length - 4) === ".avi" ||
-        s[5].substring(s[5].length - 4) === ".mp4"
+        s.type= 'movie'
       ) {
-        fs.copyFile(`${imagePath}/${s[5]}`, `${outPath}/${num}_${sub}.mp4`, (err) => {
+        fs.copyFile(`${imagePath}/${s.image}`, `${outPath}/${num}_${sub}.mp4`, (err) => {
           if (err) throw err;
           smartLog("info", "File was copied to destination");
         });
       } else {
-        const caption = `${s[0]}: ${s[1]}`
-        const sound = `${soundPath}/${s[4]}.mp3`;
-        const vision = `${imagePath}/${s[5]}`;
-        let duration = Math.ceil(s[6]) + 1;
+        const caption = `${s.character}: ${s.dialogue}`
+        const sound = `${soundPath}/${s.sound}.mp3`;
+        const vision = `${imagePath}/${s.image}`;
+        let duration = Math.ceil(s.duration) + 1;
         if (duration < 4 ) duration = 4;
         const output = `${outPath}/${num}_${sub}.mp4`
         imgToMP4(caption, sound, vision, duration, output);

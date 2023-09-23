@@ -9,15 +9,13 @@ const scenesHandler = async (req, res) => {
   const ptr = u.query.ptr;
   const current = u.query.current;
   const filmFoxFile = await getData(`${title}/${title}.fff`);
-
   const {script} = filmFoxFile;
-
-  let sceneList = [{slug: script[0][1 ], image: script[0][5], element: 0}];
+  let sceneList = [{slug: script[0].dialogue, image: script[0].image, element: 0}];
 
   script.forEach((s, index) => {
     if (s[0] === 'NARRATOR'){
-      if (s[1].substring(0,3) === 'INT' || s[1].substring(0,3) === 'EXT'){
-        sceneList.push({slug: s[1], image: s[5], element: index})
+      if (s.dialogue.substring(0,3) === 'INT' || s.dialogue.substring(0,3) === 'EXT'){
+        sceneList.push({slug: s.dialogue, image: s.image, element: index})
       };
     };
   });

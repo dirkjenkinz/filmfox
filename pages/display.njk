@@ -104,56 +104,56 @@
                   {% if headers[i] == 'yes' %}
                     <tr id='tr_sc_{{i}}'>
                       <td class='header-line'>Scene
-                        {{script[i][2]}}
+                        {{script[i].scene}}
                       </td>
                       <td colspan='3' class='header-line'>
-                        {{script[i][1]}}
+                        {{script[i].dialogue}}
                       </td>
                     </tr>
                   {% endif %}
                   <tr id='row_{{i}}'>
                     <td class='non-header-display' style='width: 12%;'>Scene
-                      {{script[i][2]}}
+                      {{script[i].scene}}
                       <br>Element
                       {{i}}
                       <br><br>
                       Character:
-                      {{script[i][0]}}
+                      {{script[i].character}}
                       <br><br>
                       Voice:
-                      {{script[i][3]}}
+                      {{script[i].voice}}
                     </td>
-                    <td class='non-header-display'>{{script[i][1]}}</td>
+                    <td class='non-header-display'>{{script[i].dialogue}}</td>
                     <td class='non-header-display'>
-                      <p style='font-size: 60%; color: black'>{{script[i][4]}}</p>
-                      {% if (script[i][3] == '-') or (script[i][4]) %}
-                        <button type='button' class='btn btn-edit btn-block btn-sm btn-play' id='play_{{i}}' value='{{script[i][4]}}'>
+                      <p style='font-size: 60%; color: black'>{{script[i].sound}}</p>
+                      {% if (script[i].voice == '-') or (script[i].sound) %}
+                        <button type='button' class='btn btn-edit btn-block btn-sm btn-play' id='play_{{i}}' value='{{script[i].sound}}'>
                           Play
                         </button>
                         <br>
-                        <button class='btn btn-block btn-edit btn-sm btn-small btn-del' id='del_{{i}}' disabled='disabled' value='{{script[i][4]}}'>
+                        <button class='btn btn-block btn-edit btn-sm btn-small btn-del' id='del_{{i}}' disabled='disabled' value='{{script[i].sound}}'>
                           Delete
                         </button>
                       {% else %}
-                        <button type='button' class='btn btn-edit btn-block btn-sm btn-gen' id='gen_{{i}}'>
+                        <button type='button' class='btn btn-edit btn-block btn-sm btn-gen' id='gen_{{i}}' value='{{script[i].scene}}/{{i}}'>
                           Gen
                         </button>
                       {% endif %}
                       <br>
-                      <p style='font-size: 60%; color: black;'>{{script[i][6]}}
+                      <p style='font-size: 60%; color: black;'>{{script[i].duration}}
                         -
                         {{time[i]}}</p>
                     </td>
                     <td class='data-display card' id='crd_{{i}}'>
-                      {% if images[i][1] === 'movie' %}
+                      {% if script[i].type === 'movie' %}
                         <video width='160' height='90' controls='controls' autoplay='autoplay' id='img_{{i}}' class='img' muted='muted'>
-                          <source src='../data/{{title}}/images/{{images[i][0]}}' type='video/mp4'>
+                          <source src='../data/{{title}}/images/{{script[i].image}}' type='video/mp4'>
                         </video>
                       {% else %}
-                        <img width='160' height='90' src='../data/{{title}}/images/{{images[i][0]}}' id='img_{{i}}' class='img' alt='{{images[i][0]}}'>
+                        <img width='160' height='90' src='../data/{{title}}/images/{{script[i].image}}' id='img_{{i}}' class='img' alt='{{script[i].image}}'>
                       {% endif %}
                       <p style='font-size: 80%; color: white;'>
-                        {{images[i][0].substring(0,28)}}
+                        {{script[i].image.substring(0,28)}}
                       </p>
                       <button type='button' class='btn btn-edit btn-block btn-sm btn-change' id='change_{{i}}' value='{{i}}'>
                         Change

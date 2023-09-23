@@ -10,7 +10,6 @@ const displayHandler = async (req, res) => {
   const ptr = u.query.ptr;
   const locked = u.query.locked;
   const title = u.query.title;
-  const headersOnly = u.query.headersOnly;
   let filmFoxFile = await getData(`${title}/${title}.fff`);
   let lock = 'Unlock';
   if (locked === 'no') {
@@ -21,10 +20,10 @@ const displayHandler = async (req, res) => {
   const characters = await getData(`${title}/${title}.chrs`);
   const api_key = process.env.APIKEY;
 
-  script.forEach((scriptChar) => {
+  script.forEach((s) => {
     characters.forEach((c) => {
-      if (c[0] === scriptChar[0]) {
-        scriptChar[3] = c[1];
+      if (c[0] === s.character) {
+        s.voice = c[1];
       }
     });
   });
@@ -36,37 +35,11 @@ const displayHandler = async (req, res) => {
     elements[index] = parseInt(e);
   });
 
-  let imageType = [];
-  let images = [];
-  for (let i = 0; i < script.length; i++) {
-    if (script[i][5].substring(script[i][5].length - 4) === '.mov') {
-      imageType.push('movie');
-      images.push([script[i][5], 'movie']);
-    } else if (script[i][5].substring(script[i][5].length - 4) === '.mp4') {
-      imageType.push('movie');
-      images.push([script[i][5], 'movie']);
-    } else {
-      imageType.push('still');
-      images.push([script[i][5], 'still']);
-    }
-  }
-
-  let scenePtr = -1;
-  let headers = [];
-  script.forEach((s) => {
-      if (s[2] !== scenePtr) {
-        headers.push('yes');
-        scenePtr = s[2];
-      } else {
-        headers.push('no');
-      }
-  });
-
   let runningTime = 0.000;
   let time = [];
   script.forEach((s) => {
-    if (s[6] !== ''){
-      runningTime = runningTime + parseFloat(s[6]);
+    if (s.duration !== ''){
+      runningTime = runningTime + parseFloat(s.duration);
       time.push(runningTime.toFixed(3));
       }
   })
@@ -77,9 +50,6 @@ const displayHandler = async (req, res) => {
     script,
     ptr,
     lock,
-    images,
-    headersOnly,
-    headers,
     time,
   });
 };

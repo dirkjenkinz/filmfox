@@ -7,7 +7,6 @@ const playShowreelHandler = async (req, res) => {
   const u = url.parse(req.originalUrl, true);
   const title = u.query.title;
   const ptr = u.query.ptr;
-  const muted = u.query.muted;
   const current = u.query.current;
   const showreel = await getData(`${title}/${title}.shw`);
 

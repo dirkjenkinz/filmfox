@@ -4,10 +4,15 @@ const axios = require('axios');
 const directoryPath = path.join(__dirname, '../data');
 const { smartLog } = require('../services/smart-log');
 
-const generateSpeech = async (apiKey, voiceID, fileName, textInput) => {
+const generateSpeech = async (apiKey, voiceID, fileName, textInput, title) => {
     smartLog('info', 'generate speech');
+    console.log({apiKey});
+    console.log({voiceID})
+    console.log({fileName})
+    console.log({textInput})
+    console.log({title})
     try {
-        await voice.textToSpeech(apiKey, voiceID, `${directoryPath}/${fileName}`, textInput).then(res => {
+        await voice.textToSpeech(apiKey, voiceID, `${directoryPath}/${title}/sounds/${fileName}`, textInput).then(res => {
             smartLog('info', `sound file generated for ${fileName}`);
             return 'Generated';
         });

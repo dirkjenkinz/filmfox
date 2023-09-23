@@ -15,7 +15,8 @@ const deleteHandler = async (req, res) => {
   if (sub === "sounds") {
     const filmFoxFile = await getData(`${title}/${title}.fff`);
     let { script } = filmFoxFile;
-    script[num][4] = "";
+    script[num].sound = "";
+    script[num].duration = 0.000;
     await writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
   }
 

@@ -27,7 +27,7 @@ const srtHandler = async (req, res) => {
   const { script } = filmFoxFile;
 
   for (i = 0; i < script.length; i++ ){
-    script[i][6] = await getDuration(title, `${script[i][4]}.mp3`);
+    script[i].duration = await getDuration(title, `${script[i].sound}.mp3`);
   };
 
   await writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
@@ -39,13 +39,13 @@ const srtHandler = async (req, res) => {
   const sub = [];
   script.forEach((s)=>{
     sub.push({
-      duration: s[6],
-      speaker: s[0],
-      dialogue: s[1],
+      duration: s.duration,
+      speaker: s.character,
+      dialogue: s.dialogue,
       start: formatTime(t),
-      finish: formatTime(t + s[6]),
+      finish: formatTime(t + s.duration),
     })
-    t = t + s[6];
+    t = t + s.duration;
   });
 
   let srt = '';

@@ -15,7 +15,7 @@ const mergeHandler = async (req, res) => {
   const merged = [];
   const { script } = filmFoxFile;
 
-  const last = script[script.length -1][2];
+  const last = script[script.length -1].scene;
 
   for (let i = 0; i <= last; i++){
     merged.push('no');
@@ -34,19 +34,19 @@ const mergeHandler = async (req, res) => {
   });
  
   script.forEach((s) => {
-    if (s[4]) {
-      scenes.push([s[2], s[4]]);
+    if (s.sound) {
+      scenes.push([s.scene, s.sound]);
     };
   });
 
-  const top = scenes[scenes.length - 1][0] + 1;
+  const top = scenes[scenes.length - 1].character + 1;
 
   const comp = [];
   for (let i = 0; i < top; i++) {
     let temp = [];
     for (let j = 0; j < scenes.length; j++) {
-      if (scenes[j][0] === i) {
-        temp.push(scenes[j][1]);
+      if (scenes[j].character === i) {
+        temp.push(scenes[j].dialogue);
       };
     };
     comp.push(temp);

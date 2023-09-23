@@ -30,10 +30,10 @@ const characterToVoiceHandler = async (req, res) => {
   voice_data = getVoiceData(voices);
   voice_data.unshift(['-', '', '']);
 
-  script.forEach(scriptChar => {
+  script.forEach((s) => {
     characters.forEach(c => {
-      if (c[0] === scriptChar[0]) {
-        scriptChar[3] = c[1];
+      if (c[0] === s.character) {
+        s.voice = c[1];
       };
     })
   });

@@ -14,24 +14,14 @@ const editSceneHandler = async (req, res) => {
   const elements = [];
 
   script.forEach((s, index) => {
-    let t;
-    if (
-      s[5].substring(s[5].length - 4) === "mpg" ||
-      s[5].substring(s[5].length - 4) === ".avi" ||
-      s[5].substring(s[5].length - 4) === ".mp4"
-    ) {
-      t = "movie";
-    } else {
-      t = "image";
-    }
 
-    if (s[2] === parseInt(scene)) {
+    if (s.scene === parseInt(scene)) {
       elements.push({
         number: index,
-        speaker: s[0],
-        dialogue: s[1],
-        image: s[5],
-        type: t,
+        speaker: s.speaker,
+        dialogue: s.dialogue,
+        image: s.image,
+        type: s.type,
       });
     }
   });

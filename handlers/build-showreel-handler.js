@@ -37,13 +37,13 @@ const buildShowreelHandler = async (req, res) => {
   const showreel = [];
   script.forEach((s, index)=>{
     showreel.push({
-      duration: s[6],
-      character: s[0],
-      dialogue: s[1],
+      duration: s.duration,
+      character: s.character,
+      dialogue: s.dialogue,
       start: formatTime(t),
       finish: formatTime(t + s[6]),
-      card: s[5],
-      sound: `${s[4]}.mp3`,
+      card: s.image,
+      sound: s.sound,
     })
     t = t + s[6];
   });
