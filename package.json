@@ -35,6 +35,7 @@
     "rimraf": "^3.0.2",
     "say": "^0.16.0",
     "sound-play": "^1.1.0",
+    "video-stitch": "^1.7.1",
     "videoshow": "^0.1.12",
     "winston": "^3.10.0"
   }

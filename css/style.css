@@ -91,6 +91,12 @@ html {
   padding: 0px 8px;
 }
 
+.data-char {
+  background: black;
+  padding: 0px 8px;
+  color: white;
+}
+
 .header-display {
   background: slategrey;
   padding: 0px 8px;

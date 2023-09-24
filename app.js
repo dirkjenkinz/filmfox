@@ -19,6 +19,9 @@ const videoRouter = require('./routes/video.js');
 const createVideoRouter = require('./routes/create-video.js');
 const scenesRouter = require('./routes/scenes.js');
 const editSceneRouter = require('./routes/edit-scene.js');
+const charactersRouter = require('./routes/characters.js');
+const editCharacterRouter = require('./routes/edit-character.js');
+
 
 const nunjucks = require('nunjucks');
 const bodyParser = require('body-parser');
@@ -55,6 +58,8 @@ app.use('/video', videoRouter);
 app.use('/create-video', createVideoRouter);
 app.use('/scenes', scenesRouter);
 app.use('/edit-scene', editSceneRouter);
+app.use('/characters', charactersRouter);
+app.use('/edit-character', editCharacterRouter);
 
 app.listen(PORT, (err) => {
     smartLog('paramount', `FilmFox is up & running on port ${PORT}`);
