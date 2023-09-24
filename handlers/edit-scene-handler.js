@@ -6,7 +6,7 @@ const editSceneHandler = async (req, res) => {
   smartLog("info", "ENTERING EDIT SCENE HANDLER");
   const u = url.parse(req.originalUrl, true);
   const title = u.query.title;
-  const ptr = u.query.ptr;
+  const sceneNumber = u.query.sceneNumber;
   const scene = u.query.scene;
   const filmFoxFile = await getData(`${title}/${title}.fff`);
   const { script } = filmFoxFile;
@@ -29,7 +29,7 @@ const editSceneHandler = async (req, res) => {
   res.render("edit-scene.njk", {
     title,
     elements,
-    ptr,
+    sceneNumber,
     scene,
   });
 };

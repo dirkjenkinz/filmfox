@@ -35,18 +35,21 @@ const mergeHandler = async (req, res) => {
  
   script.forEach((s) => {
     if (s.sound) {
-      scenes.push([s.scene, s.sound]);
+      scenes.push([s.dialogue, s.sound]);
     };
   });
 
-  const top = scenes[scenes.length - 1].character + 1;
+  console.log(scenes[scenes.length - 1])
+  const top = script[script.length - 1].scene + 1;
+
+  console.log({top})
 
   const comp = [];
   for (let i = 0; i < top; i++) {
     let temp = [];
     for (let j = 0; j < scenes.length; j++) {
-      if (scenes[j].character === i) {
-        temp.push(scenes[j].dialogue);
+      if (scenes[j][0] === i) {
+        temp.push(scenes[j][1]);
       };
     };
     comp.push(temp);

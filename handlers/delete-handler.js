@@ -5,7 +5,7 @@ const { deleteFile, getData, writeFile } = require("../services/file-service");
 const deleteHandler = async (req, res) => {
   smartLog("info", "entering delete handler");
   const u = url.parse(req.originalUrl, true);
-  const ptr = u.query.ptr;
+  const sceneNumber = u.query.sceneNumber;
   const element = u.query.element;
   const title = u.query.title;
   const sub = u.query.sub;
@@ -21,9 +21,9 @@ const deleteHandler = async (req, res) => {
   }
 
   if (sub === "sounds") {
-    res.redirect(`/display?title=${title}&ptr=${ptr}`);
+    res.redirect(`/display?title=${title}&sceneNumber=${sceneNumber}`);
   } else {
-    res.redirect(`/merge?title=${title}&ptr=${ptr}`);
+    res.redirect(`/merge?title=${title}&sceneNumber=${sceneNumber}`);
   }
 };
 

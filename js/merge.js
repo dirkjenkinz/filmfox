@@ -1,13 +1,13 @@
 $('#btn-back').on('click', () => {
     const title = $('#title')[0].innerText;
-    const ptr = $('#ptr')[0].innerText;
-    window.location.href = `/display?title=${title}&ptr=${ptr}`;
+    const sceneNumber = $('#sceneNumber')[0].innerText;
+    window.location.href = `/display?title=${title}&sceneNumber=${sceneNumber}`;
   }),
   $('.btn-merge').on('click', (e) => {
     let scene = e.target.value;
     const title = $('#title')[0].innerText;
-    const ptr = $('#ptr')[0].innerText;
-    window.location.href = `/concat?title=${title}&scene=${scene}&ptr=${ptr}`;
+    const sceneNumber = $('#sceneNumber')[0].innerText;
+    window.location.href = `/concat?title=${title}&scene=${scene}&sceneNumber=${sceneNumber}`;
   }),
   $('.btn-play').on('click', (e) => {
     const title = $('#title')[0].innerText;
@@ -39,17 +39,17 @@ $('#btn-back').on('click', () => {
   }),
   $('.btn-delete').on('click', (e) => {
     const title = $('#title')[0].innerText;
-    const ptr = $('#ptr')[0].innerText;
+    const sceneNumber = $('#sceneNumber')[0].innerText;
     let num = '000000' + e.target.value;
     num = num.substring(num.length - 5);
     element = `s${num}.mp3`;
-    window.location.href = `/delete?title=${title}&element=${element}&ptr=${ptr}&sub=scenes`;
+    window.location.href = `/delete?title=${title}&element=${element}&sceneNumber=${sceneNumber}&sub=scenes`;
   }),
   $('#btn-master').on('click', (e) => {
     const title = $('#title')[0].innerText;
-    const ptr = $('#ptr')[0].innerText;
+    const sceneNumber = $('#sceneNumber')[0].innerText;
     const size = $('#size')[0].innerText;
-    window.location.href = `/master?title=${title}&ptr=${ptr}&size=${size}`;
+    window.location.href = `/master?title=${title}&sceneNumber=${sceneNumber}&size=${size}`;
   }),
   $('#btn-play-master').on('click', (e) => {
     const title = $('#title')[0].innerText;

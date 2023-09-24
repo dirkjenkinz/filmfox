@@ -6,7 +6,7 @@ const updateImageDisplayHandler = async (req, res) => {
   smartLog("info", "entering UPDATE IMAGE DISPLAY handler");
 
   let u = url.parse(req.originalUrl, true);
-  const ptr = u.query.ptr;
+  const sceneNumber = u.query.sceneNumber;
   const title = u.query.title;
   const element = u.query.element;
   const image = u.query.image;
@@ -39,14 +39,14 @@ const updateImageDisplayHandler = async (req, res) => {
   }
   await writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
   if (caller === "scenes") {
-    res.redirect(`/scenes?title=${title}&ptr=${ptr}`);
+    res.redirect(`/scenes?title=${title}&sceneNumber=${sceneNumber}`);
   } else if ((caller === "edit-scene")) {
     res.redirect(
-      `/edit-scene?title=${title}&ptr=${ptr}&element=${element}&scene=${scene}`
+      `/edit-scene?title=${title}&sceneNumber=${sceneNumber}&element=${element}&scene=${scene}`
     );
   } else {
     res.redirect(
-      `/display?title=${title}&ptr=${ptr}`
+      `/display?title=${title}&sceneNumber=${sceneNumber}`
     );
   }
 };

@@ -47,19 +47,11 @@
         <div class='col-md-1'></div>
         <div class='col-md-5' id='title'>
           {{ title }}
-          <p id='ptr' hidden='hidden'>{{ptr}}</p>
           <p id='length' hidden='hidden'>{{script.length}}</p>
-        </div>
-        <div class='col-md-2 small-text'>
-          <button class='btn btn-block btn-edit btn-sm' id='btn-go-to-element'>
-            Go to element:
-          </button>
-        </div>
-        <div class='col-md-1'>
-          <input type='number' class='white-text' id='go-to-element' name='go-to-element' min='0' max='{{script.length -1}}'/>
+          <p id='sceneNumber' hidden='hidden'>{{sceneNumber}}</p>
+          <p id='nextScene' hidden='hidden'>{{nextScene}}</p>
         </div>
       </div>
-
       <div class='row top '>
         <div class='col-md-1'>
           <button class='btn btn-block btn-edit btn-sm' id='front'>
@@ -70,9 +62,6 @@
           <button class='btn btn-block btn-edit btn-sm' id='ctv'>
             Voice Map&nbsp;&nbsp;
           </button>
-        </div>
-        <div class='col-md-1'>
-          <button class='btn btn-block btn-edit btn-sm' id='btn-srt'>SRT</button>
         </div>
         <div class='col-md-1'>
           <button class='btn btn-block btn-edit btn-sm' id='btn-build-showreel'>Showreel</button>
@@ -95,24 +84,35 @@
         </div>
       </div>
 
+      <div class='row top'>
+        <div class='col-md-6'>
+          Scene
+          {{sceneNumber}}:
+          {{slug}}
+        </div>
+        <div class='col-md-2'></div>
+        <div class='col-md-2'>
+          {% if sceneNumber > 0 %}
+            <button class='btn btn-block btn-edit btn-sm' id='btn-previous-scene'>SCENE
+              {{sceneNumber - 1}}</button>
+          {% endif %}
+        </div>
+        <div class='col-md-2'>
+          {% if sceneNumber < highest %}
+            <button class='btn btn-block btn-edit btn-sm' id='btn-next-scene'>SCENE
+              {{ nextScene }}</button>
+          {% endif %}
+        </div>
+      </div>
+
       <div class='row tableFixHead' id='tabhead'>
         <div class='col-md-12'>
           <table id='script-table'>
             <tbody id='bod'>
               {% for i in range(0, script.length) -%}
-                {% if script[i] %}
-                  {% if headers[i] == 'yes' %}
-                    <tr id='tr_sc_{{i}}'>
-                      <td class='header-line'>Scene
-                        {{script[i].scene}}
-                      </td>
-                      <td colspan='3' class='header-line'>
-                        {{script[i].dialogue}}
-                      </td>
-                    </tr>
-                  {% endif %}
+                {% if script[i].scene == sceneNumber %}
                   <tr id='row_{{i}}'>
-                    <td class='non-header-display' style='width: 12%;'>Scene
+                    <td class='non-header-display' style='width: 15%;'>Scene
                       {{script[i].scene}}
                       <br>Element
                       {{i}}
@@ -123,9 +123,9 @@
                       Voice:
                       {{script[i].voice}}
                     </td>
-                    <td class='non-header-display'>{{script[i].dialogue}}</td>
+                    <td class='non-header-display' style='width:50%;'>{{script[i].dialogue}}</td>
                     <td class='non-header-display'>
-                      <p style='font-size: 60%; color: black'>{{script[i].sound}}</p>
+                      <p style='font-size: 60%; color: black;'>{{script[i].sound}}</p>
                       {% if (script[i].voice == '-') or (script[i].sound) %}
                         <button type='button' class='btn btn-edit btn-block btn-sm btn-play' id='play_{{i}}' value='{{script[i].sound}}'>
                           Play
@@ -144,7 +144,7 @@
                         -
                         {{time[i]}}</p>
                     </td>
-                    <td class='data-display card' id='crd_{{i}}'>
+                    <td class='data-display card' style='width: 20%' id='crd_{{i}}'>
                       {% if script[i].type === 'movie' %}
                         <video width='160' height='90' controls='controls' autoplay='autoplay' id='img_{{i}}' class='img' muted='muted'>
                           <source src='../data/{{title}}/images/{{script[i].image}}' type='video/mp4'>

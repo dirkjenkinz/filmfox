@@ -32,14 +32,14 @@ const concatHandler = async (req, res) => {
   const u = url.parse(req.originalUrl, true);
   const title = u.query.title;
   const scene = u.query.scene;
-  const ptr = u.query.ptr;
+  const sceneNumber = u.query.sceneNumber;
 
   const comp = await getData(`${title}/scenes/${title}.lst`);
 
   concatFiles(comp[scene], scene, title);
 
   setTimeout(function () {
-    res.redirect(`/merge?title=${title}&ptr=${ptr}`);
+    res.redirect(`/merge?title=${title}&sceneNumber=${sceneNumber}`);
   }, 5000);
 };
 

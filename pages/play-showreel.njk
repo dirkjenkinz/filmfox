@@ -27,7 +27,7 @@
           <p id='current'>{{current}}</p>
           <p id='start'>{{showreel[current].start}}</p>
           <p id='finish'>{{showreel[current].finish}}</p>
-          <p id='ptr' hidden='hidden'>{{ptr}}</p>
+          <p id='sceneNumber' hidden='hidden'>{{sceneNumber}}</p>
           <p id='size' hidden='hidden'>{{showreel.length}}</p>
           {% for i in range(0, showreel.length) -%}
             <p id='card{{i}}' hidden='hidden'>{{showreel[i].card}}</p>

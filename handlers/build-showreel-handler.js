@@ -11,6 +11,7 @@ const {
 } = require("../services/file-service");
 
 const formatTime = (seconds) => {
+  console.log({seconds})
   const date = new Date(null);
   date.setSeconds(seconds);
   let h = date.toISOString();
@@ -26,7 +27,7 @@ const buildShowreelHandler = async (req, res) => {
   smartLog("info", "entering build showreel handler");
   const u = url.parse(req.originalUrl, true);
   const title = u.query.title;
-  const ptr = u.query.ptr;
+  const sceneNumber = u.query.sceneNumber;
   const filmFoxFile = await getData(`${title}/${title}.fff`);
   const { script } = filmFoxFile;
 
@@ -35,22 +36,22 @@ const buildShowreelHandler = async (req, res) => {
 
   let t = 0.00;
   const showreel = [];
-  script.forEach((s, index)=>{
+  script.forEach((s)=>{
     showreel.push({
       duration: s.duration,
       character: s.character,
       dialogue: s.dialogue,
       start: formatTime(t),
-      finish: formatTime(t + s[6]),
+      finish: formatTime(t + s.duration),
       card: s.image,
       sound: s.sound,
     })
-    t = t + s[6];
+    t = t + s.duration;
   });
 
   await writeFile(JSON.stringify(showreel), `/${title}/${title}.shw`)
   smartLog("info", "showreel built");
-  res.redirect(`/play-showreel?title=${title}&ptr=${ptr}&current=0&muted=no`);
+  res.redirect(`/play-showreel?title=${title}&sceneNumber=${sceneNumber}&current=0`);
 };
 
 module.exports = { buildShowreelHandler };

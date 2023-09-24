@@ -7,8 +7,8 @@ dotenv.config();
 const displayHandler = async (req, res) => {
   smartLog('info', 'ENTERING DISPLAY HANDLER');
   const u = url.parse(req.originalUrl, true);
-  const ptr = u.query.ptr;
   const locked = u.query.locked;
+  let sceneNumber = parseInt(u.query.sceneNumber);
   const title = u.query.title;
   let filmFoxFile = await getData(`${title}/${title}.fff`);
   let lock = 'Unlock';
@@ -16,9 +16,26 @@ const displayHandler = async (req, res) => {
     lock = 'Lock';
   }
 
+  if (!sceneNumber){
+    sceneNumber = 0;
+  }
+  const nextScene = sceneNumber + 1;
+
   const { script } = filmFoxFile;
   const characters = await getData(`${title}/${title}.chrs`);
   const api_key = process.env.APIKEY;
+
+  let slug = '';
+  let highest = 0;
+
+  script.forEach((s) => {
+    if (s.scene === sceneNumber && s.slug === 'yes'){
+      slug = s.dialogue;
+    };
+    if (s.slug === 'yes') {
+      highest = s.scene;
+    }
+  });
 
   script.forEach((s) => {
     characters.forEach((c) => {
@@ -48,9 +65,12 @@ const displayHandler = async (req, res) => {
     title,
     api_key,
     script,
-    ptr,
     lock,
     time,
+    sceneNumber,
+    nextScene,
+    slug,
+    highest,
   });
 };
 

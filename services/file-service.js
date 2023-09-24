@@ -59,13 +59,6 @@ const playSoundFile = async (title, file, sub) => {
   }
 };
 
-const getSRT = (file) => {
-  smartLog("info", "getting SRT file");
-  const directoryPath = path.join(__dirname, `../data`);
-  const data = fs.readFileSync(`${directoryPath}/${file}.srt`, `utf8`);
-  return data;
-};
-
 const writeFile = async (data, file) => {
   smartLog("info", `writing ${file}`);
   const directoryPath = path.join(__dirname, "../data");
@@ -204,7 +197,6 @@ module.exports = {
   getListOfImages,
   playSoundFile,
   getDuration,
-  getSRT,
   deleteFile,
   getFFFList,
   fileExists,

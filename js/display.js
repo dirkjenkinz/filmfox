@@ -1,5 +1,5 @@
 $(() => {
-    const e = $('#ptr')[0].innerText;
+    const e = $('#sceneNumber')[0].innerText;
     const element = `row_${e}`;
     const elm = document.getElementById(element);
     elm.scrollIntoView(true);
@@ -9,14 +9,14 @@ $(() => {
   }),
   $('#ctv').on('click', () => {
     const f = $('#title')[0].innerText
-    let ptr = $('#ptr')[0].innerText
-    window.location.href = `/ctv?filmFoxFile=${f}&ptr=${ptr}`
+    let sceneNumber = $('#sceneNumber')[0].innerText
+    window.location.href = `/ctv?filmFoxFile=${f}&sceneNumber=${sceneNumber}`
   }),
   $('.btn-gen').on('click', (e) => {
     const file = e.target.value;
     const title = $('#title')[0].innerText;
-    const ptr = $('#ptr')[0].innerText;
-    window.location.href = `/generate-single?title=${title}&file=${file}&ptr=${ptr}`
+    const sceneNumber = $('#sceneNumber')[0].innerText;
+    window.location.href = `/generate-single?title=${title}&file=${file}&sceneNumber=${sceneNumber}`
   }),
   $('.btn-play').on('click', (e) => {
     const title = $('#title')[0].innerText;
@@ -34,41 +34,42 @@ $(() => {
       .id
       .substring(4);
     const title = $('#title')[0].innerText;
-    const ptr = $('#ptr')[0].innerText;
+    const sceneNumber = $('#sceneNumber')[0].innerText;
     const element = `${e.target.value}`;
-    window.location.href = `/delete?title=${title}&element=${element}&ptr=${ptr}&sub=sounds&num=${num}`;
-  }),
-  $('#btn-srt').on('click', () => {
-    const f = $('#title')[0].innerText
-    let ptr = $('#ptr')[0].innerText
-    window.location.href = `/srt?title=${f}&ptr=${ptr}`
+    window.location.href = `/delete?title=${title}&element=${element}&sceneNumber=${sceneNumber}&sub=sounds&num=${num}`;
   }),
   $('#btn-build-showreel').on('click', () => {
     const f = $('#title')[0].innerText;
-    const ptr = $('#ptr')[0].innerText;
-    window.location.href = `/build-showreel?title=${f}&ptr=${ptr}`;
+    const sceneNumber = $('#sceneNumber')[0].innerText;
+    window.location.href = `/build-showreel?title=${f}&sceneNumber=${sceneNumber}`;
   }),
   $('#btn-merge').on('click', () => {
     const f = $('#title')[0].innerText;
-    const ptr = $('#ptr')[0].innerText;
-    window.location.href = `/merge?title=${f}&ptr=${ptr}`;
+    const sceneNumber = $('#sceneNumber')[0].innerText;
+    window.location.href = `/merge?title=${f}&sceneNumber=${sceneNumber}`;
   }),
   $('#btn-scenes').on('click', () => {
-    const f = $('#title')[0].innerText;
-    const ptr = $('#ptr')[0].innerText;
-    window.location.href = `/scenes?title=${f}&ptr=${ptr}`;
+    const title = $('#title')[0].innerText;
+    const sceneNumber = $('#sceneNumber')[0].innerText;
+    window.location.href = `/scenes?title=${title}&sceneNumber=${sceneNumber}`;
+  }),
+  $('#btn-next-scene').on('click', () => {
+    const title = $('#title')[0].innerText;
+    const sceneNumber = $('#sceneNumber')[0].innerText;
+    const scNum = $('#nextScene')[0].innerText;
+    window.location.href = `/display?title=${title}&sceneNumber=${scNum}&sceneNumber=${sceneNumber}&locked='yes`;
+  }),
+  $('#btn-previous-scene').on('click', () => {
+    const title = $('#title')[0].innerText;
+    const sceneNumber = $('#sceneNumber')[0].innerText;
+    const scNum = $('#sceneNumber')[0].innerText - 1;
+    window.location.href = `/display?title=${title}&sceneNumber=${scNum}&sceneNumber=${sceneNumber}&locked='yes`;
   }),
   $('.btn-change').on('click', (e) => {
     const title = $('#title')[0].innerText;
-    let ptr = e
-      .target
-      .id
-      .substring(7);
-    ptr--;
-    if (ptr < 0) 
-      ptr = 0;
+    let scNum =  $('#sceneNumber')[0].innerText;
     const element = e.target.value;
-    window.location.href = `/gallery?title=${title}&ptr=${ptr}&element=${element}&caller=display`
+    window.location.href = `/gallery?title=${title}&sceneNumber=${scNum}&element=${element}&caller=display`
   }),
   $('#btn-sound-lock').on('click', () => {
     const l = $('#length')[0].innerText;
@@ -84,14 +85,8 @@ $(() => {
       }
     };
   }),
-  $('#btn-go-to-element').on('click', () => {
-    const e = $('#go-to-element')[0].value;
-    const element = `row_${e}`;
-    const elm = document.getElementById(element);
-    elm.scrollIntoView(true);
-  }),
   $('#btn-video').on('click', () => {
-    const f = $('#title')[0].innerText;
-    const ptr = $('#ptr')[0].innerText;
-    window.location.href = `/video?title=${f}&ptr=${ptr}`;
+    const title = $('#title')[0].innerText;
+    const sceneNumber = $('#sceneNumber')[0].innerText;
+    window.location.href = `/video?title=${title}&sceneNumber=${sceneNumber}`;
   })

@@ -18,7 +18,7 @@
           <h4>Film Fox</h4>
         </div>
         <div class='col-md-1' hidden="hidden">
-          <p id='ptr'>{{ptr}}</p>
+          <p id='sceneNumber'>{{sceneNumber}}</p>
         </div>
         <div class='col-md-3 data-right' id='title'>
           <h5>{{ title }}</h5>
@@ -70,14 +70,14 @@
   <script>
     $('.btn-generate').on('click', (e) => {
       const title = $('#title')[0].innerText;
-      const ptr = $('#ptr')[0].innerText;
+      const sceneNumber = $('#sceneNumber')[0].innerText;
       scene = e.target.value;
-      window.location.href = `/create-video?title=${title}&ptr=${ptr}&scene=${scene}`
+      window.location.href = `/create-video?title=${title}&sceneNumber=${sceneNumber}&scene=${scene}`
     })
     $('#btn-back').on('click', () => {
       const title = $('#title')[0].innerText;
-      const ptr = $('#ptr')[0].innerText;
-      window.location.href = `/display?title=${title}&ptr=${ptr}`;
+      const sceneNumber = $('#sceneNumber')[0].innerText;
+      window.location.href = `/display?title=${title}&sceneNumber=${sceneNumber}`;
     })
   </script>
 </body>

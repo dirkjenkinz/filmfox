@@ -15,7 +15,7 @@ const getUsed = (script) => {
 const galleryHandler = async (req, res) => {
   smartLog("info", "ENTERING GALLERY HANDLER");
   let u = url.parse(req.originalUrl, true);
-  const ptr = u.query.ptr;
+  const sceneNumber = u.query.sceneNumber;
   const title = u.query.title;
   const element = u.query.element;
   const scene = u.query.scene;
@@ -53,7 +53,7 @@ const galleryHandler = async (req, res) => {
   res.render("gallery.njk", {
     title,
     element,
-    ptr,
+    sceneNumber,
     used,
     unused,
     caller,

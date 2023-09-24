@@ -9,7 +9,7 @@ const generateSingleHandler = async (req, res) => {
   smartLog("info", "ENTERING GENERATE SINGLE HANDLER");
 
   let u = url.parse(req.originalUrl, true);
-  let ptr = u.query.ptr;
+  let sceneNumber = u.query.sceneNumber;
   const file = u.query.file;
   const title = u.query.title;
   const filmFoxFile = await getData(`${title}/${title}.fff`);
@@ -60,14 +60,13 @@ const generateSingleHandler = async (req, res) => {
   const msg = await generateSpeech(api_key, voice_id, fileName, text, title);
 
   setTimeout(async () => {
-    
     if (msg !== "Failed") {
       script[f[1]].sound = fileName;
       script[f[1]].duration = await getDuration(title, fileName);
       await writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
     }
 
-    res.redirect(`/display?title=${title}&ptr=${ptr}`);
+    res.redirect(`/display?title=${title}&sceneNumber=${sceneNumber}`);
   });
 };
 

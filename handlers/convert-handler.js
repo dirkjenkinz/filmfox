@@ -191,8 +191,6 @@ const convertHandler = async (req, res) => {
     script[num][4] = elementNames[num];
   });
 
-  await writeFile('', `${title}.srt`);
-
   const fff = {
     title,
     api_key,
@@ -207,7 +205,7 @@ const convertHandler = async (req, res) => {
     await writeFile(JSON.stringify(characters), title + '.chrs');
   };
 
-  res.redirect(`/display?filmFoxFile=${title}.fff&ptr=0,&locked=yes,&headersOnly=no`);
+  res.redirect(`/display?filmFoxFile=${title}.fff&sceneNumber=0,&locked=yes`);
 };
 
 module.exports = { convertHandler };

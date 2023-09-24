@@ -36,8 +36,8 @@ const updatePage = (current) => {
 
 $("#btn-back").on("click", () => {
   const title = $("#title")[0].innerText;
-  const ptr = $("#ptr")[0].innerText;
-  window.location.href = `/display?title=${title}&ptr=${ptr}`;
+  const sceneNumber = $("#sceneNumber")[0].innerText;
+  window.location.href = `/display?title=${title}&sceneNumber=${sceneNumber}`;
 }),
   $("#btn-next").on("click", () => {
     let current = $("#current")[0].innerText;

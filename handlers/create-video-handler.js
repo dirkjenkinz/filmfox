@@ -57,7 +57,7 @@ const createVideoHandler = async (req, res) => {
   smartLog("info", "ENTERING CREATE VIDEO HANDLER");
   const u = url.parse(req.originalUrl, true);
   const title = u.query.title;
-  const ptr = u.query.ptr;
+  const sceneNumber = u.query.sceneNumber;
   const scene = u.query.scene;
   const soundPath = path.join(__dirname, `../data/${title}/sounds`);
   const imagePath = path.join(__dirname, `../data/${title}/images`);
@@ -65,7 +65,6 @@ const createVideoHandler = async (req, res) => {
 
   const filmFoxFile = await getData(`${title}/${title}.fff`);
   const { script } = filmFoxFile;
-
   script.forEach((s, index) => {
     if (s.scene == parseInt(scene)) {
         let num = "0000" + scene;
@@ -73,7 +72,7 @@ const createVideoHandler = async (req, res) => {
         let sub = "0000" + index;
         sub = sub.substring(sub.length - 4);
       if (
-        s.type= 'movie'
+        s.type === 'movie'
       ) {
         fs.copyFile(`${imagePath}/${s.image}`, `${outPath}/${num}_${sub}.mp4`, (err) => {
           if (err) throw err;
@@ -81,17 +80,19 @@ const createVideoHandler = async (req, res) => {
         });
       } else {
         const caption = `${s.character}: ${s.dialogue}`
-        const sound = `${soundPath}/${s.sound}.mp3`;
+        const sound = `${soundPath}/${s.sound}`;
         const vision = `${imagePath}/${s.image}`;
         let duration = Math.ceil(s.duration) + 1;
         if (duration < 4 ) duration = 4;
         const output = `${outPath}/${num}_${sub}.mp4`
+        console.log({sound})
+        console.log({output})
         imgToMP4(caption, sound, vision, duration, output);
       }
     }
   });
 
-  res.redirect(`/video?title=${title}&ptr=${ptr}`);
+  res.redirect(`/video?title=${title}&sceneNumber=${sceneNumber}`);
 };
 
 module.exports = { createVideoHandler };
