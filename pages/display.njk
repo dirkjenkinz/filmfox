@@ -88,6 +88,12 @@
       </div>
 
       <div class='row top'>
+        <div class='col-md-2'>
+          {% if sceneNumber > 0 %}
+            <button class='btn btn-block btn-edit btn-sm' id='btn-previous-scene'>Go to Scene
+              {{sceneNumber - 1}}</button>
+          {% endif %}
+        </div>
         <div class='col-md-6'>
           Scene
           {{sceneNumber}}:
@@ -95,14 +101,8 @@
         </div>
         <div class='col-md-2'></div>
         <div class='col-md-2'>
-          {% if sceneNumber > 0 %}
-            <button class='btn btn-block btn-edit btn-sm' id='btn-previous-scene'>SCENE
-              {{sceneNumber - 1}}</button>
-          {% endif %}
-        </div>
-        <div class='col-md-2'>
           {% if sceneNumber < highest %}
-            <button class='btn btn-block btn-edit btn-sm' id='btn-next-scene'>SCENE
+            <button class='btn btn-block btn-edit btn-sm' id='btn-next-scene'>Go to Scene
               {{ nextScene }}</button>
           {% endif %}
         </div>

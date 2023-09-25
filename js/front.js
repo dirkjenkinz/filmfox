@@ -11,4 +11,7 @@ $('#convert').on('click', () => {
     $('.btn-fdx').on('click', (e) => {
       let s = e.target.value;
       window.location.href = `/convert?script=${s}`
+    }),
+    $('#btn-voices').on('click', (e) => {
+      window.location.href = `/voices`
     })

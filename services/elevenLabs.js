@@ -4,13 +4,61 @@ const axios = require('axios');
 const directoryPath = path.join(__dirname, '../data');
 const { smartLog } = require('../services/smart-log');
 
+const getSampleIds = async (voice_id, apiKey) => {
+    smartLog('info', 'Get Sample IDs');
+    console.log({voice_id})
+    console.log({apiKey})
+    const config = {
+        headers: {
+            'accept': 'application/json',
+            'xi-api-key': apiKey
+        }
+    };
+    try {
+        let response = await axios.get(`https://api.elevenlabs.io/v1/voices/${voice_id}`, config);
+        return response.data;
+    } catch (error) {
+        smartLog('error', 'error getting sample');
+        smartLog('error', error.message);
+        return '';
+    }
+};
+
+const getVoiceSample = async (sample_id) => {
+    smartLog('info', 'Get Voice Sample');
+    const config = {
+        headers: {
+            'accept': 'application/json',
+            'xi-api-key': apiKey
+        }
+    };
+    try {
+        let response = await axios.get('/v1/voices/{voice_id}/samples/{sample_id}/audio', config);
+        return response.data.voices;
+    } catch (error) {
+        smartLog('error', 'error getting sample');
+        smartLog('error', error.message);
+        return '';
+    }
+};
+
+const generateSample = async (voiceID, apiKey) => {
+    console.log({voiceID})
+    smartLog('info', 'GENERATING SAMPLE');
+    try {
+        await voice.textToSpeech(apiKey, voiceID, `${directoryPath}/samples/${voiceID}.mp3`, "Now is the winter of our discontent made glorious summer by this son of York.").then(res => {
+            smartLog('info', `Sound sample generated for ${voiceID}`);
+            return 'Generated';
+        });
+    } catch (error) {
+        smartLog('error', 'error generating speech');
+        smartLog('error', error.message);
+        return 'Failed';
+    }
+};
+
 const generateSpeech = async (apiKey, voiceID, fileName, textInput, title) => {
     smartLog('info', 'generate speech');
-    console.log({apiKey});
-    console.log({voiceID})
-    console.log({fileName})
-    console.log({textInput})
-    console.log({title})
     try {
         await voice.textToSpeech(apiKey, voiceID, `${directoryPath}/${title}/sounds/${fileName}`, textInput).then(res => {
             smartLog('info', `sound file generated for ${fileName}`);
@@ -63,4 +111,7 @@ module.exports = {
     generateSpeech,
     getVoices,
     getUserSubscriptionInfo,
+    getVoiceSample,
+    getSampleIds,
+    generateSample,
 };
