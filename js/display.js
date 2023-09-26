@@ -3,6 +3,7 @@ $(() => {
     const element = `row_${e}`;
     const elm = document.getElementById(element);
     elm.scrollIntoView(true);
+    $("#display"). attr("disabled", true)
   }),
   $('#front').on('click', () => {
     window.location.href = `/`

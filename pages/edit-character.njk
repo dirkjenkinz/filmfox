@@ -1,70 +1,38 @@
-<!DOCTYPE html>
-<html lang='en'>
-  <head>
-    <meta charset='UTF-8'/>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'/>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
-    <title>FilmFox</title>
-    <link rel='stylesheet' href='../css/style.css'/>
-    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css'/>
-    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
-    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js'></script>
-  </head>
-
-  <body>
-    <div class='container-fluid'>
-      <div class='row top'>
-        <div class='col-md-2'>
-          <h4>Film Fox</h4>
-        </div>
-        <div class='col-md-1' hidden="hidden">
-          <p id='sceneNumber'>{{sceneNumber}}</p>
-          <p id='title'>{{title}}</p>
-        </div>
-        <div class='col-md-3 data-right' id='title'>
-          <h5>{{ title }}</h5>
-        </div>
-        <div class='col-md-1'></div>
-        <div class='col-md-4'>
-          <button type='button' class='btn btn-edit btn-block btn-sm' id='btn-back'>Go Back To Characters</button>
+{% extends "parent.njk" %}
+{% block page %}
+  <div class='row show'>
+    <div class='col-md-12'>
+      <audio id='master-play' controls="controls">
+        <source src='' type="audio/mpeg">
+      </audio>
+      <table class='table-bordered table-sm table-dark table-grid' id='tab-char'>
+        <tbody>
+          <tr>
+            <td></td>
+            <td class='data-char'>
+              <h3>{{character}}</h3>
+              <td>
+                <td></td>
+              </tr>
+              {% for i in range(0, elements.length) -%}
+                <tr>
+                  <td class='data-char'>Scene:
+                    {{elements[i].scene}}
+                  </td>
+                  <td class='data-char'>
+                    {{elements[i].dialogue}}
+                  </td>
+                  <td class='data-right'>
+                    <button type='button' class='btn btn-edit btn-block btn-sm btn-play' value='{{elements[i].sound}}'>
+                      {{elements[i].sound}}
+                    </button>
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
         </div>
       </div>
-      <div class='row show'>
-        <div class='col-md-12'>
-          <td colspan='5'>
-            <audio id='master-play' controls="controls">
-              <source src='' type="audio/mpeg">
-            </audio>
-          </td>
-          <table class='table-bordered table-sm table-dark table-grid' id='tab-char'>
-            <tbody>
-              <tr>
-                <td></td>
-                <td class='data-char'>
-                  <h3>{{character}}</h3>
-                  <td>
-                    <td></td>
-                  </tr>
-                  {% for i in range(0, elements.length) -%}
-                    <tr>
-                      <td class='data-char'>
-                        Scene:
-                        {{elements[i].scene}}
-                      </td>
-                      <td class='data-char'>
-                        {{elements[i].dialogue}}
-                      </td>
-                      <td class='data-right'>
-                        <button type='button' class='btn btn-edit btn-block btn-sm btn-play' value='{{elements[i].sound}}'>
-                          {{elements[i].sound}}
-                        </button>
-                      </td>
-                    </tr>
-                  {% endfor %}
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <script src='../js/edit-character.js'></script>
-        </body>
-      </html>
+      <script src='../js/edit-character.js'></script>
+    </div>
+  {% endblock %}
