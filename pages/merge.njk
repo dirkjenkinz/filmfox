@@ -1,102 +1,68 @@
-<!DOCTYPE html>
-<html lang='en'>
-  <head>
-    <meta charset='UTF-8'/>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'/>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
-    <title>FilmFox</title>
-    <link rel='stylesheet' href='../css/style.css'/>
-    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css'/>
-    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
-    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js'></script>
-  </head>
+{% extends "parent.njk" %}
+{% block page %}
+  <div class='row show'>
+    <p id='size' hidden="hidden">{{size}}</p>
+    <div class='col-md-12'>
+      <table class='table-bordered table-sm table-dark table-grid' id='tab_img'>
+        <tbody>
+          <tr>
+            <td colspan='3'>
+              {% if masterExists == 'yes' %}
+                <button type='button' class='btn btn-edit btn-block btn-sm' id='btn-play-master'>Play Master</button>
+              {% else %}
+                <button type='button' class='btn btn-edit btn-block btn-sm' id='btn-play-master' disabled="disabled">Play Master</button>
 
-  <body>
-    <div class='container-fluid'>
-      <div class='row top'>
-        <div class='col-md-2'>
-          <h4>Film Fox</h4>
-        </div>
-        <div class='col-md-1' hidden="hidden">
-          <p id='sceneNumber'>{{sceneNumber}}</p>
-          <p id='size'>{{comp.length}}</p>
-        </div>
-        <div class='col-md-3 data-right' id='title'>
-          <h5>{{ title }}</h5>
-        </div>
-        <div class='col-md-1'></div>
-        <div class='col-md-2'>
-          <button type='button' class='btn btn-edit btn-block btn-sm' id='btn-back'>Go Back</button>
-        </div>
-        <div class='col-md-2'></div>
-        <div class='col-md-2'>
-          {% if ready == 'yes' %}
-            <button type='button' class='btn btn-edit btn-block btn-sm' id='btn-master'>Create/Update Master</button>
-          {% endif %}
-        </div>
-      </div>
-
-      <div class='row show'>
-        <div class='col-md-12'>
-          <table class='table-bordered table-sm table-dark table-grid' id='tab_img'>
-            <tbody>
+              {% endif %}
+            </td>
+            <td colspan='5'>
+              <audio id='master-play' controls="controls">
+                <source src='' type="audio/mpeg">
+              </audio>
+            </td>
+            <td></td>
+            <td colspan='4'>
+              <button type='button' class='btn btn-edit btn-block btn-sm' id='btn-enable'>Enable DELETE</button>
+            </td>
+            <td>
+              <button type='button' class='btn btn-edit btn-block btn-sm' id='btn-master'>Create/Update Master</button>
+            </td>
+            <td colspan='4' style='padding: 0 8px;'>
+              <h5 id='selected'></h5>
+            </td>
+          </tr>
+          <tr>
+            {% for i in range(0, comp.length, 6) -%}
               <tr>
-                <td colspan='7'>
-                  {% if masterExists == 'yes' %}
-                    <button type='button' class='btn btn-edit btn-block btn-sm' id='btn-play-master'>Play Master</button>
-                  {% endif %}
-                </td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td colspan='4' style='padding: 0 8px;'>
-                  <h4 id='selected'></h4>
-                </td>
-                <td colspan='5'>
-                  <audio id='master-play' controls>
-                    <source src='' type="audio/mpeg">
-                  </audio>
-                </td>
-                <td></td>
-                <td></td>
-                <td colspan='7'>
-                  <button type='button' class='btn btn-edit btn-block btn-sm' id='btn-enable'>Enable DELETE</button>
-                </td>
-              </tr>
-              <tr>
-                {% for i in range(0, comp.length, 6) -%}
-                  <tr>
-                    {% for num in range(0, 6) -%}
-                      {% if i + num < comp.length %}
-                        <td class='data-left'>
-                          {% if merged[i + num] != 'yes' %}
-                            <button type='button' class='btn btn-edit btn-block btn-sm btn-merge' id='btn-merge_{{i + num}}' value='{{i + num}}'>MERGE</button>
-                          {% else %}
-                            <button type='button' class='btn btn-edit btn-block btn-sm btn-delete' disabled="disabled" id='btn-delete_{{i + num}}' value='{{i + num}}'>DELETE</button>
-                          {% endif %}
-                        </td>
-                        <td class='data-right' style='color: white;'>
-                          {{i + num}}
-                        </td>
-                        <td class='padded'>
-                          {% if merged[i + num] == 'yes' %}
-                            <button type='button' class='btn btn-edit btn-block btn-sm btn-play' id="play_{{i + num}}" value='{{i + num}}'>
-                              Play
-                            </button>
-                          {% endif %}
-                        </td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
+                {% for num in range(0, 6) -%}
+                  {% if i + num < comp.length %}
+                    <td class='data-left'>
+                      {% if merged[i + num] != 'yes' %}
+                        <button type='button' class='btn btn-edit btn-block btn-sm btn-merge' id='btn-merge_{{i + num}}' value='{{i + num}}'>MERGE</button>
+                      {% else %}
+                        <button type='button' class='btn btn-edit btn-block btn-sm btn-delete' disabled="disabled" id='btn-delete_{{i + num}}' value='{{i + num}}'>DELETE</button>
                       {% endif %}
-                    {% endfor %}
-                  </tr>
+                    </td>
+                    <td class='data-right' style='color: white;'>
+                      {{i + num}}
+                    </td>
+                    <td class='padded'>
+                      {% if merged[i + num] == 'yes' %}
+                        <button type='button' class='btn btn-edit btn-block btn-sm btn-play' id="play_{{i + num}}" value='{{i + num}}'>
+                          Play
+                        </button>
+                      {% endif %}
+                    </td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                  {% endif %}
                 {% endfor %}
-              </tbody>
-            </table>
-          </div>
-        </div>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
       </div>
-      <script src='../js/merge.js'>
-      </script>
-    </body>
-  </html>
+    </div>
+  </div>
+  <script src='../js/header.js'></script>
+  <script src='../js/merge.js'></script>
+{% endblock %}

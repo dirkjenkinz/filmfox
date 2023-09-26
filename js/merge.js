@@ -1,9 +1,7 @@
-$('#btn-back').on('click', () => {
-    const title = $('#title')[0].innerText;
-    const sceneNumber = $('#sceneNumber')[0].innerText;
-    window.location.href = `/display?title=${title}&sceneNumber=${sceneNumber}`;
-  }),
-  $('.btn-merge').on('click', (e) => {
+$(() => {
+  $("#btn-merge").attr("disabled", true);
+}),
+$('.btn-merge').on('click', (e) => {
     let scene = e.target.value;
     const title = $('#title')[0].innerText;
     const sceneNumber = $('#sceneNumber')[0].innerText;

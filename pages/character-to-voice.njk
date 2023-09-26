@@ -18,7 +18,7 @@
                   {% for j in range(0, voice_data.length) -%}
                     {% if
                     characters[i][1] == voice_data[j][0] %}
-                      <option value="{{voice_data[j][0]}}" selected>
+                      <option value="{{voice_data[j][0]}}" selected="selected">
                         {{voice_data[j][0]}}
                       </option>
                     {% else %}
@@ -59,6 +59,7 @@
       </table>
     </div>
   </div>
-  <script src='../js/character-to-voice.js'></script>
 </div>
+<script src='../js/header.js'></script>
+<script src='../js/character-to-voice.js'></script>
 {% endblock %}
