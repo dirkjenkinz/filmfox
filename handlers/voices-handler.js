@@ -34,8 +34,6 @@ const voicesHandler = async (req, res) => {
     });
   });
 
-  vox.sort();
-  
   res.render("voices.njk", {
     vox,
   });

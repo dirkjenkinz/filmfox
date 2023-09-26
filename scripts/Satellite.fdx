@@ -412,7 +412,7 @@
       <Text>Int. Living room - day</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.50" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Action">
-      <Text>Barbara, dressed in a red tracksuit, is on the settee, knitting baby bootees while watching Dan Brody on the Great British Shopping Experience channel.</Text>
+      <Text>Barbara, dressed in a red tracksuit, is on the settee, knitting baby booties while watching Dan Brody on the Great British Shopping Experience channel.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Character">
       <Text>BRODY</Text>
@@ -755,9 +755,7 @@
       <Text>Tom</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
-      <Text>To be honest, Kyle, I don’t give a flying </Text>
-      <Text AdornmentStyle="-1" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="">fuck</Text>
-      <Text> about the Black Knight right now. I just want to get this meeting out of the way so I can get on with my work.</Text>
+      <Text>To be honest, Kyle, I don’t give a flying fuck about the Black Knight right now. I just want to get this meeting out of the way so I can get on with my work.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Character">
       <Text>KYLE</Text>
@@ -1150,7 +1148,7 @@
       <Text>Int. Living room - day</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.50" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Action">
-      <Text>Barbara is on the settee, still knitting baby bootees while watching Dan Brody extolling the dubious qualities of some worthless piece of tat.</Text>
+      <Text>Barbara is on the settee, still knitting baby booties while watching Dan Brody extolling the dubious qualities of some worthless piece of tat.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.50" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Action">
       <Text>Hearing TOM THUNDERING DOWN THE STAIRS, she hastily hides her wool and knitting needles under a cushion.</Text>

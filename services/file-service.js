@@ -10,7 +10,7 @@ const fileExists = (file) => {
     } else {
       return false;
     }
-  } catch(err) {
+  } catch (err) {
     smartLog("error", "err");
     return false;
   }
@@ -142,11 +142,13 @@ function getFFFList() {
   const dirList = [];
   fileList.forEach((f) => {
     if (fs.statSync(`${dir}/${f}`).isDirectory()) {
-      dirList.push(f);
+      if (f !== "samples") {
+        dirList.push(f);
+      }
     }
   });
   return dirList;
-};
+}
 
 const getListOfElements = async (subdir) => {
   smartLog("info", "getting list of elements");
