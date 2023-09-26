@@ -1,175 +1,90 @@
-<!DOCTYPE html>
-<html lang='en'>
-  <head>
-    <meta charset='UTF-8'/>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'/>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
-    <title>FilmFox</title>
-    <link rel='stylesheet' href='../css/style.css'/>
-    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css'/>
-    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
-    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js'></script>
-    <style>
-      .tableFixHead {
-        overflow-y: auto;
-        height: 420px;
-      }
-      .tableFixHead thead th {
-        position: sticky;
-        top: 0;
-      }
-      table {
-        border-collapse: collapse;
-        width: 99%;
-      }
-      td,
-      th {
-        padding: 4px 8px;
-        border: 1px solid #ccc;
-      }
-      th {
-        background: #eee;
-      }
-      .head-display {
-        border-style: solid;
-        border-width: 0 0 5px 0;
-        color: black;
-        background: #eee;
-      }
-    </style>
-  </head>
-  <body>
-    <div class='container-fluid'>
-      <div class='row top'>
-        <div class='col-md-2'>
-          Film Fox
-        </div>
-        <div class='col-md-1'></div>
-        <div class='col-md-5' id='title'>
-          {{ title }}
-          <p id='length' hidden='hidden'>{{script.length}}</p>
-          <p id='sceneNumber' hidden='hidden'>{{sceneNumber}}</p>
-          <p id='nextScene' hidden='hidden'>{{nextScene}}</p>
-        </div>
-      </div>
-      <div class='row top '>
-        <div class='col-md-1'>
-          <button class='btn btn-block btn-edit btn-sm' id='front'>
-            Front
-          </button>
-        </div>
-        <div class='col-md-1'>
-          <button class='btn btn-block btn-edit btn-sm' id='ctv'>
-            Voice Map&nbsp;&nbsp;
-          </button>
-        </div>
-        <div class='col-md-1'>
-          <button class='btn btn-block btn-edit btn-sm' id='btn-build-showreel'>Showreel</button>
-        </div>
-        <div class='col-md-1'>
-          <button class='btn btn-block btn-edit btn-sm' id='btn-merge'>Sound</button>
-        </div>
-        <div class='col-md-1'>
-          <button class='btn btn-block btn-edit btn-sm' id='btn-video'>Video</button>
-        </div>
-        <div class='col-md-1'>
-          <button class='btn btn-block btn-edit btn-sm' id='btn-scenes'>Scenes</button>
-        </div>
-        <div class='col-md-1'>
-          <button class='btn btn-block btn-edit btn-sm' id='btn-characters'>Characters&nbsp;</button>
-        </div>
-        <audio id='master-play' style='width: 100%;'>
-          <source src='' type='audio/mpeg'>
-        </audio>
-        <div class='col-md-1'></div>
-        <div class='col-md-2'>
-          <button class='btn btn-block btn-edit btn-sm' id='btn-sound-lock'>Unlock Delete</button>
-        </div>
-      </div>
+{% extends "parent.njk" %}
 
-      <div class='row top'>
-        <div class='col-md-2'>
-          {% if sceneNumber > 0 %}
-            <button class='btn btn-block btn-edit btn-sm' id='btn-previous-scene'>Go to Scene
-              {{sceneNumber - 1}}</button>
-          {% endif %}
-        </div>
-        <div class='col-md-6'>
-          Scene
-          {{sceneNumber}}:
-          {{slug}}
-        </div>
-        <div class='col-md-2'></div>
-        <div class='col-md-2'>
-          {% if sceneNumber < highest %}
-            <button class='btn btn-block btn-edit btn-sm' id='btn-next-scene'>Go to Scene
-              {{ nextScene }}</button>
-          {% endif %}
-        </div>
-      </div>
-
-      <div class='row tableFixHead' id='tabhead'>
-        <div class='col-md-12'>
-          <table id='script-table'>
-            <tbody id='bod'>
-              {% for i in range(0, script.length) -%}
-                {% if script[i].scene == sceneNumber %}
-                  <tr id='row_{{i}}'>
-                    <td class='non-header-display' style='width: 15%;'>Scene
-                      {{script[i].scene}}
-                      <br>Element
-                      {{i}}
-                      <br><br>
-                      Character:
-                      {{script[i].character}}
-                      <br><br>
-                      Voice:
-                      {{script[i].voice}}
-                    </td>
-                    <td class='non-header-display' style='width:50%;'>{{script[i].dialogue}}</td>
-                    <td class='non-header-display'>
-                      <p style='font-size: 60%; color: black;'>{{script[i].sound}}</p>
-                      {% if (script[i].voice == '-') or (script[i].sound) %}
-                        <button type='button' class='btn btn-edit btn-block btn-sm btn-play' id='play_{{i}}' value='{{script[i].sound}}'>
-                          Play
-                        </button>
-                        <br>
-                        <button class='btn btn-block btn-edit btn-sm btn-small btn-del' id='del_{{i}}' disabled='disabled' value='{{script[i].sound}}'>
-                          Delete
-                        </button>
-                      {% else %}
-                        <button type='button' class='btn btn-edit btn-block btn-sm btn-gen' id='gen_{{i}}' value='{{script[i].scene}}/{{i}}'>
-                          Gen
-                        </button>
-                      {% endif %}
-                      <br>
-                      <p style='font-size: 60%; color: black;'>{{script[i].duration}}
-                        -
-                        {{time[i]}}</p>
-                    </td>
-                    <td class='data-display card' style='width: 20%' id='crd_{{i}}'>
-                      {% if script[i].type === 'movie' %}
-                        <video width='160' height='90' controls='controls' autoplay='autoplay' id='img_{{i}}' class='img' muted='muted'>
-                          <source src='../data/{{title}}/images/{{script[i].image}}' type='video/mp4'>
-                        </video>
-                      {% else %}
-                        <img width='160' height='90' src='../data/{{title}}/images/{{script[i].image}}' id='img_{{i}}' class='img' alt='{{script[i].image}}'>
-                      {% endif %}
-                      <p style='font-size: 80%; color: white;'>
-                        {{script[i].image.substring(0,28)}}
-                      </p>
-                      <button type='button' class='btn btn-edit btn-block btn-sm btn-change' id='change_{{i}}' value='{{i}}'>
-                        Change
-                      </button>
-                    </td>
-                  </tr>
-                {% endif %}
-              {%- endfor %}
-            </tbody>
-          </table>
-        </div>
-      </div>
+{% block page %}
+  <div class='row top'>
+    <div class='col-md-2'>
+      {% if sceneNumber > 0 %}
+        <button class='btn btn-block btn-edit btn-sm' id='btn-previous-scene'>Go to Scene
+          {{sceneNumber - 1}}</button>
+      {% endif %}
     </div>
-    <script src='../js/display.js'></script>
-  </body>
-</html>
+    <div class='col-md-6'>
+      Scene
+      {{sceneNumber}}:
+      {{slug}}
+    </div>
+    <div class='col-md-2'>
+      {% if sceneNumber < highest %}
+        <button class='btn btn-block btn-edit btn-sm' id='btn-next-scene'>Go to Scene
+          {{ nextScene }}</button>
+      {% endif %}
+    </div>
+    <div class='col-md-2'>
+      <button class='btn btn-block btn-edit btn-sm' id='btn-sound-lock'>Unlock Delete</button>
+    </div>
+  </div>
+
+  <div class='row tableFixHead' id='tabhead'>
+    <div class='col-md-12'>
+      <table id='script-table'>
+        <tbody id='bod'>
+          {% for i in range(0, script.length) -%}
+            {% if script[i].scene == sceneNumber %}
+              <tr id='row_{{i}}'>
+                <td class='non-header-display' style='width: 15%;'>Scene
+                  {{script[i].scene}}
+                  <br>Element
+                  {{i}}
+                  <br><br>
+                  Character:
+                  {{script[i].character}}
+                  <br><br>
+                  Voice:
+                  {{script[i].voice}}
+                </td>
+                <td class='non-header-display' style='width:50%;'>{{script[i].dialogue}}</td>
+                <td class='non-header-display'>
+                  <p style='font-size: 60%; color: black;'>{{script[i].sound}}</p>
+                  {% if (script[i].voice == '-') or (script[i].sound) %}
+                    <button type='button' class='btn btn-edit btn-block btn-sm btn-play' id='play_{{i}}' value='{{script[i].sound}}'>
+                      Play
+                    </button>
+                    <br>
+                    <button class='btn btn-block btn-edit btn-sm btn-small btn-del' id='del_{{i}}' disabled='disabled' value='{{script[i].sound}}'>
+                      Delete
+                    </button>
+                  {% else %}
+                    <button type='button' class='btn btn-edit btn-block btn-sm btn-gen' id='gen_{{i}}' value='{{script[i].scene}}/{{i}}'>
+                      Gen
+                    </button>
+                  {% endif %}
+                  <br>
+                  <p style='font-size: 60%; color: black;'>{{script[i].duration}}
+                    -
+                    {{time[i]}}</p>
+                </td>
+                <td class='data-display card' style='width: 20%' id='crd_{{i}}'>
+                  {% if script[i].type === 'movie' %}
+                    <video width='160' height='90' controls='controls' autoplay='autoplay' id='img_{{i}}' class='img' muted='muted'>
+                      <source src='../data/{{title}}/images/{{script[i].image}}' type='video/mp4'>
+                    </video>
+                  {% else %}
+                    <img width='160' height='90' src='../data/{{title}}/images/{{script[i].image}}' id='img_{{i}}' class='img' alt='{{script[i].image}}'>
+                  {% endif %}
+                  <p style='font-size: 80%; color: white;'>
+                    {{script[i].image.substring(0,28)}}
+                  </p>
+                  <button type='button' class='btn btn-edit btn-block btn-sm btn-change' id='change_{{i}}' value='{{i}}'>
+                    Change
+                  </button>
+                </td>
+              </tr>
+            {% endif %}
+          {%- endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<script src='../js/display.js'></script>
+{% endblock %}
