@@ -46,4 +46,9 @@ $("#front").on("click", () => {
     document
       .getElementById("master-play")
       .play();
+  }),
+  $('.btn-gen').on('click', (e) => {
+    const elementNumber = e.target.value;
+    const title = $('#title')[0].innerText;
+    window.location.href = `/generate-single?title=${title}&elementNumber=${elementNumber}&caller=edit-character`;
   })

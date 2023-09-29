@@ -9,64 +9,53 @@ const generateSingleHandler = async (req, res) => {
   smartLog("info", "ENTERING GENERATE SINGLE HANDLER");
 
   let u = url.parse(req.originalUrl, true);
-  let sceneNumber = u.query.sceneNumber;
-  const file = u.query.file;
   const title = u.query.title;
+  const elementNumber = u.query.elementNumber;
   const filmFoxFile = await getData(`${title}/${title}.fff`);
-  const characters = await getData(`${title}/${title}.chrs`);
   const api_key = process.env.APIKEY;
+  const caller = u.query.caller;
 
-  const f = file.split("/");
-  let sc = `0000${f[0]}`;
+  const { script } = filmFoxFile;
+
+  const element = script[elementNumber];
+  let sc = "0000" + element.scene;
   sc = sc.substring(sc.length - 4);
-  let el = `0000${f[1]}`;
+  let el = "0000" + elementNumber;
   el = el.substring(el.length - 4);
-
   const fileName = `${sc}_${el}.mp3`;
 
-  const { script, voice_data } = filmFoxFile;
+  const { voice_data } = filmFoxFile;
+  let voice_id;
 
-  script.forEach((s) => {
-    characters.forEach((c) => {
-      if (c[0] === s.character) {
-        s.voice = c[1];
-      }
-    });
-  });
-
-  const character_name = script[f[1]].voice;
-
-  let voice_id = "";
   voice_data.forEach((v) => {
-    if (v[0] === character_name) {
+    if (v[0] === element.voice) {
       voice_id = v[2];
     }
   });
 
-  let text = script[f[1]].dialogue;
-
-  if (script[f[1]].character === "NARRATOR") {
-    const t = text.toUpperCase();
-    if (t.substring(0, 9) === "INT./EXT.") {
-      text = "INTERIOR / EXTERIOR" + text.substring(4);
-    } else if (t.substring(0, 4) === "INT.") {
-      text = "INTERIOR" + text.substring(4);
-    } else if (t.substring(0, 4) === "EXT.") {
-      text = "EXTERIOR" + text.substring(4);
-    }
-    text = text.replace(/\.\.\./g, "");
-  }
-
-  const msg = await generateSpeech(api_key, voice_id, fileName, text, title);
+  console.log(element.voice);
+  console.log({voice_id});
+  console.log(element.dialogue)
+  const msg = await generateSpeech(
+    api_key,
+    voice_id,
+    fileName,
+    element.dialogue,
+    title
+  );
 
   setTimeout(async () => {
     if (msg !== "Failed") {
-      script[f[1]].sound = fileName;
-      script[f[1]].duration = await getDuration(title, fileName);
+      script[elementNumber].sound = fileName;
+      script[elementNumber].duration = await getDuration(title, fileName);
       await writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
     }
 
-    res.redirect(`/display?title=${title}&sceneNumber=${sceneNumber}`);
+    if ((caller === "edit-character")) {
+      res.redirect(`/edit-character?title=${title}&caharacter=${element.voice}`);
+    } else {
+      res.redirect(`/display?title=${title}&sceneNumber=${element.scene}`);
+    }
   });
 };
 

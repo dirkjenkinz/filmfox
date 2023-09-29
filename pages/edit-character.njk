@@ -8,7 +8,8 @@
       <table class='table-bordered table-sm table-dark table-grid' id='tab-char'>
         <tbody>
           <tr>
-            <td></td>
+            <td>
+            </td>
             <td class='data-char'>
               <h3>{{character}}</h3>
               <td>
@@ -16,16 +17,29 @@
               </tr>
               {% for i in range(0, elements.length) -%}
                 <tr>
-                  <td class='data-char'>Scene:
+                  <td class='data-char' colspan='3'>Scene:
                     {{elements[i].scene}}
+                    <br>Element: {{elements[i].element}}
                   </td>
                   <td class='data-char'>
                     {{elements[i].dialogue}}
                   </td>
                   <td class='data-right'>
-                    <button type='button' class='btn btn-edit btn-block btn-sm btn-play' value='{{elements[i].sound}}'>
-                      {{elements[i].sound}}
-                    </button>
+                    {% if elements[i].sound %}
+                      <button type='button' class='btn btn-edit btn-block btn-sm btn-play' value='{{elements[i].sound}}'>
+                        Play
+                      </button>
+                    {% else %}
+                     <button type='button' class='btn btn-edit btn-block btn-sm btn-play' disabled value='{{elements[i].sound}}'>
+                        Play
+                      </button>
+                    {% endif %}
+
+                  </td>
+                  <td class='data-right'>
+                   <button type='button' class='btn btn-edit btn-block btn-sm btn-gen' value='{{elements[i].element}}'>
+                        Generate
+                      </button>
                   </td>
                 </tr>
               {% endfor %}

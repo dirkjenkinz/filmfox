@@ -18,10 +18,10 @@ const editCharacterHandler = async (req, res) => {
         scene: s.scene,
         dialogue: s.dialogue,
         sound: s.sound,
+        element: index,
       });
     }
   });
-
   res.render("edit-character.njk", {
     character,
     title,

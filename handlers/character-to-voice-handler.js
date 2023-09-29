@@ -23,7 +23,6 @@ const characterToVoiceHandler = async (req, res) => {
   const filmFoxFile = await getData(`${title}/${title}.fff`);
 
   const { script } = filmFoxFile;
-
   let characters = await getData(`${title}/${title}.chrs`);
 
   const voices = await getData('voices.json');
@@ -37,6 +36,7 @@ const characterToVoiceHandler = async (req, res) => {
       };
     })
   });
+
 
   res.render('character-to-voice.njk', {
     title,
