@@ -1,65 +1,76 @@
 {% extends "parent.njk" %}
 {% block page %}
-      <div class='row' style='background: silver; color: black;'>
-        <div class='col-md-1'>
-          <p id='current'>{{current}}</p>
-          <p id='start'>{{showreel[current].start}}</p>
-          <p id='finish'>{{showreel[current].finish}}</p>
-          <p id='sceneNumber' hidden='hidden'>{{sceneNumber}}</p>
-          <p id='size' hidden='hidden'>{{showreel.length}}</p>
-          {% for i in range(0, showreel.length) -%}
-            <p id='card{{i}}' hidden='hidden'>{{showreel[i].card}}</p>
-            <p id='sound{{i}}' hidden='hidden'>{{showreel[i].sound}}</p>
-            <p id='start{{i}}' hidden='hidden'>{{showreel[i].start}}</p>
-            <p id='finish{{i}}' hidden='hidden'>{{showreel[i].finish}}</p>
-            <p id='character{{i}}' hidden='hidden'>{{showreel[i].character}}</p>
-            <p id='dialogue{{i}}' hidden='hidden'>{{showreel[i].dialogue}}</p>
-            <p id='slug{{i}}' hidden='hidden'>{{showreel[i].slug}}</p>
-            <p id='imageType{{i}}' hidden='hidden'>{{showreel[i].imageType}}</p>
-          {% endfor %}
-        </div>
-        <div class='col-md-7'>
-          {% if showreel[current].imageType === 'movie' %}
-            <video id="viddy" controls="controls" autoplay="autoplay">
-              <source id="mp4_src" src="mov_bbb.mp4" type="video/mp4">
-              <source id="ogg_src" src="mov_bbb.ogg" type="video/ogg">
-              Your browser does not support HTML5 video.
-            </video>
-          {% else %}
-            <img id='piccy' width='720' height='405' src='../data/{{title}}/images/{{showreel[current].card}}' alt='card'/>
-          {% endif %}
-        </div>
-        <div class='col-md-4' style='padding: 0 0 0 16px;'>
-          <br>
-          <p style='text-align : center;' id='character'>
-            {{showreel[current].character}}
-          </p>
-          <p id='dialogue'>{{showreel[current].dialogue}}</p>
-        </div>
-      </div>
-      <div class='row'>&nbsp;</div>
-      <div class='row'>
-        <div class='col-md-1'></div>
-        <div class='col-md-2'>
-          <button class='btn btn-block btn-edit btn-sm' id='btn-previous'>
-            PREVIOUS
-          </button>
-        </div>
-        <div class='col-md-1'></div>
-        <div class='col-md-3'>
-          <audio id='master-play' controls='controls' style='width: 100%;'>
-            <source src='' type='audio/mpeg'>
-          </audio>
-        </div>
-        <div class='col-md-1'></div>
-        <div class='col-md-2'>
-          <button class='btn btn-block btn-edit btn-sm' id='btn-next'>
-            NEXT
-          </button>
-        </div>
-      </div>
-      <div class='row'>&nbsp;</div>
+  <div class='row' style='background: silver; color: black;'>
+    <p id='current' hidden="hidden">{{current}}</p>
+    <p id='size' hidden="hidden">{{size}}</p>
+    <p id='title' hidden="hidden">{{title}}</p>
+    <p id='sound' hidden="hidden">{{showreel[current].sound}}</p>
+    <table class='table-bordered table-sm table-dark table-grid' id='tab_showreal'>
+      {% for i in range(0, showreel.length) -%}
+        {% if i == current %}
+          <tr>
+            <table>
+              <tr>
+                <td class='data-show' id='slug_{{i}}' style='width:20%; font-weight:bold;' colspan='3'>
+                  {{showreel[i].slug}}
+                </td>
+              </tr>
+              <tr>
+                <td class='data-show' id='start_{{i}}'>
+                  {{showreel[i].start}}
+                  <br>
+                  {{showreel[i].finish}}
+                </td>
+
+                <td class='data-show' id='type_{{i}}' hidden="hidden">
+                  {{showreel[i].type}}
+                </td>
+                <td class='data-show' id='image_{{i}}' style='width: 40%;'>
+                  {% if showreel[i].type === 'movie' %}
+                    <video width='480' height='270' controls='controls' autoplay='autoplay' id='iamge_{{i}}' class='iamge' muted='muted'>
+                      <source src='../data/{{title}}/images/{{showreel[i].image}}' type='video/mp4'>
+                    </video>
+                  {% else %}
+                    <img width='480' height='270' src='../data/{{title}}/images/{{showreel[i].image}}' id='iamge_{{i}}' class='img' alt='{{script[i].image}}'>
+                  {% endif %}
+                </td>
+                <td class='data-show'>
+                  <p id='character_{{i}}' style='text-align: center; font-weight: bold;'>{{showreel[i].character}}</p>
+                  <br>
+                  {{showreel[i].dialogue}}
+                </td>
+              </tr>
+            </table>
+          </tr>
+        {% endif %}
+      {% endfor %}
+    </table>
+  </div>
+  <div class='row'>
+    <br>
+    <div class='col-md-1'></div>
+    <div class='col-md-2'>
+      <button class='btn btn-block btn-edit btn-sm' id='btn-previous'>
+        PREVIOUS
+      </button>
     </div>
-    <script src='../js/header.js'></script>
-    <script src='../js/play-showreel.js'></script>
-  {% endblock %}
+    <div class='col-md-1'></div>
+    <div class='col-md-3'>
+      <audio id='master-play' controls  style='width: 100%;'>
+        <source src="{{showreel[i].sound}}" type="audio/ogg" />
+        <source src="{{showreel[i}.sound}}" type="audio/mpeg" />
+        Your browser does not support the audio tag.
+      </audio>
+    </div>
+    <div class='col-md-1'></div>
+    <div class='col-md-2'>
+      <button class='btn btn-block btn-edit btn-sm' id='btn-next'>
+        NEXT
+      </button>
+    </div>
+  </div>
+  <div class='row'>&nbsp;</div>
+</div>
+<script src='../js/header.js'></script>
+<script src='../js/play-showreel.js'></script>
+{% endblock %}

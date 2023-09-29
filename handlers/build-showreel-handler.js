@@ -11,7 +11,6 @@ const {
 } = require("../services/file-service");
 
 const formatTime = (seconds) => {
-  console.log({seconds})
   const date = new Date(null);
   date.setSeconds(seconds);
   let h = date.toISOString();
@@ -32,7 +31,7 @@ const buildShowreelHandler = async (req, res) => {
   const { script } = filmFoxFile;
 
   timeStart = 0.0;
-  smartLog("info", "building showreel data");
+  smartLog("info", "BUILDING SHOWREEL");
 
   let t = 0.00;
   const showreel = [];
@@ -43,15 +42,16 @@ const buildShowreelHandler = async (req, res) => {
       dialogue: s.dialogue,
       start: formatTime(t),
       finish: formatTime(t + s.duration),
-      card: s.image,
-      sound: s.sound,
+      image: s.image,
+      sound: `../data/${title}/sounds/${s.sound}`,
+      type: s.type
     })
     t = t + s.duration;
   });
 
   await writeFile(JSON.stringify(showreel), `/${title}/${title}.shw`)
   smartLog("info", "showreel built");
-  res.redirect(`/play-showreel?title=${title}&sceneNumber=${sceneNumber}&current=0`);
+  res.redirect(`/play-showreel?title=${title}&current=0`);
 };
 
 module.exports = { buildShowreelHandler };
