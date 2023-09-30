@@ -2,10 +2,9 @@ $(() => {
   $("#btn-merge").attr("disabled", true);
 }),
 $('.btn-merge').on('click', (e) => {
-    let scene = e.target.value;
+    let sceneNumber = e.target.value;
     const title = $('#title')[0].innerText;
-    const sceneNumber = $('#sceneNumber')[0].innerText;
-    window.location.href = `/concat?title=${title}&scene=${scene}&sceneNumber=${sceneNumber}`;
+    window.location.href = `/concat?title=${title}&sceneNumber=${sceneNumber}`;
   }),
   $('.btn-play').on('click', (e) => {
     const title = $('#title')[0].innerText;

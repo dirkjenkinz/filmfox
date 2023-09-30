@@ -9,7 +9,7 @@ const playShowreelHandler = async (req, res) => {
   const current = u.query.current;
   const showreel = await getData(`${title}/${title}.shw`);
 
-  let slug='';
+  let slug=title;
   let scNum = 0;
 
   showreel.forEach((s, index) => {

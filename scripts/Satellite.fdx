@@ -217,7 +217,7 @@
       <Text>BLEEP...... BLEEP...... BLEEP......</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.50" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Action">
-      <Text>The sound is somewhat reminiscent of a hospital heart monitor.</Text>
+      <Text>The sound is somewhat reminiscent of Sputnik.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.50" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Action">
       <Text>The interval between bleeps gradually narrows as the bleeps grow louder and more urgent.</Text>
@@ -229,10 +229,8 @@
       <Text>Tom hurries into - </Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" Number="8" RightIndent="7.50" SpaceBefore="22" Spacing="1" StartsNewPage="No" Type="Scene Heading">
-      <SceneProperties Length="6/8" Page="4" Title="">
-        <SceneArcBeats>
-          <CharacterArcBeat Name="TOM"></CharacterArcBeat>
-        </SceneArcBeats>
+      <SceneProperties Length="5/8" Page="4" Title="">
+        <SceneArcBeats/>
       </SceneProperties>
       <Text>Int. Shed - night - contiNUOUS</Text>
     </Paragraph>
@@ -254,14 +252,8 @@
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.50" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Action">
       <Text>BLEEP...! BLEEP...! BLEEP...!</Text>
     </Paragraph>
-    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Character">
-      <Text>Tom</Text>
-    </Paragraph>
-    <Paragraph Type="Parenthetical">
-      <Text>(defiantly)</Text>
-    </Paragraph>
-    <Paragraph Type="Dialogue">
-      <Text>Go on then. Do your worst!</Text>
+    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.50" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Action">
+      <Text>Tom braces himself. Grits his teeth</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.50" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Action">
       <Text>The bleeps rise to a crescendo. Tom fights to control his terror. He claws at the mattress. Buries his face in a pillow.</Text>
@@ -327,7 +319,7 @@
       <Text>Standing over the Intruder, he raises the spade. Brings it swiftly down, catching the Intruder on the side of his neck.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.50" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Action">
-      <Text>He strikes again and again. Hacking at the Intruder’s neck until his head flies off.</Text>
+      <Text>He strikes again and again - hacking at the Intruder’s neck until his head flies off.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.50" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Action">
       <Text>Casting aside the spade, Tom drags the Intruder’s body into the rhubarb patch. As he does so, we see the legs of another DEAD MAN sticking out from the rhubarb.</Text>
@@ -653,7 +645,7 @@
       <Text>I think that used to be a mushroom.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" Number="17" RightIndent="7.50" SpaceBefore="22" Spacing="1" StartsNewPage="No" Type="Scene Heading">
-      <SceneProperties Length="6 6/8" Page="9" Title="">
+      <SceneProperties Length="6 2/8" Page="9" Title="">
         <SceneArcBeats>
           <CharacterArcBeat Name="CHERI"></CharacterArcBeat>
           <CharacterArcBeat Name="FREDDY"></CharacterArcBeat>
@@ -679,51 +671,48 @@
       <Text>FREDDY</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
-      <Text>It makes sense though, doesn't it? Despite what they tell you, Soviet weaponry was lightyears ahead of anything NATO could drum up. </Text>
+      <Text>It the only thing that makes sense, Kyle. The Soviets were lightyears ahead of the Americans and if you believe that bullshit about Neil Armstrong being the first man on the moon, you’re every bit as dumb as you look.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Character">
       <Text>Kyle</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
-      <Text AdornmentStyle="-1" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="">Bullshit</Text>
-      <Text>. Total and utter bullshit! The one and only time the </Text>
-      <Text AdornmentStyle="-1" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="">Ruskies</Text>
-      <Text> sent a craft to the moon, it crash landed. And you’re telling me they managed to get a whole army up there in one piece? Don’t be a </Text>
-      <Text AdornmentStyle="-1" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="">twat</Text>
-      <Text>.</Text>
+      <Text>Let’s see if I’ve got this straight, you fucking loon. You’re saying the Nazis built a base on the moon in 1945 and five years later the Soviets followed suit?</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Character">
       <Text>FREDDY</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
-      <Text>Open your eyes, Kyle, use your brain and do a bit of research. Look on the Internet and you’ll find a ton of evidence. </Text>
+      <Text>Yep. And every time the Americans sent a probe up there, </Text>
+      <Text AdornmentStyle="-1" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="">Hitler</Text>
+      <Text> had it shot down.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Character">
       <Text>KYLE</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
-      <Text>Such as, Freddy?</Text>
+      <Text AdornmentStyle="-1" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="">Hitler</Text>
+      <Text>? Oh for fuck’s sake, you’re having me on, aren’t you?</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Character">
       <Text>FREDDY</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
-      <Text>Photographs for a start.</Text>
+      <Text>You don’t think </Text>
+      <Text AdornmentStyle="-1" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="">Addie</Text>
+      <Text> and Eva really celebrated their honeymoon by taking cyanide, do you? It’s a documented fact that they were the first couple to fuck on the moon.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Character">
       <Text>KYLE</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
-      <Text>Hello? You ever hear of a thing called Photoshop?</Text>
+      <Text>Now I know you’re winding me up.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Character">
       <Text>FREDDY</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
-      <Text>And there's this guy - Michael Rogers - used to work for the CIA. His job was to monitor first the Nazi moon base and then the Soviet one. I'll send you a link to his website.</Text>
-    </Paragraph>
-    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.50" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Action">
-      <Text>Kyle snorts his contempt.</Text>
+      <Text>Had you going though, didn’t I?</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Character">
       <Text>CHERI</Text>
@@ -732,51 +721,19 @@
       <Text>If you kids have quite finished talking total bollocks, perhaps we can get on with the meeting?</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Character">
-      <Text>Kyle</Text>
-    </Paragraph>
-    <Paragraph Type="Dialogue">
-      <Text>Please let’s do. Freddy’s weird bullshit is doing my head in.</Text>
-    </Paragraph>
-    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Character">
-      <Text>FREDDY</Text>
-    </Paragraph>
-    <Paragraph Type="Dialogue">
-      <Text>Weird it might be. </Text>
-      <Text AdornmentStyle="-1" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="">Bullshit</Text>
-      <Text> it ain’t.</Text>
-    </Paragraph>
-    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Character">
       <Text>KYLE</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
-      <Text>Morning, Tom! Pity you didn’t dial in earlier. You’d have heard Freddy’s latest gem - something about the Black Knight being an old Soviet doomsday weapon that got forgotten about when Yeltsin dismantled the USSR.</Text>
+      <Text>Morning, Tom! You look like shit.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Character">
       <Text>Tom</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
-      <Text>To be honest, Kyle, I don’t give a flying fuck about the Black Knight right now. I just want to get this meeting out of the way so I can get on with my work.</Text>
+      <Text>And you’re full of it.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Character">
-      <Text>KYLE</Text>
-    </Paragraph>
-    <Paragraph Type="Dialogue">
-      <Text>What’s the bloody point? In case you hadn't noticed, the world's about to end.</Text>
-    </Paragraph>
-    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Character">
-      <Text>TOM</Text>
-    </Paragraph>
-    <Paragraph Type="Dialogue">
-      <Text>So why are you here, Kyle? Why are you even bothering to show your ugly mug?</Text>
-    </Paragraph>
-    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Character">
-      <Text>KYLE</Text>
-    </Paragraph>
-    <Paragraph Type="Dialogue">
-      <Text>Filthy lucre, dear boy. Some of us have mortgages, you know.</Text>
-    </Paragraph>
-    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Character">
-      <Text>CheRI</Text>
+      <Text>Cheri</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
       <Text>Before we get started, I have some sad news to impart.  You've probably noticed John Wickerby isn't with us today. I’m afraid he won't be with us tomorrow either - or in fact ever again. In the early hours of this morning, he shot himself in the head with a nail gun.</Text>
@@ -793,17 +750,11 @@
     <Paragraph Type="Dialogue">
       <Text>Very.</Text>
     </Paragraph>
-    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Character">
-      <Text>FREDDY</Text>
+    <Paragraph Type="Parenthetical">
+      <Text>(beat)</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
-      <Text>Are you sure you have that right, Cheri? I’ve never heard of the Black Knight making people shoot themselves.</Text>
-    </Paragraph>
-    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Character">
-      <Text>CHERI</Text>
-    </Paragraph>
-    <Paragraph Type="Dialogue">
-      <Text>What happened is this: During the last transit, John attacked both his children, leaving one of them dead and the other missing half her face. When he came out of his fugue and saw what he'd done, he smothered the surviving child with a pillow. He then killed his wife by slitting her throat with a Stanley knife before doing the same to his dog.</Text>
+      <Text>During last night’s transit, John attacked both his children, leaving one of them dead and the other missing half her face. When he came out of his fugue and saw what he'd done, he smothered the surviving child with a pillow. He then killed his wife by slitting her throat with a Stanley knife before doing the same to his dog.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Character">
       <Text>freddy</Text>
@@ -815,11 +766,27 @@
       <Text>CHERI</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
-      <Text>John left me a video message - which for the sake of decency I won't play for you - describing what he had done. At the end, he put a nail gun to his head, shouted, “</Text>
-      <Text AdornmentStyle="-1" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="">E.T</Text>
-      <Text>., fuck off!” </Text>
-      <Text AdornmentStyle="-1" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="">and</Text>
-      <Text> shot himself.</Text>
+      <Text>He called me on </Text>
+      <Text AdornmentStyle="-1" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="">Skype</Text>
+      <Text> to tell me what he’d done. Then right there - right in front of me - he picked up a nail gun, shouted </Text>
+      <Text AdornmentStyle="-1" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="">‘E.T</Text>
+      <Text>. </Text>
+      <Text AdornmentStyle="-1" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="">fuck</Text>
+      <Text> off’ and shot a nail into his right </Text>
+      <Text AdornmentStyle="-1" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="">earhole</Text>
+      <Text>.</Text>
+    </Paragraph>
+    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Character">
+      <Text>Kyle</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue">
+      <Text>And that was enough to kill him?</Text>
+    </Paragraph>
+    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Character">
+      <Text>CHERI</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue">
+      <Text>No. So he shot himself in the eye.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.50" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Action">
       <Text>Silence follows as the conference attendees take in the news.</Text>
@@ -855,31 +822,29 @@
       <Text>FREDDY</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
-      <Text>Look at you! A man you've worked with for over a decade has killed himself. His wife is dead. His children are dead. And you're calling dibs on his parking space!</Text>
+      <Text>A man you've worked with for over a decade has killed himself. His wife is dead. His children are dead. And you're calling dibs on his parking space!</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Character">
       <Text>KYLE</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
-      <Text>Yeah, well, you know who else has died in the past twenty four hours, Freddy? Millions of people!</Text>
+      <Text>Do you know who else has died in the past twenty four hours, Freddy? An estimated fifty million people.</Text>
     </Paragraph>
     <Paragraph Type="Parenthetical">
       <Text>(beat)</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
-      <Text>I saw on the news this morning that since the Black Knight started shitting all over mankind, half a billion people have pegged it!</Text>
+      <Text>Thanks to that fucking satellite, over a billion people have died in the past few days and you expect me to get weepy eyed over a neurotic accounts manager with a personality deficiency, his - let’s face it - barely </Text>
+      <Text AdornmentStyle="-1" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="">shagable</Text>
+      <Text> wife and a couple of brats who look like what happens when cousins marry? </Text>
     </Paragraph>
     <Paragraph Type="Parenthetical">
       <Text>(beat)</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
-      <Text>Half a fucking billion! That’s a sixteenth of the entire human race. Gone!</Text>
-    </Paragraph>
-    <Paragraph Type="Parenthetical">
-      <Text>(beat)</Text>
-    </Paragraph>
-    <Paragraph Type="Dialogue">
-      <Text>Against that, one neurotic accounts manager, his - let's face it - barely shaggable wife and a couple of brats don't matter a whole hill of proverbials.</Text>
+      <Text>John’s gone. Well </Text>
+      <Text AdornmentStyle="-1" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="">boo-bloody-hoo</Text>
+      <Text>. Nobody told him to fill his brain with metal. That was his choice and I’m having his parking space whether you like it or not.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.50" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Action">
       <Text>Closing her eyes and placing her hands over her ears, Cheri screams.</Text>
@@ -894,7 +859,7 @@
       <Text>Kyle</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
-      <Text>Jeez, Cheri. Chill out will you? We were only joshing.</Text>
+      <Text>Jeez, Cheri. Chill. We were only joshing.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Character">
       <Text>FREDDY</Text>
@@ -954,7 +919,7 @@
       <Text>(beat)</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
-      <Text>First up on the agenda is a meeting I had last night with the marketing department. It’s been decided to permanently mothball Sister Gabriella and Father Dominique.</Text>
+      <Text>First up is a meeting I had last night with the marketing department. It’s been decided to mothball Sister Gabriella and Father Dominique.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Character">
       <Text>FREDDY</Text>
@@ -979,13 +944,13 @@
       <Text>TOM</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
-      <Text>Because we’re fucked, Freddy. Well and truly fucked. The world is going down the crapper and the last thing your average kiddy wants to play with in the middle of a cannibal apocalypse is a vigilante nun.</Text>
+      <Text>Because we’re fucked, Freddy. Well and truly fucked. The world is going down the crapper and the last thing your average kiddy wants in the middle of a cannibal apocalypse is the chance to play with a vigilante nun.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Character">
       <Text>CheRI</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
-      <Text>Spot on, Tom. There’s been a seismic change in the toy market and if we don’t adapt, we die and so, after some hasty market research, our braniacs in development have come up with this.</Text>
+      <Text>Spot on, Tom. Thanks to the Black Knight, there’s been a seismic change in the toy market. We either adapt or die. So, after some hasty market research, our braniacs in development have come up with this.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.50" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Action">
       <Text>Cheri clicks her mouse. Up pops a picture of a chainsaw-wielding, leather-jacketed doll.</Text>
@@ -1003,13 +968,13 @@
       <Text>Then -</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Character">
-      <Text>FREDDY</Text>
+      <Text>TOM</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
       <Text>Fucking hell! That’s beautiful.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Character">
-      <Text>TOM</Text>
+      <Text>FREDDY</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
       <Text>It’s monstrous.</Text>
@@ -1026,7 +991,7 @@
       <Text>FREDDY</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
-      <Text>I can’t see it. I mean, no sane parent is going to buy something like that for their kids.</Text>
+      <Text>No sane parent is going to buy something like that for their kids.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Character">
       <Text>CHERI</Text>
@@ -1451,7 +1416,7 @@
       <Text>The madness inflicted by the Black Knight is immune to love and sentiment. We do not know why it only affects some and not others. The next time it passes, it might be you it affects - you it drives crazy. Then again, it may be your partner, you parent, even your child...</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" Number="19" RightIndent="7.50" SpaceBefore="22" Spacing="1" StartsNewPage="No" Type="Scene Heading">
-      <SceneProperties Length="3 3/8" Page="21" Title="">
+      <SceneProperties Length="3 3/8" Page="20" Title="">
         <SceneArcBeats>
           <CharacterArcBeat Name="ANDERSON"></CharacterArcBeat>
           <CharacterArcBeat Name="BARBARA"></CharacterArcBeat>
@@ -1670,7 +1635,7 @@
       <Text>It’s a VISA card... The long number is -</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" Number="20" RightIndent="7.50" SpaceBefore="22" Spacing="1" StartsNewPage="No" Type="Scene Heading">
-      <SceneProperties Length="2 3/8" Page="25" Title="">
+      <SceneProperties Length="2 3/8" Page="24" Title="">
         <SceneArcBeats>
           <CharacterArcBeat Name="CHERI"></CharacterArcBeat>
           <CharacterArcBeat Name="TOM"></CharacterArcBeat>
@@ -1835,7 +1800,7 @@
       <Text>Oh sure, Cheri. I understand all right.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" Number="21" RightIndent="7.50" SpaceBefore="22" Spacing="1" StartsNewPage="No" Type="Scene Heading">
-      <SceneProperties Length="2/8" Page="27" Title="">
+      <SceneProperties Length="2/8" Page="26" Title="">
         <SceneArcBeats/>
       </SceneProperties>
       <Text>Int. Kitchen - NIGHT</Text>
@@ -1847,7 +1812,7 @@
       <Text>Goes out to -</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" Number="22" RightIndent="7.50" SpaceBefore="22" Spacing="1" StartsNewPage="No" Type="Scene Heading">
-      <SceneProperties Length="2/8" Page="27" Title="">
+      <SceneProperties Length="2/8" Page="26" Title="">
         <SceneArcBeats/>
       </SceneProperties>
       <Text>Ext. back GARDEN - night - continuous</Text>
@@ -1859,7 +1824,7 @@
       <Text>BLEEP... BLEEP... BLEEP...</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" Number="23" RightIndent="7.50" SpaceBefore="22" Spacing="1" StartsNewPage="No" Type="Scene Heading">
-      <SceneProperties Length="3/8" Page="28" Title="">
+      <SceneProperties Length="3/8" Page="27" Title="">
         <SceneArcBeats/>
       </SceneProperties>
       <Text>Int. Shed - NIGHT - continuous</Text>
@@ -1892,7 +1857,7 @@
       <Text>BLACKOUT:</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" Number="24" RightIndent="7.50" SpaceBefore="22" Spacing="1" StartsNewPage="No" Type="Scene Heading">
-      <SceneProperties Length="4/8" Page="28" Title="">
+      <SceneProperties Length="4/8" Page="27" Title="">
         <SceneArcBeats/>
       </SceneProperties>
       <Text>Ext. back GARDEN - NIGHT</Text>
@@ -1925,7 +1890,7 @@
       <Text>Goes into - </Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" Number="25" RightIndent="7.50" SpaceBefore="22" Spacing="1" StartsNewPage="No" Type="Scene Heading">
-      <SceneProperties Length="1/8" Page="28" Title="">
+      <SceneProperties Length="1/8" Page="27" Title="">
         <SceneArcBeats/>
       </SceneProperties>
       <Text>Int. Kitchen - NIGHT - coNTINUOUS</Text>
@@ -1937,7 +1902,7 @@
       <Text>Goes out to -</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" Number="26" RightIndent="7.50" SpaceBefore="22" Spacing="1" StartsNewPage="No" Type="Scene Heading">
-      <SceneProperties Length="1/8" Page="28" Title="">
+      <SceneProperties Length="1/8" Page="27" Title="">
         <SceneArcBeats/>
       </SceneProperties>
       <Text>Int. HallWAY - NIGHT - conTINUOUS</Text>
@@ -1946,7 +1911,7 @@
       <Text>Tom checks the front door and table then hurries up the stairs to -</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" Number="27" RightIndent="7.50" SpaceBefore="22" Spacing="1" StartsNewPage="No" Type="Scene Heading">
-      <SceneProperties Length="1/8" Page="29" Title="">
+      <SceneProperties Length="1/8" Page="28" Title="">
         <SceneArcBeats/>
       </SceneProperties>
       <Text>Int. Landing - NIGHT - conTINUOUS</Text>
@@ -1958,7 +1923,7 @@
       <Text>Enters -</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" Number="28" RightIndent="7.50" SpaceBefore="22" Spacing="1" StartsNewPage="No" Type="Scene Heading">
-      <SceneProperties Length="1" Page="29" Title="">
+      <SceneProperties Length="1" Page="28" Title="">
         <SceneArcBeats>
           <CharacterArcBeat Name="BARBARA"></CharacterArcBeat>
           <CharacterArcBeat Name="TOM"></CharacterArcBeat>
@@ -2051,7 +2016,7 @@
       <Text>Good. Because as soon as I get my circulation back, I’m going to want a right good seeing to.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" Number="29" RightIndent="7.50" SpaceBefore="22" Spacing="1" StartsNewPage="No" Type="Scene Heading">
-      <SceneProperties Length="2 7/8" Page="30" Title="">
+      <SceneProperties Length="2 7/8" Page="29" Title="">
         <SceneArcBeats>
           <CharacterArcBeat Name="BATES"></CharacterArcBeat>
           <CharacterArcBeat Name="VOLKOV"></CharacterArcBeat>
@@ -2196,7 +2161,7 @@
       <Text>Incidentally, those things moving about on the edge of the picture are rats enjoying a breakfast of freshly-served human flesh.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" Number="30" RightIndent="7.50" SpaceBefore="22" Spacing="1" StartsNewPage="No" Type="Scene Heading">
-      <SceneProperties Length="2 5/8" Page="33" Title="">
+      <SceneProperties Length="2 5/8" Page="32" Title="">
         <SceneArcBeats>
           <CharacterArcBeat Name="BOB FROM WOLVERHAMPTON"></CharacterArcBeat>
           <CharacterArcBeat Name="KATIE FROM BLACKPOOL"></CharacterArcBeat>
@@ -2341,7 +2306,7 @@
       <Text>He spits out a half-chewed piece of chocolate. It lands on the lawn. He watches with grim fascination as it is mobbed by ants.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" Number="31" RightIndent="7.50" SpaceBefore="22" Spacing="1" StartsNewPage="No" Type="Scene Heading">
-      <SceneProperties Length="2 4/8" Page="35" Title="">
+      <SceneProperties Length="2 4/8" Page="34" Title="">
         <SceneArcBeats>
           <CharacterArcBeat Name="ISABELLE"></CharacterArcBeat>
           <CharacterArcBeat Name="TOM"></CharacterArcBeat>
@@ -2517,7 +2482,7 @@
       <Text>Isabelle cuts the connection.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" Number="32" RightIndent="7.50" SpaceBefore="22" Spacing="1" StartsNewPage="No" Type="Scene Heading">
-      <SceneProperties Length="4 5/8" Page="38" Title="">
+      <SceneProperties Length="4 5/8" Page="37" Title="">
         <SceneArcBeats>
           <CharacterArcBeat Name="BARBARA"></CharacterArcBeat>
           <CharacterArcBeat Name="BRODY"></CharacterArcBeat>
@@ -2552,7 +2517,7 @@
       <Text>(beat)</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
-      <Text>And I’ve just had a voice in my ear telling me we have to break for a news flash - something we’ve never before had to do here at the Great British Shopping Experience Channel. It better be bloody important, else I’m going to very cross!</Text>
+      <Text>And I’ve just had a voice in my ear telling me we have to break for a news flash - something we’ve never before had to do here at the Great British Shopping Experience Channel. It better be bloody important, else I’m going to be very cross!</Text>
     </Paragraph>
     <Paragraph Type="Parenthetical">
       <Text>(beat)</Text>
@@ -2838,7 +2803,7 @@
       <Text>They make love with wild abandon.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" Number="33" RightIndent="7.50" SpaceBefore="22" Spacing="1" StartsNewPage="No" Type="Scene Heading">
-      <SceneProperties Length="2 1/8" Page="42" Title="">
+      <SceneProperties Length="2 1/8" Page="41" Title="">
         <SceneArcBeats>
           <CharacterArcBeat Name="BARBARA"></CharacterArcBeat>
           <CharacterArcBeat Name="BRODY"></CharacterArcBeat>
@@ -2991,7 +2956,7 @@
       <Text>Oh well. Nearly time for bed anyway.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" Number="34" RightIndent="7.50" SpaceBefore="22" Spacing="1" StartsNewPage="No" Type="Scene Heading">
-      <SceneProperties Length="1/8" Page="45" Title="">
+      <SceneProperties Length="1/8" Page="44" Title="">
         <SceneArcBeats/>
       </SceneProperties>
       <Text>INT. BEDROOM - NIGHT</Text>
@@ -3000,7 +2965,7 @@
       <Text>Tom ties up Barbara. Beds her up for the night.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" Number="35" RightIndent="7.50" SpaceBefore="22" Spacing="1" StartsNewPage="No" Type="Scene Heading">
-      <SceneProperties Length="1/8" Page="45" Title="">
+      <SceneProperties Length="1/8" Page="44" Title="">
         <SceneArcBeats/>
       </SceneProperties>
       <Text>Ext. Garden - night</Text>
@@ -3009,7 +2974,7 @@
       <Text>With his transistor radio BLEEPING, Tom hurries into -</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" Number="36" RightIndent="7.50" SpaceBefore="22" Spacing="1" StartsNewPage="No" Type="Scene Heading">
-      <SceneProperties Length="2/8" Page="45" Title="">
+      <SceneProperties Length="2/8" Page="44" Title="">
         <SceneArcBeats/>
       </SceneProperties>
       <Text>Int. Shed - night - conTINUOUS</Text>
@@ -3024,7 +2989,7 @@
       <Text>BLACKOUT:</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" Number="37" RightIndent="7.50" SpaceBefore="22" Spacing="1" StartsNewPage="No" Type="Scene Heading">
-      <SceneProperties Length="2/8" Page="45" Title="">
+      <SceneProperties Length="2/8" Page="44" Title="">
         <SceneArcBeats/>
       </SceneProperties>
       <Text>ext. Garden - day</Text>
@@ -3042,7 +3007,7 @@
       <Text>Goes indoors.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" Number="38" RightIndent="7.50" SpaceBefore="22" Spacing="1" StartsNewPage="No" Type="Scene Heading">
-      <SceneProperties Length="2 2/8" Page="45" Title="">
+      <SceneProperties Length="2 2/8" Page="44" Title="">
         <SceneArcBeats>
           <CharacterArcBeat Name="ANDERSON"></CharacterArcBeat>
           <CharacterArcBeat Name="BARBARA"></CharacterArcBeat>
@@ -3185,7 +3150,7 @@
       <Text>I don’t know whether to laugh or to cry.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" Number="39" RightIndent="7.50" SpaceBefore="22" Spacing="1" StartsNewPage="No" Type="Scene Heading">
-      <SceneProperties Length="1 7/8" Page="47" Title="">
+      <SceneProperties Length="1 7/8" Page="46" Title="">
         <SceneArcBeats>
           <CharacterArcBeat Name="CHERI"></CharacterArcBeat>
           <CharacterArcBeat Name="FREDDY"></CharacterArcBeat>
@@ -3342,7 +3307,7 @@
       <Text>Well done, Freddy. You've just got yourself fired.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" Number="40" RightIndent="7.50" SpaceBefore="22" Spacing="1" StartsNewPage="No" Type="Scene Heading">
-      <SceneProperties Length="2 4/8" Page="49" Title="">
+      <SceneProperties Length="2 4/8" Page="48" Title="">
         <SceneArcBeats>
           <CharacterArcBeat Name="BARBARA"></CharacterArcBeat>
           <CharacterArcBeat Name="K"></CharacterArcBeat>
@@ -3540,7 +3505,7 @@
       <Text>Is it your go or mine?</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" Number="41" RightIndent="7.50" SpaceBefore="22" Spacing="1" StartsNewPage="No" Type="Scene Heading">
-      <SceneProperties Length="1 3/8" Page="52" Title="">
+      <SceneProperties Length="1 3/8" Page="51" Title="">
         <SceneArcBeats>
           <CharacterArcBeat Name="BARBARA"></CharacterArcBeat>
           <CharacterArcBeat Name="BRODY"></CharacterArcBeat>
@@ -3649,7 +3614,7 @@ The screen goes to the ‘off-air’ sign.</Text>
       <Text>Oh well. You can’t win ‘em all.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" Number="42" RightIndent="7.50" SpaceBefore="22" Spacing="1" StartsNewPage="No" Type="Scene Heading">
-      <SceneProperties Length="2 4/8" Page="53" Title="">
+      <SceneProperties Length="2 4/8" Page="52" Title="">
         <SceneArcBeats>
           <CharacterArcBeat Name="BARBARA"></CharacterArcBeat>
           <CharacterArcBeat Name="TOM"></CharacterArcBeat>
@@ -3866,7 +3831,7 @@ The screen goes to the ‘off-air’ sign.</Text>
       <Text>BLACKOUT:</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" Number="43" RightIndent="7.50" SpaceBefore="22" Spacing="1" StartsNewPage="No" Type="Scene Heading">
-      <SceneProperties Length="1 5/8" Page="56" Title="">
+      <SceneProperties Length="1 5/8" Page="55" Title="">
         <SceneArcBeats>
           <CharacterArcBeat Name="MR. KEPLER"></CharacterArcBeat>
           <CharacterArcBeat Name="TOM"></CharacterArcBeat>
@@ -3983,7 +3948,7 @@ The screen goes to the ‘off-air’ sign.</Text>
       <Text>Tom stands. Gently lifts Barbara from the bed. Carries her to the door.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" Number="44" RightIndent="7.50" SpaceBefore="22" Spacing="1" StartsNewPage="No" Type="Scene Heading">
-      <SceneProperties Length="1 2/8" Page="57" Title="">
+      <SceneProperties Length="1 2/8" Page="56" Title="">
         <SceneArcBeats>
           <CharacterArcBeat Name="TOM"></CharacterArcBeat>
           <CharacterArcBeat Name="YOUTUBE VOICEOVER"></CharacterArcBeat>
@@ -4107,7 +4072,7 @@ The screen goes to the ‘off-air’ sign.</Text>
       <Text>Tom picks up Mr. Kepler and throws him over his shoulder. He goes out to -</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" Number="45" RightIndent="7.50" SpaceBefore="22" Spacing="1" StartsNewPage="No" Type="Scene Heading">
-      <SceneProperties Length="1/8" Page="59" Title="">
+      <SceneProperties Length="1/8" Page="58" Title="">
         <SceneArcBeats/>
       </SceneProperties>
       <Text>Int. Landing - day - conTINUOUS</Text>
@@ -4116,7 +4081,7 @@ The screen goes to the ‘off-air’ sign.</Text>
       <Text>- then downstairs to -</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" Number="46" RightIndent="7.50" SpaceBefore="22" Spacing="1" StartsNewPage="No" Type="Scene Heading">
-      <SceneProperties Length="1/8" Page="59" Title="">
+      <SceneProperties Length="1/8" Page="58" Title="">
         <SceneArcBeats/>
       </SceneProperties>
       <Text>Int. Hallway - day - contiNUOUS</Text>
@@ -4125,7 +4090,7 @@ The screen goes to the ‘off-air’ sign.</Text>
       <Text>- and into -</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" Number="47" RightIndent="7.50" SpaceBefore="22" Spacing="1" StartsNewPage="No" Type="Scene Heading">
-      <SceneProperties Length="1" Page="59" Title="">
+      <SceneProperties Length="1" Page="58" Title="">
         <SceneArcBeats>
           <CharacterArcBeat Name="TOM"></CharacterArcBeat>
         </SceneArcBeats>
@@ -4190,7 +4155,7 @@ The screen goes to the ‘off-air’ sign.</Text>
       <Text>That’s better but we’re not there yet.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" Number="48" RightIndent="7.50" SpaceBefore="22" Spacing="1" StartsNewPage="No" Type="Scene Heading">
-      <SceneProperties Length="2" Page="60" Title="">
+      <SceneProperties Length="2" Page="59" Title="">
         <SceneArcBeats>
           <CharacterArcBeat Name="BRODY"></CharacterArcBeat>
           <CharacterArcBeat Name="TOM"></CharacterArcBeat>
@@ -4332,7 +4297,7 @@ The screen goes to the ‘off-air’ sign.</Text>
       <Text>Between you and me, ladies and gentlemen, I’m wearing a pair of these lovely panties right now and I’ve never been happier.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" Number="49" RightIndent="7.50" SpaceBefore="22" Spacing="1" StartsNewPage="No" Type="Scene Heading">
-      <SceneProperties Length="6/8" Page="62" Title="">
+      <SceneProperties Length="6/8" Page="61" Title="">
         <SceneArcBeats>
           <CharacterArcBeat Name="TOM"></CharacterArcBeat>
         </SceneArcBeats>
@@ -4390,7 +4355,7 @@ The screen goes to the ‘off-air’ sign.</Text>
       <Text>BLACKOUT:</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" Number="50" RightIndent="7.50" SpaceBefore="22" Spacing="1" StartsNewPage="No" Type="Scene Heading">
-      <SceneProperties Length="3/8" Page="62" Title="">
+      <SceneProperties Length="3/8" Page="61" Title="">
         <SceneArcBeats>
           <CharacterArcBeat Name="TOM"></CharacterArcBeat>
         </SceneArcBeats>
@@ -4430,7 +4395,7 @@ WE'LL BE BACK SOON</Text>
       <Text>He fetches her make-up bag and touches up her face for her.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" Number="51" RightIndent="7.50" SpaceBefore="22" Spacing="1" StartsNewPage="No" Type="Scene Heading">
-      <SceneProperties Length="1 2/8" Page="63" Title="">
+      <SceneProperties Length="1 2/8" Page="62" Title="">
         <SceneArcBeats>
           <CharacterArcBeat Name="ANNOUNCER"></CharacterArcBeat>
           <CharacterArcBeat Name="CAVELL"></CharacterArcBeat>
@@ -4514,7 +4479,7 @@ WE'LL BE BACK SOON</Text>
       <Text>Tom flicks through channel after channel. All are blank.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" Number="52" RightIndent="7.50" SpaceBefore="22" Spacing="1" StartsNewPage="No" Type="Scene Heading">
-      <SceneProperties Length="2 4/8" Page="64" Title="">
+      <SceneProperties Length="2 4/8" Page="63" Title="">
         <SceneArcBeats>
           <CharacterArcBeat Name="MCGREW"></CharacterArcBeat>
           <CharacterArcBeat Name="TOM"></CharacterArcBeat>
@@ -4663,7 +4628,7 @@ WE'LL BE BACK SOON</Text>
       <Text>Harassed, Tom goes down to -</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" Number="53" RightIndent="7.50" SpaceBefore="22" Spacing="1" StartsNewPage="No" Type="Scene Heading">
-      <SceneProperties Length="1" Page="66" Title="">
+      <SceneProperties Length="1" Page="65" Title="">
         <SceneArcBeats>
           <CharacterArcBeat Name="TOM"></CharacterArcBeat>
           <CharacterArcBeat Name="WARBURG"></CharacterArcBeat>
@@ -4762,7 +4727,7 @@ WE'LL BE BACK SOON</Text>
       <Text>Tom follows Warburg into -</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" Number="54" RightIndent="7.50" SpaceBefore="22" Spacing="1" StartsNewPage="No" Type="Scene Heading">
-      <SceneProperties Length="6 1/8" Page="67" Title="">
+      <SceneProperties Length="6 1/8" Page="66" Title="">
         <SceneArcBeats>
           <CharacterArcBeat Name="TOM"></CharacterArcBeat>
           <CharacterArcBeat Name="WARBURG"></CharacterArcBeat>
@@ -5235,7 +5200,7 @@ WE'LL BE BACK SOON</Text>
       <Text>He all but throws himself at Barbara. Kisses her ruined mouth. Runs a hand up her leg.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" Number="55" RightIndent="7.50" SpaceBefore="22" Spacing="1" StartsNewPage="No" Type="Scene Heading">
-      <SceneProperties Length="7/8" Page="74" Title="">
+      <SceneProperties Length="7/8" Page="73" Title="">
         <SceneArcBeats>
           <CharacterArcBeat Name="BRODY"></CharacterArcBeat>
           <CharacterArcBeat Name="TOM"></CharacterArcBeat>
@@ -5280,7 +5245,7 @@ WE'LL BE BACK SOON</Text>
       <Text>I tell you, if His Majesty himself parked his arse on one of these he'd be ruined for other cushions for life. Let's get a close up - can we, Henry? - so our wonderful viewers can feast their eyes on the glory of this stitching. You see that? You wouldn’t find better stitching on a Gucci bag. And this silky finish - hmmm so smooth, so sexy. I tell you, folks, this cushion is so sensuous I’d happily fuck it! In fact, as soon as my shift is over, I’m off to the stock room to have me a cushion gang bang!</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" Number="56" RightIndent="7.50" SpaceBefore="22" Spacing="1" StartsNewPage="No" Type="Scene Heading">
-      <SceneProperties Length="7/8" Page="74" Title="">
+      <SceneProperties Length="7/8" Page="73" Title="">
         <SceneArcBeats>
           <CharacterArcBeat Name="BRODY"></CharacterArcBeat>
         </SceneArcBeats>
@@ -5342,7 +5307,7 @@ WE'LL BE BACK SOON</Text>
       <Text>Seconds later, he throws up.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" Number="57" RightIndent="7.50" SpaceBefore="22" Spacing="1" StartsNewPage="No" Type="Scene Heading">
-      <SceneProperties Length="2/8" Page="75" Title="">
+      <SceneProperties Length="2/8" Page="74" Title="">
         <SceneArcBeats/>
       </SceneProperties>
       <Text>INT. BEDROOM - DAY</Text>
@@ -5354,7 +5319,7 @@ WE'LL BE BACK SOON</Text>
       <Text>He finds clean clothes. Gets dressed.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" Number="58" RightIndent="7.50" SpaceBefore="22" Spacing="1" StartsNewPage="No" Type="Scene Heading">
-      <SceneProperties Length="1/8" Page="75" Title="">
+      <SceneProperties Length="1/8" Page="74" Title="">
         <SceneArcBeats/>
       </SceneProperties>
       <Text>Int. Kitchen - day</Text>
@@ -5363,7 +5328,7 @@ WE'LL BE BACK SOON</Text>
       <Text>Tom opens a tin of stewing steak. Eats it directly from the can.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" Number="59" RightIndent="7.50" SpaceBefore="22" Spacing="1" StartsNewPage="No" Type="Scene Heading">
-      <SceneProperties Length="1/8" Page="75" Title="">
+      <SceneProperties Length="1/8" Page="74" Title="">
         <SceneArcBeats/>
       </SceneProperties>
       <Text>Int. HallWAY - DAY</Text>
@@ -5375,7 +5340,7 @@ WE'LL BE BACK SOON</Text>
       <Text>Onto -</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" Number="60" RightIndent="7.50" SpaceBefore="22" Spacing="1" StartsNewPage="No" Type="Scene Heading">
-      <SceneProperties Length="1/8" Page="76" Title="">
+      <SceneProperties Length="1/8" Page="75" Title="">
         <SceneArcBeats/>
       </SceneProperties>
       <Text>Int. Landing - day - continuous</Text>
@@ -5384,7 +5349,7 @@ WE'LL BE BACK SOON</Text>
       <Text>- and then into -</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" Number="61" RightIndent="7.50" SpaceBefore="22" Spacing="1" StartsNewPage="No" Type="Scene Heading">
-      <SceneProperties Length="4/8" Page="76" Title="">
+      <SceneProperties Length="4/8" Page="75" Title="">
         <SceneArcBeats/>
       </SceneProperties>
       <Text>Int. Tom’S OFFICE - day - continUOUS</Text>
@@ -5414,7 +5379,7 @@ WE'LL BE BACK SOON</Text>
       <Text>Tom transfers the photos to his PC and uses them to dummy up some promo posters.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" Number="62" RightIndent="7.50" SpaceBefore="22" Spacing="1" StartsNewPage="No" Type="Scene Heading">
-      <SceneProperties Length="6/8" Page="76" Title="">
+      <SceneProperties Length="6/8" Page="75" Title="">
         <SceneArcBeats>
           <CharacterArcBeat Name="TOM"></CharacterArcBeat>
         </SceneArcBeats>
@@ -5458,7 +5423,7 @@ WE'LL BE BACK SOON</Text>
       <Text>Buck did not read the newspapers, or he would have known that trouble was brewing, not alone for himself, but for every tide-water dog, strong of muscle and with warm, long hair, from Puget Sound to San Diego. Because men, groping in the Arctic darkness, had found a yellow metal, and because steamship and transportation companies were booming the find, thousands of men were rushing into the Northland. These men wanted dogs, and the dogs they wanted were heavy dogs, with strong muscles by which to toil, and furry coats to protect them from the frost.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" Number="63" RightIndent="7.50" SpaceBefore="22" Spacing="1" StartsNewPage="No" Type="Scene Heading">
-      <SceneProperties Length="3 3/8" Page="77" Title="">
+      <SceneProperties Length="3 3/8" Page="76" Title="">
         <SceneArcBeats>
           <CharacterArcBeat Name="BATES"></CharacterArcBeat>
           <CharacterArcBeat Name="BBC ANNOUNCER"></CharacterArcBeat>
@@ -5662,7 +5627,7 @@ Something resembling a domestic fridge floats into view.</Text>
 Tom laughs at Bates’ cornball phraseology.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" Number="64" RightIndent="7.50" SpaceBefore="22" Spacing="1" StartsNewPage="No" Type="Scene Heading">
-      <SceneProperties Length="3/8" Page="80" Title="">
+      <SceneProperties Length="3/8" Page="79" Title="">
         <SceneArcBeats>
           <CharacterArcBeat Name="BBC ANNOUNCER"></CharacterArcBeat>
           <CharacterArcBeat Name="ISABELLE"></CharacterArcBeat>
@@ -5688,7 +5653,7 @@ Tom laughs at Bates’ cornball phraseology.</Text>
       <Text>Tom takes the box out to - </Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" Number="65" RightIndent="7.50" SpaceBefore="22" Spacing="1" StartsNewPage="No" Type="Scene Heading">
-      <SceneProperties Length="3/8" Page="81" Title="">
+      <SceneProperties Length="3/8" Page="80" Title="">
         <SceneArcBeats/>
       </SceneProperties>
       <Text>Ext. Garden - night</Text>
@@ -5709,7 +5674,7 @@ Tom laughs at Bates’ cornball phraseology.</Text>
       <Text>Reconciled, he goes back indoors.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" Number="66" RightIndent="7.50" SpaceBefore="22" Spacing="1" StartsNewPage="No" Type="Scene Heading">
-      <SceneProperties Length="4/8" Page="81" Title="">
+      <SceneProperties Length="4/8" Page="80" Title="">
         <SceneArcBeats>
           <CharacterArcBeat Name="BATES"></CharacterArcBeat>
           <CharacterArcBeat Name="ISABELLE"></CharacterArcBeat>
@@ -5741,7 +5706,7 @@ Tom laughs at Bates’ cornball phraseology.</Text>
       <Text>Goodbye and God bless.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" Number="67" RightIndent="7.50" SpaceBefore="22" Spacing="1" StartsNewPage="No" Type="Scene Heading">
-      <SceneProperties Length="3/8" Page="81" Title="">
+      <SceneProperties Length="3/8" Page="80" Title="">
         <SceneArcBeats/>
       </SceneProperties>
       <Text>Int. Kitchen - nIGHT</Text>
@@ -5765,7 +5730,7 @@ Tom laughs at Bates’ cornball phraseology.</Text>
       <Text>Goes to -</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" Number="68" RightIndent="7.50" SpaceBefore="22" Spacing="1" StartsNewPage="No" Type="Scene Heading">
-      <SceneProperties Length="4 1/8" Page="82" Title="">
+      <SceneProperties Length="4 1/8" Page="81" Title="">
         <SceneArcBeats>
           <CharacterArcBeat Name="ISABELLE"></CharacterArcBeat>
           <CharacterArcBeat Name="RECORDED MESSAGE"></CharacterArcBeat>
@@ -6054,7 +6019,7 @@ Tom laughs at Bates’ cornball phraseology.</Text>
       <Text>Eventually, he dies.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" Number="69" RightIndent="7.50" SpaceBefore="22" Spacing="1" StartsNewPage="No" Type="Scene Heading">
-      <SceneProperties Length="1/8" Page="86" Title="">
+      <SceneProperties Length="1/8" Page="85" Title="">
         <SceneArcBeats/>
       </SceneProperties>
       <Text>INT. HALLWAY - night - continuous</Text>
@@ -6063,7 +6028,7 @@ Tom laughs at Bates’ cornball phraseology.</Text>
       <Text>Through the letter box comes an avalanche of packages. Each bears the logo of the Great British Shopping Experience.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" Number="70" RightIndent="7.50" SpaceBefore="22" Spacing="1" StartsNewPage="No" Type="Scene Heading">
-      <SceneProperties Length="2" Page="86" Title="">
+      <SceneProperties Length="2" Page="85" Title="">
         <SceneArcBeats>
           <CharacterArcBeat Name="BRODY"></CharacterArcBeat>
         </SceneArcBeats>
@@ -6238,48 +6203,48 @@ Tom laughs at Bates’ cornball phraseology.</Text>
       <Range End="1703" Start="1700"/>
       <Range End="2519" Start="2509"/>
       <Range End="3017" Start="3007"/>
-      <Range End="9236" Start="9232"/>
-      <Range End="9245" Start="9241"/>
-      <Range End="10697" Start="10691"/>
-      <Range End="12793" Start="12784"/>
-      <Range End="13136" Start="13128"/>
-      <Range End="15211" Start="15207"/>
-      <Range End="15838" Start="15829"/>
-      <Range End="15906" Start="15895"/>
-      <Range End="16019" Start="16015"/>
-      <Range End="16181" Start="16172"/>
-      <Range End="16757" Start="16754"/>
-      <Range End="17446" Start="17429"/>
-      <Range End="17549" Start="17540"/>
-      <Range End="18368" Start="18365"/>
-      <Range End="18727" Start="18716"/>
-      <Range End="18889" Start="18883"/>
-      <Range End="21848" Start="21844"/>
-      <Range End="22490" Start="22485"/>
-      <Range End="22706" Start="22702"/>
-      <Range End="31036" Start="31026"/>
-      <Range End="31630" Start="31622"/>
-      <Range End="32048" Start="32042"/>
-      <Range End="32198" Start="32188"/>
-      <Range End="33680" Start="33674"/>
-      <Range End="33913" Start="33909"/>
-      <Range End="34298" Start="34290"/>
-      <Range End="34686" Start="34632"/>
-      <Range End="38506" Start="38498"/>
-      <Range End="43188" Start="43178"/>
-      <Range End="43995" Start="43992"/>
-      <Range End="46432" Start="46430"/>
-      <Range End="47390" Start="47385"/>
-      <Range End="53971" Start="53968"/>
-      <Range End="55714" Start="55707"/>
-      <Range End="56164" Start="56156"/>
-      <Range End="56299" Start="56293"/>
-      <Range End="73069" Start="73065"/>
-      <Range End="76973" Start="76926"/>
-      <Range End="80938" Start="80931"/>
-      <Range End="81930" Start="81926"/>
-      <Range End="88553" Start="88545"/>
-      <Range End="91520" Start="91516"/>
+      <Range End="9213" Start="9209"/>
+      <Range End="9222" Start="9218"/>
+      <Range End="10674" Start="10668"/>
+      <Range End="12795" Start="12786"/>
+      <Range End="12999" Start="12991"/>
+      <Range End="14451" Start="14447"/>
+      <Range End="15005" Start="14996"/>
+      <Range End="15073" Start="15062"/>
+      <Range End="15346" Start="15342"/>
+      <Range End="15495" Start="15486"/>
+      <Range End="16045" Start="16042"/>
+      <Range End="16764" Start="16747"/>
+      <Range End="16867" Start="16858"/>
+      <Range End="17662" Start="17659"/>
+      <Range End="18021" Start="18010"/>
+      <Range End="18183" Start="18177"/>
+      <Range End="21142" Start="21138"/>
+      <Range End="21784" Start="21779"/>
+      <Range End="22000" Start="21996"/>
+      <Range End="30330" Start="30320"/>
+      <Range End="30924" Start="30916"/>
+      <Range End="31342" Start="31336"/>
+      <Range End="31492" Start="31482"/>
+      <Range End="32974" Start="32968"/>
+      <Range End="33207" Start="33203"/>
+      <Range End="33592" Start="33584"/>
+      <Range End="33980" Start="33926"/>
+      <Range End="37800" Start="37792"/>
+      <Range End="42482" Start="42472"/>
+      <Range End="43289" Start="43286"/>
+      <Range End="45726" Start="45724"/>
+      <Range End="46684" Start="46679"/>
+      <Range End="53268" Start="53265"/>
+      <Range End="55011" Start="55004"/>
+      <Range End="55461" Start="55453"/>
+      <Range End="55596" Start="55590"/>
+      <Range End="72366" Start="72362"/>
+      <Range End="76270" Start="76223"/>
+      <Range End="80235" Start="80228"/>
+      <Range End="81227" Start="81223"/>
+      <Range End="87850" Start="87842"/>
+      <Range End="90817" Start="90813"/>
     </IgnoredRanges>
     <IgnoredWords>
       <Word>1AM</Word>
@@ -6322,7 +6287,7 @@ Tom laughs at Bates’ cornball phraseology.</Text>
 
   <WindowState Height="635" Left="2" Mode="Maximized" Top="2" Width="649"/>
 
-  <TextState Scaling="150" Selection="97972,97972" ShowInvisibles="No"/>
+  <TextState Scaling="150" Selection="47932,47932" ShowInvisibles="No"/>
 
   <ElementSettings Type="General">
     <FontSpec AdornmentStyle="0" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style=""/>

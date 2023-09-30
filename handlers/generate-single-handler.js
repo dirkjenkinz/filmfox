@@ -18,24 +18,23 @@ const generateSingleHandler = async (req, res) => {
   const { script } = filmFoxFile;
 
   const element = script[elementNumber];
+
   let sc = "0000" + element.scene;
   sc = sc.substring(sc.length - 4);
   let el = "0000" + elementNumber;
   el = el.substring(el.length - 4);
   const fileName = `${sc}_${el}.mp3`;
 
-  const { voice_data } = filmFoxFile;
+  const voice_data = await getData('voices.json');
+  
   let voice_id;
 
   voice_data.forEach((v) => {
-    if (v[0] === element.voice) {
-      voice_id = v[2];
+    if (v.name === element.voice) {
+      voice_id = v.voice_id;
     }
   });
 
-  console.log(element.voice);
-  console.log({voice_id});
-  console.log(element.dialogue)
   const msg = await generateSpeech(
     api_key,
     voice_id,
@@ -52,7 +51,8 @@ const generateSingleHandler = async (req, res) => {
     }
 
     if ((caller === "edit-character")) {
-      res.redirect(`/edit-character?title=${title}&caharacter=${element.voice}`);
+      const char = element.voice.toUpperCase();
+      res.redirect(`/edit-character?title=${title}&character=${char}`);
     } else {
       res.redirect(`/display?title=${title}&sceneNumber=${element.scene}`);
     }

@@ -1,20 +1,22 @@
 const url = require("url");
-const { getData } = require("../services/file-service");
+const { getFileList } = require("../services/file-service");
 const { smartLog } = require("../services/smart-log");
 const dotenv = require("dotenv");
 dotenv.config();
 const path = require("path");
 const ffmpeg = require("fluent-ffmpeg");
 
-const concatFiles = (clips, scene, title) => {
-  const fNum = `00000${scene}`;
-  const fileName = `s${fNum.substring(fNum.length - 5, fNum.length)}.mp3`;
+const concatFiles = (clips, sceneNumber, title) => {
+  const fileName = `s0${sceneNumber}.mp3`;
   const outPath = path.join(__dirname, `../data/${title}/scenes`);
   const dirPath = path.join(__dirname, `../data/${title}/sounds`);
   const concat = ffmpeg();
+  console.log({clips});
+  console.log({fileName});
+  console.log({title});
 
   clips.forEach((clip) => {
-    concat.input(`${dirPath}/${clip}.mp3`);
+    concat.input(`${dirPath}/${clip}`);
   });
 
   concat
@@ -28,18 +30,29 @@ const concatFiles = (clips, scene, title) => {
 };
 
 const concatHandler = async (req, res) => {
-  smartLog("info", "ENTERING concat HANDLER");
+  smartLog("info", "ENTERING CONCAT HANDLER");
   const u = url.parse(req.originalUrl, true);
   const title = u.query.title;
-  const scene = u.query.scene;
   const sceneNumber = u.query.sceneNumber;
+  let sc = '0000' + sceneNumber;
+  sc = sc.substring(sc.length - 4);
+console.log({sc})
+  const mp3List = await getFileList(`data/${title}/sounds/`, 'mp3');
 
-  const comp = await getData(`${title}/scenes/${title}.lst`);
+  const comp = [];
 
-  concatFiles(comp[scene], scene, title);
+  mp3List.forEach((m) => {
+    if (m.substring(0,4) === sc){
+      comp.push(m);
+    }
+  })
+  
+  
+  console.log({comp});
+  concatFiles(comp, sc, title);
 
   setTimeout(function () {
-    res.redirect(`/merge?title=${title}&sceneNumber=${sceneNumber}`);
+    res.redirect(`/merge?title=${title}`);
   }, 5000);
 };
 

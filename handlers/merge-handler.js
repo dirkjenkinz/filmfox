@@ -20,7 +20,6 @@ const mergeHandler = async (req, res) => {
   for (let i = 0; i <= last; i++){
     merged.push('no');
   };
-
   mergedFiles.forEach((m) => {
     const num = parseInt(m.substring(1, m.length - 4));
     merged[num] = 'yes';
@@ -39,10 +38,7 @@ const mergeHandler = async (req, res) => {
     };
   });
 
-  console.log(scenes[scenes.length - 1])
   const top = script[script.length - 1].scene + 1;
-
-  console.log({top})
 
   const comp = [];
   for (let i = 0; i < top; i++) {

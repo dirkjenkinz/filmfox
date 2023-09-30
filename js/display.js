@@ -14,10 +14,9 @@ $(() => {
     window.location.href = `/ctv?filmFoxFile=${f}&sceneNumber=${sceneNumber}`
   }),
   $('.btn-gen').on('click', (e) => {
-    const file = e.target.value;
+    const elementNumber = e.target.value;
     const title = $('#title')[0].innerText;
-    const sceneNumber = $('#sceneNumber')[0].innerText;
-    window.location.href = `/generate-single?title=${title}&file=${file}&sceneNumber=${sceneNumber}`
+    window.location.href = `/generate-single?title=${title}&elementNumber=${elementNumber}`
   }),
   $('.btn-play').on('click', (e) => {
     const title = $('#title')[0].innerText;

@@ -1,5 +1,25 @@
 {% extends "parent.njk" %}
 {% block page %}
+  <div class='row'>
+    <br>
+    <div class='col-md-2'>
+      <button class='btn btn-block btn-edit btn-sm' id='btn-previous'>
+        PREVIOUS ELEMENT
+      </button>
+    </div>
+    <div class='col-md-2'>
+      <audio id='master-play' controls  style='width: 100%;'>
+        <source src="{{showreel[i].sound}}" type="audio/ogg" />
+        <source src="{{showreel[i}.sound}}" type="audio/mpeg" />
+        Your browser does not support the audio tag.
+      </audio>
+    </div>
+    <div class='col-md-2'>
+      <button class='btn btn-block btn-edit btn-sm' id='btn-next'>
+        NEXT ELEMENT
+      </button>
+    </div>
+  </div>
   <div class='row' style='background: silver; color: black;'>
     <p id='current' hidden="hidden">{{current}}</p>
     <p id='size' hidden="hidden">{{size}}</p>
@@ -45,29 +65,6 @@
         {% endif %}
       {% endfor %}
     </table>
-  </div>
-  <div class='row'>
-    <br>
-    <div class='col-md-1'></div>
-    <div class='col-md-2'>
-      <button class='btn btn-block btn-edit btn-sm' id='btn-previous'>
-        PREVIOUS
-      </button>
-    </div>
-    <div class='col-md-1'></div>
-    <div class='col-md-3'>
-      <audio id='master-play' controls  style='width: 100%;'>
-        <source src="{{showreel[i].sound}}" type="audio/ogg" />
-        <source src="{{showreel[i}.sound}}" type="audio/mpeg" />
-        Your browser does not support the audio tag.
-      </audio>
-    </div>
-    <div class='col-md-1'></div>
-    <div class='col-md-2'>
-      <button class='btn btn-block btn-edit btn-sm' id='btn-next'>
-        NEXT
-      </button>
-    </div>
   </div>
   <div class='row'>&nbsp;</div>
 </div>
