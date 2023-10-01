@@ -24,10 +24,11 @@ const characterUpdateHandler = async (req, res) => {
   let sceneNumber = u.query.sceneNumber;
   let voice = u.query.voice;
   let character = u.query.character;
-  let file = u.query.filmFoxFile;
-  let fff = await getData(`${file}/${file}.fff`);
-  const { title } = fff;
-  const characters = await getData(`${file}/${file}.chrs`);
+  let title = u.query.filmFoxFile;
+  let fff = await getData(`${title}/${title}.fff`);
+  const characters = await getData(`${title}/${title}.chrs`);
+
+  console.log({characters})
 
   const voices = await getData('voices.json');
   voice_data = getVoiceData(voices);
@@ -39,8 +40,8 @@ const characterUpdateHandler = async (req, res) => {
     }
   })
 
-  writeFile(JSON.stringify(fff), `${file}/${file}.fff`);
-  writeFile(JSON.stringify(characters), title + '.chrs');
+  writeFile(JSON.stringify(fff), `${title}/${title}.fff`);
+  writeFile(JSON.stringify(characters), `${title}/${title}.chrs`);
 
   res.render('character-to-voice.njk', {
     title,

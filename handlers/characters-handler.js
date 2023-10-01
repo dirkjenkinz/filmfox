@@ -7,7 +7,6 @@ const charactersHandler = async (req, res) => {
   const u = url.parse(req.originalUrl, true);
   const title = u.query.title;
   const characters = await getData(`${title}/${title}.chrs`);
-
   res.render("characters.njk", {
     title,
     characters,

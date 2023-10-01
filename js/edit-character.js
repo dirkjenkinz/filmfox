@@ -50,5 +50,6 @@ $("#front").on("click", () => {
   $('.btn-gen').on('click', (e) => {
     const elementNumber = e.target.value;
     const title = $('#title')[0].innerText;
-    window.location.href = `/generate-single?title=${title}&elementNumber=${elementNumber}&caller=edit-character`;
+    const voice = $('#current-voice')[0].innerText;
+    window.location.href = `/generate-single?title=${title}&elementNumber=${elementNumber}&voice=${voice}&caller=edit-character`;
   })

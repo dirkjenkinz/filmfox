@@ -11,13 +11,13 @@ const generateSingleHandler = async (req, res) => {
   let u = url.parse(req.originalUrl, true);
   const title = u.query.title;
   const elementNumber = u.query.elementNumber;
-  const filmFoxFile = await getData(`${title}/${title}.fff`);
+  const voice = u.query.voice;
   const api_key = process.env.APIKEY;
   const caller = u.query.caller;
 
+  const filmFoxFile = await getData(`${title}/${title}.fff`);
   const { script } = filmFoxFile;
-
-  const element = script[elementNumber];
+  const element = script[elementNumber]
 
   let sc = "0000" + element.scene;
   sc = sc.substring(sc.length - 4);
@@ -27,13 +27,15 @@ const generateSingleHandler = async (req, res) => {
 
   const voice_data = await getData('voices.json');
   
-  let voice_id;
+  let voice_id = '';
 
   voice_data.forEach((v) => {
-    if (v.name === element.voice) {
+    if (v.name === voice) {
       voice_id = v.voice_id;
     }
   });
+
+  console.log({fileName});
 
   const msg = await generateSpeech(
     api_key,
@@ -47,11 +49,12 @@ const generateSingleHandler = async (req, res) => {
     if (msg !== "Failed") {
       script[elementNumber].sound = fileName;
       script[elementNumber].duration = await getDuration(title, fileName);
+      script[elementNumber].voice = voice;
       await writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
-    }
+    };
 
     if ((caller === "edit-character")) {
-      const char = element.voice.toUpperCase();
+      const char = element.character.toUpperCase();
       res.redirect(`/edit-character?title=${title}&character=${char}`);
     } else {
       res.redirect(`/display?title=${title}&sceneNumber=${element.scene}`);
