@@ -12,7 +12,6 @@ $('.btn-merge').on('click', (e) => {
     num = num.substring(num.length - 5);
     element = `s${num}.mp3`;
     s = '../data/' + title + '/scenes/' + element;
-    $('#selected')[0].innerText = element;
     document
       .getElementById("master-play")
       .setAttribute('src', s);
@@ -51,7 +50,6 @@ $('.btn-merge').on('click', (e) => {
   $('#btn-play-master').on('click', (e) => {
     const title = $('#title')[0].innerText;
     s = '../data/' + title + '/scenes/master.mp3';
-    $('#selected')[0].innerText = 'Master Sound File';
     document
       .getElementById("master-play")
       .setAttribute('src', s)

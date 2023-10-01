@@ -3,7 +3,7 @@ const { smartLog } = require("../services/smart-log");
 const { getData } = require("../services/file-service");
 const videoshow = require("videoshow");
 const path = require("path");
-const ffmpeg = require("fluent-ffmpeg");
+const FFmpeg = require("fluent-ffmpeg");
 const fs = require("fs");
 
 const imgToMP4 = (caption, sound, vision, duration, output) => {
@@ -13,7 +13,7 @@ const imgToMP4 = (caption, sound, vision, duration, output) => {
   const videoOptions = {
     fps: 25,
     loop: duration, // seconds
-    caption: caption, 
+    caption: caption,
     captionDelay: 0,
     transition: false,
     videoBitrate: 1024,
@@ -25,21 +25,25 @@ const imgToMP4 = (caption, sound, vision, duration, output) => {
     pixelFormat: "yuv420p",
   };
 
-  videoshow([{path: vision,
-    fps: 25,
-    loop: duration,
-    caption: caption, 
-    captionDelay: 0,
-    captionStart: 0,
-    captionEnd: 0,
-    transition: false,
-    videoBitrate: 1024,
-    videoCodec: "libx264",
-    size: "1200x?",
-    audioBitrate: "128k",
-    audioChannels: 2,
-    format: "mp4",
-    pixelFormat: "yuv420p"}])
+  videoshow([
+    {
+      path: vision,
+      fps: 25,
+      loop: duration,
+      caption: caption,
+      captionDelay: 0,
+      captionStart: 0,
+      captionEnd: 0,
+      transition: false,
+      videoBitrate: 1024,
+      videoCodec: "libx264",
+      size: "1200x?",
+      audioBitrate: "128k",
+      audioChannels: 2,
+      format: "mp4",
+      pixelFormat: "yuv420p",
+    },
+  ])
     .audio(sound)
     .save(output)
     .on("start", function (command) {
@@ -67,26 +71,22 @@ const createVideoHandler = async (req, res) => {
   const { script } = filmFoxFile;
   script.forEach((s, index) => {
     if (s.scene == parseInt(scene)) {
-        let num = "0000" + scene;
-        num = num.substring(num.length - 4);
-        let sub = "0000" + index;
-        sub = sub.substring(sub.length - 4);
-      if (
-        s.type === 'movie'
-      ) {
-        fs.copyFile(`${imagePath}/${s.image}`, `${outPath}/${num}_${sub}.mp4`, (err) => {
-          if (err) throw err;
-          smartLog("info", "File was copied to destination");
-        });
+      let num = "0000" + scene;
+      num = num.substring(num.length - 4);
+      let sub = "0000" + index;
+      sub = sub.substring(sub.length - 4);
+      const caption = `${s.character}: ${s.dialogue}`
+      const sound = `${soundPath}/${s.sound}`;
+      const vision = `${imagePath}/${s.image}`;
+      let duration = Math.ceil(s.duration) + 1;
+      if (duration < 4 ) duration = 4;
+      const output = `${outPath}/${num}_${sub}.mp4`
+      if (s.type === "movie") {
+        new FFmpeg()
+        .addInput(vision)
+        .addInput(sound)
+        .save(output);
       } else {
-        const caption = `${s.character}: ${s.dialogue}`
-        const sound = `${soundPath}/${s.sound}`;
-        const vision = `${imagePath}/${s.image}`;
-        let duration = Math.ceil(s.duration) + 1;
-        if (duration < 4 ) duration = 4;
-        const output = `${outPath}/${num}_${sub}.mp4`
-        console.log({sound})
-        console.log({output})
         imgToMP4(caption, sound, vision, duration, output);
       }
     }

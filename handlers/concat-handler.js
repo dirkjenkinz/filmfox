@@ -11,9 +11,6 @@ const concatFiles = (clips, sceneNumber, title) => {
   const outPath = path.join(__dirname, `../data/${title}/scenes`);
   const dirPath = path.join(__dirname, `../data/${title}/sounds`);
   const concat = ffmpeg();
-  console.log({clips});
-  console.log({fileName});
-  console.log({title});
 
   clips.forEach((clip) => {
     concat.input(`${dirPath}/${clip}`);
@@ -36,7 +33,6 @@ const concatHandler = async (req, res) => {
   const sceneNumber = u.query.sceneNumber;
   let sc = '0000' + sceneNumber;
   sc = sc.substring(sc.length - 4);
-console.log({sc})
   const mp3List = await getFileList(`data/${title}/sounds/`, 'mp3');
 
   const comp = [];
@@ -48,7 +44,6 @@ console.log({sc})
   })
   
   
-  console.log({comp});
   concatFiles(comp, sc, title);
 
   setTimeout(function () {
