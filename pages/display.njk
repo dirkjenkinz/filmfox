@@ -8,8 +8,7 @@
     </div>
     <div class='col-md-2'>
       {% if sceneNumber > 0 %}
-        <button class='btn btn-block btn-edit btn-sm' id='btn-previous-scene'>Go to Scene
-          {{sceneNumber - 1}}</button>
+        <img width='120' height='40' src='../images/previous.jpg' id='img-previous' class='img' alt='previous'>
       {% endif %}
     </div>
     <div class='col-md-6'>
@@ -19,8 +18,7 @@
     </div>
     <div class='col-md-2'>
       {% if sceneNumber < highest %}
-        <button class='btn btn-block btn-edit btn-sm' id='btn-next-scene'>Go to Scene
-          {{ nextScene }}</button>
+        <img width='120' height='40' src='../images/next.jpg' id='img-next' class='img' alt='next'>
       {% endif %}
     </div>
     <div class='col-md-2'>

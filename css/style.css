@@ -253,3 +253,8 @@ textarea {
 #sound-data {
   font-size: 60%;
 }
+
+#sub-show {
+  background: dodgerblue;
+  border: black 4px solid;
+}
