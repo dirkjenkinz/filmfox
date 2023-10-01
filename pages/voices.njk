@@ -9,34 +9,34 @@
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css'/>
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
     <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js'></script>
-<style>
-        .tableFixHead {
-          overflow-y: auto;
-          height: 420px;
-        }
-        .tableFixHead thead th {
-          position: sticky;
-          top: 0;
-        }
-        table {
-          border-collapse: collapse;
-          width: 99%;
-        }
-        td,
-        th {
-          padding: 4px 8px;
-          border: 1px solid #ccc;
-        }
-        th {
-          background: #eee;
-        }
-        .head-display {
-          border-style: solid;
-          border-width: 0 0 5px 0;
-          color: black;
-          background: #eee;
-        }
-      </style>
+    <style>
+      .tableFixHead {
+        overflow-y: auto;
+        height: 420px;
+      }
+      .tableFixHead thead th {
+        position: sticky;
+        top: 0;
+      }
+      table {
+        border-collapse: collapse;
+        width: 99%;
+      }
+      td,
+      th {
+        padding: 4px 8px;
+        border: 1px solid #ccc;
+      }
+      th {
+        background: #eee;
+      }
+      .head-display {
+        border-style: solid;
+        border-width: 0 0 5px 0;
+        color: black;
+        background: #eee;
+      }
+    </style>
   </head>
 
   <body>
@@ -45,15 +45,19 @@
         <div class='col-md-2'>
           <h4>Film Fox</h4>
         </div>
-        <div class='col-md-5'>
-          <td colspan='5'>
-            <audio id='master-play' controls="controls">
-              <source src='' type="audio/mpeg">
-            </audio>
-          </td>
+        <div class='col-md-3'>
+          <audio id='master-play' controls="controls">
+            <source src='' type="audio/mpeg">
+          </audio>
+        </div>
+        <div class='col-md-3'></div>
+        <div class='col-md-1'>
+          <button class='btn btn-block btn-edit btn-sm' id='btn-front'>
+            Front
+          </button>
         </div>
       </div>
-      <div class='row show'>
+      <div class='row tableFixHead' id='tabhead'>
         <div class='col-md-12'>
           <table class='table-bordered table-sm table-dark table-grid' id='voice_table'>
             <thead>
@@ -90,9 +94,8 @@
         </div>
       </div>
     </div>
-
     <script>
-      $('#front').on('click', () => {
+      $('#btn-front').on('click', () => {
         window.location.href = `/`
       }),
       $('.btn-get-sample').on('click', (e) => {

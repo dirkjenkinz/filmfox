@@ -1,3 +1,6 @@
+$(() => {
+  $("#btn-scenes").attr("disabled", true);
+}),
   $('.btn-change').on('click', (e) => {
     const element = e
       .target

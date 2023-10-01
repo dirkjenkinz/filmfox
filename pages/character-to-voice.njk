@@ -1,14 +1,14 @@
 {% extends "parent.njk" %}
 {% block page %}
-  <div class="row show">
+  <div class='row tableFixHead' id='tabhead'>
     <table class="table-bordered table-sm table-dark table-grid" id="big">
       <tr>
         <td style='vertical-align:top;'>
-          <table class="table-bordered table-sm table-dark table-grid" id="character_table">
+          <table id="character_table">
             <thead>
               <tr>
-                <th class="data-left" id="tab_ch_{{i}}">Character</th>
-                <th class="data-left" id="tab_vce_{{i}}">Voice</th>
+                <th class="data-display" id="tab_ch_{{i}}">Character</th>
+                <th class="data-display" id="tab_vce_{{i}}">Voice</th>
               </tr>
             </thead>
             <tbody>
@@ -40,8 +40,8 @@
           <table class="table-bordered table-sm table-dark table-grid" id="voice_table">
             <thead>
               <tr>
-                <th class="data-left" id="tab_voice_{{i}}">Voice</th>
-                <th class="data-left" id="tab_description_{{i}}">
+                <th class="data-display" id="tab_voice_{{i}}">Voice</th>
+                <th class="data-display" id="tab_description_{{i}}">
                   Description
                 </th>
               </tr>

@@ -1,4 +1,7 @@
 $(() => {
+  $("#btn-build-showreel").attr("disabled", true);
+}),
+$(() => {
   const s = $("#sound")[0].innerText;
   document.getElementById("master-play").setAttribute("src", s);
   document.getElementById("master-play").play();

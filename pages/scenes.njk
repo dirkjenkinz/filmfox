@@ -1,51 +1,51 @@
 {% extends "parent.njk" %}
 {% block page %}
-      <div class='row show'>
-        <div class='col-md-12'>
-          <table class='table-bordered table-sm table-dark table-grid' id='tab_img'>
-            <tbody>
-              {% for i in range(0, sceneList.length, 3) -%}
-                <tr>
-                  {% for num in range(0, 3) -%}
-                    <td class='data-right'>
-                      {{i + num}}
-                      <br>
-                      {{sceneList[i + num].element}}
-                    </td>
-                    <td class='data-left' colspan='2'>
-                      {{sceneList[i+num].slug}}
-                      <br>
-                      {% if sceneList[i + num].type === 'movie' %}
-                        <video width="160" height="90" controls="controls" autoplay="autoplay" class="img" muted="muted">
-                          <source src="../data/{{title}}/images/{{sceneList[i + num].image}}" type="video/mp4">
-                        </video>
-                      {% else %}
-                        <img width="160" height="90" src="../data/{{title}}/images/{{sceneList[i + num].image}}" class="img" alt="sceneList[i + num][0]"/>
-                      {% endif %}
-                    </td>
-                  {% endfor %}
-                </tr>
-                <tr>
-                  {% for num in range(0, 3) -%}
-                    <td class='data-right'>&nbsp;</td>
-                    <td>
-                      <button type='button' class='btn btn-edit btn-block btn-sm btn-change' value="{{sceneList[i + num].element}}">
-                        Change Image
-                      </button>
-                    </td>
-                    <td>
-                      <button type='button' class='btn btn-edit btn-block btn-sm btn-edit-scene' value="{{i + num}}">
-                        Edit Scene
-                      </button>
-                    </td>
-                  {% endfor %}
-                </tr>
+  <div class='row tableFixHead' id='tabhead'>
+    <div class='col-md-12'>
+      <table class='table-bordered table-sm table-dark table-grid' id='tab_img'>
+        <tbody>
+          {% for i in range(0, sceneList.length, 3) -%}
+            <tr>
+              {% for num in range(0, 3) -%}
+                <td class='data-right'>
+                  {{i + num}}
+                  <br>
+                  {{sceneList[i + num].element}}
+                </td>
+                <td class='data-left' colspan='2'>
+                  {{sceneList[i+num].slug}}
+                  <br>
+                  {% if sceneList[i + num].type === 'movie' %}
+                    <video width="160" height="90" controls="controls" autoplay="autoplay" class="img" muted="muted">
+                      <source src="../data/{{title}}/images/{{sceneList[i + num].image}}" type="video/mp4">
+                    </video>
+                  {% else %}
+                    <img width="160" height="90" src="../data/{{title}}/images/{{sceneList[i + num].image}}" class="img" alt="sceneList[i + num][0]"/>
+                  {% endif %}
+                </td>
               {% endfor %}
-            </tbody>
-          </table>
-        </div>
-      </div>
-      <script src='../js/header.js'></script>
-      <script src='../js/scenes.js'></script>
-    </body>
+            </tr>
+            <tr>
+              {% for num in range(0, 3) -%}
+                <td class='data-right'>&nbsp;</td>
+                <td>
+                  <button type='button' class='btn btn-edit btn-block btn-sm btn-change' value="{{sceneList[i + num].element}}">
+                    Change Image
+                  </button>
+                </td>
+                <td>
+                  <button type='button' class='btn btn-edit btn-block btn-sm btn-edit-scene' value="{{i + num}}">
+                    Edit Scene
+                  </button>
+                </td>
+              {% endfor %}
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <script src='../js/header.js'></script>
+  <script src='../js/scenes.js'></script>
+</body>
 {% endblock %}
