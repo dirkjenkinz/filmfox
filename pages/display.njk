@@ -1,6 +1,11 @@
 {% extends "parent.njk" %}
 {% block page %}
   <div class='row top'>
+    <div class='col-md-1 hidden'>
+      <audio id='master-play' style='width: 100%;'>
+        <source src='' type='audio/mpeg'>
+      </audio>
+    </div>
     <div class='col-md-2'>
       {% if sceneNumber > 0 %}
         <button class='btn btn-block btn-edit btn-sm' id='btn-previous-scene'>Go to Scene
