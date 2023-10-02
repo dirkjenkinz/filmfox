@@ -6,8 +6,6 @@ const { smartLog } = require('../services/smart-log');
 
 const getSampleIds = async (voice_id, apiKey) => {
     smartLog('info', 'Get Sample IDs');
-    console.log({voice_id})
-    console.log({apiKey})
     const config = {
         headers: {
             'accept': 'application/json',
@@ -43,7 +41,6 @@ const getVoiceSample = async (sample_id) => {
 };
 
 const generateSample = async (voiceID, apiKey) => {
-    console.log({voiceID})
     smartLog('info', 'GENERATING SAMPLE');
     try {
         await voice.textToSpeech(apiKey, voiceID, `${directoryPath}/samples/${voiceID}.mp3`, "Now is the winter of our discontent made glorious summer by this son of York.").then(res => {

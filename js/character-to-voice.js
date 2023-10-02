@@ -13,7 +13,6 @@ $(() => {
   }),
   $('.btn-play-sample').on('click', (e) =>{
     const id = e.target.value;
-    console.log({id})
     const title = $("#title")[0].innerText;
     const s = `../data/samples/${id}.mp3`;
     document.getElementById("master-play").setAttribute("src", s);

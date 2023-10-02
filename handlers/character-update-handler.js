@@ -28,8 +28,6 @@ const characterUpdateHandler = async (req, res) => {
   let fff = await getData(`${title}/${title}.fff`);
   const characters = await getData(`${title}/${title}.chrs`);
 
-  console.log({characters})
-
   const voices = await getData('voices.json');
   voice_data = getVoiceData(voices);
   voice_data.unshift(['-', '', '']);

@@ -7,8 +7,9 @@ $(() => {
 }),
   $(".btn-gen").on("click", (e) => {
     const elementNumber = e.target.value;
+    voice = $(`#voice_${elementNumber}`)[0].innerText;
     const title = $("#title")[0].innerText;
-    window.location.href = `/generate-single?title=${title}&elementNumber=${elementNumber}`;
+    window.location.href = `/generate-single?title=${title}&elementNumber=${elementNumber}&voice=${voice}&caller=display`;
   }),
   $(".btn-play").on("click", (e) => {
     const title = $("#title")[0].innerText;

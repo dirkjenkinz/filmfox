@@ -1,4 +1,5 @@
 const { getData, writeFile } = require("./services/file-service");
+const  smartLog = require('./services/smart-log');
 
 const main = async () => {
   const filmFoxFile = await getData("/Satellite/Satellite.fff");
@@ -37,7 +38,6 @@ const main = async () => {
       slug: slug
     });
   });
-  console.log(newScript[77])
   filmFoxFile.script = newScript;
 
   await writeFile(JSON.stringify(filmFoxFile), 'Satellite/newSatellite.fff');

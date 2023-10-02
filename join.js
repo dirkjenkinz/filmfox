@@ -18,15 +18,14 @@ const main = async () => {
   });
 
   videoConcat({
-    // ffmpeg_path: <path-to-ffmpeg> Optional. Otherwise it will just use ffmpeg on your $PATH
-    silent: false, // optional. if set to false, gives detailed output on console
+    silent: true,
     overwrite: true, // optional. by default, if file already exists, ffmpeg will ask for overwriting in console and that pause the process. if set to true, it will force overwriting. if set to false it will prevent overwriting.
   })
     .clips(input)
     .output(output) //optional absolute file name for output file
     .concat()
     .then((output) => {
-      console.log(`Output: ${output}`);
+      smartLog('info', `Output: ${output}`);
     });
 };
 

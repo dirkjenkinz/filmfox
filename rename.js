@@ -22,17 +22,5 @@ const main = async () => {
   await writeFile(JSON.stringify(filmFoxFile), 'xxxxSatellite.fff');
 
 };
-  /*  
-  script.forEach((s, index) =>{
-   // console.log(s.sound, menu[index])
-  });
 
-   // menu.forEach((m) => {
-   //     try {
-   //         fs.renameSync(m.oldFile, m.newFile);
-   //       } catch (error) {
-   //         console.error(error)
-   //       }
-   // });
-*/
 main();

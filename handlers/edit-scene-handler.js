@@ -18,7 +18,7 @@ const editSceneHandler = async (req, res) => {
     if (s.scene === parseInt(scene)) {
       elements.push({
         number: index,
-        speaker: s.speaker,
+        speaker: s.character,
         dialogue: s.dialogue,
         image: s.image,
         type: s.type,
