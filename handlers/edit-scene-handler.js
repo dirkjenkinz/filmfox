@@ -6,16 +6,17 @@ const editSceneHandler = async (req, res) => {
   smartLog("info", "ENTERING EDIT SCENE HANDLER");
   const u = url.parse(req.originalUrl, true);
   const title = u.query.title;
-  const sceneNumber = u.query.sceneNumber;
   const scene = u.query.scene;
   const filmFoxFile = await getData(`${title}/${title}.fff`);
   const { script } = filmFoxFile;
-
+  let note = '';
   const elements = [];
 
   script.forEach((s, index) => {
-
     if (s.scene === parseInt(scene)) {
+      if (s.slug === 'yes'){
+        note = s.note;
+      };
       elements.push({
         number: index,
         speaker: s.character,
@@ -25,12 +26,12 @@ const editSceneHandler = async (req, res) => {
       });
     }
   });
-
+console.log({note})
   res.render("edit-scene.njk", {
     title,
     elements,
-    sceneNumber,
     scene,
+    note
   });
 };
 

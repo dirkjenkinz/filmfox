@@ -23,6 +23,7 @@ const charactersRouter = require('./routes/characters.js');
 const editCharacterRouter = require('./routes/edit-character.js');
 const voicesRouter = require('./routes/voices.js');
 const getSamplesRouter = require('./routes/get-samples.js');
+const backToScenesRouter = require('./routes/back-to-scenes.js');
 
 const nunjucks = require('nunjucks');
 const bodyParser = require('body-parser');
@@ -63,6 +64,7 @@ app.use('/characters', charactersRouter);
 app.use('/edit-character', editCharacterRouter);
 app.use('/voices', voicesRouter);
 app.use('/get-samples', getSamplesRouter);
+app.use('/back-to-scenes', backToScenesRouter);
 
 app.listen(PORT, (err) => {
     smartLog('paramount', `FilmFox is up & running on port ${PORT}`);
