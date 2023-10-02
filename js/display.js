@@ -58,13 +58,13 @@ $(() => {
     const sceneNumber = $('#sceneNumber')[0].innerText;
     window.location.href = `/scenes?title=${title}&sceneNumber=${sceneNumber}`;
   }),
-  $('#btn-next-scene').on('click', () => {
+  $('#img-next').on('click', () => {
     const title = $('#title')[0].innerText;
     const sceneNumber = $('#sceneNumber')[0].innerText;
     const scNum = $('#nextScene')[0].innerText;
     window.location.href = `/display?title=${title}&sceneNumber=${scNum}&sceneNumber=${sceneNumber}&locked='yes`;
   }),
-  $('#btn-previous-scene').on('click', () => {
+  $('#img-previous').on('click', () => {
     const title = $('#title')[0].innerText;
     const sceneNumber = $('#sceneNumber')[0].innerText;
     const scNum = $('#sceneNumber')[0].innerText - 1;

@@ -125,7 +125,7 @@
           <CharacterArcBeat Name="BRODY"></CharacterArcBeat>
         </SceneArcBeats>
       </SceneProperties>
-      <Text>INT. bedrOOM - NIGHT</Text>
+      <Text>INT. bedrOOM - NIGHT - CONTINUOUS</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Character">
       <Text>BRODY (O.S.)(ON TV)</Text>
@@ -6228,49 +6228,49 @@ Tom laughs at Bates’ cornball phraseology.</Text>
     <IgnoredRanges>
       <Range End="1703" Start="1700"/>
       <Range End="2519" Start="2509"/>
-      <Range End="3017" Start="3007"/>
-      <Range End="9213" Start="9209"/>
-      <Range End="9222" Start="9218"/>
-      <Range End="10674" Start="10668"/>
-      <Range End="12795" Start="12786"/>
-      <Range End="12999" Start="12991"/>
-      <Range End="14451" Start="14447"/>
-      <Range End="15005" Start="14996"/>
-      <Range End="15073" Start="15062"/>
-      <Range End="15346" Start="15342"/>
-      <Range End="15495" Start="15486"/>
-      <Range End="16045" Start="16042"/>
-      <Range End="16764" Start="16747"/>
-      <Range End="16867" Start="16858"/>
-      <Range End="17662" Start="17659"/>
-      <Range End="18021" Start="18010"/>
-      <Range End="18183" Start="18177"/>
-      <Range End="21142" Start="21138"/>
-      <Range End="21784" Start="21779"/>
-      <Range End="22000" Start="21996"/>
-      <Range End="30330" Start="30320"/>
-      <Range End="30924" Start="30916"/>
-      <Range End="31342" Start="31336"/>
-      <Range End="31492" Start="31482"/>
-      <Range End="32974" Start="32968"/>
-      <Range End="33207" Start="33203"/>
-      <Range End="33592" Start="33584"/>
-      <Range End="33980" Start="33926"/>
-      <Range End="37800" Start="37792"/>
-      <Range End="42482" Start="42472"/>
-      <Range End="43289" Start="43286"/>
-      <Range End="45726" Start="45724"/>
-      <Range End="46684" Start="46679"/>
-      <Range End="54013" Start="54010"/>
-      <Range End="55756" Start="55749"/>
-      <Range End="56206" Start="56198"/>
-      <Range End="56341" Start="56335"/>
-      <Range End="73111" Start="73107"/>
-      <Range End="77015" Start="76968"/>
-      <Range End="80980" Start="80973"/>
-      <Range End="81972" Start="81968"/>
-      <Range End="88781" Start="88773"/>
-      <Range End="91748" Start="91744"/>
+      <Range End="3030" Start="3020"/>
+      <Range End="9226" Start="9222"/>
+      <Range End="9235" Start="9231"/>
+      <Range End="10687" Start="10681"/>
+      <Range End="12808" Start="12799"/>
+      <Range End="13012" Start="13004"/>
+      <Range End="14464" Start="14460"/>
+      <Range End="15018" Start="15009"/>
+      <Range End="15086" Start="15075"/>
+      <Range End="15359" Start="15355"/>
+      <Range End="15508" Start="15499"/>
+      <Range End="16058" Start="16055"/>
+      <Range End="16777" Start="16760"/>
+      <Range End="16880" Start="16871"/>
+      <Range End="17675" Start="17672"/>
+      <Range End="18034" Start="18023"/>
+      <Range End="18196" Start="18190"/>
+      <Range End="21155" Start="21151"/>
+      <Range End="21797" Start="21792"/>
+      <Range End="22013" Start="22009"/>
+      <Range End="30343" Start="30333"/>
+      <Range End="30937" Start="30929"/>
+      <Range End="31355" Start="31349"/>
+      <Range End="31505" Start="31495"/>
+      <Range End="32987" Start="32981"/>
+      <Range End="33220" Start="33216"/>
+      <Range End="33605" Start="33597"/>
+      <Range End="33993" Start="33939"/>
+      <Range End="37813" Start="37805"/>
+      <Range End="42495" Start="42485"/>
+      <Range End="43302" Start="43299"/>
+      <Range End="45739" Start="45737"/>
+      <Range End="46697" Start="46692"/>
+      <Range End="54026" Start="54023"/>
+      <Range End="55769" Start="55762"/>
+      <Range End="56219" Start="56211"/>
+      <Range End="56354" Start="56348"/>
+      <Range End="73124" Start="73120"/>
+      <Range End="77028" Start="76981"/>
+      <Range End="80993" Start="80986"/>
+      <Range End="81985" Start="81981"/>
+      <Range End="88794" Start="88786"/>
+      <Range End="91761" Start="91757"/>
     </IgnoredRanges>
     <IgnoredWords>
       <Word>1AM</Word>
@@ -6313,7 +6313,7 @@ Tom laughs at Bates’ cornball phraseology.</Text>
 
   <WindowState Height="635" Left="2" Mode="Maximized" Top="2" Width="649"/>
 
-  <TextState Scaling="150" Selection="88838,88838" ShowInvisibles="No"/>
+  <TextState Scaling="150" Selection="2931,2931" ShowInvisibles="No"/>
 
   <ElementSettings Type="General">
     <FontSpec AdornmentStyle="0" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style=""/>

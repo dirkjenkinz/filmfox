@@ -15,8 +15,8 @@
               {% for i in range(0, characters.length) -%}
                 <tr>
                   <td class="data-left" id="char_{{i}}">{{characters[i][0]}}</td>
-                  <td class="data-left">
-                    <select name="voices_{{i}}" id="voices_{{i}}">
+                  <td class="data-display">
+                    <select name="voices_{{i}}" id="voices_{{i}}" style='background:black;'>
                       {% for j in range(0, voice_data.length) -%}
                         {% if
                         characters[i][1] == voice_data[j][0] %}

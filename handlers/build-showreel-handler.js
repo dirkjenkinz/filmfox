@@ -44,7 +44,8 @@ const buildShowreelHandler = async (req, res) => {
       finish: formatTime(t + s.duration),
       image: s.image,
       sound: `../data/${title}/sounds/${s.sound}`,
-      type: s.type
+      type: s.type,
+      scene: s.scene,
     })
     t = t + s.duration;
   });

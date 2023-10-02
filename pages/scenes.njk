@@ -7,12 +7,7 @@
           {% for i in range(0, sceneList.length, 3) -%}
             <tr>
               {% for num in range(0, 3) -%}
-                <td class='data-right'>
-                  {{i + num}}
-                  <br>
-                  {{sceneList[i + num].element}}
-                </td>
-                <td class='data-left' colspan='2'>
+                <td class='data-left'>
                   {{sceneList[i+num].slug}}
                   <br>
                   {% if sceneList[i + num].type === 'movie' %}
@@ -23,11 +18,17 @@
                     <img width="160" height="90" src="../data/{{title}}/images/{{sceneList[i + num].image}}" class="img" alt="sceneList[i + num][0]"/>
                   {% endif %}
                 </td>
+                <td class='data-left'>
+                  Scene {{i + num}}
+                  <br>
+                  Element {{sceneList[i + num].element}}
+                </td>
+                <td>&nbsp;</td>
               {% endfor %}
+              
             </tr>
             <tr>
               {% for num in range(0, 3) -%}
-                <td class='data-right'>&nbsp;</td>
                 <td>
                   <button type='button' class='btn btn-edit btn-block btn-sm btn-change' value="{{sceneList[i + num].element}}">
                     Change Image
@@ -38,7 +39,9 @@
                     Edit Scene
                   </button>
                 </td>
+                <td>&nbsp;</td>
               {% endfor %}
+              
             </tr>
           {% endfor %}
         </tbody>
