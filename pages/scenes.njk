@@ -7,7 +7,7 @@
           {% for i in range(0, sceneList.length, 3) -%}
             <tr>
               {% for num in range(0, 3) -%}
-                <td class='data-left'>
+                <td class='data-left' style='font-size:80%;'>
                   {{sceneList[i+num].slug}}
                   <br>
                   {% if sceneList[i + num].type === 'movie' %}
@@ -19,13 +19,15 @@
                   {% endif %}
                 </td>
                 <td class='data-left'>
-                  Scene {{i + num}}
+                  Scene
+                  {{i + num}}
                   <br>
-                  Element {{sceneList[i + num].element}}
+                  Element
+                  {{sceneList[i + num].element}}
                 </td>
                 <td>&nbsp;</td>
               {% endfor %}
-              
+
             </tr>
             <tr>
               {% for num in range(0, 3) -%}
@@ -41,7 +43,7 @@
                 </td>
                 <td>&nbsp;</td>
               {% endfor %}
-              
+
             </tr>
           {% endfor %}
         </tbody>

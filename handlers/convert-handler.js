@@ -9,7 +9,6 @@ const {
   getScript,
   writeFile,
   createDirectory,
-  getListOfElements,
   getData,
 } = require("../services/file-service");
 

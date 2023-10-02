@@ -6,7 +6,6 @@ const scenesHandler = async (req, res) => {
   smartLog("info", "ENTERING SCENES HANDLER");
   const u = url.parse(req.originalUrl, true);
   const title = u.query.title;
-  const sceneNumber = u.query.sceneNumber;
   const current = u.query.current;
   const filmFoxFile = await getData(`${title}/${title}.fff`);
   const {script} = filmFoxFile;
@@ -35,7 +34,6 @@ const scenesHandler = async (req, res) => {
   res.render("scenes.njk", {
     title,
     sceneList,
-    sceneNumber,
     current,
   });
 };

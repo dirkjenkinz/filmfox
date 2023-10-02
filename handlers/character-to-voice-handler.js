@@ -26,18 +26,20 @@ const characterToVoiceHandler = async (req, res) => {
   let characters = await getData(`${title}/${title}.chrs`);
 
   const voices = await getData('voices.json');
+
   voice_data = getVoiceData(voices);
   voice_data.unshift(['-', '', '']);
 
-  script.forEach((s) => {
-    characters.forEach(c => {
-      if (c[0] === s.character) {
-        s.voice = c[1];
-      };
-    })
+  characters.forEach((c)=>{
+    voice_data.forEach((v)=>{
+      if (c[1] === v[0])
+      {
+        c[2] = v[2]
+      }
+    });
   });
 
-  res.render('character-to-voice.njk', {
+    res.render('character-to-voice.njk', {
     title,
     characters,
     voice_data,

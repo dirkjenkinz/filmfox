@@ -17,13 +17,4 @@ $('.imcg').on('click', (e) => {
     const caller = $('#caller')[0].innerText;
     const scene = $('#scene')[0].innerText;
    window.location.href = `/update-image-display?title=${title}&sceneNumber=${sceneNumber}&scene=${scene}&element=${element}&image=${image}&caller=${caller}`
-  }),
-  $('#btn-back').on('click', () => {
-    const title = $('#title')[0].innerText;
-    const sceneNumber = $('#sceneNumber')[0].innerText;
-    if (caller == 'display'){
-      window.location.href = `/update-image-display?title=${title}&sceneNumber=${sceneNumber}`
-      } else {
-        window.location.href = `/scenes?title=${title}&sceneNumber=${sceneNumber}`
-      }
   })

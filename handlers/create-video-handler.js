@@ -15,6 +15,8 @@ const imgToMP4 = (caption, sound, vision, duration, output) => {
     loop: duration, // seconds
     caption: caption,
     captionDelay: 0,
+    captionStart: 0,
+    captionEnd: 0,
     transition: false,
     videoBitrate: 1024,
     videoCodec: "libx264",
@@ -28,20 +30,6 @@ const imgToMP4 = (caption, sound, vision, duration, output) => {
   videoshow([
     {
       path: vision,
-      fps: 25,
-      loop: duration,
-      caption: caption,
-      captionDelay: 0,
-      captionStart: 0,
-      captionEnd: 0,
-      transition: false,
-      videoBitrate: 1024,
-      videoCodec: "libx264",
-      size: "1200x?",
-      audioBitrate: "128k",
-      audioChannels: 2,
-      format: "mp4",
-      pixelFormat: "yuv420p",
     },
   ])
     .audio(sound)
