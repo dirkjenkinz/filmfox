@@ -1,0 +1,136 @@
+{% extends "parent.njk" %}
+{% block page %}
+  <div class='row'>
+    <div class='col-md-12'>
+      <table class='table-bordered table-sm table-dark table-grid' id='tab_img'>
+        <thead>
+          <tr>
+            <th class='shot-header'>
+              Scene #
+            </th>
+            <th class='shot-header'>
+              Slug Line
+            </th>
+            <th class='shot-header'>
+              Note
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class='data-left'>
+              {{slug.scene}}
+            </td>
+            <td class='data-left'>
+              {{slug.dialogue}}
+            </td>
+            <td class='data-left'>
+              {{slug.note}}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-md-12'>&nbsp;</div>
+  </div>
+  <div class='row tableFixHead' id='tabhead'>
+    <div class='col-md-12'>
+      <table class='table-bordered table-sm table-dark table-grid' id='tab_img'>
+        <thead>
+          <tr>
+            <th class='shot-header'>
+              #
+            </th>
+            <th class='shot-header'>
+              Shot
+            </th>
+            <th class='shot-header'>
+              Camera Angle
+            </th>
+            <th class='shot-header'>
+              Camera Move
+            </th>
+            <th class='shot-header'>
+              Audio
+            </th>
+            <th class='shot-header'>
+              Subject
+            </th>
+            <th class='shot-header'>
+              Description
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for i in range(0, page.lines.length) -%}
+            <tr>
+              <td class='data-left'>
+                <td class='data-left'>
+                  <select name="shot_{{i}}" id="shot_{{i}}" class='shot-name'>
+                    {% for index in range(0, shots.length) -%}
+                      {% if shots[index] == page
+                        .lines[i]
+                        .shot %}
+                        <option value='{{shots[index]}}' selected="selected">
+                          {{shots[index]}}
+                        </option>
+                      {% else %}
+                        <option value='{{shots[index]}}'>
+                          {{shots[index]}}
+                        </option>
+                      {% endif %}
+                    {% endfor %}
+                  </select>
+                </td>
+              </td>
+              <td class='data-left'>
+                <select name="angle_{{i}}" id="angle_{{i}}" class='shot-name'>
+                  {% for index in range(0, angles.length) -%}
+                    {% if angles[index] == page
+                      .lines[i]
+                      .angle %}
+                      <option value='{{angles[index]}}' selected="selected">
+                        {{angles[index]}}
+                      </option>
+                    {% else %}
+                      <option value='{{angles[index]}}'>
+                        {{angles[index]}}
+                      </option>
+                    {% endif %}
+                  {% endfor %}
+                </select>
+              </td>
+              <td class='data-left'>
+                <select name="move_{{i}}" id="move_{{i}}" class='shot-name'>
+                  {% for index in range(0, moves.length) -%}
+                    {% if moves[index] == page.lines[i].move %}
+                      <option value='{{moves[index]}}' selected="selected">
+                        {{moves[index]}}
+                      </option>
+                    {% else %}
+                      <option value='{{moves[index]}}'>
+                        {{moves[index]}}
+                      </option>
+                    {% endif %}
+                  {% endfor %}
+                </select>
+              </td>
+              <td class='data-left'>
+                {{page.lines[i].audio}}
+              </td>
+              <td class='data-left'>
+                {{page.lines[i].subject}}
+              </td>
+              <td class='data-left'>
+                {{page.lines[i].description}}
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <script src='../js/edit-scene.js'></script>
+{% endblock %}

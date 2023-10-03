@@ -49,6 +49,17 @@
               {% endfor %}
             </tr>
 
+             <tr>
+              {% for num in range(0, 3) -%}
+                <td colspan='2'>
+                  <button type='button' class='btn btn-edit btn-block btn-sm btn-edit-shot-list' value="{{i + num}}">
+                    Edit Shot List
+                  </button>
+                </td>
+                <td class='sep'>&nbsp;</td>
+              {% endfor %}
+            </tr>
+
             <tr>
               {% for num in range(0, 3) -%}
                 <td colspan='3' class='sep'>

@@ -262,3 +262,11 @@ textarea {
   background: dodgerblue;
   border: black 4px solid;
 }
+
+.shot-header {
+  background:mediumslateblue;
+}
+
+.shot-name {
+  background: black;
+}
