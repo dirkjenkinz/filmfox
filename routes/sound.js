@@ -1,8 +1,8 @@
 const express=require('express');
 const router = express.Router();
 
-const {mergeHandler} = require('../handlers/merge-handler');
+const {soundHandler} = require('../handlers/sound-handler');
 
-router.get('/', mergeHandler);
+router.get('/', soundHandler);
 
 module.exports = router;

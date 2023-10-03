@@ -12,7 +12,7 @@ const playMasterHandler = async (req, res) => {
 
   playSoundFile(title, "master.mp3", "scenes");
   setTimeout(function () {
-    res.redirect(`/merge?title=${title}&scene=${scene}`);
+    res.redirect(`/sound?title=${title}&scene=${scene}`);
   }, 5000);
 };
 

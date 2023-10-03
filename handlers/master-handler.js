@@ -30,7 +30,7 @@ const masterHandler = async (req, res) => {
     .mergeToFile(`${dirPath}/master.mp3`, dirPath);
 
   setTimeout(function() {
-    res.redirect(`/merge?title=${title}&scene=${scene}`)
+    res.redirect(`/sound?title=${title}&scene=${scene}`)
   }, 5000);
 
 };

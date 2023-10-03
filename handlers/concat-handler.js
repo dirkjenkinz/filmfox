@@ -47,7 +47,7 @@ const concatHandler = async (req, res) => {
   concatFiles(comp, sc, title);
 
   setTimeout(function () {
-    res.redirect(`/merge?title=${title}`);
+    res.redirect(`/sound?title=${title}`);
   }, 5000);
 };
 

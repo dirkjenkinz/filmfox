@@ -20,10 +20,10 @@ $("#display").on("click", () => {
       const title = $("#title")[0].innerText;
       window.location.href = `/characters?title=${title}`;
     }),
-    $("#btn-merge").on("click", () => {
+    $("#btn-sound").on("click", () => {
       const f = $("#title")[0].innerText;
       const scene = $("#scene")[0].innerText;
-      window.location.href = `/merge?title=${f}&scene=${scene}`;
+      window.location.href = `/sound?title=${f}&scene=${scene}`;
     }),
     $("#btn-scenes").on("click", () => {
       const title = $("#title")[0].innerText;
