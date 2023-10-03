@@ -8,7 +8,7 @@ const displayHandler = async (req, res) => {
   smartLog('info', 'ENTERING DISPLAY HANDLER');
   const u = url.parse(req.originalUrl, true);
   const locked = u.query.locked;
-  let sceneNumber = parseInt(u.query.sceneNumber);
+  let scene = parseInt(u.query.scene);
   const title = u.query.title;
   let filmFoxFile = await getData(`${title}/${title}.fff`);
   let lock = 'Unlock';
@@ -16,20 +16,23 @@ const displayHandler = async (req, res) => {
     lock = 'Lock';
   }
 
-  if (!sceneNumber){
-    sceneNumber = 0;
+  if (!scene){
+    scene = 0;
   }
-  const nextScene = sceneNumber + 1;
+  const nextScene = scene + 1;
 
   const { script } = filmFoxFile;
+  console.log(script[15]);
+console.log(script[16]);
+console.log(script[17]);
   const characters = await getData(`${title}/${title}.chrs`);
   const api_key = process.env.APIKEY;
 
   let slug = '';
   let highest = 0;
 
-  script.forEach((s) => {
-    if (s.scene === sceneNumber && s.slug === 'yes'){
+  script.forEach((s, index) => {
+    if (s.scene === scene && s.slug === 'yes'){
       slug = s.dialogue;
     };
     if (s.slug === 'yes') {
@@ -67,7 +70,7 @@ const displayHandler = async (req, res) => {
     script,
     lock,
     time,
-    sceneNumber,
+    scene,
     nextScene,
     slug,
     highest,

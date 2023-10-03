@@ -8,8 +8,8 @@ $(() => {
     const voice = $(`#${id} option:selected`).text().trim();
     const character = $(`#${cid}`)[0].textContent;
     const title = $("#title")[0].outerText;
-    let sceneNumber = $("#sceneNumber")[0].innerText;
-    window.location.href = `/character-update?filmFoxFile=${title}&character=${character}&voice=${voice}&sceneNumber=${sceneNumber}`;
+    let scene = $("#scene")[0].innerText;
+    window.location.href = `/character-update?filmFoxFile=${title}&character=${character}&voice=${voice}&scene=${scene}`;
   }),
   $('.btn-play-sample').on('click', (e) =>{
     const id = e.target.value;

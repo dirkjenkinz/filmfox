@@ -1,7 +1,6 @@
 const url = require("url");
 const { smartLog } = require("../services/smart-log");
-const { getListOfImages } = require("../services/file-service");
-const {getData} = require('../services/file-service');
+const { getListOfImages, getData, writeFile } = require("../services/file-service");
 
 const getUsed = (script) => {
   const used = [];
@@ -15,13 +14,20 @@ const getUsed = (script) => {
 const galleryHandler = async (req, res) => {
   smartLog("info", "ENTERING GALLERY HANDLER");
   let u = url.parse(req.originalUrl, true);
-  const sceneNumber = u.query.sceneNumber;
+  const scene = u.query.scene;
   const title = u.query.title;
   const element = u.query.element;
-  const scene = u.query.scene;
   const caller = u.query.caller;
+  const note = u.query.note;
   const imageList = await getListOfImages(title);
   imageList.unshift("blank.jpg");
+
+if (caller === 'edit-scene'){
+  const filmFoxFile = await getData(`${title}/${title}.fff`);
+  const { script } = filmFoxFile;
+  script[element].note = note;
+  await writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
+};
 
   const images = [];
   for (let i = 0; i < imageList.length; i++) {
@@ -42,7 +48,7 @@ const galleryHandler = async (req, res) => {
   const used = [];
   const unused = [];
 
-  images.forEach((i) => {
+  images.forEach((i, index) => {
     if (usedImages.indexOf(i[0]) !== -1) {
       used.push(i);
     } else {
@@ -53,11 +59,10 @@ const galleryHandler = async (req, res) => {
   res.render("gallery.njk", {
     title,
     element,
-    sceneNumber,
+    scene,
     used,
     unused,
     caller,
-    scene,
   });
 };
 

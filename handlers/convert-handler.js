@@ -209,7 +209,7 @@ const convertHandler = async (req, res) => {
   await writeFile(JSON.stringify(characters), `${title}/${title}.chrs`);
   await createDirectory(`${title}/sounds`);
 
-  res.redirect(`/display?title=${title}&sceneNumber=0&locked=yes`);
+  res.redirect(`/display?title=${title}&scene=0&locked=yes`);
 };
 
 module.exports = { convertHandler };

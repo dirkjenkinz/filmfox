@@ -254,6 +254,10 @@ textarea {
   font-size: 60%;
 }
 
+.sep {
+  background: skyblue;
+}
+
 #sub-show {
   background: dodgerblue;
   border: black 4px solid;

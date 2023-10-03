@@ -2,9 +2,9 @@ $(() => {
   $("#btn-merge").attr("disabled", true);
 }),
 $('.btn-merge').on('click', (e) => {
-    let sceneNumber = e.target.value;
+    let scene = e.target.value;
     const title = $('#title')[0].innerText;
-    window.location.href = `/concat?title=${title}&sceneNumber=${sceneNumber}`;
+    window.location.href = `/concat?title=${title}&scene=${scene}`;
   }),
   $('.btn-play').on('click', (e) => {
     const title = $('#title')[0].innerText;
@@ -35,17 +35,17 @@ $('.btn-merge').on('click', (e) => {
   }),
   $('.btn-delete').on('click', (e) => {
     const title = $('#title')[0].innerText;
-    const sceneNumber = $('#sceneNumber')[0].innerText;
+    const scene = $('#scene')[0].innerText;
     let num = '000000' + e.target.value;
     num = num.substring(num.length - 5);
     element = `s${num}.mp3`;
-    window.location.href = `/delete?title=${title}&element=${element}&sceneNumber=${sceneNumber}&sub=scenes`;
+    window.location.href = `/delete?title=${title}&element=${element}&scene=${scene}&sub=scenes`;
   }),
   $('#btn-master').on('click', (e) => {
     const title = $('#title')[0].innerText;
-    const sceneNumber = $('#sceneNumber')[0].innerText;
+    const scene = $('#scene')[0].innerText;
     const size = $('#size')[0].innerText;
-    window.location.href = `/master?title=${title}&sceneNumber=${sceneNumber}&size=${size}`;
+    window.location.href = `/master?title=${title}&scene=${scene}&size=${size}`;
   }),
   $('#btn-play-master').on('click', (e) => {
     const title = $('#title')[0].innerText;

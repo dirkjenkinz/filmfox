@@ -26,7 +26,6 @@ const buildShowreelHandler = async (req, res) => {
   smartLog("info", "entering build showreel handler");
   const u = url.parse(req.originalUrl, true);
   const title = u.query.title;
-  const sceneNumber = u.query.sceneNumber;
   const filmFoxFile = await getData(`${title}/${title}.fff`);
   const { script } = filmFoxFile;
 

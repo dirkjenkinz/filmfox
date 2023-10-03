@@ -7,17 +7,17 @@
       </audio>
     </div>
     <div class='col-md-2'>
-      {% if sceneNumber > 0 %}
+      {% if scene > 0 %}
         <img width='120' height='40' src='../images/previous.jpg' id='img-previous' class='img' alt='previous'>
       {% endif %}
     </div>
     <div class='col-md-6'>
       Scene
-      {{sceneNumber}}:
+      {{scene}}:
       {{slug}}
     </div>
     <div class='col-md-2'>
-      {% if sceneNumber < highest %}
+      {% if scene < highest %}
         <img width='120' height='40' src='../images/next.jpg' id='img-next' class='img' alt='next'>
       {% endif %}
     </div>
@@ -31,7 +31,7 @@
       <table id='script-table'>
         <tbody id='bod'>
           {% for i in range(0, script.length) -%}
-            {% if script[i].scene == sceneNumber %}
+            {% if script[i].scene == scene %}
               <tr id='row_{{i}}'>
                 <td class='non-header-display' style='width: 15%;'>Scene
                   {{script[i].scene}}

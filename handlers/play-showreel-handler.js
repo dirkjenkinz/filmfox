@@ -48,14 +48,14 @@ const playShowreelHandler = async (req, res) => {
     s.slug = slug;
   });
 
-  sceneNumber = showreel[current].scene;
+  scene = showreel[current].scene;
 
   res.render("play-showreel.njk", {
     title,
     showreel,
     current,
-    sceneNumber,
-    highestSceneNumber: scNum,
+    scene,
+    highestscene: scNum,
     mute,
   });
 };

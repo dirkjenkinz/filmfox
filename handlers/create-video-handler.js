@@ -49,7 +49,6 @@ const createVideoHandler = async (req, res) => {
   smartLog("info", "ENTERING CREATE VIDEO HANDLER");
   const u = url.parse(req.originalUrl, true);
   const title = u.query.title;
-  const sceneNumber = u.query.sceneNumber;
   const scene = u.query.scene;
   const soundPath = path.join(__dirname, `../data/${title}/sounds`);
   const imagePath = path.join(__dirname, `../data/${title}/images`);
@@ -80,7 +79,7 @@ const createVideoHandler = async (req, res) => {
     }
   });
 
-  res.redirect(`/video?title=${title}&sceneNumber=${sceneNumber}`);
+  res.redirect(`/video?title=${title}&scene=${scene}`);
 };
 
 module.exports = { createVideoHandler };

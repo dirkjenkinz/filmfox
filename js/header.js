@@ -1,20 +1,20 @@
 $("#display").on("click", () => {
     const title = $("#title")[0].innerText;
-    const sceneNumber = $("#sceneNumber")[0].innerText;
-    window.location.href = `/display?title=${title}&sceneNumber=${sceneNumber}`;
+    const scene = $("#scene")[0].innerText;
+    window.location.href = `/display?title=${title}&scene=${scene}`;
   }),
   $("#front").on("click", () => {
     window.location.href = `/`;
   }),
     $("#btn-build-showreel").on("click", () => {
       const f = $("#title")[0].innerText;
-      const sceneNumber = $("#sceneNumber")[0].innerText;
-      window.location.href = `/build-showreel?title=${f}&sceneNumber=${sceneNumber}`;
+      const scene = $("#scene")[0].innerText;
+      window.location.href = `/build-showreel?title=${f}&scene=${scene}`;
     }),
     $('#ctv').on('click', () => {
       const f = $('#title')[0].innerText
-      let sceneNumber = $('#sceneNumber')[0].innerText
-      window.location.href = `/ctv?filmFoxFile=${f}&sceneNumber=${sceneNumber}`
+      let scene = $('#scene')[0].innerText
+      window.location.href = `/ctv?filmFoxFile=${f}&scene=${scene}`
     }),
     $("#btn-characters").on("click", () => {
       const title = $("#title")[0].innerText;
@@ -22,8 +22,8 @@ $("#display").on("click", () => {
     }),
     $("#btn-merge").on("click", () => {
       const f = $("#title")[0].innerText;
-      const sceneNumber = $("#sceneNumber")[0].innerText;
-      window.location.href = `/merge?title=${f}&sceneNumber=${sceneNumber}`;
+      const scene = $("#scene")[0].innerText;
+      window.location.href = `/merge?title=${f}&scene=${scene}`;
     }),
     $("#btn-scenes").on("click", () => {
       const title = $("#title")[0].innerText;
@@ -31,6 +31,6 @@ $("#display").on("click", () => {
     }),
     $("#btn-video").on("click", () => {
       const title = $("#title")[0].innerText;
-      const sceneNumber = $("#sceneNumber")[0].innerText;
-      window.location.href = `/video?title=${title}&sceneNumber=${sceneNumber}`;
+      const scene = $("#scene")[0].innerText;
+      window.location.href = `/video?title=${title}&scene=${scene}`;
     })

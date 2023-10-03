@@ -6,8 +6,8 @@ dotenv.config();
 const path = require("path");
 const ffmpeg = require("fluent-ffmpeg");
 
-const concatFiles = (clips, sceneNumber, title) => {
-  const fileName = `s0${sceneNumber}.mp3`;
+const concatFiles = (clips, scene, title) => {
+  const fileName = `s0${scene}.mp3`;
   const outPath = path.join(__dirname, `../data/${title}/scenes`);
   const dirPath = path.join(__dirname, `../data/${title}/sounds`);
   const concat = ffmpeg();
@@ -30,8 +30,8 @@ const concatHandler = async (req, res) => {
   smartLog("info", "ENTERING CONCAT HANDLER");
   const u = url.parse(req.originalUrl, true);
   const title = u.query.title;
-  const sceneNumber = u.query.sceneNumber;
-  let sc = '0000' + sceneNumber;
+  const scene = u.query.scene;
+  let sc = '0000' + scene;
   sc = sc.substring(sc.length - 4);
   const mp3List = await getFileList(`data/${title}/sounds/`, 'mp3');
 

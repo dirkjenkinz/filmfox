@@ -55,7 +55,7 @@ const generateSingleHandler = async (req, res) => {
       const char = element.character.toUpperCase();
       res.redirect(`/edit-character?title=${title}&character=${char}`);
     } else {
-      res.redirect(`/display?title=${title}&sceneNumber=${element.scene}`);
+      res.redirect(`/display?title=${title}&scene=${element.scene}`);
     }
   });
 };

@@ -6,12 +6,11 @@ const updateImageDisplayHandler = async (req, res) => {
   smartLog("info", "entering UPDATE IMAGE DISPLAY handler");
 
   let u = url.parse(req.originalUrl, true);
-  const sceneNumber = u.query.sceneNumber;
+  const scene = u.query.scene;
   const title = u.query.title;
   const element = u.query.element;
   const image = u.query.image;
   const caller = u.query.caller;
-  const scene = u.query.scene;
 
   let filmFoxFile = await getData(`${title}/${title}.fff`);
 
@@ -41,12 +40,14 @@ const updateImageDisplayHandler = async (req, res) => {
   if (caller === "scenes") {
     res.redirect(`/scenes?title=${title}`);
   } else if ((caller === "edit-scene")) {
+    console.log(({scene}));
+    console.log({scene})
     res.redirect(
-      `/edit-scene?title=${title}&sceneNumber=${sceneNumber}&element=${element}&scene=${scene}`
+      `/edit-scene?title=${title}&element=${element}&scene=${scene}`
     );
   } else {
     res.redirect(
-      `/display?title=${title}&sceneNumber=${sceneNumber}`
+      `/display?title=${title}&scene=${scene}`
     );
   }
 };

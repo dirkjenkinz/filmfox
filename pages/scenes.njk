@@ -25,26 +25,38 @@
                   Element
                   {{sceneList[i + num].element}}
                 </td>
-                <td>&nbsp;</td>
+                <td class='sep'>&nbsp;</td>
               {% endfor %}
-
             </tr>
+
             <tr>
               {% for num in range(0, 3) -%}
-                <td>
-                  <button type='button' class='btn btn-edit btn-block btn-sm btn-change' value="{{sceneList[i + num].element}}">
-                    Change Image
-                  </button>
+                <td colspan='2'>
+                  {{sceneList[i + num].note}}
                 </td>
-                <td>
+                <td class='sep'></td>
+              {% endfor %}
+            </tr>
+
+            <tr>
+              {% for num in range(0, 3) -%}
+                <td colspan='2'>
                   <button type='button' class='btn btn-edit btn-block btn-sm btn-edit-scene' value="{{i + num}}">
                     Edit Scene
                   </button>
                 </td>
-                <td>&nbsp;</td>
+                <td class='sep'>&nbsp;</td>
               {% endfor %}
-
             </tr>
+
+            <tr>
+              {% for num in range(0, 3) -%}
+                <td colspan='3' class='sep'>
+                  &nbsp;
+                </td>
+              {% endfor %}
+            </tr>
+
           {% endfor %}
         </tbody>
       </table>

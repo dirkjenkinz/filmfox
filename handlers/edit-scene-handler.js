@@ -26,7 +26,6 @@ const editSceneHandler = async (req, res) => {
       });
     }
   });
-console.log({note})
   res.render("edit-scene.njk", {
     title,
     elements,

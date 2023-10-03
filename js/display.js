@@ -1,5 +1,5 @@
 $(() => {
-  const e = $("#sceneNumber")[0].innerText;
+  const e = $("#scene")[0].innerText;
   const element = `row_${e}`;
   const elm = document.getElementById(element);
   elm.scrollIntoView(true);
@@ -20,27 +20,27 @@ $(() => {
   $(".btn-del").on("click", (e) => {
     const num = e.target.id.substring(4);
     const title = $("#title")[0].innerText;
-    const sceneNumber = $("#sceneNumber")[0].innerText;
+    const scene = $("#scene")[0].innerText;
     const element = `${e.target.value}`;
-    window.location.href = `/delete?title=${title}&element=${element}&sceneNumber=${sceneNumber}&sub=sounds&num=${num}`;
+    window.location.href = `/delete?title=${title}&element=${element}&scene=${scene}&sub=sounds&num=${num}`;
   }),
   $("#img-next").on("click", () => {
     const title = $("#title")[0].innerText;
-    const sceneNumber = $("#sceneNumber")[0].innerText;
+    const scene = $("#scene")[0].innerText;
     const scNum = $("#nextScene")[0].innerText;
-    window.location.href = `/display?title=${title}&sceneNumber=${scNum}&sceneNumber=${sceneNumber}&locked='yes`;
+    window.location.href = `/display?title=${title}&scene=${scNum}&scene=${scene}&locked='yes`;
   }),
   $("#img-previous").on("click", () => {
     const title = $("#title")[0].innerText;
-    const sceneNumber = $("#sceneNumber")[0].innerText;
-    const scNum = $("#sceneNumber")[0].innerText - 1;
-    window.location.href = `/display?title=${title}&sceneNumber=${scNum}&sceneNumber=${sceneNumber}&locked='yes`;
+    const scene = $("#scene")[0].innerText;
+    const scNum = $("#scene")[0].innerText - 1;
+    window.location.href = `/display?title=${title}&scene=${scNum}&scene=${scene}&locked='yes`;
   }),
   $(".btn-change").on("click", (e) => {
     const title = $("#title")[0].innerText;
-    let scNum = $("#sceneNumber")[0].innerText;
+    let scNum = $("#scene")[0].innerText;
     const element = e.target.value;
-    window.location.href = `/gallery?title=${title}&sceneNumber=${scNum}&element=${element}&caller=display`;
+    window.location.href = `/gallery?title=${title}&scene=${scNum}&element=${element}&caller=display`;
   }),
   $("#btn-sound-lock").on("click", () => {
     const l = $("#length")[0].innerText;
