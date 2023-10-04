@@ -267,6 +267,11 @@ textarea {
   background:mediumslateblue;
 }
 
-.shot-name {
+.shot-header-right {
+  background:mediumslateblue;
+  text-align: right;
+}
+
+.shot-select {
   background: black;
 }

@@ -25,6 +25,9 @@ const voicesRouter = require('./routes/voices.js');
 const getSamplesRouter = require('./routes/get-samples.js');
 const backToScenesRouter = require('./routes/back-to-scenes.js');
 const editShotListRouter = require('./routes/edit-shot-list.js');
+const updateShotListRouter = require('./routes/update-shot-list.js');
+const addShotRouter = require('./routes/add-shot.js');
+const deleteShotRouter = require('./routes/delete-shot.js');
 
 const nunjucks = require('nunjucks');
 const bodyParser = require('body-parser');
@@ -67,6 +70,9 @@ app.use('/voices', voicesRouter);
 app.use('/get-samples', getSamplesRouter);
 app.use('/back-to-scenes', backToScenesRouter);
 app.use('/edit-shot-list', editShotListRouter);
+app.use('/update-shot-list', updateShotListRouter);
+app.use('/add-shot', addShotRouter);
+app.use('/delete-shot', deleteShotRouter);
 
 app.listen(PORT, (err) => {
     smartLog('paramount', `FilmFox is up & running on port ${PORT}`);

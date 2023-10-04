@@ -22,9 +22,6 @@ const displayHandler = async (req, res) => {
   const nextScene = scene + 1;
 
   const { script } = filmFoxFile;
-  console.log(script[15]);
-console.log(script[16]);
-console.log(script[17]);
   const characters = await getData(`${title}/${title}.chrs`);
   const api_key = process.env.APIKEY;
 

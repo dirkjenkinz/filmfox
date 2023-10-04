@@ -5,22 +5,23 @@
       <table class='table-bordered table-sm table-dark table-grid' id='tab_img'>
         <thead>
           <tr>
+            <th class='shot-header' style='width: 10%;'>Scene
+              {{scene}}</th>
             <th class='shot-header'>
-              Scene #
+              {{slug}}
             </th>
-            <th class='shot-header'>
-              Slug Line
+          </tr>
+          <tr>
+            <th class='shot-header-right'>
+              Note:
             </th>
-            <th class='shot-header'>
-              Note
+            <td class='data-left' colspan='2'>
+              {{note}}
             </th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td class='data-left'>
-              {{slug.scene}}
-            </td>
             <td class='data-left'>
               {{slug.dialogue}}
             </td>
@@ -32,12 +33,14 @@
       </table>
     </div>
   </div>
+
   <div class='row'>
     <div class='col-md-12'>&nbsp;</div>
   </div>
+
   <div class='row tableFixHead' id='tabhead'>
     <div class='col-md-12'>
-      <table class='table-bordered table-sm table-dark table-grid' id='tab_img'>
+      <table class='table-bordered table-sm table-dark table-grid' id='tab-shot'>
         <thead>
           <tr>
             <th class='shot-header'>
@@ -64,33 +67,30 @@
           </tr>
         </thead>
         <tbody>
-          {% for i in range(0, page.lines.length) -%}
+          {% for i in range(0, lines.length) -%}
             <tr>
               <td class='data-left'>
-                <td class='data-left'>
-                  <select name="shot_{{i}}" id="shot_{{i}}" class='shot-name'>
-                    {% for index in range(0, shots.length) -%}
-                      {% if shots[index] == page
-                        .lines[i]
-                        .shot %}
-                        <option value='{{shots[index]}}' selected="selected">
-                          {{shots[index]}}
-                        </option>
-                      {% else %}
-                        <option value='{{shots[index]}}'>
-                          {{shots[index]}}
-                        </option>
-                      {% endif %}
-                    {% endfor %}
-                  </select>
-                </td>
+                {{i}}
               </td>
               <td class='data-left'>
-                <select name="angle_{{i}}" id="angle_{{i}}" class='shot-name'>
+                <select id='shot-shot_{{i}}' class='shot-select shot-shot'>
+                  {% for index in range(0, shots.length) -%}
+                    {% if shots[index] == lines[i].shot %}
+                      <option value='{{shots[index]}}' selected="selected">
+                        {{shots[index]}}
+                      </option>
+                    {% else %}
+                      <option value='{{shots[index]}}'>
+                        {{shots[index]}}
+                      </option>
+                    {% endif %}
+                  {% endfor %}
+                </select>
+              </td>
+              <td class='data-left'>
+                <select id='shot-angle_{{i}}' class='shot-select shot-angle'>
                   {% for index in range(0, angles.length) -%}
-                    {% if angles[index] == page
-                      .lines[i]
-                      .angle %}
+                    {% if angles[index] === lines[i].angle %}
                       <option value='{{angles[index]}}' selected="selected">
                         {{angles[index]}}
                       </option>
@@ -103,9 +103,9 @@
                 </select>
               </td>
               <td class='data-left'>
-                <select name="move_{{i}}" id="move_{{i}}" class='shot-name'>
+                <select name="move_{{i}}" id='shot-move_{{i}}' class='shot-select'>
                   {% for index in range(0, moves.length) -%}
-                    {% if moves[index] == page.lines[i].move %}
+                    {% if moves[index] == lines[i].move %}
                       <option value='{{moves[index]}}' selected="selected">
                         {{moves[index]}}
                       </option>
@@ -118,13 +118,36 @@
                 </select>
               </td>
               <td class='data-left'>
-                {{page.lines[i].audio}}
+                <select name="audio{{i}}" id='shot-audio_{{i}}' class='shot-select'>
+                  {% for index in range(0, audio.length) -%}
+                    {% if audio[index] == lines[i].audio %}
+                      <option value='{{audio[index]}}' selected="selected">
+                        {{audio[index]}}
+                      </option>
+                    {% else %}
+                      <option value='{{audio[index]}}'>
+                        {{audio[index]}}
+                      </option>
+                    {% endif %}
+                  {% endfor %}
+                </select>
               </td>
               <td class='data-left'>
-                {{page.lines[i].subject}}
+                <textarea id='shot-subject_{{i}}' class='shot-subject' rows='2' cols='30'>{{lines[i].subject}}
+                </textarea>
               </td>
               <td class='data-left'>
-                {{page.lines[i].description}}
+                <textarea id='shot-description_{{i}}' name="shot-description" rows="2" cols='30'>{{lines[i].description}}</textarea>
+              </td>
+              <td>
+                <button class='btn btn-block btn-edit btn-sm btn-add' value='{{i}}'>
+                  +
+                </button>
+              </td>
+              <td>
+                <button class='btn btn-block btn-edit btn-sm btn-delete' value='{{i}}'>
+                  -
+                </button>
               </td>
             </tr>
           {% endfor %}
@@ -132,5 +155,7 @@
       </table>
     </div>
   </div>
-  <script src='../js/edit-scene.js'></script>
+
+  <script src='../js/header.js'></script>
+  <script src='../js/edit-shot-list.js'></script>
 {% endblock %}
