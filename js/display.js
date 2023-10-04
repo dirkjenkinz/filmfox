@@ -11,6 +11,11 @@ $(() => {
     const title = $("#title")[0].innerText;
     window.location.href = `/generate-single?title=${title}&elementNumber=${elementNumber}&voice=${voice}&caller=display`;
   }),
+  $(".btn-edit-shot-list").on("click", (e) => {
+    const title = $("#title")[0].innerText;
+    const scene = $("#scene")[0].innerText;
+    window.location.href = `/edit-shot-list?title=${title}&scene=${scene}`;
+  }),
   $(".btn-play").on("click", (e) => {
     const title = $("#title")[0].innerText;
     const s = `../data/${title}/sounds/${e.target.value}`;
@@ -24,17 +29,16 @@ $(() => {
     const element = `${e.target.value}`;
     window.location.href = `/delete?title=${title}&element=${element}&scene=${scene}&sub=sounds&num=${num}`;
   }),
-  $("#img-next").on("click", () => {
+  $("#btn-next").on("click", () => {
     const title = $("#title")[0].innerText;
-    const scene = $("#scene")[0].innerText;
     const scNum = $("#nextScene")[0].innerText;
-    window.location.href = `/display?title=${title}&scene=${scNum}&scene=${scene}&locked='yes`;
+    window.location.href = `/display?title=${title}&scene=${scNum}&locked='yes`;
   }),
-  $("#img-previous").on("click", () => {
+  $("#btn-previous").on("click", () => {
     const title = $("#title")[0].innerText;
     const scene = $("#scene")[0].innerText;
     const scNum = $("#scene")[0].innerText - 1;
-    window.location.href = `/display?title=${title}&scene=${scNum}&scene=${scene}&locked='yes`;
+    window.location.href = `/display?title=${title}&scene=${scNum}locked='yes`;
   }),
   $(".btn-change").on("click", (e) => {
     const title = $("#title")[0].innerText;
@@ -42,6 +46,12 @@ $(() => {
     const element = e.target.value;
     window.location.href = `/gallery?title=${title}&scene=${scNum}&element=${element}&caller=display`;
   }),
+  $("#input-note").on("focusout", (e) => {
+    const val = e.target.value;
+    const title = $("#title")[0].outerText;
+    const scene = $("#scene")[0].outerText;
+    window.location.href = `/update-note?title=${title}&scene=${scene}&val=${val}`
+    }),
   $("#btn-sound-lock").on("click", () => {
     const l = $("#length")[0].innerText;
     if ($("#btn-sound-lock")[0].innerText === "Lock Delete") {

@@ -24,8 +24,8 @@ const galleryHandler = async (req, res) => {
 
 if (caller === 'edit-scene'){
   const filmFoxFile = await getData(`${title}/${title}.fff`);
-  const { script } = filmFoxFile;
-  script[element].note = note;
+  const { shotList } = filmFoxFile;
+  shotList[scene].note = note;
   await writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
 };
 

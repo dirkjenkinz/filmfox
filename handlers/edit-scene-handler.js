@@ -8,15 +8,12 @@ const editSceneHandler = async (req, res) => {
   const title = u.query.title;
   const scene = u.query.scene;
   const filmFoxFile = await getData(`${title}/${title}.fff`);
-  const { script } = filmFoxFile;
-  let note = '';
+  const { script, shotList } = filmFoxFile;
   const elements = [];
 
   script.forEach((s, index) => {
     if (s.scene === parseInt(scene)) {
-      if (s.slug === 'yes'){
-        note = s.note;
-      };
+      note = shotList[scene].note;
       elements.push({
         number: index,
         speaker: s.character,
@@ -30,7 +27,7 @@ const editSceneHandler = async (req, res) => {
     title,
     elements,
     scene,
-    note
+    note,
   });
 };
 

@@ -267,6 +267,10 @@ textarea {
   background:mediumslateblue;
 }
 
+.display-box {
+  border: double white 8px;
+}
+
 .data-showreel {
   vertical-align: top;
   background: navajowhite;

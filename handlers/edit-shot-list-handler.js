@@ -41,9 +41,6 @@ const editShotListHandler = async (req, res) => {
   });
 
   const slug = script[pointer].dialogue;
-  const note = script[pointer].note;
-
-  console.log(shotList[scene].lines)
 
   res.render("edit-shot-list.njk", {
     title,
@@ -53,7 +50,7 @@ const editShotListHandler = async (req, res) => {
     angles,
     moves,
     audio,
-    note,
+    note: shotList[scene].note,
     slug,
   });
 };

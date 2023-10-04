@@ -21,7 +21,7 @@ const displayHandler = async (req, res) => {
   }
   const nextScene = scene + 1;
 
-  const { script } = filmFoxFile;
+  const { script, shotList } = filmFoxFile;
   const characters = await getData(`${title}/${title}.chrs`);
   const api_key = process.env.APIKEY;
 
@@ -59,7 +59,9 @@ const displayHandler = async (req, res) => {
       runningTime = runningTime + parseFloat(s.duration);
       time.push(runningTime.toFixed(3));
       }
-  })
+  });
+
+  const note = shotList[scene].note;
 
   res.render('display.njk', {
     title,
@@ -71,6 +73,7 @@ const displayHandler = async (req, res) => {
     nextScene,
     slug,
     highest,
+    note,
   });
 };
 

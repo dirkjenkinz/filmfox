@@ -10,7 +10,7 @@ script.forEach(s => {
         s.note = '';
     }
 });
-console.log({script})
+
 await writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
 }
 

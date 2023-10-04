@@ -7,7 +7,7 @@ const scenesHandler = async (req, res) => {
   const u = url.parse(req.originalUrl, true);
   const title = u.query.title;
   const filmFoxFile = await getData(`${title}/${title}.fff`);
-  const { script } = filmFoxFile;
+  const { script, shotList } = filmFoxFile;
   let sceneList = [];
 
   script.forEach((s, index) => {
@@ -16,7 +16,7 @@ const scenesHandler = async (req, res) => {
         slug: s.dialogue,
         image: s.image,
         element: index,
-        note: s.note,
+        note: shotList[s.scene].note,
         type: s.type,
       });
     }
