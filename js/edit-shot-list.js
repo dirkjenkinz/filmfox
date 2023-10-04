@@ -13,7 +13,7 @@ $(".shot-select").on("change", (e) => {
   const scene = $("#scene")[0].outerText;
   window.location.href = `/update-shot-list?title=${title}&scene=${scene}&val=${val}&item=subject&line=${line}`
   }),
-  $("#description").on("change", (e) => {
+  $(".shot-description").on("change", (e) => {
     const line = e.target.id.substring(17);
     const val = e.target.value;
     const title = $("#title")[0].outerText;

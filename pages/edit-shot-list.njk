@@ -133,11 +133,10 @@
                 </select>
               </td>
               <td class='data-left'>
-                <textarea id='shot-subject_{{i}}' class='shot-subject' rows='2' cols='30'>{{lines[i].subject}}
-                </textarea>
+                <textarea id='shot-subject_{{i}}' class='shot-subject' rows='2' cols='30'>{{lines[i].subject | trim}}</textarea>
               </td>
               <td class='data-left'>
-                <textarea id='shot-description_{{i}}' name="shot-description" rows="2" cols='30'>{{lines[i].description}}</textarea>
+                <textarea id='shot-description_{{i}}' class='shot-description' rows="2" cols='30'>{{lines[i].description | trim}}</textarea>
               </td>
               <td>
                 <button class='btn btn-block btn-edit btn-sm btn-add' value='{{i}}'>

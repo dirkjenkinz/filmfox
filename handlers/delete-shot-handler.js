@@ -22,9 +22,10 @@ const deleteShotHandler = async (req, res) => {
     description: "",
   };
 
-  shot.splice(line, 1);
-
-  await writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
+  if (shot.length > 1) {
+    shot.splice(line, 1);
+    await writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
+  }
 
   res.redirect(`/edit-shot-list?title=${title}&scene=${scene}`);
 };
