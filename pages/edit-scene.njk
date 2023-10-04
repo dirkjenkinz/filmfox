@@ -10,7 +10,7 @@
   </div>
   <div class='row tableFixHead' id='tabhead'>
     <div class='col-md-12'>
-      <table class='table-bordered table-sm table-dark table-grid' id='tab_img'>
+      <table class='table-bordered table-sm table-dark table-grid' id='tab_header'>
         <tbody>
           <tr>
             <td class='data-left' colspan='2'>
@@ -23,6 +23,12 @@
               <input type="text" id="note" name="note" size='100' value='{{note}}'>
             </td>
           </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class='row tableFixHead' id='tabhead'>
+      <table class='table-bordered table-sm table-dark table-grid' id='tab_main'>
+        <tbody>
           {% for i in range(0, elements.length) -%}
             <tr>
               <td class='data-left'>

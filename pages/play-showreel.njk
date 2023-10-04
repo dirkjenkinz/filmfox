@@ -52,10 +52,7 @@
                 <tr>
                   <td class='data-show' id='start_{{i}}' style='width: 10%;'>
                     Element
-                    {{i}}<br>
-                    {{showreel[i].start}}
-                    <br>
-                    {{showreel[i].finish}}
+                    {{i}}
                   </td>
                   <td class='data-show' id='type_{{i}}' hidden="hidden">
                     {{showreel[i].type}}
@@ -69,7 +66,7 @@
                       <img width='480' height='270' src='../data/{{title}}/images/{{showreel[i].image}}' id='iamge_{{i}}' class='img' alt='{{script[i].image}}'>
                     {% endif %}
                   </td>
-                  <td class='data-show'>
+                  <td class='data-showreel'>
                     <p id='character_{{i}}' style='text-align: center; font-weight: bold;'>{{showreel[i].character}}</p>
                     <br>
                     {{showreel[i].dialogue}}

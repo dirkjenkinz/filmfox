@@ -267,6 +267,12 @@ textarea {
   background:mediumslateblue;
 }
 
+.data-showreel {
+  vertical-align: top;
+  background: navajowhite;
+  border: double blue 8px;
+}
+
 .shot-header-right {
   background:mediumslateblue;
   text-align: right;

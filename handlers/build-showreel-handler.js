@@ -10,18 +10,6 @@ const {
   writeFile,
 } = require("../services/file-service");
 
-const formatTime = (seconds) => {
-  const date = new Date(null);
-  date.setSeconds(seconds);
-  let h = date.toISOString();
-  h = h.substring(11, h.length - 5);
-  let micro = seconds - Math.floor(seconds);
-  micro = micro.toString().substring(2, 5);
-  if (!micro) micro = "000";
-  h = `${h},${micro}`;
-  return h;
-};
-
 const buildShowreelHandler = async (req, res) => {
   smartLog("info", "entering build showreel handler");
   const u = url.parse(req.originalUrl, true);
@@ -29,7 +17,6 @@ const buildShowreelHandler = async (req, res) => {
   const filmFoxFile = await getData(`${title}/${title}.fff`);
   const { script } = filmFoxFile;
 
-  timeStart = 0.0;
   smartLog("info", "BUILDING SHOWREEL");
 
   let t = 0.00;
@@ -39,8 +26,6 @@ const buildShowreelHandler = async (req, res) => {
       duration: s.duration,
       character: s.character,
       dialogue: s.dialogue,
-      start: formatTime(t),
-      finish: formatTime(t + s.duration),
       image: s.image,
       sound: `../data/${title}/sounds/${s.sound}`,
       type: s.type,
