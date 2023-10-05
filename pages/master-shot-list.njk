@@ -11,7 +11,7 @@
     </div>
     <div class='col-md-1'>&nbsp;</div>
     <div class='col-md-3'>
-      <button class='btn btn-block btn-edit btn-sm' id='btn-display-list'>Display the Master List</button>
+      <button class='btn btn-block btn-edit btn-sm' id='btn-display-full'>Display the Full Shot List</button>
     </div>
   </div>
   <div class='row top'>
@@ -20,14 +20,14 @@
         <table id='table-shots'>
           <tbody>
             {% set num = 0 %}
-            {% for i in range(0, shotList.length) -%}
+            {% for i in range(1, shotList.length) -%}
               <tr id='row_{{i}}' class='display-box' style='font-size:80%;'>
                 <td class='data-left' style='width: 8%;'>Scene
                   {{shotList[i].scene}}</td>
                 <td class='data-left' colspan='2' style='width: 33%;'>{{slugs[i]}}</td>
                 <td class='data-left' style='width: 33%;'>{{shotList[i].note}}</td>
                 <td style='width: 8%;'>
-                  {% if i == 0 %}
+                  {% if i == 1 %}
                     <button class='btn btn-block btn-edit btn-sm btn-up' id='btn-up-{{i}}' disabled="disabled">Up
                     </button>
                   {% else %}

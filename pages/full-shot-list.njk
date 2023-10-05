@@ -1,0 +1,81 @@
+{% extends "parent.njk" %}
+{% block page %}
+  <div class='row top'>
+    <p id='size' hidden="hidden">{{size}}</p>
+    <div class='col-md-3'>
+      <button class='btn btn-block btn-edit btn-sm' id='btn-hide-all' value='{{i}}'>Hide All</button>
+    </div>
+    <div class='col-md-1'>&nbsp;</div>
+    <div class='col-md-3'>
+      <button class='btn btn-block btn-edit btn-sm' id='btn-reveal-all' value='{{i}}'>Reveal All</button>
+    </div>
+    <div class='col-md-1'>&nbsp;</div>
+    <div class='col-md-3'>
+      <button class='btn btn-block btn-edit btn-sm' id='btn-display-full'>Display the Full Shot List</button>
+    </div>
+  </div>
+  <div class='row top'>
+    <div class='row tableFixHead' id='tabhead'>
+      <div class='col-md-12'>
+        <table id='table-shots'>
+          <tbody>
+            {% set num = 0 %}
+            {% for i in range(1, shotList.length) -%}
+              <tr id='row_{{i}}' style='font-size:80%;'>
+                <td style='background: white; color: black;'>Scene
+                  {{shotList[i].scene}}</td>
+                <td colspan='2'>{{slugs[i]}}</td>
+                <td>{{shotList[i].note}}</td>
+              </tr>
+              <tr>
+                <td colspan='7'>
+                  <table id='table-shots-list-{{i}}'>
+                    <thead>
+                      <tr>
+                        <th class='data-left' style='width: 10%;'>Shot #</th>
+                        <th class='data-left' style='width: 10%;'>Shot</th>
+                        <th class='data-left' style='width: 10%;'>Angle</th>
+                        <th class='data-left' style='width: 10%;'>Audio</th>
+                        <th class='data-left' style='width: 20%;'>Subject</th>
+                        <th class='data-left' style='width: 40%;'>Description</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for line in range(0, shotList[i].lines.length) %}
+                        <tr style='font-size:70%;'>
+                          <td>
+                            {{num}}</td>
+                          <td>
+                            {{shotList[i].lines[line].shot}}
+                          </td>
+                          <td>
+                            {{shotList[i].lines[line].angle}}
+                          </td>
+                          <td>
+                            {{shotList[i].lines[line].audio}}
+                          </td>
+                          <td>
+                            {{shotList[i].lines[line].subject}}
+                          </td>
+                          <td colspan='2'>
+                            {{shotList[i].lines[line].description}}
+                          </td>
+                        </tr>
+                        {% set num = num + 1 %}
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+              <tr>
+                <td colspan='6'>&nbsp;<br>&nbsp;</td>
+              </tr>
+            {%- endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <script src='../js/header.js'></script>
+  <script src='../js/master-shot-list.js'></script>
+{% endblock %}
