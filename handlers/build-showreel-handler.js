@@ -6,7 +6,7 @@ const { createCanvas, loadImage, registerFont } = require("canvas");
 registerFont("C:/Windows/Fonts/arialbd.ttf", { family: "Arial Bold" });
 registerFont("C:/Windows/Fonts/timesbd.ttf", { family: "Times Bold" });
 const {
-  getData,
+  readFile,
   writeFile,
 } = require("../services/file-service");
 
@@ -14,7 +14,7 @@ const buildShowreelHandler = async (req, res) => {
   smartLog("info", "entering build showreel handler");
   const u = url.parse(req.originalUrl, true);
   const title = u.query.title;
-  const filmFoxFile = await getData(`${title}/${title}.fff`);
+  const filmFoxFile = await readFile(`${title}/${title}.fff`);
   const { script } = filmFoxFile;
 
   smartLog("info", "BUILDING SHOWREEL");

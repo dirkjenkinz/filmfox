@@ -1,6 +1,6 @@
 const url = require("url");
 const { smartLog } = require("../services/smart-log");
-const { getData, getFileList, writeFile } = require("../services/file-service");
+const { readFile, getFileList, writeFile } = require("../services/file-service");
 
 const createPackage = (sceneList, imageList, script) => {
   const bundle = [];
@@ -26,7 +26,7 @@ const videoHandler = async (req, res) => {
   const u = url.parse(req.originalUrl, true);
   const title = u.query.title;
   const ptr = u.query.ptr;
-  const filmFoxFile = await getData(`${title}/${title}.fff`);
+  const filmFoxFile = await readFile(`${title}/${title}.fff`);
   const { script } = filmFoxFile;
 
   const generatedFiles = await getFileList(`data/${title}/videos`, 'mp4');

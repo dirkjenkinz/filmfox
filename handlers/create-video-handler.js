@@ -1,6 +1,6 @@
 const url = require("url");
 const { smartLog } = require("../services/smart-log");
-const { getData } = require("../services/file-service");
+const { readFile } = require("../services/file-service");
 const videoshow = require("videoshow");
 const path = require("path");
 const FFmpeg = require("fluent-ffmpeg");
@@ -54,7 +54,7 @@ const createVideoHandler = async (req, res) => {
   const imagePath = path.join(__dirname, `../data/${title}/images`);
   const outPath = path.join(__dirname, `../data/${title}/videos`);
 
-  const filmFoxFile = await getData(`${title}/${title}.fff`);
+  const filmFoxFile = await readFile(`${title}/${title}.fff`);
   const { script } = filmFoxFile;
   script.forEach((s, index) => {
     if (s.scene == parseInt(scene)) {

@@ -9,7 +9,7 @@ const {
   getScript,
   writeFile,
   createDirectory,
-  getData,
+  readFile,
 } = require("../services/file-service");
 
 const convertToObject = (script) => {
@@ -184,7 +184,7 @@ const convertHandler = async (req, res) => {
   const u = url.parse(req.originalUrl, true);
   let file = u.query.script;
   api_key = process.env.APIKEY;
-  const voices = await getData("voices.json");
+  const voices = await readFile("voices.json");
   let script = await getScript(file);
   let parse = parseScript(script);
   script = convertToObject(parse[0]);

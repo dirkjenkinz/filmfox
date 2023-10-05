@@ -1,7 +1,7 @@
-const { getData, writeFile } = require('./services/file-service');
+const { readFile, writeFile } = require('./services/file-service');
 
 const shot = async () => {
-    let filmFoxFile = await getData(`Satellite/Satellite.fff`);
+    let filmFoxFile = await readFile(`Satellite/Satellite.fff`);
     const {shotList} = filmFoxFile;
     shotList.forEach((s) => {
         s.note = '';

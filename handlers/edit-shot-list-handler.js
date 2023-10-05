@@ -1,6 +1,6 @@
 const url = require("url");
 const { smartLog } = require("../services/smart-log");
-const { getData, writeFile } = require("../services/file-service");
+const { readFile, writeFile } = require("../services/file-service");
 
 const shots = ["-", "WS", "VWS", "MS", "MCU", "XCU", "CU"];
 const angles = [
@@ -30,7 +30,7 @@ const editShotListHandler = async (req, res) => {
   const u = url.parse(req.originalUrl, true);
   const title = u.query.title;
   const scene = u.query.scene;
-  const filmFoxFile = await getData(`${title}/${title}.fff`);
+  const filmFoxFile = await readFile(`${title}/${title}.fff`);
   const { script, shotList } = filmFoxFile;
 
   let pointer = -1;

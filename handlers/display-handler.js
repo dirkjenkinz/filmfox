@@ -1,5 +1,5 @@
 const url = require('url');
-const { getData, getListOfElements } = require('../services/file-service');
+const { readFile, getListOfElements } = require('../services/file-service');
 const { smartLog } = require('../services/smart-log');
 const dotenv = require('dotenv');
 dotenv.config();
@@ -11,7 +11,7 @@ const displayHandler = async (req, res) => {
   let scene = parseInt(u.query.scene);
   const title = u.query.title;
   let element = u.query.element;
-  let filmFoxFile = await getData(`${title}/${title}.fff`);
+  let filmFoxFile = await readFile(`${title}/${title}.fff`);
   
   let lock = 'Unlock';
 
@@ -29,7 +29,7 @@ const displayHandler = async (req, res) => {
   const nextScene = scene + 1;
 
   const { script, shotList } = filmFoxFile;
-  const characters = await getData(`${title}/${title}.chrs`);
+  const characters = await readFile(`${title}/${title}.chrs`);
   const api_key = process.env.APIKEY;
 
   let slug = '';

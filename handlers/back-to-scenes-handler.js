@@ -1,6 +1,6 @@
 const url = require("url");
 const { smartLog } = require("../services/smart-log");
-const { getData, writeFile } = require("../services/file-service");
+const { readFile, writeFile } = require("../services/file-service");
 
 const backToScenesHandler = async (req, res) => {
   smartLog("info", "ENTERING BACK TO SCENES HANDLER");
@@ -8,7 +8,7 @@ const backToScenesHandler = async (req, res) => {
   const title = u.query.title;
   const note = u.query.note;
   const scene = u.query.scene;
-  const filmFoxFile = await getData(`${title}/${title}.fff`);
+  const filmFoxFile = await readFile(`${title}/${title}.fff`);
   const {shotList} = filmFoxFile;
 console.log({note})
   shotList[scene].note = note;

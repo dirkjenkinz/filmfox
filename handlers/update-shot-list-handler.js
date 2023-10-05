@@ -1,6 +1,6 @@
 const url = require("url");
 const { smartLog } = require("../services/smart-log");
-const { getData, writeFile } = require("../services/file-service");
+const { readFile, writeFile } = require("../services/file-service");
 
 const updateShotListHandler = async (req, res) => {
   smartLog("info", "ENTERING UPDATE SHOTLIST HANDLER");
@@ -14,7 +14,7 @@ const updateShotListHandler = async (req, res) => {
   console.log({item});
   console.log({val});
 
-  const filmFoxFile = await getData(`${title}/${title}.fff`);
+  const filmFoxFile = await readFile(`${title}/${title}.fff`);
   const {shotList} = filmFoxFile;
   shotList[scene].lines[line][`${item}`] = val;
   await writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);

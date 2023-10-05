@@ -1,6 +1,6 @@
 const url = require("url");
 const { smartLog } = require("../services/smart-log");
-const { getListOfImages, getData, writeFile } = require("../services/file-service");
+const { getListOfImages, readFile, writeFile } = require("../services/file-service");
 
 const getUsed = (script) => {
   const used = [];
@@ -23,7 +23,7 @@ const galleryHandler = async (req, res) => {
   imageList.unshift("blank.jpg");
 
 if (caller === 'edit-scene'){
-  const filmFoxFile = await getData(`${title}/${title}.fff`);
+  const filmFoxFile = await readFile(`${title}/${title}.fff`);
   const { shotList } = filmFoxFile;
   shotList[scene].note = note;
   await writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
@@ -41,7 +41,7 @@ if (caller === 'edit-scene'){
   };
 
 
-  const filmFoxFile = await getData(`${title}/${title}.fff`);
+  const filmFoxFile = await readFile(`${title}/${title}.fff`);
   const {script} = filmFoxFile;
   const usedImages = getUsed(script);
 

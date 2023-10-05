@@ -1,6 +1,6 @@
 const url = require("url");
 const path = require('path');
-const { getData, writeFile, getFileList, fileExists } = require("../services/file-service");
+const { readFile, writeFile, getFileList, fileExists } = require("../services/file-service");
 const { smartLog } = require("../services/smart-log");
 const dotenv = require("dotenv");
 dotenv.config();
@@ -9,7 +9,7 @@ const soundHandler = async (req, res) => {
   smartLog("info", "ENTERING SOUND HANDLER");
   const u = url.parse(req.originalUrl, true);
   const title = u.query.title;
-  const filmFoxFile = await getData(`${title}/${title}.fff`);
+  const filmFoxFile = await readFile(`${title}/${title}.fff`);
   const mergedFiles = await getFileList(`data/${title}/scenes`, 'mp3');
   const scenes = [];
   const merged = [];

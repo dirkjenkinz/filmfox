@@ -1,6 +1,6 @@
 const url = require("url");
 const { smartLog } = require("../services/smart-log");
-const { getData, writeFile } = require("../services/file-service");
+const { readFile, writeFile } = require("../services/file-service");
 
 const updateNoteHandler = async (req, res) => {
   smartLog("info", "ENTERING UPDATE NOTE HANDLER");
@@ -10,7 +10,7 @@ const updateNoteHandler = async (req, res) => {
   const val = u.query.val;
   const caller = u.query.caller;
 
-  const filmFoxFile = await getData(`${title}/${title}.fff`);
+  const filmFoxFile = await readFile(`${title}/${title}.fff`);
   const {shotList} = filmFoxFile;
   shotList[scene].note = val;
 

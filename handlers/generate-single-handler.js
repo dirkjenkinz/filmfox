@@ -1,5 +1,5 @@
 const url = require("url");
-const { getData, writeFile, getDuration } = require("../services/file-service");
+const { readFile, writeFile, getDuration } = require("../services/file-service");
 const { generateSpeech } = require("../services/elevenLabs");
 const dotenv = require("dotenv");
 dotenv.config();
@@ -15,7 +15,7 @@ const generateSingleHandler = async (req, res) => {
   const api_key = process.env.APIKEY;
   const caller = u.query.caller;
 
-  const filmFoxFile = await getData(`${title}/${title}.fff`);
+  const filmFoxFile = await readFile(`${title}/${title}.fff`);
   const { script } = filmFoxFile;
   const element = script[elementNumber]
 
@@ -25,7 +25,7 @@ const generateSingleHandler = async (req, res) => {
   el = el.substring(el.length - 4);
   const fileName = `${sc}_${el}.mp3`;
 
-  const voice_data = await getData('voices.json');
+  const voice_data = await readFile('voices.json');
   
   let voice_id = '';
 

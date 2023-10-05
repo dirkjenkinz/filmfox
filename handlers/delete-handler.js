@@ -1,6 +1,6 @@
 const url = require("url");
 const { smartLog } = require("../services/smart-log");
-const { deleteFile, getData, writeFile } = require("../services/file-service");
+const { deleteFile, readFile, writeFile } = require("../services/file-service");
 
 const deleteHandler = async (req, res) => {
   smartLog("info", "entering delete handler");
@@ -13,7 +13,7 @@ const deleteHandler = async (req, res) => {
   await deleteFile(title, element, sub);
 
   if (sub === "sounds") {
-    const filmFoxFile = await getData(`${title}/${title}.fff`);
+    const filmFoxFile = await readFile(`${title}/${title}.fff`);
     let { script } = filmFoxFile;
     script[num].sound = "";
     script[num].duration = 0.000;

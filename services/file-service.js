@@ -31,8 +31,8 @@ const getScript = (file) => {
   });
 };
 
-const getData = async (file) => {
-  smartLog("info", `getData - getting data for ${file}`);
+const readFile = async (file) => {
+  smartLog("info", `readFile - getting data for ${file}`);
   const directoryPath = path.join(__dirname, "../data");
   return new Promise((resolve, reject) => {
     fs.readFile(`${directoryPath}/${file}`, (err, data) => {
@@ -191,7 +191,7 @@ const getListOfImages = async (subdir) => {
 
 module.exports = {
   getScript,
-  getData,
+  readFile,
   writeFile,
   createDirectory,
   getFileList,

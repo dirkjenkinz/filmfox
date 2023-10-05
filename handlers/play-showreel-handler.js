@@ -1,6 +1,6 @@
 const url = require("url");
 const { smartLog } = require("../services/smart-log");
-const { getData } = require("../services/file-service");
+const { readFile } = require("../services/file-service");
 
 const playShowreelHandler = async (req, res) => {
   smartLog("info", "entering play showreel handler");
@@ -9,7 +9,7 @@ const playShowreelHandler = async (req, res) => {
   let current = u.query.current;
   const action = u.query.action;
   let mute = u.query.mute;
-  const showreel = await getData(`${title}/${title}.shw`);
+  const showreel = await readFile(`${title}/${title}.shw`);
 
   if (!mute) mute = 'MUTE';
 

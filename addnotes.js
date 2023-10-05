@@ -1,7 +1,7 @@
-const { getData, writeFile } = require('./services/file-service');
+const { readFile, writeFile } = require('./services/file-service');
 const title='Satellite'
 const main = async () => {
-let filmFoxFile = await getData(`${title}/${title}.fff`);
+let filmFoxFile = await readFile(`${title}/${title}.fff`);
   
 let {script} = filmFoxFile;
 
