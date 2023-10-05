@@ -41,7 +41,7 @@
               {% for num in range(0, 3) -%}
                 <td colspan='2'>
                   <div class='col-md-8'>
-                    <textarea id="note-{{i}}" class='note' name="note-{{i}}" rows="2" cols="40">{{sceneList[i + num].note}}</textarea>
+                    <textarea id="note-{{i + num}}" class='note' name="note-{{i + num}}" rows="2" cols="40">{{sceneList[i + num].note}}</textarea>
                   </div>
                 </td>
                 <td class='sep'></td>
