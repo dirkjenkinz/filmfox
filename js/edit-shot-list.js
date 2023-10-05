@@ -31,4 +31,10 @@ $(".shot-select").on("change", (e) => {
     const title = $("#title")[0].outerText;
     const scene = $("#scene")[0].outerText;
     window.location.href = `/delete-shot?title=${title}&scene=${scene}&line=${line}`
-   });
+   }),
+   $("#input-note").on("focusout", (e) => {
+    const val = e.target.value;
+    const title = $("#title")[0].outerText;
+    const scene = $("#scene")[0].outerText;
+    window.location.href = `/update-note?title=${title}&scene=${scene}&val=${val}&caller=shot-list`;
+  });

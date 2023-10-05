@@ -1,9 +1,9 @@
-$("#display").on("click", () => {
+$("#btn-display").on("click", () => {
     const title = $("#title")[0].innerText;
     const scene = $("#scene")[0].innerText;
     window.location.href = `/display?title=${title}&scene=${scene}`;
   }),
-  $("#front").on("click", () => {
+  $("#btn-front").on("click", () => {
     window.location.href = `/`;
   }),
     $("#btn-build-showreel").on("click", () => {
@@ -11,7 +11,7 @@ $("#display").on("click", () => {
       const scene = $("#scene")[0].innerText;
       window.location.href = `/build-showreel?title=${f}&scene=${scene}`;
     }),
-    $('#ctv').on('click', () => {
+    $('#btn-ctv').on('click', () => {
       const f = $('#title')[0].innerText
       let scene = $('#scene')[0].innerText
       window.location.href = `/ctv?filmFoxFile=${f}&scene=${scene}`

@@ -1,11 +1,14 @@
+/*
 $(() => {
   const e = $("#scene")[0].innerText;
-  console.log({ e });
   const element = `row_${e}`;
-  console.log({ element });
   const elm = document.getElementById(element);
   elm.scrollIntoView(true);
   $("#display").attr("disabled", true);
+}),
+*/
+$(() => {
+  $("#btn-display").attr("disabled", true);
 }),
   $(".btn-gen").on("click", (e) => {
     const elementNumber = e.target.value;

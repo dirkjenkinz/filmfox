@@ -16,7 +16,9 @@ const updateNoteHandler = async (req, res) => {
 
   await writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
   if (caller === 'scenes'){
-    res.redirect(`/scenes?title=${title}`)
+    res.redirect(`/scenes?title=${title}`);
+  } else if ((caller === 'shot-list')){
+    res.redirect(`edit-shot-list?title=${title}&scene=${scene}`);
   } else {
     res.redirect(`/display?title=${title}&scene=${scene}`)
   }
