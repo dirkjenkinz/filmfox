@@ -5,9 +5,13 @@
       Note:
     </div>
     <div class='col-md-7' style='font-size: 80%;'>
-      <input type="text" id="input-note" name="note" size='80' value='{{note}}'>
+      <input type="text" id="input-note" name="note" size='70' value='{{note}}'>
     </div>
-    <div class='col-md-1'></div>
+    <div class='col-md-2'>
+      <button type='button' class='btn btn-edit btn-block btn-sm btn-edit-scene' id='edit-scene_{{i}}' value='{{i}}'>
+        Edit Scene
+      </button>
+    </div>
     <div class='col-md-2'>
       <button type='button' class='btn btn-edit btn-block btn-sm btn-edit-shot-list' id='edit-shot-list_{{i}}' value='{{i}}'>
         Edit Shot List
@@ -27,12 +31,12 @@
         </button>
       {% endif %}
     </div>
-    <div class='col-md-4' style='font-size: 60%;'>
+    <div class='col-md-4' style='font-size: 80%;'>
       Scene
       {{scene}}:
       {{slug}}
     </div>
-    <div class='col-md-1'></div>
+    <div class='col-md-2'></div>
     <div class='col-md-2'>
       {% if scene < highest %}
         <button type='button' class='btn btn-edit btn-block btn-sm' id='btn-next'>

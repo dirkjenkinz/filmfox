@@ -36,6 +36,7 @@ const voicesHandler = async (req, res) => {
 
   res.render("voices.njk", {
     vox,
+    page: 'Voices',
   });
 };
 

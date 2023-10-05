@@ -81,6 +81,7 @@ const displayHandler = async (req, res) => {
     slug,
     highest,
     note,
+    page : 'Display',
   });
 };
 

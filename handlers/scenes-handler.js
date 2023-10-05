@@ -25,6 +25,7 @@ const scenesHandler = async (req, res) => {
   res.render("scenes.njk", {
     title,
     sceneList,
+    page: 'Scenes',
   });
 };
 

@@ -63,6 +63,7 @@ if (caller === 'edit-scene'){
     used,
     unused,
     caller,
+    page: 'Gallery',
   });
 };
 

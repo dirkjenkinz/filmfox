@@ -70,6 +70,7 @@ const soundHandler = async (req, res) => {
     merged,
     ready,
     masterExists,
+    page: 'Sound',
   });
 };
 

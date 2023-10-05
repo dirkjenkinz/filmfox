@@ -10,6 +10,7 @@ const charactersHandler = async (req, res) => {
   res.render("characters.njk", {
     title,
     characters,
+    page: 'Characters',
   });
 };
 

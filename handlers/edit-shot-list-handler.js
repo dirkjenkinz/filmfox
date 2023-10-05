@@ -52,6 +52,7 @@ const editShotListHandler = async (req, res) => {
     audio,
     note: shotList[scene].note,
     slug,
+    page: 'Edit Shot List',
   });
 };
 

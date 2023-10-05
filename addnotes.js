@@ -1,8 +1,7 @@
 const { readFile, writeFile } = require('./services/file-service');
 const title='Satellite'
 const main = async () => {
-let filmFoxFile = await readFile(`${title}/${title}.fff`);
-  
+let filmFoxFile = await readFile(`${title}/${title}.fff`);  
 let {script} = filmFoxFile;
 
 script.forEach(s => {

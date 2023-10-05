@@ -28,6 +28,7 @@ const editSceneHandler = async (req, res) => {
     elements,
     scene,
     note,
+    page: 'Edit Scene',
   });
 };
 

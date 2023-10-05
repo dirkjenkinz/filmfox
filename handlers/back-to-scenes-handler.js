@@ -9,13 +9,9 @@ const backToScenesHandler = async (req, res) => {
   const note = u.query.note;
   const scene = u.query.scene;
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
-  const {shotList} = filmFoxFile;
-console.log({note})
+  const { shotList } = filmFoxFile;
   shotList[scene].note = note;
- 
-
- await writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
-
+  await writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
   res.redirect(`/scenes?title=${title}`);
 };
 

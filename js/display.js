@@ -13,6 +13,11 @@ $(() => {
     const title = $("#title")[0].innerText;
     window.location.href = `/generate-single?title=${title}&elementNumber=${elementNumber}&voice=${voice}&caller=display`;
   }),
+  $(".btn-edit-scene").on("click", (e) => {
+    const title = $("#title")[0].innerText;
+    const scene = $("#scene")[0].innerText;
+    window.location.href = `/edit-scene?title=${title}&scene=${scene}`;
+  }),
   $(".btn-edit-shot-list").on("click", (e) => {
     const title = $("#title")[0].innerText;
     const scene = $("#scene")[0].innerText;

@@ -88,6 +88,7 @@ const videoHandler = async (req, res) => {
     sceneList,
     package,
     gen,
+    page: 'Video',
   });
 };
 

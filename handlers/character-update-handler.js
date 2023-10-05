@@ -46,6 +46,7 @@ const characterUpdateHandler = async (req, res) => {
     characters,
     voice_data,
     scene,
+    page: 'Voice Map',
   });
 };
 

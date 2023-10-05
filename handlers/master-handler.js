@@ -1,5 +1,5 @@
 const url = require("url");
-const { smartLog } = require('../services/smart-log');
+const { smartLog } = require("../services/smart-log");
 const dotenv = require("dotenv");
 dotenv.config();
 const path = require("path");
@@ -13,12 +13,12 @@ const masterHandler = async (req, res) => {
   const scene = u.query.scene;
   const dirPath = path.join(__dirname, `../data/${title}/scenes`);
   const concat = ffmpeg();
-  
+
   for (let i = 0; i < size; i++) {
     let fName = `00000${i}`;
     fName = `s${fName.substring(fName.length - 5)}.mp3`;
     concat.input(`${dirPath}/${fName}`);
-  };
+  }
 
   concat
     .on("end", function () {
@@ -29,10 +29,9 @@ const masterHandler = async (req, res) => {
     })
     .mergeToFile(`${dirPath}/master.mp3`, dirPath);
 
-  setTimeout(function() {
-    res.redirect(`/sound?title=${title}&scene=${scene}`)
+  setTimeout(function () {
+    res.redirect(`/sound?title=${title}&scene=${scene}`);
   }, 5000);
-
 };
 
 module.exports = { masterHandler };

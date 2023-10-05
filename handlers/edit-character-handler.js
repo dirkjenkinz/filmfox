@@ -38,6 +38,7 @@ const editCharacterHandler = async (req, res) => {
     title,
     elements,
     currentVoice,
+    page: 'Edit Character',
   });
 };
 

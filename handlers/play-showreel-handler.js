@@ -57,6 +57,7 @@ const playShowreelHandler = async (req, res) => {
     scene,
     highestscene: scNum,
     mute,
+    page: 'Showreel',
   });
 };
 
