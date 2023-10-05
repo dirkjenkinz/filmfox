@@ -22,34 +22,15 @@
                 </td>
                 <td class='data-left' width='12%'>
                   {% if sceneList[i + num] %}
-                    Scene
-                    {{i + num}}
+                    Scene {{i + num}}
                     <br>
-                    Element
-                    {{sceneList[i + num].element}}
-                  {% endif %}
-                </td>
-                <td class='sep'>&nbsp;</td>
-              {% endfor %}
-            </tr>
-
-            <tr>
-              {% for num in range(0, 3) -%}
-                <td colspan='2'>
-                  {{sceneList[i + num].note}}&nbsp;
-                </td>
-                <td class='sep'></td>
-              {% endfor %}
-            </tr>
-
-            <tr>
-              {% for num in range(0, 3) -%}
-
-                <td colspan='2'>
-                  {% if sceneList[i + num] %}
                     <button type='button' class='btn btn-edit btn-block btn-sm btn-edit-scene' value="{{i + num}}">
                       Edit Scene
                     </button>
+                    <br>
+                    <button type='button' class='btn btn-edit btn-block btn-sm btn-edit-shot-list' value="{{i + num}}">
+                      Edit Shot List
+                    </button>
                   {% endif %}
                 </td>
                 <td class='sep'>&nbsp;</td>
@@ -59,13 +40,11 @@
             <tr>
               {% for num in range(0, 3) -%}
                 <td colspan='2'>
-                  {% if sceneList[i + num] %}
-                    <button type='button' class='btn btn-edit btn-block btn-sm btn-edit-shot-list' value="{{i + num}}">
-                      Edit Shot List
-                    </button>
-                  </td>
-                {% endif %}
-                <td class='sep'>&nbsp;</td>
+                  <div class='col-md-8'>
+                    <textarea id="note-{{i}}" class='note' name="note-{{i}}" rows="2" cols="40">{{sceneList[i + num].note}}</textarea>
+                  </div>
+                </td>
+                <td class='sep'></td>
               {% endfor %}
             </tr>
 

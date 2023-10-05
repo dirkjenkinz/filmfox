@@ -3,7 +3,7 @@ const { smartLog } = require("../services/smart-log");
 const { getData, writeFile } = require("../services/file-service");
 
 const updateImageDisplayHandler = async (req, res) => {
-  smartLog("info", "entering UPDATE IMAGE DISPLAY handler");
+  smartLog("info", "ENTERING UPDATE IMAGE DISPLAY HANDLDER");
 
   let u = url.parse(req.originalUrl, true);
   const scene = u.query.scene;
@@ -47,7 +47,7 @@ const updateImageDisplayHandler = async (req, res) => {
     );
   } else {
     res.redirect(
-      `/display?title=${title}&scene=${scene}`
+      `/display?title=${title}&scene=${scene}&element=${element}`
     );
   }
 };

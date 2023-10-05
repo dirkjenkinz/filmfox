@@ -1,6 +1,8 @@
 $(() => {
   const e = $("#scene")[0].innerText;
+  console.log({ e });
   const element = `row_${e}`;
+  console.log({ element });
   const elm = document.getElementById(element);
   elm.scrollIntoView(true);
   $("#display").attr("disabled", true);
@@ -21,6 +23,8 @@ $(() => {
     const s = `../data/${title}/sounds/${e.target.value}`;
     document.getElementById("master-play").setAttribute("src", s);
     document.getElementById("master-play").play();
+    console.log($("#bod"));
+    console.log($("#bod").height());
   }),
   $(".btn-del").on("click", (e) => {
     const num = e.target.id.substring(4);
@@ -50,8 +54,8 @@ $(() => {
     const val = e.target.value;
     const title = $("#title")[0].outerText;
     const scene = $("#scene")[0].outerText;
-    window.location.href = `/update-note?title=${title}&scene=${scene}&val=${val}`
-    }),
+    window.location.href = `/update-note?title=${title}&scene=${scene}&val=${val}`;
+  }),
   $("#btn-sound-lock").on("click", () => {
     const l = $("#length")[0].innerText;
     if ($("#btn-sound-lock")[0].innerText === "Lock Delete") {
