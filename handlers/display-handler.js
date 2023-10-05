@@ -11,7 +11,7 @@ const displayHandler = async (req, res) => {
   let scene = parseInt(u.query.scene);
   const title = u.query.title;
   let element = u.query.element;
-  let filmFoxFile = await readFile(`${title}/${title}.fff`);
+  const filmFoxFile = await readFile(`${title}/${title}.fff`);
   
   let lock = 'Unlock';
 

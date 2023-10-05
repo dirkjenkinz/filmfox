@@ -1,0 +1,95 @@
+{% extends "parent.njk" %}
+{% block page %}
+  <div class='row top'>
+    <p id='size' hidden="hidden">{{size}}</p>
+    <div class='col-md-3'>
+      <button class='btn btn-block btn-edit btn-sm' id='btn-hide-all' value='{{i}}'>Hide All</button>
+    </div>
+    <div class='col-md-1'>&nbsp;</div>
+    <div class='col-md-3'>
+      <button class='btn btn-block btn-edit btn-sm' id='btn-reveal-all' value='{{i}}'>Reveal All</button>
+    </div>
+    <div class='col-md-1'>&nbsp;</div>
+    <div class='col-md-3'>
+      <button class='btn btn-block btn-edit btn-sm' id='btn-display-list'>Display the Master List</button>
+    </div>
+  </div>
+  <div class='row top'>
+    <div class='row tableFixHead' id='tabhead'>
+      <div class='col-md-12'>
+        <table id='table-shots'>
+          <tbody>
+            {% set num = 0 %}
+            {% for i in range(0, shotList.length) -%}
+              <tr id='row_{{i}}' class='display-box' style='font-size:80%;'>
+                <td class='data-left' style='width: 8%;'>Scene
+                  {{shotList[i].scene}}</td>
+                <td class='data-left' colspan='2' style='width: 33%;'>{{slugs[i]}}</td>
+                <td class='data-left' style='width: 33%;'>{{shotList[i].note}}</td>
+                <td style='width: 8%;'>
+                  {% if i == 0 %}
+                    <button class='btn btn-block btn-edit btn-sm btn-up' id='btn-up-{{i}}' disabled="disabled">Up
+                    </button>
+                  {% else %}
+                    <button class='btn btn-block btn-edit btn-sm btn-up' id='btn-up-{{i}}' value='{{i}}'>Up
+                    </button>
+                  {% endif %}
+                </td>
+                <td style='width: 8%;'>
+                  {% if i == size - 1 %}
+                    <button class='btn btn-block btn-edit btn-sm btn-down' id='btn-down-{{i}}' disabled="disabled">Down
+                    </button>
+                  {% else %}
+                    <button class='btn btn-block btn-edit btn-sm btn-down' id='btn-down-{{i}}' value='{{i}}'>Down
+                    </button>
+                  {% endif %}
+                </td>
+                <td style='width: 10%;'>
+                  <button class='btn btn-block btn-edit btn-sm btn-hide' id='btn-hide-{{i}}' value='{{i}}'>Hide/Show
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td colspan='7'>
+                  {% if hidden[i] == 'false' %}
+                    <table id='table-shots-list-{{i}}'>
+                    {% else %}
+                      <table id='table-shots-list-{{i}}' hidden="hidden">
+                      {% endif %}
+                      <tbody>
+                        {% for line in range(0, shotList[i].lines.length) %}
+                          <tr style='font-size:70%;'>
+                            <td>Shot
+                              {{num}}</td>
+                            <td>
+                              {{shotList[i].lines[line].shot}}
+                            </td>
+                            <td>
+                              {{shotList[i].lines[line].angle}}
+                            </td>
+                            <td>
+                              {{shotList[i].lines[line].audio}}
+                            </td>
+                            <td>
+                              {{shotList[i].lines[line].subject}}
+                            </td>
+                            <td colspan='2'>
+                              {{shotList[i].lines[line].description}}
+                            </td>
+                          </tr>
+                          {% set num = num + 1 %}
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+
+              {%- endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <script src='../js/header.js'></script>
+    <script src='../js/master-shot-list.js'></script>
+  {% endblock %}
