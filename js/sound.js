@@ -1,5 +1,5 @@
 $(() => {
-  $("#btn-merge").attr("disabled", true);
+  $("#btn-sound").attr("disabled", true);
 }),
 $('.btn-merge').on('click', (e) => {
     let scene = e.target.value;
