@@ -22,13 +22,6 @@ const galleryHandler = async (req, res) => {
   const imageList = await getListOfImages(title);
   imageList.unshift("blank.jpg");
 
-if (caller === 'edit-scene'){
-  const filmFoxFile = await readFile(`${title}/${title}.fff`);
-  const { shotList } = filmFoxFile;
-  shotList[scene].note = note;
-  await writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
-};
-
   const images = [];
   for (let i = 0; i < imageList.length; i++) {
     if (imageList[i].substring(imageList[i].length - 4) === ".mov") {

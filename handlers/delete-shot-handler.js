@@ -27,7 +27,7 @@ const deleteShotHandler = async (req, res) => {
     await writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
   }
 
-  res.redirect(`/edit-shot-list?title=${title}&scene=${scene}`);
+  res.redirect(`/scene-shot-list?title=${title}&scene=${scene}`);
 };
 
 module.exports = { deleteShotHandler };

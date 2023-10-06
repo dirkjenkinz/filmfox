@@ -18,7 +18,7 @@ const updateNoteHandler = async (req, res) => {
   if (caller === 'scenes'){
     res.redirect(`/scenes?title=${title}`);
   } else if ((caller === 'shot-list')){
-    res.redirect(`edit-shot-list?title=${title}&scene=${scene}`);
+    res.redirect(`scene-shot-list?title=${title}&scene=${scene}`);
   } else {
     res.redirect(`/display?title=${title}&scene=${scene}`)
   }

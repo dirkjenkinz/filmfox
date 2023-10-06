@@ -24,12 +24,8 @@
                   {% if sceneList[i + num] %}
                     Scene {{i + num}}
                     <br>
-                    <button type='button' class='btn btn-edit btn-block btn-sm btn-edit-scene' value="{{i + num}}">
-                      Edit Scene
-                    </button>
-                    <br>
-                    <button type='button' class='btn btn-edit btn-block btn-sm btn-edit-shot-list' value="{{i + num}}">
-                      Edit Shot List
+                    <button type='button' class='btn btn-edit btn-block btn-sm btn-scene-shot-list' value="{{i + num}}">
+                      Shot List
                     </button>
                   {% endif %}
                 </td>
@@ -41,7 +37,7 @@
               {% for num in range(0, 3) -%}
                 <td colspan='2'>
                   <div class='col-md-8'>
-                    <textarea id="note-{{i + num}}" class='note' name="note-{{i + num}}" rows="2" cols="40">{{sceneList[i + num].note}}</textarea>
+                    <textarea id="note-{{i + num}}" class='note' name="note-{{i + num}}" rows="2" cols="44">{{sceneList[i + num].note}}</textarea>
                   </div>
                 </td>
                 <td class='sep'></td>

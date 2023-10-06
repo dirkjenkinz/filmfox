@@ -25,7 +25,7 @@ const moves = [
   "Rack Focus",
 ];
 const audio = ["-", "Boom", "Lavs", "Lavs and Boom", "Voice Over (VO)"];
-const editShotListHandler = async (req, res) => {
+const sceneShotListHandler = async (req, res) => {
   smartLog("info", "ENTERING BACK TO SCENES HANDLER");
   const u = url.parse(req.originalUrl, true);
   const title = u.query.title;
@@ -44,7 +44,7 @@ const editShotListHandler = async (req, res) => {
 
   const slug = script[pointer].dialogue;
 
-  res.render("edit-shot-list.njk", {
+  res.render("scene-shot-list.njk", {
     title,
     scene,
     lines: shotList[scene].lines,
@@ -59,4 +59,4 @@ const editShotListHandler = async (req, res) => {
   });
 };
 
-module.exports = { editShotListHandler };
+module.exports = { sceneShotListHandler };
