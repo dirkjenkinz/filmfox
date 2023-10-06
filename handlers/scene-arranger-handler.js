@@ -1,8 +1,8 @@
 const url = require("url");
 const { smartLog } = require("../services/smart-log");
-const { readFile, writeFile } = require("../services/file-service");
+const { readFile } = require("../services/file-service");
 
-const masterShotListHandler = async (req, res) => {
+const sceneArrangerHandler = async (req, res) => {
   smartLog("info", "ENTERING MASTER SHOT LIST HANDLER");
   const u = url.parse(req.originalUrl, true);
   const title = u.query.title;
@@ -51,15 +51,15 @@ const masterShotListHandler = async (req, res) => {
       hidden,
     });
   } else {
-    res.render("master-shot-list.njk", {
+    res.render("scene-arranger.njk", {
       title,
       shotList: sList,
       slugs: slugList,
-      page: "Master Shot List",
+      page: "Scene Arranger",
       size: shotList.length,
       hidden,
     });
   }
 };
 
-module.exports = { masterShotListHandler };
+module.exports = { sceneArrangerHandler };

@@ -1,5 +1,5 @@
 $(() => {
-  $("#btn-master-shot-list").attr("disabled", true);
+  $("#btn-scene-arranger").attr("disabled", true);
 }),
 $("#btn-display-full").on("click", (e) => {
   const title = $("#title")[0].innerText;

@@ -34,7 +34,7 @@ $("#btn-display").on("click", () => {
       const scene = $("#scene")[0].innerText;
       window.location.href = `/video?title=${title}&scene=${scene}`;
     }),
-    $("#btn-master-shot-list").on("click", () => {
+    $("#btn-scene-arranger").on("click", () => {
       const title = $("#title")[0].innerText;
-      window.location.href = `/master-shot-list?title=${title}`;
+      window.location.href = `/scene-arranger?title=${title}`;
     })

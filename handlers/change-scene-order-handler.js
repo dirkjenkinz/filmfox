@@ -32,7 +32,7 @@ const changeSceneOrderHandler = async (req, res) => {
   sceneOrder[numOther] = sceneOrder[num] - sceneOrder[numOther];
   sceneOrder[num] = sceneOrder[num] - sceneOrder[numOther]
   await writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
-  res.redirect(`/master-shot-list?title=${title}&hidden=${hidden}`);
+  res.redirect(`/scene-arranger?title=${title}&hidden=${hidden}`);
 };
 
 module.exports = { changeSceneOrderHandler };
