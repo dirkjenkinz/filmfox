@@ -1,6 +1,6 @@
 const url = require("url");
 const { smartLog } = require("../services/smart-log");
-const { readFile, writeFile } = require("../services/file-service");
+const { readFile } = require("../services/file-service");
 
 const shots = ["-", "WS", "VWS", "MS", "MCU", "XCU", "CU"];
 const angles = [
@@ -33,6 +33,8 @@ const editShotListHandler = async (req, res) => {
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
   const { script, shotList } = filmFoxFile;
 
+  const size = shotList.length;
+
   let pointer = -1;
   script.forEach((s, index) => {
     if (s.scene === parseInt(scene) && pointer === -1) {
@@ -53,6 +55,7 @@ const editShotListHandler = async (req, res) => {
     note: shotList[scene].note,
     slug,
     page: 'Edit Shot List',
+    size,
   });
 };
 

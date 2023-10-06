@@ -16,6 +16,28 @@
               <label for="input-note">Note:</label>
               <input type="text" id="input-note" name="input-note" size='100' value='{{note}}'>
             </td>
+            <td>
+              {% if scene > 0 %}
+              <button class='btn btn-block btn-edit btn-sm btn-previous' id='btn-previous'>
+                Previous
+              </button>
+              {% else %}
+              <button class='btn btn-block btn-edit btn-sm btn-previous' id='btn-previous' disabled>
+                Previous
+              </button>
+              {% endif %}
+            </td>
+            <td>
+              {% if scene < size - 1 %}
+              <button class='btn btn-block btn-edit btn-sm btn-next' id='btn-next'>
+                Next
+              </button>
+              {% else %}
+              <button class='btn btn-block btn-edit btn-sm btn-next' id='btn-next' disabled>
+                Next
+              </button>
+              {% endif %}
+            </td>
           </tr>
         </thead>
         <tbody>
@@ -68,7 +90,7 @@
           {% for i in range(0, lines.length) -%}
             <tr>
               <td class='data-left'>
-                {{i}}
+                {{i +1}}
               </td>
               <td class='data-left'>
                 <select id='shot-shot_{{i}}' class='shot-select shot-shot'>
@@ -142,9 +164,15 @@
                 </button>
               </td>
               <td>
+              {% if lines.length > 1 %} 
                 <button class='btn btn-block btn-edit btn-sm btn-delete' value='{{i}}'>
                   -
                 </button>
+                {% else %}
+                <button class='btn btn-block btn-edit btn-sm btn-delete' value='{{i}}' disabled>
+                  -
+                </button>
+                {% endif %}
               </td>
             </tr>
           {% endfor %}

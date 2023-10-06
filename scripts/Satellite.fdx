@@ -2753,7 +2753,7 @@
       <Text>TOM</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
-      <Text>It will end, Barbara. They’ll find a way to destroy the Black Knight and everything will get back to normal</Text>
+      <Text>It will end, Barbara. They’ll find a way to destroy the Black Knight and everything will get back to normal.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Character">
       <Text>BARBARA</Text>
@@ -2762,9 +2762,7 @@
       <Text>How will they destroy it? They’ve thrown half the nukes in the world at it and haven’t even scratched the paint work.</Text>
     </Paragraph>
     <Paragraph Type="Parenthetical">
-      <Text>(</Text>
-      <Text AdornmentStyle="-1" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="">beat</Text>
-      <Text>)</Text>
+      <Text>(beat)</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
       <Text>You know full well where this is heading. Lie to yourself all you like. But don’t lie to me.</Text>
@@ -3930,7 +3928,9 @@ The screen goes to the ‘off-air’ sign.</Text>
       <Text>I couldn’t help myself.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.50" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Action">
-      <Text>Only now does Tom realise the voice isn’t in his head. He looks across the room at Mr. Kepler.</Text>
+      <Text>Only now does Tom </Text>
+      <Text AdornmentStyle="-1" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="">realise</Text>
+      <Text> the voice isn’t in his head. He looks across the room at Mr. Kepler.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Character">
       <Text>Mr. KEPLER (CONT’D)</Text>
@@ -6179,9 +6179,6 @@ Tom laughs at Bates’ cornball phraseology.</Text>
       <Text>She and Tom eat an eyeball each.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.50" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Action">
-      <Text></Text>
-    </Paragraph>
-    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.50" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Action">
       <Text>Barbara bites into Warburg’s neck, ripping out his windpipe.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.50" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Action">
@@ -6261,16 +6258,16 @@ Tom laughs at Bates’ cornball phraseology.</Text>
       <Range End="43302" Start="43299"/>
       <Range End="45739" Start="45737"/>
       <Range End="46697" Start="46692"/>
-      <Range End="54026" Start="54023"/>
-      <Range End="55769" Start="55762"/>
-      <Range End="56219" Start="56211"/>
-      <Range End="56354" Start="56348"/>
-      <Range End="73124" Start="73120"/>
-      <Range End="77028" Start="76981"/>
-      <Range End="80993" Start="80986"/>
-      <Range End="81985" Start="81981"/>
-      <Range End="88794" Start="88786"/>
-      <Range End="91761" Start="91757"/>
+      <Range End="54027" Start="54024"/>
+      <Range End="55770" Start="55763"/>
+      <Range End="56220" Start="56212"/>
+      <Range End="56355" Start="56349"/>
+      <Range End="73125" Start="73121"/>
+      <Range End="77029" Start="76982"/>
+      <Range End="80994" Start="80987"/>
+      <Range End="81986" Start="81982"/>
+      <Range End="88795" Start="88787"/>
+      <Range End="91762" Start="91758"/>
     </IgnoredRanges>
     <IgnoredWords>
       <Word>1AM</Word>
@@ -6313,7 +6310,7 @@ Tom laughs at Bates’ cornball phraseology.</Text>
 
   <WindowState Height="635" Left="2" Mode="Maximized" Top="2" Width="649"/>
 
-  <TextState Scaling="150" Selection="2931,2931" ShowInvisibles="No"/>
+  <TextState Scaling="150" Selection="5756,7449" ShowInvisibles="No"/>
 
   <ElementSettings Type="General">
     <FontSpec AdornmentStyle="0" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style=""/>

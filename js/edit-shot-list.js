@@ -20,6 +20,16 @@ $(".shot-select").on("change", (e) => {
     const scene = $("#scene")[0].outerText;
     window.location.href = `/update-shot-list?title=${title}&scene=${scene}&val=${val}&item=description&line=${line}`
    }),
+   $(".btn-next").on("click", (e) => {
+    const title = $("#title")[0].outerText;
+    const scene = parseInt($("#scene")[0].outerText) + 1;
+    window.location.href = `/edit-shot-list?title=${title}&scene=${scene}`
+   }),
+   $(".btn-previous").on("click", (e) => {
+    const title = $("#title")[0].outerText;
+    const scene = parseInt($("#scene")[0].outerText) - 1;
+    window.location.href = `/edit-shot-list?title=${title}&scene=${scene}`
+   }),
    $(".btn-add").on("click", (e) => {
     const line = e.target.value;
     const title = $("#title")[0].outerText;
