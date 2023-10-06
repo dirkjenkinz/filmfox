@@ -37,4 +37,8 @@ $("#btn-display").on("click", () => {
     $("#btn-scene-arranger").on("click", () => {
       const title = $("#title")[0].innerText;
       window.location.href = `/scene-arranger?title=${title}`;
-    })
+    }),
+    $("#btn-display-full").on("click", (e) => {
+      const title = $("#title")[0].innerText;
+      window.location.href = `/scene-arranger?title=${title}&full=yes`;
+    });

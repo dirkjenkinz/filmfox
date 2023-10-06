@@ -1,10 +1,6 @@
 $(() => {
   $("#btn-scene-arranger").attr("disabled", true);
 }),
-$("#btn-display-full").on("click", (e) => {
-  const title = $("#title")[0].innerText;
-  window.location.href = `/master-shot-list?title=${title}&full=yes`;
-}),
   $(".btn-hide").on("click", (e) => {
     const num = e.target.value;
     $(`#table-shots-list-${num}`).toggle();
