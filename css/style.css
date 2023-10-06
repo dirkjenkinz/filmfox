@@ -263,6 +263,11 @@ textarea {
   border: black 4px solid;
 }
 
+.data-page {
+  background: white;
+  color: black;
+}
+
 .shot-header {
   background:mediumslateblue;
 }

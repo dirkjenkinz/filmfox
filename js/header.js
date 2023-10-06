@@ -38,6 +38,10 @@ $("#btn-display").on("click", () => {
       const title = $("#title")[0].innerText;
       window.location.href = `/scene-arranger?title=${title}`;
     }),
+    $("#btn-pages").on("click", () => {
+      const title = $("#title")[0].innerText;
+      window.location.href = `/pages?title=${title}&page=0`;
+    }),
     $("#btn-display-full").on("click", (e) => {
       const title = $("#title")[0].innerText;
       window.location.href = `/scene-arranger?title=${title}&full=yes`;

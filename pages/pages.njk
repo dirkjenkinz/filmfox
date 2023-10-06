@@ -1,0 +1,85 @@
+{% extends "parent.njk" %}
+{% block page %}
+  <div class='row top'>
+    <div class='col-md-2'>
+      <button class='btn btn-block btn-edit btn-sm' id='btn-previous'>Previous Sheet</button>
+    </div>
+    <div class='col-md-8'></div>
+    <div class='col-md-2'>
+      <button class='btn btn-block btn-edit btn-sm' id='btn-next'>Next Sheet</button>
+    </div>
+  </div>
+  <div class='row top'>
+    <p id='size' hidden="hidden">{{size}}</p>
+    <div class='row tableFixHead' id='tabhead'>
+      <div class='col-md-12'>
+        <table id='table-shots' style='background: white;'>
+          <tbody>
+            <tr>
+              <td class='data-page' colspan='2'>Sheet
+                {{sheet}}</td>
+              <td class='data-page' colspan='2'>{{title}}</td>
+            </tr>
+            <tr>
+              <td colspan='4'>&nbsp;</td>
+            </tr>
+            <tr>
+              <td class='data-page'>Scene
+                {{shotList[sheet].scene}}</td>
+              <td class='data-page' colspan='2'>{{slugs[sheet]}}</td>
+              <td class='data-page'>{{shotList[sheet].note}}</td>
+            </tr>
+            <td class='data-page' colspan='4'>&nbsp;</td>
+            <tr></tr>
+            <tr>
+              <td colspan='7'>
+                <table id='table-shots-list-{{page}}'>
+                  <thead>
+                    <tr>
+                      <th class='data-page' style='width: 10%;'>Shot #</th>
+                      <th class='data-page' style='width: 10%;'>Shot</th>
+                      <th class='data-page' style='width: 10%;'>Angle</th>
+                      <th class='data-page' style='width: 10%;'>Audio</th>
+                      <th class='data-page' style='width: 20%;'>Subject</th>
+                      <th class='data-page' style='width: 35%;'>Description</th>
+                      <th class='data-page' style='width: 5%;'>Done</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for line in range(0, shotList[sheet].lines.length) %}
+                      <tr style='font-size:70%;'>
+                        <td class='data-page'>
+                          {{line+1}}</td>
+                        <td class='data-page'>
+                          {{shotList[sheet].lines[line].shot}}
+                        </td>
+                        <td class='data-page'>
+                          {{shotList[sheet].lines[line].angle}}
+                        </td>
+                        <td class='data-page'>
+                          {{shotList[sheet].lines[line].audio}}
+                        </td>
+                        <td class='data-page'>
+                          {{shotList[sheet].lines[line].subject}}
+                        </td>
+                        <td class='data-page'>
+                          {{shotList[sheet].lines[line].description}}
+                        </td>
+                        <td class='data-sheet'>&nbsp;</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+              <tr>
+                <td colspan='6'>&nbsp;<br>&nbsp;</td>
+              </tr>
+            {%- endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <script src='../js/header.js'></script>
+  <script src='../js/pages.js'></script>
+{% endblock %}

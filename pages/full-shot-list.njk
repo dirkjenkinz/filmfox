@@ -11,10 +11,10 @@
     </div>
   </div>
   <div class='row top'>
-    <div class='row tableFixHead' id='tabhead'>
+    <div class='row tableFixHead' id='tabhead' style='border: 10px solid pink;'>
       <div class='col-md-12'>
         <table id='table-shots'>
-          <tbody>
+          <tbody
             {% set num = 0 %}
             {% for i in range(1, shotList.length) -%}
               <tr id='row_{{i}}' style='font-size:80%;'>
