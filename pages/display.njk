@@ -27,6 +27,10 @@
         <button type='button' class='btn btn-edit btn-block btn-sm' id='btn-previous'>
           Previous Scene
         </button>
+        {% else %}
+        <button type='button' class='btn btn-edit btn-block btn-sm' id='btn-previous' disabled>
+          Previous Scene
+        </button>
       {% endif %}
     </div>
     <div class='col-md-4' style='font-size: 80%;'>
@@ -38,6 +42,10 @@
     <div class='col-md-2'>
       {% if scene < highest %}
         <button type='button' class='btn btn-edit btn-block btn-sm' id='btn-next'>
+          Next Scene
+        </button>
+      {% else %}
+       <button type='button' class='btn btn-edit btn-block btn-sm' id='btn-next' disabled>
           Next Scene
         </button>
       {% endif %}
