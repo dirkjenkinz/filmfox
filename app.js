@@ -79,7 +79,7 @@ app.use('/delete-shot', deleteShotRouter);
 app.use('/update-note', updateNoteRouter);
 app.use('/scene-arranger', sceneArrangerRouter);
 app.use('/change-scene-order', changeSceneOrderRouter);
-app.use('/pages', pagesRouter);
+app.use('/sheets', pagesRouter);
 
 app.listen(PORT, (err) => {
     smartLog('paramount', `FilmFox is up & running on port ${PORT}`);
