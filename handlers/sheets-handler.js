@@ -29,7 +29,6 @@ const sheetsHandler = async (req, res) => {
       slugs.push(s.dialogue);
     }
   });
-sheet = 2;
 
   res.render("sheets.njk", {
     title,
@@ -37,7 +36,7 @@ sheet = 2;
     slugs: slugList,
     page: "Sheets",
     size: shotList.length,
-    sheet,
+    sheet: sheet,
   });
 };
 
