@@ -2,11 +2,11 @@ const url = require("url");
 const { smartLog } = require("../services/smart-log");
 const { readFile } = require("../services/file-service");
 
-const pagesHandler = async (req, res) => {
-  smartLog("info", "ENTERING PAGES HANDLER");
+const sheetsHandler = async (req, res) => {
+  smartLog("info", "ENTERING SHEETS HANDLER");
   const u = url.parse(req.originalUrl, true);
   const title = u.query.title;
-  let page = u.query.page;
+  let sheet = u.query.sheet;
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
   const { shotList, script, sceneOrder } = filmFoxFile;
 
@@ -31,7 +31,7 @@ const pagesHandler = async (req, res) => {
   });
 sheet = 2;
 
-  res.render("pages.njk", {
+  res.render("sheets.njk", {
     title,
     shotList: sList,
     slugs: slugList,
@@ -41,4 +41,4 @@ sheet = 2;
   });
 };
 
-module.exports = { pagesHandler };
+module.exports = { sheetsHandler };

@@ -30,7 +30,7 @@ const deleteShotRouter = require('./routes/delete-shot.js');
 const updateNoteRouter = require('./routes/update-note.js');
 const changeSceneOrderRouter = require('./routes/change-scene-order.js');
 const sceneArrangerRouter = require('./routes/scene-arranger.js');
-const pagesRouter = require('./routes/pages.js');
+const sheetsRouter = require('./routes/sheets.js');
 
 const nunjucks = require('nunjucks');
 const bodyParser = require('body-parser');
@@ -79,7 +79,7 @@ app.use('/delete-shot', deleteShotRouter);
 app.use('/update-note', updateNoteRouter);
 app.use('/scene-arranger', sceneArrangerRouter);
 app.use('/change-scene-order', changeSceneOrderRouter);
-app.use('/sheets', pagesRouter);
+app.use('/sheets', sheetsRouter);
 
 app.listen(PORT, (err) => {
     smartLog('paramount', `FilmFox is up & running on port ${PORT}`);
