@@ -4,21 +4,21 @@
     <div class='col-md-12'>
       <table class='table-bordered table-sm table-dark table-grid' id='tab_img'>
         <tbody>
-          {% for i in range(0, package.length, 5) -%}
+          {% for i in range(0, script.length, 5) -%}
             <tr>
               {% for num in range(0, 5) -%}
-                {% if (package[i + num]) %}
+                {% if (script[i + num]) %}
                   <td class='data-left'>
                     Scene
                     {{i + num}}
                   </td>
                   <td class='data-left'>
-                    {% if package[i + num][0][1] == 'movie' %}
+                    {% if script[i][0].type == 'movie' %}
                       <video width="80" height="45" controls="controls" autoplay="autoplay" muted="muted" class="img">
-                        <source src="../data/{{title}}/images/{{package[i + num][0][0]}}" type="video/mp4">
+                        <source src="../data/{{title}}/images/{{script[i][0].image}}" type="video/mp4">
                       </video>
                     {% else %}
-                      <img width="80" height="45" src="../data/{{title}}/images/{{package[i + num][0][0]}}" class="img" alt="img_{{i}}"/>
+                      <img width="80" height="45" src="../data/{{title}}/images/{{script[i][0].image}}" class="img" alt="img_{{i}}"/>
                     {% endif %}
                   </td>
                   <td class='data-left'>
