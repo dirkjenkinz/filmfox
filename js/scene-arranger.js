@@ -1,4 +1,4 @@
-$(() => {
+$((e) => {
   $("#btn-scene-arranger").attr("disabled", true);
 }),
   $(".btn-hide").on("click", (e) => {
