@@ -46,12 +46,13 @@
             Film Fox
           </div>
           <div class='col-md-1'></div>
-          <div class='col-md-5' id='title'>
+          <div class='col-md-5' id='filmTitle'>
             {{ title }}
             <p id='length' hidden='hidden'>{{script.length}}</p>
             <p id='scene' hidden='hidden'>{{scene}}</p>
             <p id='sceneNumber' hidden='hidden'>{{sceneNumber}}</p>
-            <p id='nextScene' hidden='hidden'>{{nextScene}}</p>
+            <p id='elementNumber' hidden='hidden'>{{elementNumber}}</p>
+            <p id='audio' hidden>{{audio}}</p>
           </div>
           <div class='col-md-4'>{{page}}</div>
         </div>
@@ -72,7 +73,7 @@
             </button>
           </div>
           <div class='col-md-1'>
-            <button class='btn btn-block btn-edit btn-sm' id='btn-build-showreel'>Showreel</button>
+            <button class='btn btn-block btn-edit btn-sm' id='btn-showreel'>Showreel</button>
           </div>
           <div class='col-md-1'>
             <button class='btn btn-block btn-edit btn-sm' id='btn-sound'>Sound</button>

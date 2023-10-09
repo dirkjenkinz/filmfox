@@ -35,10 +35,10 @@
       <table class='table-bordered table-sm table-dark table-grid' id='tab_img'>
         <tbody>
           <tr>
-            {% for i in range(0, comp.length, 6) -%}
+            {% for i in range(0, script.length, 6) -%}
               <tr>
                 {% for num in range(0, 6) -%}
-                  {% if i + num < comp.length %}
+                  {% if i + num < script.length %}
                     <td class='data-left'>
                       {% if merged[i + num] != 'yes' %}
                         <button type='button' class='btn btn-edit btn-block btn-sm btn-merge' id='btn-merge_{{i + num}}' value='{{i + num}}'>MERGE</button>

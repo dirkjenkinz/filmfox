@@ -1,5 +1,5 @@
   $('.btn-play').on('click', (e) => {
-    const title = $('#title')[0].innerText;
+    const title = $('#filmTitle')[0].innerText;
     element = e.target.value;
     s = '../data/' + title + '/sounds/' + element;
     document
@@ -11,7 +11,7 @@
   }),
   $('.btn-gen').on('click', (e) => {
     const elementNumber = e.target.value;
-    const title = $('#title')[0].innerText;
+    const title = $('#filmTitle')[0].innerText;
     const voice = $('#current-voice')[0].innerText;
     window.location.href = `/generate-single?title=${title}&elementNumber=${elementNumber}&voice=${voice}&caller=edit-character`;
   })

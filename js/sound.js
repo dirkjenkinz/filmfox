@@ -3,11 +3,11 @@ $(() => {
 }),
 $('.btn-merge').on('click', (e) => {
     let scene = e.target.value;
-    const title = $('#title')[0].innerText;
+    const title = $('#filmTitle')[0].innerText;
     window.location.href = `/concat?title=${title}&scene=${scene}`;
   }),
   $('.btn-play').on('click', (e) => {
-    const title = $('#title')[0].innerText;
+    const title = $('#filmTitle')[0].innerText;
     let num = '000000' + e.target.value;
     num = num.substring(num.length - 5);
     element = `s${num}.mp3`;
@@ -19,8 +19,9 @@ $('.btn-merge').on('click', (e) => {
       .getElementById("master-play")
       .play();
   }),
-  $('#btn-enable').on('click', (e) => {
-    const l = $('#size')[0].innerText;
+  $('#btn-enable').on('click', () => {
+    const l = $('#length')[0].innerText;
+    console.log({l})
     if ($('#btn-enable')[0].innerText === 'Enable DELETE') {
       $('#btn-enable')[0].innerText = 'Disable DELETE';
       for (let i = 0; i < l; i++) {
@@ -34,7 +35,7 @@ $('.btn-merge').on('click', (e) => {
     }
   }),
   $('.btn-delete').on('click', (e) => {
-    const title = $('#title')[0].innerText;
+    const title = $('#filmTitle')[0].innerText;
     const scene = $('#scene')[0].innerText;
     let num = '000000' + e.target.value;
     num = num.substring(num.length - 5);
@@ -42,13 +43,13 @@ $('.btn-merge').on('click', (e) => {
     window.location.href = `/delete?title=${title}&element=${element}&scene=${scene}&sub=scenes`;
   }),
   $('#btn-master').on('click', (e) => {
-    const title = $('#title')[0].innerText;
+    const title = $('#filmTitle')[0].innerText;
     const scene = $('#scene')[0].innerText;
     const size = $('#size')[0].innerText;
     window.location.href = `/master?title=${title}&scene=${scene}&size=${size}`;
   }),
   $('#btn-play-master').on('click', (e) => {
-    const title = $('#title')[0].innerText;
+    const title = $('#filmTitle')[0].innerText;
     s = '../data/' + title + '/scenes/master.mp3';
     document
       .getElementById("master-play")

@@ -10,67 +10,35 @@ const soundHandler = async (req, res) => {
   const u = url.parse(req.originalUrl, true);
   const title = u.query.title;
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
-  const mergedFiles = await getFileList(`data/${title}/scenes`, 'mp3');
-  const scenes = [];
-  const merged = [];
-  const { script } = filmFoxFile;
+ const {script} = filmFoxFile;
+  const mergedList = await getFileList(`data/${title}/scenes`, 'mp3');
 
-  const last = script[script.length -1].scene;
+  let masterExists = 'no';
 
-  for (let i = 0; i <= last; i++){
-    merged.push('no');
-  };
-  mergedFiles.forEach((m) => {
-    const num = parseInt(m.substring(1, m.length - 4));
-    merged[num] = 'yes';
-  });
-
-  let ready = 'yes';
-  merged.forEach((m)=> {
-    if (m === 'no') {
-      ready = 'no';
-    };
-  });
- 
-  script.forEach((s) => {
-    if (s.sound) {
-      scenes.push([s.dialogue, s.sound]);
-    };
-  });
-
-  const top = script[script.length - 1].scene + 1;
-
-  const comp = [];
-  for (let i = 0; i < top; i++) {
-    let temp = [];
-    for (let j = 0; j < scenes.length; j++) {
-      if (scenes[j][0] === i) {
-        temp.push(scenes[j][1]);
-      };
-    };
-    comp.push(temp);
-  };
-
-  await writeFile(JSON.stringify(comp), `${title}/scenes/${title}.lst`);
-
-  const dirPath = path.join(__dirname, `../data/`);
-
-  let masterExists;
-  const m = await fileExists(`${dirPath}/${title}/scenes/master.mp3`);
-  
-  if (m){
+  if (mergedList[0] === 'master.mp3'){
     masterExists = 'yes';
-  } else {
-    masterExists = 'no';
   };
+
+  const merged = [];
+
+  script.forEach((s, index) => {
+    let template = `000000${index}`;
+    template = template.substring(template.length - 5);
+    template = `s${template}.mp3`
+    if (mergedList.indexOf(template) > -1){
+      merged.push('yes');
+    } else {
+      merged.push('no');
+    }
+  });
 
   res.render("sound.njk", {
     title,
-    comp,
     merged,
-    ready,
+    script,
     masterExists,
     page: 'Sound',
+    size: script.length,
   });
 };
 

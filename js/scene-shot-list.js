@@ -1,7 +1,7 @@
 $(".shot-select").on("change", (e) => {
   const line = e.target.id;
   const val = e.target.value;
-  const title = $("#title")[0].outerText;
+  const title = $("#filmTitle")[0].outerText;
   const scene = $("#scene")[0].outerText;
   let l1 = line.substring(5).split('_');
   window.location.href = `/update-shot-list?title=${title}&scene=${scene}&val=${val}&item=${l1[0]}&line=${l1[1]}`
@@ -9,42 +9,42 @@ $(".shot-select").on("change", (e) => {
   $(".shot-subject").on("focusout", (e) => {
   const line = e.target.id.substring(13);
   const val = e.target.value;
-  const title = $("#title")[0].outerText;
+  const title = $("#filmTitle")[0].outerText;
   const scene = $("#scene")[0].outerText;
   window.location.href = `/update-shot-list?title=${title}&scene=${scene}&val=${val}&item=subject&line=${line}`
   }),
   $(".shot-description").on("change", (e) => {
     const line = e.target.id.substring(17);
     const val = e.target.value;
-    const title = $("#title")[0].outerText;
+    const title = $("#filmTitle")[0].outerText;
     const scene = $("#scene")[0].outerText;
     window.location.href = `/update-shot-list?title=${title}&scene=${scene}&val=${val}&item=description&line=${line}`
    }),
    $(".btn-next").on("click", (e) => {
-    const title = $("#title")[0].outerText;
+    const title = $("#filmTitle")[0].outerText;
     const scene = parseInt($("#scene")[0].outerText) + 1;
     window.location.href = `/scene-shot-list?title=${title}&scene=${scene}`
    }),
    $(".btn-previous").on("click", (e) => {
-    const title = $("#title")[0].outerText;
+    const title = $("#filmTitle")[0].outerText;
     const scene = parseInt($("#scene")[0].outerText) - 1;
     window.location.href = `/scene-shot-list?title=${title}&scene=${scene}`
    }),
    $(".btn-add").on("click", (e) => {
     const line = e.target.value;
-    const title = $("#title")[0].outerText;
+    const title = $("#filmTitle")[0].outerText;
     const scene = $("#scene")[0].outerText;
     window.location.href = `/add-shot?title=${title}&scene=${scene}&line=${line}`
    }),
    $(".btn-delete").on("click", (e) => {
     const line = e.target.value;
-    const title = $("#title")[0].outerText;
+    const title = $("#filmTitle")[0].outerText;
     const scene = $("#scene")[0].outerText;
     window.location.href = `/delete-shot?title=${title}&scene=${scene}&line=${line}`
    }),
    $("#input-note").on("focusout", (e) => {
     const val = e.target.value;
-    const title = $("#title")[0].outerText;
+    const title = $("#filmTitle")[0].outerText;
     const scene = $("#scene")[0].outerText;
     window.location.href = `/update-note?title=${title}&scene=${scene}&val=${val}&caller=shot-list`;
   });

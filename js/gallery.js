@@ -1,5 +1,5 @@
 $('.imcg').on('click', (e) => {
-    const f = $('#title')[0].innerText
+    const f = $('#filmTitle')[0].innerText
     const scene = $('#scene')[0].innerText
     const i = $('#element')[0].innerText;
     const source = e
@@ -10,7 +10,7 @@ $('.imcg').on('click', (e) => {
   }),
   $('.btn-select').on('click', (e) => {
     const image = e.target.value;
-    const title = $('#title')[0].innerText;
+    const title = $('#filmTitle')[0].innerText;
     const element = $('#element')[0].innerText
     const caller = $('#caller')[0].innerText;
     const scene = $('#scene')[0].innerText;

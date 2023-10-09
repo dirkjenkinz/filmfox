@@ -1,0 +1,117 @@
+{% extends "parent.njk" %}
+{% block page %}
+  <div class='row' style='background: silver; color: black;'>
+    <p id='highestScene' hidden="hidden">{{highestScene}}</p>
+    <p id='highestElement' hidden="hidden">{{highestElement}}</p>
+    <div class='col-md-12'>
+      <table class='table-bordered table-sm table-dark table-grid' id='tab_showreal'>
+        <tr>
+          <table>
+            <tr>
+              <td class='data-show' id='slug' style='width:20%; font-weight:bold;' colspan='3'>
+                Scene
+                {{sceneNumber}}:
+                {{slug}}
+              </td>
+            </tr>
+            <tr>
+              <td class='data-show' id='type_{{i}}' hidden="hidden">
+                {{element.type}}
+              </td>
+              <td class='data-show' id='image_{{i}}' style='width: 40%;'>
+                {% if element.type === 'movie' %}
+                  <video width='480' height='270' controls='controls' autoplay='autoplay' id='iamge_{{i}}' class='iamge' muted='muted'>
+                    <source src='../data/{{title}}/images/{{element.image}}' type='video/mp4'>
+                  </video>
+                {% else %}
+                  <img width='480' height='270' src='../data/{{title}}/images/{{element.image}}' id='iamge_{{i}}' class='img' alt='{{script[i].image}}'>
+                {% endif %}
+              </td>
+              <td class='data-showreel' style='width: 40%;'>
+                <p id='character_{{i}}' style='text-align: center; font-weight: bold;'>{{element.character}}</p>
+                <br>
+                {{element.dialogue}}
+              </td>
+              <td>
+                <table>
+                  <tr>
+                    <td>
+                      {% if elementNumber > 0 %}
+                        <button class='btn btn-block btn-edit btn-sm' id='btn-previous-element'>
+                          PREVIOUS ELEMENT
+                        </button>
+                        {%else%}
+                        <button class='btn btn-block btn-edit btn-sm' id='btn-previous-element' disabled="disabled">
+                          PREVIOUS ELEMENT
+                        </button>
+                      {% endif %}
+                    </td>
+                    <td>
+                      <button class='btn btn-block btn-edit btn-sm' id='btn-next-element'>
+                        NEXT ELEMENT
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan='2'>
+                      {% if mute == 'MUTE' %}
+                        <audio id='master-play' controls="controls" style='width: 100%;'>
+                          <source src="{{audio}}" type="audio/ogg"/>
+                          <source src="{{audio}}" type="audio/mpeg"/>
+                          Your browser does not support the audio tag.
+                        </audio>
+                      {% else %}
+                        <audio id='master-play' controls="controls" style='width: 100%;' muted="muted">
+                          <source src="{{audio}}" type="audio/ogg"/>
+                          <source src="{{audio}}" type="audio/mpeg"/>
+                          Your browser does not support the audio tag.
+                        </audio>
+                      {% endif %}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan='2'>
+                      <button class='btn btn-block btn-edit btn-sm' id='btn-mute'>
+                        {{mute}}
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      {% if sceneNumber > 0 %}
+                        <button class='btn btn-block btn-edit btn-sm' id='btn-previous-scene'>
+                          PREVIOUS SCENE
+                        </button>
+                      {% else %}
+                        <button class='btn btn-block btn-edit btn-sm' id='btn-previous-scene' disabled="disabled">
+                          PREVIOUS SCENE
+                        </button>
+                      {% endif %}
+                    </td>
+                    <td>
+                      {% if sceneNumber < highestScene %}
+                        <button class='btn btn-block btn-edit btn-sm' id='btn-next-scene'>
+                          NEXT SCENE
+                        </button>
+                      {%else %}
+                        <button class='btn btn-block btn-edit btn-sm' id='btn-next-scene' disabled="disabled">
+                          NEXT SCENE
+                        </button>
+                      {% endif %}
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+<script src='../js/parent.js'></script>
+<script src='../js/showreel.js'></script>
+{% endblock %}

@@ -24,7 +24,7 @@ $((e) => {
       hidden.push($(`#table-shots-list-${i}`).is(":hidden"));
     };
     const num = e.target.value;
-    const title = $("#title")[0].innerText;
+    const title = $("#filmTitle")[0].innerText;
     window.location.href = `/change-scene-order?title=${title}&direction=down&num=${num}&hidden=${hidden}`;
   }),
   $(".btn-up").on("click", (e) => {
@@ -34,6 +34,6 @@ $((e) => {
       hidden.push($(`#table-shots-list-${i}`).is(":hidden"));
     };
     const num = e.target.value;
-    const title = $("#title")[0].innerText;
+    const title = $("#filmTitle")[0].innerText;
     window.location.href = `/change-scene-order?title=${title}&direction=up&num=${num}&hidden=${hidden}`
   });
