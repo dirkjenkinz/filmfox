@@ -10,9 +10,7 @@ const sceneArrangerHandler = async (req, res) => {
   const full = u.query.full;
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
   const { shotList, script, sceneOrder } = filmFoxFile;
-  console.log(hidden);
   if (!hidden) {
-    console.log("-1");
     hidden = [];
     for (let i = 0; i < shotList.length; i++) {
       hidden.push("false");

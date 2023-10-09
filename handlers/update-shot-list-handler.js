@@ -11,9 +11,6 @@ const updateShotListHandler = async (req, res) => {
   const item = u.query.item;
   const line = u.query.line;
 
-  console.log({item});
-  console.log({val});
-
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
   const {shotList} = filmFoxFile;
   shotList[scene].lines[line][`${item}`] = val;

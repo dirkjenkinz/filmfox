@@ -19,8 +19,6 @@ const showreelHandler = async (req, res) => {
 
   const audio = `../data/${title}/sounds/${element.sound}`;
 
-  console.log(script.length);
-     
   res.render("showreel.njk", {
     sceneNumber,
     elementNumber,

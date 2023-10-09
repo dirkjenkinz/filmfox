@@ -19,14 +19,10 @@ const characterToVoiceHandler = async (req, res) => {
   const u = url.parse(req.originalUrl, true);
   const scene = u.query.scene;
   const title = u.query.filmFoxFile;
-  
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
-
   const { script } = filmFoxFile;
   let characters = await readFile(`${title}/${title}.chrs`);
-
   const voices = await readFile('voices.json');
-
   voice_data = getVoiceData(voices);
   voice_data.unshift(['-', '', '']);
 

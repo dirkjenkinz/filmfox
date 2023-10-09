@@ -12,11 +12,6 @@ const updateImageDisplayHandler = async (req, res) => {
   const image = u.query.image;
   const caller = u.query.caller;
 
-  console.log({scene})
-  console.log({element})
-  console.log({image});
-  console.log({caller})
-
   let filmFoxFile = await readFile(`${title}/${title}.fff`);
   const { script } = filmFoxFile;
   script[scene][element].image = image;

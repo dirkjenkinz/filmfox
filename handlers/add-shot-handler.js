@@ -23,10 +23,7 @@ const addShotHandler = async (req, res) => {
   };
 
   shot.splice(parseInt(line) + 1, 0, newLine);
-  
-  console.log({shot})
   await writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
-
   res.redirect(`/scene-shot-list?title=${title}&scene=${scene}`);
 };
 

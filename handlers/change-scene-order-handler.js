@@ -20,13 +20,9 @@ const changeSceneOrderHandler = async (req, res) => {
   };
 
   hidden = hidden.split(',');
-  console.log(hidden[num]);
-  console.log(hidden[numOther]);
   const temp = hidden[num];
   hidden[num] = hidden[numOther];
   hidden[numOther] = temp;
-  console.log(hidden[num]);
-  console.log(hidden[numOther]);
 
   sceneOrder[num] = sceneOrder[num] + sceneOrder[numOther];
   sceneOrder[numOther] = sceneOrder[num] - sceneOrder[numOther];
