@@ -29,10 +29,9 @@ const frontHandler = async (req, res) => {
       subscription.next_invoice.next_payment_attempt =
         paymentDate.toLocaleString();
     }
+    const voices = await getVoices(api_key);
+    await writeFile(JSON.stringify(voices), "voices.json");
   }
-
-  const voices = await getVoices(api_key);
-  await writeFile(JSON.stringify(voices), "voices.json");
 
   res.render("front.njk", {
     api_key,

@@ -5,9 +5,7 @@ const { readFile, getFileList } = require("../services/file-service");
 const voicesHandler = async (req, res) => {
   smartLog("info", "ENTERING VOICES HANDLER");
   const u = url.parse(req.originalUrl, true);
-
   let voices = await readFile("voices.json");
-
   let generated = await getFileList("data/samples", "mp3");
 
   const gen = [];
