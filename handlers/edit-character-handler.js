@@ -8,29 +8,32 @@ const editCharacterHandler = async (req, res) => {
   const title = u.query.title;
   const character = u.query.character;
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
-  const  charactersList = await readFile(`${title}/${title}.chrs`);
+  const charactersList = await readFile(`${title}/${title}.chrs`);
 
   const { script } = filmFoxFile;
+
   const elements = [];
 
-  script.forEach((s, index) => {
-    if (s.character === character) {
-      elements.push({
-        scene: s.scene,
-        dialogue: s.dialogue,
-        sound: s.sound,
-        element: index,
-        voice: s.voice,
-      });
-    }
+  script.forEach((s) => {
+    s.forEach((element, index) => {
+      if (element.character === character) {
+        elements.push({
+          scene: element.scene,
+          dialogue: element.dialogue,
+          sound: element.sound,
+          element: index,
+          voice: element.voice,
+        });
+      }
+    });
   });
 
   let currentVoice;
 
-  charactersList.forEach((c)=>{
-    if (c[0] === character){
+  charactersList.forEach((c) => {
+    if (c[0] === character) {
       currentVoice = c[1];
-    };
+    }
   });
 
   res.render("edit-character.njk", {
@@ -38,7 +41,7 @@ const editCharacterHandler = async (req, res) => {
     title,
     elements,
     currentVoice,
-    page: 'Edit Character',
+    page: "Edit Character",
   });
 };
 
