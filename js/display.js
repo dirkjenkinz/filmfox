@@ -36,22 +36,21 @@ $(".btn-scene-shot-list").on("click", (e) => {
     const element = `${e.target.value}`;
     window.location.href = `/delete?title=${title}&element=${element}&scene=${scene}&sub=sounds&num=${num}`;
   }),
-  $("#btn-next").on("click", () => {
+  $("#btn-next").on("click", (e) => {
     const title = $("#title")[0].innerText;
-    const scNum = $("#nextScene")[0].innerText;
-    window.location.href = `/display?title=${title}&scene=${scNum}&locked='yes`;
+    scNum = parseInt(e.target.value) + 1;
+    window.location.href = `/display?title=${title}&  scene=${scNum}&locked='yes`;
   }),
-  $("#btn-previous").on("click", () => {
+  $("#btn-previous").on("click", (e) => {
     const title = $("#title")[0].innerText;
-    const scene = $("#scene")[0].innerText;
-    const scNum = $("#scene")[0].innerText - 1;
+    scNum = parseInt(e.target.value) - 1;
     window.location.href = `/display?title=${title}&scene=${scNum}locked='yes`;
   }),
   $(".btn-change").on("click", (e) => {
     const title = $("#title")[0].innerText;
-    let scNum = $("#scene")[0].innerText;
+    let sceneNumber = $("#sceneNumber")[0].innerText;
     const element = e.target.value;
-    window.location.href = `/gallery?title=${title}&scene=${scNum}&element=${element}&caller=display`;
+    window.location.href = `/gallery?title=${title}&scene=${sceneNumber}&element=${element}&caller=display`;
   }),
   $("#input-note").on("focusout", (e) => {
     const val = e.target.value;

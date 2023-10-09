@@ -12,31 +12,16 @@ const updateImageDisplayHandler = async (req, res) => {
   const image = u.query.image;
   const caller = u.query.caller;
 
+  console.log({scene})
+  console.log({element})
+  console.log({image});
+  console.log({caller})
+
   let filmFoxFile = await readFile(`${title}/${title}.fff`);
-
   const { script } = filmFoxFile;
-  const holdImage = script[element].image;
-
-  script[element].image = image;
-
-  let carryOn = true;
-  for (let i = parseInt(element) + 1; i < script.length; i++) {
-    if (script[i].character === "NARRATOR") {
-      if (
-        script[i].dialogue.substring(0, 3) === "INT" ||
-        script[i].dialogue.substring(0, 3) === "EXT"
-      ) {
-        carryOn = false;
-      }
-    }
-
-    if (script[i].image === holdImage && carryOn) {
-      script[i].image = image;
-    } else {
-      carryOn = false;
-    }
-  }
+  script[scene][element].image = image;
   await writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
+  
   if (caller === "scenes") {
     res.redirect(`/scenes?title=${title}`);
   } else {

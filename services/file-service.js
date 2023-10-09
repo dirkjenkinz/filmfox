@@ -16,7 +16,7 @@ const fileExists = (file) => {
   }
 };
 
-const getScript = (file) => {
+const c = (file) => {
   const directoryPath = path.join(__dirname, "../scripts");
   return new Promise((resolve, reject) => {
     fs.readFile(`${directoryPath}/${file}`, (err, data) => {
@@ -190,7 +190,6 @@ const getListOfImages = async (subdir) => {
 };
 
 module.exports = {
-  getScript,
   readFile,
   writeFile,
   createDirectory,

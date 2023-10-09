@@ -10,7 +10,7 @@ const displayHandler = async (req, res) => {
   const locked = u.query.locked;
   let scene = parseInt(u.query.scene);
   const title = u.query.title;
-  let element = u.query.element;
+
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
   
   let lock = 'Unlock';
@@ -19,69 +19,20 @@ const displayHandler = async (req, res) => {
     lock = 'Lock';
   };
 
-  if (!element){
-    element = 0;
-  };
-
-  if (!scene){
-    scene = 0;
-  }
-  const nextScene = scene + 1;
 
   const { script, shotList } = filmFoxFile;
   const characters = await readFile(`${title}/${title}.chrs`);
   const api_key = process.env.APIKEY;
 
-  let slug = '';
-  let highest = 0;
-
-  script.forEach((s, index) => {
-    if (s.scene === scene && s.slug === 'yes'){
-      slug = s.dialogue;
-    };
-    if (s.slug === 'yes') {
-      highest = s.scene;
-    }
-  });
-
-  script.forEach((s) => {
-    characters.forEach((c) => {
-      if (c[0] === s.character) {
-        s.voice = c[1];
-      }
-    });
-  });
-
-  const elements = await getListOfElements(title);
-  elements.forEach((e, index) => {
-    e = e.substring(6);
-    e = e.substring(0, 6);
-    elements[index] = parseInt(e);
-  });
-
-  let runningTime = 0.000;
-  let time = [];
-  script.forEach((s) => {
-    if (s.duration !== ''){
-      runningTime = runningTime + parseFloat(s.duration);
-      time.push(runningTime.toFixed(3));
-      }
-  });
-
-  const note = shotList[scene].note;
-
+  
   res.render('display.njk', {
     title,
     api_key,
-    script,
     lock,
-    time,
-    scene,
-    nextScene,
-    slug,
-    highest,
-    note,
+    scene: script[scene],
+    sceneNumber: scene,
     page : 'Display',
+    highest: script.length,
   });
 };
 

@@ -5,7 +5,7 @@
       Note:
     </div>
     <div class='col-md-7' style='font-size: 80%;'>
-      <input type="text" id="input-note" name="note" size='70' value='{{note}}'>
+      <input type="text" id="input-note" name="note" size='70' value='{{scene[0].note}}'>
     </div>
     <div class='col-md-2'>
       <button type='button' class='btn btn-edit btn-block btn-sm btn-scene-shot-list' id='scene-shot-list_{{i}}' value='{{i}}'>
@@ -23,29 +23,29 @@
       </audio>
     </div>
     <div class='col-md-2'>
-      {% if scene > 0 %}
-        <button type='button' class='btn btn-edit btn-block btn-sm' id='btn-previous'>
+      {% if sceneNumber > 0 %}
+        <button type='button' class='btn btn-edit btn-block btn-sm' id='btn-previous' value='{{scene[0].scene}}'>
           Previous Scene
         </button>
         {% else %}
-        <button type='button' class='btn btn-edit btn-block btn-sm' id='btn-previous' disabled>
+        <button type='button' class='btn btn-edit btn-block btn-sm' id='btn-previous' value='{{scene[0].scene}}' disabled>
           Previous Scene
         </button>
       {% endif %}
     </div>
     <div class='col-md-4' style='font-size: 80%;'>
       Scene
-      {{scene}}:
-      {{slug}}
+      {{sceneNumber}}:
+      {{scene[0].dialogue}}
     </div>
     <div class='col-md-2'></div>
     <div class='col-md-2'>
-      {% if scene < highest %}
-        <button type='button' class='btn btn-edit btn-block btn-sm' id='btn-next'>
+      {% if sceneNumber < highest -1  %}
+        <button type='button' class='btn btn-edit btn-block btn-sm' id='btn-next' value='{{scene[0].scene}}'>
           Next Scene
         </button>
       {% else %}
-       <button type='button' class='btn btn-edit btn-block btn-sm' id='btn-next' disabled>
+       <button type='button' class='btn btn-edit btn-block btn-sm' id='btn-next' value='{{scene[0].scene}}' disabled>
           Next Scene
         </button>
       {% endif %}
@@ -56,28 +56,23 @@
     <div class='col-md-12'>
       <table id='script-table'>
         <tbody id='bod'>
-          {% for i in range(0, script.length) -%}
-            {% if script[i].scene == scene %}
+          {% for i in range(0, scene.length) -%}
               <tr id='row_{{i}}' class='display-box'>
-                <td class='non-header-display' style='width: 15%;'>Scene
-                  {{script[i].scene}}
-                  <br>Element
-                  {{i}}
-                  <br><br>
+                <td class='non-header-display' style='width: 15%;'>
                   Character:
-                  {{script[i].character}}
+                  {{scene[i].character}}
                   <br><br>
-                  Voice:<p id='voice_{{i}}'>{{script[i].voice}}</p>
+                  Voice:<p id='voice_{{i}}'>{{scene[i].voice}}</p>
                 </td>
-                <td class='non-header-display' style='width:50%;'>{{script[i].dialogue}}</td>
+                <td class='non-header-display' style='width:50%;'>{{scene[i].dialogue}}</td>
                 <td class='non-header-display'>
-                  <p style='font-size: 60%; color: black;'>{{script[i].sound}}</p>
-                  {% if (script[i].voice == '-') or (script[i].sound) %}
-                    <button type='button' class='btn btn-edit btn-block btn-sm btn-play' id='play_{{i}}' value='{{script[i].sound}}'>
+                  <p style='font-size: 60%; color: black;'>{{scene[i].sound}}</p>
+                  {% if (scene[i].voice == '-') or (scene[i].sound) %}
+                    <button type='button' class='btn btn-edit btn-block btn-sm btn-play' id='play_{{i}}' value='{{scene[i].sound}}'>
                       Play
                     </button>
                     <br>
-                    <button class='btn btn-block btn-edit btn-sm btn-small btn-del' id='del_{{i}}' disabled='disabled' value='{{script[i].sound}}'>
+                    <button class='btn btn-block btn-edit btn-sm btn-small btn-del' id='del_{{i}}' disabled='disabled' value='{{scene[i].sound}}'>
                       Delete
                     </button>
                   {% else %}
@@ -86,28 +81,25 @@
                     </button>
                   {% endif %}
                   <br>
-                  <p style='font-size: 60%; color: black;'>{{script[i].duration}}
-                    -
-                    {{time[i]}}</p>
+                  <p style='font-size: 60%; color: black;'>{{scene[i].duration}}
                 </td>
                 <td class='data-display card' style='width: 20%' id='crd_{{i}}'>
                   <button type='button' class='btn btn-edit btn-block btn-sm btn-change' id='change_{{i}}' value='{{i}}'>
                     Change Image
                   </button>
                   <br>
-                  {% if script[i].type === 'movie' %}
+                  {% if scene[i].type === 'movie' %}
                     <video width='160' height='90' controls='controls' autoplay='autoplay' id='img_{{i}}' class='img' muted='muted'>
-                      <source src='../data/{{title}}/images/{{script[i].image}}' type='video/mp4'>
+                      <source src='../data/{{title}}/images/{{scene[i].image}}' type='video/mp4'>
                     </video>
                   {% else %}
-                    <img width='160' height='90' src='../data/{{title}}/images/{{script[i].image}}' id='img_{{i}}' class='img' alt='{{script[i].image}}'>
+                    <img width='160' height='90' src='../data/{{title}}/images/{{scene[i].image}}' id='img_{{i}}' class='img' alt='{{scene[i].image}}'>
                   {% endif %}
                   <p style='font-size: 80%; color: white;'>
-                    {{script[i].image.substring(0,28)}}
+                    {{scene[i].image.substring(0,28)}}
                   </p>
                 </td>
               </tr>
-            {% endif %}
           {%- endfor %}
         </tbody>
       </table>
