@@ -34,6 +34,7 @@ const displayHandler = async (req, res) => {
     sceneNumber: scene,
     page : 'Display',
     highest: script.length,
+    note: shotList[scene].note,
   });
 };
 

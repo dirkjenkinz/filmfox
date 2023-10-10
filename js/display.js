@@ -53,7 +53,7 @@ $(".btn-scene-shot-list").on("click", (e) => {
   $("#input-note").on("focusout", (e) => {
     const val = e.target.value;
     const title = $("#filmTitle")[0].outerText;
-    const scene = $("#scene")[0].outerText;
+    const scene = $("#sceneNumber")[0].outerText;
     window.location.href = `/update-note?title=${title}&scene=${scene}&val=${val}`;
   }),
   $("#btn-sound-lock").on("click", () => {

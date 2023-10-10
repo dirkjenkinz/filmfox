@@ -10,8 +10,11 @@ const updateNoteHandler = async (req, res) => {
   const val = u.query.val;
   const caller = u.query.caller;
 
+  console.log({val})
+
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
   const {shotList} = filmFoxFile;
+  console.log(shotList[scene]);
   shotList[scene].note = val;
 
   await writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
