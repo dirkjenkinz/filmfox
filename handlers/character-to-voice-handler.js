@@ -17,7 +17,7 @@ const getVoiceData = (voices) => {
 const characterToVoiceHandler = async (req, res) => {
   smartLog('info', 'entering character to voice handler');
   const u = url.parse(req.originalUrl, true);
-  const scene = u.query.scene;
+  const sceneNumber = u.query.sceneNumber;
   const title = u.query.filmFoxFile;
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
   const { script } = filmFoxFile;
@@ -39,7 +39,7 @@ const characterToVoiceHandler = async (req, res) => {
     title,
     characters,
     voice_data,
-    scene,
+    sceneNumber,
     page: 'Voice Map',
   });
 };

@@ -21,7 +21,7 @@ const characterUpdateHandler = async (req, res) => {
   smartLog('info', 'entering character update handler');
 
   const u = url.parse(req.originalUrl, true);
-  let scene = u.query.scene;
+  let sceneNumber = u.query.sceneNumber;
   let voice = u.query.voice;
   let character = u.query.character;
   let title = u.query.filmFoxFile;
@@ -45,7 +45,7 @@ const characterUpdateHandler = async (req, res) => {
     title,
     characters,
     voice_data,
-    scene,
+    sceneNumber,
     page: 'Voice Map',
   });
 };

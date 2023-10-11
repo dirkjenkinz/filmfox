@@ -29,12 +29,11 @@ const buildShowreelHandler = async (req, res) => {
       image: s.image,
       sound: `../data/${title}/sounds/${s.sound}`,
       type: s.type,
-      scene: s.scene,
+      sceneNumber: s.scene,
     })
     t = t + s.duration;
   });
 
-  await writeFile(JSON.stringify(showreel), `/${title}/${title}.shw`)
   smartLog("info", "showreel built");
   res.redirect(`/play-showreel?title=${title}&current=0`);
 };

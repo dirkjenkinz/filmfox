@@ -20,8 +20,6 @@ const scenesHandler = async (req, res) => {
       });
   });
 
-  console.log({sceneList})
-
   res.render("scenes.njk", {
     title,
     sceneList,

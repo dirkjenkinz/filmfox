@@ -7,12 +7,12 @@ const { smartLog } = require("../services/smart-log");
 const playMasterHandler = async (req, res) => {
   smartLog("info", "ENTERING PLAY MASTER HANDLER");
   const u = url.parse(req.originalUrl, true);
-  const scene = u.query.scene;
+  const sceneNumber = u.query.sceneNumber;
   const title = u.query.title;
 
   playSoundFile(title, "master.mp3", "scenes");
   setTimeout(function () {
-    res.redirect(`/sound?title=${title}&scene=${scene}`);
+    res.redirect(`/sound?title=${title}&sceneNumber=${sceneNumber}`);
   }, 5000);
 };
 

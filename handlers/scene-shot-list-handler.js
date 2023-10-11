@@ -35,8 +35,6 @@ const sceneShotListHandler = async (req, res) => {
   const { script, shotList } = filmFoxFile;
 
   const size = shotList.length;
-  console.log({sceneNumber})
-  console.log(script[sceneNumber])
   const slug = script[sceneNumber][0].dialogue;
 
   res.render("scene-shot-list.njk", {

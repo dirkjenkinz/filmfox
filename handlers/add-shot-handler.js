@@ -6,13 +6,13 @@ const addShotHandler = async (req, res) => {
   smartLog("info", "ENTERING ADD SHOT HANDLER");
   const u = url.parse(req.originalUrl, true);
   const title = u.query.title;
-  const scene = u.query.scene;
+  const sceneNumber = u.query.sceneNumber;
   const line = u.query.line;
 
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
   const { shotList } = filmFoxFile;
 
-  const shot = shotList[scene].lines;
+  const shot = shotList[sceneNumber].lines;
   const newLine = {
     shot: "-",
     angle: "-",
@@ -24,7 +24,7 @@ const addShotHandler = async (req, res) => {
 
   shot.splice(parseInt(line) + 1, 0, newLine);
   await writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
-  res.redirect(`/scene-shot-list?title=${title}&scene=${scene}`);
+  res.redirect(`/scene-shot-list?title=${title}&sceneNumber=${sceneNumber}`);
 };
 
 module.exports = { addShotHandler };

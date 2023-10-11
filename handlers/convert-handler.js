@@ -54,7 +54,7 @@ const getVoiceData = (voices) => {
   return voice_data;
 };
 
-const parseAction = (action, scene_number) => {
+const parseAction = (action, sceneNumber) => {
   let text = "";
 
   for (let i = 1; i < action.length; i++) {
@@ -68,11 +68,11 @@ const parseAction = (action, scene_number) => {
   let a = [];
   a.character = "NARRATOR";
   a.dialogue = text;
-  a.scene = scene_number;
+  a.scene = sceneNumber;
   return a;
 };
 
-const parseDialogue = (dialogue, character, scene_number) => {
+const parseDialogue = (dialogue, character, sceneNumber) => {
   let text = "";
 
   for (let i = 1; i < dialogue.length; i++) {
@@ -97,19 +97,19 @@ const parseDialogue = (dialogue, character, scene_number) => {
   let a = [];
   a[0] = character;
   a[1] = text.trim();
-  a[2] = scene_number;
+  a[2] = sceneNumber;
   return a;
 };
 
-const parseTransition = (transition, scene_number) => {
+const parseTransition = (transition, sceneNumber) => {
   let a = [];
   a[0] = "NARRATOR";
   a[1] = transition[1].substring(5);
-  a[2] = scene_number;
+  a[2] = sceneNumber;
   return a;
 };
 
-const parseSceneHeading = (heading, scene_number) => {
+const parseSceneHeading = (heading, sceneNumber) => {
   let a = [];
   a[0] = "NARRATOR";
   for (let i = 1; i < heading.length; i++) {
@@ -117,11 +117,11 @@ const parseSceneHeading = (heading, scene_number) => {
       a[1] = heading[i].substring(5).trim().toUpperCase();
     }
   }
-  a[2] = scene_number;
+  a[2] = sceneNumber;
   return a;
 };
 
-const parseCharacter = (character, scene_number) => {
+const parseCharacter = (character, sceneNumber) => {
   let c = "";
   for (let i = 1; i < character.length; i++) {
     if (character[i].substring(0, 4) === "Text") {
@@ -134,13 +134,13 @@ const parseCharacter = (character, scene_number) => {
   }
   c = c.trim();
   c = c.toUpperCase();
-  c[2] = scene_number;
+  c[2] = sceneNumber;
   return c;
 };
 
 const parseScript = (script) => {
   let current_character = "";
-  let scene_number = 1;
+  let sceneNumber = 1;
   let parse = [];
   let characters = [];
   script = script.toString().split("<Paragraph");
@@ -152,18 +152,18 @@ const parseScript = (script) => {
     x[0] = x[0].substring(cut);
     x[0] = x[0].substring(0, x[0].length - 9);
     if (x[0] === "Action") {
-      parse.push(parseAction(x, scene_number));
+      parse.push(parseAction(x, sceneNumber));
     } else if (x[0] === "Transition") {
-      parse.push(parseTransition(x, scene_number));
+      parse.push(parseTransition(x, sceneNumber));
     } else if (x[0] === "Dialogue") {
-      parse.push(parseDialogue(x, current_character, scene_number));
+      parse.push(parseDialogue(x, current_character, sceneNumber));
     } else if (x[0] === "Scene Heading") {
-      parse.push(parseSceneHeading(x, scene_number));
-      scene_number++;
+      parse.push(parseSceneHeading(x, sceneNumber));
+      sceneNumber++;
     } else if (x[0] === "Character") {
-      let c = parseCharacter(x, scene_number);
+      let c = parseCharacter(x, sceneNumber);
       if (c !== "") {
-        current_character = parseCharacter(x, scene_number);
+        current_character = parseCharacter(x, sceneNumber);
         if (!characters.includes(current_character)) {
           characters.push(current_character);
         }
@@ -209,7 +209,7 @@ const convertHandler = async (req, res) => {
   await writeFile(JSON.stringify(characters), `${title}/${title}.chrs`);
   await createDirectory(`${title}/sounds`);
 
-  res.redirect(`/display?title=${title}&scene=0&locked=yes`);
+  res.redirect(`/display?title=${title}&sceneNumber=0&locked=yes`);
 };
 
 module.exports = { convertHandler };

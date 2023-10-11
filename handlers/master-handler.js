@@ -10,7 +10,7 @@ const masterHandler = async (req, res) => {
   const u = url.parse(req.originalUrl, true);
   const title = u.query.title;
   const size = u.query.size;
-  const scene = u.query.scene;
+  const sceneNumber = u.query.sceneNumber;
   const dirPath = path.join(__dirname, `../data/${title}/scenes`);
   const concat = ffmpeg();
 
@@ -30,7 +30,7 @@ const masterHandler = async (req, res) => {
     .mergeToFile(`${dirPath}/master.mp3`, dirPath);
 
   setTimeout(function () {
-    res.redirect(`/sound?title=${title}&scene=${scene}`);
+    res.redirect(`/sound?title=${title}&sceneNumber=${sceneNumber}`);
   }, 5000);
 };
 

@@ -28,9 +28,9 @@ const sceneArrangerHandler = async (req, res) => {
 
   sList = [];
   slugList = [];
-  sceneOrder.forEach((scene, index) => {
-    sList.push(shotList[scene]);
-    slugList.push(slugs[scene]);
+  sceneOrder.forEach((sceneNumber, index) => {
+    sList.push(shotList[sceneNumber]);
+    slugList.push(slugs[sceneNumber]);
   });
 
   script.forEach((s) => {

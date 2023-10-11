@@ -48,7 +48,7 @@ $(".btn-scene-shot-list").on("click", (e) => {
     window.location.href = `/update-note?title=${title}&sceneNumber=${sceneNumber}&val=${val}`;
   }),
   $("#btn-sound-lock").on("click", () => {
-    const l = $("#length")[0].innerText;
+    const l = $("#highest")[0].innerText;
     if ($("#btn-sound-lock")[0].innerText === "Lock Delete") {
       $("#btn-sound-lock")[0].innerText = "Unlock Delete";
       for (let i = 0; i < l; i++) {

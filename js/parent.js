@@ -1,7 +1,7 @@
 $("#btn-display").on("click", () => {
     const title = $("#filmTitle")[0].innerText;
-    const scene = $("#scene")[0].innerText;
-    window.location.href = `/display?title=${title}&scene=${scene}`;
+    const sceneNumber = $("#sceneNumber")[0].innerText;
+    window.location.href = `/display?title=${title}&sceneNumber=${sceneNumber}`;
   }),
   $("#btn-front").on("click", () => {
     window.location.href = `/`;
@@ -16,8 +16,8 @@ $("#btn-display").on("click", () => {
     }),
     $("#btn-sound").on("click", () => {
       const f = $("#filmTitle")[0].innerText;
-      const scene = $("#scene")[0].innerText;
-      window.location.href = `/sound?title=${f}&scene=${scene}`;
+      const sceneNumber = $("#scene")[0].innerText;
+      window.location.href = `/sound?title=${f}&sceneNumber=${sceneNumber}`;
     }),
     $("#btn-scenes").on("click", () => {
       const title = $("#filmTitle")[0].innerText;
@@ -25,8 +25,8 @@ $("#btn-display").on("click", () => {
     }),
     $("#btn-video").on("click", () => {
       const title = $("#filmTitle")[0].innerText;
-      const scene = $("#scene")[0].innerText;
-      window.location.href = `/video?title=${title}&scene=${scene}`;
+      const sceneNumber = $("#sceneNumber")[0].innerText;
+      window.location.href = `/video?title=${title}&sceneNumber=${sceneNumber}`;
     }),
     $("#btn-scene-arranger").on("click", () => {
       const title = $("#filmTitle")[0].innerText;
