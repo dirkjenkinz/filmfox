@@ -1,6 +1,3 @@
-$((e) => {
-  $("#btn-scene-arranger").attr("disabled", true);
-}),
   $(".btn-hide").on("click", (e) => {
     const num = e.target.value;
     $(`#table-shots-list-${num}`).toggle();
