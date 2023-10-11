@@ -11,16 +11,16 @@ const scenesHandler = async (req, res) => {
   let sceneList = [];
 
   script.forEach((s, index) => {
-    if (s.slug === "yes") {
       sceneList.push({
-        slug: s.dialogue,
-        image: s.image,
+        slug: s[0].dialogue,
+        image: s[0].image,
         element: index,
-        note: shotList[s.scene].note,
-        type: s.type,
+        note: shotList[s[0].scene].note,
+        type: s[0].type,
       });
-    }
   });
+
+  console.log({sceneList})
 
   res.render("scenes.njk", {
     title,

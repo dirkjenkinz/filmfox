@@ -34,15 +34,9 @@ const sceneShotListHandler = async (req, res) => {
   const { script, shotList } = filmFoxFile;
 
   const size = shotList.length;
+;
 
-  let pointer = -1;
-  script.forEach((s, index) => {
-    if (s.scene === parseInt(scene) && pointer === -1) {
-      pointer = index;
-    }
-  });
-
-  const slug = script[pointer].dialogue;
+  const slug = script[scene][0].dialogue;
 
   res.render("scene-shot-list.njk", {
     title,
