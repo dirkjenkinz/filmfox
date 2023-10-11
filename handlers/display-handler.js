@@ -8,9 +8,9 @@ const displayHandler = async (req, res) => {
   smartLog('info', 'ENTERING DISPLAY HANDLER');
   const u = url.parse(req.originalUrl, true);
   const locked = u.query.locked;
-  let scene = parseInt(u.query.scene);
+  let sceneNumber = parseInt(u.query.sceneNumber);
   const title = u.query.title;
-  if (!scene) scene = 0;
+  if (!sceneNumber) sceneNumber = 0;
 
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
   
@@ -29,11 +29,11 @@ const displayHandler = async (req, res) => {
     title,
     api_key,
     lock,
-    scene: script[scene],
-    sceneNumber: scene,
+    scene: script[sceneNumber],
+    sceneNumber,
     page : 'Display',
     highest: script.length,
-    note: shotList[scene].note,
+    note: shotList[sceneNumber].note,
   });
 };
 

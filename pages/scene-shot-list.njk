@@ -6,7 +6,7 @@
         <thead>
           <tr>
             <th class='shot-header' style='width: 10%;'>Scene
-              {{scene}}</th>
+              {{sceneNumber}}</th>
             <th class='shot-header'>
               {{slug}}
             </th>
@@ -17,7 +17,7 @@
               <input type="text" id="input-note" name="input-note" size='100' value='{{note}}'>
             </td>
             <td>
-              {% if scene > 0 %}
+              {% if sceneNumber > 0 %}
               <button class='btn btn-block btn-edit btn-sm btn-previous' id='btn-previous'>
                 Previous
               </button>
@@ -28,7 +28,7 @@
               {% endif %}
             </td>
             <td>
-              {% if scene < size - 1 %}
+              {% if sceneNumber < size - 1 %}
               <button class='btn btn-block btn-edit btn-sm btn-next' id='btn-next'>
                 Next
               </button>

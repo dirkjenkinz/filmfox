@@ -1,12 +1,3 @@
-/*
-$(() => {
-  const e = $("#scene")[0].innerText;
-  const element = `row_${e}`;
-  const elm = document.getElementById(element);
-  elm.scrollIntoView(true);
-  $("#display").attr("disabled", true);
-}),
-*/
 $(() => {
   $("#btn-display").attr("disabled", true);
 }),
@@ -18,8 +9,8 @@ $(() => {
   }),
 $(".btn-scene-shot-list").on("click", (e) => {
     const title = $("#filmTitle")[0].innerText;
-    const scene = $("#scene")[0].innerText;
-    window.location.href = `/scene-shot-list?title=${title}&scene=${scene}`;
+    const sceneNumber = $("#sceneNumber")[0].innerText;
+    window.location.href = `/scene-shot-list?title=${title}&sceneNumber=${sceneNumber}`;
   }),
   $(".btn-play").on("click", (e) => {
     const title = $("#filmTitle")[0].innerText;
@@ -30,31 +21,31 @@ $(".btn-scene-shot-list").on("click", (e) => {
   $(".btn-del").on("click", (e) => {
     const num = e.target.id.substring(4);
     const title = $("#filmTitle")[0].innerText;
-    const scene = $("#scene")[0].innerText;
+    const sceneNumber = $("#sceneNumber")[0].innerText;
     const element = `${e.target.value}`;
-    window.location.href = `/delete?title=${title}&element=${element}&scene=${scene}&sub=sounds&num=${num}`;
+    window.location.href = `/delete?title=${title}&element=${element}&sceneNumber=${sceneNumber}&sub=sounds&num=${num}`;
   }),
   $("#btn-next").on("click", (e) => {
     const title = $("#filmTitle")[0].innerText;
-    scNum = parseInt(e.target.value) + 1;
-    window.location.href = `/display?title=${title}&scene=${scNum}&locked='yes`;
+    sceneNumber = parseInt(e.target.value) + 1;
+    window.location.href = `/display?title=${title}&sceneNumber=${sceneNumber}&locked='yes`;
   }),
   $("#btn-previous").on("click", (e) => {
     const title = $("#filmTitle")[0].innerText;
-    scNum = parseInt(e.target.value) - 1;
-    window.location.href = `/display?title=${title}&scene=${scNum}locked='yes`;
+    sceneNumber = parseInt(e.target.value) - 1;
+    window.location.href = `/display?title=${title}&sceneNumber=${sceneNumber}locked='yes`;
   }),
   $(".btn-change").on("click", (e) => {
     const title = $("#filmTitle")[0].innerText;
     let sceneNumber = $("#sceneNumber")[0].innerText;
     const element = e.target.value;
-    window.location.href = `/gallery?title=${title}&scene=${sceneNumber}&element=${element}&caller=display`;
+    window.location.href = `/gallery?title=${title}&sceneNumber=${sceneNumber}&element=${element}&caller=display`;
   }),
   $("#input-note").on("focusout", (e) => {
     const val = e.target.value;
     const title = $("#filmTitle")[0].outerText;
-    const scene = $("#sceneNumber")[0].outerText;
-    window.location.href = `/update-note?title=${title}&scene=${scene}&val=${val}`;
+    const sceneNumber = $("#sceneNumber")[0].outerText;
+    window.location.href = `/update-note?title=${title}&sceneNumber=${sceneNumber}&val=${val}`;
   }),
   $("#btn-sound-lock").on("click", () => {
     const l = $("#length")[0].innerText;

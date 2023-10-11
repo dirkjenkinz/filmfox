@@ -25,30 +25,31 @@ const moves = [
   "Rack Focus",
 ];
 const audio = ["-", "Boom", "Lavs", "Lavs and Boom", "Voice Over (VO)"];
+
 const sceneShotListHandler = async (req, res) => {
   smartLog("info", "ENTERING BACK TO SCENES HANDLER");
   const u = url.parse(req.originalUrl, true);
   const title = u.query.title;
-  const scene = u.query.scene;
+  const sceneNumber = u.query.sceneNumber;
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
   const { script, shotList } = filmFoxFile;
 
   const size = shotList.length;
-;
-
-  const slug = script[scene][0].dialogue;
+  console.log({sceneNumber})
+  console.log(script[sceneNumber])
+  const slug = script[sceneNumber][0].dialogue;
 
   res.render("scene-shot-list.njk", {
     title,
-    scene,
-    lines: shotList[scene].lines,
+    sceneNumber,
+    lines: shotList[sceneNumber].lines,
     shots,
     angles,
     moves,
     audio,
-    note: shotList[scene].note,
+    note: shotList[sceneNumber].note,
     slug,
-    page: 'Edit Shot List',
+    page: "Edit Shot List",
     size,
   });
 };
