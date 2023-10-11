@@ -8,8 +8,8 @@ const pagesPath = path.join(__dirname, "../pages");
 const outPath = path.join(__dirname, '../data');
 
 
-const printHandler = async (req, res) => {
-  smartLog("info", "ENTERING PRINT HANDLER");
+const pdfHandler = async (req, res) => {
+  smartLog("info", "ENTERING PDF HANDLER");
   const u = url.parse(req.originalUrl, true);
   const title = u.query.title;
   const sceneNumber = u.query.sceneNumber;
@@ -71,4 +71,4 @@ console.log({shot})
   res.redirect(`/sheets?title=${title}&sheet=${sheetNumber}`);
 };
 
-module.exports = { printHandler };
+module.exports = { pdfHandler };

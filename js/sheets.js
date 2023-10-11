@@ -13,10 +13,10 @@ $(() => {
     const title = $('#filmTitle')[0].innerText;
     window.location.href = `/sheets?title=${title}&sheet=${sheet}`;
   }),
-  $("#btn-print").on("click", (e) => {
+  $("#btn-pdf").on("click", (e) => {
     let sheet = parseInt($("#sheet")[0].innerText);
     let scene = $('#sceneNum')[0].innerText;
     sceneNumber = scene.substring(6);
     const title = $('#filmTitle')[0].innerText;
-    window.location.href = `/print?title=${title}&sheetNumber=${sheet}&sceneNumber=${sceneNumber}`;
+    window.location.href = `/pdf?title=${title}&sheetNumber=${sheet}&sceneNumber=${sceneNumber}`;
   });
