@@ -16,7 +16,7 @@ const printHandler = async (req, res) => {
   const sheetNumber = u.query.sheetNumber;
 
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
-  const { shotList } = filmFoxFile;
+  const { shotList, script } = filmFoxFile;
   const shot = shotList[sceneNumber];
 
   let number = '000000' + sheetNumber;
@@ -27,14 +27,14 @@ const printHandler = async (req, res) => {
   const options = {
     format: "A4",
     orientation: "portrait",
-    border: "10mm",
+    border: "20mm",
     footer: {
-      height: "28mm",
+      height: "10mm",
       contents: {
-        first: "Cover page",
-        2: "Second page", // Any page number is working. 1-based index
+        first: "First page",
+        2: "Second page",
         default:
-          '<span style="color: #444;">{{page}}</span>/<span>{{pages}}</span>', // fallback value
+          '<span style="color: #444;">{{page}}</span>/<span>{{pages}}</span>',
         last: "Last Page",
       },
     },
@@ -42,24 +42,9 @@ const printHandler = async (req, res) => {
 
 const list = '<table style="font-size: 300%;"><thead><tr><th>Gruttox</th></tr></thead></table>';
 
-// lines = shot.lines,
-
-var users = [
-  {
-    name: "Shyam",
-    age: "26",
-  },
-  {
-    name: "Navjot",
-    age: "26",
-  },
-  {
-    name: "Vitthal",
-    age: "26",
-  },
-];
-
 lines = shot.lines;
+
+console.log({shot})
 
   const document = {
     html: html,
@@ -68,6 +53,7 @@ lines = shot.lines;
       sheetNumber,
       shot,
       lines,
+      slug: script[sceneNumber][0].dialogue,
     }, 
     path: `${outPath}/${title}/sheets/sheet${number}.pdf`,
     type: "nunjucks",

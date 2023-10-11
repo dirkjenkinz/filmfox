@@ -12,9 +12,7 @@ const sheetsHandler = async (req, res) => {
 
   const slugs = [];
   script.forEach((s) => {
-    if (s.slug === "yes") {
-      slugs.push(s.dialogue);
-    }
+      slugs.push(s[0].dialogue);
   });
 
   sList = [];
