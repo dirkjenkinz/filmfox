@@ -8,13 +8,16 @@
         <button class='btn btn-block btn-edit btn-sm' id='btn-previous' disabled="disabled">Previous Sheet</button>
       {% endif %}
     </div>
-    <div class='col-md-8'></div>
+    <div class='col-md-6'></div>
     <div class='col-md-2'>
       {% if sheet < size - 1 %}
       <button class='btn btn-block btn-edit btn-sm' id='btn-next'>Next Sheet</button>
       {% else %}
             <button class='btn btn-block btn-edit btn-sm' id='btn-next' disabled>Next Sheet</button>
       {% endif %}
+    </div>
+    <div class='col-md-1'>
+          <button class='btn btn-block btn-edit btn-sm' id='btn-print'>Print</button>
     </div>
   </div>
   <div class='row top' style='background: white;'>
@@ -30,7 +33,7 @@
               <td class='data-page' colspan='2'>{{title}}</td>
             </tr>
             <tr>
-              <td class='data-page' style='width=10%;'>Scene
+              <td class='data-page' style='width=10%;' id='sceneNum'>Scene
                 {{shotList[sheet].scene}}</td>
               <td class='data-page' style='width=40%;'>{{slugs[sheet]}}</td>
               <td class='data-page' style='width=50%;'>{{shotList[sheet].note}}</td>

@@ -12,4 +12,11 @@ $(() => {
     sheet++;
     const title = $('#filmTitle')[0].innerText;
     window.location.href = `/sheets?title=${title}&sheet=${sheet}`;
+  }),
+  $("#btn-print").on("click", (e) => {
+    let sheet = parseInt($("#sheet")[0].innerText);
+    let scene = $('#sceneNum')[0].innerText;
+    scene = scene.substring(6);
+    const title = $('#filmTitle')[0].innerText;
+    window.location.href = `/print?title=${title}&sheetNumber=${sheet}&sceneNumber=${scene}`;
   });

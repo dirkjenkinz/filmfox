@@ -24,7 +24,6 @@ const displayHandler = async (req, res) => {
   const { script, shotList } = filmFoxFile;
   const characters = await readFile(`${title}/${title}.chrs`);
   const api_key = process.env.APIKEY;
-
   
   res.render('display.njk', {
     title,

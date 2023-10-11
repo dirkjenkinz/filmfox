@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Film Fox Shot List</title>
+        <style>
+            td,
+            th {
+                border: 2px solid black;
+                text-align: left;
+            }
+        </style>
+    </head>
+    <body>
+        <table style='width: 100%;'>
+            <thead>
+                <tr style='font-size: 200%;'>
+                    <th style='width:20%;'>Sheet #{{sheetNumber}}</th>
+                    <th style='text-align: center;'>{{title}}</th>
+                </tr>
+                <tr>
+                    <th style='width:20%;'>Scene
+                        {{shot.scene}}</th>
+                    <th style='text-align: left;'>{{shot.note}}</th>
+                </tr>
+            </thead>
+        </table>
+        <br>
+        <table style='width:100%;'>
+            <thead>
+                <tr>
+                    <th>Shot #</th>
+                    <th>Angle</th>
+                    <th>Move</th>
+                    <th>Audio</th>
+                    <th>Subject</th>
+                    <th>Description</th>
+                    <th>Done</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each lines}}
+                    <tr>
+                        <td>
+                            {{this.shot}}
+                        </td>
+                        <td>
+                            {{this.angle}}
+                        </td>
+                        <td>
+                            {{this.move}}
+                        </td>
+                        <td>
+                            {{this.audio}}
+                        </td>
+                        <td>
+                            {{this.subject}}
+                        </td>
+                        <td>
+                            {{this.description}}
+                        </td>
+                        <td>&nbsp;</td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </body>
+</html>
