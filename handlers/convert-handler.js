@@ -4,7 +4,7 @@ const url = require("url");
 const dotenv = require("dotenv");
 dotenv.config();
 const { smartLog } = require("../services/smart-log");
-var convert = require("xml-js");
+var parseString = require("xml2js").parseString;
 
 const {
   writeFile,
@@ -14,20 +14,20 @@ const {
 } = require("../services/file-service");
 
 const buildScene = (details) => {
+  const num = details[0].num;
   const scene = [];
-  d2 = [];
+  const d2 = [];
   for (let i = 0; i < details.length; i++) {
     if (
-      details[i].$.Type === "Scene Heading" ||
-      details[i].$.Type === "Action" ||
-      details[i].$.Type === "Dialogue" ||
-      details[i].$.Type === "Character" ||
-      details[i].$.Type === "Transition"
+      details[i].type === "Scene Heading" ||
+      details[i].type === "Action" ||
+      details[i].type === "Dialogue" ||
+      details[i].type === "Character" ||
+      details[i].type === "Transition"
     ) {
-      d2.push({ type: details[i].$.Type, text: details[i].Text[0] });
+      d2.push({ type: details[i].type, text: details[i].text });
     }
   }
-
   for (let i = 0; i < d2.length; i++) {
     if (
       d2[i].type === "Scene Heading" ||
@@ -37,7 +37,7 @@ const buildScene = (details) => {
       scene.push({
         character: "NARRATOR",
         dialogue: d2[i].text,
-        scene: "",
+        scene: num,
         voice: "",
         sound: "",
         image: "",
@@ -55,7 +55,7 @@ const buildScene = (details) => {
         scene.push({
           character: d2[i].text,
           dialogue: d2[i + 1].text,
-          scene: "",
+          scene: num,
           voice: "",
           sound: "",
           image: "",
@@ -71,19 +71,14 @@ const buildScene = (details) => {
 const convertHandler = async (req, res) => {
   smartLog("info", "ENTERING CONVERT HANDLER");
   const u = url.parse(req.originalUrl, true);
-  let file = u.query.script;
-  api_key = process.env.APIKEY;
+  let title = u.query.script;
+  const api_key = process.env.APIKEY;
   const voices = await readFile("voices.json");
-  const script = await readScriptData(`${file}`);
-
-  var parseString = require("xml2js").parseString;
-  parseString(script, function (err, result) {
+  const script = await readScriptData(`${title}`);
+  parseString(script, async (err, result) => {
     const paragraphs = result.FinalDraft.Content[0].Paragraph;
-
     let elements = [];
-    let obj1 = [];
     let ptr = 0;
-    // elements.push([ptr, paragraphs[0]]);
     paragraphs.forEach((p) => {
       if (p.$.Type === "Scene Heading") {
         ptr++;
@@ -99,7 +94,7 @@ const convertHandler = async (req, res) => {
     }
 
     elements.forEach((e) => {
-      tank[e.num].push(e)
+      tank[e.num].push(e);
     });
 
     let script = [];
@@ -108,7 +103,62 @@ const convertHandler = async (req, res) => {
       script.push(buildScene(tank[i]));
     }
 
+    shotList = [];
+    script.forEach((s, index) => {
+      shotList.push({
+        scene: index,
+        lines: [
+          {
+            shot: "",
+            angle: "",
+            move: "",
+            audio: "",
+            subject: "",
+            description: "",
+          },
+        ],
+        note: "",
+      });
+    });
+    sceneOrder = [];
+    script.forEach((s, index) => {
+      sceneOrder.push(index);
+    });
+
+    title = title.substring(0, title.length - 4);
+    console.log({ title });
+    await createDirectory(title);
+
+    const fff = {
+      script,
+      shotList,
+      sceneOrder,
+    };
+
+    const characters = [];
+
+    script.forEach((scene) => {
+      scene.forEach((s) => {
+        characters.push(s.character);
+      });
+    });
+
+    const uniqueCharacters = characters.filter(
+      (x, i) => i === characters.indexOf(x)
+    );
+
+    console.log({ uniqueCharacters });
+
+    const characterArray = [];
+
+    uniqueCharacters.forEach((c) => {
+      characterArray.push([c, ""]);
+    });
+
+    await writeFile(JSON.stringify(characterArray), `${title}/${title}.chrs`);
+    await writeFile(JSON.stringify(fff), `${title}/${title}.fff`);
   });
+  res.redirect(`/display?title=${title}&sceneNumber=0&locked='yes`);
 };
 
 module.exports = { convertHandler };
