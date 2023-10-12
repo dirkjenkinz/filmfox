@@ -14,25 +14,25 @@ const {
 } = require("../services/file-service");
 
 const buildScene = (details) => {
-  // {"character":"NARRATOR","dialogue":"FADE IN:","scene":0,"voice":"Story Teller","sound":"0000_0000.mp3","image":"0pg0vOy7Gff5hsMiZ6uw--1--9ffg4.jpg","duration":0,"type":"still","slug":"yes"}]
   const scene = [];
   d2 = [];
-
   for (let i = 0; i < details.length; i++) {
     if (
       details[i].$.Type === "Scene Heading" ||
       details[i].$.Type === "Action" ||
       details[i].$.Type === "Dialogue" ||
-      details[i].$.Type === "Character"
+      details[i].$.Type === "Character" ||
+      details[i].$.Type === "Transition"
     ) {
-      d2.push({type: details[i].$.Type, text: details[i].Text[0]});
+      d2.push({ type: details[i].$.Type, text: details[i].Text[0] });
     }
-  };
+  }
 
   for (let i = 0; i < d2.length; i++) {
     if (
       d2[i].type === "Scene Heading" ||
-      d2[i].type === "Action"
+      d2[i].type === "Action" ||
+      d2[i].type === "Transition"
     ) {
       scene.push({
         character: "NARRATOR",
@@ -46,10 +46,10 @@ const buildScene = (details) => {
       });
     } else {
       if (d2[i].type === "Character") {
-        const parenth = (d2[i].text.indexOf('('));
-        if (parenth > -1){
-          d2[i].text = d2[i].text.substring(0, parenth - 1) 
-        };
+        const parenth = d2[i].text.indexOf("(");
+        if (parenth > -1) {
+          d2[i].text = d2[i].text.substring(0, parenth - 1);
+        }
         d2[i].text = d2[i].text.toUpperCase();
 
         scene.push({
@@ -79,24 +79,35 @@ const convertHandler = async (req, res) => {
   var parseString = require("xml2js").parseString;
   parseString(script, function (err, result) {
     const paragraphs = result.FinalDraft.Content[0].Paragraph;
-    let ptr = 0;
+
     let elements = [];
     let obj1 = [];
+    let ptr = 0;
+    // elements.push([ptr, paragraphs[0]]);
     paragraphs.forEach((p) => {
       if (p.$.Type === "Scene Heading") {
         ptr++;
-        obj1.push(elements);
-        elements = [];
       }
-      elements.push(p);
+      const element = { num: ptr, type: p.$.Type, text: p.Text[0] };
+      elements.push(element);
     });
-    console.log(obj1)
-    let script = [];
-    for (let i = 0; i < obj1.length; i++) {
-      script.push(buildScene(obj1[i], i + 1));
+
+    tank = [];
+
+    for (i = 0; i <= ptr; i++) {
+      tank.push([]);
     }
 
-   // console.log(script)
+    elements.forEach((e) => {
+      tank[e.num].push(e)
+    });
+
+    let script = [];
+
+    for (let i = 0; i < tank.length; i++) {
+      script.push(buildScene(tank[i]));
+    }
+
   });
 };
 
