@@ -3,6 +3,7 @@ const path = require("path");
 const mp3Duration = require("mp3-duration");
 const { smartLog } = require("../services/smart-log");
 const sound = require("sound-play");
+
 const fileExists = (file) => {
   try {
     if (fs.existsSync(file)) {
@@ -16,21 +17,6 @@ const fileExists = (file) => {
   }
 };
 
-const c = (file) => {
-  const directoryPath = path.join(__dirname, "../scripts");
-  return new Promise((resolve, reject) => {
-    fs.readFile(`${directoryPath}/${file}`, (err, data) => {
-      if (err) {
-        smartLog("error", "error getting script");
-        smartLog("error", err.cause);
-        reject(err);
-      } else {
-        resolve(data);
-      }
-    });
-  });
-};
-
 const readFile = async (file) => {
   smartLog("info", `readFile - getting data for ${file}`);
   const directoryPath = path.join(__dirname, "../data");
@@ -42,6 +28,22 @@ const readFile = async (file) => {
         reject(err);
       } else {
         resolve(JSON.parse(data));
+      }
+    });
+  });
+};
+
+const readScriptData = async (file) => {
+  smartLog("info", `readScriptData - getting data for ${file}`);
+  const directoryPath = path.join(__dirname, "../scripts");
+  return new Promise((resolve, reject) => {
+    fs.readFile(`${directoryPath}/${file}`, (err, data) => {
+      if (err) {
+        smartLog("error", "error getting data");
+        smartLog("error", err.cause);
+        reject(err);
+      } else {
+        resolve(data);
       }
     });
   });
@@ -201,4 +203,5 @@ module.exports = {
   deleteFile,
   getFFFList,
   fileExists,
+  readScriptData,
 };

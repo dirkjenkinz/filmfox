@@ -1,5 +1,5 @@
 const url = require('url');
-const { readFile, getListOfElements } = require('../services/file-service');
+const { readFile } = require('../services/file-service');
 const { smartLog } = require('../services/smart-log');
 const dotenv = require('dotenv');
 dotenv.config();

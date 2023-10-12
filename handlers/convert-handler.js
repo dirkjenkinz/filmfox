@@ -4,179 +4,68 @@ const url = require("url");
 const dotenv = require("dotenv");
 dotenv.config();
 const { smartLog } = require("../services/smart-log");
+var convert = require("xml-js");
 
 const {
-  getScript,
   writeFile,
   createDirectory,
   readFile,
+  readScriptData,
 } = require("../services/file-service");
 
-const convertToObject = (script) => {
-  const newScript = [];
+const buildScene = (details) => {
+  // {"character":"NARRATOR","dialogue":"FADE IN:","scene":0,"voice":"Story Teller","sound":"0000_0000.mp3","image":"0pg0vOy7Gff5hsMiZ6uw--1--9ffg4.jpg","duration":0,"type":"still","slug":"yes"}]
+  const scene = [];
+  d2 = [];
 
-  script.forEach((s) => {
-    let slug = "no";
-    if (s[0] === "NARRATOR") {
-      if (s[1].substring(0, 3) === "INT" || s[1].substring(0, 3) === "EXT") {
-        slug = "yes";
-      }
+  for (let i = 0; i < details.length; i++) {
+    if (
+      details[i].$.Type === "Scene Heading" ||
+      details[i].$.Type === "Action" ||
+      details[i].$.Type === "Dialogue" ||
+      details[i].$.Type === "Character"
+    ) {
+      d2.push({type: details[i].$.Type, text: details[i].Text[0]});
     }
-    newScript.push({
-      character: s[0],
-      dialogue: s[1],
-      scene: s[2],
-      voice: "",
-      image: "",
-      sound: "",
-      duration: 0,
-      type: "",
-      slug: "",
-    });
-  });
-  return newScript;
-};
+  };
 
-const getVoiceData = (voices) => {
-  let voice_data = [];
-  let v = [];
-  v.push("-");
-  v.push("-");
-  v.push("-");
-  voice_data.push(v);
-  voices.forEach((voice) => {
-    let v = [];
-    v.push(voice.name);
-    v.push(voice.description);
-    v.push(voice.voice_id);
-    voice_data.push(v);
-  });
-  return voice_data;
-};
+  for (let i = 0; i < d2.length; i++) {
+    if (
+      d2[i].type === "Scene Heading" ||
+      d2[i].type === "Action"
+    ) {
+      scene.push({
+        character: "NARRATOR",
+        dialogue: d2[i].text,
+        scene: "",
+        voice: "",
+        sound: "",
+        image: "",
+        duration: "",
+        type: "",
+      });
+    } else {
+      if (d2[i].type === "Character") {
+        const parenth = (d2[i].text.indexOf('('));
+        if (parenth > -1){
+          d2[i].text = d2[i].text.substring(0, parenth - 1) 
+        };
+        d2[i].text = d2[i].text.toUpperCase();
 
-const parseAction = (action, sceneNumber) => {
-  let text = "";
-
-  for (let i = 1; i < action.length; i++) {
-    if (action[i].substring(0, 4) === "Text");
-    const start = action[i].indexOf(">") + 1;
-    text += action[i].substring(start);
-  }
-
-  text = text.replace(/\n/g, "");
-
-  let a = [];
-  a.character = "NARRATOR";
-  a.dialogue = text;
-  a.scene = sceneNumber;
-  return a;
-};
-
-const parseDialogue = (dialogue, character, sceneNumber) => {
-  let text = "";
-
-  for (let i = 1; i < dialogue.length; i++) {
-    if (dialogue[i].substring(0, 4) === "Text");
-    const start = dialogue[i].indexOf(">") + 1;
-    text += dialogue[i].substring(start);
-  }
-
-  text = text.replace(/\n /g, "");
-  text = text.replace(/\n /g, "");
-  text = text.replace(/    /g, " ");
-  text = text.replace(/    /g, " ");
-  text = text.replace(/   /g, " ");
-  text = text.replace(/   /g, " ");
-  text = text.replace(/  /g, " ");
-  text = text.replace(/  /g, " ");
-  text = text.replace(/ \,/g, ",");
-  text = text.replace(/ \./g, ".");
-  text = text.replace(/ \!/g, "!");
-  text = text.replace(/ \?/g, "?");
-
-  let a = [];
-  a[0] = character;
-  a[1] = text.trim();
-  a[2] = sceneNumber;
-  return a;
-};
-
-const parseTransition = (transition, sceneNumber) => {
-  let a = [];
-  a[0] = "NARRATOR";
-  a[1] = transition[1].substring(5);
-  a[2] = sceneNumber;
-  return a;
-};
-
-const parseSceneHeading = (heading, sceneNumber) => {
-  let a = [];
-  a[0] = "NARRATOR";
-  for (let i = 1; i < heading.length; i++) {
-    if (heading[i].substring(0, 5) === "Text>") {
-      a[1] = heading[i].substring(5).trim().toUpperCase();
-    }
-  }
-  a[2] = sceneNumber;
-  return a;
-};
-
-const parseCharacter = (character, sceneNumber) => {
-  let c = "";
-  for (let i = 1; i < character.length; i++) {
-    if (character[i].substring(0, 4) === "Text") {
-      const l = character[i].indexOf(">") + 1;
-      c = character[i].substring(l);
-      if (c.indexOf("(") > 0) {
-        c = c.substring(0, c.indexOf("("));
+        scene.push({
+          character: d2[i].text,
+          dialogue: d2[i + 1].text,
+          scene: "",
+          voice: "",
+          sound: "",
+          image: "",
+          duration: "",
+          type: "",
+        });
       }
     }
   }
-  c = c.trim();
-  c = c.toUpperCase();
-  c[2] = sceneNumber;
-  return c;
-};
-
-const parseScript = (script) => {
-  let current_character = "";
-  let sceneNumber = 1;
-  let parse = [];
-  let characters = [];
-  script = script.toString().split("<Paragraph");
-
-  for (let i = 1; i < script.length; i++) {
-    script[i] = script[i].trim();
-    let x = script[i].split("<");
-    let cut = x[0].indexOf("Type=") + 6;
-    x[0] = x[0].substring(cut);
-    x[0] = x[0].substring(0, x[0].length - 9);
-    if (x[0] === "Action") {
-      parse.push(parseAction(x, sceneNumber));
-    } else if (x[0] === "Transition") {
-      parse.push(parseTransition(x, sceneNumber));
-    } else if (x[0] === "Dialogue") {
-      parse.push(parseDialogue(x, current_character, sceneNumber));
-    } else if (x[0] === "Scene Heading") {
-      parse.push(parseSceneHeading(x, sceneNumber));
-      sceneNumber++;
-    } else if (x[0] === "Character") {
-      let c = parseCharacter(x, sceneNumber);
-      if (c !== "") {
-        current_character = parseCharacter(x, sceneNumber);
-        if (!characters.includes(current_character)) {
-          characters.push(current_character);
-        }
-      }
-    }
-  }
-
-  const chars = [];
-  characters.forEach((c) => {
-    chars.push([c, "-"]);
-  });
-
-  return [parse, chars];
+  return scene;
 };
 
 const convertHandler = async (req, res) => {
@@ -185,31 +74,30 @@ const convertHandler = async (req, res) => {
   let file = u.query.script;
   api_key = process.env.APIKEY;
   const voices = await readFile("voices.json");
-  let script = await getScript(file);
-  let parse = parseScript(script);
-  script = convertToObject(parse[0]);
-  parse[1].push(["NARRATOR", "-"]);
-  let characters = parse[1].sort();
-  let title = u.query.script;
-  title = title.split(".");
-  title = title[0];
+  const script = await readScriptData(`${file}`);
 
-  let voice_data = await getVoiceData(voices);
+  var parseString = require("xml2js").parseString;
+  parseString(script, function (err, result) {
+    const paragraphs = result.FinalDraft.Content[0].Paragraph;
+    let ptr = 0;
+    let elements = [];
+    let obj1 = [];
+    paragraphs.forEach((p) => {
+      if (p.$.Type === "Scene Heading") {
+        ptr++;
+        obj1.push(elements);
+        elements = [];
+      }
+      elements.push(p);
+    });
+    console.log(obj1)
+    let script = [];
+    for (let i = 0; i < obj1.length; i++) {
+      script.push(buildScene(obj1[i], i + 1));
+    }
 
-  const rc = await createDirectory(title);
-
-  const fff = {
-    title,
-    api_key,
-    voice_data,
-    script,
-  };
-
-  await writeFile(JSON.stringify(fff), `${title}/${title}.fff`);
-  await writeFile(JSON.stringify(characters), `${title}/${title}.chrs`);
-  await createDirectory(`${title}/sounds`);
-
-  res.redirect(`/display?title=${title}&sceneNumber=0&locked=yes`);
+   // console.log(script)
+  });
 };
 
 module.exports = { convertHandler };
