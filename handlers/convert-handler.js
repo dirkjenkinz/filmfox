@@ -51,7 +51,7 @@ const buildScene = (details) => {
           d2[i].text = d2[i].text.substring(0, parenth - 1);
         }
         d2[i].text = d2[i].text.toUpperCase();
-
+        
         scene.push({
           character: d2[i].text,
           dialogue: d2[i + 1].text,

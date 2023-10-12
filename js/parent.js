@@ -16,7 +16,7 @@ $("#btn-display").on("click", () => {
     }),
     $("#btn-sound").on("click", () => {
       const f = $("#filmTitle")[0].innerText;
-      const sceneNumber = $("#scene")[0].innerText;
+      const sceneNumber = $("#sceneNumber")[0].innerText;
       window.location.href = `/sound?title=${f}&sceneNumber=${sceneNumber}`;
     }),
     $("#btn-scenes").on("click", () => {
