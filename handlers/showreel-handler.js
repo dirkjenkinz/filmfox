@@ -10,25 +10,30 @@ const showreelHandler = async (req, res) => {
   const elementNumber = u.query.elementNumber;
 
   let mute = u.query.mute;
-  if (!mute) mute = 'MUTE';
+  if (!mute) mute = "MUTE";
 
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
-  const {script} = filmFoxFile;
+  const { script } = filmFoxFile;
   const element = script[sceneNumber][elementNumber];
   const slug = script[sceneNumber][0].dialogue;
 
-  const audio = `../data/${title}/sounds/${element.sound}`;
+  let audio = "";
+  if (element.sound) {
+    audio = `../data/${title}/sounds/${element.sound}`;
+  };
+
+  console.log(script.length)
 
   res.render("showreel.njk", {
     sceneNumber,
     elementNumber,
-    highestElement: script[sceneNumber].length -1,
-    highestScene: script.length,
+    highestElement: script[sceneNumber].length - 1,
+    highestScene: script.length -1,
     title,
     element,
     mute,
     slug,
-    page: 'Showreel',
+    page: "Showreel",
     audio,
   });
 };

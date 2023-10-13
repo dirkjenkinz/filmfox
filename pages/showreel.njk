@@ -23,8 +23,10 @@
                   <video width='480' height='270' controls='controls' autoplay='autoplay' id='iamge_{{i}}' class='iamge' muted='muted'>
                     <source src='../data/{{title}}/images/{{element.image}}' type='video/mp4'>
                   </video>
-                {% else %}
+                {% elseif element.type === 'still' %}
                   <img width='480' height='270' src='../data/{{title}}/images/{{element.image}}' id='iamge_{{i}}' class='img' alt='{{script[i].image}}'>
+                {% else %}
+                  <h2>NO IMAGE</h2>
                 {% endif %}
               </td>
               <td class='data-showreel' style='width: 40%;'>
@@ -54,26 +56,34 @@
                   </tr>
                   <tr>
                     <td colspan='2'>
-                      {% if mute == 'MUTE' %}
-                        <audio id='master-play' controls="controls" style='width: 100%;'>
-                          <source src="{{audio}}" type="audio/ogg"/>
-                          <source src="{{audio}}" type="audio/mpeg"/>
-                          Your browser does not support the audio tag.
-                        </audio>
+                      {% if element.sound %}}
+                        {% if mute == 'MUTE' %}
+                          <audio id='master-play' controls="controls" style='width: 100%;'>
+                            <source src="{{audio}}" type="audio/ogg"/>
+                            <source src="{{audio}}" type="audio/mpeg"/>
+                            Your browser does not support the audio tag.
+                          </audio>
+                        {% else %}
+                          <audio id='master-play' controls="controls" style='width: 100%;' muted="muted">
+                            <source src="{{audio}}" type="audio/ogg"/>
+                            <source src="{{audio}}" type="audio/mpeg"/>
+                            Your browser does not support the audio tag.
+                          </audio>
+                        {% endif %}
                       {% else %}
-                        <audio id='master-play' controls="controls" style='width: 100%;' muted="muted">
-                          <source src="{{audio}}" type="audio/ogg"/>
-                          <source src="{{audio}}" type="audio/mpeg"/>
-                          Your browser does not support the audio tag.
-                        </audio>
+                        <h2>NO SOUND</h2>
                       {% endif %}
                     </td>
                   </tr>
                   <tr>
                     <td colspan='2'>
-                      <button class='btn btn-block btn-edit btn-sm' id='btn-mute'>
-                        {{mute}}
-                      </button>
+                      {% if element.sound %}}
+                        <button class='btn btn-block btn-edit btn-sm' id='btn-mute'>
+                          {{mute}}
+                        </button>
+                        {% else %}
+                        <p id='btn-mute' hidden>{{mute}}</p>
+                      {% endif %}
                     </td>
                   </tr>
                   <tr>

@@ -28,6 +28,7 @@ const characterUpdateHandler = async (req, res) => {
   let fff = await readFile(`${title}/${title}.fff`);
   const characters = await readFile(`${title}/${title}.chrs`);
 
+  
   const voices = await readFile('voices.json');
   voice_data = getVoiceData(voices);
   voice_data.unshift(['-', '', '']);

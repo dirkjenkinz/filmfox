@@ -126,8 +126,12 @@ const convertHandler = async (req, res) => {
     });
 
     title = title.substring(0, title.length - 4);
-    console.log({ title });
     await createDirectory(title);
+    await createDirectory(`${title}/images`);
+    await createDirectory(`${title}/scenes`)
+    await createDirectory(`${title}/sheets`)
+    await createDirectory(`${title}/sounds`)
+    await createDirectory(`${title}/videos`)
 
     const fff = {
       script,
@@ -146,8 +150,6 @@ const convertHandler = async (req, res) => {
     const uniqueCharacters = characters.filter(
       (x, i) => i === characters.indexOf(x)
     );
-
-    console.log({ uniqueCharacters });
 
     const characterArray = [];
 

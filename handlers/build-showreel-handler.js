@@ -17,8 +17,6 @@ const buildShowreelHandler = async (req, res) => {
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
   const { script } = filmFoxFile;
 
-  smartLog("info", "BUILDING SHOWREEL");
-
   let t = 0.00;
   const showreel = [];
   script.forEach((s)=>{

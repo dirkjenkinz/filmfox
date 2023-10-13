@@ -31,7 +31,7 @@ const displayHandler = async (req, res) => {
     lock,
     scene: script[sceneNumber],
     sceneNumber,
-    page : 'Display',
+    page : 'Script Breakdown',
     highest: script.length,
     note: shotList[sceneNumber].note,
   });
