@@ -55,10 +55,13 @@ const createVideoHandler = async (req, res) => {
   const outPath = path.join(__dirname, `../data/${title}/videos`);
 
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
+  smartLog('info', `${title}.fff retrieved`);
   const { script } = filmFoxFile;
-  script.forEach((s, index) => {
-    if (s.scene == parseInt(sceneNumber)) {
-      let num = "0000" + scene;
+  
+  const scene = script[sceneNumber];
+
+  scene.forEach((s, index) => {
+      let num = "0000" + sceneNumber;
       num = num.substring(num.length - 4);
       let sub = "0000" + index;
       sub = sub.substring(sub.length - 4);
@@ -67,7 +70,7 @@ const createVideoHandler = async (req, res) => {
       const vision = `${imagePath}/${s.image}`;
       let duration = Math.ceil(s.duration) + 1;
       if (duration < 4 ) duration = 4;
-      const output = `${outPath}/${num}_${sub}.mp4`
+      const output = `${outPath}/${num}_${sub}.mp4`;
       if (s.type === "movie") {
         new FFmpeg()
         .addInput(vision)
@@ -76,7 +79,6 @@ const createVideoHandler = async (req, res) => {
       } else {
         imgToMP4(caption, sound, vision, duration, output);
       }
-    }
   });
 
   res.redirect(`/video?title=${title}&sceneNumber=${sceneNumber}`);

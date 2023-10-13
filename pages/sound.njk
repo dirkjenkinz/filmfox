@@ -21,10 +21,6 @@
                 <source src='' type="audio/mpeg">
               </audio>
             </td>
-            <td></td>
-            <td colspan='4'>
-              <button type='button' class='btn btn-edit btn-block btn-sm' id='btn-enable'>Enable DELETE</button>
-            </td>
           </tr>
         </tbody>
       </table>
@@ -43,7 +39,7 @@
                       {% if merged[i + num] != 'yes' %}
                         <button type='button' class='btn btn-edit btn-block btn-sm btn-merge' id='btn-merge_{{i + num}}' value='{{i + num}}'>MERGE</button>
                       {% else %}
-                        <button type='button' class='btn btn-edit btn-block btn-sm btn-delete' disabled="disabled" id='btn-delete_{{i + num}}' value='{{i + num}}'>DELETE</button>
+                        <button type='button' class='btn btn-block btn-sm btn-primary btn-merge' id='btn-merge_{{i + num}}' value='{{i + num}}'>MERGE</button>
                       {% endif %}
                     </td>
                     <td class='data-right' style='background: slateblue;'>
