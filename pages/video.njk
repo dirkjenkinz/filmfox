@@ -17,8 +17,10 @@
                       <video width="80" height="45" controls="controls" autoplay="autoplay" muted="muted" class="img">
                         <source src="../data/{{title}}/images/{{script[i][0].image}}" type="video/mp4">
                       </video>
-                    {% else %}
+                    {% elseif script[i][0].type == 'still' %}
                       <img width="80" height="45" src="../data/{{title}}/images/{{script[i][0].image}}" class="img" alt="img_{{i}}"/>
+                    {% else %}
+                      <p style='font-size: 50%;'>No image</p>
                     {% endif %}
                   </td>
                   <td class='data-left'>

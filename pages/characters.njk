@@ -7,15 +7,17 @@
           {% for i in range(0, characters.length, 3) -%}
             <tr>
               {% for num in range(0, 3) -%}
-                <td class='data-right'>
-                  <button type='button' class='btn btn-edit btn-block btn-sm btn-edit-character' value='{{characters[i + num][0]}}'>
-                    {{characters[i + num][0]}}
-                  </button>
-                </td>
-                <td class='data-right'>
-                  {{characters[i + num][1]}}
-                </td>
-                <td>&nbsp;&nbsp;</td>
+                {% if characters[i + num] %}
+                  <td class='data-right'>
+                    <button type='button' class='btn btn-edit btn-block btn-sm btn-edit-character' value='{{characters[i + num][0]}}'>
+                      {{characters[i + num][0]}}
+                    </button>
+                  </td>
+                  <td class='data-right'>
+                    {{characters[i + num][1]}}
+                  </td>
+                  <td>&nbsp;&nbsp;</td>
+                {% endif %}
               {% endfor %}
             </tr>
           {% endfor %}
