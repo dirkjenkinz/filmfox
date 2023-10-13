@@ -7,8 +7,8 @@
           <table id="character_table">
             <thead>
               <tr>
-                <th class="data-display" id="tab_ch_{{i}}">Character</th>
-                <th class="data-display" id="tab_vce_{{i}}">Voice</th>
+                <th class='table-header' id="tab_ch_{{i}}">Character</th>
+                <th class='table-header' id="tab_vce_{{i}}">Voice</th>
                 <th>
                   <audio id='master-play' style='width: 100%;'>
                     <source src='' type='audio/mpeg'>
@@ -19,7 +19,7 @@
             <tbody>
               {% for i in range(0, characters.length) -%}
                 <tr>
-                  <td class="data-left" id="char_{{i}}">{{characters[i][0]}}</td>
+                  <td class="table-data" id="char_{{i}}">{{characters[i][0]}}</td>
                   <td class="data-display">
                     <select name="voices_{{i}}" id="voices_{{i}}" style='background:black;'>
                       {% for j in range(0, voice_data.length) -%}
@@ -48,8 +48,8 @@
           <table class="table-bordered table-sm table-dark table-grid" id="voice_table">
             <thead>
               <tr>
-                <th class="data-display" id="tab_voice_{{i}}">Voice</th>
-                <th class="data-display" id="tab_description_{{i}}">
+                <th class='table-header' id="tab_voice_{{i}}">Voice</th>
+                <th class='table-header' id="tab_description_{{i}}">
                   Description
                 </th>
               </tr>
@@ -57,10 +57,10 @@
             <tbody>
               {% for i in range(1, voice_data.length) -%}
                 <tr>
-                  <td class="data-left" id="voice_data_{{i}}">
+                  <td class="table-data" id="voice_data_{{i}}">
                     {{voice_data[i][0]}}
                   </td>
-                  <td class="data-left" id="voice_description_{{i}}">
+                  <td class="table-data" id="voice_description_{{i}}">
                     {{voice_data[i][1]}}
                   </td>
                   <td>

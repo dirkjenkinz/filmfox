@@ -56,14 +56,14 @@
         <tbody id='bod'>
           {% for i in range(0, scene.length) -%}
               <tr id='row_{{i}}' class='display-box'>
-                <td class='non-header-display' style='width: 15%;'>
+                <td class='table-data' style='width: 15%;'>
                   Character:
                   {{scene[i].character}}
                   <br><br>
                   Voice:<p id='voice_{{i}}'>{{scene[i].voice}}</p>
                 </td>
-                <td class='non-header-display' style='width:50%;'>{{scene[i].dialogue}}</td>
-                <td class='non-header-display'>
+                <td class='table-data' style='width:50%;'>{{scene[i].dialogue}}</td>
+                <td class='table-data'>
                   <p style='font-size: 60%; color: black;'>{{scene[i].sound}}</p>
                   {% if (scene[i].voice == '-') or (scene[i].sound) %}
                     <button type='button' class='btn btn-edit btn-block btn-sm btn-play' id='play_{{i}}' value='{{scene[i].sound}}'>
@@ -81,7 +81,7 @@
                   <br>
                   <p style='font-size: 60%; color: black;'>{{scene[i].duration}}
                 </td>
-                <td class='data-display card' style='width: 20%' id='crd_{{i}}'>
+                <td class='table-data card' style='width: 20%' id='crd_{{i}}'>
                   <button type='button' class='btn btn-edit btn-block btn-sm btn-change' id='change_{{i}}' value='{{i}}'>
                     Change Image
                   </button>
