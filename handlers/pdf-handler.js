@@ -5,8 +5,7 @@ const pdf = require("pdf-creator-node");
 const fs = require("fs");
 const path = require("path");
 const pagesPath = path.join(__dirname, "../pages");
-const outPath = path.join(__dirname, '../data');
-
+const outPath = path.join(__dirname, "../data");
 
 const pdfHandler = async (req, res) => {
   smartLog("info", "ENTERING PDF HANDLER");
@@ -19,7 +18,7 @@ const pdfHandler = async (req, res) => {
   const { shotList, script } = filmFoxFile;
   const shot = shotList[sceneNumber];
 
-  let number = '000000' + sheetNumber;
+  let number = "000000" + sheetNumber;
   number = number.substring(number.length - 4);
 
   const html = fs.readFileSync(`${pagesPath}/sheet.njk`, "utf8");
@@ -40,11 +39,10 @@ const pdfHandler = async (req, res) => {
     },
   };
 
-const list = '<table style="font-size: 300%;"><thead><tr><th>Gruttox</th></tr></thead></table>';
+  const list =
+    '<table style="font-size: 300%;"><thead><tr><th>Gruttox</th></tr></thead></table>';
 
-lines = shot.lines;
-
-console.log({shot})
+  lines = shot.lines;
 
   const document = {
     html: html,
@@ -54,7 +52,7 @@ console.log({shot})
       shot,
       lines,
       slug: script[sceneNumber][0].dialogue,
-    }, 
+    },
     path: `${outPath}/${title}/sheets/sheet${number}.pdf`,
     type: "nunjucks",
   };
