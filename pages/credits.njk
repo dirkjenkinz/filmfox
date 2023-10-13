@@ -1,0 +1,32 @@
+{% extends "parent.njk" %}
+{% block page %}
+  <div class='row top'>
+    <div class='col-md-1'></div>
+    <div class='col-md-10'>
+      <table id='credits'>
+        <tbody>
+          <tr>
+            <th class='table-header'>Title:</th class='table-header'>
+            <td>{{credits.title}}</td>
+          </th class='table-header'>
+          <tr>
+          <tr>
+            <th class='table-header'>Written by:</th class='table-header'>
+            <td>{{credits.writer}}</td>
+          </th class='table-header'>
+          <tr>
+            <th class='table-header'>Direct by:</th class='table-header'>
+            <td>{{credits.director}}</td>
+          </th class='table-header'>
+          <tr>
+            <th class='table-header'>Produced by:</th class='table-header'>
+            <td>{{credits.producer}}</td>
+          </th class='table-header'>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <script src='../js/parent.js'></script>
+  <script src='../js/display.js'></script>
+{% endblock %}
