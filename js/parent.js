@@ -3,6 +3,11 @@ $("#btn-display").on("click", () => {
     const sceneNumber = $("#sceneNumber")[0].innerText;
     window.location.href = `/display?title=${title}&sceneNumber=${sceneNumber}`;
   }),
+  $("#btn-script").on("click", () => {
+    const title = $("#filmTitle")[0].innerText;
+    const sceneNumber = $("#sceneNumber")[0].innerText;
+    window.location.href = `/display?title=${title}&sceneNumber=${sceneNumber}`;
+  }),
   $("#btn-front").on("click", () => {
     window.location.href = `/`;
   }),
@@ -29,6 +34,10 @@ $("#btn-display").on("click", () => {
       window.location.href = `/video?title=${title}&sceneNumber=${sceneNumber}`;
     }),
     $("#btn-scene-arranger").on("click", () => {
+      const title = $("#filmTitle")[0].innerText;
+      window.location.href = `/scene-arranger?title=${title}`;
+    }),
+    $("#btn-pre-production").on("click", () => {
       const title = $("#filmTitle")[0].innerText;
       window.location.href = `/scene-arranger?title=${title}`;
     }),

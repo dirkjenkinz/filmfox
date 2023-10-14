@@ -5,6 +5,15 @@
   border: darkslategrey 12px solid;
 }
 
+.btn-navigate {
+  background: green;
+}
+
+.btn-prevnext {
+  background: blue;
+  color: white;
+}
+
 .table-header {
   background: skyblue;
   color: white;
