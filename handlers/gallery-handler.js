@@ -1,11 +1,17 @@
 const url = require("url");
 const { smartLog } = require("../services/smart-log");
-const { getListOfImages, readFile, writeFile } = require("../services/file-service");
+const {
+  getListOfImages,
+  readFile,
+  writeFile,
+} = require("../services/file-service");
 
 const getUsed = (script) => {
   const used = [];
-  script.forEach((s) => {
-    used.push(s.image);
+  script.forEach((scene) => {
+    scene.forEach((s) => {
+      used.push(s.image);
+    });
   });
   const unique = [...new Set(used)];
   return unique;
@@ -37,12 +43,13 @@ const galleryHandler = async (req, res) => {
     } else {
       images.push([imageList[i], "still"]);
     }
-  };
-
+  }
 
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
-  const {script} = filmFoxFile;
+  const { script } = filmFoxFile;
   const usedImages = getUsed(script);
+
+  console.log({ usedImages });
 
   const used = [];
   const unused = [];
@@ -52,7 +59,7 @@ const galleryHandler = async (req, res) => {
       used.push(i);
     } else {
       unused.push(i);
-    };
+    }
   });
 
   res.render("gallery.njk", {
@@ -62,7 +69,7 @@ const galleryHandler = async (req, res) => {
     used,
     unused,
     caller,
-    page: 'Gallery',
+    page: "Gallery",
   });
 };
 
