@@ -28,6 +28,12 @@ const galleryHandler = async (req, res) => {
       images.push([imageList[i], "movie"]);
     } else if (imageList[i].substring(imageList[i].length - 4) === ".mp4") {
       images.push([imageList[i], "movie"]);
+    } else if (imageList[i].substring(imageList[i].length - 4) === ".avi") {
+      images.push([imageList[i], "movie"]);
+    } else if (imageList[i].substring(imageList[i].length - 4) === ".wmv") {
+      images.push([imageList[i], "movie"]);
+    } else if (imageList[i].substring(imageList[i].length - 4) === ".mkv") {
+      images.push([imageList[i], "movie"]);
     } else {
       images.push([imageList[i], "still"]);
     }
