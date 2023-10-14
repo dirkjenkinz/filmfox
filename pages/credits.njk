@@ -2,31 +2,31 @@
 {% block page %}
   <div class='row top'>
     <div class='col-md-1'></div>
-    <div class='col-md-10'>
+    <div class='col-md-9'>
       <table id='credits'>
         <tbody>
           <tr>
-            <th class='table-header'>Title:</th class='table-header'>
-            <td>{{credits.title}}</td>
-          </th class='table-header'>
+            <th class='table-header'>Title:</th>
+            <td style='width: 80%;'><input type="text" id="input-title" name="title" size='70' value='{{credits.title}}'>
+          </th>
           <tr>
           <tr>
-            <th class='table-header'>Written by:</th class='table-header'>
-            <td>{{credits.writer}}</td>
-          </th class='table-header'>
+            <th class='table-header'>Written by:</th>
+            <td style='width: 80%;'><input type="text" id="input-writer" name="writer" size='70' value='{{credits.writer}}'>
+          </th>
           <tr>
-            <th class='table-header'>Direct by:</th class='table-header'>
-            <td>{{credits.director}}</td>
-          </th class='table-header'>
+            <th class='table-header'>Directed by:</th>
+            <td style='width: 80%;'><input type="text" id="input-director" name="director" size='70' value='{{credits.director}}'>
+          </th>
           <tr>
-            <th class='table-header'>Produced by:</th class='table-header'>
-            <td>{{credits.producer}}</td>
-          </th class='table-header'>
+            <th class='table-header'>Produced by:</th>
+            <td style='width: 80%;'><input type="text" id="input-producer" name="producer" size='70' value='{{credits.producer}}'>
+          </th>
           </tbody>
         </table>
       </div>
     </div>
   </div>
   <script src='../js/parent.js'></script>
-  <script src='../js/display.js'></script>
+  <script src='../js/credits.js'></script>
 {% endblock %}

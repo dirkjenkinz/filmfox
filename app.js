@@ -31,6 +31,7 @@ const sceneArrangerRouter = require('./routes/scene-arranger.js');
 const sheetsRouter = require('./routes/sheets.js');
 const pdfRouter = require('./routes/pdf.js');
 const creditsRouter = require('./routes/credits.js');
+const updateCreditsRouter = require('./routes/update-credits.js');
 
 const nunjucks = require('nunjucks');
 const bodyParser = require('body-parser');
@@ -80,6 +81,8 @@ app.use('/change-scene-order', changeSceneOrderRouter);
 app.use('/sheets', sheetsRouter);
 app.use('/pdf', pdfRouter);
 app.use('/credits', creditsRouter);
+app.use('/update-credits', updateCreditsRouter);
+
 
 app.listen(PORT, (err) => {
     smartLog('paramount', `FilmFox is up & running on port ${PORT}`);

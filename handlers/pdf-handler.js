@@ -15,7 +15,7 @@ const pdfHandler = async (req, res) => {
   const sheetNumber = u.query.sheetNumber;
 
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
-  const { shotList, script } = filmFoxFile;
+  const { shotList, script, credits } = filmFoxFile;
   const shot = shotList[sceneNumber];
 
   let number = "000000" + sheetNumber;
@@ -39,8 +39,7 @@ const pdfHandler = async (req, res) => {
     },
   };
 
-  const list =
-    '<table style="font-size: 300%;"><thead><tr><th>Gruttox</th></tr></thead></table>';
+  console.log({credits})
 
   lines = shot.lines;
 
@@ -52,6 +51,7 @@ const pdfHandler = async (req, res) => {
       shot,
       lines,
       slug: script[sceneNumber][0].dialogue,
+      credits,
     },
     path: `${outPath}/${title}/sheets/sheet${number}.pdf`,
     type: "nunjucks",

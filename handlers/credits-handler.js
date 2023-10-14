@@ -19,8 +19,6 @@ const creditsHandler = async (req, res) => {
     }
   };
 
-  console.log({credits})
-
   res.render("credits.njk", {
     title,
     credits,
