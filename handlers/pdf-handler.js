@@ -39,8 +39,6 @@ const pdfHandler = async (req, res) => {
     },
   };
 
-  console.log({credits})
-
   lines = shot.lines;
 
   const document = {
@@ -60,10 +58,10 @@ const pdfHandler = async (req, res) => {
   pdf
     .create(document, options)
     .then((res) => {
-      console.log(res);
+      smartLog("info", res);
     })
     .catch((error) => {
-      console.error(error);
+      smartLog("error", error);
     });
 
   res.redirect(`/sheets?title=${title}&sheet=${sheetNumber}`);

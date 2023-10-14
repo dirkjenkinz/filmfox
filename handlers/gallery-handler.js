@@ -3,7 +3,6 @@ const { smartLog } = require("../services/smart-log");
 const {
   getListOfImages,
   readFile,
-  writeFile,
 } = require("../services/file-service");
 
 const getUsed = (script) => {
@@ -48,9 +47,6 @@ const galleryHandler = async (req, res) => {
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
   const { script } = filmFoxFile;
   const usedImages = getUsed(script);
-
-  console.log({ usedImages });
-
   const used = [];
   const unused = [];
 
