@@ -9,7 +9,7 @@ const sceneArrangerHandler = async (req, res) => {
   let hidden = u.query.hidden;
   const full = u.query.full;
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
-  const { shotList, script, sceneOrder } = filmFoxFile;
+  const { shotList, script, sceneOrder, credits } = filmFoxFile;
   if (!hidden) {
     hidden = [];
     for (let i = 0; i < shotList.length; i++) {
@@ -47,6 +47,7 @@ const sceneArrangerHandler = async (req, res) => {
       page: "Full Shot List",
       size: shotList.length,
       hidden,
+      realTitle: credits.title,
     });
   } else {
     res.render("scene-arranger.njk", {

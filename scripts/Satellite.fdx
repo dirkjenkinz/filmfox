@@ -145,7 +145,7 @@
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.50" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Action">
       <Text>Kneeling on the bed, Barbara is completely compliant as Tom skillfully binds her. Next to her on the bed is a book on </Text>
       <Text AdornmentStyle="-1" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="">Shibari</Text>
-      <Text>, the Japanese art of knot tying.</Text>
+      <Text> the Japanese art of knot tying.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.50" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Action">
       <Text>When he is done tying up Barbara, Tom checks the ropes and knots. Then he helps Barbara get comfortable and pulls the bedclothes over her before kissing her tenderly on the forehead.</Text>
@@ -564,7 +564,7 @@
       <Text>(playful)</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
-      <Text>Go on then. Eat up.</Text>
+      <Text>Go on then, Tom. Eat up.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Character">
       <Text>TOM</Text>
@@ -588,7 +588,7 @@
       <Text>(daring him)</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
-      <Text>Now you, Tom.</Text>
+      <Text>Now you.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.50" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Action">
       <Text>With a forced grin, Tom uses his fork to pick up some of his breakfast. He pops it in his mouth.</Text>
@@ -615,7 +615,7 @@
       <Text>TOM</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
-      <Text>I’m full, Barbara. Couldn't eat another thing.</Text>
+      <Text>Couldn't eat another thing.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Character">
       <Text>BARBARA</Text>
@@ -627,7 +627,9 @@
       <Text>TOM</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
-      <Text>You, my dear, are a bloody sadist.</Text>
+      <Text>You, my dear </Text>
+      <Text AdornmentStyle="-1" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="">Babs</Text>
+      <Text>, are a bloody sadist.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Character">
       <Text>BARBARA</Text>
@@ -6226,48 +6228,48 @@ Tom laughs at Bates’ cornball phraseology.</Text>
       <Range End="1703" Start="1700"/>
       <Range End="2519" Start="2509"/>
       <Range End="3030" Start="3020"/>
-      <Range End="9226" Start="9222"/>
-      <Range End="9235" Start="9231"/>
-      <Range End="10687" Start="10681"/>
-      <Range End="12808" Start="12799"/>
-      <Range End="13012" Start="13004"/>
-      <Range End="14464" Start="14460"/>
-      <Range End="15018" Start="15009"/>
-      <Range End="15086" Start="15075"/>
-      <Range End="15359" Start="15355"/>
-      <Range End="15508" Start="15499"/>
-      <Range End="16058" Start="16055"/>
-      <Range End="16777" Start="16760"/>
-      <Range End="16880" Start="16871"/>
-      <Range End="17675" Start="17672"/>
-      <Range End="18034" Start="18023"/>
-      <Range End="18196" Start="18190"/>
-      <Range End="21155" Start="21151"/>
-      <Range End="21797" Start="21792"/>
-      <Range End="22013" Start="22009"/>
-      <Range End="30343" Start="30333"/>
-      <Range End="30937" Start="30929"/>
-      <Range End="31355" Start="31349"/>
-      <Range End="31505" Start="31495"/>
-      <Range End="32987" Start="32981"/>
-      <Range End="33220" Start="33216"/>
-      <Range End="33605" Start="33597"/>
-      <Range End="33993" Start="33939"/>
-      <Range End="37813" Start="37805"/>
-      <Range End="42495" Start="42485"/>
-      <Range End="43302" Start="43299"/>
-      <Range End="45739" Start="45737"/>
-      <Range End="46697" Start="46692"/>
-      <Range End="54027" Start="54024"/>
-      <Range End="55770" Start="55763"/>
-      <Range End="56220" Start="56212"/>
-      <Range End="56355" Start="56349"/>
-      <Range End="73125" Start="73121"/>
-      <Range End="77029" Start="76982"/>
-      <Range End="80994" Start="80987"/>
-      <Range End="81986" Start="81982"/>
-      <Range End="88795" Start="88787"/>
-      <Range End="91762" Start="91758"/>
+      <Range End="9225" Start="9221"/>
+      <Range End="9234" Start="9230"/>
+      <Range End="10686" Start="10680"/>
+      <Range End="12793" Start="12784"/>
+      <Range End="12997" Start="12989"/>
+      <Range End="14449" Start="14445"/>
+      <Range End="15003" Start="14994"/>
+      <Range End="15071" Start="15060"/>
+      <Range End="15344" Start="15340"/>
+      <Range End="15493" Start="15484"/>
+      <Range End="16043" Start="16040"/>
+      <Range End="16762" Start="16745"/>
+      <Range End="16865" Start="16856"/>
+      <Range End="17660" Start="17657"/>
+      <Range End="18019" Start="18008"/>
+      <Range End="18181" Start="18175"/>
+      <Range End="21140" Start="21136"/>
+      <Range End="21782" Start="21777"/>
+      <Range End="21998" Start="21994"/>
+      <Range End="30328" Start="30318"/>
+      <Range End="30922" Start="30914"/>
+      <Range End="31340" Start="31334"/>
+      <Range End="31490" Start="31480"/>
+      <Range End="32972" Start="32966"/>
+      <Range End="33205" Start="33201"/>
+      <Range End="33590" Start="33582"/>
+      <Range End="33978" Start="33924"/>
+      <Range End="37798" Start="37790"/>
+      <Range End="42480" Start="42470"/>
+      <Range End="43287" Start="43284"/>
+      <Range End="45724" Start="45722"/>
+      <Range End="46682" Start="46677"/>
+      <Range End="54012" Start="54009"/>
+      <Range End="55755" Start="55748"/>
+      <Range End="56205" Start="56197"/>
+      <Range End="56340" Start="56334"/>
+      <Range End="73110" Start="73106"/>
+      <Range End="77014" Start="76967"/>
+      <Range End="80979" Start="80972"/>
+      <Range End="81971" Start="81967"/>
+      <Range End="88780" Start="88772"/>
+      <Range End="91747" Start="91743"/>
     </IgnoredRanges>
     <IgnoredWords>
       <Word>1AM</Word>
@@ -6310,7 +6312,7 @@ Tom laughs at Bates’ cornball phraseology.</Text>
 
   <WindowState Height="635" Left="2" Mode="Maximized" Top="2" Width="649"/>
 
-  <TextState Scaling="150" Selection="5756,7449" ShowInvisibles="No"/>
+  <TextState Scaling="150" Selection="88877,88877" ShowInvisibles="No"/>
 
   <ElementSettings Type="General">
     <FontSpec AdornmentStyle="0" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style=""/>

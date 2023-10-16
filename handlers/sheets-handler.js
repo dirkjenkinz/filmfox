@@ -8,7 +8,7 @@ const sheetsHandler = async (req, res) => {
   const title = u.query.title;
   let sheet = u.query.sheet;
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
-  const { shotList, script, sceneOrder } = filmFoxFile;
+  const { shotList, script, sceneOrder, credits } = filmFoxFile;
 
   const slugs = [];
   script.forEach((s) => {
@@ -35,6 +35,7 @@ const sheetsHandler = async (req, res) => {
     page: "Sheets",
     size: shotList.length,
     sheet: sheet,
+    realTitle: credits.title,
   });
 };
 

@@ -41,15 +41,23 @@ const pdfHandler = async (req, res) => {
 
   lines = shot.lines;
 
+  let outTitle = title;
+
+  if (credits.title ){
+    outTitle = credits.title;
+  };
+
   const document = {
     html: html,
     data: {
       title,
+      outTitle,
       sheetNumber,
       shot,
       lines,
       slug: script[sceneNumber][0].dialogue,
       credits,
+      realTitle: credits.title,
     },
     path: `${outPath}/${title}/sheets/sheet${number}.pdf`,
     type: "nunjucks",

@@ -11,13 +11,13 @@
     <div class='col-md-6'></div>
     <div class='col-md-2'>
       {% if sheet < size - 1 %}
-      <button class='btn btn-block btn-edit btn-sm' id='btn-next'>Next Sheet</button>
+        <button class='btn btn-block btn-edit btn-sm' id='btn-next'>Next Sheet</button>
       {% else %}
-            <button class='btn btn-block btn-edit btn-sm' id='btn-next' disabled>Next Sheet</button>
+        <button class='btn btn-block btn-edit btn-sm' id='btn-next' disabled="disabled">Next Sheet</button>
       {% endif %}
     </div>
     <div class='col-md-2'>
-          <button class='btn btn-block btn-edit btn-sm' id='btn-pdf'>Create PDF Shot List</button>
+      <button class='btn btn-block btn-edit btn-sm' id='btn-pdf'>Create PDF Shot List</button>
     </div>
   </div>
   <div class='row top' style='background: white;'>
@@ -30,7 +30,11 @@
             <tr>
               <td class='data-page'>Sheet
                 {{sheet}}</td>
-              <td class='data-page' colspan='2'>{{title}}</td>
+              {% if realTitle %}
+                <td class='data-page' colspan='2'>{{realTitle}}</td>
+              {% else %}
+                <td class='data-page' colspan='2'>{{title}}</td>
+              {% endif %}
             </tr>
             <tr>
               <td class='data-page' style='width=10%;' id='sceneNum'>Scene
