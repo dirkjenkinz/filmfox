@@ -14,23 +14,29 @@ const updateImageDisplayHandler = async (req, res) => {
 
   let filmFoxFile = await readFile(`${title}/${title}.fff`);
   const { script } = filmFoxFile;
-  script[sceneNumber][element].image = image;
+
+  let type = 'still';
 
   if (image.substring(image.length - 4) === ".mov") {
-    script[sceneNumber][element].type = 'movie';
+    type = 'movie';
   } else if (image.substring(image.length - 4) === ".mp4") {
-    script[sceneNumber][element].type = 'movie';
+    type = 'movie';
   } else if (image.substring(image.length - 4) === ".avi") {
-    script[sceneNumber][element].type = 'movie';
+    type = 'movie';
   } else if (image.substring(image.length - 4) === ".wmv") {
-    script[sceneNumber][element].type = 'movie';
+    type = 'movie';
   } else if (image.substring(image.length - 4) === ".mkv") {
-    script[sceneNumber][element].type = 'movie';
-  } else {
-    script[sceneNumber][element].type = 'still';
-  }
+    type = 'movie';
+  };
  
- 
+  let originalImage = script[sceneNumber][element].image;
+
+  for (let i = element; i < script[sceneNumber].length; i++){
+    if (script[sceneNumber][i].image === originalImage){
+      script[sceneNumber][i].image = image;
+    };
+  };
+
   await writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
   
   if (caller === "scenes") {
