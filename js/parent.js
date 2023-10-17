@@ -45,11 +45,15 @@ $("#btn-display").on("click", () => {
       const title = $("#filmTitle")[0].innerText;
       window.location.href = `/sheets?title=${title}&sheet=0`;
     }),
-    $("#btn-display-full").on("click", (e) => {
+    $("#btn-display-full").on("click", () => {
       const title = $("#filmTitle")[0].innerText;
       window.location.href = `/scene-arranger?title=${title}&full=yes`;
     }),
-    $("#btn-showreel").on("click", (e) => {
+    $("#btn-showreel").on("click", () => {
       const title = $("#filmTitle")[0].innerText;
       window.location.href = `/showreel?title=${title}&sceneNumber=0&elementNumber=0`;
+    }),
+    $("#btn-scene-shot-list").on("click", () => {
+      const title = $("#filmTitle")[0].innerText;
+    window.location.href = `/scene-shot-list?title=${title}&sceneNumber=0`;
     });

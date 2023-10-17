@@ -6,7 +6,7 @@ $(() => {
       .target
       .value;
     const title = $('#filmTitle')[0].innerText;
-    window.location.href = `/scene-shot-list?title=${title}&sceneNumber=${sceneNumber}`
+    window.location.href = `/scene-shot-list?title=${title}&sceneNumber=${sceneNumber}`;
   }),
   $(".note").on("focusout", (e) => {
     const val = e.target.value;

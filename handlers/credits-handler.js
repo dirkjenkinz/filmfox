@@ -1,6 +1,6 @@
 const url = require("url");
 const { smartLog } = require("../services/smart-log");
-const { readFile, writeFile } = require("../services/file-service");
+const { readFile } = require("../services/file-service");
 
 const creditsHandler = async (req, res) => {
   smartLog("info", "ENTERING CREDITS HANDLER");
@@ -22,6 +22,7 @@ const creditsHandler = async (req, res) => {
   res.render("credits.njk", {
     title,
     credits,
+    page: "Credits",
   });
 };
 
