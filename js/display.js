@@ -1,5 +1,5 @@
 $(() => {
-  $("#btn-display").attr("disabled", true);
+  $("#nav-display").attr("disabled", true);
 }),
   $(".btn-gen").on("click", (e) => {
     const elementNumber = e.target.value;

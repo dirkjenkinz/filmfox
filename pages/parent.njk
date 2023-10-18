@@ -7,37 +7,10 @@
       <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
       <title>FilmFox</title>
       <link rel='stylesheet' href='../css/style.css'/>
+      <link rel='stylesheet' href='../css/parent.css'/>
       <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css'/>
       <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
       <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js'></script>
-      <style>
-        .tableFixHead {
-          overflow-y: auto;
-          height: 420px;
-        }
-        .tableFixHead thead th {
-          position: sticky;
-          top: 0;
-        }
-        table {
-          border-collapse: collapse;
-          width: 99%;
-        }
-        td,
-        th {
-          padding: 4px 8px;
-          border: 1px solid #ccc;
-        }
-        th {
-          background: #eee;
-        }
-        .head-display {
-          border-style: solid;
-          border-width: 0 0 5px 0;
-          color: black;
-          background: #eee;
-        }
-      </style>
     </head>
     <body>
       <div class='container-fluid'>
@@ -46,56 +19,29 @@
             Film Fox
           </div>
           <div class='col-md-1'></div>
-          <div class='col-md-5' id='filmTitle'>
+          <div class='col-md-6' id='filmTitle'>
             {{ title }}
             <p id='length' hidden='hidden'>{{script.length}}</p>
             <p id='sceneNumber' hidden='hidden'>{{sceneNumber}}</p>
             <p id='elementNumber' hidden='hidden'>{{elementNumber}}</p>
-            <p id='audio' hidden>{{audio}}</p>
+            <p id='audio' hidden="hidden">{{audio}}</p>
           </div>
-          <div class='col-md-4'>{{page}}</div>
+          <div class='col-md-3' style='text-align: right';>{{page}}</div>
         </div>
-        <div class='row top '>
-          <div class='col-md-1'>
-            <button class='btn btn-block btn-edit btn-sm' id='btn-front'>
-              Front
-            </button>
-          </div>
-          <div class='col-md-2'>
-            <button class='btn btn-block btn-edit btn-sm' id='btn-display'>
-              Script Breakdown
-            </button>
-          </div>
-          <div class='col-md-1'>
-            <button class='btn btn-block btn-edit btn-sm' id='btn-ctv'>
-              Voice Map&nbsp;&nbsp;
-            </button>
-          </div>
-          <div class='col-md-1'>
-            <button class='btn btn-block btn-edit btn-sm' id='btn-showreel'>Showreel</button>
-          </div>
-          <div class='col-md-1'>
-            <button class='btn btn-block btn-edit btn-sm' id='btn-sound'>Sound</button>
-          </div>
-          <div class='col-md-1'>
-            <button class='btn btn-block btn-edit btn-sm' id='btn-video'>Video</button>
-          </div>
-          <div class='col-md-1'>
-            <button class='btn btn-block btn-edit btn-sm' id='btn-scenes'>Scenes</button>
-          </div>
-          <div class='col-md-1'>
-            <button class='btn btn-block btn-edit btn-sm' id='btn-characters'>Characters
-            </button>
-          </div>
-          <div class='col-md-1'>
-            <button class='btn btn-block btn-edit btn-sm' id='btn-scene-arranger'>Arranger</button>
-          </div>
-          <div class='col-md-1'>
-            <button class='btn btn-block btn-edit btn-sm' id='btn-display-full'>Shot List</button>
-          </div>
-          <div class='col-md-1'>
-            <button class='btn btn-block btn-edit btn-sm' id='btn-sheets'>Sheets</button>
-          </div>
+        <div class='row top topnav' style='font-size: 75%;'>
+          <section id='nav-front'>Front</section>
+          <section id='nav-display'>Script Breakdown</section>
+          <section id='nav-ctv'>Voice Map</section>
+          <section id='nav-showreel'>Showreel</section>
+          <section id='nav-sound'>Sound</section>
+          <section id='nav-video'>Video</section>
+          <section id='nav-scenes'>Scenes</section>
+          <section id='nav-characters'>Characters</section>
+          <section id='nav-arranger'>Scene Arranger</section>
+          <section id='nav-scene-shot-list'>Scene Shot List</section>
+          <section id='nav-display-full'>Full Shot List</section>
+          <section id='nav-sheets'>Sheets</section>
+          <section id='nav-credits'>Credits</section>
         </div>
       {% endblock %}
       {% block page %}{% endblock %}

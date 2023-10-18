@@ -1,59 +1,64 @@
-$("#btn-display").on("click", () => {
+$("#nav-display").on("click", () => {
     const title = $("#filmTitle")[0].innerText;
     const sceneNumber = $("#sceneNumber")[0].innerText;
     window.location.href = `/display?title=${title}&sceneNumber=${sceneNumber}`;
   }),
-  $("#btn-script").on("click", () => {
+  $("#nav-script").on("click", () => {
     const title = $("#filmTitle")[0].innerText;
     const sceneNumber = $("#sceneNumber")[0].innerText;
     window.location.href = `/display?title=${title}&sceneNumber=${sceneNumber}`;
   }),
-  $("#btn-front").on("click", () => {
+  $("#nav-front").on("click", () => {
     window.location.href = `/`;
   }),
-    $('#btn-ctv').on('click', () => {
+    $('#nav-ctv').on('click', () => {
+      console.log('11111111111111')
       const f = $('#filmTitle')[0].innerText
       window.location.href = `/ctv?filmFoxFile=${f}`
     }),
-    $("#btn-characters").on("click", () => {
+    $("#nav-characters").on("click", () => {
       const title = $("#filmTitle")[0].innerText;
       window.location.href = `/characters?title=${title}`;
     }),
-    $("#btn-sound").on("click", () => {
+    $("#nav-sound").on("click", () => {
       const f = $("#filmTitle")[0].innerText;
       const sceneNumber = $("#sceneNumber")[0].innerText;
       window.location.href = `/sound?title=${f}&sceneNumber=${sceneNumber}`;
     }),
-    $("#btn-scenes").on("click", () => {
+    $("#nav-scenes").on("click", () => {
       const title = $("#filmTitle")[0].innerText;
       window.location.href = `/scenes?title=${title}`;
     }),
-    $("#btn-video").on("click", () => {
+    $("#nav-video").on("click", () => {
       const title = $("#filmTitle")[0].innerText;
       const sceneNumber = $("#sceneNumber")[0].innerText;
       window.location.href = `/video?title=${title}&sceneNumber=${sceneNumber}`;
     }),
-    $("#btn-scene-arranger").on("click", () => {
+    $("#nav-arranger").on("click", () => {
       const title = $("#filmTitle")[0].innerText;
       window.location.href = `/scene-arranger?title=${title}`;
     }),
-    $("#btn-pre-production").on("click", () => {
+    $("#nav-pre-production").on("click", () => {
       const title = $("#filmTitle")[0].innerText;
       window.location.href = `/scene-arranger?title=${title}`;
     }),
-    $("#btn-sheets").on("click", () => {
+    $("#nav-sheets").on("click", () => {
       const title = $("#filmTitle")[0].innerText;
       window.location.href = `/sheets?title=${title}&sheet=0`;
     }),
-    $("#btn-display-full").on("click", () => {
+    $("#nav-display-full").on("click", () => {
       const title = $("#filmTitle")[0].innerText;
       window.location.href = `/scene-arranger?title=${title}&full=yes`;
     }),
-    $("#btn-showreel").on("click", () => {
+    $("#nav-showreel").on("click", () => {
       const title = $("#filmTitle")[0].innerText;
       window.location.href = `/showreel?title=${title}&sceneNumber=0&elementNumber=0`;
     }),
-    $("#btn-scene-shot-list").on("click", () => {
+    $("#nav-scene-shot-list").on("click", () => {
       const title = $("#filmTitle")[0].innerText;
-    window.location.href = `/scene-shot-list?title=${title}&sceneNumber=0`;
+      window.location.href = `/scene-shot-list?title=${title}&sceneNumber=0`;
+    }),
+    $("#nav-credits").on("click", () => {
+      const title = $("#filmTitle")[0].innerText;
+      window.location.href = `/credits?title=${title}`;
     });

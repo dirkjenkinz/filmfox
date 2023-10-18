@@ -1,4 +1,4 @@
-{% extends "parent1.njk" %}
+{% extends "parent.njk" %}
 {% block page %}
   <div class='row tableFixHead' id='tabhead'>
     <div class='col-md-12'>
@@ -9,14 +9,17 @@
               {% for num in range(0, 3) -%}
                 {% if characters[i + num] %}
                   <td class='data-right'>
-                    <button type='button' class='btn btn-edit btn-block btn-sm btn-edit-character' value='{{characters[i + num][0]}}'>
+                    <button 
+                      type='button' 
+                      class='btn btn-edit btn-block btn-sm btn-edit-character' 
+                      value='{{characters[i + num][0]}}'
+                      >
                       {{characters[i + num][0]}}
                     </button>
                   </td>
-                  <td class='data-right'>
+                  <td class='data-left'>
                     {{characters[i + num][1]}}
                   </td>
-                  <td>&nbsp;&nbsp;</td>
                 {% endif %}
               {% endfor %}
             </tr>

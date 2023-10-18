@@ -7,6 +7,7 @@ const charactersHandler = async (req, res) => {
   const u = url.parse(req.originalUrl, true);
   const title = u.query.title;
   const characters = await readFile(`${title}/${title}.chrs`);
+
   res.render("characters.njk", {
     title,
     characters,
