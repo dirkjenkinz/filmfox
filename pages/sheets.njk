@@ -46,6 +46,19 @@
               <td class='data-page' style='width=40%;'>{{slugs[sheet]}}</td>
               <td class='data-page' style='width=50%;'>{{shotList[sheet].note}}</td>
             </tr>
+            <tr>
+              <th class='data-page'>Chars:</th>
+              <td class='data-page' colspan='2'>
+                {% for i in range(0, characterList.length) -%}
+                  {% if i < (characterList.length - 1) %}
+                    &nbsp;{{characterList[i]}}
+                    --
+                  {%else %}
+                    {{characterList[i]}}
+                  {% endif %}
+                {% endfor %}
+              </td>
+            </tr>
           </body>
         </table>
         <br>

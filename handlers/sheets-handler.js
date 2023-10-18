@@ -8,7 +8,7 @@ const sheetsHandler = async (req, res) => {
   const title = u.query.title;
   let sheet = u.query.sheet;
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
-  const { shotList, script, sceneOrder, credits } = filmFoxFile;
+  const { shotList, script, sceneOrder, credits, charactersByScene } = filmFoxFile;
 
   const slugs = [];
   script.forEach((s) => {
@@ -52,6 +52,7 @@ const sheetsHandler = async (req, res) => {
     sheet: sheet,
     realTitle: credits.title,
     exists,
+    characterList: charactersByScene[sheet],
   });
 };
 

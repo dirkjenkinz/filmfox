@@ -18,24 +18,24 @@
             </td>
             <td>
               {% if sceneNumber > 0 %}
-              <button class='btn btn-block btn-edit btn-sm btn-previous' id='btn-previous'>
-                Previous
-              </button>
+                <button class='btn btn-block btn-edit btn-sm btn-previous' id='btn-previous'>
+                  Previous
+                </button>
               {% else %}
-              <button class='btn btn-block btn-edit btn-sm btn-previous' id='btn-previous' disabled>
-                Previous
-              </button>
+                <button class='btn btn-block btn-edit btn-sm btn-previous' id='btn-previous' disabled="disabled">
+                  Previous
+                </button>
               {% endif %}
             </td>
             <td>
               {% if sceneNumber < size - 1 %}
-              <button class='btn btn-block btn-edit btn-sm btn-next' id='btn-next'>
-                Next
-              </button>
+                <button class='btn btn-block btn-edit btn-sm btn-next' id='btn-next'>
+                  Next
+                </button>
               {% else %}
-              <button class='btn btn-block btn-edit btn-sm btn-next' id='btn-next' disabled>
-                Next
-              </button>
+                <button class='btn btn-block btn-edit btn-sm btn-next' id='btn-next' disabled="disabled">
+                  Next
+                </button>
               {% endif %}
             </td>
           </tr>
@@ -49,13 +49,24 @@
               {{slug.note}}
             </td>
           </tr>
+          <tr style='background: green;'>
+            <th style='background: red; text-align: right'>
+              Characters:
+            </th>
+            <td colspan='3'>
+              {% for i in range(0, characterList.length) -%}
+                {% if i < (characterList.length - 1) %}
+                  &nbsp;{{characterList[i]}}
+                  --
+                {%else %}
+                  {{characterList[i]}}
+                {% endif %}
+              {% endfor %}
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>
-  </div>
-
-  <div class='row'>
-    <div class='col-md-12'>&nbsp;</div>
   </div>
 
   <div class='row tableFixHead' id='tabhead'>
@@ -164,14 +175,14 @@
                 </button>
               </td>
               <td>
-              {% if lines.length > 1 %} 
-                <button class='btn btn-block btn-edit btn-sm btn-delete' value='{{i}}'>
-                  -
-                </button>
+                {% if lines.length > 1 %}
+                  <button class='btn btn-block btn-edit btn-sm btn-delete' value='{{i}}'>
+                    -
+                  </button>
                 {% else %}
-                <button class='btn btn-block btn-edit btn-sm btn-delete' value='{{i}}' disabled>
-                  -
-                </button>
+                  <button class='btn btn-block btn-edit btn-sm btn-delete' value='{{i}}' disabled="disabled">
+                    -
+                  </button>
                 {% endif %}
               </td>
             </tr>

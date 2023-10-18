@@ -27,12 +27,12 @@ const moves = [
 const audio = ["-", "Boom", "Lavs", "Lavs and Boom", "Voice Over (VO)"];
 
 const sceneShotListHandler = async (req, res) => {
-  smartLog("info", "ENTERING BACK TO SCENES HANDLER");
+  smartLog("info", "ENTERING SCENE SHOT LIST HANDLER");
   const u = url.parse(req.originalUrl, true);
   const title = u.query.title;
   const sceneNumber = u.query.sceneNumber;
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
-  const { script, shotList } = filmFoxFile;
+  const { script, shotList, charactersByScene } = filmFoxFile;
 
   const size = shotList.length;
   const slug = script[sceneNumber][0].dialogue;
@@ -49,6 +49,7 @@ const sceneShotListHandler = async (req, res) => {
     slug,
     page: "Edit Shot List",
     size,
+    characterList: charactersByScene[sceneNumber],
   });
 };
 
