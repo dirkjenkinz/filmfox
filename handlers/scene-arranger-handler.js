@@ -21,8 +21,8 @@ const sceneArrangerHandler = async (req, res) => {
 
   const slugs = [];
   script.forEach((s) => {
-    if (s.slug === "yes") {
-      slugs.push(s.dialogue);
+    if (s[0].slug === "yes") {
+      slugs.push(s[0].dialogue);
     }
   });
 
@@ -31,12 +31,6 @@ const sceneArrangerHandler = async (req, res) => {
   sceneOrder.forEach((sceneNumber, index) => {
     sList.push(shotList[sceneNumber]);
     slugList.push(slugs[sceneNumber]);
-  });
-
-  script.forEach((s) => {
-    if (s.slug === "yes") {
-      slugs.push(s.dialogue);
-    }
   });
 
   if (full === "yes") {

@@ -1,6 +1,6 @@
 const url = require("url");
 const { smartLog } = require("../services/smart-log");
-const { readFile } = require("../services/file-service");
+const { readFile, getFileList } = require("../services/file-service");
 
 const sheetsHandler = async (req, res) => {
   smartLog("info", "ENTERING SHEETS HANDLER");
@@ -12,7 +12,7 @@ const sheetsHandler = async (req, res) => {
 
   const slugs = [];
   script.forEach((s) => {
-      slugs.push(s[0].dialogue);
+    slugs.push(s[0].dialogue);
   });
 
   sList = [];
@@ -28,6 +28,21 @@ const sheetsHandler = async (req, res) => {
     }
   });
 
+  const sheetsList = await getFileList(`data/${title}/sheets/`, "pdf");
+
+  const sheetNos = [];
+
+  sheetsList.forEach((s) => {
+    let comp = s.substring(5);
+    comp = parseInt(comp.substring(0,4));
+    sheetNos.push(comp);
+  });
+
+  let exists = 'no';
+  if (sheetNos.indexOf(parseInt(sheet)) !== -1){
+    exists = 'yes';
+  };
+
   res.render("sheets.njk", {
     title,
     shotList: sList,
@@ -36,6 +51,7 @@ const sheetsHandler = async (req, res) => {
     size: shotList.length,
     sheet: sheet,
     realTitle: credits.title,
+    exists,
   });
 };
 

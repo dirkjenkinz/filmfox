@@ -72,7 +72,9 @@ const pdfHandler = async (req, res) => {
       smartLog("error", error);
     });
 
-  res.redirect(`/sheets?title=${title}&sheet=${sheetNumber}`);
+    setTimeout(function () {
+      res.redirect(`/sheets?title=${title}&sheet=${sheetNumber}`);
+    }, 3000);
 };
 
 module.exports = { pdfHandler };

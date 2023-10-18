@@ -19,6 +19,10 @@ const creditsHandler = async (req, res) => {
     }
   };
 
+  if (!credits.title){
+    credits.title = title;
+  };
+
   res.render("credits.njk", {
     title,
     credits,
