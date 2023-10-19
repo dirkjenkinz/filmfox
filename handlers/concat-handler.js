@@ -1,3 +1,5 @@
+"use strict";
+
 const url = require("url");
 const { getFileList } = require("../services/file-service");
 const { smartLog } = require("../services/smart-log");

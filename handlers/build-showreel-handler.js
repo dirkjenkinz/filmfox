@@ -1,3 +1,5 @@
+"use strict";
+
 const fs = require("fs");
 const path = require("path");
 const url = require("url");
@@ -7,7 +9,6 @@ registerFont("C:/Windows/Fonts/arialbd.ttf", { family: "Arial Bold" });
 registerFont("C:/Windows/Fonts/timesbd.ttf", { family: "Times Bold" });
 const {
   readFile,
-  writeFile,
 } = require("../services/file-service");
 
 const buildShowreelHandler = async (req, res) => {

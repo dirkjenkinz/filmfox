@@ -1,3 +1,5 @@
+"use strict";
+
 const url = require("url");
 const { smartLog } = require("../services/smart-log");
 const { readFile, writeFile } = require("../services/file-service");

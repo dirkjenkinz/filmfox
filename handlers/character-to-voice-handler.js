@@ -1,3 +1,5 @@
+"use strict";
+
 const url = require('url');
 const { readFile } = require('../services/file-service');
 const { smartLog } = require('../services/smart-log');
@@ -23,7 +25,7 @@ const characterToVoiceHandler = async (req, res) => {
   const { script } = filmFoxFile;
   let characters = await readFile(`${title}/${title}.chrs`);
   const voices = await readFile('voices.json');
-  voice_data = getVoiceData(voices);
+  let voice_data = getVoiceData(voices);
   voice_data.unshift(['-', '', '']);
 
   characters.forEach((c)=>{

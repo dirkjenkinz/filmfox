@@ -1,3 +1,5 @@
+"use strict";
+
 const url = require("url");
 const { readFile, writeFile, getDuration } = require("../services/file-service");
 const { generateSpeech } = require("../services/elevenLabs");

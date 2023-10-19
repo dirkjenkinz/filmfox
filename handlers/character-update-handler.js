@@ -1,3 +1,4 @@
+"use strict";
 
 const url = require('url');
 const { readFile, writeFile } = require('../services/file-service');
