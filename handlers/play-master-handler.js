@@ -1,3 +1,4 @@
+"use strict";
 const url = require("url");
 const { playSoundFile } = require("../services/file-service");
 const dotenv = require("dotenv");

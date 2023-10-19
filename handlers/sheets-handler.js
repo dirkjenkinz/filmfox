@@ -1,3 +1,4 @@
+"use strict";
 const url = require("url");
 const { smartLog } = require("../services/smart-log");
 const { readFile, getFileList } = require("../services/file-service");
@@ -15,8 +16,8 @@ const sheetsHandler = async (req, res) => {
     slugs.push(s[0].dialogue);
   });
 
-  sList = [];
-  slugList = [];
+  const sList = [];
+  const slugList = [];
   sceneOrder.forEach((scene, index) => {
     sList.push(shotList[scene]);
     slugList.push(slugs[scene]);
