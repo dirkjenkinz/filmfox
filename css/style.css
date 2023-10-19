@@ -121,6 +121,12 @@ html {
   background: slategrey;
 }
 
+.data-central {
+  text-align: left;
+  padding: 0px 4px;
+  background: slategrey;
+}
+
 .data-display {
   background: black;
   padding: 0px 8px;
