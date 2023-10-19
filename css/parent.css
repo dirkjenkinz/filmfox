@@ -26,10 +26,21 @@
     color: white;
   }
 
+  .tableFixHead2 {
+    overflow-y: auto;
+    height: 300px;
+    border: 12px black solid;
+  }
+
+  .tableFixHead2 thead th {
+    position: sticky;
+    top: 0;
+  }
+
   .tableFixHead {
     overflow-y: auto;
     height: 420px;
-    border: 16px black solid;
+    border: 12px black solid;
   }
   .tableFixHead thead th {
     position: sticky;

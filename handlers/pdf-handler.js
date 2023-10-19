@@ -41,7 +41,7 @@ const pdfHandler = async (req, res) => {
     },
   };
 
-  lines = shot.lines;
+  const lines = shot.lines;
 
   let outTitle = title;
 

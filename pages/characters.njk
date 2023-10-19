@@ -20,6 +20,9 @@
                   <td class='data-left'>
                     {{characters[i + num][1]}}
                   </td>
+                  {% if num !== 2 %}
+                  <td>&nbsp;&nbsp;&nbsp;</td>
+                  {% endif %}
                 {% endif %}
               {% endfor %}
             </tr>

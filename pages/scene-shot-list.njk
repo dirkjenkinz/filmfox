@@ -71,7 +71,7 @@
 
   <div class='row tableFixHead' id='tabhead'>
     <div class='col-md-12'>
-      <table class='table-bordered table-sm table-dark table-grid' id='tab-shot'>
+      <table class='table-bordered table-sm table-dark table-grid' id='tab-shot' width='100%'>
         <thead>
           <tr>
             <th class='shot-header'>
@@ -89,10 +89,10 @@
             <th class='shot-header'>
               Audio
             </th>
-            <th class='shot-header'>
+            <th class='shot-header' style='width: 25%';>
               Subject
             </th>
-            <th class='shot-header'>
+            <th class='shot-header' style='width: 50%';>
               Description
             </th>
           </tr>
@@ -167,7 +167,7 @@
                 <textarea id='shot-subject_{{i}}' class='shot-subject' rows='2' cols='30'>{{lines[i].subject | trim}}</textarea>
               </td>
               <td class='data-left'>
-                <textarea id='shot-description_{{i}}' class='shot-description' rows="2" cols='30'>{{lines[i].description | trim}}</textarea>
+                <textarea id='shot-description_{{i}}' class='shot-description' rows="2" cols='40'>{{lines[i].description | trim}}</textarea>
               </td>
               <td>
                 <button class='btn btn-block btn-edit btn-sm btn-add' value='{{i}}'>

@@ -24,16 +24,16 @@
     <div class="col-md-2 dropdown" style='font-size:75%;'>
       <button class="btn btn-sm btn-edit btn-block dropdown-toggle" type="button" data-toggle="dropdown">Add Characters
         <span class="caret"></span></button>
-      <ul class="dropdown-menu"   style='background: black; font-size:75%;'>
+      <ul class="dropdown-menu" style='background: black; font-size:75%;'>
         {% for i in range(0, characters.length) -%}
-          <li  class='drop-down-character' value='{{characters[i][0]}}'>
+          <li class='drop-down-character' value='{{characters[i][0]}}'>
             {{characters[i][0]}}
           </li>
         {% endfor %}
       </ul>
     </div>
   </div>
-  
+
 </div>
 <div class='row top'>
   <div class='col-md-1 hidden'>
@@ -71,7 +71,7 @@
   </div>
 </div>
 
-<div class='row tableFixHead' id='tabhead'>
+<div class='row tableFixHead2' id='tabhead'>
   <div class='col-md-12'>
     <table id='script-table'>
       <tbody id='bod'>
@@ -85,27 +85,25 @@
             </td>
             <td class='table-data' style='width:50%;'>{{scene[i].dialogue}}</td>
             <td class='table-data'>
-              <p style='font-size: 60%; color: black;'>{{scene[i].sound}}</p>
               {% if (scene[i].voice == '-') or (scene[i].sound) %}
                 <button type='button' class='btn btn-edit btn-block btn-sm btn-play' id='play_{{i}}' value='{{scene[i].sound}}'>
-                  Play
+                  Play {{scene[i].sound}}
                 </button>
                 <br>
                 <button class='btn btn-block btn-edit btn-sm btn-small btn-del' id='del_{{i}}' value='{{scene[i].sound}}'>
-                  Delete
+                  Delete {{scene[i].sound}}
                 </button>
               {% else %}
                 <button type='button' class='btn btn-edit btn-block btn-sm btn-gen' id='gen_{{i}}' value='{{i}}' caller='{{display}}'>
-                  Gen
+                  Generate Sound
                 </button>
               {% endif %}
-              <br>
-              <p style='font-size: 60%; color: black;'>{{scene[i].duration}}
+              <br><br>
+              <button type='button' class='btn btn-edit btn-block btn-sm btn-change' id='change_{{i}}' value='{{i}}'>
+                Change Image
+              </button>
               </td>
               <td class='table-data card' style='width: 20%' id='crd_{{i}}'>
-                <button type='button' class='btn btn-edit btn-block btn-sm btn-change' id='change_{{i}}' value='{{i}}'>
-                  Change Image
-                </button>
                 <br>
                 {% if scene[i].type === 'movie' %}
                   <video width='160' height='90' controls='controls' autoplay='autoplay' id='img_{{i}}' class='img' muted='muted'>
