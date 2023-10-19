@@ -3,7 +3,7 @@ const { smartLog } = require("../services/smart-log");
 const { readFile } = require("../services/file-service");
 
 const showreelHandler = async (req, res) => {
-  smartLog("info", "entering showreel handler");
+  smartLog("info", "ENTERING SHOWREEL HANDLER");
   const u = url.parse(req.originalUrl, true);
   const title = u.query.title;
   const sceneNumber = u.query.sceneNumber;
@@ -21,6 +21,8 @@ const showreelHandler = async (req, res) => {
   if (element.sound) {
     audio = `../data/${title}/sounds/${element.sound}`;
   };
+
+  console.log(script[sceneNumber].length);
 
   res.render("showreel.njk", {
     sceneNumber,

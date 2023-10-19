@@ -5,6 +5,10 @@
   border: darkslategrey 12px solid;
 }
 
+table {
+  background: black;
+}
+
 .btn-navigate {
   background: green;
 }

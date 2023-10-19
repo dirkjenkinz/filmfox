@@ -17,7 +17,7 @@ $(() => {
     window.location.href = `/showreel?title=${title}&sceneNumber=${sceneNumber}&elementNumber=${elementNumber}&mute=${mute}`;
   }),
   $("#btn-next-element").on("click", () => {
-    if ($("#elementNumber")[0].innerText < $("#highestElement")[0].innerText) {
+    if (parseInt($("#elementNumber")[0].innerText) < parseInt($("#highestElement")[0].innerText)) {
       const elementNumber = parseInt($("#elementNumber")[0].innerText) + 1;
       const mute = $("#btn-mute")[0].innerText;
       const sceneNumber = $("#sceneNumber")[0].innerText;

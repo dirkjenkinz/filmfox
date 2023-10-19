@@ -22,13 +22,12 @@
             {% set num = 0 %}
             {% for i in range(1, shotList.length) -%}
               <tr id='row_{{i}}' style='font-size:80%;'>
-                <td style='background: white; color: black;'>Scene
-                  {{shotList[i].scene}}</td>
-                <td colspan='2'>{{slugs[i]}}</td>
+                <td>Scene
+                  {{shotList[i].scene}}: {{slugs[i]}}</td>
                 <td>{{shotList[i].note}}</td>
               </tr>
               <tr>
-                <td colspan='7'>
+                <td colspan='4'>
                   <table id='table-shots-list-{{i}}'>
                     <thead>
                       <tr>
@@ -57,7 +56,7 @@
                           <td>
                             {{shotList[i].lines[line].subject}}
                           </td>
-                          <td colspan='2'>
+                          <td>
                             {{shotList[i].lines[line].description}}
                           </td>
                         </tr>

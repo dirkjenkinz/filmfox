@@ -14,7 +14,7 @@
           <tr>
             <td class='data-left' colspan='2'>
               <label for="input-note">Note:</label>
-              <input type="text" id="input-note" name="input-note" size='100' value='{{note}}'>
+              <input type="text" id="input-note" name="input-note" size='120' value='{{note}}'>
             </td>
             <td>
               {% if sceneNumber > 0 %}
@@ -53,7 +53,7 @@
             <th style='background: red; text-align: right'>
               Characters:
             </th>
-            <td colspan='3'>
+            <td colspan='3' style='background: black; padding: 0 4px;'>
               {% for i in range(0, characterList.length) -%}
                 {% if i < (characterList.length - 1) %}
                   &nbsp;{{characterList[i]}}
