@@ -1,5 +1,5 @@
 $(() => {
-  $("#btn-characters").attr("disabled", true);
+  $("#nav-characters").addClass('active');
 }),
   $(".btn-edit-character").on("click", (e) => {
     const character = e.target.value;

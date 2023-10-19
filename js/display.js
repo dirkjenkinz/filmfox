@@ -1,5 +1,5 @@
 $(() => {
-  $("#nav-display").attr("disabled", true);
+  $("#nav-display").addClass('active');
 }),
   $(".btn-gen").on("click", (e) => {
     const elementNumber = e.target.value;

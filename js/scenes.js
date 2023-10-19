@@ -1,5 +1,5 @@
 $(() => {
-  $("#btn-scenes").attr("disabled", true);
+  $("#nav-scenes").addClass('active');
 }),
    $('.btn-scene-shot-list').on('click', (e) => {
     const sceneNumber = e

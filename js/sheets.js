@@ -1,5 +1,5 @@
 $(() => {
-  $("#btn-sheets").attr("disabled", true);
+  $("#nav-sheets").addClass('active');
 }),
   $("#btn-previous").on("click", (e) => {
     let sheet = parseInt($("#sheet")[0].innerText);

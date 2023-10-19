@@ -1,3 +1,6 @@
+$(() => {
+  $("#nav-scene-shot-list").addClass('active');
+}),
 $(".shot-select").on("change", (e) => {
   const line = e.target.id;
   const val = e.target.value;

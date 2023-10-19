@@ -1,3 +1,6 @@
+$(() => {
+  $("#nav-credits").addClass('active');
+}),
   $("#input-writer").on("focusout", (e) => {
     const val = e.target.value;
     const title = $("#filmTitle")[0].outerText;

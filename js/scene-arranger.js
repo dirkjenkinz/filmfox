@@ -1,3 +1,6 @@
+$(() => {
+  $("#nav-arranger").addClass('active');
+}),
 $("#btn-credits").on("click", (e) => {
   const hidden = [];
     for (let i = 0; i < size; i++) {

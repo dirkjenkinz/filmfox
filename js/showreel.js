@@ -1,5 +1,5 @@
 $(() => {
-  $("#btn-build-showreel").attr("disabled", true);
+  $("#nav-showreel").addClass('active');
 }),
   $(() => {
     const s = $("#audio")[0].innerText;

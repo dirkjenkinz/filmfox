@@ -1,5 +1,5 @@
 $(() => {
-  $("#btn-sound").attr("disabled", true);
+  $("#nav-sound").addClass('active');
 }),
 $('.btn-merge').on('click', (e) => {
     let sceneNumber = e.target.value;

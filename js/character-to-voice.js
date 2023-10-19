@@ -1,5 +1,5 @@
 $(() => {
-  $("#btn-ctv").attr("disabled", true);
+  $("#nav-ctv").addClass('active');
 }),
   $("select").on("change", function (e) {
     const num = this.name.substring(7);

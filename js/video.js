@@ -1,6 +1,6 @@
 $(() => {
-    $("#btn-video").attr("disabled", true);
-  }),
+  $("#nav-video").addClass('active');
+}),
   $('.btn-generate').on('click', (e) => {
     const title = $('#filmTitle')[0].innerText;
     const sceneNumber = e.target.value;
