@@ -1,12 +1,20 @@
 $(() => {
   $("#nav-showreel").addClass('active');
-}),
-  $(() => {
     const s = $("#audio")[0].innerText;
     if (s) {
       document.getElementById("master-play").setAttribute("src", s);
       document.getElementById("master-play").play();
     }
+  }),
+  $('#slider-scene').on('input', (e)=>{
+    $('#output')[0].innerText = e.target.value;
+  }),
+  $('#slider-scene').on('change', (e)=>{
+    const elementNumber = 0;
+    const mute = $("#btn-mute")[0].innerText;
+    const sceneNumber = e.target.value;
+    const title = $("#filmTitle")[0].innerText;
+    window.location.href = `/showreel?title=${title}&sceneNumber=${sceneNumber}&elementNumber=${elementNumber}&mute=${mute}`;
   }),
   $("#btn-next-element").on("click", () => {
     if ($("#elementNumber")[0].innerText < $("#highestElement")[0].innerText) {

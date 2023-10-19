@@ -29,6 +29,7 @@
   .tableFixHead {
     overflow-y: auto;
     height: 420px;
+    border: 16px black solid;
   }
   .tableFixHead thead th {
     position: sticky;
@@ -36,14 +37,12 @@
   }
   table {
     border-collapse: collapse;
-    width: 99%;
+    width: 100%;
   }
   td,
   th {
     padding: 4px 8px;
-    border: 1px solid #ccc;
-  }
-  th {
+    border: 8px solid #ccc;
     background: #eee;
   }
   .head-display {
