@@ -1,5 +1,5 @@
 $(() => {
-  $("#nav-display").addClass('active');
+  $("#nav-display").addClass("active");
 }),
   $(".btn-gen").on("click", (e) => {
     const elementNumber = e.target.value;
@@ -39,9 +39,18 @@ $(() => {
   }),
   $(".btn-change").on("click", (e) => {
     const title = $("#filmTitle")[0].innerText;
-    let sceneNumber = $("#sceneNumber")[0].innerText;
+    const sceneNumber = $("#sceneNumber")[0].innerText;
     const element = e.target.value;
     window.location.href = `/gallery?title=${title}&sceneNumber=${sceneNumber}&element=${element}&caller=display`;
+  }),
+  $("#btn-add-character").on("click", () => {
+    $("#table-characters").show();
+  }),
+  $(".btn-add-char").on("click", (e) => {
+    const character = e.target.value;
+    const title = $("#filmTitle")[0].innerText;
+    const sceneNumber = $("#sceneNumber")[0].innerText;
+    window.location.href = `/add-character-to-scene?title=${title}&sceneNumber=${sceneNumber}&character=${character}`;
   }),
   $("#input-note").on("focusout", (e) => {
     const val = e.target.value;

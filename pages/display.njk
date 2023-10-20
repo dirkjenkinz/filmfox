@@ -11,7 +11,29 @@
   </div>
 
   <div class='row top'>
-    <div class='col-md-10'>
+    <div class="col-md-2" style='font-size:75%;'>
+      <button type='button' class='btn btn-prevnext btn-block btn-sm' id='btn-add-character'>
+        Add Character
+      </button>
+      <table id='table-characters' hidden="hidden">
+        <tbody>
+          {% for i in range(0, characters.length, 4) -%}
+            <tr>
+              {% for num in range(0,4) -%}
+                {% if characters[i + num] %}
+                  <td>
+                    <button type='button' class='btn btn-prevnext btn-block btn-sm btn-add-char' value="{{characters[i+num]}}">
+                      {{characters[i + num]}}
+                    </button>
+                  </td>
+                {% endif %}
+              {% endfor %}
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <div class='col-md-10' style='font-size:75%;'>
       {% for i in range(0, characterList.length) -%}
         {% if i < (characterList.length - 1) %}
           {{characterList[i]}}
@@ -21,88 +43,56 @@
         {% endif %}
       {% endfor %}
     </div>
-    <div class="col-md-2 dropdown" style='font-size:75%;'>
-      <button class="btn btn-sm btn-edit btn-block dropdown-toggle" type="button" data-toggle="dropdown">Add Characters
-        <span class="caret"></span></button>
-      <ul class="dropdown-menu" style='background: black; font-size:75%;'>
-        {% for i in range(0, characters.length) -%}
-          <li class='drop-down-character' value='{{characters[i][0]}}'>
-            {{characters[i][0]}}
-          </li>
-        {% endfor %}
-      </ul>
+  </div>
+  <div class='row top'>
+    <div class='col-md-1 hidden'>
+      <audio id='master-play' style='width: 100%;'>
+        <source src='' type='audio/mpeg'>
+      </audio>
+    </div>
+    <div class='col-md-2'>
+      {% if sceneNumber > 0 %}
+        <button type='button' class='btn btn-prevnext btn-block btn-sm' id='btn-previous' value='{{scene[0].scene}}'>
+          Previous Scene
+        </button>
+      {% else %}
+        <button type='button' class='btn btn-prevnext btn-block btn-sm' id='btn-previous' value='{{scene[0].scene}}' disabled="disabled">
+          Previous Scene
+        </button>
+      {% endif %}
+    </div>
+    <div class='col-md-4' style='font-size: 80%;'>
+      Scene
+      {{sceneNumber}}:
+      {{scene[0].dialogue}}
+    </div>
+    <div class='col-md-4'></div>
+    <div class='col-md-2'>
+      {% if sceneNumber < highest - 1 %}
+        <button type='button' class='btn btn-prevnext btn-block btn-sm' id='btn-next' value='{{scene[0].scene}}'>
+          Next Scene
+        </button>
+      {% else %}
+        <button type='button' class='btn btn-prevnext btn-block btn-sm' id='btn-next' value='{{scene[0].scene}}' disabled="disabled">
+          Next Scene
+        </button>
+      {% endif %}
     </div>
   </div>
 
-</div>
-<div class='row top'>
-  <div class='col-md-1 hidden'>
-    <audio id='master-play' style='width: 100%;'>
-      <source src='' type='audio/mpeg'>
-    </audio>
-  </div>
-  <div class='col-md-2'>
-    {% if sceneNumber > 0 %}
-      <button type='button' class='btn btn-prevnext btn-block btn-sm' id='btn-previous' value='{{scene[0].scene}}'>
-        Previous Scene
-      </button>
-    {% else %}
-      <button type='button' class='btn btn-prevnext btn-block btn-sm' id='btn-previous' value='{{scene[0].scene}}' disabled="disabled">
-        Previous Scene
-      </button>
-    {% endif %}
-  </div>
-  <div class='col-md-4' style='font-size: 80%;'>
-    Scene
-    {{sceneNumber}}:
-    {{scene[0].dialogue}}
-  </div>
-  <div class='col-md-4'></div>
-  <div class='col-md-2'>
-    {% if sceneNumber < highest - 1 %}
-      <button type='button' class='btn btn-prevnext btn-block btn-sm' id='btn-next' value='{{scene[0].scene}}'>
-        Next Scene
-      </button>
-    {% else %}
-      <button type='button' class='btn btn-prevnext btn-block btn-sm' id='btn-next' value='{{scene[0].scene}}' disabled="disabled">
-        Next Scene
-      </button>
-    {% endif %}
-  </div>
-</div>
-
-<div class='row tableFixHead2' id='tabhead'>
-  <div class='col-md-12'>
-    <table id='script-table'>
-      <tbody id='bod'>
-        {% for i in range(0, scene.length) -%}
-          <tr id='row_{{i}}' class='display-box'>
-            <td class='table-data' style='width: 15%;'>
-              Character:
-              {{scene[i].character}}
-              <br><br>
-              Voice:<p id='voice_{{i}}'>{{scene[i].voice}}</p>
-            </td>
-            <td class='table-data' style='width:50%;'>{{scene[i].dialogue}}</td>
-            <td class='table-data'>
-              {% if (scene[i].voice == '-') or (scene[i].sound) %}
-                <button type='button' class='btn btn-edit btn-block btn-sm btn-play' id='play_{{i}}' value='{{scene[i].sound}}'>
-                  Play {{scene[i].sound}}
-                </button>
-                <br>
-                <button class='btn btn-block btn-edit btn-sm btn-small btn-del' id='del_{{i}}' value='{{scene[i].sound}}'>
-                  Delete {{scene[i].sound}}
-                </button>
-              {% else %}
-                <button type='button' class='btn btn-edit btn-block btn-sm btn-gen' id='gen_{{i}}' value='{{i}}' caller='{{display}}'>
-                  Generate Sound
-                </button>
-              {% endif %}
-              <br><br>
-              <button type='button' class='btn btn-edit btn-block btn-sm btn-change' id='change_{{i}}' value='{{i}}'>
-                Change Image
-              </button>
+  <div class='row tableFixHead2' id='tabhead'>
+    <div class='col-md-12'>
+      <table id='script-table'>
+        <tbody id='bod'>
+          {% for i in range(0, scene.length) -%}
+            <tr id='row_{{i}}' class='display-box'>
+              <td class='table-data' style='width: 15%;'>
+                Character:
+                {{scene[i].character}}
+                <br><br>
+                Voice:<p id='voice_{{i}}'>{{scene[i].voice}}</p>
               </td>
+              <td class='table-data' style='width:50%;'>{{scene[i].dialogue}}</td>
               <td class='table-data card' style='width: 20%' id='crd_{{i}}'>
                 <br>
                 {% if scene[i].type === 'movie' %}
@@ -115,6 +105,27 @@
                 <p style='font-size: 80%; color: white;'>
                   {{scene[i].image.substring(0,28)}}
                 </p>
+              </td>
+              <td class='table-data'>
+                {% if (scene[i].voice == '-') or (scene[i].sound) %}
+                  <button type='button' class='btn btn-edit btn-block btn-sm btn-play' id='play_{{i}}' value='{{scene[i].sound}}'>
+                    Play
+                    {{scene[i].sound}}
+                  </button>
+                  <br>
+                  <button class='btn btn-block btn-edit btn-sm btn-small btn-del' id='del_{{i}}' value='{{scene[i].sound}}'>
+                    Delete
+                    {{scene[i].sound}}
+                  </button>
+                {% else %}
+                  <button type='button' class='btn btn-edit btn-block btn-sm btn-gen' id='gen_{{i}}' value='{{i}}' caller='{{display}}'>
+                    Generate Sound
+                  </button>
+                {% endif %}
+                <br><br>
+                <button type='button' class='btn btn-edit btn-block btn-sm btn-change' id='change_{{i}}' value='{{i}}'>
+                  Change Image
+                </button>
               </td>
             </tr>
           {%- endfor %}

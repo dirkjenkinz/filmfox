@@ -1,6 +1,7 @@
+"use strict";
 const url = require("url");
 const { smartLog } = require("../services/smart-log");
-const { readFile, getFileList, writeFile } = require("../services/file-service");
+const { readFile } = require("../services/file-service");
 
 const videoHandler = async (req, res) => {
   smartLog("info", "ENTERING VIDEO HANDLER");

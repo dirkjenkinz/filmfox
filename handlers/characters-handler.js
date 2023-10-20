@@ -10,10 +10,16 @@ const charactersHandler = async (req, res) => {
   const title = u.query.title;
   const characters = await readFile(`${title}/${title}.chrs`);
 
+  const filmFoxFile = await readFile(`${title}/${title}.fff`);
+  const {nonSpeakers} = filmFoxFile;
+  
+  console.log(nonSpeakers);
+
   res.render("characters.njk", {
     title,
     characters,
     page: 'Characters',
+    nonSpeakers,
   });
 };
 

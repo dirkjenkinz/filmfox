@@ -9,35 +9,35 @@ dotenv.config();
 const displayHandler = async (req, res) => {
   smartLog("info", "ENTERING DISPLAY HANDLER");
   const u = url.parse(req.originalUrl, true);
-  const locked = u.query.locked;
   let sceneNumber = parseInt(u.query.sceneNumber);
   const title = u.query.title;
   if (!sceneNumber) sceneNumber = 0;
-
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
-
-  let lock = "Unlock";
-
-  if (locked === "no") {
-    lock = "Lock";
-  }
-
-  const { script, shotList, charactersByScene } = filmFoxFile;
+  const { script, shotList, charactersByScene, nonSpeakers } = filmFoxFile;
   const api_key = process.env.APIKEY;
-
   const characters = await readFile(`${title}/${title}.chrs`);
-  
+  const chars = [];
+
+  characters.forEach((c) => {
+    if (c[0] !== "NARRATOR") {
+      chars.push(c[0]);
+    }
+  });
+
+  nonSpeakers.forEach((n) => {
+    chars.push(n);
+  });
+
   res.render("display.njk", {
     title,
     api_key,
-    lock,
     scene: script[sceneNumber],
     sceneNumber,
     page: "Script Breakdown",
     highest: script.length,
     note: shotList[sceneNumber].note,
     characterList: charactersByScene[sceneNumber],
-    characters,
+    characters: chars.sort(),
   });
 };
 
