@@ -45,6 +45,8 @@ $(() => {
   }),
   $("#btn-add-character").on("click", () => {
     if (($("#btn-add-character")[0].innerText === "Add Character")) {
+      $("#table-characters-in-scene").hide();
+      $("#btn-delete-character")[0].innerText = "Delete Character";
       $("#table-characters").show();
       $("#btn-add-character")[0].innerText = "CANCEL";
     } else {
@@ -54,6 +56,8 @@ $(() => {
   }),
   $("#btn-delete-character").on("click", () => {
     if (($("#btn-delete-character")[0].innerText === "Delete Character")) {
+      $("#table-characters").hide();
+      $("#btn-add-character")[0].innerText = "Add Character";
       $("#table-characters-in-scene").show();
       $("#btn-delete-character")[0].innerText = "CANCEL";
     } else {

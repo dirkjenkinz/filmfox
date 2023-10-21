@@ -41,7 +41,7 @@
               {% for num in range(0,6) -%}
                 {% if characters[i + num] %}
                   <td>
-                    <button type='button' class='btn-prevnext btn-add-char' value="{{characters[i+num]}}">
+                    <button type='button' class='btn-deladd btn-add-char' value="{{characters[i+num]}}">
                       {{characters[i + num]}}
                     </button>
                   </td>
@@ -58,7 +58,7 @@
               {% for num in range(0,6) -%}
                 {% if characterList[i + num] %}
                   <td>
-                    <button type='button' class='btn-prevnext btn-delete-char' value="{{characterList[i+num]}}">
+                    <button type='button' class='btn-deladd btn-delete-char' value="{{characterList[i+num]}}">
                       {{characterList[i + num]}}
                     </button>
                   </td>

@@ -17,6 +17,13 @@ table {
   text-align: center;
 }
 
+.btn-deladd {
+  text-align: center;
+  background: tomato;
+  color: white;
+  font-size: 75%;
+}
+
 .btn-prevnext {
   text-align: center;
   display: block;

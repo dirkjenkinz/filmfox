@@ -15,8 +15,6 @@ const deleteCharacterFromSceneHandler = async (req, res) => {
   const pointer = charactersByScene[sceneNumber].indexOf(character);
   console.log(charactersByScene[sceneNumber]);
   charactersByScene[sceneNumber].splice(pointer, 1);
-
-
   await writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
   res.redirect(`/display?title=${title}&sceneNumber=${sceneNumber}`);
 };
