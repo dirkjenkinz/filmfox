@@ -19,8 +19,6 @@ const showreelHandler = async (req, res) => {
   if (elementNumber === '-1'){
     sceneNumber --;
     elementNumber = script[sceneNumber].length -1;
-    console.log(script[sceneNumber])
-    console.log({elementNumber})
   }
 
   const element = script[sceneNumber][elementNumber];

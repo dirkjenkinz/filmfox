@@ -43,6 +43,14 @@ $(() => {
     const element = e.target.value;
     window.location.href = `/gallery?title=${title}&sceneNumber=${sceneNumber}&element=${element}&caller=display`;
   }),
+  $('#slider-scene').on('input', (e)=>{
+    $('#output')[0].innerText = e.target.value;
+  }),
+  $('#slider-scene').on('change', (e)=>{
+    const sceneNumber = e.target.value;
+    const title = $("#filmTitle")[0].innerText;
+    window.location.href = `/display?title=${title}&sceneNumber=${sceneNumber}`;
+  }),
   $("#btn-add-character").on("click", () => {
     if (($("#btn-add-character")[0].innerText === "Add Character")) {
       $("#table-characters-in-scene").hide();

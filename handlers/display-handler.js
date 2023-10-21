@@ -38,7 +38,7 @@ const displayHandler = async (req, res) => {
     scene: script[sceneNumber],
     sceneNumber,
     page: "Script Breakdown",
-    highest: script.length,
+    highestScene: script.length - 1,
     note: shotList[sceneNumber].note,
     characterList: charactersByScene[sceneNumber],
     characters: chars.sort(),
