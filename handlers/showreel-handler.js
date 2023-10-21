@@ -7,14 +7,22 @@ const showreelHandler = async (req, res) => {
   smartLog("info", "ENTERING SHOWREEL HANDLER");
   const u = url.parse(req.originalUrl, true);
   const title = u.query.title;
-  const sceneNumber = u.query.sceneNumber;
-  const elementNumber = u.query.elementNumber;
+  let sceneNumber = u.query.sceneNumber;
+  let elementNumber = u.query.elementNumber;
 
   let mute = u.query.mute;
   if (!mute) mute = "MUTE";
 
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
   const { script } = filmFoxFile;
+
+  if (elementNumber === '-1'){
+    sceneNumber --;
+    elementNumber = script[sceneNumber].length -1;
+    console.log(script[sceneNumber])
+    console.log({elementNumber})
+  }
+
   const element = script[sceneNumber][elementNumber];
   const slug = script[sceneNumber][0].dialogue;
 

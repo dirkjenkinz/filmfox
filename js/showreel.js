@@ -43,8 +43,8 @@ $(() => {
   }),
   $("#btn-previous-element").on("click", () => {
     const mute = $("#btn-mute")[0].innerText;
-    const sceneNumber = $("#sceneNumber")[0].innerText;
-    const elementNumber = parseInt($("#elementNumber")[0].innerText) - 1;
+    let sceneNumber = $("#sceneNumber")[0].innerText;
+    let elementNumber = parseInt($("#elementNumber")[0].innerText) - 1;
     const title = $("#filmTitle")[0].innerText;
     window.location.href = `/showreel?title=${title}&sceneNumber=${sceneNumber}&elementNumber=${elementNumber}&mute=${mute}`;
   }),
