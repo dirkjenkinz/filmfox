@@ -134,13 +134,6 @@ const convertHandler = async (req, res) => {
     await createDirectory(`${title}/sheets`)
     await createDirectory(`${title}/sounds`)
     await createDirectory(`${title}/videos`)
-
-    const fff = {
-      script,
-      shotList,
-      sceneOrder,
-    };
-
     const characters = [];
 
     script.forEach((scene) => {
@@ -153,14 +146,27 @@ const convertHandler = async (req, res) => {
       (x, i) => i === characters.indexOf(x)
     );
 
-    const characterArray = [];
+    const characterList = [];
 
     uniqueCharacters.forEach((c) => {
-      characterArray.push([c, ""]);
+      characterList.push([c, ""]);
     });
 
-    await writeFile(JSON.stringify(characterArray), `${title}/${title}.chrs`);
-    await writeFile(JSON.stringify(fff), `${title}/${title}.fff`);
+    const credits = [];
+    const charactersByScene = [];
+    const nonSpeakers = [];
+
+    const filmFoxFile = {
+      script,
+      shotList,
+      sceneOrder,
+      credits,
+      charactersByScene,
+      characterList,
+      nonSpeakers,
+    };
+
+    await writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
   });
   res.redirect(`/display?title=${title}&sceneNumber=0&locked='yes`);
 };

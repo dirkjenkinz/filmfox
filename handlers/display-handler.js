@@ -13,12 +13,11 @@ const displayHandler = async (req, res) => {
   const title = u.query.title;
   if (!sceneNumber) sceneNumber = 0;
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
-  const { script, shotList, charactersByScene, nonSpeakers } = filmFoxFile;
+  const { script, shotList, charactersByScene, nonSpeakers, characterList } = filmFoxFile;
   const api_key = process.env.APIKEY;
-  const characters = await readFile(`${title}/${title}.chrs`);
   let chars = [];
 
-  characters.forEach((c) => {
+  characterList.forEach((c) => {
     if (c[0] !== "NARRATOR") {
       chars.push(c[0]);
     }

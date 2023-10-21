@@ -22,13 +22,12 @@ const characterToVoiceHandler = async (req, res) => {
   const sceneNumber = u.query.sceneNumber;
   const title = u.query.filmFoxFile;
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
-  const { script } = filmFoxFile;
-  let characters = await readFile(`${title}/${title}.chrs`);
+  const { characterList } = filmFoxFile;
   const voices = await readFile('voices.json');
   let voice_data = getVoiceData(voices);
   voice_data.unshift(['-', '', '']);
 
-  characters.forEach((c)=>{
+  characterList.forEach((c)=>{
     voice_data.forEach((v)=>{
       if (c[1] === v[0])
       {
@@ -39,7 +38,7 @@ const characterToVoiceHandler = async (req, res) => {
 
     res.render('character-to-voice.njk', {
     title,
-    characters,
+    characters: characterList,
     voice_data,
     sceneNumber,
     page: 'Voice Map',

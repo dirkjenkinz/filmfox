@@ -8,16 +8,12 @@ const charactersHandler = async (req, res) => {
   smartLog("info", "ENTERING CHARACTERS HANDLER");
   const u = url.parse(req.originalUrl, true);
   const title = u.query.title;
-  const characters = await readFile(`${title}/${title}.chrs`);
-
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
-  const {nonSpeakers} = filmFoxFile;
+  const {nonSpeakers, characterList} = filmFoxFile;
   
-  console.log(nonSpeakers);
-
   res.render("characters.njk", {
     title,
-    characters,
+    characters: characterList,
     page: 'Characters',
     nonSpeakers,
   });

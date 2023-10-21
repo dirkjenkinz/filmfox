@@ -10,7 +10,7 @@ const editCharacterHandler = async (req, res) => {
   const title = u.query.title;
   const character = u.query.character;
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
-  const charactersList = await readFile(`${title}/${title}.chrs`);
+  const {characterList} = filmFoxFile;
 
   const { script } = filmFoxFile;
 
@@ -32,7 +32,7 @@ const editCharacterHandler = async (req, res) => {
 
   let currentVoice;
 
-  charactersList.forEach((c) => {
+  characterList.forEach((c) => {
     if (c[0] === character) {
       currentVoice = c[1];
     }
