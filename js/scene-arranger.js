@@ -16,6 +16,20 @@ $("#btn-credits").on("click", (e) => {
       $(`#table-shots-list-${num}`).hide();
     }
   }),
+  $("#btn-hide-and-show").on("click", () => {
+    const length = $("#size")[0].innerText;
+    if ($('#btn-hide-and-show')[0].innerText === 'Hide All'){
+    for (let num = 0; num < length; num++) {
+      $(`#table-shots-list-${num}`).hide();
+    }
+    $('#btn-hide-and-show')[0].innerText = 'Show All'
+  } else {
+    for (let num = 0; num < length; num++) {
+      $(`#table-shots-list-${num}`).show();
+    }
+    $('#btn-hide-and-show')[0].innerText = 'Hide All'
+  };
+  }),
   $("#btn-reveal-all").on("click", () => {
     const length = $("#size")[0].innerText;
     for (let num = 0; num < length; num++) {

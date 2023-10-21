@@ -16,7 +16,7 @@ const displayHandler = async (req, res) => {
   const { script, shotList, charactersByScene, nonSpeakers } = filmFoxFile;
   const api_key = process.env.APIKEY;
   const characters = await readFile(`${title}/${title}.chrs`);
-  const chars = [];
+  let chars = [];
 
   characters.forEach((c) => {
     if (c[0] !== "NARRATOR") {
@@ -26,6 +26,11 @@ const displayHandler = async (req, res) => {
 
   nonSpeakers.forEach((n) => {
     chars.push(n);
+  });
+
+  charactersByScene[sceneNumber].forEach((c)=>{
+    const pointer = chars.indexOf(c);
+    chars.splice(pointer, 1);
   });
 
   res.render("display.njk", {

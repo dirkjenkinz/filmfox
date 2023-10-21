@@ -133,14 +133,19 @@ html {
 .data-left {
   text-align: left;
   padding: 0px 4px;
-  background: slategrey;
+  background: black;
+  color: silver;
+  font-size: 75%;
 }
 
 .data-central {
   text-align: left;
   padding: 0px 4px;
-  background: slategrey;
+  background: #000000;
+  color: silver;
+  font-size: 75%;
 }
+  
 
 .data-display {
   background: black;
