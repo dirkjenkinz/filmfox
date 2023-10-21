@@ -44,13 +44,34 @@ $(() => {
     window.location.href = `/gallery?title=${title}&sceneNumber=${sceneNumber}&element=${element}&caller=display`;
   }),
   $("#btn-add-character").on("click", () => {
-    $("#table-characters").show();
+    if (($("#btn-add-character")[0].innerText === "Add Character")) {
+      $("#table-characters").show();
+      $("#btn-add-character")[0].innerText = "CANCEL";
+    } else {
+      $("#table-characters").hide();
+      $("#btn-add-character")[0].innerText = "Add Character";
+    }
+  }),
+  $("#btn-delete-character").on("click", () => {
+    if (($("#btn-delete-character")[0].innerText === "Delete Character")) {
+      $("#table-characters-in-scene").show();
+      $("#btn-delete-character")[0].innerText = "CANCEL";
+    } else {
+      $("#table-characters-in-scene").hide();
+      $("#btn-delete-character")[0].innerText = "Delete Character";
+    }
   }),
   $(".btn-add-char").on("click", (e) => {
     const character = e.target.value;
     const title = $("#filmTitle")[0].innerText;
     const sceneNumber = $("#sceneNumber")[0].innerText;
     window.location.href = `/add-character-to-scene?title=${title}&sceneNumber=${sceneNumber}&character=${character}`;
+  }),
+  $(".btn-delete-char").on("click", (e) => {
+    const character = e.target.value;
+    const title = $("#filmTitle")[0].innerText;
+    const sceneNumber = $("#sceneNumber")[0].innerText;
+    window.location.href = `/delete-character-from-scene?title=${title}&sceneNumber=${sceneNumber}&character=${character}`;
   }),
   $("#input-note").on("focusout", (e) => {
     const val = e.target.value;

@@ -11,11 +11,19 @@ table {
 
 .btn-navigate {
   background: green;
+  font-size: 75%;
+  display: block;
+  width: 100%;
+  text-align: center;
 }
 
 .btn-prevnext {
+  text-align: center;
+  display: block;
+  width: 100%;
   background: blue;
   color: white;
+  font-size: 75%;
 }
 
 .table-header {
@@ -237,6 +245,10 @@ textarea {
   background: red;
   color: white;
   border: black 2px solid;
+  text-align: center;
+  display: block;
+  width: 100%;
+  font-size: 75%;
 }
 
 .btn-side {
