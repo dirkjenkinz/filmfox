@@ -23,7 +23,7 @@ const deleteHandler = async (req, res) => {
   }
 
   if (sub === "sounds") {
-    res.redirect(`/display?title=${title}&sceneNumber=${sceneNumber}`);
+    res.redirect(`/showreel?title=${title}&sceneNumber=${sceneNumber}`);
   } else {
     res.redirect(`/sound?title=${title}&sceneNumber=${sceneNumber}`);
   }

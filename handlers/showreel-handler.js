@@ -9,12 +9,11 @@ const showreelHandler = async (req, res) => {
   const title = u.query.title;
   let sceneNumber = u.query.sceneNumber;
   let elementNumber = u.query.elementNumber;
-
   let mute = u.query.mute;
   if (!mute) mute = "MUTE";
 
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
-  const { script } = filmFoxFile;
+  const { script, shotList, charactersByScene, nonSpeakers, characterList } = filmFoxFile;
 
   if (elementNumber === '-1'){
     sceneNumber --;
@@ -29,6 +28,23 @@ const showreelHandler = async (req, res) => {
     audio = `../data/${title}/sounds/${element.sound}`;
   };
 
+  let chars = [];
+
+  characterList.forEach((c) => {
+    if (c[0] !== "NARRATOR") {
+      chars.push(c[0]);
+    }
+  });
+
+  nonSpeakers.forEach((n) => {
+    chars.push(n);
+  });
+
+  charactersByScene[sceneNumber].forEach((c)=>{
+    const pointer = chars.indexOf(c);
+    chars.splice(pointer, 1);
+  });
+
   res.render("showreel.njk", {
     sceneNumber,
     elementNumber,
@@ -40,6 +56,9 @@ const showreelHandler = async (req, res) => {
     slug,
     page: "Showreel",
     audio,
+    note: shotList[sceneNumber].note,
+    characterList: charactersByScene[sceneNumber],
+    characters: chars.sort(),
   });
 };
 

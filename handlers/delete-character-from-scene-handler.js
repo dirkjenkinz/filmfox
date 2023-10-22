@@ -10,12 +10,13 @@ const deleteCharacterFromSceneHandler = async (req, res) => {
   const title = u.query.title;
   const character = u.query.character;
   const sceneNumber = u.query.sceneNumber;
+  const elementNumber = u.query.elementNumber;
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
   let { charactersByScene } = filmFoxFile;
   const pointer = charactersByScene[sceneNumber].indexOf(character);
   charactersByScene[sceneNumber].splice(pointer, 1);
   await writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
-  res.redirect(`/display?title=${title}&sceneNumber=${sceneNumber}`);
+  res.redirect(`/showreel?title=${title}&sceneNumber=${sceneNumber}&elementNumber=${elementNumber}`);
 };
 
 module.exports = { deleteCharacterFromSceneHandler };

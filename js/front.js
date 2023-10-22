@@ -6,7 +6,7 @@ $('#convert').on('click', () => {
   }),
     $('.btn-fff').on('click', (e) => {
       let f = e.target.value;
-      window.location.href = `/display?title=${f}&scene=0`
+      window.location.href = `/showreel?title=${f}&sceneNumber=0&elementNumber=0`;
     }),
     $('.btn-fdx').on('click', (e) => {
       let s = e.target.value;

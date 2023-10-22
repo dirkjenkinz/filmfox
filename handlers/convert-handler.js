@@ -168,7 +168,7 @@ const convertHandler = async (req, res) => {
 
     await writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
   });
-  res.redirect(`/display?title=${title}&sceneNumber=0&locked='yes`);
+  res.redirect(`/showreel?title=${title}&sceneNumber=0`);
 };
 
 module.exports = { convertHandler };

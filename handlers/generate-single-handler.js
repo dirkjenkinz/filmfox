@@ -12,6 +12,7 @@ const generateSingleHandler = async (req, res) => {
 
   let u = url.parse(req.originalUrl, true);
   const title = u.query.title;
+  const sceneNumber = u.query.sceneNumber;
   const elementNumber = u.query.elementNumber;
   const voice = u.query.voice;
   const api_key = process.env.APIKEY;
@@ -19,9 +20,8 @@ const generateSingleHandler = async (req, res) => {
 
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
   const { script } = filmFoxFile;
-  const element = script[elementNumber]
-
-  let sc = "0000" + element.scene;
+  const element = script[sceneNumber][elementNumber];
+  let sc = "0000" + sceneNumber;
   sc = sc.substring(sc.length - 4);
   let el = "0000" + elementNumber;
   el = el.substring(el.length - 4);
@@ -57,7 +57,7 @@ const generateSingleHandler = async (req, res) => {
       const char = element.character.toUpperCase();
       res.redirect(`/edit-character?title=${title}&character=${char}`);
     } else {
-      res.redirect(`/display?title=${title}&scene=${element.scene}`);
+      res.redirect(`/showreel?title=${title}&scene=${scene}&element=${element}`);
     }
   });
 };

@@ -1,5 +1,68 @@
 {% extends "parent.njk" %}
 {% block page %}
+
+  <div class='row top' style='font-size:75%;'>
+    <div class="col-md-2">
+      <button type='button' class='btn-prevnext' id='btn-add-character'>
+        Add Character
+      </button>
+    </div>
+    <div class='col-md-8'>
+      {% for i in range(0, characterList.length) -%}
+        {% if i < (characterList.length - 1) %}
+          {{characterList[i]}}
+          --
+        {%else %}
+          {{characterList[i]}}
+        {% endif %}
+      {% endfor %}
+    </div>
+    <div class='col-md-2'>
+      <button type='button' class='btn-prevnext' id='btn-delete-character'>
+        Delete Character
+      </button>
+    </div>
+  </div>
+
+  <div class='row'>
+    <div class='col-md-12'>
+      <table id='table-characters' hidden="hidden">
+        <tbody>
+          {% for i in range(0, characters.length, 6) -%}
+            <tr>
+              {% for num in range(0,6) -%}
+                {% if characters[i + num] %}
+                  <td>
+                    <button type='button' class='btn-deladd btn-add-char' value="{{characters[i+num]}}">
+                      {{characters[i + num]}}
+                    </button>
+                  </td>
+                {% endif %}
+              {% endfor %}
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <table id='table-characters-in-scene' hidden="hidden">
+        <tbody>
+          {% for i in range(0, characterList.length, 6) -%}
+            <tr>
+              {% for num in range(0,6) -%}
+                {% if characterList[i + num] %}
+                  <td>
+                    <button type='button' class='btn-deladd btn-delete-char' value="{{characterList[i+num]}}">
+                      {{characterList[i + num]}}
+                    </button>
+                  </td>
+                {% endif %}
+              {% endfor %}
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
   <div class='row' style='background: silver; color: black;'>
     <p id='highestScene' hidden="hidden">{{highestScene}}</p>
     <p id='highestElement' hidden="hidden">{{highestElement}}</p>
@@ -54,9 +117,26 @@
                       </button>
                     </td>
                   </tr>
+
+                  <tr>
+                    <td>
+                      {% if audio %}
+                        <button class='btn-edit btn-del' id='del_{{i}}' value='{{scene[i].sound}}'>
+                          Delete
+                          {{scene[i].sound}}
+                        </button>
+                      {% else %}
+                        <button type='button' class='btn-edit btn-gen' id='gen_{{i}}' value='{{i}}' caller='{{display}}'>
+                          Generate
+                          {{scene[i].sound}}
+                        </button>
+                      {% endif %}
+                    </td>
+                  </tr>
+
                   <tr>
                     <td colspan='2'>
-                    <br>
+                      <br>
                       {% if element.sound %}
                         {% if mute == 'MUTE' %}
                           <audio id='master-play' controls="controls" style='width: 100%;'>
@@ -118,21 +198,35 @@
           </table>
         </tr>
         <tr>
-          <td>&nbsp;</td>
+          <td>
+            <button type='button' class='btn-edit btn-change' id='change_{{i}}' value='{{i}}'>
+              Change Image
+            </button>
+          </td>
         </tr>
       </table>
     </div>
-  </div>
-  <div class='row'>
-    <div class='col-md-12'>
-    <br>
-      <div class="slidecontainer">
-        <p>Scene Selector</p>
-        <input type="range" min="0" max="{{highestScene}}" value="{{sceneNumber}}" id='slider-scene'>
-        <p>SCENE: <span id="output">{{sceneNumber}}</span></p>
-      </div>
+    <div class='row'>
+      <div class='col-md-12' style='font-size: 75%;'></div>
     </div>
   </div>
+  <div class='row'>
+    <div class='col-md-2' style='font-size: 75%;'>
+      <br>
+      SCENE:
+      <span id="output">{{sceneNumber}}</span>
+    </div>
+    <div class='col-md-10'>
+      <b>&nbsp;&nbsp;Note:</b>
+      <input type="text" id="input-note" name="note" size='120' value='{{note}}'>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-md-12 slidecontainer'>
+      <input type="range" min="0" max="{{highestScene}}" value="{{sceneNumber}}" id='slider-scene'>
+    </div>
+  </div>
+
 </div>
 <script src='../js/parent.js'></script>
 <script src='../js/showreel.js'></script>

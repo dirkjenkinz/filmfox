@@ -23,9 +23,8 @@ const galleryHandler = async (req, res) => {
   let u = url.parse(req.originalUrl, true);
   const sceneNumber = u.query.sceneNumber;
   const title = u.query.title;
-  const element = u.query.element;
+  const elementNumber = u.query.elementNumber;
   const caller = u.query.caller;
-  const note = u.query.note;
   const imageList = await getListOfImages(title);
   imageList.unshift("blank.jpg");
 
@@ -60,9 +59,11 @@ const galleryHandler = async (req, res) => {
     }
   });
 
+  console.log({sceneNumber})
+
   res.render("gallery.njk", {
     title,
-    element,
+    elementNumber,
     sceneNumber,
     used,
     unused,

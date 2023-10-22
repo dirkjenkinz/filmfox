@@ -5,46 +5,52 @@ const { readFile, writeFile } = require("../services/file-service");
 
 const updateImageDisplayHandler = async (req, res) => {
   smartLog("info", "ENTERING UPDATE IMAGE DISPLAY HANDLDER");
-
   let u = url.parse(req.originalUrl, true);
   const sceneNumber = u.query.sceneNumber;
   const title = u.query.title;
-  const element = u.query.element;
+  const elementNumber = u.query.elementNumber;
   const image = u.query.image;
   const caller = u.query.caller;
 
   let filmFoxFile = await readFile(`${title}/${title}.fff`);
   const { script } = filmFoxFile;
 
-  let type = 'still';
+  let type = "still";
 
   if (image.substring(image.length - 4) === ".mov") {
-    type = 'movie';
+    type = "movie";
   } else if (image.substring(image.length - 4) === ".mp4") {
-    type = 'movie';
+    type = "movie";
   } else if (image.substring(image.length - 4) === ".avi") {
-    type = 'movie';
+    type = "movie";
   } else if (image.substring(image.length - 4) === ".wmv") {
-    type = 'movie';
+    type = "movie";
   } else if (image.substring(image.length - 4) === ".mkv") {
-    type = 'movie';
-  };
- 
-  let originalImage = script[sceneNumber][element].image;
+    type = "movie";
+  }
 
-  for (let i = element; i < script[sceneNumber].length; i++){
-    if (script[sceneNumber][i].image === originalImage){
+  let originalImage = script[sceneNumber][elementNumber].image;
+
+  for (let i = elementNumber; i < script[sceneNumber].length; i++) {
+    if (script[sceneNumber][i].image === originalImage) {
       script[sceneNumber][i].image = image;
-    };
-  };
+    }
+  }
 
+  console.log("-1");
   await writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
-  
+
+  console.log({ caller });
+
   if (caller === "scenes") {
     res.redirect(`/scenes?title=${title}`);
+  } else if (caller === "showreel") {
+    res.redirect(
+      `/showreel?title=${title}&sceneNumber=${sceneNumber}&elementNumber=${elementNumber}`
+    );
   } else {
     res.redirect(
-      `/display?title=${title}&sceneNumber=${sceneNumber}&element=${element}`
+      `/display?title=${title}&sceneNumber=${sceneNumber}&elementNumber=${elementNumber}`
     );
   }
 };
