@@ -15,10 +15,6 @@ $("#nav-front").on("click", () => {
     const sceneNumber = $("#sceneNumber")[0].innerText;
     window.location.href = `/sound?title=${f}&sceneNumber=${sceneNumber}`;
   }),
-  $("#nav-scenes").on("click", () => {
-    const title = $("#filmTitle")[0].innerText;
-    window.location.href = `/scenes?title=${title}`;
-  }),
   $("#nav-video").on("click", () => {
     const title = $("#filmTitle")[0].innerText;
     const sceneNumber = $("#sceneNumber")[0].innerText;
