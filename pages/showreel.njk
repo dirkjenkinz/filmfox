@@ -31,13 +31,13 @@
           {% for i in range(0, characters.length, 6) -%}
             <tr>
               {% for num in range(0,6) -%}
-                {% if characters[i + num] %}
-                  <td>
+                <td style='width: 15%;'>
+                  {% if characters[i + num] %}
                     <button type='button' class='btn-deladd btn-add-char' value="{{characters[i+num]}}">
                       {{characters[i + num]}}
                     </button>
-                  </td>
-                {% endif %}
+                  {% endif %}
+                </td>
               {% endfor %}
             </tr>
           {% endfor %}
@@ -48,13 +48,13 @@
           {% for i in range(0, characterList.length, 6) -%}
             <tr>
               {% for num in range(0,6) -%}
-                {% if characterList[i + num] %}
-                  <td>
+                <td style='width: 15%;'>
+                  {% if characterList[i + num] %}
                     <button type='button' class='btn-deladd btn-delete-char' value="{{characterList[i+num]}}">
                       {{characterList[i + num]}}
                     </button>
-                  </td>
-                {% endif %}
+                  {% endif %}
+                </td>
               {% endfor %}
             </tr>
           {% endfor %}
@@ -92,10 +92,13 @@
                   <h2>NO IMAGE</h2>
                 {% endif %}
               </td>
+
               <td class='data-showreel' style='width: 40%; padding: 8px; border : red 8px solid;'>
-                <p id='character_{{i}}' style='text-align: center; font-weight: bold;'>{{element.character}}</p>
-                <br>
-                {{element.dialogue}}
+                <div class="box">
+                  <p style='text-align: center; font-weight: bold;'>{{element.character}} ({{element.voice}})</p>
+                  <br>
+                  {{element.dialogue}}
+                </div>
               </td>
               <td style='border : red 8px solid;'>
                 <table>
@@ -221,6 +224,7 @@
       <input type="text" id="input-note" name="note" size='120' value='{{note}}'>
     </div>
   </div>
+  
   <div class='row'>
     <div class='col-md-12 slidecontainer'>
       <input type="range" min="0" max="{{highestScene}}" value="{{sceneNumber}}" id='slider-scene'>

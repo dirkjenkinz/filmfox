@@ -36,6 +36,8 @@ const characterToVoiceHandler = async (req, res) => {
     });
   });
 
+  console.log({characterList});
+
     res.render('character-to-voice.njk', {
     title,
     characters: characterList,

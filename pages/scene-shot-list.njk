@@ -1,5 +1,20 @@
 {% extends "parent.njk" %}
 {% block page %}
+  
+  <div class='row'>
+    <div class='col-md-12'>
+      SCENE:
+      <span id="output">{{sceneNumber}}</span>
+    </div>
+  </div>
+
+  <div class='row'>
+    <div class='col-md-12 slidecontainer'>
+      <input type="range" min="0" max="{{size}}" value="{{sceneNumber}}" id='slider-scene'>
+    </div>
+    <br><br>
+  </div>
+
   <div class='row'>
     <div class='col-md-12'>
       <table class='table-bordered table-sm table-dark table-grid' id='tab_img'>
@@ -28,7 +43,7 @@
               {% endif %}
             </td>
             <td>
-              {% if sceneNumber < size - 1 %}
+              {% if sceneNumber < size %}
                 <button class='btn btn-block btn-edit btn-sm btn-next' id='btn-next'>
                   Next
                 </button>
@@ -89,10 +104,10 @@
             <th class='shot-header'>
               Audio
             </th>
-            <th class='shot-header' style='width: 25%';>
+            <th class='shot-header' style='width: 25%' ;=";">
               Subject
             </th>
-            <th class='shot-header' style='width: 50%';>
+            <th class='shot-header' style='width: 50%' ;=";">
               Description
             </th>
           </tr>

@@ -22,7 +22,6 @@ const characterUpdateHandler = async (req, res) => {
   smartLog('info', 'entering character update handler');
 
   const u = url.parse(req.originalUrl, true);
-  let sceneNumber = u.query.sceneNumber;
   let voice = u.query.voice;
   let character = u.query.character;
   let title = u.query.filmFoxFile;
@@ -30,7 +29,7 @@ const characterUpdateHandler = async (req, res) => {
   const characters = filmFoxFile.characterList;
   
   const voices = await readFile('voices.json');
-  voice_data = getVoiceData(voices);
+  let voice_data = getVoiceData(voices);
   voice_data.unshift(['-', '', '']);
 
   characters.forEach(c => {
@@ -41,13 +40,8 @@ const characterUpdateHandler = async (req, res) => {
 
   writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
 
-  res.render('character-to-voice.njk', {
-    title,
-    characters,
-    voice_data,
-    sceneNumber,
-    page: 'Voice Map',
-  });
+  res.redirect(`/ctv?filmFoxFile=${title}`);
+
 };
 
 module.exports = { characterUpdateHandler };

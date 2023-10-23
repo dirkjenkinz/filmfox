@@ -61,3 +61,9 @@
     color: black;
     background: #eee;
   }
+
+  .box{
+    padding: 15px;
+    overflow-y: auto;
+    height: 260px;
+}

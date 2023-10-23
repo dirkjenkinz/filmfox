@@ -1,6 +1,14 @@
 $(() => {
   $("#nav-scene-shot-list").addClass('active');
 }),
+$("#slider-scene").on("input", (e) => {
+  $("#output")[0].innerText = e.target.value;
+}),
+$("#slider-scene").on("change", (e) => {
+  const sceneNumber = e.target.value;
+  const title = $("#filmTitle")[0].outerText;
+  window.location.href = `/scene-shot-list?title=${title}&sceneNumber=${sceneNumber}`
+}),
 $(".shot-select").on("change", (e) => {
   const line = e.target.id;
   const val = e.target.value;

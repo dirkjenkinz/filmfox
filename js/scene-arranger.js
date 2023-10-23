@@ -1,11 +1,3 @@
-$("#btn-credits").on("click", (e) => {
-  const hidden = [];
-    for (let i = 0; i < size; i++) {
-      hidden.push($(`#table-shots-list-${i}`).is(":hidden"));
-    };
-    const title = $("#filmTitle")[0].innerText;
-  window.location.href = `/credits?title=${title}&hidden=${hidden}`
-}),
   $(".btn-hide").on("click", (e) => {
     const num = e.target.value;
     $(`#table-shots-list-${num}`).toggle();
