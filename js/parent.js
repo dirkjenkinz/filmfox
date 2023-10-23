@@ -38,7 +38,7 @@ $("#nav-front").on("click", () => {
   }),
   $("#nav-showreel").on("click", () => {
     const title = $("#filmTitle")[0].innerText;
-    window.location.href = `/showreel?title=${title}&sceneNumber=0&elementNumber=0`;
+    window.location.href = `/showreel?title=${title}&sceneNumber=0&elementNumber=0&speak=no`;
   }),
   $("#nav-scene-shot-list").on("click", () => {
     const title = $("#filmTitle")[0].innerText;

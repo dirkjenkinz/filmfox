@@ -9,6 +9,7 @@ const showreelHandler = async (req, res) => {
   const title = u.query.title;
   let sceneNumber = u.query.sceneNumber;
   let elementNumber = u.query.elementNumber;
+  const speak = u.query.speak;
   let mute = u.query.mute;
   if (!mute) mute = "MUTE";
 
@@ -24,7 +25,7 @@ const showreelHandler = async (req, res) => {
   const slug = script[sceneNumber][0].dialogue;
 
   let audio = "";
-  if (element.sound) {
+  if (element.sound && speak == 'yes') {
     audio = `../data/${title}/sounds/${element.sound}`;
   };
 

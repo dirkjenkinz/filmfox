@@ -19,7 +19,7 @@ $(() => {
     const elementNumber = 0;
     const sceneNumber = e.target.value;
     const url = buildUrl("showreel", sceneNumber, 0);
-    window.location.href = url;
+    window.location.href = `${url}&speak=yes`;
   }),
   $("#btn-next-element").on("click", () => {
     if (
@@ -29,7 +29,7 @@ $(() => {
       const elementNumber = parseInt($("#elementNumber")[0].innerText) + 1;
       const sceneNumber = $("#sceneNumber")[0].innerText;
       const url = buildUrl("showreel", sceneNumber, elementNumber);
-      window.location.href = url;
+      window.location.href = `${url}&speak=yes`;
     } else {
       $("#btn-next-scene").trigger("click");
     }
@@ -38,18 +38,18 @@ $(() => {
     const elementNumber = 0;
     const sceneNumber = parseInt($("#sceneNumber")[0].innerText) + 1;
     const url = buildUrl("showreel", sceneNumber, elementNumber);
-    window.location.href = url;
+    window.location.href = `${url}&speak=yes`;
   }),
   $("#btn-previous-scene").on("click", () => {
     const sceneNumber = parseInt($("#sceneNumber")[0].innerText) - 1;
     const url = buildUrl("showreel", sceneNumber, 0);
-    window.location.href = url;
+    window.location.href = `${url}&speak=yes`;
   }),
   $("#btn-previous-element").on("click", () => {
     let sceneNumber = $("#sceneNumber")[0].innerText;
     let elementNumber = parseInt($("#elementNumber")[0].innerText) - 1;
     const url = buildUrl("showreel", sceneNumber, elementNumber);
-    window.location.href = url;
+    window.location.href = `${url}&speak=yes`;
   }),
   $("#btn-mute").on("click", () => {
     if ($("#btn-mute")[0].innerText === "MUTE") {
@@ -87,30 +87,31 @@ $(() => {
     const sceneNumber = $("#sceneNumber")[0].innerText;
     const elementNumber = $("#elementNumber")[0].innerText;
     let url = buildUrl("add-character-to-scene", sceneNumber, elementNumber);
-    url = `${url}&character=${character}`;
-    window.location.href = url;
+    url = `${url}&character=${character}&speak=no`;
+    window.location.href = `${url}&speak=no`;
+
   }),
   $(".btn-delete-char").on("click", (e) => {
     const character = e.target.value;
     const sceneNumber = $("#sceneNumber")[0].innerText;
     const elementNumber = $("#elementNumber")[0].innerText;
     let url = buildUrl("delete-character-from-scene", sceneNumber, elementNumber)
-    url = `${url}&character=${character}`;
-    window.location.href = url;
+    url = `${url}&character=${character}&speak=no`;
+    window.location.href = url
   }),
   $("#input-note").on("focusout", (e) => {
     const val = e.target.value;
     const sceneNumber = $("#sceneNumber")[0].outerText;
     const elementNumber = $("#elementNumber")[0].innerText;
     let url = buildUrl("update-note", sceneNumber, elementNumber)
-    url = `${url}&val=${val}`;
+    url = `${url}&val=${val}&speak=no`;
     window.location.href = url;
   }),
   $(".btn-gen").on("click", (e) => {
     const elementNumber = e.target.value;
     voice = $(`#voice_${elementNumber}`)[0].innerText;
     let url = buildUrl("generate-single", sceneNumber, elementNumber)
-    url = `${url}&voice=${voice}`;
+    url = `${url}&voice=${voice}&speak=no`;
     window.location.href = url;
   }),
   $(".btn-del").on("click", (e) => {
@@ -119,7 +120,7 @@ $(() => {
       const sceneNumber = $("#sceneNumber")[0].innerText;
       const elementNumber = `${e.target.value}`;
       let url = buildUrl("delete", sceneNumber, elementNumber)
-      url = `${url}&sub=sounds&num=${num}`;
+      url = `${url}&sub=sounds&num=${num}&speak=no`;
       window.location.href = url;
     }
   }),
@@ -127,6 +128,6 @@ $(() => {
     const sceneNumber = $("#sceneNumber")[0].innerText;
     const elementNumber = $("#elementNumber")[0].innerText;
     let url = buildUrl("gallery", sceneNumber, elementNumber)
-    url = `${url}&caller=showreel`;
+    url = `${url}&caller=showreel&speak=no`;
     window.location.href = url;
   });
