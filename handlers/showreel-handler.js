@@ -14,20 +14,21 @@ const showreelHandler = async (req, res) => {
   if (!mute) mute = "MUTE";
 
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
-  const { script, shotList, charactersByScene, nonSpeakers, characterList } = filmFoxFile;
+  const { script, shotList, charactersByScene, nonSpeakers, characterList } =
+    filmFoxFile;
 
-  if (elementNumber === '-1'){
-    sceneNumber --;
-    elementNumber = script[sceneNumber].length -1;
+  if (elementNumber === "-1") {
+    sceneNumber--;
+    elementNumber = script[sceneNumber].length - 1;
   }
 
   const element = script[sceneNumber][elementNumber];
   const slug = script[sceneNumber][0].dialogue;
 
   let audio = "";
-  if (element.sound && speak == 'yes') {
+  if (element.sound && speak == "yes") {
     audio = `../data/${title}/sounds/${element.sound}`;
-  };
+  }
 
   let chars = [];
 
@@ -41,16 +42,18 @@ const showreelHandler = async (req, res) => {
     chars.push(n);
   });
 
-  charactersByScene[sceneNumber].forEach((c)=>{
-    const pointer = chars.indexOf(c);
-    chars.splice(pointer, 1);
-  });
+  if (charactersByScene[sceneNumber]) {
+    charactersByScene[sceneNumber].forEach((c) => {
+      const pointer = chars.indexOf(c);
+      chars.splice(pointer, 1);
+    });
+  }
 
   res.render("showreel.njk", {
     sceneNumber,
     elementNumber,
     highestElement: script[sceneNumber].length - 1,
-    highestScene: script.length -1,
+    highestScene: script.length - 1,
     title,
     element,
     mute,

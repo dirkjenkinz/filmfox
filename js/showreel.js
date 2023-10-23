@@ -104,7 +104,7 @@ $(() => {
     const sceneNumber = $("#sceneNumber")[0].outerText;
     const elementNumber = $("#elementNumber")[0].innerText;
     let url = buildUrl("update-note", sceneNumber, elementNumber, 'no')
-    url = `${url}&val=${val}`;
+    url = `${url}&val=${val}&caller=showreel`;
     window.location.href = url;
   }),
   $(".btn-gen").on("click", (e) => {

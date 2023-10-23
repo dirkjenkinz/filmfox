@@ -11,6 +11,8 @@ const updateNoteHandler = async (req, res) => {
   const elementNumber = u.query.elementNumber;
   const val = u.query.val;
   const caller = u.query.caller;
+  const mute = u.query.mute;
+  const speak = u.query.speak;
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
   const {shotList} = filmFoxFile;
   shotList[sceneNumber].note = val;
@@ -22,10 +24,8 @@ const updateNoteHandler = async (req, res) => {
     res.redirect(`/scenes?title=${title}`);
   } else if ((caller === 'shot-list')){
     res.redirect(`scene-shot-list?title=${title}&sceneNumber=${sceneNumber}`);
-  } else if ((caller === 'showreel')){
-    res.redirect(`showreel?title=${title}&sceneNumber=${sceneNumber}&elementNumber=${elementNumber}`);
   } else {
-    res.redirect(`/display?title=${title}&sceneNumber=${sceneNumber}`)
+    res.redirect(`showreel?title=${title}&sceneNumber=${sceneNumber}&elementNumber=${elementNumber}&mute=mute&speak=yes`);
   }
 };
 

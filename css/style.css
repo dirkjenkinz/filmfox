@@ -343,8 +343,9 @@ textarea {
 
 .data-showreel {
   vertical-align: top;
-  background: navajowhite;
-  border: double blue 8px;
+  background: black;
+  color: white;
+  padding: 0 4px;
 }
 
 .shot-header-right {

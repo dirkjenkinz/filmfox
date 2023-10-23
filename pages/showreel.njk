@@ -71,17 +71,17 @@
         <tr>
           <table>
             <tr>
-              <td class='data-show' id='slug' style='width:20%; font-weight:bold; border: red 8px solid; color: white;' colspan='3'>
+              <td class='data-showreel' id='slug' style='width:20%; font-weight:bold; border: red 8px solid; color: white;' colspan='3'>
                 Scene
                 {{sceneNumber}}:
                 {{slug}}
               </td>
             </tr>
             <tr style='border: red 8px solid;'>
-              <td class='data-show' id='type_{{i}}' hidden="hidden">
+              <td class='data-showreel' id='type_{{i}}' hidden="hidden">
                 {{element.type}}
               </td>
-              <td class='data-show' id='image_{{i}}' style='width: 40%; border: red 8px solid;'>
+              <td class='data-showreel' id='image_{{i}}' style='width: 40%; border: red 8px solid;'>
                 {% if element.type === 'movie' %}
                   <video width='480' height='270' controls='controls' autoplay='autoplay' id='iamge_{{i}}' class='iamge' muted='muted'>
                     <source src='../data/{{title}}/images/{{element.image}}' type='video/mp4'>
@@ -89,7 +89,7 @@
                 {% elseif element.type === 'still' %}
                   <img width='480' height='270' src='../data/{{title}}/images/{{element.image}}' id='iamge_{{i}}' class='img' alt='{{script[i].image}}'>
                 {% else %}
-                  <h2>NO IMAGE</h2>
+                  <h2 class='data-showreel'>NO IMAGE</h2>
                 {% endif %}
               </td>
 
@@ -155,7 +155,7 @@
                           </audio>
                         {% endif %}
                       {% else %}
-                        <h2>NO SOUND</h2>
+                        <h2 class='data-showreel'>NO SOUND</h2>
                       {% endif %}
                       <br><br>
                     </td>

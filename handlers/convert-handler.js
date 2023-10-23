@@ -15,6 +15,22 @@ const {
   readScriptData,
 } = require("../services/file-service");
 
+const buildCharactersByScene = ((script) => {
+  const chars = [];
+  for (let i = 0; i < script.length; i++){
+    const c= [];
+    script[i].forEach((s)=>{
+      c.push(s.character.toUpperCase());
+    });
+
+    let uniqueArray = c.filter(function(item, pos, self) {
+      return self.indexOf(item) == pos;
+  })
+    chars.push(uniqueArray);
+  };
+  return chars;
+});
+
 const buildScene = (details) => {
   const num = details[0].num;
   const scene = [];
@@ -43,9 +59,9 @@ const buildScene = (details) => {
         dialogue: d2[i].text,
         voice: "",
         sound: "",
-        image: "",
+        image: "blank.jpg",
         duration: "",
-        type: "",
+        type: "still",
       });
     } else {
       if (d2[i].type === "Character") {
@@ -54,7 +70,8 @@ const buildScene = (details) => {
         };
         const parenthesis = d2[i].text.indexOf("(");
         if (parenthesis > -1) {
-          d2[i].type = d2[i].text.substring(0, parenthesis - 1);
+          console.log({parenthesis})
+          d2[i].text = d2[i].text.substring(0, parenthesis - 1);
         }
 
         d2[i].type = d2[i].text.toUpperCase();
@@ -87,6 +104,7 @@ const convertHandler = async (req, res) => {
     let ptr = 0;
     paragraphs.forEach((p) => {
       if (p.$.Type === "Scene Heading") {
+        p.Text[0] = p.Text[0].toUpperCase();
         ptr++;
       }
       const element = { num: ptr, type: p.$.Type, text: p.Text[0] };
@@ -164,7 +182,7 @@ const convertHandler = async (req, res) => {
     });
 
     const credits = [];
-    const charactersByScene = [];
+    const charactersByScene = buildCharactersByScene(script);
     const nonSpeakers = [];
 
     const filmFoxFile = {
@@ -180,7 +198,7 @@ const convertHandler = async (req, res) => {
     await writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
   });
 
-  res.redirect(`/showreel?title=${title}&sceneNumber=0`);
+  res.redirect(`/showreel?title=${title}&sceneNumber=0&elementNumber=0`);
 };
 
 module.exports = { convertHandler };
