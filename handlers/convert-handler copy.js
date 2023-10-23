@@ -32,7 +32,6 @@ const buildScene = (details) => {
   }
 
   for (let i = 0; i < d2.length; i++) {
-    
     if (
       d2[i].type === "Scene Heading" ||
       d2[i].type === "Action" ||
@@ -49,15 +48,12 @@ const buildScene = (details) => {
       });
     } else {
       if (d2[i].type === "Character") {
-        if (typeof d2[i].text === 'object') {
-          d2[i].text = d2[i].text['_'];
-        };
-        const parenthesis = d2[i].text.indexOf("(");
-        if (parenthesis > -1) {
-          d2[i].type = d2[i].text.substring(0, parenthesis - 1);
+        const parenth = d2[i].text.indexOf("(");
+        if (parenth > -1) {
+          d2[i].type = d2[i].text.substring(0, parenth - 1);
         }
-
         d2[i].type = d2[i].text.toUpperCase();
+        
         scene.push({
           character: d2[i].text,
           dialogue: d2[i + 1].text,
@@ -97,6 +93,8 @@ const convertHandler = async (req, res) => {
     for (let i = 0; i <= ptr; i++) {
       tank.push([]);
     }
+
+    console.log({elements})
 
     elements.forEach((e) => {
       tank[e.num].push(e);
