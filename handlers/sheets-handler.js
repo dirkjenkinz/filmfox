@@ -49,7 +49,7 @@ const sheetsHandler = async (req, res) => {
     shotList: sList,
     slugs: slugList,
     page: "Sheets",
-    size: shotList.length,
+    size: shotList.length - 1,
     sheet: sheet,
     realTitle: credits.title,
     exists,
