@@ -15,7 +15,7 @@ const updateNoteHandler = async (req, res) => {
   const {shotList} = filmFoxFile;
   shotList[sceneNumber].note = val;
 
-  console.log({caller})
+
 
   await writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
   if (caller === 'scenes'){

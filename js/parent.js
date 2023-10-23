@@ -2,7 +2,6 @@ $("#nav-front").on("click", () => {
   window.location.href = `/`;
 }),
   $("#nav-ctv").on("click", () => {
-    console.log("11111111111111");
     const f = $("#filmTitle")[0].innerText;
     window.location.href = `/ctv?filmFoxFile=${f}`;
   }),

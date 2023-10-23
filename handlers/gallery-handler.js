@@ -58,9 +58,7 @@ const galleryHandler = async (req, res) => {
       unused.push(i);
     }
   });
-
-  console.log({sceneNumber})
-
+  
   res.render("gallery.njk", {
     title,
     elementNumber,

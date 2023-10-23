@@ -37,10 +37,7 @@ const updateImageDisplayHandler = async (req, res) => {
     }
   }
 
-  console.log("-1");
   await writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
-
-  console.log({ caller });
 
   if (caller === "scenes") {
     res.redirect(`/scenes?title=${title}`);
