@@ -48,7 +48,7 @@ const sceneShotListHandler = async (req, res) => {
     audio,
     note: shotList[sceneNumber].note,
     slug,
-    page: "Edit Shot List",
+    page: "Scene Shot List",
     size,
     characterList: charactersByScene[sceneNumber],
   });

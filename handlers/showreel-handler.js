@@ -58,7 +58,7 @@ const showreelHandler = async (req, res) => {
     page: "Showreel",
     audio,
     note: shotList[sceneNumber].note,
-    characterList: charactersByScene[sceneNumber],
+    characterList: charactersByScene[sceneNumber].sort(),
     characters: chars.sort(),
   });
 };
