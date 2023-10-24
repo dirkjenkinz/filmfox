@@ -118,11 +118,11 @@ $(() => {
   }),
   $(".btn-del").on("click", (e) => {
     if (confirm("Are you sure you want to delete this sound file?")) {
-      const num = e.target.id.substring(4);
+      const fileName = e.target.value;
       const sceneNumber = $("#sceneNumber")[0].innerText;
-      const elementNumber = `${e.target.value}`;
+      const elementNumber = $("#elementNumber")[0].innerText;
       let url = buildUrl("delete", sceneNumber, elementNumber, 'no')
-      url = `${url}&sub=sounds&num=${num}`;
+      url = `${url}&fileName=${fileName}`;
       window.location.href = url;
     }
   }),

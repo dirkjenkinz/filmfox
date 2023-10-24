@@ -96,7 +96,7 @@
               <td class='data-showreel' style='width: 40%; padding: 8px; border : red 8px solid;'>
                 <div class="box">
                   <p style='text-align: center; font-weight: bold;'>{{element.character}}</p>
-                    <p style='text-align: center; font-size: 90;' id='voice'>({{element.voice}})</p>
+                  <p style='text-align: center; font-size: 90;' id='voice'>({{element.voice}})</p>
                   <br>
                   {{element.dialogue}}
                 </div>
@@ -125,15 +125,14 @@
                   <tr>
                     <td>
                       {% if audio %}
-                        <button class='btn-edit btn-del' id='del_{{i}}' value='{{scene[i].sound}}'>
-                          Delete
-                          {{scene[i].sound}}
+                        <button class='btn-edit btn-del' id='del_{{elementNumber}}' value='{{element.sound}}'>
+                          Delete {{element.sound}}
                         </button>
                       {% else %}
                         {% if element.voice %}
-                          <button type='button' class='btn-edit btn-gen' id='gen_{{i}}' value='{{i}}' caller='{{display}}'>
+                          <button type='button' class='btn-edit btn-gen' id='gen_{{elementNumber}}'>
                             Generate
-                            {{scene[i].sound}}
+                            {{elementNumber.sound}}
                           </button>
                         {% endif %}
                       {% endif %}
@@ -201,36 +200,27 @@
                 </table>
               </td>
             </tr>
+            <tr>
+              <td>
+                <button type='button' class='btn-prevnext btn-change' id='change_{{i}}' value='{{i}}'>
+                  Change Image
+                </button>
+              </td>
+              <td colspan='2' style='color:white;'>
+                Note:
+                <input type="text" id="input-note" name="note" size='80' value='{{note}}'>
+              </td>
+            </tr>
           </table>
         </tr>
-        <tr>
-          <td>
-            <button type='button' class='btn-prevnext btn-change' id='change_{{i}}' value='{{i}}'>
-              Change Image
-            </button>
-            <br>
-          </td>
-        </tr>
       </table>
-    </div>
-    <div class='row'>
-      <div class='col-md-12' style='font-size: 75%;'></div>
-    </div>
-  </div>
-  <div class='row'>
-    <div class='col-md-2' style='font-size: 75%;'>
-      <br><br>
-      &nbsp; SCENE:
-      <span id="output">{{sceneNumber}}</span>
-    </div>
-    <div class='col-md-10'>
-      <br>
-      <b>&nbsp;&nbsp;Note:</b>
-      <input type="text" id="input-note" name="note" size='120' value='{{note}}'>
     </div>
   </div>
 
   <div class='row'>
+    &nbsp;&nbsp;<b>SCENE: <span id="output">{{sceneNumber}}</span></b>
+  <div>
+   <div class='row'>
     <div class='col-md-12 slidecontainer'>
       <input type="range" min="0" max="{{highestScene}}" value="{{sceneNumber}}" id='slider-scene'>
     </div>

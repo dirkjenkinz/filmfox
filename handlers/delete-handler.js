@@ -5,28 +5,25 @@ const { smartLog } = require("../services/smart-log");
 const { deleteFile, readFile, writeFile } = require("../services/file-service");
 
 const deleteHandler = async (req, res) => {
-  smartLog("info", "entering delete handler");
+  smartLog("info", "ENTERING DELETE HANDLER");
   const u = url.parse(req.originalUrl, true);
   const sceneNumber = u.query.sceneNumber;
-  const element = u.query.element;
+  const elementNumber = u.query.elementNumber;
   const title = u.query.title;
-  const sub = u.query.sub;
-  const num = u.query.num;
-  await deleteFile(title, element, sub);
+  const mute = u.query.mute;
+  const fileName = u.query.fileName;
 
-  if (sub === "sounds") {
-    const filmFoxFile = await readFile(`${title}/${title}.fff`);
-    let { script } = filmFoxFile;
-    script[num].sound = "";
-    script[num].duration = 0.000;
-    await writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
-  }
+  await deleteFile(title, 'sounds', fileName);
 
-  if (sub === "sounds") {
-    res.redirect(`/showreel?title=${title}&sceneNumber=${sceneNumber}`);
-  } else {
-    res.redirect(`/sound?title=${title}&sceneNumber=${sceneNumber}`);
-  }
+  const filmFoxFile = await readFile(`${title}/${title}.fff`);
+  let { script } = filmFoxFile;
+  script[sceneNumber][elementNumber].sound = "";
+  script[sceneNumber][elementNumber].duration = 0.0;
+  await writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
+
+  res.redirect(
+    `/showreel?title=${title}&sceneNumber=${sceneNumber}&elementNumber=${elementNumber}&mute=${mute}`
+  );
 };
 
 module.exports = { deleteHandler };

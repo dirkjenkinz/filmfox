@@ -76,11 +76,11 @@ const writeFile = async (data, file) => {
   });
 };
 
-const deleteFile = async (script, file, sub) => {
-  smartLog("info", `deleting ${sub}/${script}/${file}`);
-  const directoryPath = path.join(__dirname, `../data/${script}`);
+const deleteFile = async (title, directory, fileName) => {
+  smartLog("info", `deleting ${title}/${directory}/${fileName}`);
+  const directoryPath = path.join(__dirname, `../data/${title}/${directory}`);
   return new Promise((resolve, reject) => {
-    fs.unlink(`${directoryPath}/${sub}/${file}`, (err, msg) => {
+    fs.unlink(`${directoryPath}/${fileName}`, (err, msg) => {
       if (err) {
         smartLog("error", err.cause);
         reject(err);

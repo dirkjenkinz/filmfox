@@ -44,7 +44,6 @@ const frontHandler = async (req, res) => {
     await writeFile(JSON.stringify(voices), "voices.json");
   }
 
-  console.log({subscription})
   res.render("front.njk", {
     api_key,
     fffList,
