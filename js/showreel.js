@@ -107,9 +107,10 @@ $(() => {
     url = `${url}&val=${val}&caller=showreel`;
     window.location.href = url;
   }),
-  $(".btn-gen").on("click", (e) => {
-    const elementNumber = e.target.value;
-    voice = $(`#voice_${elementNumber}`)[0].innerText;
+  $(".btn-gen").on("click", () => {
+    const elementNumber = $("#elementNumber")[0].innerText;
+    const sceneNumber = $("#sceneNumber")[0].outerText;
+    voice = $('#voice')[0].innerText;
     let url = buildUrl("generate-single", sceneNumber, elementNumber, 'no')
     url = `${url}&voice=${voice}`;
     window.location.href = url;

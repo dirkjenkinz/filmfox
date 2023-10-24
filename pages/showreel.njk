@@ -95,8 +95,8 @@
 
               <td class='data-showreel' style='width: 40%; padding: 8px; border : red 8px solid;'>
                 <div class="box">
-                  <p style='text-align: center; font-weight: bold;'>{{element.character}}
-                    ({{element.voice}})</p>
+                  <p style='text-align: center; font-weight: bold;'>{{element.character}}</p>
+                    <p style='text-align: center; font-size: 90;' id='voice'>({{element.voice}})</p>
                   <br>
                   {{element.dialogue}}
                 </div>
@@ -132,7 +132,7 @@
                       {% else %}
                         {% if element.voice %}
                           <button type='button' class='btn-edit btn-gen' id='gen_{{i}}' value='{{i}}' caller='{{display}}'>
-                            Generate
+                            Generate {{elementNumber}}
                             {{scene[i].sound}}
                           </button>
                         {% endif %}
