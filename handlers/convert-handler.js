@@ -48,6 +48,9 @@ const buildScene = (details) => {
   }
 
   for (let i = 0; i < d2.length; i++) {
+    if (typeof d2[i].text === 'object') {
+      d2[i].text = d2[i].text['_'];
+    };
     
     if (
       d2[i].type === "Scene Heading" ||
@@ -65,12 +68,8 @@ const buildScene = (details) => {
       });
     } else {
       if (d2[i].type === "Character") {
-        if (typeof d2[i].text === 'object') {
-          d2[i].text = d2[i].text['_'];
-        };
         const parenthesis = d2[i].text.indexOf("(");
         if (parenthesis > -1) {
-          console.log({parenthesis})
           d2[i].text = d2[i].text.substring(0, parenthesis - 1);
         }
 
@@ -78,12 +77,11 @@ const buildScene = (details) => {
         scene.push({
           character: d2[i].text,
           dialogue: d2[i + 1].text,
-          scene: num,
           voice: "",
           sound: "",
-          image: "",
+          image: "blank.jpg",
           duration: "",
-          type: "",
+          type: "still",
         });
       }
     }
@@ -124,7 +122,15 @@ const convertHandler = async (req, res) => {
 
     for (let i = 0; i < tank.length; i++) {
       script.push(buildScene(tank[i]));
-    }
+    };
+
+    for (let i = 0; i < script.length; i++){
+      for (let j = 0; j < script[i].length; j++){
+        if (typeof script[i][j].dialogue === 'object'){
+          script[i][j].dialogue = script[i][j].dialogue['_'];
+        }
+      }
+    };
 
     let shotList = [];
     script.forEach((s, index) => {
@@ -167,7 +173,7 @@ const convertHandler = async (req, res) => {
 
     script.forEach((scene) => {
       scene.forEach((s) => {
-        characters.push(s.character);
+        characters.push(s.character.toUpperCase());
       });
     });
 
@@ -181,7 +187,7 @@ const convertHandler = async (req, res) => {
       characterList.push([c, ""]);
     });
 
-    const credits = [];
+    const credits = {title: title, producer: '', writer: '', director: ''};
     const charactersByScene = buildCharactersByScene(script);
     const nonSpeakers = [];
 

@@ -83,11 +83,11 @@
               </td>
               <td class='data-showreel' id='image_{{i}}' style='width: 40%; border: red 8px solid;'>
                 {% if element.type === 'movie' %}
-                  <video width='480' height='270' controls='controls' autoplay='autoplay' id='iamge_{{i}}' class='iamge' muted='muted'>
+                  <video width='432' height='243' controls='controls' autoplay='autoplay' id='iamge_{{i}}' class='iamge' muted='muted'>
                     <source src='../data/{{title}}/images/{{element.image}}' type='video/mp4'>
                   </video>
                 {% elseif element.type === 'still' %}
-                  <img width='480' height='270' src='../data/{{title}}/images/{{element.image}}' id='iamge_{{i}}' class='img' alt='{{script[i].image}}'>
+                  <img width='432' height='243' src='../data/{{title}}/images/{{element.image}}' id='iamge_{{i}}' class='img' alt='{{script[i].image}}'>
                 {% else %}
                   <h2 class='data-showreel'>NO IMAGE</h2>
                 {% endif %}
@@ -95,7 +95,8 @@
 
               <td class='data-showreel' style='width: 40%; padding: 8px; border : red 8px solid;'>
                 <div class="box">
-                  <p style='text-align: center; font-weight: bold;'>{{element.character}} ({{element.voice}})</p>
+                  <p style='text-align: center; font-weight: bold;'>{{element.character}}
+                    ({{element.voice}})</p>
                   <br>
                   {{element.dialogue}}
                 </div>
@@ -129,10 +130,12 @@
                           {{scene[i].sound}}
                         </button>
                       {% else %}
-                        <button type='button' class='btn-edit btn-gen' id='gen_{{i}}' value='{{i}}' caller='{{display}}'>
-                          Generate
-                          {{scene[i].sound}}
-                        </button>
+                        {% if element.voice %}
+                          <button type='button' class='btn-edit btn-gen' id='gen_{{i}}' value='{{i}}' caller='{{display}}'>
+                            Generate
+                            {{scene[i].sound}}
+                          </button>
+                        {% endif %}
                       {% endif %}
                     </td>
                   </tr>
@@ -202,9 +205,10 @@
         </tr>
         <tr>
           <td>
-            <button type='button' class='btn-edit btn-change' id='change_{{i}}' value='{{i}}'>
+            <button type='button' class='btn-prevnext btn-change' id='change_{{i}}' value='{{i}}'>
               Change Image
             </button>
+            <br>
           </td>
         </tr>
       </table>
@@ -215,16 +219,17 @@
   </div>
   <div class='row'>
     <div class='col-md-2' style='font-size: 75%;'>
-      <br>
-      SCENE:
+      <br><br>
+      &nbsp; SCENE:
       <span id="output">{{sceneNumber}}</span>
     </div>
     <div class='col-md-10'>
+      <br>
       <b>&nbsp;&nbsp;Note:</b>
       <input type="text" id="input-note" name="note" size='120' value='{{note}}'>
     </div>
   </div>
-  
+
   <div class='row'>
     <div class='col-md-12 slidecontainer'>
       <input type="range" min="0" max="{{highestScene}}" value="{{sceneNumber}}" id='slider-scene'>

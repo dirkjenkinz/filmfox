@@ -20,21 +20,31 @@ const frontHandler = async (req, res) => {
   const fdxList = await getFileList("scripts", "fdx");
   let subscription = "";
   if (api_key) {
+    let reset = '';
+    let resetDate ='';
+    let payment = '';
+    let paymentDate = '';
+    let voices = '';
+
     subscription = await getUserSubscriptionInfo(api_key);
     if (subscription !== "") {
       subscription = JSON.parse(subscription);
-      let reset = subscription.next_character_count_reset_unix * 1000;
-      const resetDate = new Date(reset);
-      subscription.next_character_count_reset = resetDate.toLocaleString();
-      let payment = subscription.next_invoice.next_payment_attempt_unix * 1000;
-      const paymentDate = new Date(payment);
-      subscription.next_invoice.next_payment_attempt =
-        paymentDate.toLocaleString();
+      if (subscription.tier !== "free") {
+        reset = subscription.next_character_count_reset_unix * 1000;
+        resetDate = new Date(reset);
+        subscription.next_character_count_reset = resetDate.toLocaleString();
+        payment =
+          subscription.next_invoice.next_payment_attempt_unix * 1000;
+         paymentDate = new Date(payment);
+        subscription.next_invoice.next_payment_attempt =
+          paymentDate.toLocaleString();
+      }
     }
-    const voices = await getVoices(api_key);
+    voices = await getVoices(api_key);
     await writeFile(JSON.stringify(voices), "voices.json");
   }
 
+  console.log({subscription})
   res.render("front.njk", {
     api_key,
     fffList,

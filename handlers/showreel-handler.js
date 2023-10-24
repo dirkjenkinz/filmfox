@@ -47,7 +47,13 @@ const showreelHandler = async (req, res) => {
       const pointer = chars.indexOf(c);
       chars.splice(pointer, 1);
     });
-  }
+  };
+
+  characterList.forEach((c) => {
+    if (c[0] === element.character.toUpperCase()){
+      element.voice = c[1]
+    }
+  });
 
   res.render("showreel.njk", {
     sceneNumber,
