@@ -16,7 +16,7 @@ const generateSingleHandler = async (req, res) => {
   const elementNumber = u.query.elementNumber;
   const voice = u.query.voice;
   const api_key = process.env.APIKEY;
-  const caller = u.query.caller;
+  const mute = u.query.mute;
 
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
   const { script } = filmFoxFile;
@@ -37,29 +37,33 @@ const generateSingleHandler = async (req, res) => {
     }
   });
 
+  let dialogue = element.dialogue;
+
+  if (element.character === 'NARRATOR'){
+    if (dialogue.substring(0,4) === 'INT.'){
+      dialogue = `INTERIOR. ${dialogue.substring(4)}`;
+    } else if (dialogue.substring(0,4) === 'EXT.'){
+      dialogue = `EXTERIOR. ${dialogue.substring(4)}`;
+    };
+  };
+
   const msg = await generateSpeech(
     api_key,
     voice_id,
     fileName,
-    element.dialogue,
+    dialogue,
     title
   );
 
   setTimeout(async () => {
     if (msg !== "Failed") {
-      script[elementNumber].sound = fileName;
-      script[elementNumber].duration = await getDuration(title, fileName);
-      script[elementNumber].voice = voice;
+      script[sceneNumber][elementNumber].sound = fileName;
+      script[sceneNumber][elementNumber].duration = await getDuration(title, fileName);
+      script[sceneNumber][elementNumber].voice = voice;
       await writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
     };
-
-    if ((caller === "edit-character")) {
-      const char = element.character.toUpperCase();
-      res.redirect(`/edit-character?title=${title}&character=${char}`);
-    } else {
-      res.redirect(`/showreel?title=${title}&scene=${scene}&element=${element}`);
-    }
-  });
+      res.redirect(`/showreel?title=${title}&sceneNumber=${sceneNumber}&elementNumber=${elementNumber}&speak=yes&mute=${mute}`);
+  }, 3000);
 };
 
 module.exports = { generateSingleHandler };
