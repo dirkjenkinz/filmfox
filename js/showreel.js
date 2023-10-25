@@ -114,6 +114,7 @@ $(() => {
     voice = voice.substring(1, voice.length - 1);
     let url = buildUrl("generate-single", sceneNumber, elementNumber, 'no')
     url = `${url}&voice=${voice}`;
+    $('#message').show();
     window.location.href = url;
   }),
   $(".btn-del").on("click", (e) => {

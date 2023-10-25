@@ -1,6 +1,11 @@
 {% extends "parent.njk" %}
 {% block page %}
 
+  <div class='row top'>
+    <div class="col-md-12" id='message' hidden>
+      <h1>Processing... Please wait.</h1>
+    </div>
+  </div>
   <div class='row top' style='font-size:75%;'>
     <div class="col-md-2">
       <button type='button' class='btn-prevnext' id='btn-add-character'>
@@ -126,7 +131,8 @@
                     <td>
                       {% if audio %}
                         <button class='btn-edit btn-del' id='del_{{elementNumber}}' value='{{element.sound}}'>
-                          Delete {{element.sound}}
+                          Delete
+                          {{element.sound}}
                         </button>
                       {% else %}
                         {% if element.voice %}
@@ -218,15 +224,16 @@
   </div>
 
   <div class='row'>
-    &nbsp;&nbsp;<b>SCENE: <span id="output">{{sceneNumber}}</span></b>
-  <div>
-   <div class='row'>
-    <div class='col-md-12 slidecontainer'>
-      <input type="range" min="0" max="{{highestScene}}" value="{{sceneNumber}}" id='slider-scene'>
-    </div>
-  </div>
+    &nbsp;&nbsp;<b>SCENE:
+      <span id="output">{{sceneNumber}}</span></b>
+    <div>
+      <div class='row'>
+        <div class='col-md-12 slidecontainer'>
+          <input type="range" min="0" max="{{highestScene}}" value="{{sceneNumber}}" id='slider-scene'>
+        </div>
+      </div>
 
-</div>
-<script src='../js/parent.js'></script>
-<script src='../js/showreel.js'></script>
-{% endblock %}
+    </div>
+    <script src='../js/parent.js'></script>
+    <script src='../js/showreel.js'></script>
+  {% endblock %}
