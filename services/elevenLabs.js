@@ -65,7 +65,7 @@ const generateSpeech = async (apiKey, voiceID, fileName, textInput, title) => {
         smartLog('error', 'error generating speech');
         smartLog('error', error.message);
         return 'Failed';
-    }
+    };
 };
 
 const getVoices = async (apiKey) => {
