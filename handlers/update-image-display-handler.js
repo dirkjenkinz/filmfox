@@ -27,7 +27,9 @@ const updateImageDisplayHandler = async (req, res) => {
     type = "movie";
   } else if (image.substring(image.length - 4) === ".mkv") {
     type = "movie";
-  }
+  };
+
+  script[sceneNumber][elementNumber].type = type;
 
   let originalImage = script[sceneNumber][elementNumber].image;
 

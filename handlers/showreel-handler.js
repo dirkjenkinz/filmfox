@@ -66,6 +66,8 @@ const showreelHandler = async (req, res) => {
     slugList.push(s[0].dialogue + "@@");
   });
 
+  console.log({element})
+
   res.render("showreel.njk", {
     sceneNumber,
     elementNumber,
