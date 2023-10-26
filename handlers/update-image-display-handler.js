@@ -36,6 +36,7 @@ const updateImageDisplayHandler = async (req, res) => {
   for (let i = elementNumber; i < script[sceneNumber].length; i++) {
     if (script[sceneNumber][i].image === originalImage) {
       script[sceneNumber][i].image = image;
+      script[sceneNumber][i].type = type;
     }
   }
 
