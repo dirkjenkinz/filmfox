@@ -49,10 +49,15 @@
           <table class="table-bordered table-sm table-dark table-grid" id="voice_table">
             <thead>
               <tr>
-                <th class='table-header' id="tab_voice_{{i}}">Voice</th>
-                <th class='table-header' id="tab_description_{{i}}">
+                <th class='table-header'>Voice</th>
+                <th>
                   Description
                 </th>
+                <th>Gender</th>
+                <th>
+                  Accent
+                </th>
+                <th>Age</th>
               </tr>
             </thead>
             <tbody>
@@ -62,7 +67,16 @@
                     {{voice_data[i][0]}}
                   </td>
                   <td class="table-data" id="voice_description_{{i}}">
-                    {{voice_data[i][1]}}
+                    {{voice_data[i][3]}}
+                  </td>
+                  <td class="table-data" id="voice_gender_{{i}}">
+                    {{voice_data[i][4]}}
+                  </td>
+                  <td class="table-data" id="voice_accent_{{i}}">
+                    {{voice_data[i][5]}}
+                  </td>
+                  <td class="table-data" id="voice_age_{{i}}">
+                    {{voice_data[i][6]}}
                   </td>
                   <td>
                     <button class='btn-edit btn-play-sample' value='{{voice_data[i][2]}}'>Sample</button>
