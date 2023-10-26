@@ -14,8 +14,11 @@ const showreelHandler = async (req, res) => {
   if (!mute) mute = "MUTE";
 
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
-  const { script, shotList, charactersByScene, nonSpeakers, characterList } =
-    filmFoxFile;
+  const { script, shotList, charactersByScene, nonSpeakers, characterList } = filmFoxFile;
+
+  
+  if (!sceneNumber) sceneNumber = 0;
+  if (!elementNumber) elementNumber = 0;
 
   if (elementNumber === "-1") {
     sceneNumber--;
@@ -66,7 +69,7 @@ const showreelHandler = async (req, res) => {
     slugList.push(s[0].dialogue + "@@");
   });
 
-  console.log({element})
+  console.log({elementNumber})
 
   res.render("showreel.njk", {
     sceneNumber,

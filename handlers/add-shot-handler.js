@@ -9,6 +9,7 @@ const addShotHandler = async (req, res) => {
   const u = url.parse(req.originalUrl, true);
   const title = u.query.title;
   const sceneNumber = u.query.sceneNumber;
+  const elemengNumber = u.query.sceneNumber;
   const line = u.query.line;
 
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
@@ -26,7 +27,7 @@ const addShotHandler = async (req, res) => {
 
   shot.splice(parseInt(line) + 1, 0, newLine);
   await writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
-  res.redirect(`/scene-shot-list?title=${title}&sceneNumber=${sceneNumber}`);
+  res.redirect(`/scene-shot-list?title=${title}&sceneNumber=${sceneNumber}&elementNumber`);
 };
 
 module.exports = { addShotHandler };

@@ -25,6 +25,7 @@ const characterToVoiceHandler = async (req, res) => {
   smartLog("info", "entering character to voice handler");
   const u = url.parse(req.originalUrl, true);
   const sceneNumber = u.query.sceneNumber;
+  const elementNumber = u.query.elementNumber;
   const title = u.query.filmFoxFile;
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
   const { characterList } = filmFoxFile;
@@ -45,6 +46,7 @@ const characterToVoiceHandler = async (req, res) => {
     characters: characterList,
     voice_data,
     sceneNumber,
+    elementNumber,
     page: "Voice Map",
   });
 };

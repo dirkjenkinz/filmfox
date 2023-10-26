@@ -9,13 +9,15 @@ const addCharacterHandler = async (req, res) => {
   const u = url.parse(req.originalUrl, true);
   const title = u.query.title;
   const character = u.query.character;
+  const sceneNumber = u.query.sceneNumber;
+  const elementNumber = u.query.elementNumber;
 
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
   let { nonSpeakers } = filmFoxFile;
   nonSpeakers.push(character);
 
   await writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
-  res.redirect(`/characters?title=${title}`);
+  res.redirect(`/characters?title=${title}&elementNumber=${elementNumber}&sceneNumber=${sceneNumber}`);
 };
 
 module.exports = { addCharacterHandler };

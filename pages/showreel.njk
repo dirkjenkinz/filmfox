@@ -95,7 +95,7 @@
             <td class='data-showreel' id='type_{{i}}' hidden="hidden">
               {{element.type}}
             </td>
-            <td class='data-showreel' id='image_{{i}}' style='width: 40%; border: red 4px solid;'>
+            <td class='data-showreel' id='image_{{i}}' style='width: 36%; border: red 4px solid;'>
               {% if element.type === 'movie' %}
                 <video width='432' height='243' controls='controls' autoplay='autoplay' id='iamge_{{i}}' class='iamge' muted='muted'>
                   <source src='../data/{{title}}/images/{{element.image}}' type='video/mp4'>
@@ -107,7 +107,7 @@
               {% endif %}
             </td>
 
-            <td class='data-showreel' style='width: 40%; padding: 4px; border : red 4px solid;'>
+            <td class='data-showreel' style='width: 50%; padding: 4px; border : red 4px solid;'>
               <div class="box">
                 {% if element.character === 'NARRATOR'%}
                   <p style='text-align: center; font-weight: bold; color: red;'>{{element.character}}
@@ -119,6 +119,7 @@
                 {{element.dialogue}}
               </div>
             </td>
+            
             <td style='border : red 4px solid;'>
               <table>
                 <tr>
@@ -226,7 +227,7 @@
               </button>
             </td>
             <td colspan='2' style='color:white;'>
-              Note:
+              &nbsp;Note:
               <input type="text" id="input-note" name="note" size='80' value='{{note}}'>
             </td>
           </tr>

@@ -1,13 +1,22 @@
+const buildParentUrl = (call, sceneNumber, elementNumber) => {
+  const title = $("#filmTitle")[0].innerText;
+  return `/${call}?title=${title}&sceneNumber=${sceneNumber}&elementNumber=${elementNumber}`;
+};
+
 $("#nav-front").on("click", () => {
   window.location.href = `/`;
 }),
   $("#nav-ctv").on("click", () => {
     const f = $("#filmTitle")[0].innerText;
-    window.location.href = `/ctv?filmFoxFile=${f}`;
+    const sceneNumber = $("#sceneNumber")[0].innerText;
+    const elementNumber = $("#elementNumber")[0].innerText;
+    const url = buildParentUrl('ctv', sceneNumber, elementNumber)
+    window.location.href = url;
   }),
   $("#nav-characters").on("click", () => {
     const title = $("#filmTitle")[0].innerText;
-    window.location.href = `/characters?title=${title}`;
+    const url = buildParentUrl('characters', sceneNumber, elementNumber)
+    window.location.href = url;
   }),
   $("#nav-sound").on("click", () => {
     const f = $("#filmTitle")[0].innerText;
@@ -37,7 +46,9 @@ $("#nav-front").on("click", () => {
   }),
   $("#nav-showreel").on("click", () => {
     const title = $("#filmTitle")[0].innerText;
-    window.location.href = `/showreel?title=${title}&sceneNumber=0&elementNumber=0&speak=no`;
+    const sceneNumber = $("#sceneNumber")[0].innerText;
+    const elementNumber = $("#elementNumber")[0].innerText;
+    window.location.href = `/showreel?title=${title}&sceneNumber=${sceneNumber}&elementNumber=${elementNumber}&speak=no`;
   }),
   $("#nav-scene-shot-list").on("click", () => {
     const title = $("#filmTitle")[0].innerText;
