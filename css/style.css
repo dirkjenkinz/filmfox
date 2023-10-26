@@ -75,7 +75,7 @@ table {
 }
 
 .padded {
-  padding: 0 8px;
+  padding: 0 4px;
   background: slategrey;
 }
 
@@ -149,18 +149,18 @@ html {
 
 .data-display {
   background: black;
-  padding: 0px 8px;
+  padding: 0px 4px;
 }
 
 .data-char {
   background: black;
-  padding: 0px 8px;
+  padding: 0px 4px;
   color: white;
 }
 
 .header-display {
   background: slategrey;
-  padding: 0px 8px;
+  padding: 0px 4px;
 }
 
 .header-line {
@@ -172,7 +172,7 @@ html {
 
 .non-header-display {
   background: cornflowerblue;
-  padding: 0px 8px;
+  padding: 0px 4px;
   font-weight:bold;
 }
 
@@ -338,7 +338,7 @@ textarea {
 }
 
 .display-box {
-  border: double white 8px;
+  border: double white 4px;
 }
 
 .data-showreel {

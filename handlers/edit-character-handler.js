@@ -16,14 +16,15 @@ const editCharacterHandler = async (req, res) => {
 
   const elements = [];
 
-  script.forEach((s) => {
-    s.forEach((element, index) => {
+  
+  script.forEach((s, scene_index) => {
+    s.forEach((element, element_index) => {
       if (element.character === character) {
         elements.push({
-          scene: element.scene,
+          sceneNumber: scene_index,
           dialogue: element.dialogue,
           sound: element.sound,
-          element: index,
+          elementNumber: element_index,
           voice: element.voice,
         });
       }

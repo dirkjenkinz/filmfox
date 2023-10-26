@@ -10,8 +10,9 @@
       .play();
   }),
   $('.btn-gen').on('click', (e) => {
-    const elementNumber = e.target.value;
+    const file = e.target.value.split('_');
     const title = $('#filmTitle')[0].innerText;
     const voice = $('#current-voice')[0].innerText;
-    window.location.href = `/generate-single?title=${title}&elementNumber=${elementNumber}&voice=${voice}&caller=edit-character`;
+    const character = $('#character')[0].innerText;
+    window.location.href = `/generate-single?title=${title}&sceneNumber=${file[0]}&elementNumber=${file[1]}&voice=${voice}&caller=edit-character&character=${character}`;
   })

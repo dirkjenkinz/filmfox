@@ -55,6 +55,8 @@ const showreelHandler = async (req, res) => {
     }
   });
 
+  console.log(element.voice);
+
   res.render("showreel.njk", {
     sceneNumber,
     elementNumber,
@@ -69,6 +71,7 @@ const showreelHandler = async (req, res) => {
     note: shotList[sceneNumber].note,
     characterList: charactersByScene[sceneNumber].sort(),
     characters: chars.sort(),
+    voice: element.voice,
   });
 };
 

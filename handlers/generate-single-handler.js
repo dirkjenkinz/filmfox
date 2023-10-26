@@ -14,6 +14,8 @@ const generateSingleHandler = async (req, res) => {
   const title = u.query.title;
   const sceneNumber = u.query.sceneNumber;
   const elementNumber = u.query.elementNumber;
+  const character = u.query.character;
+  const caller = u.query.caller;
   const voice = u.query.voice;
   const api_key = process.env.APIKEY;
   const mute = u.query.mute;
@@ -62,8 +64,12 @@ const generateSingleHandler = async (req, res) => {
       script[sceneNumber][elementNumber].voice = voice;
       await writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
     };
+    if (caller === 'edit-character'){
+      res.redirect(`/edit-character?title=${title}&character=${character}`);
+    } else {
       res.redirect(`/showreel?title=${title}&sceneNumber=${sceneNumber}&elementNumber=${elementNumber}&speak=yes&mute=${mute}`);
-  }, 3000);
+    };
+    }, 3000);
 };
 
 module.exports = { generateSingleHandler };

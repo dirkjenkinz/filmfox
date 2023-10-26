@@ -9,7 +9,7 @@
         <tbody>
           <tr>
             <td class='data-char' colspan='3'>
-              <h3>{{character}}</h3>
+              <h3 id='character'>{{character}}</h3>
             </td>
             <td class='data-char'></td>
             <td class='data-char'>
@@ -22,9 +22,9 @@
           {% for i in range(0, elements.length) -%}
             <tr>
               <td class='data-char' colspan='3'>Scene:
-                {{elements[i].scene}}
+                {{elements[i].sceneNumber}}
                 <br>Element:
-                {{elements[i].element}}
+                {{elements[i].elementNumber}}
               </td>
               <td class='data-char'>
                 {{elements[i].voice}}
@@ -45,7 +45,7 @@
 
               </td>
               <td class='data-right'>
-                <button type='button' class='btn btn-edit btn-block btn-sm btn-gen' value='{{elements[i].element}}'>
+                <button type='button' class='btn btn-edit btn-block btn-sm btn-gen' value='{{elements[i].sceneNumber}}_{{elements[i].elementNumber}}'>
                   Generate
                 </button>
               </td>

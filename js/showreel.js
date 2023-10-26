@@ -111,7 +111,7 @@ $(() => {
     const elementNumber = $("#elementNumber")[0].innerText;
     const sceneNumber = $("#sceneNumber")[0].outerText;
     let voice = $('#voice')[0].innerText;
-    voice = voice.substring(1, voice.length - 1);
+//    voice = voice.substring(1, voice.length - 1);
     let url = buildUrl("generate-single", sceneNumber, elementNumber, 'no')
     url = `${url}&voice=${voice}`;
     $('#message').show();
