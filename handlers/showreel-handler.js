@@ -47,15 +47,24 @@ const showreelHandler = async (req, res) => {
       const pointer = chars.indexOf(c);
       chars.splice(pointer, 1);
     });
-  };
+  }
 
   characterList.forEach((c) => {
-    if (c[0] === element.character.toUpperCase()){
-      element.voice = c[1]
+    if (c[0] === element.character.toUpperCase()) {
+      element.voice = c[1];
     }
   });
 
-  console.log(element.voice);
+  const noteList = [];
+
+  shotList.forEach((s) => {
+    noteList.push(s.note +'@@');
+  });
+
+  const slugList = [];
+  script.forEach((s) => {
+    slugList.push(s[0].dialogue + "@@");
+  });
 
   res.render("showreel.njk", {
     sceneNumber,
@@ -72,6 +81,8 @@ const showreelHandler = async (req, res) => {
     characterList: charactersByScene[sceneNumber].sort(),
     characters: chars.sort(),
     voice: element.voice,
+    slugList,
+    noteList,
   });
 };
 
