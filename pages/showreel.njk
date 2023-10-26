@@ -2,7 +2,7 @@
 {% block page %}
 
   <div class='row top'>
-    <div class="col-md-12" id='message' hidden>
+    <div class="col-md-12" id='message' hidden="hidden">
       <h1>Processing... Please wait.</h1>
     </div>
   </div>
@@ -101,8 +101,10 @@
               <td class='data-showreel' style='width: 40%; padding: 8px; border : red 8px solid;'>
                 <div class="box">
                   <p style='text-align: center; font-weight: bold;'>{{element.character}}</p>
-                  <p style='text-align: center; font-size: 90;' id='voice'>({{element.voice}})</p>
-                  <br>
+                  {% if element.voice %}
+                    <p style='text-align: center; font-size: 90;' id='voice'>({{element.voice}})</p>
+                    <br>
+                  {% endif %}
                   {{element.dialogue}}
                 </div>
               </td>
