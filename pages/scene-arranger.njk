@@ -1,15 +1,6 @@
 {% extends "parent.njk" %}
 {% block page %}
-  <div class='row top'>
-    <p id='size' hidden="hidden">{{size}}</p>
-    <div class='col-md-2'>
-      <button class='btn btn-block btn-edit btn-sm' id='btn-hide-all' value='{{i}}'>Hide All</button>
-    </div>
-    <div class='col-md-8'></div>
-    <div class='col-md-2'>
-      <button class='btn btn-block btn-edit btn-sm' id='btn-reveal-all' value='{{i}}'>Reveal All</button>
-    </div>
-  </div>
+  <p id='size' hidden="hidden">{{size}}</p>
   <div class='row top'>
     <div class='row tableFixHead' id='tabhead'>
       <div class='col-md-12'>
@@ -18,9 +9,9 @@
             {% set num = 0 %}
             {% for i in range(1, shotList.length) -%}
               <tr id='row_{{i}}' class='display-box' style='font-size:75%;'>
-                <td class='data-left' style='width: 12%;'>Scene
+                <td class='data-left' style='width: 12%; font-weight: bold;'>Scene
                   {{shotList[i].scene}}</td>
-                <td class='data-left' colspan='2' style='width: 33%;'>{{slugs[i]}}</td>
+                <td class='data-left' colspan='2' style='width: 33%;'>{{slugList[i]}}</td>
                 <td class='data-left' style='width: 33%;'>{{shotList[i].note}}</td>
                 <td style='width: 8%;'>
                   {% if i == 1 %}
@@ -40,46 +31,7 @@
                     </button>
                   {% endif %}
                 </td>
-                <td style='width: 10%;'>
-                  <button class='btn btn-block btn-edit btn-sm btn-hide' id='btn-hide-{{i}}' value='{{i}}'>Hide/Show
-                  </button>
-                </td>
               </tr>
-              <tr>
-                <td colspan='7'>
-                  {% if hidden[i] == 'false' %}
-                    <table id='table-shots-list-{{i}}'>
-                    {% else %}
-                      <table id='table-shots-list-{{i}}' hidden="hidden">
-                      {% endif %}
-                      <tbody>
-                        {% for line in range(0, shotList[i].lines.length) %}
-                          <tr style='font-size:70%;'>
-                            <td style='background: black;'>Shot
-                              {{num}}</td>
-                            <td style='background: black;'>
-                              {{shotList[i].lines[line].shot}}
-                            </td>
-                            <td style='background: black;'>
-                              {{shotList[i].lines[line].angle}}
-                            </td>
-                            <td style='background: black;'>
-                              {{shotList[i].lines[line].audio}}
-                            </td>
-                            <td style='background: black;'>
-                              {{shotList[i].lines[line].subject}}
-                            </td>
-                            <td colspan='2' style='background: black;'>
-                              {{shotList[i].lines[line].description}}
-                            </td>
-                          </tr>
-                          {% set num = num + 1 %}
-                        {% endfor %}
-                      </tbody>
-                    </table>
-                  </td>
-                </tr>
-
               {%- endfor %}
             </tbody>
           </table>

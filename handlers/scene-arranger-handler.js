@@ -4,7 +4,7 @@ const { smartLog } = require("../services/smart-log");
 const { readFile } = require("../services/file-service");
 
 const sceneArrangerHandler = async (req, res) => {
-  smartLog("info", "ENTERING MASTER SHOT LIST HANDLER");
+  smartLog("info", "ENTERING SCENE ARRANGER HANDLER");
   const u = url.parse(req.originalUrl, true);
   const title = u.query.title;
   let hidden = u.query.hidden;
@@ -18,13 +18,11 @@ const sceneArrangerHandler = async (req, res) => {
     }
   } else {
     hidden = hidden.split(",");
-  };
+  }
 
   const slugs = [];
   script.forEach((s) => {
-    if (s[0].slug === "yes") {
-      slugs.push(s[0].dialogue);
-    }
+    slugs.push(s[0].dialogue);
   });
 
   const sList = [];
@@ -38,7 +36,7 @@ const sceneArrangerHandler = async (req, res) => {
     res.render("full-shot-list.njk", {
       title,
       shotList: sList,
-      slugs: slugList,
+      slugList,
       page: "Full Shot List",
       size: shotList.length,
       hidden,
@@ -48,7 +46,7 @@ const sceneArrangerHandler = async (req, res) => {
     res.render("scene-arranger.njk", {
       title,
       shotList: sList,
-      slugs: slugList,
+      slugList,
       page: "Scene Arranger",
       size: shotList.length,
       hidden,
