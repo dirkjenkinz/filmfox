@@ -25,6 +25,8 @@ const galleryHandler = async (req, res) => {
   const title = u.query.title;
   const elementNumber = u.query.elementNumber;
   const caller = u.query.caller;
+  const mute = u.query.mute;
+  const speak = u.query.speak;
   const imageList = await getListOfImages(title);
   imageList.unshift("blank.jpg");
 
@@ -44,6 +46,7 @@ const galleryHandler = async (req, res) => {
       images.push([imageList[i], "still"]);
     }
   }
+
 
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
   const { script } = filmFoxFile;
@@ -67,6 +70,8 @@ const galleryHandler = async (req, res) => {
     unused,
     caller,
     page: "Gallery",
+    mute,
+    speak,
   });
 };
 

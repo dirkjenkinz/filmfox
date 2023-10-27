@@ -1,5 +1,22 @@
 {% extends "parent.njk" %}
 {% block page %}
+  <div class='row'>
+    <div class='col-md-12'>
+      <table class='table-bordered table-sm table-dark table-grid' id='tab_img'>
+        <tbody>
+          <tr>
+            <td colspan='4'>
+              <button type='button' class='btn btn-prevnext btn-block btn-sm btn-cancel'>Cancel & Go Back</td>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-md-6' style='text-align: center; background:green; padding:6px; border: black 6px solid;'>USED IMAGES</div>
+    <div class='col-md-6' style='text-align: center; background:green; padding:6px; border: black 6px solid;' >UNUSED IMAGES</div>
+  </div>
   <div class='row tableFixHead' id='tabhead'>
     <div class='col-md-6'>
       <p id='caller' hidden="hidden">{{caller}}</p>
@@ -34,7 +51,7 @@
     <div class='col-md-6'>
       <table class='table-bordered table-sm table-dark table-grid' id='tab_img'>
         <tbody>
-          {% for i in range(0, used.length, 3) -%}
+          {% for i in range(0, used.length, 2) -%}
             <tr>
               {% for num in range(0, 2) -%}
                 {% if used[i + num][0] %}
