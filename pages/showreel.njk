@@ -3,12 +3,14 @@
 
   <div class='row top'>
     <p id='slugList' hidden="hidden">{{slugList}}</p>
+    <p id='noteList' hidden="hidden">{{noteList}}</p>
     <p id='highestScene' hidden="hidden">{{highestScene}}</p>
     <p id='highestElement' hidden="hidden">{{highestElement}}</p>
-    <p id='noteList' hidden="hidden">{{noteList}}</p>
     <p id='type_{{i}}' hidden="hidden">{{element.type}}</p>
-    <div class="col-md-12" id='message' hidden="hidden">
+    <div class="col-md-12" id='message' hidden="hidden" style='background:red; text-align: center;'>
+      <br>
       <h1>Processing... Please wait.</h1>
+      <br>
     </div>
   </div>
   <div class='row top' style='font-size:75%;'>
@@ -158,11 +160,12 @@
                 {% if element.character === 'NARRATOR'%}
                   <p style='text-align: center; font-weight: bold; color: red;'>{{element.character}}
                     ({{element.voice}})</p>
+                  <p style='color: red;'>{{element.dialogue}}</p>
                 {% else %}
                   <p style='text-align: center; font-weight: bold;'>{{element.character}}
                     ({{element.voice}})</p>
+                  <p>{{element.dialogue}}</p>
                 {% endif %}
-                {{element.dialogue}}
               </div>
             </td>
 

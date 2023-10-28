@@ -59,13 +59,9 @@ const showreelHandler = async (req, res) => {
   });
 
   const noteList = [];
-
-  shotList.forEach((s) => {
-    noteList.push(s.note +'@@');
-  });
-
   const slugList = [];
   script.forEach((s) => {
+    noteList.push(s.note +'@@');
     slugList.push(s[0].dialogue + "@@");
   });
 
