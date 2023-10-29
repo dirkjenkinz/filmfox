@@ -32,10 +32,6 @@ $("#nav-front").on("click", () => {
     const title = $("#filmTitle")[0].innerText;
     window.location.href = `/scene-arranger?title=${title}`;
   }),
-  $("#nav-pre-production").on("click", () => {
-    const title = $("#filmTitle")[0].innerText;
-    window.location.href = `/scene-arranger?title=${title}`;
-  }),
   $("#nav-sheets").on("click", () => {
     const title = $("#filmTitle")[0].innerText;
     window.location.href = `/sheets?title=${title}&sheet=0`;

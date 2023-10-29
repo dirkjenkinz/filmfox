@@ -21,7 +21,6 @@ $(() => {
     $("#output")[0].innerText = `${e.target.value}:- ${slug}`;
   }),
   $("#slider-scene").on("change", (e) => {
-    const elementNumber = 0;
     const sceneNumber = e.target.value;
     const url = buildUrl("showreel", sceneNumber, 0, "yes");
     window.location.href = url;
@@ -32,7 +31,7 @@ $(() => {
       parseInt($("#highestElement")[0].innerText)
     ) {
       const elementNumber = parseInt($("#elementNumber")[0].innerText) + 1;
-      const sceneNumber = $("#sceneNumber")[0].innerText;
+      const sceneNumber = parseInt($("#sceneNumber")[0].innerText);
       const url = buildUrl("showreel", sceneNumber, elementNumber, "yes");
       window.location.href = url;
     } else {

@@ -13,4 +13,4 @@
     const speak = $('#speak')[0].innerText;
     const mute = $('#mute')[0].innerText;
     window.location.href = `/showreel?title=${title}&sceneNumber=${sceneNumber}&speak=${speak}&mute=${mute}&elementNumber=${elementNumber}`
-  });   
+  });

@@ -15,7 +15,6 @@ const showreelHandler = async (req, res) => {
 
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
   const { script, shotList, charactersByScene, nonSpeakers, characterList } = filmFoxFile;
-
   if (!sceneNumber) sceneNumber = 0;
   if (!elementNumber) elementNumber = 0;
 

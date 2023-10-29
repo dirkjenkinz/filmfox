@@ -21,12 +21,14 @@
     </div>
     <div class='col-md-8'>
       {% for i in range(0, characterList.length) -%}
-        {% if i < (characterList.length - 1) %}
-          {{characterList[i]}}
-          --
-        {%else %}
-          {{characterList[i]}}
-        {% endif %}
+        {% if characterList[i] !== 'NARRATOR' %}
+          {% if i < (characterList.length - 1) %}
+            {{characterList[i]}}
+            --
+          {%else %}
+            {{characterList[i]}}
+          {% endif %}
+        {%endif %}
       {% endfor %}
     </div>
     <div class='col-md-2'>
@@ -62,11 +64,11 @@
               {% for num in range(0,6) -%}
                 <td style='width: 15%;'>
                   {% if characterList[i + num] %}
-                  {% if characterList[i + num] !== 'NARRATOR' %}
-                    <button type='button' class='btn-sm btn-deladd btn-delete-char' value="{{characterList[i+num]}}">
-                      {{characterList[i + num]}}
-                    </button>
-                  {% endif %}
+                    {% if characterList[i + num] !== 'NARRATOR' %}
+                      <button type='button' class='btn-sm btn-deladd btn-delete-char' value="{{characterList[i+num]}}">
+                        {{characterList[i + num]}}
+                      </button>
+                    {% endif %}
                   {% endif %}
                 </td>
               {% endfor %}

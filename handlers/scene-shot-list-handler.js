@@ -31,9 +31,10 @@ const sceneShotListHandler = async (req, res) => {
   smartLog("info", "ENTERING SCENE SHOT LIST HANDLER");
   const u = url.parse(req.originalUrl, true);
   const title = u.query.title;
-  const sceneNumber = u.query.sceneNumber;
+  let sceneNumber = u.query.sceneNumber;
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
   const { script, shotList, charactersByScene } = filmFoxFile;
+  if (!sceneNumber) sceneNumber = 0;
 
   const size = shotList.length - 1;
   const slug = script[sceneNumber][0].dialogue;

@@ -39,7 +39,6 @@ const sceneArrangerHandler = async (req, res) => {
       slugList,
       page: "Full Shot List",
       size: shotList.length,
-      hidden,
       realTitle: credits.title,
     });
   } else {
