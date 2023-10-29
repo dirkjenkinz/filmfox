@@ -52,7 +52,8 @@ $("#nav-front").on("click", () => {
   }),
   $("#nav-scene-shot-list").on("click", () => {
     const title = $("#filmTitle")[0].innerText;
-    window.location.href = `/scene-shot-list?title=${title}&sceneNumber=0`;
+    const sceneNumber = $("#sceneNumber")[0].innerText;
+    window.location.href = `/scene-shot-list?title=${title}&sceneNumber=${sceneNumber}`;
   }),
   $("#nav-credits").on("click", () => {
     const title = $("#filmTitle")[0].innerText;

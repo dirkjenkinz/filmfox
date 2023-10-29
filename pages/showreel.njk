@@ -62,9 +62,11 @@
               {% for num in range(0,6) -%}
                 <td style='width: 15%;'>
                   {% if characterList[i + num] %}
+                  {% if characterList[i + num] !== 'NARRATOR' %}
                     <button type='button' class='btn-sm btn-deladd btn-delete-char' value="{{characterList[i+num]}}">
                       {{characterList[i + num]}}
                     </button>
+                  {% endif %}
                   {% endif %}
                 </td>
               {% endfor %}
@@ -105,7 +107,7 @@
             <td colspan='4' style='background: green; font-size:40%;'>&nbsp;</td>
           </tr>
           <tr>
-            <td style='color: white; text-align:center;'>{{element.image}}</td>
+            <td style='color: white; text-align:center;'>{{element.image.slice(0,60)}}</td>
             <td>
               {% if sceneNumber > 0 %}
                 <button type='button' class='btn-prevnext btn-sm' id='btn-previous-element'>

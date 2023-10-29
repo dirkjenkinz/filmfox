@@ -16,7 +16,6 @@ const showreelHandler = async (req, res) => {
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
   const { script, shotList, charactersByScene, nonSpeakers, characterList } = filmFoxFile;
 
-  
   if (!sceneNumber) sceneNumber = 0;
   if (!elementNumber) elementNumber = 0;
 
@@ -47,11 +46,10 @@ const showreelHandler = async (req, res) => {
 
   if (charactersByScene[sceneNumber]) {
     charactersByScene[sceneNumber].forEach((c) => {
-      const pointer = chars.indexOf(c);
-      chars.splice(pointer, 1);
+        const pointer = chars.indexOf(c);
+        chars.splice(pointer, 1);
     });
   }
-
   characterList.forEach((c) => {
     if (c[0] === element.character.toUpperCase()) {
       element.voice = c[1];
@@ -61,7 +59,7 @@ const showreelHandler = async (req, res) => {
   const noteList = [];
   const slugList = [];
   script.forEach((s) => {
-    noteList.push(s.note +'@@');
+    noteList.push(s.note + "@@");
     slugList.push(s[0].dialogue + "@@");
   });
 
