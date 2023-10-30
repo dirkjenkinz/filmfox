@@ -15,14 +15,14 @@ const showreelHandler = async (req, res) => {
 
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
   const { script, shotList, charactersByScene, nonSpeakers, characterList } = filmFoxFile;
-  if (!sceneNumber) sceneNumber = 0;
+
+  if (!sceneNumber) sceneNumber = 0;  
   if (!elementNumber) elementNumber = 0;
 
   if (elementNumber === "-1") {
     sceneNumber--;
     elementNumber = script[sceneNumber].length - 1;
   }
-
   const element = script[sceneNumber][elementNumber];
   const slug = script[sceneNumber][0].dialogue;
 

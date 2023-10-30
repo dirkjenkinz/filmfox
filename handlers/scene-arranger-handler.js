@@ -9,6 +9,8 @@ const sceneArrangerHandler = async (req, res) => {
   const title = u.query.title;
   let hidden = u.query.hidden;
   const full = u.query.full;
+  const elementNumber = u.query.elementNumber;
+  const sceneNumber = u.query.sceneNumber;
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
   const { shotList, script, sceneOrder, credits } = filmFoxFile;
   if (!hidden) {
@@ -40,6 +42,8 @@ const sceneArrangerHandler = async (req, res) => {
       page: "Full Shot List",
       size: shotList.length,
       realTitle: credits.title,
+      elementNumber,
+      sceneNumber,
     });
   } else {
     res.render("scene-arranger.njk", {
@@ -49,6 +53,8 @@ const sceneArrangerHandler = async (req, res) => {
       page: "Scene Arranger",
       size: shotList.length,
       hidden,
+      elementNumber,
+      sceneNumber,
     });
   }
 };

@@ -7,7 +7,6 @@ const { smartLog } = require("../services/smart-log");
 const getVoiceData = (voices) => {
   let voice_data = [];
   voices.forEach((voice) => {
-    console.log(voice.labels.gender)
     let v = [];
     v.push(voice.name);
     v.push(voice.description);
@@ -24,14 +23,17 @@ const getVoiceData = (voices) => {
 const characterToVoiceHandler = async (req, res) => {
   smartLog("info", "entering character to voice handler");
   const u = url.parse(req.originalUrl, true);
-  const sceneNumber = u.query.sceneNumber;
-  const elementNumber = u.query.elementNumber;
-  const title = u.query.filmFoxFile;
+  let sceneNumber = u.query.sceneNumber;
+  let elementNumber = u.query.elementNumber;
+  const title = u.query.title;
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
   const { characterList } = filmFoxFile;
   const voices = await readFile("voices.json");
   let voice_data = getVoiceData(voices);
   voice_data.unshift(["-", "", ""]);
+
+  if (!sceneNumber ) sceneNumber = 0;
+  if (!elementNumber) elementNumber = 0;
 
   characterList.forEach((c) => {
     voice_data.forEach((v) => {

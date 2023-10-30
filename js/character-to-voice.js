@@ -9,7 +9,7 @@ $(() => {
     const character = $(`#${cid}`)[0].textContent;
     const title = $("#filmTitle")[0].outerText;
     let sceneNumber = $("#sceneNumber")[0].innerText;
-    window.location.href = `/character-update?filmFoxFile=${title}&character=${character}&voice=${voice}&sceneNumber=${sceneNumber}`;
+    window.location.href = `/character-update?title=${title}&character=${character}&voice=${voice}&sceneNumber=${sceneNumber}`;
   }),
   $('.btn-play-sample').on('click', (e) =>{
     const id = e.target.value;
