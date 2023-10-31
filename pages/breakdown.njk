@@ -3,23 +3,24 @@
   <div class='row top'>
     <div class='col-md-2' style='background: white; color:black; text-align: center;'>
       <b>ELEMENTS</b>
-      <button type='button' class='btn-deladd' id='btn-cast'>CAST MEMBERS</button>
-      <button type='button' class='btn-deladd' id='btn-extras'>EXTRAS</button>
-      <button type='button' class='btn-deladd' id='btn-props'>PROPS</button>
-      <button type='button' class='btn-deladd' id='btn-dressing'>SET DRESSING</button>
-      <button type='button' class='btn-deladd' id='btn-costumes'>COSTUMES</button>
-      <button type='button' class='btn-deladd' id='btn-makeup'>MAKEUP</button>
-      <button type='button' class='btn-deladd' id='btn-vehicles'>VEHICLES</button>
-      <button type='button' class='btn-deladd' id='btn-stunts'>STUNTS</button>
-      <button type='button' class='btn-deladd' id='btn-sfx'>SPECIAL EFFECTS</button>
-      <button type='button' class='btn-deladd' id='btn-livestock'>LIVESTOCK</button>
-      <button type='button' class='btn-deladd' id='btn-handler'>ANIMAL HANDLER</button>
-      <button type='button' class='btn-deladd' id='btn-music'>MUSIC</button>
-      <button type='button' class='btn-deladd' id='btn-sounds'>SOUNDS</button>
-      <button type='button' class='btn-deladd' id='btn-greenery'>GREENERY</button>
-      <button type='button' class='btn-deladd' id='btn-security'>SECURITY</button>
+      <button type='button' class='btn-element' id='btn-cast' value='cast'>CAST MEMBERS</button>
+      <button type='button' class='btn-element' id='btn-extras' value='extras'>EXTRAS</button>
+      <button type='button' class='btn-element' id='btn-props' value='props'>PROPS</button>
+      <button type='button' class='btn-element' id='btn-dressing' value='dressing'>SET DRESSING</button>
+      <button type='button' class='btn-element' id='btn-costumes' value='costumes'>COSTUMES</button>
+      <button type='button' class='btn-element' id='btn-makeup' value='makeup'>MAKEUP</button>
+      <button type='button' class='btn-element' id='btn-vehicles' value='vehicles'>VEHICLES</button>
+      <button type='button' class='btn-element' id='btn-stunts' value='stunts'>STUNTS</button>
+      <button type='button' class='btn-element' id='btn-sfx' value='sfx'>SPECIAL EFFECTS</button>
+      <button type='button' class='btn-element' id='btn-livestock' value='livestock'>LIVESTOCK</button>
+      <button type='button' class='btn-element' id='btn-handler' value='handler'>ANIMAL HANDLER</button>
+      <button type='button' class='btn-element' id='btn-music' value='music'>MUSIC</button>
+      <button type='button' class='btn-element' id='btn-sounds' value='sounds'>SOUNDS</button>
+      <button type='button' class='btn-element' id='btn-greenery' value='greenery'>GREENERY</button>
+      <button type='button' class='btn-element' id='btn-security' value='security'>SECURITY</button>
+      <button type='button' class='btn-element' disabled></button>
     </div>
-    <div class='col-md-8' style='font-size: 75%;' id='scriptArea'>
+    <div class='col-md-8   tableFixHead' style='font-size: 75%;' id='scriptArea'>
       <p id='scene'>Scene {{sceneNumber}}</p>
       <div id='display'>
         {% for i in range(0, doc.length) -%}

@@ -17,6 +17,13 @@ table {
   text-align: center;
 }
 
+.btn-element {
+  text-align: center;
+  color: white;
+  font-size: 60%;
+  width: 100%;
+}
+
 .btn-deladd {
   text-align: center;
   background: black;

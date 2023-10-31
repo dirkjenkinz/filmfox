@@ -11,12 +11,7 @@
   margin: 20px 0;
 }
 
-.cast {
-  background: red;
-  margin: 0;
-  display:inline;
-}
-
+.cast,
 #btn-cast {
   background: red;
 }
@@ -39,4 +34,29 @@
 #btn-costumes,
 .costumes {
   background: cornflowerBlue;
+}
+
+#btn-makeup,
+.makeup {
+  background: blueviolet;
+}
+
+#btn-vehicles,
+.vehicles {
+  background: brown;
+}
+
+#btn-stunts,
+.stunts {
+  background: coral;
+}
+
+#btn-sfx,
+.sfx {
+  background: darkcyan;
+}
+
+#btn-livestock,
+.livestock {
+  background: darkmagenta;
 }
