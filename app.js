@@ -33,6 +33,7 @@ const updateCreditsRouter = require('./routes/update-credits.js');
 const addCharacterRouter = require('./routes/add-character.js');
 const addCharacterToSceneRouter = require('./routes/add-character-to-scene.js');
 const deleteCharacterFromSceneRouter = require('./routes/delete-character-from-scene.js');
+const breakdownRouter = require('./routes/breakdown.js');
 
 const nunjucks = require('nunjucks');
 const bodyParser = require('body-parser');
@@ -84,6 +85,8 @@ app.use('/update-credits', updateCreditsRouter);
 app.use('/add-character', addCharacterRouter);
 app.use('/add-character-to-scene', addCharacterToSceneRouter);
 app.use('/delete-character-from-scene', deleteCharacterFromSceneRouter);
+app.use('/breakdown', breakdownRouter);
+app.use('/update-breakdown', breakdownRouter);
 
 app.listen(PORT, (err) => {
     smartLog('paramount', `FilmFox is up & running on port ${PORT}`);

@@ -60,6 +60,12 @@ $("#nav-front").on("click", () => {
     const url = buildParentUrl('scene-shot-list', sceneNumber, elementNumber)
     window.location.href = url;
   }),
+  $("#nav-breakdown").on("click", () => {
+    const sceneNumber = $("#sceneNumber")[0].innerText;
+    const elementNumber = $("#elementNumber")[0].innerText;
+    const url = buildParentUrl('breakdown', sceneNumber, elementNumber)
+    window.location.href = url;
+  }),
   $("#nav-credits").on("click", () => {
     const sceneNumber = $("#sceneNumber")[0].innerText;
     const elementNumber = $("#elementNumber")[0].innerText;
