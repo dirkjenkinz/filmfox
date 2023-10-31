@@ -1,3 +1,13 @@
+.th-centre {
+  background: red;
+  font-size: 75%;
+}
+
+.td-left {
+  background: red;
+  font-size: 75%;
+}
+
 .character {
   text-align: center;
   margin-bottom: 0;
@@ -23,7 +33,7 @@
 
 #btn-props,
 .props {
-  background: aqua;
+  background: fuchsia;
 }
 
 #btn-dressing,
@@ -59,4 +69,19 @@
 #btn-livestock,
 .livestock {
   background: darkmagenta;
+}
+
+#btn-handler,
+.handler {
+  background: grey;
+}
+
+#btn-music,
+.music {
+  background: mediumvioletred;
+}
+
+#btn-sounds,
+.sounds {
+  background: tomato;
 }

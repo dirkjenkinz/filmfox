@@ -1,42 +1,74 @@
-{% extends "parent.njk" %}
-{% block page %}
-  <div class='row top'>
-    <div class='col-md-2' style='background: white; color:black; text-align: center;'>
-      <b>ELEMENTS</b>
-      <button type='button' class='btn-element' id='btn-cast' value='cast'>CAST MEMBERS</button>
-      <button type='button' class='btn-element' id='btn-extras' value='extras'>EXTRAS</button>
-      <button type='button' class='btn-element' id='btn-props' value='props'>PROPS</button>
-      <button type='button' class='btn-element' id='btn-dressing' value='dressing'>SET DRESSING</button>
-      <button type='button' class='btn-element' id='btn-costumes' value='costumes'>COSTUMES</button>
-      <button type='button' class='btn-element' id='btn-makeup' value='makeup'>MAKEUP</button>
-      <button type='button' class='btn-element' id='btn-vehicles' value='vehicles'>VEHICLES</button>
-      <button type='button' class='btn-element' id='btn-stunts' value='stunts'>STUNTS</button>
-      <button type='button' class='btn-element' id='btn-sfx' value='sfx'>SPECIAL EFFECTS</button>
-      <button type='button' class='btn-element' id='btn-livestock' value='livestock'>LIVESTOCK</button>
-      <button type='button' class='btn-element' id='btn-handler' value='handler'>ANIMAL HANDLER</button>
-      <button type='button' class='btn-element' id='btn-music' value='music'>MUSIC</button>
-      <button type='button' class='btn-element' id='btn-sounds' value='sounds'>SOUNDS</button>
-      <button type='button' class='btn-element' id='btn-greenery' value='greenery'>GREENERY</button>
-      <button type='button' class='btn-element' id='btn-security' value='security'>SECURITY</button>
-      <button type='button' class='btn-element' disabled></button>
-    </div>
-    <div class='col-md-8   tableFixHead' style='font-size: 75%;' id='scriptArea'>
-      <p id='scene'>Scene {{sceneNumber}}</p>
-      <div id='display'>
-        {% for i in range(0, doc.length) -%}
-          {% if doc[i][0] !== 'NARRATOR' %}
-            <p class='character'>{{doc[i][0]}}</p>
-          {% endif %}
-          {% if doc[i][0] !== 'NARRATOR'%}
-            <p class='speech'>{{doc[i][1]}}</p>
-          {% else %}
-            <p class='action'>{{doc[i][1]}}</p>
-          {% endif %}
-        {% endfor %}
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8'/>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'/>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
+    <title>FilmFox</title>
+    <link rel='stylesheet' href='../css/parent.css'/>
+    <link rel='stylesheet' href='../css/style.css'/>
+    <link rel='stylesheet' href='../css/breakdown.css'/>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css'/>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
+    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js'></script>
+  </head>
+  <body>
+    <div class='container-fluid'>
+      <div class='row'>
+        <div class='col-md-2'>
+          <h4>Film Fox</h4>
+        </div>
+        <div class='col-md-4'></div>
+        <div class='col-md-2'>
+          <button type='button' class='btn-edit' style='margin: 12px 0 2px 0;' id='btn-save'>SAVE</button>
+        </div>
+        <div class='col-md-2'></div>
+        <div class='col-md-2'>
+          <button type='button' class='btn-edit' style='margin: 12px 0 2px 0;' id='btn-quit'>QUIT</button>
+        </div>
+      </div>
+      <div class='row top tableFixHead3'>
+        <div class='col-md-2' style='background: white; color:black; text-align: center;'>
+          <b>ELEMENTS</b>
+          <button type='button' class='btn-element' id='btn-cast' value='cast'>CAST MEMBERS</button>
+          <button type='button' class='btn-element' id='btn-extras' value='extras'>EXTRAS</button>
+          <button type='button' class='btn-element' id='btn-props' value='props'>PROPS</button>
+          <button type='button' class='btn-element' id='btn-dressing' value='dressing'>SET DRESSING</button>
+          <button type='button' class='btn-element' id='btn-costumes' value='costumes'>COSTUMES</button>
+          <button type='button' class='btn-element' id='btn-makeup' value='makeup'>MAKEUP</button>
+          <button type='button' class='btn-element' id='btn-vehicles' value='vehicles'>VEHICLES</button>
+          <button type='button' class='btn-element' id='btn-stunts' value='stunts'>STUNTS</button>
+          <button type='button' class='btn-element' id='btn-sfx' value='sfx'>SPECIAL EFFECTS</button>
+          <button type='button' class='btn-element' id='btn-livestock' value='livestock'>LIVESTOCK</button>
+          <button type='button' class='btn-element' id='btn-handler' value='handler'>ANIMAL HANDLER</button>
+          <button type='button' class='btn-element' id='btn-music' value='music'>MUSIC</button>
+          <button type='button' class='btn-element' id='btn-sounds' value='sounds'>SOUNDS</button>
+          <button type='button' class='btn-element' disabled="disabled"></button>
+          <button type='button' class='btn-element' disabled="disabled"></button>
+          <button type='button' class='btn-element' disabled="disabled"></button>
+        </div>
+        <div class='col-md-8   tableFixHead3' style='font-size: 75%;' id='scriptArea'>
+          <p id='scene'>Scene
+            {{sceneNumber}}</p>
+          <div id='display'>
+            {% for i in range(0, doc.length) -%}
+              {% if doc[i][0] !== 'NARRATOR' %}
+                <p class='character'>{{doc[i][0]}}</p>
+              {% endif %}
+              {% if doc[i][0] !== 'NARRATOR'%}
+                <p class='speech'>{{doc[i][1]}}</p>
+              {% else %}
+                <p class='action'>{{doc[i][1]}}</p>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+        <div class='col-md-2' style='background: white;'>
+          <p id='gap'></p>
+        </div>
       </div>
     </div>
-    <div class='col-md-2' style='background: white;'></div>
-  </div>
-  <script src='../js/parent.js'></script>
-  <script src='../js/breakdown.js'></script>
-{% endblock %}
+    <script src='../js/parent.js'></script>
+    <script src='../js/breakdown.js'></script>
+  </body>
+</html>
