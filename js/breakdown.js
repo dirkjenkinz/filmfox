@@ -1,3 +1,8 @@
+$(window).on("load", function () {
+d = $('#doc')[0].innerText;
+  $('#box')[0].innerHTML = d;
+});
+
 const buildTable = (htmlArray) => {
   elementList = [];
   htmlArray.forEach((h) => {
@@ -85,7 +90,9 @@ const buildTable = (htmlArray) => {
 $(".btn-element").on("click", (e) => {
   if (window.getSelection().anchorNode) {
     const element = e.target.value;
-    const string = window.getSelection().anchorNode.data;
+
+    const para = window.getSelection().anchorNode.parentElement.id;
+
     let start = window.getSelection().baseOffset;
     let finish = window.getSelection().focusOffset;
     if (start > finish) {
@@ -93,33 +100,12 @@ $(".btn-element").on("click", (e) => {
       start = finish;
       finish = temp;
     }
-    const left = string.substring(0, start);
-    const mid = string.substring(start, finish);
-    const right = string.substring(finish);
 
-    window.getSelection().anchorNode.data = `${left}[=${element}=]${mid}[=/${element}=]${right}`;
-    const displayHTML = $("#display")[0].innerHTML;
-    let htmlArray = displayHTML.split("<p");
-    let newHTML = "";
-    for (let i = 1; i < htmlArray.length; i++) {
-      htmlArray[i] = "<p" + htmlArray[i];
-      let ptr = htmlArray[i].indexOf("</p>");
-      htmlArray[i] = htmlArray[i].substring(0, ptr + 4);
-      htmlArray[i] = htmlArray[i].replace(
-        `[=${element}=]`,
-        `<span class="${element}">`
-      );
-      htmlArray[i] = htmlArray[i].replace(`[=/${element}=]`, "</span>");
-      newHTML += htmlArray[i];
-    }
-    $("#display")[0].innerHTML = newHTML;
-    buildTable(htmlArray);
-  }
-}),
-  $("#btn-save").on("click", () => {
     const title = $("#filmTitle")[0].innerText;
+    const elementNumber = $("#elementNumber")[0].innerText;
     const sceneNumber = $("#sceneNumber")[0].innerText;
-    const data = $("#display")[0].innerHTML;
-    console.log({ data });
-    window.location.href = `/save-breakdown?title=${title}&sceneNumber=${sceneNumber}&data=${data}`;
-  });
+    let url = `/breakdown?title=${title}&sceneNumber=${sceneNumber}&elementNumber=${elementNumber}`;
+    url += `&para=${para}&start=${start}&finish=${finish}&element=${element}`;
+    window.location.href = url;
+  }
+});
