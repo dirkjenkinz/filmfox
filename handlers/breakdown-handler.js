@@ -9,38 +9,101 @@ const {
   getFileList,
 } = require("../services/file-service");
 
-const insertElement = (doc, para, element, start, finish) => {
-  let newDoc = "";
-  let paragraphs = doc.split("<p");
-  for (let i = 1; i < paragraphs.length; i++) {
-    paragraphs[i] = "<p" + paragraphs[i];
-    if (paragraphs[i].indexOf(`id='${para}'`) != -1) {
-      const ptr = paragraphs[i].indexOf(">") + 1;
-      start = parseInt(start) + ptr;
-      finish = parseInt(finish) + ptr;
-      const leftString = paragraphs[i].substring(0, start);
-      const midString = `<span class='${element}'>${paragraphs[i].substring(
-        start,
-        finish
-      )}</span>`;
-      const rightString = paragraphs[i].substring(finish);
-      paragraphs[i] = leftString + midString + rightString;
-    }
-    newDoc += paragraphs[i];
-  }
-  console.log({ newDoc });
-  return newDoc;
+const buildList = (breakdown) => {
+  const list = {
+    cast: [],
+    extras: [],
+    props: [],
+    dressing: [],
+    costumes: [],
+    makeup: [],
+    vehicles: [],
+    stunts: [],
+    sfx: [],
+  };
+  breakdown.forEach((paragraph) => {
+    paragraph.tags.forEach((tag) => {
+      switch (tag.element) {
+        case "cast":
+          list.cast.push(
+            tag.snippet.substring(tag.start, tag.finish).trim().toUpperCase()
+          );
+          break;
+        case "extras":
+          list.extras.push(
+            tag.snippet.substring(tag.start, tag.finish).trim().toUpperCase()
+          );
+          break;
+        case "props":
+          list.props.push(
+            tag.snippet.substring(tag.start, tag.finish).trim().toUpperCase()
+          );
+          break;
+        case "dressing":
+          list.dressing.push(
+            tag.snippet.substring(tag.start, tag.finish).trim().toUpperCase()
+          );
+          break;
+        case "costumes":
+          list.props.push(tag.snippet.substring(tag.start, tag.finish).trim());
+          break;
+      }
+    });
+    list.cast = [...new Set(list.cast)];
+    list.extras = [...new Set(list.extras)];
+    list.props = [...new Set(list.props)];
+    list.dressing = [...new Set(list.dressing)];
+    list.costumes = [...new Set(list.costumes)];
+    list.makeup = [...new Set(list.makeup)];
+    list.vehicles = [...new Set(list.vehicles)];
+    list.stunts = [...new Set(list.stunts)];
+    list.sfx = [...new Set(list.sfx)];
+  });
+  return list;
 };
 
-const htmlise = (scene) => {
-  let doc = "";
-  scene.forEach((s, index) => {
-    if (s.character !== "NARRATOR") {
-      doc += `<p class='character' id='el${index}_0'>${s.character}</p>`;
-    }
-    doc += `<p class='speech' id='el${index}_1'>${s.dialogue}</p>`;
+const createBreakdown = (scene) => {
+  let breakdown = [];
+  scene.forEach((s) => {
+    breakdown.push({ character: s.character, dialogue: s.dialogue, tags: [] });
   });
-  return doc;
+  return breakdown;
+};
+
+const createBreakdownHTML = (breakdown) => {
+  let breakdownHTML = "";
+  let index = 0;
+  breakdown.forEach((paragraph) => {
+    paragraph.tags.forEach((tag) => {
+      const ptr = paragraph.dialogue.indexOf(tag.snippet);
+      if (ptr != -1) {
+        const leftString = paragraph.dialogue.substring(
+          0,
+          ptr + parseInt(tag.start)
+        );
+        const midString = paragraph.dialogue.substring(
+          ptr + parseInt(tag.start),
+          ptr + parseInt(tag.finish)
+        );
+        const rightString = paragraph.dialogue.substring(
+          ptr + parseInt(tag.finish)
+        );
+        paragraph.dialogue = `${leftString}<span class='${tag.element}'>${midString}</span>${rightString}`;
+      }
+    });
+  });
+
+  breakdown.forEach((b) => {
+    if (b.character !== "NARRATOR") {
+      breakdownHTML += `<p class='character' id='p${index}'>${b.character}</p>`;
+      breakdownHTML += `<p class='speech' id='p${index}'>${b.dialogue}</p>`;
+      index++;
+    } else {
+      breakdownHTML += `<p class='action' id='p${index}'>${b.dialogue}</p>`;
+      index++;
+    }
+  });
+  return breakdownHTML;
 };
 
 const breakdownHandler = async (req, res) => {
@@ -53,31 +116,39 @@ const breakdownHandler = async (req, res) => {
   const start = u.query.start;
   const finish = u.query.finish;
   const para = u.query.para;
+  const restart = u.query.restart;
+  const snippet = u.query.snippet;
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
   let { script } = filmFoxFile;
 
-  let doc = [];
-  script[sceneNumber].forEach((s) => {
-    doc.push([s.character, s.dialogue]);
-  });
-
+  let breakdown;
   await createDirectory(`${title}/breakdown`);
   let breakdownFileList = await getFileList(`data/${title}/breakdown`, "bkd");
   let bkdFile = "0000" + sceneNumber;
   bkdFile = `${bkdFile.substring(bkdFile.length - 4)}.bkd`;
-  if (breakdownFileList.indexOf(bkdFile) === -1) {
-    doc = htmlise(script[sceneNumber]);
-    await writeFile(JSON.stringify(doc), `${title}/breakdown/${bkdFile}`);
+
+  if (breakdownFileList.indexOf(bkdFile) === -1 || restart === "yes") {
+    breakdown = createBreakdown(script[sceneNumber]);
   } else {
-    doc = await readFile(`${title}/breakdown/${bkdFile}`);
+    breakdown = await readFile(`${title}/breakdown/${bkdFile}`);
   }
 
   if (element) {
-    doc = insertElement(doc, para, element, start, finish);
+    breakdown[para].tags.push({ element, start, finish, snippet });
   }
 
+  await writeFile(JSON.stringify(breakdown), `${title}/breakdown/${bkdFile}`);
+
+  breakdown.forEach((paragraph) => {
+    paragraph.tags.sort((a, b) => parseInt(b.start) - parseInt(a.start));
+  });
+
+  console.log({breakdown});
+
+  let breakdownHTML = createBreakdownHTML(breakdown);
+  let list = buildList(breakdown);
   res.render("breakdown.njk", {
-    doc,
+    breakdown: breakdownHTML,
     title,
     sceneNumber,
     elementNumber,
@@ -85,6 +156,8 @@ const breakdownHandler = async (req, res) => {
     start,
     finish,
     para,
+    highestScene: script.length - 1,
+    list,
   });
 };
 

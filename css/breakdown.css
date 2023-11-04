@@ -85,3 +85,8 @@
 .sounds {
   background: tomato;
 }
+
+#btn-remove-tag,
+.sounds {
+  background: black;
+}

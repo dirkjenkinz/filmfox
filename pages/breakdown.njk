@@ -1,7 +1,56 @@
 {% extends "parent.njk" %}
 {% block page %}
-  <div class='row top tableFixHead3'>
-  <p id='doc' hidden>{{doc}}</p>
+  <div class='row top'>
+    <div class='col-md-2'>
+      {% if sceneNumber > 0 %}
+        <button type='button' class='btn-prevnext btn-sm' id='btn-first-scene'>
+          First Scene
+        </button>
+      {% else %}
+        <button type='button' class='btn-prevnext btn-sm' id='btn-first-scene' disabled="disabled">
+          First Scene
+        </button>
+      {% endif %}
+    </div>
+    <div class='col-md-1'>&nbsp;</div>
+    <div class='col-md-3'>
+      {% if sceneNumber > 0 %}
+        <button type='button' class='btn-prevnext btn-sm' id='btn-previous-scene'>
+          Previous Scene
+        </button>
+      {% else %}
+        <button type='button' class='btn-prevnext btn-sm' id='btn-previous-scene' disabled="disabled">
+          Previous Scene
+        </button>
+      {% endif %}
+    </div>
+    <div class='col-md-3'>
+      {% if sceneNumber < highestScene %}
+        <button type='button' class='btn-prevnext btn-sm' id='btn-next-scene'>
+          Next Scene
+        </button>
+      {%else %}
+        <button type='button' class='btn-prevnext btn-sm' id='btn-next-scene' disabled="disabled">
+          Next Scene
+        </button>
+      {% endif %}
+    </div>
+    <div class='col-md-1'>&nbsp;</div>
+    <div class='col-md-2'>
+      {% if sceneNumber < highestScene %}
+        <button type='button' class='btn-prevnext btn-sm' id='btn-last-scene'>
+          Last Scene
+        </button>
+      {% else %}
+        <button type='button' class='btn-prevnext btn-sm' id='btn-last-scene' disabled="disabled">
+          Last Scene
+        </button>
+      {% endif %}
+    </div>
+  </div>
+  <!-- end of row 1 -->
+  <div class='row top'>
+    <p id='breakdown' hidden="hidden">{{breakdown}}</p>
     <div class='col-md-2' style='background: white; color:black; text-align: center;'>
       <b>ELEMENTS</b>
       <button type='button' class='btn-element' id='btn-cast' value='cast'>CAST MEMBERS</button>
@@ -17,18 +66,36 @@
       <button type='button' class='btn-element' id='btn-handler' value='handler'>ANIMAL HANDLER</button>
       <button type='button' class='btn-element' id='btn-music' value='music'>MUSIC</button>
       <button type='button' class='btn-element' id='btn-sounds' value='sounds'>SOUNDS</button>
-      <button type='button' class='btn-element' disabled="disabled"></button>
-      <button type='button' class='btn-element' disabled="disabled"></button>
-      <button type='button' class='btn-element' disabled="disabled"></button>
+      <button type='button' class='btn-remove-tag' id='btn-remove-tag'>Remove Tag</button>
+      <br><br>
     </div>
     <div class='col-md-8   tableFixHead3' style='font-size: 75%;' id='scriptArea'>
       <p id='scene'>Scene
         {{sceneNumber}}</p>
-      <p id='box'>
-      </p>
+      <p id='box'></p>
     </div>
-    <div class='col-md-2' style='background: white;'>
-      <p id='gap'></p>
+    <div class='col-md-2' style='font-size:75%'>
+      <br>
+      <button type='button' class='btn-prevnext' id='btn-start-again'>Start Again</button>
+      <br>
+      <p class='cast'>
+        Cast:
+        {% for i in range(0, list.cast.length) -%}
+          {{list.cast[i]}}
+        {% endfor %}
+      </p>
+      <p class='extras'>
+        Extras:
+        {% for i in range(0, list.extras.length) -%}
+          {{list.extras[i]}}
+        {% endfor %}
+      </p>
+      <p class='props'>
+        Props:
+        {% for i in range(0, list.props.length) -%}
+          {{list.props[i]}}
+        {% endfor %}
+      </p>
     </div>
   </div>
 </div>
