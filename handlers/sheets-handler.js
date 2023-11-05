@@ -8,8 +8,11 @@ const sheetsHandler = async (req, res) => {
   const u = url.parse(req.originalUrl, true);
   const title = u.query.title;
   let sheet = u.query.sheet;
+  const elementNumber = u.query.elementNumber;
+  const sceneNumber = u.query.sceneNumber;
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
-  const { shotList, script, sceneOrder, credits, charactersByScene } = filmFoxFile;
+  const { shotList, script, sceneOrder, credits, charactersByScene } =
+    filmFoxFile;
 
   const slugs = [];
   script.forEach((s) => {
@@ -35,14 +38,14 @@ const sheetsHandler = async (req, res) => {
 
   sheetsList.forEach((s) => {
     let comp = s.substring(5);
-    comp = parseInt(comp.substring(0,4));
+    comp = parseInt(comp.substring(0, 4));
     sheetNos.push(comp);
   });
 
-  let exists = 'no';
-  if (sheetNos.indexOf(parseInt(sheet)) !== -1){
-    exists = 'yes';
-  };
+  let exists = "no";
+  if (sheetNos.indexOf(parseInt(sheet)) !== -1) {
+    exists = "yes";
+  }
 
   res.render("sheets.njk", {
     title,
@@ -54,6 +57,8 @@ const sheetsHandler = async (req, res) => {
     realTitle: credits.title,
     exists,
     characterList: charactersByScene[sheet],
+    sceneNumber,
+    elementNumber,
   });
 };
 

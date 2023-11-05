@@ -9,6 +9,8 @@ const changeSceneOrderHandler = async (req, res) => {
   const u = url.parse(req.originalUrl, true);
   const title = u.query.title;
   const direction = u.query.direction;
+  const sceneNumber = u.query.sceneNumber;
+  const elementNumber = u.query.elementNumber;
   const num = u.query.num;
   let hidden = u.query.hidden;
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
@@ -30,7 +32,7 @@ const changeSceneOrderHandler = async (req, res) => {
   sceneOrder[numOther] = sceneOrder[num] - sceneOrder[numOther];
   sceneOrder[num] = sceneOrder[num] - sceneOrder[numOther]
   await writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
-  res.redirect(`/scene-arranger?title=${title}&hidden=${hidden}`);
+  res.redirect(`/scene-arranger?title=${title}&hidden=${hidden}&elementNumber=${elementNumber}&sceneNumber=${sceneNumber}`);
 };
 
 module.exports = { changeSceneOrderHandler };
