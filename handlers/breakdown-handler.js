@@ -20,6 +20,10 @@ const buildList = (breakdown) => {
     vehicles: [],
     stunts: [],
     sfx: [],
+    livestock: [],
+    handler: [],
+    music: [],
+    sounds: [],
   };
   breakdown.forEach((paragraph) => {
     paragraph.tags.forEach((tag) => {
@@ -58,6 +62,10 @@ const buildList = (breakdown) => {
     list.vehicles = [...new Set(list.vehicles)];
     list.stunts = [...new Set(list.stunts)];
     list.sfx = [...new Set(list.sfx)];
+    list.livestock = [...new Set(list.livestock)];
+    list.handler = [...new Set(list.handler)];
+    list.music = [...new Set(list.music)];
+    list.sounds = [...new Set(list.sounds)];
   });
   return list;
 };
@@ -74,8 +82,9 @@ const createBreakdownHTML = (breakdown) => {
   let breakdownHTML = "";
   let index = 0;
   breakdown.forEach((paragraph) => {
+    const originalParagraph = paragraph.dialogue;
     paragraph.tags.forEach((tag) => {
-      const ptr = paragraph.dialogue.indexOf(tag.snippet);
+      const ptr = originalParagraph.indexOf(tag.snippet);
       if (ptr != -1) {
         const leftString = paragraph.dialogue.substring(
           0,
@@ -89,6 +98,8 @@ const createBreakdownHTML = (breakdown) => {
           ptr + parseInt(tag.finish)
         );
         paragraph.dialogue = `${leftString}<span class='${tag.element}'>${midString}</span>${rightString}`;
+        console.log(paragraph.dialogue)
+        console.log('=================')
       }
     });
   });
@@ -143,10 +154,9 @@ const breakdownHandler = async (req, res) => {
     paragraph.tags.sort((a, b) => parseInt(b.start) - parseInt(a.start));
   });
 
-  console.log({breakdown});
-
   let breakdownHTML = createBreakdownHTML(breakdown);
   let list = buildList(breakdown);
+
   res.render("breakdown.njk", {
     breakdown: breakdownHTML,
     title,

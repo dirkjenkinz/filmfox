@@ -11,7 +11,6 @@ $(".btn-element").on("click", (e) => {
     const snippet = window.getSelection().anchorNode.data;
     let start = window.getSelection().anchorOffset;
     let finish = window.getSelection().focusOffset;
-    console.log({start}, {finish})
     if (start > finish) {
       const temp = start;
       start = finish;
