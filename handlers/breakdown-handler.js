@@ -98,8 +98,6 @@ const createBreakdownHTML = (breakdown) => {
           ptr + parseInt(tag.finish)
         );
         paragraph.dialogue = `${leftString}<span class='${tag.element}'>${midString}</span>${rightString}`;
-        console.log(paragraph.dialogue)
-        console.log('=================')
       }
     });
   });

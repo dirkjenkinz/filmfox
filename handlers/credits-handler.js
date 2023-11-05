@@ -8,6 +8,8 @@ const creditsHandler = async (req, res) => {
   smartLog("info", "ENTERING CREDITS HANDLER");
   const u = url.parse(req.originalUrl, true);
   const title = u.query.title;
+  const sceneNumber = u.query.sceneNumber;
+  const elementNumber = u.query.elementNumber;
 
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
   let { credits } = filmFoxFile;
@@ -29,6 +31,8 @@ const creditsHandler = async (req, res) => {
     title,
     credits,
     page: "Credits",
+    sceneNumber,
+    elementNumber,
   });
 };
 

@@ -10,13 +10,6 @@ const saveBreakdownHandler = async (req, res) => {
   const title = u.query.title;
   const sceneNumber = u.query.sceneNumber;
   const elementNumber = u.query.elementNumber;
-
-/*  let sNum = '0000' + sceneNumber;
-  sNum = sNum.substring(sNum.length - 4);
-
-  await createDirectory(`${title}/breakdown`);
-  await writeFile(JSON.stringify(data), `${title}/breakdown/${sNum}.bkd`);
-*/
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
   let { script } = filmFoxFile;
   let doc = [];
