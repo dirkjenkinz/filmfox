@@ -12,8 +12,7 @@
         </button>
       {% endif %}
     </div>
-    <div class='col-md-1'>&nbsp;</div>
-    <div class='col-md-3'>
+    <div class='col-md-2'>
       {% if sceneNumber > 0 %}
         <button type='button' class='btn-prevnext btn-sm' id='btn-previous-scene'>
           Previous Scene
@@ -24,7 +23,7 @@
         </button>
       {% endif %}
     </div>
-    <div class='col-md-3'>
+    <div class='col-md-2'>
       {% if sceneNumber < highestScene %}
         <button type='button' class='btn-prevnext btn-sm' id='btn-next-scene'>
           Next Scene
@@ -35,7 +34,6 @@
         </button>
       {% endif %}
     </div>
-    <div class='col-md-1'>&nbsp;</div>
     <div class='col-md-2'>
       {% if sceneNumber < highestScene %}
         <button type='button' class='btn-prevnext btn-sm' id='btn-last-scene'>
@@ -46,6 +44,12 @@
           Last Scene
         </button>
       {% endif %}
+    </div>
+    <div class='col-md-2'>
+      <button type='button' class='btn-navigate btn-sm' id='btn-start-again'>Start Again</button>
+    </div>
+    <div class='col-md-2'>
+      <button type='button' class='btn-navigate btn-sm' id='btn-display-breakdown-sheet'>Display Breakdown Sheet</button>
     </div>
   </div>
   <!-- end of row 1 -->
@@ -69,23 +73,19 @@
       <button type='button' class='btn-remove-tag' id='btn-remove-tag'>Remove Tag</button>
       <br><br>
     </div>
-    <div class='col-md-8   tableFixHead3' style='font-size: 75%;' id='scriptArea'>
+    <div class='col-md-8 tableFixHead3' style='font-size: 75%;' id='scriptArea'>
       <p id='scene'>Scene
         {{sceneNumber}}</p>
       <p id='box'></p>
     </div>
-    <div class='col-md-2' style='font-size:75%'>
+    <div class='col-md-2 tableFixHead3' style='font-size:75%'>
       <br>
-      <button type='button' class='btn-prevnext' id='btn-start-again'>Start Again</button>
-      <br>
-      <button type='button' class='btn-prevnext' id='btn-display-breakdown-sheet'>Display Breakdown Sheet</button>
-      <br><br>
       <p class='cast'>
         Cast:
         {% for i in range(0, list.cast.length) -%}
           {{list.cast[i]}}
-          {% if i < list.cast.length -1 %}
-          &nbsp;-&nbsp;
+          {% if i < list.cast.length - 1 %}
+            &nbsp;-&nbsp;
           {% endif %}
         {% endfor %}
       </p>
@@ -93,8 +93,8 @@
         Extras:
         {% for i in range(0, list.extras.length) -%}
           {{list.extras[i]}}
-          {% if i < list.extras.length -1 %}
-          &nbsp;-&nbsp;
+          {% if i < list.extras.length - 1 %}
+            &nbsp;-&nbsp;
           {% endif %}
         {% endfor %}
       </p>
@@ -102,35 +102,98 @@
         Props:
         {% for i in range(0, list.props.length) -%}
           {{list.props[i]}}
-          {% if i < list.props.length -1 %}
-          &nbsp;-&nbsp;
+          {% if i < list.props.length - 1 %}
+            &nbsp;-&nbsp;
           {% endif %}
         {% endfor %}
       </p>
-      <p class='props'>
-        Props:
+      <p class='dressing'>
+        Set Dressing:
         {% for i in range(0, list.dressing.length) -%}
           {{list.dressing[i]}}
-          {% if i < list.dressing.length -1 %}
-          &nbsp;-&nbsp;
+          {% if i < list.dressing.length - 1 %}
+            &nbsp;-&nbsp;
           {% endif %}
         {% endfor %}
       </p>
-      <p class='props'>
-        Props:
+      <p class='costumes'>
+        Costumes:
         {% for i in range(0, list.costumes.length) -%}
           {{list.costumes[i]}}
-          {% if i < list.costumes.length -1 %}
-          &nbsp;-&nbsp;
+          {% if i < list.costumes.length - 1 %}
+            &nbsp;-&nbsp;
           {% endif %}
         {% endfor %}
       </p>
-      <p class='props'>
-        Props:
-        {% for i in range(0, list.costumes.length) -%}
-          {{list.costumes[i]}}
-          {% if i < list.costumes.length -1 %}
-          &nbsp;-&nbsp;
+      <p class='makeup'>
+        Makeup:
+        {% for i in range(0, list.makeup.length) -%}
+          {{list.makeup[i]}}
+          {% if i < list.makeup.length - 1 %}
+            &nbsp;-&nbsp;
+          {% endif %}
+        {% endfor %}
+      </p>
+      <p class='vehicles'>
+        Vehicles:
+        {% for i in range(0, list.vehicles.length) -%}
+          {{list.vehicles[i]}}
+          {% if i < list.vehicles.length - 1 %}
+            &nbsp;-&nbsp;
+          {% endif %}
+        {% endfor %}
+      </p>
+      <p class='stunts'>
+        Stunts:
+        {% for i in range(0, list.stunts.length) -%}
+          {{list.stunts[i]}}
+          {% if i < list.stunts.length - 1 %}
+            &nbsp;-&nbsp;
+          {% endif %}
+        {% endfor %}
+      </p>
+      <p class='sfx'>
+        Special Effects:
+        {% for i in range(0, list.sfx.length) -%}
+          {{list.sfx[i]}}
+          {% if i < list.sfx.length - 1 %}
+            &nbsp;-&nbsp;
+          {% endif %}
+        {% endfor %}
+      </p>
+      <p class='livestock'>
+        Livestock:
+        {% for i in range(0, list.livestock.length) -%}
+          {{list.livestock[i]}}
+          {% if i < list.livestock.length - 1 %}
+            &nbsp;-&nbsp;
+          {% endif %}
+        {% endfor %}
+      </p>
+      <p class='handler'>
+        Animal Handler:
+        {% for i in range(0, list.handler.length) -%}
+          {{list.handler[i]}}
+          {% if i < list.handler.length - 1 %}
+            &nbsp;-&nbsp;
+          {% endif %}
+        {% endfor %}
+      </p>
+      <p class='music'>
+        Music:
+        {% for i in range(0, list.music.length) -%}
+          {{list.music[i]}}
+          {% if i < list.music.length - 1 %}
+            &nbsp;-&nbsp;
+          {% endif %}
+        {% endfor %}
+      </p>
+      <p class='sounds'>
+        Sounds:
+        {% for i in range(0, list.sounds.length) -%}
+          {{list.sound[i]}}
+          {% if i < list.sounds.length - 1 %}
+            &nbsp;-&nbsp;
           {% endif %}
         {% endfor %}
       </p>

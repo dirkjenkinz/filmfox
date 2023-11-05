@@ -7,7 +7,7 @@ $("#slider-scene").on("input", (e) => {
 $("#slider-scene").on("change", (e) => {
   const sceneNumber = e.target.value;
   const title = $("#filmTitle")[0].outerText;
-  window.location.href = `/scene-shot-list?title=${title}&sceneNumber=${sceneNumber}`
+  window.location.href = `/scene-shot-list?title=${title}&sceneNumber=${sceneNumber}&elementNumber=0`;
 }),
 $(".shot-select").on("change", (e) => {
   const line = e.target.id;
@@ -15,47 +15,47 @@ $(".shot-select").on("change", (e) => {
   const title = $("#filmTitle")[0].outerText;
   const sceneNumber = $("#sceneNumber")[0].outerText;
   let l1 = line.substring(5).split('_');
-  window.location.href = `/update-shot-list?title=${title}&sceneNumber=${sceneNumber}&val=${val}&item=${l1[0]}&line=${l1[1]}`
+  window.location.href = `/update-shot-list?title=${title}&sceneNumber=${sceneNumber}&elementNumber=0&val=${val}&item=${l1[0]}&line=${l1[1]}`
 })
   $(".shot-subject").on("focusout", (e) => {
   const line = e.target.id.substring(13);
   const val = e.target.value;
   const title = $("#filmTitle")[0].outerText;
   const sceneNumber = $("#sceneNumber")[0].outerText;
-  window.location.href = `/update-shot-list?title=${title}&sceneNumber=${sceneNumber}&val=${val}&item=subject&line=${line}`
+  window.location.href = `/update-shot-list?title=${title}&sceneNumber=${sceneNumber}&elementNumber=0&val=${val}&item=subject&line=${line}`
   }),
   $(".shot-description").on("change", (e) => {
     const line = e.target.id.substring(17);
     const val = e.target.value;
     const title = $("#filmTitle")[0].outerText;
     const sceneNumber = $("#sceneNumber")[0].outerText;
-    window.location.href = `/update-shot-list?title=${title}&sceneNumber=${sceneNumber}&val=${val}&item=description&line=${line}`
+    window.location.href = `/update-shot-list?title=${title}&sceneNumber=${sceneNumber}&elementNumber=0&val=${val}&item=description&line=${line}`
    }),
    $(".btn-next").on("click", (e) => {
     const title = $("#filmTitle")[0].outerText;
     const sceneNumber = parseInt($("#sceneNumber")[0].outerText) + 1;
-    window.location.href = `/scene-shot-list?title=${title}&sceneNumber=${sceneNumber}`
+    window.location.href = `/scene-shot-list?title=${title}&sceneNumber=${sceneNumber}&elementNumber=0;`
    }),
    $(".btn-previous").on("click", (e) => {
     const title = $("#filmTitle")[0].outerText;
     const sceneNumber = parseInt($("#sceneNumber")[0].outerText) - 1;
-    window.location.href = `/scene-shot-list?title=${title}&sceneNumber=${sceneNumber}`
+    window.location.href = `/scene-shot-list?title=${title}&sceneNumber=${sceneNumber}&elementNumber=0;`
    }),
    $(".btn-add").on("click", (e) => {
     const line = e.target.value;
     const title = $("#filmTitle")[0].outerText;
     const sceneNumber = $("#sceneNumber")[0].outerText;
-    window.location.href = `/add-shot?title=${title}&sceneNumber=${sceneNumber}&line=${line}`
+    window.location.href = `/add-shot?title=${title}&sceneNumber=${sceneNumber}&elementNumber=0&line=${line}`
    }),
    $(".btn-delete").on("click", (e) => {
     const line = e.target.value;
     const title = $("#filmTitle")[0].outerText;
     const sceneNumber = $("#sceneNumber")[0].outerText;
-    window.location.href = `/delete-shot?title=${title}&sceneNumber=${sceneNumber}&line=${line}`
+    window.location.href = `/delete-shot?title=${title}&sceneNumber=${sceneNumber}&elementNumber=0&line=${line}`
    }),
    $("#input-note").on("focusout", (e) => {
     const val = e.target.value;
     const title = $("#filmTitle")[0].outerText;
     const sceneNumber = $("#sceneNumber")[0].outerText;
-    window.location.href = `/update-note?title=${title}&sceneNumber=${sceneNumber}&val=${val}&caller=shot-list`;
+    window.location.href = `/update-note?title=${title}&sceneNumber=${sceneNumber}&elementNumber=0&val=${val}&caller=shot-list`;
   });
