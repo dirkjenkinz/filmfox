@@ -90,3 +90,10 @@
 .sounds {
   background: black;
 }
+
+.btn-add,
+.btn-del {
+  background: red;
+  size: 100%;
+  color: white;
+}

@@ -9,6 +9,35 @@ const {
   getFileList,
 } = require("../services/file-service");
 
+const buildSection = (element, heading, list) => {
+  let section = `<tr><th class='${element}' colspan='2'>${heading}</th></tr>`;
+  list.forEach((e) => {
+    section += `<tr>
+    <td>${e}</td>
+    <td><button type='button' class='btn-del' id='btn-del-${element}' value='${e}'>Delete Element</button></td>
+    </tr>`;
+  });
+  section += `<td width = '50%'></td><td style='width: '50%;'><button type='button' class='btn-add' value='cast'>Add Element</button></td>`;
+  return section;
+};
+
+const createElementsTable = (list, breakdown) => {
+  let table = `<table style='font-size: 75%; width: 50%;'><thead>`;
+  table += buildSection("cast", "CAST MEMBERS", list.cast);
+  table += buildSection("extras", "EXTRAS", list.extras);
+  table += buildSection("props", "PROPS", list.props);
+  table += buildSection("dressing", "SET DRESSING", list.dressing);
+  table += buildSection("makeup", "MAKEUP", list.makeup);
+  table += buildSection("vehicles", "VEHICLES", list.vehicles);
+  table += buildSection("stunts", "STUNTS", list.stunts);
+  table += buildSection("sfx", "SPECIAL EFFECTS", list.sfx);
+  table += buildSection("livestock", "LIVESTOCK", list.livestock);
+  table += buildSection("handler", "ANIMAL HANDLER", list.handler);
+  table += buildSection("music", "MUSIC", list.music);
+  table += buildSection("sounds", "SOUNDS", list.sounds);
+  return table;
+};
+
 const buildList = (breakdown) => {
   const list = {
     cast: [],
@@ -127,6 +156,7 @@ const breakdownHandler = async (req, res) => {
   const para = u.query.para;
   const restart = u.query.restart;
   const snippet = u.query.snippet;
+  let which = u.query.which;
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
   let { script } = filmFoxFile;
 
@@ -155,6 +185,11 @@ const breakdownHandler = async (req, res) => {
   let breakdownHTML = createBreakdownHTML(breakdown);
   let list = buildList(breakdown);
 
+  const elementsTable = createElementsTable(list, breakdown);
+
+  console.log({which})
+  if (!which) which = 'script';
+
   res.render("breakdown.njk", {
     breakdown: breakdownHTML,
     title,
@@ -166,6 +201,8 @@ const breakdownHandler = async (req, res) => {
     para,
     highestScene: script.length - 1,
     list,
+    elementsTable,
+    which,
   });
 };
 

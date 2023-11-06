@@ -36,7 +36,9 @@
     };
     const num = e.target.value;
     const title = $("#filmTitle")[0].innerText;
-    window.location.href = `/change-scene-order?title=${title}&direction=down&num=${num}&hidden=${hidden}`;
+    const elementNumber = $("#elementNumber")[0].innerText;
+    const sceneNumber = $("#sceneNumber")[0].innerText;
+    window.location.href = `/change-scene-order?title=${title}&elementNumber=${elementNumber}&sceneNumber=${sceneNumber}&direction=down&num=${num}&hidden=${hidden}`;
   }),
   $(".btn-up").on("click", (e) => {
     const size = $("#size")[0].innerText;
@@ -46,5 +48,7 @@
     };
     const num = e.target.value;
     const title = $("#filmTitle")[0].innerText;
-    window.location.href = `/change-scene-order?title=${title}&direction=up&num=${num}&hidden=${hidden}`
+    const elementNumber = $("#elementNumber")[0].innerText;
+    const sceneNumber = $("#sceneNumber")[0].innerText;
+    window.location.href = `/change-scene-order?title=${title}&elementNumber=${elementNumber}&sceneNumber=${sceneNumber}&direction=up&num=${num}&hidden=${hidden}`
   });

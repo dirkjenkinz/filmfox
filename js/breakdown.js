@@ -1,6 +1,34 @@
 $(window).on("load", function () {
-  d = $("#breakdown")[0].innerText;
-  $("#box")[0].innerHTML = d;
+  $("#nav-breakdown").addClass("active");
+  $("#box")[0].innerHTML = $("#breakdown")[0].innerText;
+  $("#elements-display")[0].innerHTML = $("#hidden-table")[0].innerText;
+  if ($("#which")[0].innerText === "script") {
+    $("#elements-display").hide();
+    $("#btn-which")[0].innerText = "SWITCH TO ELEMENTS VIEW";
+  } else {
+    $("#box").hide();
+    $("#btn-which")[0].innerText = "SWITCH TO SCENE VIEW";
+  }
+});
+
+const buildUrl = (call, sceneNumber, elementNumber) => {
+  const title = $("#filmTitle")[0].innerText;
+  if (sceneNumber === "") {
+    sceneNumber = $("#sceneNumber")[0].innerText;
+  }
+  if (elementNumber === "") {
+    elementNumber = $("#elementNumber")[0].innerText;
+  }
+  return `/${call}?title=${title}&sceneNumber=${sceneNumber}&elementNumber=${elementNumber}`;
+};
+
+$("#btn-which").on("click", (e) => {
+  let which = "script";
+  if ($("#btn-which")[0].innerText === "SWITCH TO ELEMENTS VIEW") {
+    which = "elements";
+  }
+  const url = buildUrl("breakdown", "", "");
+  window.location.href = `${url}&which=${which}`;
 });
 
 $(".btn-element").on("click", (e) => {
@@ -16,42 +44,38 @@ $(".btn-element").on("click", (e) => {
       start = finish;
       finish = temp;
     }
-    const title = $("#filmTitle")[0].innerText;
-    const elementNumber = $("#elementNumber")[0].innerText;
-    const sceneNumber = $("#sceneNumber")[0].innerText;
-    let url = `/breakdown?title=${title}&sceneNumber=${sceneNumber}&elementNumber=${elementNumber}`;
+    let url = buildUrl("breakdown", "", "");
     url += `&para=${para}&start=${start}&finish=${finish}&element=${element}&snippet=${snippet}`;
     window.location.href = url;
   }
-}),
-  $("#btn-previous-scene").on("click", () => {
-    const sceneNumber = parseInt($("#sceneNumber")[0].innerText) - 1;
-    const elementNumber = $("#elementNumber")[0].innerText;
-    const title = $("#filmTitle")[0].innerText;
-    window.location.href = `/breakdown?title=${title}&sceneNumber=${sceneNumber}&elementNumber=${elementNumber}`;
-  }),
-  $("#btn-next-scene").on("click", () => {
-    const sceneNumber = parseInt($("#sceneNumber")[0].innerText) + 1;
-    const elementNumber = $("#elementNumber")[0].innerText;
-    const title = $("#filmTitle")[0].innerText;
-    window.location.href = `/breakdown?title=${title}&sceneNumber=${sceneNumber}&elementNumber=${elementNumber}`;
-  }),
-  $("#btn-last-scene").on("click", () => {
-    const sceneNumber = $("#highestScene")[0].innerText;
-    const elementNumber = $("#elementNumber")[0].innerText;
-    const title = $("#filmTitle")[0].innerText;
-    window.location.href = `/breakdown?title=${title}&sceneNumber=${sceneNumber}&elementNumber=${elementNumber}`;
-  }),
-  $("#btn-first-scene").on("click", () => {
-    const elementNumber = $("#elementNumber")[0].innerText;
-    const title = $("#filmTitle")[0].innerText;
-    window.location.href = `/breakdown?title=${title}&sceneNumber=1&elementNumber=${elementNumber}`;
-  }),
-  $("#btn-start-again").on("click", () => {
-    if (confirm("Are you sure you want to remove all the element tags?")) {
-      const sceneNumber = $("#sceneNumber")[0].innerText;
-      const elementNumber = $("#elementNumber")[0].innerText;
-      const title = $("#filmTitle")[0].innerText;
-      window.location.href = `/breakdown?title=${title}&sceneNumber=${sceneNumber}&elementNumber=${elementNumber}&restart=yes`;
-    }
-  });
+});
+
+$("#btn-previous-scene").on("click", () => {
+  const sceneNumber = parseInt($("#sceneNumber")[0].innerText) - 1;
+  let url = buildUrl("breakdown", sceneNumber, "");
+  window.location.href = url;
+});
+
+$("#btn-next-scene").on("click", () => {
+  const sceneNumber = parseInt($("#sceneNumber")[0].innerText) + 1;
+  const url = buildUrl("breakdown", sceneNumber, "");
+  window.location.href = url;
+});
+
+$("#btn-last-scene").on("click", () => {
+  const sceneNumber = $("#highestScene")[0].innerText;
+  const url = buildUrl("breakdown", sceneNumber, "");
+  window.location.href = url;
+});
+
+$("#btn-first-scene").on("click", () => {
+  const url = buildUrl("breakdown", 1, "");
+  window.location.href = url;
+});
+
+$("#btn-start-again").on("click", () => {
+  if (confirm("Are you sure you want to remove all the element tags?")) {
+    const url = buildUrl('breakdown','','')
+    window.location.href = `${url}&restart=yes`;
+  }
+});

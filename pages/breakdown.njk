@@ -45,14 +45,24 @@
         </button>
       {% endif %}
     </div>
+    <div class='col-md-2'></div>
     <div class='col-md-2'>
       <button type='button' class='btn-navigate btn-sm' id='btn-start-again'>Start Again</button>
     </div>
-    <div class='col-md-2'>
-      <button type='button' class='btn-navigate btn-sm' id='btn-display-breakdown-sheet'>Display Breakdown Sheet</button>
-    </div>
   </div>
   <!-- end of row 1 -->
+
+  <div class='row top'>
+    <div class='col-md-2'>
+      <h4>Scene
+        {{sceneNumber}}</h4>
+    </div>
+    <div class='col-md-8'>
+      <button type='button' class='btn-navigate btn-sm' id='btn-which'>Switch to Breakdown Sheet</button>
+    </div>
+    <div class='col-md-2'></div>
+  </div>
+
   <div class='row top'>
     <p id='breakdown' hidden="hidden">{{breakdown}}</p>
     <div class='col-md-2' style='background: white; color:black; text-align: center;'>
@@ -74,13 +84,15 @@
       <br><br>
     </div>
     <div class='col-md-8 tableFixHead3' style='font-size: 75%;' id='scriptArea'>
-      <p id='scene'>Scene
-        {{sceneNumber}}</p>
       <p id='box'></p>
+      <p id='hidden-table' hidden="hidden">{{elementsTable}}</p>
+      <p id='which' hidden="hidden">{{which}}</p>
+      <p id='elements-display'></p>
+
     </div>
     <div class='col-md-2 tableFixHead3' style='font-size:75%'>
       <br>
-      <p class='cast'>
+      <p class='cast elements-list' ,="," id='cast'>
         Cast:
         {% for i in range(0, list.cast.length) -%}
           {{list.cast[i]}}
@@ -89,7 +101,7 @@
           {% endif %}
         {% endfor %}
       </p>
-      <p class='extras'>
+      <p class='extras elements-list' id='extras'>
         Extras:
         {% for i in range(0, list.extras.length) -%}
           {{list.extras[i]}}
@@ -98,7 +110,7 @@
           {% endif %}
         {% endfor %}
       </p>
-      <p class='props'>
+      <p class='props elements-list' id='props'>
         Props:
         {% for i in range(0, list.props.length) -%}
           {{list.props[i]}}
