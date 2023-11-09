@@ -63,12 +63,13 @@ const generateSingleHandler = async (req, res) => {
       script[sceneNumber][elementNumber].duration = await getDuration(title, fileName);
       script[sceneNumber][elementNumber].voice = voice;
       await writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
+      msg = 'OK';
     };
     
     if (caller === 'edit-character'){
-      res.redirect(`/edit-character?title=${title}&character=${character}`);
+      res.redirect(`/edit-character?title=${title}&character=${character}&msg=${msg}`);
     } else {
-      res.redirect(`/showreel?title=${title}&sceneNumber=${sceneNumber}&elementNumber=${elementNumber}&speak=yes&mute=${mute}`);
+      res.redirect(`/showreel?title=${title}&sceneNumber=${sceneNumber}&elementNumber=${elementNumber}&speak=yes&mute=${mute}&msg=${msg}`);
     };
     }, 3000);
 };

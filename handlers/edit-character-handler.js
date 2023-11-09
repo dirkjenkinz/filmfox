@@ -8,6 +8,9 @@ const editCharacterHandler = async (req, res) => {
   smartLog("info", "ENTERING EDIT CHARACTER HANDLER");
   const u = url.parse(req.originalUrl, true);
   const title = u.query.title;
+  const sceneNumber = u.query.sceneNumber;
+  const elementNumber = u.query.elementNumber;
+  const msg = u.query.msg;
   const character = u.query.character;
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
   const {characterList} = filmFoxFile;
@@ -45,6 +48,9 @@ const editCharacterHandler = async (req, res) => {
     elements,
     currentVoice,
     page: "Edit Character",
+    msg,
+    sceneNumber,
+    elementNumber,
   });
 };
 

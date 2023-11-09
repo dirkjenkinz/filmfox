@@ -12,6 +12,7 @@ const showreelHandler = async (req, res) => {
   const speak = u.query.speak;
   let mute = u.query.mute;
   if (!mute) mute = "MUTE";
+  const msg = u.query.msg;
 
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
   const { script, shotList, charactersByScene, nonSpeakers, characterList } = filmFoxFile;
@@ -27,9 +28,6 @@ const showreelHandler = async (req, res) => {
   if (elementNumber > script[sceneNumber].length - 1) elementNumber = 0;
   const element = script[sceneNumber][elementNumber];
   const slug = script[sceneNumber][0].dialogue;
-
-  console.log(script[sceneNumber]);
-  console.log({speak});
 
   let audio = "";
   if (element.sound && speak == "yes") {
@@ -84,6 +82,7 @@ const showreelHandler = async (req, res) => {
     voice: element.voice,
     slugList,
     noteList,
+    msg
   });
 };
 

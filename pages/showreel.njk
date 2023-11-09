@@ -102,7 +102,7 @@
           <tr>
             <td colspan='4' style='color:white;'>
               &nbsp;Note:
-              <input type="text" id="input-note" name="note" size='120' value='{{note}}'>
+              <input type="text" id="input-note" name="note" size='170' value='{{note}}'>
             </td>
           </tr>
           <tr>
@@ -186,6 +186,8 @@
                     Your browser does not support the audio tag.
                   </audio>
                 {% endif %}
+              {% elseif msg === 'Failed'%}
+              <h5 class='data-showreel' style='text-align: center;'>Sound generation failed</h5>
               {% else %}
                 <h5 class='data-showreel' style='text-align: center;'>NO SOUND</h5>
               {% endif %}

@@ -123,13 +123,6 @@ html {
   font-size: 200%;
 }
 
-.data-right {
-  text-align: right;
-  background: black;
-  padding: 0px 4px;
-  color: white;
-}
-
 .data-header {
   text-align: right;
   background: white;
@@ -143,7 +136,13 @@ html {
   padding: 0px 4px;
   background: black;
   color: silver;
-  font-size: 75%;
+}
+
+.data-right {
+  text-align: right;
+  background: black;
+  padding: 0px 4px;
+  color: white;
 }
 
 .data-central {
