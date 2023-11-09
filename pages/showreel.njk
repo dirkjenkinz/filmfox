@@ -4,7 +4,6 @@
   <div class='row top'>
     <p id='slugList' hidden="hidden">{{slugList}}</p>
     <p id='noteList' hidden="hidden">{{noteList}}</p>
-    <p id='highestScene' hidden="hidden">{{highestScene}}</p>
     <p id='highestElement' hidden="hidden">{{highestElement}}</p>
     <p id='type_{{i}}' hidden="hidden">{{element.type}}</p>
     <div class="col-md-12" id='message' hidden="hidden" style='background:red; text-align: center;'>
@@ -78,8 +77,6 @@
       </table>
     </div>
   </div>
-  <p id='highestScene' hidden="hidden">{{highestScene}}</p>
-  <p id='highestElement' hidden="hidden">{{highestElement}}</p>
 
   <div class='row' style='background: silver; color: black;'>
     <div class='col-md-12'>
@@ -159,7 +156,7 @@
               {% endif %}
             </td>
 
-            <td class='data-showreel' style='width: 50%; padding: 4px; border : red 4px solid;' colspan='2' ;=";">
+            <td class='data-showreel' style='width: 50%; padding: 4px; border : red 4px solid;' colspan='2'>
               <div class="box" style='font-size: 150%;'>
                 {% if element.character === 'NARRATOR'%}
                   <p style='text-align: center; font-weight: bold;'></p>
@@ -175,19 +172,19 @@
               {% if element.sound %}
                 {% if mute == 'MUTE' %}
                   <audio id='master-play' controls="controls" style='width: 100%;'>
-                    <source src="{{audio}}" type="audio/ogg"/>
-                    <source src="{{audio}}" type="audio/mpeg"/>
+                    <source src="{{audio}}" type="audio/ogg">
+                    <source src="{{audio}}" type="audio/mpeg">
                     Your browser does not support the audio tag.
                   </audio>
                 {% else %}
                   <audio id='master-play' controls="controls" style='width: 100%;' muted="muted">
-                    <source src="{{audio}}" type="audio/ogg"/>
-                    <source src="{{audio}}" type="audio/mpeg"/>
+                    <source src="{{audio}}" type="audio/ogg">
+                    <source src="{{audio}}" type="audio/mpeg">
                     Your browser does not support the audio tag.
                   </audio>
                 {% endif %}
               {% elseif msg === 'Failed'%}
-              <h5 class='data-showreel' style='text-align: center;'>Sound generation failed</h5>
+                <h5 class='data-showreel' style='text-align: center;'>Sound generation failed</h5>
               {% else %}
                 <h5 class='data-showreel' style='text-align: center;'>NO SOUND</h5>
               {% endif %}
@@ -233,7 +230,7 @@
       </tr>
     </table>
   </div>
-
+</div>
 </div>
 <script src='../js/parent.js'></script>
 <script src='../js/showreel.js'></script>

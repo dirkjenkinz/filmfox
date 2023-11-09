@@ -41,6 +41,7 @@
     window.location.href = `/change-scene-order?title=${title}&elementNumber=${elementNumber}&sceneNumber=${sceneNumber}&direction=down&num=${num}&hidden=${hidden}`;
   }),
   $(".btn-up").on("click", (e) => {
+    console.
     const size = $("#size")[0].innerText;
     const hidden = [];
     for (let i = 0; i < size; i++) {
@@ -50,5 +51,5 @@
     const title = $("#filmTitle")[0].innerText;
     const elementNumber = $("#elementNumber")[0].innerText;
     const sceneNumber = $("#sceneNumber")[0].innerText;
-    window.location.href = `/change-scene-order?title=${title}&elementNumber=${elementNumber}&sceneNumber=${sceneNumber}&direction=up&num=${num}&hidden=${hidden}`
+ //   window.location.href = `/change-scene-order?title=${title}&elementNumber=${elementNumber}&sceneNumber=${sceneNumber}&direction=up&num=${num}&hidden=${hidden}`
   });

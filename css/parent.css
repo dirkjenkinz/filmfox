@@ -27,8 +27,8 @@
 
   .tableFixHead3 {
     overflow-y: auto;
-    height: 440px;
-    border: 12px black solid;
+    height: 480px;
+    border: 4px black solid;
   }
 
   .tableFixHead3 thead th {
