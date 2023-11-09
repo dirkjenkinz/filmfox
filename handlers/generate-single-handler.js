@@ -64,6 +64,7 @@ const generateSingleHandler = async (req, res) => {
       script[sceneNumber][elementNumber].voice = voice;
       await writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
     };
+    
     if (caller === 'edit-character'){
       res.redirect(`/edit-character?title=${title}&character=${character}`);
     } else {

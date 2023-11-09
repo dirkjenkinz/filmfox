@@ -23,8 +23,13 @@ const showreelHandler = async (req, res) => {
     sceneNumber--;
     elementNumber = script[sceneNumber].length - 1;
   }
+
+  if (elementNumber > script[sceneNumber].length - 1) elementNumber = 0;
   const element = script[sceneNumber][elementNumber];
   const slug = script[sceneNumber][0].dialogue;
+
+  console.log(script[sceneNumber]);
+  console.log({speak});
 
   let audio = "";
   if (element.sound && speak == "yes") {
