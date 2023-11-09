@@ -45,173 +45,83 @@
         </button>
       {% endif %}
     </div>
-    <div class='col-md-2'></div>
-    <div class='col-md-2'>
-      <button type='button' class='btn-navigate btn-sm' id='btn-start-again'>Start Again</button>
+    <div class='col-md-1'>
+      <h4>Scene
+        {{sceneNumber}}</h4>
+    </div>
+    <div class='col-md-2'>&nbsp;</div>
+    <div class='col-md-1'>
+      <button type='button' class='btn-prevnext btn-sm' id='btn-report'>
+        Report
+      </button>
     </div>
   </div>
   <!-- end of row 1 -->
 
   <div class='row top'>
-    <div class='col-md-2'>
-      <h4>Scene
-        {{sceneNumber}}</h4>
+    <div class='col-md-4 tableFixHead3' style='font-size: 70%;'>
+      {% for i in range(0, breakdown.length) -%}
+        <table id='table-{{headers[i]}}'>
+          <thead>
+            <tr>
+              <th>
+                <button type='button' class='btn-element' value='{{breakdown[i][0]}}'>{{breakdown[i][0]}}</button>
+              </th>
+              <th>
+                <button type='button' style='background: red; width:100%;' class='btn-hide' value='{{breakdown[i][0]}}'>Hide</button>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for j in range(1, breakdown[i].length) -%}
+              <tr>
+                <td id='entity-{{j -1}}' width='80%'>{{breakdown[i][j]}}</td>
+                <td>
+                  <button type='button' class='btn-del btn-block' id='del-{{breakdown[i][0]}}' value='{{breakdown[i][j]}}'>Delete</button>
+                </td>
+              </tr>
+            {% endfor %}
+            <tr>
+              <form action='\breakdown?title={{title}}&sceneNumber={{sceneNumber}}&element={{breakdown[i][0]}}&action=add'>
+                <td width="80%;">
+                  <input type="text" name="entity" size='40'>
+                  <input type="hidden" name="title" value="{{title}}">
+                  <input type="hidden" name="sceneNumber" value="{{sceneNumber}}">
+                  <input type="hidden" name="elementNumber" value="{{elementNumber}}">
+                  <input type="hidden" name="element" value="{{breakdown[i][0]}}">
+                  <input type="hidden" name="action" value="add">
+                </td>
+                <td>
+                  <input type="submit" style='width:100%; margin:0; padding: 0;' value="Submit">
+                </td>
+              </form>
+            </tr>
+            <tr>
+              <td colspan='2' style='background: cyan; font-size:50%;'>&nbsp;</td>
+            </tr>
+          </tbody>
+        </table>
+      {%endfor %}
     </div>
-    <div class='col-md-8'>
-      <button type='button' class='btn-navigate btn-sm' id='btn-which'>Switch to Breakdown Sheet</button>
-    </div>
-    <div class='col-md-2'></div>
-  </div>
 
-  <div class='row top'>
-    <p id='breakdown' hidden="hidden">{{breakdown}}</p>
-    <div class='col-md-2' style='background: white; color:black; text-align: center;'>
-      <b>ELEMENTS</b>
-      <button type='button' class='btn-element' id='btn-cast' value='cast'>CAST MEMBERS</button>
-      <button type='button' class='btn-element' id='btn-extras' value='extras'>EXTRAS</button>
-      <button type='button' class='btn-element' id='btn-props' value='props'>PROPS</button>
-      <button type='button' class='btn-element' id='btn-dressing' value='dressing'>SET DRESSING</button>
-      <button type='button' class='btn-element' id='btn-costumes' value='costumes'>COSTUMES</button>
-      <button type='button' class='btn-element' id='btn-makeup' value='makeup'>MAKEUP</button>
-      <button type='button' class='btn-element' id='btn-vehicles' value='vehicles'>VEHICLES</button>
-      <button type='button' class='btn-element' id='btn-stunts' value='stunts'>STUNTS</button>
-      <button type='button' class='btn-element' id='btn-sfx' value='sfx'>SPECIAL EFFECTS</button>
-      <button type='button' class='btn-element' id='btn-livestock' value='livestock'>LIVESTOCK</button>
-      <button type='button' class='btn-element' id='btn-handler' value='handler'>ANIMAL HANDLER</button>
-      <button type='button' class='btn-element' id='btn-music' value='music'>MUSIC</button>
-      <button type='button' class='btn-element' id='btn-sounds' value='sounds'>SOUNDS</button>
-      <button type='button' class='btn-remove-tag' id='btn-remove-tag'>Remove Tag</button>
-      <br><br>
+    <div class='col-md-6 tableFixHead3' style='font-size: 75%;'>
+      {% for i in range(0, scene.length) -%}
+        {% if scene[i].character === 'NARRATOR'%}
+          <p class='action' id='{{p_act[i]}}'>{{scene[i}.dialogue}}</p>
+        {% else %}
+          <p class='character' id='{{p_cha[i]}}' }="}">{{scene[i].character}}</p>
+          <p class='dialogue' id='{{p_dia[i]}}'>{{scene[i}.dialogue}}</p>
+        {% endif %}
+      {% endfor %}
     </div>
-    <div class='col-md-8 tableFixHead3' style='font-size: 75%;' id='scriptArea'>
-      <p id='box'></p>
-      <p id='hidden-table' hidden="hidden">{{elementsTable}}</p>
-      <p id='which' hidden="hidden">{{which}}</p>
-      <p id='elements-display'></p>
 
+    <div class='col-md-2 tableFixHead3' style='font-size: 85%;'>
+      {% for i in range(0, breakdown.length) -%}
+        <button type='button' class='btn-control' id='btn-control-{{headers[i]}}' value='{{headers[i]}}' hidden>Reveal {{headers[i]}}</button>
+      {% endfor %}
     </div>
-    <div class='col-md-2 tableFixHead3' style='font-size:75%'>
-      <br>
-      <p class='cast elements-list' ,="," id='cast'>
-        Cast:
-        {% for i in range(0, list.cast.length) -%}
-          {{list.cast[i]}}
-          {% if i < list.cast.length - 1 %}
-            &nbsp;-&nbsp;
-          {% endif %}
-        {% endfor %}
-      </p>
-      <p class='extras elements-list' id='extras'>
-        Extras:
-        {% for i in range(0, list.extras.length) -%}
-          {{list.extras[i]}}
-          {% if i < list.extras.length - 1 %}
-            &nbsp;-&nbsp;
-          {% endif %}
-        {% endfor %}
-      </p>
-      <p class='props elements-list' id='props'>
-        Props:
-        {% for i in range(0, list.props.length) -%}
-          {{list.props[i]}}
-          {% if i < list.props.length - 1 %}
-            &nbsp;-&nbsp;
-          {% endif %}
-        {% endfor %}
-      </p>
-      <p class='dressing'>
-        Set Dressing:
-        {% for i in range(0, list.dressing.length) -%}
-          {{list.dressing[i]}}
-          {% if i < list.dressing.length - 1 %}
-            &nbsp;-&nbsp;
-          {% endif %}
-        {% endfor %}
-      </p>
-      <p class='costumes'>
-        Costumes:
-        {% for i in range(0, list.costumes.length) -%}
-          {{list.costumes[i]}}
-          {% if i < list.costumes.length - 1 %}
-            &nbsp;-&nbsp;
-          {% endif %}
-        {% endfor %}
-      </p>
-      <p class='makeup'>
-        Makeup:
-        {% for i in range(0, list.makeup.length) -%}
-          {{list.makeup[i]}}
-          {% if i < list.makeup.length - 1 %}
-            &nbsp;-&nbsp;
-          {% endif %}
-        {% endfor %}
-      </p>
-      <p class='vehicles'>
-        Vehicles:
-        {% for i in range(0, list.vehicles.length) -%}
-          {{list.vehicles[i]}}
-          {% if i < list.vehicles.length - 1 %}
-            &nbsp;-&nbsp;
-          {% endif %}
-        {% endfor %}
-      </p>
-      <p class='stunts'>
-        Stunts:
-        {% for i in range(0, list.stunts.length) -%}
-          {{list.stunts[i]}}
-          {% if i < list.stunts.length - 1 %}
-            &nbsp;-&nbsp;
-          {% endif %}
-        {% endfor %}
-      </p>
-      <p class='sfx'>
-        Special Effects:
-        {% for i in range(0, list.sfx.length) -%}
-          {{list.sfx[i]}}
-          {% if i < list.sfx.length - 1 %}
-            &nbsp;-&nbsp;
-          {% endif %}
-        {% endfor %}
-      </p>
-      <p class='livestock'>
-        Livestock:
-        {% for i in range(0, list.livestock.length) -%}
-          {{list.livestock[i]}}
-          {% if i < list.livestock.length - 1 %}
-            &nbsp;-&nbsp;
-          {% endif %}
-        {% endfor %}
-      </p>
-      <p class='handler'>
-        Animal Handler:
-        {% for i in range(0, list.handler.length) -%}
-          {{list.handler[i]}}
-          {% if i < list.handler.length - 1 %}
-            &nbsp;-&nbsp;
-          {% endif %}
-        {% endfor %}
-      </p>
-      <p class='music'>
-        Music:
-        {% for i in range(0, list.music.length) -%}
-          {{list.music[i]}}
-          {% if i < list.music.length - 1 %}
-            &nbsp;-&nbsp;
-          {% endif %}
-        {% endfor %}
-      </p>
-      <p class='sounds'>
-        Sounds:
-        {% for i in range(0, list.sounds.length) -%}
-          {{list.sound[i]}}
-          {% if i < list.sounds.length - 1 %}
-            &nbsp;-&nbsp;
-          {% endif %}
-        {% endfor %}
-      </p>
-    </div>
+
   </div>
-</div>
-<script src='../js/parent.js'></script>
-<script src='../js/breakdown.js'></script>
+  <script src='../js/parent.js'></script>
+  <script src='../js/breakdown.js'></script>
 {% endblock %}

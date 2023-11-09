@@ -76,6 +76,13 @@ $("#nav-breakdown").on("click", () => {
   const sceneNumber = $("#sceneNumber")[0].innerText;
   const elementNumber = $("#elementNumber")[0].innerText;
   const url = buildParentUrl("breakdown", sceneNumber, elementNumber);
+  window.location.href = `${url}&action=display`;
+});
+
+$("#nav-report").on("click", () => {
+  const sceneNumber = $("#sceneNumber")[0].innerText;
+  const elementNumber = $("#elementNumber")[0].innerText;
+  const url = buildParentUrl("breakdown-report", sceneNumber, elementNumber);
   window.location.href = url;
 });
 

@@ -8,92 +8,28 @@
   font-size: 75%;
 }
 
-.character {
-  text-align: center;
-  margin-bottom: 0;
-}
-
-.speech {
-  margin: 0 60px 20px 60px;
-}
-
-.action {
-  margin: 20px 0;
-}
-
-.cast,
-#btn-cast {
+.btn-control {
   background: red;
+  width: 100%;
+  color: white;
+  font-size: 75%;
 }
 
-#btn-extras,
-.extras {
-  background: deepPink;
-}
 
-#btn-props,
-.props {
-  background: fuchsia;
-}
-
-#btn-dressing,
-.dressing {
-  background: darkOrange;
-}
-
-#btn-costumes,
-.costumes {
-  background: cornflowerBlue;
-}
-
-#btn-makeup,
-.makeup {
-  background: blueviolet;
-}
-
-#btn-vehicles,
-.vehicles {
-  background: brown;
-}
-
-#btn-stunts,
-.stunts {
-  background: coral;
-}
-
-#btn-sfx,
-.sfx {
-  background: darkcyan;
-}
-
-#btn-livestock,
-.livestock {
-  background: darkmagenta;
-}
-
-#btn-handler,
-.handler {
-  background: grey;
-}
-
-#btn-music,
-.music {
-  background: mediumvioletred;
-}
-
-#btn-sounds,
-.sounds {
-  background: tomato;
-}
-
-#btn-remove-tag,
-.sounds {
-  background: black;
-}
-
+.btn-element,
 .btn-add,
 .btn-del {
   background: red;
   size: 100%;
   color: white;
+}
+
+.character {
+  text-align: center;
+  padding-bottom: 0;
+  margin-bottom:0;
+}
+
+.dialogue {
+ margin: 0 40px 20px 40px; 
 }

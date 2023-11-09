@@ -1,6 +1,6 @@
 {% extends "parent.njk" %}
 {% block page %}
-<div class='row'>
+  <div class='row'>
     <div class='col-md-12'>
       SCENE:
       <span id="output">{{shotList[sheet].scene}}</span>
@@ -64,11 +64,13 @@
               <th class='data-page'>Chars:</th>
               <td class='data-page' colspan='2'>
                 {% for i in range(0, characterList.length) -%}
-                  {% if i < (characterList.length - 1) %}
-                    &nbsp;{{characterList[i]}}
-                    --
-                  {%else %}
-                    {{characterList[i]}}
+                  {% if characterList[i] !== 'NARRATOR' %}
+                    {% if i < (characterList.length - 1) %}
+                      &nbsp;{{characterList[i]}}
+                      --
+                    {%else %}
+                      {{characterList[i]}}
+                    {% endif %}
                   {% endif %}
                 {% endfor %}
               </td>

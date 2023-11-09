@@ -49,9 +49,7 @@
       <Text>(beat)</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
-      <Text>You’ve seen similar body bags on </Text>
-      <Text AdornmentStyle="-1" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="">eBay</Text>
-      <Text> and said to yourself, ‘How much? Somebody’s having a laugh!’ And too beeding right they are. In a moment of madness, Sam, our chief electrician here, bought one and has been laid up in bed for three days with buyers remorse!</Text>
+      <Text>You’ve seen similar body bags on eBay and said to yourself, ‘How much? Somebody’s having a laugh!’ And too bleeding right they are. In a moment of madness, Sam, our chief electrician here, bought one and has been laid up in bed for three days with buyers remorse!</Text>
     </Paragraph>
     <Paragraph Type="Parenthetical">
       <Text>(beat)</Text>
@@ -3160,7 +3158,7 @@
       <Text>I don’t know whether to laugh or to cry.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" Number="39" RightIndent="7.50" SpaceBefore="22" Spacing="1" StartsNewPage="No" Type="Scene Heading">
-      <SceneProperties Length="1 7/8" Page="47" Title="">
+      <SceneProperties Length="2" Page="47" Title="">
         <SceneArcBeats>
           <CharacterArcBeat Name="CHERI"></CharacterArcBeat>
           <CharacterArcBeat Name="FREDDY"></CharacterArcBeat>
@@ -3176,7 +3174,7 @@
       <Text>FREDDY</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
-      <Text>Tom! So glad you made it. I thought maybe I was going to be all on my lonesome here.</Text>
+      <Text>Tom! So glad you made it. I thought I was going to be all on my lonesome here.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Character">
       <Text>TOM</Text>
@@ -3188,23 +3186,21 @@
       <Text>Freddy</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
-      <Text>If it wasn't so funny, it would be tragic. Once this Black Knight bollocks is over, I intend to make a film about it. I was thinking Ana de </Text>
-      <Text AdornmentStyle="-1" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="">Armas</Text>
-      <Text> might make a good Cheri.</Text>
+      <Text>If it wasn't so funny, it would be tragic. Once this Black Knight bollocks is over and done with, I intend to make a film called “The Knight My Boss Ate a Man’s Penis.” I have Ana de Armas in mind for the part of Cheri.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Character">
       <Text>TOM</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
-      <Text>Might I suggest Kenneth </Text>
-      <Text AdornmentStyle="-1" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="">Branagh</Text>
-      <Text> for Kyle?</Text>
+      <Text>Might I suggest Kenneth Branagh for Kyle?</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Character">
       <Text>Freddy</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
-      <Text>You might indeed. Now then, are we going to bother  with this meeting? Or shall we just call it a - No, wait! Cheri's dialling in.</Text>
+      <Text>Excellent choice. Be interesting to see how far he’ll go for the sake of realism. Now are we going to bother  with this meeting? Or shall we just say “fuck it” and face reality? As </Text>
+      <Text AdornmentStyle="-1" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="">fabbo</Text>
+      <Text> an idea as Butcher Baby is, it’s just not going to happen. I for one am inclined - No, wait! Cheri's dialling in.</Text>
     </Paragraph>
     <Paragraph Type="Parenthetical">
       <Text>(beat)</Text>
@@ -3216,7 +3212,7 @@
       <Text>CHERI</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
-      <Text>Sorry I'm late. I've had a bit of a domestic situation to deal with.</Text>
+      <Text>Sorry I'm late. I've had a domestic situation to deal with.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Character">
       <Text>FREDDY</Text>
@@ -3234,13 +3230,13 @@
       <Text>FREDDY</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
-      <Text>Kyle's not with us yet. I expect he'll be along later.</Text>
+      <Text>Kyle's not with us yet. I expect he'll be along later - unless, of course, something untoward has befallen him.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Character">
       <Text>CHERI</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
-      <Text>Knock it off, Freddy. I can tell by your smug expression you know what happened. I suppose Kyle’s bitch of a wife told you?</Text>
+      <Text>Knock it off, Freddy. I can tell by your even-more-smug-than-usual expression you know what happened last night. I suppose Kyle’s bitch of a wife told you?</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Character">
       <Text>FREDDY</Text>
@@ -3252,13 +3248,13 @@
       <Text>CHERI</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
-      <Text>And you, Tom? Did she call you as well?</Text>
+      <Text>And you, Tom?</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Character">
       <Text>TOM</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
-      <Text>Now let me think? Oh yes. She rang me up and said something about you mistaking Kyle’s penis for a hotdog sausage.</Text>
+      <Text>She rang me up and said something about you mistaking Kyle’s penis for a bratwurst.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Character">
       <Text>CHERI</Text>
@@ -3276,19 +3272,19 @@
       <Text>TOM</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
-      <Text>You know me. Professional’s my middle name.</Text>
+      <Text>Professional’s my middle name.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Character">
       <Text>CheRI</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
-      <Text>Good. First order of business: our new doll, Man-Hating Mandy. I've sent both of you the specs. Have you had a chance to look at them yet?</Text>
+      <Text>First order of business: our new doll, Man-Hating Mandy. I've sent both of you the specs. Have you had a chance to look at them yet?</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Character">
       <Text>TOM</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
-      <Text>Not yet. I've only just finished untying my wife.</Text>
+      <Text>I've only just finished untying my wife.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Character">
       <Text>FrEDDY</Text>
@@ -3312,7 +3308,7 @@
       <Text>CHERI</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
-      <Text>Well done, Freddy. You've just got yourself fired.</Text>
+      <Text>Congratulations, Freddy. You've just got yourself fired.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" Number="40" RightIndent="7.50" SpaceBefore="22" Spacing="1" StartsNewPage="No" Type="Scene Heading">
       <SceneProperties Length="2 4/8" Page="49" Title="">
@@ -3824,9 +3820,7 @@ The screen goes to the ‘off-air’ sign.</Text>
       <Text>As the BEEPING intensifies, Tom and Barbara hold onto each other. They are terrified.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.50" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Action">
-      <Text>The beeps run into one another - </Text>
-      <Text AdornmentStyle="-1" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="">BEEEEEEEEEEEEP</Text>
-      <Text>! The room fills with green light.</Text>
+      <Text>The beeps run into one another - BEEEEEEEEEEEEP! The room fills with green light.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.50" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Action">
       <Text>Tom and Barbara open their mouths to scream but before any sound comes out -</Text>
@@ -3835,7 +3829,7 @@ The screen goes to the ‘off-air’ sign.</Text>
       <Text>BLACKOUT:</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" Number="43" RightIndent="7.50" SpaceBefore="22" Spacing="1" StartsNewPage="No" Type="Scene Heading">
-      <SceneProperties Length="1 5/8" Page="55" Title="">
+      <SceneProperties Length="1 5/8" Page="56" Title="">
         <SceneArcBeats>
           <CharacterArcBeat Name="MR. KEPLER"></CharacterArcBeat>
           <CharacterArcBeat Name="TOM"></CharacterArcBeat>
@@ -3977,7 +3971,7 @@ The screen goes to the ‘off-air’ sign.</Text>
       <Text>(beat)</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
-      <Text>If you have a corpse in your home or other secure place, put it in a body bag or wrap it securely in several layers of sheets, curtains, canvas and whatever other material comes to hand. Bind this covering with any of the following:</Text>
+      <Text>If you have a corpse in your home or other secure place, put it in a body bag or wrap it securely in several layers of         sheets, curtains, canvas and whatever other material comes to hand. Bind this covering with any of the following:</Text>
     </Paragraph>
     <Paragraph Type="Parenthetical">
       <Text>(beat)</Text>
@@ -4087,7 +4081,7 @@ The screen goes to the ‘off-air’ sign.</Text>
       <Text>- then downstairs to -</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" Number="46" RightIndent="7.50" SpaceBefore="22" Spacing="1" StartsNewPage="No" Type="Scene Heading">
-      <SceneProperties Length="1/8" Page="58" Title="">
+      <SceneProperties Length="1/8" Page="59" Title="">
         <SceneArcBeats/>
       </SceneProperties>
       <Text>Int. Hallway - day - contiNUOUS</Text>
@@ -4161,7 +4155,7 @@ The screen goes to the ‘off-air’ sign.</Text>
       <Text>That’s better but we’re not there yet.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" Number="48" RightIndent="7.50" SpaceBefore="22" Spacing="1" StartsNewPage="No" Type="Scene Heading">
-      <SceneProperties Length="1 7/8" Page="60" Title="">
+      <SceneProperties Length="2" Page="60" Title="">
         <SceneArcBeats>
           <CharacterArcBeat Name="BRODY"></CharacterArcBeat>
           <CharacterArcBeat Name="TOM"></CharacterArcBeat>
@@ -4603,7 +4597,7 @@ WE'LL BE BACK SOON</Text>
       <Text>WarburG (O.S.)</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
-      <Text>Mr. Caxton! Open up! This is the police. Open up or I will break down your door.</Text>
+      <Text>Mr. Caxton! Police. Open the door will you?</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.50" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Action">
       <Text>KNOCK! KNOCK! KNOCK!</Text>
@@ -4612,7 +4606,7 @@ WE'LL BE BACK SOON</Text>
       <Text>WARBURG (O.S.) (CONT’D)</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
-      <Text>Mr. Caxton! You are not in any trouble but if you do not open this door I will have no choice but to arrest you!</Text>
+      <Text>Mr. Caxton! Don’t make me force my way in. These size 9s have kicked down far sturdier doors than yours. </Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.50" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Action">
       <Text>KNOCK! KNOCK! KNOCK!</Text>
@@ -4624,7 +4618,7 @@ WE'LL BE BACK SOON</Text>
       <Text>(shouting)</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
-      <Text>All right! I'm bloody coming! Keep your fucking hair on!</Text>
+      <Text>All right! Keep your fucking hair on!</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.50" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Action">
       <Text>Harassed, Tom goes down to -</Text>
@@ -4648,7 +4642,11 @@ WE'LL BE BACK SOON</Text>
       <Text>WaRBURG (O.S.)</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
-      <Text>Mr. Caxton! This is your last warning! Open up or else!</Text>
+      <Text>Mr. Caxton! You are seriously </Text>
+      <Text AdornmentStyle="-1" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="">pissing</Text>
+      <Text> me off. Now </Text>
+      <Text AdornmentStyle="-1" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="">opwn</Text>
+      <Text> this door - or else!</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.50" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Action">
       <Text>KNOCK! KNOCK! KNOCK!</Text>
@@ -4666,16 +4664,7 @@ WE'LL BE BACK SOON</Text>
       <Text>WARBURG</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
-      <Text>About time.</Text>
-    </Paragraph>
-    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.50" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Action">
-      <Text>Warburg flashes his warrant card, puts it straight back in his pocket.</Text>
-    </Paragraph>
-    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Character">
-      <Text>WARBURG (CONT’D)</Text>
-    </Paragraph>
-    <Paragraph Type="Dialogue">
-      <Text>Mr. Caxton? Mr. Tom Caxton?</Text>
+      <Text>Catch you at a bad time, did I, Mr Caxton? It is Caxton, isn’t it? Tom Caxton?</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Character">
       <Text>TOM</Text>
@@ -4687,7 +4676,16 @@ WE'LL BE BACK SOON</Text>
       <Text>WARBURG</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
-      <Text>Detective Inspector Warburg. Mind if I come in?</Text>
+      <Text>Detective Inspector Warburg.</Text>
+    </Paragraph>
+    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.50" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Action">
+      <Text>Warburg flashes his warrant card, puts it straight back in his pocket.</Text>
+    </Paragraph>
+    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Character">
+      <Text>WarBURG (CONT’D)</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue">
+      <Text>Mind if I come in?</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Character">
       <Text>TOM</Text>
@@ -4699,16 +4697,10 @@ WE'LL BE BACK SOON</Text>
       <Text>WARBURG</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
-      <Text>Right now, every house is a mess, Mr. Caxton. Every street. Every town, city and village.</Text>
-    </Paragraph>
-    <Paragraph Type="Parenthetical">
-      <Text>(beat)</Text>
-    </Paragraph>
-    <Paragraph Type="Dialogue">
-      <Text>If I spot your Y-fronts peeking out from under a chair, I promise not to faint.</Text>
+      <Text>Yours and every other house on the planet. Chaos reigns supreme, Mr Caxton. Now is not the time to be doing housework.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.50" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Action">
-      <Text>Warburg takes Tom's silence as an invitation and steps over the threshold. </Text>
+      <Text>Warburg steps over the threshold. </Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Character">
       <Text>WaRBURG (CONT’D)</Text>
@@ -4729,7 +4721,7 @@ WE'LL BE BACK SOON</Text>
       <Text>Tom follows Warburg into -</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" Number="54" RightIndent="7.50" SpaceBefore="22" Spacing="1" StartsNewPage="No" Type="Scene Heading">
-      <SceneProperties Length="6 2/8" Page="67" Title="">
+      <SceneProperties Length="6 3/8" Page="67" Title="">
         <SceneArcBeats>
           <CharacterArcBeat Name="TOM"></CharacterArcBeat>
           <CharacterArcBeat Name="WARBURG"></CharacterArcBeat>
@@ -4747,7 +4739,7 @@ WE'LL BE BACK SOON</Text>
       <Text>WaRBURG</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
-      <Text>Oh well. Never mind.</Text>
+      <Text>Tea, Mr Caxton, is what this country was built on. You can always tell how civilised a country is by the amount of tea drunk there.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.50" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Action">
       <Text>Warburg spots Barbara’s corpse on the settee but says nothing about it.</Text>
@@ -4756,7 +4748,7 @@ WE'LL BE BACK SOON</Text>
       <Text>WARBURG (CONT’D)</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
-      <Text>Take a seat, will you, Mr. Caxton?</Text>
+      <Text>Sit down will you? I get a bit nervy when other people are standing.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.50" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Action">
       <Text>Tom sits next to Barbara.</Text>
@@ -4768,67 +4760,79 @@ WE'LL BE BACK SOON</Text>
       <Text>WARBURG (CONT’D)</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
-      <Text>I see you have a corpse, Mr. Caxton. I must commend you on how well you’ve wrapped him.</Text>
+      <Text>I see you have a stiff, Mr. Caxton. A friend of yours?</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Character">
       <Text>TOM</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
-      <Text>My neighbour.</Text>
+      <Text>My neighbour. I throttled him to death. Are you going to arrest me?</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Character">
       <Text>WARBURG</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
-      <Text>Did you kill him?</Text>
+      <Text>Good Lord, no. You heard what the Prime Minister said - it’s every man for himself. Right now, killing anyone who comes near you makes a lot of sense. Except me, of course. I’m pretty sure killing policemen is still against the law.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Character">
       <Text>TOM</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
-      <Text>I throttled him to death. Are you going to arrest me?</Text>
+      <Text>Well, other than killing my neighbour, have I transgressed in some way?</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Character">
       <Text>WARBURG</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
-      <Text>To what end, Mr. Caxton?</Text>
+      <Text>Transgressed? Now that’s a word I really like. Has a nice Biblical ring to it. No, you haven’t transgressed. I’m just making a routine inquiry about a Mr. Josef K. </Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Character">
       <Text>TOM</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
-      <Text>It wasn’t the Black Knight. I deliberately and quite consciously killed him.</Text>
+      <Text>The name’s not familiar to me.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Character">
       <Text>WARBURG</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
-      <Text>I'm sure you had your reasons and I'm not here to judge you. I'm here to find out about the man who was shot on your doorstep: a Mr. Josef K. Did you know him?'</Text>
+      <Text>Really? Then what was he doing dying on your doorstep?</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Character">
       <Text>TOM</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
-      <Text>No.</Text>
+      <Text>Are you talking about the chap shot by the army?</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Character">
       <Text>WARBURG</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
-      <Text>Then can you explain why he came to your house when there was a curfew on?</Text>
+      <Text>That’s the one. He broke the curfew and I’d like to know why.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Character">
       <Text>TOM</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
-      <Text>There were soldiers chasing after him. I think he just made a beeline for the nearest house.</Text>
+      <Text>I’m afraid I don’t have the faintest idea, Inspector.</Text>
+    </Paragraph>
+    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Character">
+      <Text>warburg</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue">
+      <Text>So this stranger, whom you never met, came knocking on your door. Doesn’t that strike you as a bit odd? Get a lot of strangers knocking on your door, do you?</Text>
+    </Paragraph>
+    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Character">
+      <Text>TOM</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue">
+      <Text>You’re a stranger and you did just that.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Character">
       <Text>WARBURG</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
-      <Text>Any port in a storm, hey? I suppose that makes sense.</Text>
+      <Text>Good point, Mr. Caxton. And very well made.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.50" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Action">
       <Text>Warburg takes out his note pad and pencil. He wets the tip of the pencil with his tongue.</Text>
@@ -4849,7 +4853,7 @@ WE'LL BE BACK SOON</Text>
       <Text>WARBURG</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
-      <Text>When you say your wife, I presume you mean the lady sitting next to you?</Text>
+      <Text>When you say your wife, I presume you mean the pretty lady sitting next to you?</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Character">
       <Text>TOM</Text>
@@ -4885,7 +4889,7 @@ WE'LL BE BACK SOON</Text>
       <Text>WARBURG</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
-      <Text>Ingenious. You've done a very good job.</Text>
+      <Text>You’ve done a cracking good job, I must say, Mr Caxton.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Character">
       <Text>TOM</Text>
@@ -4936,21 +4940,7 @@ WE'LL BE BACK SOON</Text>
       <Text>WARBURG</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
-      <Text>Thereby disobeying a lawful order! I see. And I take it, judging from the state of the front door, that he was right on your doorstep when they shot him.</Text>
-    </Paragraph>
-    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Character">
-      <Text>TOM</Text>
-    </Paragraph>
-    <Paragraph Type="Dialogue">
-      <Text>I couldn’t help him, Inspector.</Text>
-    </Paragraph>
-    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Character">
-      <Text>WARBURG</Text>
-    </Paragraph>
-    <Paragraph Type="Dialogue">
-      <Text>Nor should you have tried. By deliberately breaking the curfew, Josef K. </Text>
-      <Text AdornmentStyle="-1" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="">signed</Text>
-      <Text> his own death warrant. If you’d interfered, you’d be dead too.</Text>
+      <Text>Thereby deliberately and wilfully disobeying a lawful order! The blighter got just what he deserved.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.50" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Action">
       <Text>Warburg puts away his notebook and pencil.</Text>
@@ -4977,7 +4967,7 @@ WE'LL BE BACK SOON</Text>
       <Text>TOM</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
-      <Text>I’ve been meaning to wrap her up like they sign on those public information films, but I haven’t gotten around to it.</Text>
+      <Text>I’ve been meaning to wrap her up like they say on those public information films, but I haven’t gotten around to it.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Character">
       <Text>WARBURG</Text>
@@ -5253,7 +5243,7 @@ WE'LL BE BACK SOON</Text>
       <Text>I tell you, if His Majesty himself parked his arse on one of these he'd be ruined for other cushions for life. Let's get a close up - can we, Henry? - so our wonderful viewers can feast their eyes on the glory of this stitching. You see that? You wouldn’t find better stitching on a Gucci bag. And this silky finish - hmmm so smooth, so sexy. I tell you, folks, this cushion is so sensuous I’d happily fuck it! In fact, as soon as my shift is over, I’m off to the stock room to have me a cushion gang bang!</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" Number="56" RightIndent="7.50" SpaceBefore="22" Spacing="1" StartsNewPage="No" Type="Scene Heading">
-      <SceneProperties Length="7/8" Page="74" Title="">
+      <SceneProperties Length="7/8" Page="75" Title="">
         <SceneArcBeats>
           <CharacterArcBeat Name="BRODY"></CharacterArcBeat>
         </SceneArcBeats>
@@ -5327,7 +5317,7 @@ WE'LL BE BACK SOON</Text>
       <Text>He finds clean clothes. Gets dressed.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" Number="58" RightIndent="7.50" SpaceBefore="22" Spacing="1" StartsNewPage="No" Type="Scene Heading">
-      <SceneProperties Length="1/8" Page="75" Title="">
+      <SceneProperties Length="1/8" Page="76" Title="">
         <SceneArcBeats/>
       </SceneProperties>
       <Text>Int. Kitchen - day</Text>
@@ -5335,8 +5325,8 @@ WE'LL BE BACK SOON</Text>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.50" SpaceBefore="11" Spacing="1" StartsNewPage="No" Type="Action">
       <Text>Tom opens a tin of stewing steak. Eats it directly from the can.</Text>
     </Paragraph>
-    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.50" SpaceBefore="22" Spacing="1" StartsNewPage="No" Type="Scene Heading">
-      <SceneProperties Length="6/8" Page="75" Title="">
+    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" Number="4AXMU" RightIndent="7.50" SpaceBefore="22" Spacing="1" StartsNewPage="No" Type="Scene Heading">
+      <SceneProperties Length="6/8" Page="76" Title="">
         <SceneArcBeats>
           <CharacterArcBeat Name="TOM"></CharacterArcBeat>
         </SceneArcBeats>
@@ -5385,7 +5375,7 @@ WE'LL BE BACK SOON</Text>
     <Paragraph Type="Dialogue">
       <Text>You know it’s not rape if they’re dead, don’t you?</Text>
     </Paragraph>
-    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.50" SpaceBefore="22" Spacing="1" StartsNewPage="No" Type="Scene Heading">
+    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" Number="R1XJU" RightIndent="7.50" SpaceBefore="22" Spacing="1" StartsNewPage="No" Type="Scene Heading">
       <SceneProperties Length="1/8" Page="76" Title="">
         <SceneArcBeats/>
       </SceneProperties>
@@ -5643,7 +5633,7 @@ Something resembling a domestic fridge floats into view.</Text>
 Tom laughs at Bates’ cornball phraseology.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" Number="64" RightIndent="7.50" SpaceBefore="22" Spacing="1" StartsNewPage="No" Type="Scene Heading">
-      <SceneProperties Length="3/8" Page="80" Title="">
+      <SceneProperties Length="3/8" Page="81" Title="">
         <SceneArcBeats>
           <CharacterArcBeat Name="BBC ANNOUNCER"></CharacterArcBeat>
           <CharacterArcBeat Name="ISABELLE"></CharacterArcBeat>
@@ -5722,7 +5712,7 @@ Tom laughs at Bates’ cornball phraseology.</Text>
       <Text>Goodbye and God bless.</Text>
     </Paragraph>
     <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" Number="67" RightIndent="7.50" SpaceBefore="22" Spacing="1" StartsNewPage="No" Type="Scene Heading">
-      <SceneProperties Length="3/8" Page="81" Title="">
+      <SceneProperties Length="3/8" Page="82" Title="">
         <SceneArcBeats/>
       </SceneProperties>
       <Text>Int. Kitchen - nIGHT</Text>
@@ -6193,11 +6183,9 @@ Tom laughs at Bates’ cornball phraseology.</Text>
   <HeaderAndFooter FooterFirstPage="Yes" FooterVisible="No" HeaderFirstPage="No" HeaderVisible="Yes" StartingPage="1">
     <Header>
       <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.25" RightIndent="-1.00" SpaceBefore="0" Spacing="1" StartsNewPage="No">
-        <Text AdornmentStyle="0" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="">	</Text>
-        <DynamicLabel Type="Last Revised"/>
-        <Text AdornmentStyle="0" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="">	</Text>
-        <DynamicLabel Type="Page #"/>
         <Text AdornmentStyle="0" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="">.</Text>
+        <DynamicLabel Type="Last Revised"/>
+        <DynamicLabel Type="Page #"/>
         <Tabstops>
           <Tabstop Position="4.50" Type="Center"/>
           <Tabstop Position="7.25" Type="Right"/>
@@ -6206,71 +6194,75 @@ Tom laughs at Bates’ cornball phraseology.</Text>
     </Header>
     <Footer>
       <Paragraph Alignment="Right" FirstIndent="0.00" Leading="Regular" LeftIndent="1.25" RightIndent="-1.25" SpaceBefore="0" Spacing="1" StartsNewPage="No">
-        <Text AdornmentStyle="0" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style=""> </Text>
+        <Text AdornmentStyle="0" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style=""></Text>
       </Paragraph>
     </Footer>
   </HeaderAndFooter>
 
   <SpellCheckIgnoreLists>
     <IgnoredRanges>
-      <Range End="1700" Start="1697"/>
-      <Range End="2541" Start="2531"/>
-      <Range End="3052" Start="3042"/>
-      <Range End="9286" Start="9282"/>
-      <Range End="9295" Start="9291"/>
-      <Range End="10747" Start="10741"/>
-      <Range End="12702" Start="12696"/>
-      <Range End="12732" Start="12726"/>
-      <Range End="12855" Start="12846"/>
-      <Range End="13074" Start="13066"/>
-      <Range End="14034" Start="14030"/>
-      <Range End="14526" Start="14522"/>
-      <Range End="15067" Start="15058"/>
-      <Range End="15091" Start="15082"/>
-      <Range End="15159" Start="15148"/>
-      <Range End="15192" Start="15178"/>
-      <Range End="15432" Start="15428"/>
-      <Range End="15581" Start="15572"/>
-      <Range End="16131" Start="16128"/>
-      <Range End="16850" Start="16833"/>
-      <Range End="16953" Start="16944"/>
-      <Range End="17748" Start="17745"/>
-      <Range End="18107" Start="18096"/>
-      <Range End="18269" Start="18263"/>
-      <Range End="21228" Start="21224"/>
-      <Range End="21870" Start="21865"/>
-      <Range End="22086" Start="22082"/>
-      <Range End="22100" Start="22087"/>
-      <Range End="30412" Start="30402"/>
-      <Range End="31006" Start="30998"/>
-      <Range End="31424" Start="31418"/>
-      <Range End="31574" Start="31564"/>
-      <Range End="33056" Start="33050"/>
-      <Range End="33289" Start="33285"/>
-      <Range End="34053" Start="33999"/>
-      <Range End="37872" Start="37864"/>
-      <Range End="42554" Start="42544"/>
-      <Range End="43361" Start="43358"/>
-      <Range End="45798" Start="45796"/>
-      <Range End="46756" Start="46751"/>
-      <Range End="54087" Start="54084"/>
-      <Range End="55830" Start="55823"/>
-      <Range End="65234" Start="65229"/>
-      <Range End="73296" Start="73292"/>
-      <Range End="77193" Start="77146"/>
-      <Range End="81214" Start="81207"/>
-      <Range End="82206" Start="82202"/>
-      <Range End="89015" Start="89007"/>
-      <Range End="92050" Start="92046"/>
+      <Range End="1701" Start="1698"/>
+      <Range End="2542" Start="2532"/>
+      <Range End="3053" Start="3043"/>
+      <Range End="9287" Start="9283"/>
+      <Range End="9296" Start="9292"/>
+      <Range End="10748" Start="10742"/>
+      <Range End="12703" Start="12697"/>
+      <Range End="12733" Start="12727"/>
+      <Range End="12856" Start="12847"/>
+      <Range End="13075" Start="13067"/>
+      <Range End="14035" Start="14031"/>
+      <Range End="14527" Start="14523"/>
+      <Range End="15068" Start="15059"/>
+      <Range End="15092" Start="15083"/>
+      <Range End="15160" Start="15149"/>
+      <Range End="15193" Start="15179"/>
+      <Range End="15433" Start="15429"/>
+      <Range End="15582" Start="15573"/>
+      <Range End="16132" Start="16129"/>
+      <Range End="16851" Start="16834"/>
+      <Range End="16954" Start="16945"/>
+      <Range End="17749" Start="17746"/>
+      <Range End="18108" Start="18097"/>
+      <Range End="18270" Start="18264"/>
+      <Range End="21229" Start="21225"/>
+      <Range End="21871" Start="21866"/>
+      <Range End="22087" Start="22083"/>
+      <Range End="22101" Start="22088"/>
+      <Range End="30413" Start="30403"/>
+      <Range End="31007" Start="30999"/>
+      <Range End="31425" Start="31419"/>
+      <Range End="31575" Start="31565"/>
+      <Range End="33057" Start="33051"/>
+      <Range End="33290" Start="33286"/>
+      <Range End="34054" Start="34000"/>
+      <Range End="37873" Start="37865"/>
+      <Range End="42555" Start="42545"/>
+      <Range End="43362" Start="43359"/>
+      <Range End="45799" Start="45797"/>
+      <Range End="46757" Start="46752"/>
+      <Range End="54088" Start="54085"/>
+      <Range End="55831" Start="55824"/>
+      <Range End="65449" Start="65444"/>
+      <Range End="68536" Start="68522"/>
+      <Range End="73519" Start="73515"/>
+      <Range End="77416" Start="77369"/>
+      <Range End="81437" Start="81430"/>
+      <Range End="82429" Start="82425"/>
+      <Range End="82703" Start="82701"/>
+      <Range End="89498" Start="89490"/>
+      <Range End="92533" Start="92529"/>
     </IgnoredRanges>
     <IgnoredWords>
       <Word>1AM</Word>
       <Word>Addie</Word>
+      <Word>Armas</Word>
       <Word>BLEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEP</Word>
       <Word>BLEEEEEEEEEEEEP</Word>
       <Word>BLEEPING</Word>
       <Word>Babs</Word>
       <Word>Borganesh</Word>
+      <Word>Branagh</Word>
       <Word>Canaveral</Word>
       <Word>Caxton</Word>
       <Word>Cunt</Word>
@@ -6317,7 +6309,7 @@ Tom laughs at Bates’ cornball phraseology.</Text>
 
   <WindowState Height="635" Left="2" Mode="Maximized" Top="2" Width="649"/>
 
-  <TextState Scaling="150" Selection="76091,76091" ShowInvisibles="No"/>
+  <TextState Scaling="150" Selection="61811,61811" ShowInvisibles="No"/>
 
   <ElementSettings Type="General">
     <FontSpec AdornmentStyle="0" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style=""/>
@@ -6327,19 +6319,19 @@ Tom laughs at Bates’ cornball phraseology.</Text>
 
   <ElementSettings Type="Scene Heading">
     <FontSpec AdornmentStyle="0" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="AllCaps"/>
-    <ParagraphSpec Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.50" SpaceBefore="24" Spacing="1" StartsNewPage="No"/>
+    <ParagraphSpec Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.50" SpaceBefore="22" Spacing="1" StartsNewPage="No"/>
     <Behavior PaginateAs="Scene Heading" ReturnKey="Action" Shortcut="1"/>
   </ElementSettings>
 
   <ElementSettings Type="Action">
     <FontSpec AdornmentStyle="0" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style=""/>
-    <ParagraphSpec Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.50" SpaceBefore="12" Spacing="1" StartsNewPage="No"/>
+    <ParagraphSpec Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.50" SpaceBefore="11" Spacing="1" StartsNewPage="No"/>
     <Behavior PaginateAs="Action" ReturnKey="Action" Shortcut="2"/>
   </ElementSettings>
 
   <ElementSettings Type="Character">
     <FontSpec AdornmentStyle="0" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="AllCaps"/>
-    <ParagraphSpec Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="12" Spacing="1" StartsNewPage="No"/>
+    <ParagraphSpec Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="3.50" RightIndent="7.25" SpaceBefore="11" Spacing="1" StartsNewPage="No"/>
     <Behavior PaginateAs="Character" ReturnKey="Dialogue" Shortcut="3"/>
   </ElementSettings>
 
@@ -6357,13 +6349,13 @@ Tom laughs at Bates’ cornball phraseology.</Text>
 
   <ElementSettings Type="Transition">
     <FontSpec AdornmentStyle="0" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="AllCaps"/>
-    <ParagraphSpec Alignment="Right" FirstIndent="0.00" Leading="Regular" LeftIndent="5.50" RightIndent="7.10" SpaceBefore="12" Spacing="1" StartsNewPage="No"/>
+    <ParagraphSpec Alignment="Right" FirstIndent="0.00" Leading="Regular" LeftIndent="5.50" RightIndent="7.10" SpaceBefore="11" Spacing="1" StartsNewPage="No"/>
     <Behavior PaginateAs="Transition" ReturnKey="Scene Heading" Shortcut="6"/>
   </ElementSettings>
 
   <ElementSettings Type="Shot">
     <FontSpec AdornmentStyle="0" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="AllCaps"/>
-    <ParagraphSpec Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.50" SpaceBefore="24" Spacing="1" StartsNewPage="No"/>
+    <ParagraphSpec Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.50" RightIndent="7.50" SpaceBefore="22" Spacing="1" StartsNewPage="No"/>
     <Behavior PaginateAs="Scene Heading" ReturnKey="Action" Shortcut="7"/>
   </ElementSettings>
 
@@ -6543,9 +6535,7 @@ Tom laughs at Bates’ cornball phraseology.</Text>
         <Text AdornmentStyle="0" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="">Lancashire,</Text>
       </Paragraph>
       <Paragraph Alignment="Full" FirstIndent="0.00" Leading="Regular" LeftIndent="1.00" RightIndent="5.85" SpaceBefore="0" Spacing="1" StartsNewPage="No">
-        <Text AdornmentStyle="-1" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="">FY4</Text>
-        <Text AdornmentStyle="0" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style=""> </Text>
-        <Text AdornmentStyle="-1" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="">1JR</Text>
+        <Text AdornmentStyle="-1" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="">FY41JR</Text>
       </Paragraph>
       <Paragraph Alignment="Full" FirstIndent="0.00" Leading="Regular" LeftIndent="1.00" RightIndent="5.85" SpaceBefore="0" Spacing="1" StartsNewPage="No">
         <Text AdornmentStyle="0" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style=""></Text>
@@ -6708,7 +6698,7 @@ Tom laughs at Bates’ cornball phraseology.</Text>
     <Revision Color="#000000000000" FullRevision="No" ID="19" Mark="*" Name="2nd Tan Rev. (mm/dd/yy)" PageColor="#FDFDF1F1C7C7" Style=""/>
   </Revisions>
 
-  <SplitState ActivePanel="1" SplitMode="None" SplitterPosition="1916">
+  <SplitState ActivePanel="1" SplitMode="None" SplitterPosition="1362">
     <ScriptPanel DisplayMode="Normal">
       <FontSpec AdornmentStyle="0" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Verdana" RevisionID="0" Size="9" Style=""/>
     </ScriptPanel>

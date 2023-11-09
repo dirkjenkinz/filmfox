@@ -1,14 +1,5 @@
 $(window).on("load", function () {
   $("#nav-breakdown").addClass("active");
-  $("#box")[0].innerHTML = $("#breakdown")[0].innerText;
-  $("#elements-display")[0].innerHTML = $("#hidden-table")[0].innerText;
-  if ($("#which")[0].innerText === "script") {
-    $("#elements-display").hide();
-    $("#btn-which")[0].innerText = "SWITCH TO ELEMENTS VIEW";
-  } else {
-    $("#box").hide();
-    $("#btn-which")[0].innerText = "SWITCH TO SCENE VIEW";
-  }
 });
 
 const buildUrl = (call, sceneNumber, elementNumber) => {
@@ -22,20 +13,44 @@ const buildUrl = (call, sceneNumber, elementNumber) => {
   return `/${call}?title=${title}&sceneNumber=${sceneNumber}&elementNumber=${elementNumber}`;
 };
 
-$("#btn-which").on("click", (e) => {
-  let which = "script";
-  if ($("#btn-which")[0].innerText === "SWITCH TO ELEMENTS VIEW") {
-    which = "elements";
-  }
-  const url = buildUrl("breakdown", "", "");
-  window.location.href = `${url}&which=${which}`;
+$(".btn-control").on("click", (e) => {
+  let table = `table-${e.target.value}`;
+  let control = `btn-control-${e.target.value}`;
+  table = table.replace(/ /gi, "-");
+  control = control.replace(/ /gi, "-");
+  $(`#${table}`).show();
+  $(`#${control}`).hide();
+});
+
+$(".btn-hide").on("click", (e) => {
+  let table = `table-${e.target.value}`;
+  let control = `btn-control-${e.target.value}`;
+  table = table.replace(/ /gi, "-");
+  control = control.replace(/ /gi, "-");
+  $(`#${table}`).hide();
+  $(`#${control}`).show();
+});
+
+$(".btn-add").on("click", (e) => {
+  const element = e.target.value;
+  const num = e.target.id.substring(11);
+  const entity = $(`#input-entity-${num}`);
+
+  let url = buildUrl("breakdown", "", "");
+  url += `&element=${element}&entity=${entity}&action=add`;
+  window.location.href = url;
+});
+
+$('.btn-del').on('click', (e)=> {
+  const element = e.target.id.substring(4);
+  const entity = e.target.value;
+  const url = buildUrl('breakdown', '', '');
+  window.location.href = `${url}&element=${element}&entity=${entity}&action=del`;
 });
 
 $(".btn-element").on("click", (e) => {
   if (window.getSelection().anchorNode) {
     const element = e.target.value;
-    let para = window.getSelection().anchorNode.parentElement.id;
-    para = para.substring(1);
     const snippet = window.getSelection().anchorNode.data;
     let start = window.getSelection().anchorOffset;
     let finish = window.getSelection().focusOffset;
@@ -43,9 +58,10 @@ $(".btn-element").on("click", (e) => {
       const temp = start;
       start = finish;
       finish = temp;
-    }
+    };
+    const entity = snippet.substring(start, finish).trim().toUpperCase();
     let url = buildUrl("breakdown", "", "");
-    url += `&para=${para}&start=${start}&finish=${finish}&element=${element}&snippet=${snippet}`;
+    url += `&element=${element}&entity=${entity}&action=add`;
     window.location.href = url;
   }
 });
@@ -73,9 +89,7 @@ $("#btn-first-scene").on("click", () => {
   window.location.href = url;
 });
 
-$("#btn-start-again").on("click", () => {
-  if (confirm("Are you sure you want to remove all the element tags?")) {
-    const url = buildUrl('breakdown','','')
-    window.location.href = `${url}&restart=yes`;
-  }
+$("#btn-report").on("click", () => {
+  const url = buildUrl("breakdown-report", '', "");
+  window.location.href = url;
 });
