@@ -11,33 +11,36 @@ $(() => {
     document.getElementById("master-play").setAttribute("src", s);
     document.getElementById("master-play").play();
   }
-}),
-  $("#slider-scene").on("input", (e) => {
-    const slugList = $("#slugList")[0].innerText.split("@@");
-    const slug = slugList[e.target.value].substring(1);
-    const noteList = $("#noteList")[0].innerText.split("@@");
-    const note = noteList[e.target.value].substring(1);
-    $("#input-note")[0].value = note;
-    $("#output")[0].innerText = `${e.target.value}:- ${slug}`;
-  }),
-  $("#slider-scene").on("change", (e) => {
-    const sceneNumber = e.target.value;
-    const url = buildUrl("showreel", sceneNumber, 0, "yes");
+});
+
+$("#slider-scene").on("input", (e) => {
+  const slugList = $("#slugList")[0].innerText.split("@@");
+  const slug = slugList[e.target.value].substring(1);
+  const noteList = $("#noteList")[0].innerText.split("@@");
+  const note = noteList[e.target.value].substring(1);
+  $("#input-note")[0].value = note;
+  $("#output")[0].innerText = `${e.target.value}:- ${slug}`;
+});
+
+$("#slider-scene").on("change", (e) => {
+  const sceneNumber = e.target.value;
+  const url = buildUrl("showreel", sceneNumber, 0, "yes");
+  window.location.href = url;
+});
+
+$("#btn-next-element").on("click", () => {
+  if (
+    parseInt($("#elementNumber")[0].innerText) <
+    parseInt($("#highestElement")[0].innerText)
+  ) {
+    const elementNumber = parseInt($("#elementNumber")[0].innerText) + 1;
+    const sceneNumber = parseInt($("#sceneNumber")[0].innerText);
+    const url = buildUrl("showreel", sceneNumber, elementNumber, "yes");
     window.location.href = url;
-  }),
-  $("#btn-next-element").on("click", () => {
-    if (
-      parseInt($("#elementNumber")[0].innerText) <
-      parseInt($("#highestElement")[0].innerText)
-    ) {
-      const elementNumber = parseInt($("#elementNumber")[0].innerText) + 1;
-      const sceneNumber = parseInt($("#sceneNumber")[0].innerText);
-      const url = buildUrl("showreel", sceneNumber, elementNumber, "yes");
-      window.location.href = url;
-    } else {
-      $("#btn-next-scene").trigger("click");
-    }
-  }),
+  } else {
+    $("#btn-next-scene").trigger("click");
+  }
+}),
   $("#btn-next-scene").on("click", () => {
     const elementNumber = 0;
     const sceneNumber = parseInt($("#sceneNumber")[0].innerText) + 1;

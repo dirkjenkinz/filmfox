@@ -78,3 +78,10 @@
     height: 220px;
     padding: 0 20px;
 }
+
+input[type=range][orient=vertical] {
+  appearance: slider-vertical;
+  width: 10px;
+  height: 400px;
+  padding: 0 5px;
+}

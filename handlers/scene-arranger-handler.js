@@ -11,8 +11,12 @@ const sceneArrangerHandler = async (req, res) => {
   const full = u.query.full;
   const elementNumber = u.query.elementNumber;
   const sceneNumber = u.query.sceneNumber;
+  let top = u.query.top;
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
   const { shotList, script, sceneOrder, credits } = filmFoxFile;
+
+  if (!top) top = 1;
+
   if (!hidden) {
     hidden = [];
     for (let i = 0; i < shotList.length; i++) {
@@ -34,6 +38,12 @@ const sceneArrangerHandler = async (req, res) => {
     slugList.push(slugs[sceneNumber]);
   });
 
+  top = parseInt(top);
+  let finish = 12 + parseInt(top);
+  if (finish > shotList.length - 1) finish = shotList.length;
+  if (finish < top ) finish = top;
+
+
   if (full === "yes") {
     res.render("full-shot-list.njk", {
       title,
@@ -47,6 +57,8 @@ const sceneArrangerHandler = async (req, res) => {
     });
   } else {
     res.render("scene-arranger.njk", {
+      top,
+      finish,
       title,
       shotList: sList,
       slugList,
