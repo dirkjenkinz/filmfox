@@ -32,6 +32,13 @@ $("#btn-reveal-all").on("click", () => {
   }
 });
 
+$(".btn-scene").on("click", (e) => {
+  const sceneNumber = e.target.value;
+  const elementNumber = $('#elementNumber')[0].innerText;
+  const title = $('#filmTitle')[0].innerText;
+ window.location.href = `/scene-shot-list?title=${title}&sceneNumber=${sceneNumber}&elementNumber=${elementNumber}`;
+});
+
 $(".btn-down").on("click", (e) => {
   const size = $("#size")[0].innerText;
   const hidden = [];
@@ -67,5 +74,7 @@ $("#slider-scene").on("input", (e) => {
 $("#slider-scene").on("change", (e) => {
   const top = e.target.value;
   const title = $('#filmTitle')[0].innerText;
-  window.location.href = `/scene-arranger?top=${top}&title=${title}`;
+  const elementNumber = $("#elementNumber")[0].innerText;
+  const sceneNumber = $("#sceneNumber")[0].innerText;
+  window.location.href = `/scene-arranger?top=${top}&title=${title}&elementNumber=${elementNumber}&sceneNumber=${sceneNumber}`;
 });

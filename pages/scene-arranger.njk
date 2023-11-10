@@ -4,31 +4,31 @@
   <p id='top' hidden="hidden">{{top}}</p>
   <div class='row top'>
     <div class='row tableFixHead3'>
-      <div class='col-md-11' id='test0'>
-        <table id='test1'>
-          <tbody id='test2'>
+      <div class='col-md-8'>
+        <table>
+          <tbody style='font-size: 80%;'>
             {% set num = 0 %}
             {% for i in range(top, finish) -%}
-              <tr id='row_{{i}}' class='display-box' style='font-size:75%;'>
+              <tr id='row_{{i}}' class='display-box' style='font-size:80%;'>
                 <td class='data-left' style='width: 6%; font-weight: bold;'>Scene
                   {{shotList[i].scene}}</td>
                 <td class='data-left' colspan='2' style='width: 33%;'>{{slugList[i]}}</td>
                 <td class='data-left' style='width: 33%;'>{{shotList[i].note}}</td>
                 <td style='width: 4%;'>
                   {% if i == 1 %}
-                    <button class='btn btn-block btn-edit btn-sm btn-up' id='btn-up-{{i}}' disabled="disabled">Up
+                    <button class='btn btn-block btn-edit btn-sm btn-up' style='font-size: 80%;' id='btn-up-{{i}}' disabled="disabled">Up
                     </button>
                   {% else %}
-                    <button class='btn btn-block btn-edit btn-sm btn-up' id='btn-up-{{i}}' value='{{i}}'>Up
+                    <button class='btn btn-block btn-edit btn-sm btn-up' style='font-size: 80%;' id='btn-up-{{i}}' value='{{i}}'>Up
                     </button>
                   {% endif %}
                 </td>
                 <td style='width: 4%;'>
                   {% if i == size - 1 %}
-                    <button class='btn btn-block btn-edit btn-sm btn-down' id='btn-down-{{i}}' disabled="disabled">Down
+                    <button class='btn btn-block btn-edit btn-sm btn-down'  style='font-size: 80%;'  id='btn-down-{{i}}' disabled="disabled">Down
                     </button>
                   {% else %}
-                    <button class='btn btn-block btn-edit btn-sm btn-down' id='btn-down-{{i}}' value='{{i}}'>Down
+                    <button class='btn btn-block btn-edit btn-sm btn-down'  style='font-size: 80%;'  id='btn-down-{{i}}' value='{{i}}'>Down
                     </button>
                   {% endif %}
                 </td>

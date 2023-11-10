@@ -14,14 +14,18 @@
             {% set num = 0 %}
             {% for i in range(1, shotList.length) -%}
               <tr id='row_{{i}}' style='font-size:80%;'>
-                <td>Scene
-                  {{shotList[i].scene}}:
-                  {{slugList[i]}}</td>
+                <td>
+                  <button class='btn btn-block btn-edit btn-sm btn-scene' id='btn-scene-{{i}}' value='{{i}}'>
+                    Scene
+                    {{shotList[i].scene}}:
+                    {{slugList[i]}}
+                  </button>
+                </td>
                 <td>{{shotList[i].note}}</td>
               </tr>
               <tr>
                 <td colspan='4'>
-                  <table id='table-shots-list-{{i}}' hidden>
+                  <table id='table-shots-list-{{i}}' hidden="hidden">
                     <thead>
                       <tr>
                         <th class='data-central' style='width: 7%;'>Shot #</th>

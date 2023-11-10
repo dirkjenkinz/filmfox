@@ -15,5 +15,5 @@ $(".btn-add-character").on("click", () => {
   const title = $("#filmTitle")[0].innerText;
   const sceneNumber = $("#sceneNumber")[0].innerText;
   const elementNumber = $("#elementNumber")[0].innerText;
-  window.location.href = `/add-character?title=${title}&character=${character}`;
+  window.location.href = `/add-character?title=${title}&character=${character}&elementNumber=${elementNumber}&sceneNumber=${sceneNumber}`;
 });

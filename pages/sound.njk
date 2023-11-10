@@ -5,7 +5,7 @@
     <div class='col-md-12'>
       <table class='table-bordered table-sm table-dark table-grid' id='tab_img'>
         <tbody>
-          <tr>
+          <tr style='font0size: 80%'>
             <td class='table-data'>
               {% if readyForMaster === 'yes' %}
                 <button type='button' class='btn btn-edit btn-block btn-sm' id='btn-master'>Create/Update Master</button>
@@ -13,14 +13,16 @@
                 <button type='button' class='btn btn-edit btn-block btn-sm' disabled>Create/Update Master</button>
                 {% endif %}
               </td>
-              <td class='table-data' colspan='3'>
+              <td>&nbsp;</td>
+              <td class='table-data' colspan='2'>
                 {% if masterExists == 'yes' %}
                   <button type='button' class='btn btn-edit btn-block btn-sm' id='btn-play-master'>Play Master</button>
                 {% else %}
                   <button type='button' class='btn btn-edit btn-block btn-sm' id='btn-play-master' disabled="disabled">Play Master</button>
                 {% endif %}
               </td>
-              <td class='table-data' colspan='5'>
+              <td colspan='3'>&nbsp;</td>
+              <td class='table-data' style='align-contents: center;'>
                 <audio id='master-play' controls="controls">
                   <source src='' type="audio/mpeg">
                 </audio>
@@ -33,10 +35,10 @@
     <div class='row'>
       <div class='col-md-12'>
         <table class='table-bordered table-sm table-dark table-grid' id='tab_img'>
-          <tbody>
-              {% for i in range(0, script.length, 4) -%}
+          <tbody  style='font-size: 80%;'>
+              {% for i in range(0, script.length, 5) -%}
                 <tr>
-                  {% for num in range(0, 4) -%}
+                  {% for num in range(0, 5) -%}
                     {% if i + num < script.length %}
                       <td class='table-data'>
                         {% if merged[i + num] != 'yes' %}
