@@ -152,6 +152,7 @@ const convertHandler = async (req, res) => {
     await createDirectory(`${title}/sheets`);
     await createDirectory(`${title}/sounds`);
     await createDirectory(`${title}/videos`);
+    await createDirectory(`${title}/breakdown`);
 
     const directoryPath = path.join(__dirname, "../data");
     fs.copyFile(

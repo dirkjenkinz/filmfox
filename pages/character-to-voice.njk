@@ -19,9 +19,9 @@
             <tbody>
               {% for i in range(0, characters.length) -%}
                 <tr>
-                  <td class="table-data" id="char_{{i}}">{{characters[i][0]}}</td>
+                  <td class="table-data" id="char_{{i}}" style='font-size:80%;'>{{characters[i][0]}}</td>
                   <td class="data-display">
-                    <select name="voices_{{i}}" id="voices_{{i}}" style='background:black;'>
+                    <select name="voices_{{i}}" id="voices_{{i}}" style='background:black; font-size:80%;'>
                       {% for j in range(0, voice_data.length) -%}
                         {% if
                         characters[i][1] == voice_data[j][0] %}
@@ -36,7 +36,7 @@
                       {%- endfor %}
                     </select>
                   </td>
-                  <td>
+                  <td class='table-data'>
                     <button class='btn-edit btn-play-sample' value='{{characters[i][2]}}'>Sample</button>
                   </td>
                 </tr>
@@ -50,14 +50,14 @@
             <thead>
               <tr>
                 <th class='table-header'>Voice</th>
-                <th>
+                <th class='table-data'>
                   Description
                 </th>
-                <th>Gender</th>
-                <th>
+                <th class='table-data'>Gender</th>
+                <th class='table-data'>
                   Accent
                 </th>
-                <th>Age</th>
+                <th class='table-data'>Age</th>
                 <th></th>
               </tr>
             </thead>

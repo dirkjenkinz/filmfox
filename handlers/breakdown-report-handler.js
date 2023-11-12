@@ -14,7 +14,7 @@ const breakdownReportHandler = async (req, res) => {
   const sceneNumber = u.query.sceneNumber;
   const elementNumber = u.query.elementNumber;
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
-  let { script, elements, breakdown } = filmFoxFile;
+  let { script, breakdown } = filmFoxFile;
 
   res.render("breakdown-report.njk", {
     title,

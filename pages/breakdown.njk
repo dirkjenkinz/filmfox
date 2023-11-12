@@ -97,7 +97,7 @@
               </form>
             </tr>
             <tr>
-              <td colspan='2' style='background: cyan; font-size:50%;'>&nbsp;</td>
+              <td colspan='2' style='background: steelblue; font-size:50%;'>&nbsp;</td>
             </tr>
           </tbody>
         </table>
@@ -115,7 +115,7 @@
       {% endfor %}
     </div>
 
-    <div class='col-md-2 tableFixHead3' style='font-size: 85%;'>
+    <div class='col-md-2 tableFixHead3' style='font-size: 80%; background:steelblue;'>
       {% for i in range(0, breakdown.length) -%}
         <button type='button' class='btn-control' id='btn-control-{{headers[i]}}' value='{{headers[i]}}' hidden>Reveal {{headers[i]}}</button>
       {% endfor %}

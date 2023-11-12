@@ -36,6 +36,7 @@ const deleteCharacterFromSceneRouter = require('./routes/delete-character-from-s
 const breakdownRouter = require('./routes/breakdown.js');
 const saveBreakdownRouter = require('./routes/save-breakdown.js');
 const breakdownReportRouter = require('./routes/breakdown-report.js');
+const breakdownPDFRouter = require('./routes/breakdown-pdf.js');
 
 const nunjucks = require('nunjucks');
 const bodyParser = require('body-parser');
@@ -90,6 +91,7 @@ app.use('/delete-character-from-scene', deleteCharacterFromSceneRouter);
 app.use('/breakdown', breakdownRouter);
 app.use('/save-breakdown', saveBreakdownRouter);
 app.use('/breakdown-report', breakdownReportRouter);
+app.use('/breakdown-pdf', breakdownPDFRouter);
 
 app.listen(PORT, (err) => {
     smartLog('paramount', `FilmFox is up & running on port ${PORT}`);
