@@ -32,7 +32,7 @@ const sceneShotListHandler = async (req, res) => {
   const u = url.parse(req.originalUrl, true);
   const title = u.query.title;
   let sceneNumber = u.query.sceneNumber;
-  const elementNumber = u.query.sceneNumber;
+  const elementNumber = u.query.elementNumber;
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
   const { script, shotList, charactersByScene } = filmFoxFile;
   if (!sceneNumber) sceneNumber = 0;

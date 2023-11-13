@@ -27,7 +27,7 @@ $(".shot-select").on("change", (e) => {
   const line = e.target.id;
   const val = e.target.value;
   let l1 = line.substring(5).split('_');
-  const url = buildUrl('scene-shot-list', '', '');
+  const url = buildUrl('update-shot-list', '', '');
   window.location.href = `${url}&val=${val}&item=${l1[0]}&line=${l1[1]}`
 })
 
@@ -42,7 +42,7 @@ $(".shot-select").on("change", (e) => {
     const line = e.target.id.substring(17);
     const val = e.target.value;
     const url = buildUrl('update-shot-list', '', '');
-    href = `${url}&val=${val}&item=description&line=${line}`
+    window.location.href = `${url}&val=${val}&item=description&line=${line}`
    })
 
    $(".btn-next").on("click", (e) => {
