@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-const url = require("url");
-const { smartLog } = require("../services/smart-log");
-const { readFile } = require("../services/file-service");
+const url = require('url');
+const { smartLog } = require('../services/smart-log');
+const { readFile } = require('../services/file-service');
 
 const editCharacterHandler = async (req, res) => {
-  smartLog("info", "ENTERING EDIT CHARACTER HANDLER");
+  smartLog('info', 'ENTERING EDIT CHARACTER HANDLER');
   const u = url.parse(req.originalUrl, true);
   const title = u.query.title;
   const sceneNumber = u.query.sceneNumber;
@@ -42,12 +42,12 @@ const editCharacterHandler = async (req, res) => {
     }
   });
 
-  res.render("edit-character.njk", {
+  res.render('edit-character.njk', {
     character,
     title,
     elements,
     currentVoice,
-    page: "Edit Character",
+    page: 'Edit Character',
     msg,
     sceneNumber,
     elementNumber,

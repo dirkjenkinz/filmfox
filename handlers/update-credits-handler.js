@@ -1,10 +1,10 @@
-"use strict";
-const url = require("url");
-const { smartLog } = require("../services/smart-log");
-const { readFile, writeFile } = require("../services/file-service");
+'use strict';
+const url = require('url');
+const { smartLog } = require('../services/smart-log');
+const { readFile, writeFile } = require('../services/file-service');
 
 const updateCreditsHandler = async (req, res) => {
-  smartLog("info", "ENTERING UPDATE CREDIT HANDLER");
+  smartLog('info', 'ENTERING UPDATE CREDIT HANDLER');
   const u = url.parse(req.originalUrl, true);
   const title = u.query.title;
   const val = u.query.val;
@@ -19,7 +19,7 @@ const updateCreditsHandler = async (req, res) => {
       director: '',
       writer: '',
       producer: '',
-    }
+    };
   };
   
   switch (credit) {

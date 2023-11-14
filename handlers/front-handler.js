@@ -1,24 +1,24 @@
-"use strict";
+'use strict';
 
-const dotenv = require("dotenv");
+const dotenv = require('dotenv');
 dotenv.config();
 const {
   getFileList,
   writeFile,
   getFFFList,
-} = require("../services/file-service");
+} = require('../services/file-service');
 const {
   getUserSubscriptionInfo,
   getVoices,
-} = require("../services/elevenLabs");
-const { smartLog } = require("../services/smart-log");
+} = require('../services/elevenLabs');
+const { smartLog } = require('../services/smart-log');
 
 const frontHandler = async (req, res) => {
-  smartLog("info", "entering front handler");
+  smartLog('info', 'entering front handler');
   const api_key = process.env.APIKEY;
   let fffList = await getFFFList();
-  const fdxList = await getFileList("scripts", "fdx");
-  let subscription = "";
+  const fdxList = await getFileList('scripts', 'fdx');
+  let subscription = '';
   if (api_key) {
     let reset = '';
     let resetDate ='';
@@ -27,9 +27,9 @@ const frontHandler = async (req, res) => {
     let voices = '';
 
     subscription = await getUserSubscriptionInfo(api_key);
-    if (subscription !== "") {
+    if (subscription !== '') {
       subscription = JSON.parse(subscription);
-      if (subscription.tier !== "free") {
+      if (subscription.tier !== 'free') {
         reset = subscription.next_character_count_reset_unix * 1000;
         resetDate = new Date(reset);
         subscription.next_character_count_reset = resetDate.toLocaleString();
@@ -41,7 +41,7 @@ const frontHandler = async (req, res) => {
       }
     }
     voices = await getVoices(api_key);
-    await writeFile(JSON.stringify(voices), "voices.json");
+    await writeFile(JSON.stringify(voices), 'voices.json');
   }
   const converted = [];
   fdxList.forEach((f) => {
@@ -52,7 +52,7 @@ const frontHandler = async (req, res) => {
     }
   });
 
-  res.render("front.njk", {
+  res.render('front.njk', {
     api_key,
     fffList,
     fdxList,

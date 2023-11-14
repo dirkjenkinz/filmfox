@@ -1,28 +1,28 @@
-"use strict";
+'use strict';
 
-const fs = require("fs");
-const path = require("path");
-const url = require("url");
-const dotenv = require("dotenv");
+const fs = require('fs');
+const path = require('path');
+const url = require('url');
+const dotenv = require('dotenv');
 dotenv.config();
-const { smartLog } = require("../services/smart-log");
-var parseString = require("xml2js").parseString;
+const { smartLog } = require('../services/smart-log');
+var parseString = require('xml2js').parseString;
 
 const {
   writeFile,
   createDirectory,
   readFile,
   readScriptData,
-} = require("../services/file-service");
+} = require('../services/file-service');
 
 const addCharacter = (elements) => {
-  let currentCharacter = "";
+  let currentCharacter = '';
   const el = [];
   elements.forEach((e) => {
-    if (e.type === "Transition" || e.type === "Scene Heading" || e.type === 'Action') {
-      e.character = "NARRATOR";
+    if (e.type === 'Transition' || e.type === 'Scene Heading' || e.type === 'Action') {
+      e.character = 'NARRATOR';
       el.push(e);
-    } else if (e.type === "Character") {
+    } else if (e.type === 'Character') {
       currentCharacter = e.text.toUpperCase();
     } else {
       e.character = currentCharacter;
@@ -48,23 +48,23 @@ const buildCharactersByScene = (script) => {
 };
 
 const strip = (text) => {
-  let newText = "";
+  let newText = '';
   text.forEach((t) => {
-    if (typeof t === "string") {
+    if (typeof t === 'string') {
       newText += t;
     } else {
-      newText += t["_"];
+      newText += t['_'];
     }
   });
   return [newText];
 };
 
 const convertHandler = async (req, res) => {
-  smartLog("info", "ENTERING CONVERT HANDLER");
+  smartLog('info', 'ENTERING CONVERT HANDLER');
   const u = url.parse(req.originalUrl, true);
   let title = u.query.script;
   const api_key = process.env.APIKEY;
-  const voices = await readFile("voices.json");
+  const voices = await readFile('voices.json');
   const script = await readScriptData(`${title}`);
   parseString(script, async (err, result) => {
     const paragraphs = result.FinalDraft.Content[0].Paragraph;
@@ -73,14 +73,14 @@ const convertHandler = async (req, res) => {
       if (p.Text.length > 1) {
         p.Text = strip(p.Text);
       }
-      //    if (p.$.Type === "Character") {
-      if (typeof p.Text[0] === "object") {
-        p.Text[0] = p.Text[0]["_"];
+      //    if (p.$.Type === 'Character') {
+      if (typeof p.Text[0] === 'object') {
+        p.Text[0] = p.Text[0]['_'];
       }
-      if (p.$.Type === "Character") {
-        const ptr = p.Text[0].indexOf("(");
+      if (p.$.Type === 'Character') {
+        const ptr = p.Text[0].indexOf('(');
         if (ptr !== -1) {
-          p.Text[0] = p.Text[0].substring(0, p.Text[0].indexOf("(") - 1);
+          p.Text[0] = p.Text[0].substring(0, p.Text[0].indexOf('(') - 1);
         }
       }
       //    }
@@ -89,11 +89,11 @@ const convertHandler = async (req, res) => {
     let elements = [];
     let ptr = 0;
     paragraphs.forEach((p) => {
-      if (p.$.Type === "Scene Heading") {
+      if (p.$.Type === 'Scene Heading') {
         p.Text[0] = p.Text[0].toUpperCase();
         ptr++;
       }
-      if (p.$.Type !== "Parenthetical") {
+      if (p.$.Type !== 'Parenthetical') {
         const element = { num: ptr, type: p.$.Type, text: p.Text[0] };
         elements.push(element);
       }
@@ -108,15 +108,15 @@ const convertHandler = async (req, res) => {
     }
 
     el.forEach((e) => {
-      if (e.type !== "Character") {
+      if (e.type !== 'Character') {
         let element = {
           character: e.character,
           dialogue: e.text,
-          voice: "",
-          sound: "",
-          image: "blank.jpg",
-          duration: "",
-          type: "still",
+          voice: '',
+          sound: '',
+          image: 'blank.jpg',
+          duration: '',
+          type: 'still',
         };
         script[e.num].push(element);
       }
@@ -128,15 +128,15 @@ const convertHandler = async (req, res) => {
         scene: index,
         lines: [
           {
-            shot: "",
-            angle: "",
-            move: "",
-            audio: "",
-            subject: "",
-            description: "",
+            shot: '',
+            angle: '',
+            move: '',
+            audio: '',
+            subject: '',
+            description: '',
           },
         ],
-        note: "",
+        note: '',
       });
     });
 
@@ -154,14 +154,14 @@ const convertHandler = async (req, res) => {
     await createDirectory(`${title}/videos`);
     await createDirectory(`${title}/breakdown`);
 
-    const directoryPath = path.join(__dirname, "../data");
+    const directoryPath = path.join(__dirname, '../data');
     fs.copyFile(
-      `./blank.jpg`,
+      './blank.jpg',
       `${directoryPath}/${title}/images/blank.jpg`,
       (err) => {
         if (err) throw err;
         smartLog(
-          "info",
+          'info',
           `blank.jpg was copied to ${directoryPath}/${title}/images/`
         );
       }
@@ -182,10 +182,10 @@ const convertHandler = async (req, res) => {
     const characterList = [];
 
     uniqueCharacters.forEach((c) => {
-      characterList.push([c, ""]);
+      characterList.push([c, '']);
     });
 
-    const credits = { title: title, producer: "", writer: "", director: "" };
+    const credits = { title: title, producer: '', writer: '', director: '' };
 
     const charactersByScene = buildCharactersByScene(script);
     const nonSpeakers = [];

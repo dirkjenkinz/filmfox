@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-const url = require("url");
-const { smartLog } = require("../services/smart-log");
-const { readFile } = require("../services/file-service");
+const url = require('url');
+const { smartLog } = require('../services/smart-log');
+const { readFile } = require('../services/file-service');
 
 const creditsHandler = async (req, res) => {
-  smartLog("info", "ENTERING CREDITS HANDLER");
+  smartLog('info', 'ENTERING CREDITS HANDLER');
   const u = url.parse(req.originalUrl, true);
   const title = u.query.title;
   const sceneNumber = u.query.sceneNumber;
@@ -20,17 +20,17 @@ const creditsHandler = async (req, res) => {
       director: '',
       writer: '',
       producer: '',
-    }
+    };
   };
 
   if (!credits.title){
     credits.title = title;
   };
 
-  res.render("credits.njk", {
+  res.render('credits.njk', {
     title,
     credits,
-    page: "Credits",
+    page: 'Credits',
     sceneNumber,
     elementNumber,
   });

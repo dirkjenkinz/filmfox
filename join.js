@@ -1,13 +1,13 @@
-const path = require("path");
-let videoStitch = require("video-stitch");
+const path = require('path');
+let videoStitch = require('video-stitch');
 let videoConcat = videoStitch.concat;
-const directoryPath = path.join(__dirname, "./data/Satellite/videos");
-const outPath = path.join(__dirname, "./joined");
+const directoryPath = path.join(__dirname, './data/Satellite/videos');
+const outPath = path.join(__dirname, './joined');
 const output = `${outPath}/joined.mp4`;
-const { getFileList } = require("./services/file-service");
+const { getFileList } = require('./services/file-service');
 
 const main = async () => {
-  const files = await getFileList("data/Satellite/videos", "mp4");
+  const files = await getFileList('data/Satellite/videos', 'mp4');
 
   const input = [];
 

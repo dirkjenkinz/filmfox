@@ -1,10 +1,10 @@
-"use strict";
-const url = require("url");
-const { smartLog } = require("../services/smart-log");
-const { readFile, writeFile } = require("../services/file-service");
+'use strict';
+const url = require('url');
+const { smartLog } = require('../services/smart-log');
+const { readFile, writeFile } = require('../services/file-service');
 
 const updateNoteHandler = async (req, res) => {
-  smartLog("info", "ENTERING UPDATE NOTE HANDLER");
+  smartLog('info', 'ENTERING UPDATE NOTE HANDLER');
   const u = url.parse(req.originalUrl, true);
   const title = u.query.title;
   const sceneNumber = u.query.sceneNumber;

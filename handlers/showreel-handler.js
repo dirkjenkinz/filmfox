@@ -1,17 +1,17 @@
-"use strict";
-const url = require("url");
-const { smartLog } = require("../services/smart-log");
-const { readFile } = require("../services/file-service");
+'use strict';
+const url = require('url');
+const { smartLog } = require('../services/smart-log');
+const { readFile } = require('../services/file-service');
 
 const showreelHandler = async (req, res) => {
-  smartLog("info", "ENTERING SHOWREEL HANDLER");
+  smartLog('info', 'ENTERING SHOWREEL HANDLER');
   const u = url.parse(req.originalUrl, true);
   const title = u.query.title;
   let sceneNumber = u.query.sceneNumber;
   let elementNumber = u.query.elementNumber;
   const speak = u.query.speak;
   let mute = u.query.mute;
-  if (!mute) mute = "MUTE";
+  if (!mute) mute = 'MUTE';
   const msg = u.query.msg;
 
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
@@ -20,7 +20,7 @@ const showreelHandler = async (req, res) => {
   if (!sceneNumber) sceneNumber = 0;  
   if (!elementNumber) elementNumber = 0;
 
-  if (elementNumber === "-1") {
+  if (elementNumber === '-1') {
     sceneNumber--;
     elementNumber = script[sceneNumber].length - 1;
   }
@@ -29,15 +29,15 @@ const showreelHandler = async (req, res) => {
   const element = script[sceneNumber][elementNumber];
   const slug = script[sceneNumber][0].dialogue;
 
-  let audio = "";
-  if (element.sound && speak == "yes") {
+  let audio = '';
+  if (element.sound && speak == 'yes') {
     audio = `../data/${title}/sounds/${element.sound}`;
   }
 
   let chars = [];
 
   characterList.forEach((c) => {
-    if (c[0] !== "NARRATOR") {
+    if (c[0] !== 'NARRATOR') {
       chars.push(c[0]);
     }
   });
@@ -61,11 +61,11 @@ const showreelHandler = async (req, res) => {
   const noteList = [];
   const slugList = [];
   script.forEach((s) => {
-    noteList.push(s.note + "@@");
-    slugList.push(s[0].dialogue + "@@");
+    noteList.push(s.note + '@@');
+    slugList.push(s[0].dialogue + '@@');
   });
 
-  res.render("showreel.njk", {
+  res.render('showreel.njk', {
     sceneNumber,
     elementNumber,
     highestElement: script[sceneNumber].length - 1,
@@ -74,7 +74,7 @@ const showreelHandler = async (req, res) => {
     element,
     mute,
     slug,
-    page: "Showreel",
+    page: 'Showreel',
     audio,
     note: shotList[sceneNumber].note,
     characterList: charactersByScene[sceneNumber].sort(),

@@ -1,20 +1,20 @@
-"use strict";
-const url = require("url");
-const { smartLog } = require("../services/smart-log");
-const { readFile, getFileList } = require("../services/file-service");
+'use strict';
+const url = require('url');
+const { smartLog } = require('../services/smart-log');
+const { readFile, getFileList } = require('../services/file-service');
 
 const voicesHandler = async (req, res) => {
-  smartLog("info", "ENTERING VOICES HANDLER");
+  smartLog('info', 'ENTERING VOICES HANDLER');
   const u = url.parse(req.originalUrl, true);
-  let voices = await readFile("voices.json");
-  let generated = await getFileList("data/samples", "mp3");
+  let voices = await readFile('voices.json');
+  let generated = await getFileList('data/samples', 'mp3');
 
   const gen = [];
   voices.forEach((v) => {
   if (generated.indexOf(`${v.voice_id}.mp3`) > -1) {
-    gen.push("yes");
+    gen.push('yes');
   } else {
-    gen.push("no");
+    gen.push('no');
   };
 });
 
@@ -28,12 +28,12 @@ const voicesHandler = async (req, res) => {
       age: v.labels.age,
       gender: v.labels.gender,
       preview: v.preview_url,
-      downloaded: "no",
+      downloaded: 'no',
       generated: gen[index],
     });
   });
 
-  res.render("voices.njk", {
+  res.render('voices.njk', {
     vox,
     page: 'Voices',
   });

@@ -1,10 +1,10 @@
-"use strict";
-const url = require("url");
-const { smartLog } = require("../services/smart-log");
-const { readFile, getFileList } = require("../services/file-service");
+'use strict';
+const url = require('url');
+const { smartLog } = require('../services/smart-log');
+const { readFile, getFileList } = require('../services/file-service');
 
 const sheetsHandler = async (req, res) => {
-  smartLog("info", "ENTERING SHEETS HANDLER");
+  smartLog('info', 'ENTERING SHEETS HANDLER');
   const u = url.parse(req.originalUrl, true);
   const title = u.query.title;
   let sheet = u.query.sheet;
@@ -27,12 +27,12 @@ const sheetsHandler = async (req, res) => {
   });
 
   script.forEach((s) => {
-    if (s.slug === "yes") {
+    if (s.slug === 'yes') {
       slugs.push(s.dialogue);
     }
   });
 
-  const sheetsList = await getFileList(`data/${title}/sheets/`, "pdf");
+  const sheetsList = await getFileList(`data/${title}/sheets/`, 'pdf');
 
   const sheetNos = [];
 
@@ -42,16 +42,16 @@ const sheetsHandler = async (req, res) => {
     sheetNos.push(comp);
   });
 
-  let exists = "no";
+  let exists = 'no';
   if (sheetNos.indexOf(parseInt(sheet)) !== -1) {
-    exists = "yes";
+    exists = 'yes';
   }
 
-  res.render("sheets.njk", {
+  res.render('sheets.njk', {
     title,
     shotList: sList,
     slugs: slugList,
-    page: "Sheets",
+    page: 'Sheets',
     size: shotList.length - 1,
     sheet: sheet,
     realTitle: credits.title,

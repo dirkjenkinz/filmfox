@@ -1,8 +1,8 @@
-const fs = require("fs");
-const path = require("path");
-const mp3Duration = require("mp3-duration");
-const { smartLog } = require("../services/smart-log");
-const sound = require("sound-play");
+const fs = require('fs');
+const path = require('path');
+const mp3Duration = require('mp3-duration');
+const { smartLog } = require('../services/smart-log');
+const sound = require('sound-play');
 
 const fileExists = (file) => {
   try {
@@ -12,19 +12,19 @@ const fileExists = (file) => {
       return false;
     }
   } catch (err) {
-    smartLog("error", "err");
+    smartLog('error', 'err');
     return false;
   }
 };
 
 const readFile = async (file) => {
-  smartLog("info", `readFile - getting data for ${file}`);
-  const directoryPath = path.join(__dirname, "../data");
+  smartLog('info', `readFile - getting data for ${file}`);
+  const directoryPath = path.join(__dirname, '../data');
   return new Promise((resolve, reject) => {
     fs.readFile(`${directoryPath}/${file}`, (err, data) => {
       if (err) {
-        smartLog("error", "error getting data");
-        smartLog("error", err.cause);
+        smartLog('error', 'error getting data');
+        smartLog('error', err.cause);
         reject(err);
       } else {
         resolve(JSON.parse(data));
@@ -34,13 +34,13 @@ const readFile = async (file) => {
 };
 
 const readScriptData = async (file) => {
-  smartLog("info", `readScriptData - getting data for ${file}`);
-  const directoryPath = path.join(__dirname, "../scripts");
+  smartLog('info', `readScriptData - getting data for ${file}`);
+  const directoryPath = path.join(__dirname, '../scripts');
   return new Promise((resolve, reject) => {
     fs.readFile(`${directoryPath}/${file}`, (err, data) => {
       if (err) {
-        smartLog("error", "error getting data");
-        smartLog("error", err.cause);
+        smartLog('error', 'error getting data');
+        smartLog('error', err.cause);
         reject(err);
       } else {
         resolve(data);
@@ -50,50 +50,50 @@ const readScriptData = async (file) => {
 };
 
 const playSoundFile = async (title, file, sub) => {
-  smartLog("info", `playing sound file - ${title}/${sub}/${file}`);
+  smartLog('info', `playing sound file - ${title}/${sub}/${file}`);
   const sFile = path.join(__dirname, `../data/${title}/${sub}/${file}`);
 
   try {
     await sound.play(sFile);
-    smartLog("info", "done");
+    smartLog('info', 'done');
   } catch (error) {
-    smartLog("error", error);
+    smartLog('error', error);
   }
 };
 
 const writeFile = async (data, file) => {
-  smartLog("info", `writing ${file}`);
-  const directoryPath = path.join(__dirname, "../data");
+  smartLog('info', `writing ${file}`);
+  const directoryPath = path.join(__dirname, '../data');
   return new Promise((resolve, reject) => {
     fs.writeFile(`${directoryPath}/${file}`, data, (err, msg) => {
       if (err) {
-        smartLog("error", err.cause);
+        smartLog('error', err.cause);
         reject(err);
       } else {
-        resolve("ok");
+        resolve('ok');
       }
     });
   });
 };
 
 const deleteFile = async (title, directory, fileName) => {
-  smartLog("info", `deleting ${title}/${directory}/${fileName}`);
+  smartLog('info', `deleting ${title}/${directory}/${fileName}`);
   const directoryPath = path.join(__dirname, `../data/${title}/${directory}`);
   return new Promise((resolve, reject) => {
     fs.unlink(`${directoryPath}/${fileName}`, (err, msg) => {
       if (err) {
-        smartLog("error", err.cause);
+        smartLog('error', err.cause);
         reject(err);
       } else {
-        resolve("ok");
+        resolve('ok');
       }
     });
   });
 };
 
 const createDirectory = (directory) => {
-  smartLog("info", "create directory");
-  const directoryPath = path.join(__dirname, "../data");
+  smartLog('info', 'create directory');
+  const directoryPath = path.join(__dirname, '../data');
   if (!fs.existsSync(`${directoryPath}/${directory}`)) {
     fs.mkdirSync(`${directoryPath}/${directory}`);
   }
@@ -107,7 +107,7 @@ const getDuration = (subdirectory, file) => {
   return new Promise((resolve, reject) => {
     mp3Duration(directoryPath, (err, duration) => {
       if (err) {
-        smartLog("error", `${err.cause}`);
+        smartLog('error', `${err.cause}`);
         reject(err);
       } else {
         resolve(duration);
@@ -117,12 +117,12 @@ const getDuration = (subdirectory, file) => {
 };
 
 const getFileList = async (dir, suffix) => {
-  smartLog("info", `get file list for ${dir} - ${suffix}`);
+  smartLog('info', `get file list for ${dir} - ${suffix}`);
   const directoryPath = path.join(__dirname, `../${dir}`);
   return new Promise((resolve, reject) => {
     fs.readdir(directoryPath, (err, files) => {
       if (err) {
-        smartLog("error", "error=", "err");
+        smartLog('error', 'error=', 'err');
         reject(err);
       } else {
         const fList = [];
@@ -139,12 +139,12 @@ const getFileList = async (dir, suffix) => {
 
 function getFFFList() {
   files = [];
-  dir = path.join(__dirname, `../data`);
+  dir = path.join(__dirname, '../data');
   const fileList = fs.readdirSync(dir);
   const dirList = [];
   fileList.forEach((f) => {
     if (fs.statSync(`${dir}/${f}`).isDirectory()) {
-      if (f !== "samples") {
+      if (f !== 'samples') {
         dirList.push(f);
       }
     }
@@ -153,18 +153,18 @@ function getFFFList() {
 }
 
 const getListOfElements = async (subdir) => {
-  smartLog("info", "getting list of elements");
+  smartLog('info', 'getting list of elements');
   const directoryPath = path.join(__dirname, `../data/${subdir}/sounds`);
   return new Promise((resolve, reject) => {
     fs.readdir(directoryPath, (err, files) => {
       if (err) {
-        smartLog("error", "error retrieving list of elements");
+        smartLog('error', 'error retrieving list of elements');
         reject(err);
       } else {
-        smartLog("info", "elements retrieved");
+        smartLog('info', 'elements retrieved');
         const fList = [];
         files.forEach((file) => {
-          if (file.substring(file.length - 4) === `.mp3`) {
+          if (file.substring(file.length - 4) === '.mp3') {
             fList.push(file);
           }
         });
@@ -175,15 +175,15 @@ const getListOfElements = async (subdir) => {
 };
 
 const getListOfImages = async (subdir) => {
-  smartLog("info", "getting list of elements");
+  smartLog('info', 'getting list of elements');
   const directoryPath = path.join(__dirname, `../data/${subdir}/images`);
   return new Promise((resolve, reject) => {
     fs.readdir(directoryPath, (err, files) => {
       if (err) {
-        smartLog("error", "error retrieving list of elements");
+        smartLog('error', 'error retrieving list of elements');
         reject(err);
       } else {
-        smartLog("info", "elements retrieved");
+        smartLog('info', 'elements retrieved');
         const fList = [];
         resolve(files);
       }

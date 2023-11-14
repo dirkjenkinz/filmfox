@@ -1,14 +1,14 @@
-const url = require("url");
-const { smartLog } = require("../services/smart-log");
-const { readFile } = require("../services/file-service");
-const PDFDocument = require("pdfkit");
-const fs = require("fs");
-const path = require("path");
-const pagesPath = path.join(__dirname, "../pages");
-const outPath = path.join(__dirname, "../data");
+const url = require('url');
+const { smartLog } = require('../services/smart-log');
+const { readFile } = require('../services/file-service');
+const PDFDocument = require('pdfkit');
+const fs = require('fs');
+const path = require('path');
+const pagesPath = path.join(__dirname, '../pages');
+const outPath = path.join(__dirname, '../data');
 
 const breakdownPDFHandler = async (req, res) => {
-  smartLog("info", "ENTERING BREAKDOWN PDF HANDLER");
+  smartLog('info', 'ENTERING BREAKDOWN PDF HANDLER');
   const u = url.parse(req.originalUrl, true);
   const title = u.query.title;
   const sceneNumber = u.query.sceneNumber;
@@ -16,7 +16,7 @@ const breakdownPDFHandler = async (req, res) => {
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
   const { breakdown, script, credits } = filmFoxFile;
 
-  let number = "000000" + sceneNumber;
+  let number = '000000' + sceneNumber;
   number = number.substring(number.length - 4);
 
   const doc = new PDFDocument();
@@ -25,14 +25,14 @@ const breakdownPDFHandler = async (req, res) => {
   );
 
   const breakLine =
-    "------------------------------------------------------------------";
+    '------------------------------------------------------------------';
   const lines = [`${title}: SCENE BREAKDOWN - SCENE ${sceneNumber}`, breakLine];
   breakdown[sceneNumber].forEach((b) => {
     lines.push(b[0]);
-    let elements = "";
+    let elements = '';
     for (let j = 1; j < b.length; j++) {
       if (j < b.length - 1) {
-        elements = elements + b[j] + " -- ";
+        elements = elements + b[j] + ' -- ';
       } else {
         elements = elements + b[j];
       }
@@ -41,7 +41,7 @@ const breakdownPDFHandler = async (req, res) => {
     lines.push(breakLine);
   });
 
-  doc.font("Courier-Bold").fontSize(12).text(lines[0], 60, 60);
+  doc.font('Courier-Bold').fontSize(12).text(lines[0], 60, 60);
 
   for (let i = 1; i < lines.length; i++) {
     doc.text(lines[i]);

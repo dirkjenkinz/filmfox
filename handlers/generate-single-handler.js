@@ -1,14 +1,14 @@
-"use strict";
+'use strict';
 
-const url = require("url");
-const { readFile, writeFile, getDuration } = require("../services/file-service");
-const { generateSpeech } = require("../services/elevenLabs");
-const dotenv = require("dotenv");
+const url = require('url');
+const { readFile, writeFile, getDuration } = require('../services/file-service');
+const { generateSpeech } = require('../services/elevenLabs');
+const dotenv = require('dotenv');
 dotenv.config();
-const { smartLog } = require("../services/smart-log");
+const { smartLog } = require('../services/smart-log');
 
 const generateSingleHandler = async (req, res) => {
-  smartLog("info", "ENTERING GENERATE SINGLE HANDLER");
+  smartLog('info', 'ENTERING GENERATE SINGLE HANDLER');
 
   let u = url.parse(req.originalUrl, true);
   const title = u.query.title;
@@ -23,9 +23,9 @@ const generateSingleHandler = async (req, res) => {
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
   const { script } = filmFoxFile;
   const element = script[sceneNumber][elementNumber];
-  let sc = "0000" + sceneNumber;
+  let sc = '0000' + sceneNumber;
   sc = sc.substring(sc.length - 4);
-  let el = "0000" + elementNumber;
+  let el = '0000' + elementNumber;
   el = el.substring(el.length - 4);
   const fileName = `${sc}_${el}.mp3`;
 
@@ -58,7 +58,7 @@ const generateSingleHandler = async (req, res) => {
   );
 
   setTimeout(async () => {
-    if (msg !== "Failed") {
+    if (msg !== 'Failed') {
       script[sceneNumber][elementNumber].sound = fileName;
       script[sceneNumber][elementNumber].duration = await getDuration(title, fileName);
       script[sceneNumber][elementNumber].voice = voice;

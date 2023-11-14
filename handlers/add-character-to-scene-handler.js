@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-const url = require("url");
-const { smartLog } = require("../services/smart-log");
-const { readFile, writeFile } = require("../services/file-service");
+const url = require('url');
+const { smartLog } = require('../services/smart-log');
+const { readFile, writeFile } = require('../services/file-service');
 
 const addCharacterToSceneHandler = async (req, res) => {
-  smartLog("info", "ENTERING ADD CHARACTER TO SCENE HANDLER");
+  smartLog('info', 'ENTERING ADD CHARACTER TO SCENE HANDLER');
   const u = url.parse(req.originalUrl, true);
   const title = u.query.title;
   const character = u.query.character;

@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-const url = require("url");
-const { smartLog } = require("../services/smart-log");
-const { readFile, writeFile } = require("../services/file-service");
+const url = require('url');
+const { smartLog } = require('../services/smart-log');
+const { readFile, writeFile } = require('../services/file-service');
 
 const breakdownHandler = async (req, res) => {
-  smartLog("info", "ENTERING BREAKDOWN HANDLER");
+  smartLog('info', 'ENTERING BREAKDOWN HANDLER');
   const u = url.parse(req.originalUrl, true);
   const title = u.query.title;
   const sceneNumber = u.query.sceneNumber;
@@ -17,12 +17,12 @@ const breakdownHandler = async (req, res) => {
   let { script, elements, breakdown } = filmFoxFile;
 
   if (!entity) {
-    action = "display";
+    action = 'display';
   } else {
     entity = entity.toUpperCase().trim();
   }
 
-  if (action === "add") {
+  if (action === 'add') {
     let elementExists = false;
     breakdown[sceneNumber].forEach((b) => {
       if (b[0] === element) {
@@ -37,7 +37,7 @@ const breakdownHandler = async (req, res) => {
     }
   }
 
-  if (action === "del") {
+  if (action === 'del') {
     for (let i = 0; i < breakdown[sceneNumber].length; i++) {
       if (breakdown[sceneNumber][i][0] === element) {
         let temp = [];
@@ -52,16 +52,16 @@ const breakdownHandler = async (req, res) => {
   }
   console.log(filmFoxFile.breakdown[sceneNumber]);
   console.log({ action });
-  if (action !== "display") {
+  if (action !== 'display') {
     await writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
   }
 
   const headers = [];
   breakdown[sceneNumber].forEach((b) => {
-    headers.push(b[0].replace(/ /gi, "-"));
+    headers.push(b[0].replace(/ /gi, '-'));
   });
 
-  res.render("breakdown.njk", {
+  res.render('breakdown.njk', {
     title,
     sceneNumber,
     elementNumber,

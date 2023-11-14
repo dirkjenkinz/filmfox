@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-const url = require("url");
-const { smartLog } = require("../services/smart-log");
+const url = require('url');
+const { smartLog } = require('../services/smart-log');
 const {
   getListOfImages,
   readFile,
-} = require("../services/file-service");
+} = require('../services/file-service');
 
 const getUsed = (script) => {
   const used = [];
@@ -19,7 +19,7 @@ const getUsed = (script) => {
 };
 
 const galleryHandler = async (req, res) => {
-  smartLog("info", "ENTERING GALLERY HANDLER");
+  smartLog('info', 'ENTERING GALLERY HANDLER');
   let u = url.parse(req.originalUrl, true);
   const sceneNumber = u.query.sceneNumber;
   const title = u.query.title;
@@ -28,22 +28,22 @@ const galleryHandler = async (req, res) => {
   const mute = u.query.mute;
   const speak = u.query.speak;
   const imageList = await getListOfImages(title);
-  imageList.unshift("blank.jpg");
+  imageList.unshift('blank.jpg');
 
   const images = [];
   for (let i = 0; i < imageList.length; i++) {
-    if (imageList[i].substring(imageList[i].length - 4) === ".mov") {
-      images.push([imageList[i], "movie"]);
-    } else if (imageList[i].substring(imageList[i].length - 4) === ".mp4") {
-      images.push([imageList[i], "movie"]);
-    } else if (imageList[i].substring(imageList[i].length - 4) === ".avi") {
-      images.push([imageList[i], "movie"]);
-    } else if (imageList[i].substring(imageList[i].length - 4) === ".wmv") {
-      images.push([imageList[i], "movie"]);
-    } else if (imageList[i].substring(imageList[i].length - 4) === ".mkv") {
-      images.push([imageList[i], "movie"]);
+    if (imageList[i].substring(imageList[i].length - 4) === '.mov') {
+      images.push([imageList[i], 'movie']);
+    } else if (imageList[i].substring(imageList[i].length - 4) === '.mp4') {
+      images.push([imageList[i], 'movie']);
+    } else if (imageList[i].substring(imageList[i].length - 4) === '.avi') {
+      images.push([imageList[i], 'movie']);
+    } else if (imageList[i].substring(imageList[i].length - 4) === '.wmv') {
+      images.push([imageList[i], 'movie']);
+    } else if (imageList[i].substring(imageList[i].length - 4) === '.mkv') {
+      images.push([imageList[i], 'movie']);
     } else {
-      images.push([imageList[i], "still"]);
+      images.push([imageList[i], 'still']);
     }
   }
 
@@ -62,14 +62,14 @@ const galleryHandler = async (req, res) => {
     }
   });
   
-  res.render("gallery.njk", {
+  res.render('gallery.njk', {
     title,
     elementNumber,
     sceneNumber,
     used,
     unused,
     caller,
-    page: "Gallery",
+    page: 'Gallery',
     mute,
     speak,
   });

@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-const url = require("url");
-const { smartLog } = require("../services/smart-log");
-const { readFile, writeFile } = require("../services/file-service");
+const url = require('url');
+const { smartLog } = require('../services/smart-log');
+const { readFile, writeFile } = require('../services/file-service');
 
 const deleteShotHandler = async (req, res) => {
-  smartLog("info", "ENTERING DELETE SHOT HANDLER");
+  smartLog('info', 'ENTERING DELETE SHOT HANDLER');
   const u = url.parse(req.originalUrl, true);
   const title = u.query.title;
   const sceneNumber = u.query.sceneNumber;
@@ -16,12 +16,12 @@ const deleteShotHandler = async (req, res) => {
 
   const shot = shotList[sceneNumber].lines;
   const newLine = {
-    shot: "-",
-    angle: "-",
-    move: "-",
-    audio: "-",
-    subject: "",
-    description: "",
+    shot: '-',
+    angle: '-',
+    move: '-',
+    audio: '-',
+    subject: '',
+    description: '',
   };
 
   if (shot.length > 1) {

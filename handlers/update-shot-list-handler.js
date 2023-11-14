@@ -1,10 +1,10 @@
-"use strict";
-const url = require("url");
-const { smartLog } = require("../services/smart-log");
-const { readFile, writeFile } = require("../services/file-service");
+'use strict';
+const url = require('url');
+const { smartLog } = require('../services/smart-log');
+const { readFile, writeFile } = require('../services/file-service');
 
 const updateShotListHandler = async (req, res) => {
-  smartLog("info", "ENTERING UPDATE SHOTLIST HANDLER");
+  smartLog('info', 'ENTERING UPDATE SHOTLIST HANDLER');
   const u = url.parse(req.originalUrl, true);
   const title = u.query.title;
   const sceneNumber = u.query.sceneNumber;
@@ -22,7 +22,7 @@ const updateShotListHandler = async (req, res) => {
   console.log(shotList[sceneNumber]);
   await writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
 
-  res.redirect(`/scene-shot-list?title=${title}&sceneNumber=${sceneNumber}`)
+  res.redirect(`/scene-shot-list?title=${title}&sceneNumber=${sceneNumber}`);
 };
 
 module.exports = { updateShotListHandler };

@@ -1,8 +1,8 @@
-"use strict";
-const url = require("url");
-const { readFile, getFileList } = require("../services/file-service");
-const { smartLog } = require("../services/smart-log");
-const dotenv = require("dotenv");
+'use strict';
+const url = require('url');
+const { readFile, getFileList } = require('../services/file-service');
+const { smartLog } = require('../services/smart-log');
+const dotenv = require('dotenv');
 dotenv.config();
 
 const prepareReadyList = ((script, soundsList) => {
@@ -21,20 +21,20 @@ const prepareReadyList = ((script, soundsList) => {
     } else {
       readyList[index] = 'no';
     };
-  })
+  });
   return readyList;
 });
 
 const soundHandler = async (req, res) => {
-  smartLog("info", "ENTERING SOUND HANDLER");
+  smartLog('info', 'ENTERING SOUND HANDLER');
   const u = url.parse(req.originalUrl, true);
   const title = u.query.title;
   const elementNumber = u.query.elementNumber;
   const sceneNumber = u.query.sceneNumber;
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
   const { script } = filmFoxFile;
-  const mergedList = await getFileList(`data/${title}/scenes`, "mp3");
-  const soundsList = await getFileList(`data//${title}/sounds`, 'mp3')
+  const mergedList = await getFileList(`data/${title}/scenes`, 'mp3');
+  const soundsList = await getFileList(`data//${title}/sounds`, 'mp3');
 
   const readyList = prepareReadyList(script, soundsList);
   let readyForMaster = 'yes';
@@ -42,9 +42,9 @@ const soundHandler = async (req, res) => {
     if (r === 'no') readyForMaster = 'no';
   });
 
-  let masterExists = "no";
-  if (mergedList[0] === "master.mp3") {
-    masterExists = "yes";
+  let masterExists = 'no';
+  if (mergedList[0] === 'master.mp3') {
+    masterExists = 'yes';
   }
 
   const merged = [];
@@ -54,18 +54,18 @@ const soundHandler = async (req, res) => {
     template = template.substring(template.length - 5);
     template = `s${template}.mp3`;
     if (mergedList.indexOf(template) > -1) {
-      merged.push("yes");
+      merged.push('yes');
     } else {
-      merged.push("no");
+      merged.push('no');
     }
   });
 
-  res.render("sound.njk", {
+  res.render('sound.njk', {
     title,
     merged,
     script,
     masterExists,
-    page: "Sound",
+    page: 'Sound',
     size: script.length,
     readyList,
     elementNumber,

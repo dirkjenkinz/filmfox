@@ -1,15 +1,15 @@
-"use strict";
+'use strict';
 
-const url = require("url");
-const { smartLog } = require("../services/smart-log");
-const { readFile } = require("../services/file-service");
-const videoshow = require("videoshow");
-const path = require("path");
-const FFmpeg = require("fluent-ffmpeg");
-const fs = require("fs");
+const url = require('url');
+const { smartLog } = require('../services/smart-log');
+const { readFile } = require('../services/file-service');
+const videoshow = require('videoshow');
+const path = require('path');
+const FFmpeg = require('fluent-ffmpeg');
+const fs = require('fs');
 
 const imgToMP4 = (caption, sound, vision, duration, output) => {
-  smartLog("info", `Converting ${vision}`);
+  smartLog('info', `Converting ${vision}`);
   const images = [vision];
 
   const videoOptions = {
@@ -21,12 +21,12 @@ const imgToMP4 = (caption, sound, vision, duration, output) => {
     captionEnd: 0,
     transition: false,
     videoBitrate: 1024,
-    videoCodec: "libx264",
-    size: "640x?",
-    audioBitrate: "128k",
+    videoCodec: 'libx264',
+    size: '640x?',
+    audioBitrate: '128k',
     audioChannels: 2,
-    format: "mp4",
-    pixelFormat: "yuv420p",
+    format: 'mp4',
+    pixelFormat: 'yuv420p',
   };
 
   videoshow([
@@ -36,19 +36,19 @@ const imgToMP4 = (caption, sound, vision, duration, output) => {
   ])
     .audio(sound)
     .save(output)
-    .on("start", function (command) {
-      smartLog("info", `ffmpeg process started: ${vision}`);
+    .on('start', function (command) {
+      smartLog('info', `ffmpeg process started: ${vision}`);
     })
-    .on("error", function (err, stdout, stderr) {
-      smartLog("error", err);
+    .on('error', function (err, stdout, stderr) {
+      smartLog('error', err);
     })
-    .on("end", function (output) {
-      smartLog("info", `Video created: ${output}`);
+    .on('end', function (output) {
+      smartLog('info', `Video created: ${output}`);
     });
 };
 
 const createVideoHandler = async (req, res) => {
-  smartLog("info", "ENTERING CREATE VIDEO HANDLER");
+  smartLog('info', 'ENTERING CREATE VIDEO HANDLER');
   const u = url.parse(req.originalUrl, true);
   const title = u.query.title;
   const sceneNumber = u.query.sceneNumber;
@@ -63,17 +63,17 @@ const createVideoHandler = async (req, res) => {
   const scene = script[sceneNumber];
 
   scene.forEach((s, index) => {
-      let num = "0000" + sceneNumber;
+      let num = '0000' + sceneNumber;
       num = num.substring(num.length - 4);
-      let sub = "0000" + index;
+      let sub = '0000' + index;
       sub = sub.substring(sub.length - 4);
-      const caption = `${s.character}: ${s.dialogue}`
+      const caption = `${s.character}: ${s.dialogue}`;
       const sound = `${soundPath}/${s.sound}`;
       const vision = `${imagePath}/${s.image}`;
       let duration = Math.ceil(s.duration) + 1;
       if (duration < 4 ) duration = 4;
       const output = `${outPath}/${num}_${sub}.mp4`;
-      if (s.type === "movie") {
+      if (s.type === 'movie') {
         new FFmpeg()
         .addInput(vision)
         .addInput(sound)

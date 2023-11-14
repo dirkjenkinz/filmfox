@@ -1,10 +1,10 @@
-"use strict";
-const url = require("url");
-const { smartLog } = require("../services/smart-log");
-const { readFile, writeFile } = require("../services/file-service");
+'use strict';
+const url = require('url');
+const { smartLog } = require('../services/smart-log');
+const { readFile, writeFile } = require('../services/file-service');
 
 const updateImageDisplayHandler = async (req, res) => {
-  smartLog("info", "ENTERING UPDATE IMAGE DISPLAY HANDLDER");
+  smartLog('info', 'ENTERING UPDATE IMAGE DISPLAY HANDLDER');
   let u = url.parse(req.originalUrl, true);
   const sceneNumber = u.query.sceneNumber;
   const title = u.query.title;
@@ -15,18 +15,18 @@ const updateImageDisplayHandler = async (req, res) => {
   let filmFoxFile = await readFile(`${title}/${title}.fff`);
   const { script } = filmFoxFile;
 
-  let type = "still";
+  let type = 'still';
 
-  if (image.substring(image.length - 4) === ".mov") {
-    type = "movie";
-  } else if (image.substring(image.length - 4) === ".mp4") {
-    type = "movie";
-  } else if (image.substring(image.length - 4) === ".avi") {
-    type = "movie";
-  } else if (image.substring(image.length - 4) === ".wmv") {
-    type = "movie";
-  } else if (image.substring(image.length - 4) === ".mkv") {
-    type = "movie";
+  if (image.substring(image.length - 4) === '.mov') {
+    type = 'movie';
+  } else if (image.substring(image.length - 4) === '.mp4') {
+    type = 'movie';
+  } else if (image.substring(image.length - 4) === '.avi') {
+    type = 'movie';
+  } else if (image.substring(image.length - 4) === '.wmv') {
+    type = 'movie';
+  } else if (image.substring(image.length - 4) === '.mkv') {
+    type = 'movie';
   };
 
   script[sceneNumber][elementNumber].type = type;
@@ -42,9 +42,9 @@ const updateImageDisplayHandler = async (req, res) => {
 
   await writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
 
-  if (caller === "scenes") {
+  if (caller === 'scenes') {
     res.redirect(`/scenes?title=${title}`);
-  } else if (caller === "showreel") {
+  } else if (caller === 'showreel') {
     res.redirect(
       `/showreel?title=${title}&sceneNumber=${sceneNumber}&elementNumber=${elementNumber}`
     );

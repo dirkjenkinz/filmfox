@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 const url = require('url');
 const { readFile, writeFile } = require('../services/file-service');
@@ -38,7 +38,7 @@ const characterUpdateHandler = async (req, res) => {
     if (c[0] === character) {
       c[1] = voice;
     }
-  })
+  });
 
   writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
 

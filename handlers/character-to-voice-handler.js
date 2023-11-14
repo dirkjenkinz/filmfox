@@ -1,8 +1,8 @@
-"use strict";
+'use strict';
 
-const url = require("url");
-const { readFile } = require("../services/file-service");
-const { smartLog } = require("../services/smart-log");
+const url = require('url');
+const { readFile } = require('../services/file-service');
+const { smartLog } = require('../services/smart-log');
 
 const getVoiceData = (voices) => {
   let voice_data = [];
@@ -21,16 +21,16 @@ const getVoiceData = (voices) => {
 };
 
 const characterToVoiceHandler = async (req, res) => {
-  smartLog("info", "entering character to voice handler");
+  smartLog('info', 'entering character to voice handler');
   const u = url.parse(req.originalUrl, true);
   let sceneNumber = u.query.sceneNumber;
   let elementNumber = u.query.elementNumber;
   const title = u.query.title;
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
   const { characterList } = filmFoxFile;
-  const voices = await readFile("voices.json");
+  const voices = await readFile('voices.json');
   let voice_data = getVoiceData(voices);
-  voice_data.unshift(["-", "", ""]);
+  voice_data.unshift(['-', '', '']);
 
   if (!sceneNumber ) sceneNumber = 0;
   if (!elementNumber) elementNumber = 0;
@@ -43,13 +43,13 @@ const characterToVoiceHandler = async (req, res) => {
     });
   });
 
-  res.render("character-to-voice.njk", {
+  res.render('character-to-voice.njk', {
     title,
     characters: characterList,
     voice_data,
     sceneNumber,
     elementNumber,
-    page: "Voice Map",
+    page: 'Voice Map',
   });
 };
 

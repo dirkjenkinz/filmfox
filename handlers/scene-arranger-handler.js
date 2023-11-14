@@ -1,10 +1,10 @@
-"use strict";
-const url = require("url");
-const { smartLog } = require("../services/smart-log");
-const { readFile } = require("../services/file-service");
+'use strict';
+const url = require('url');
+const { smartLog } = require('../services/smart-log');
+const { readFile } = require('../services/file-service');
 
 const sceneArrangerHandler = async (req, res) => {
-  smartLog("info", "ENTERING SCENE ARRANGER HANDLER");
+  smartLog('info', 'ENTERING SCENE ARRANGER HANDLER');
   const u = url.parse(req.originalUrl, true);
   const title = u.query.title;
   let hidden = u.query.hidden;
@@ -20,10 +20,10 @@ const sceneArrangerHandler = async (req, res) => {
   if (!hidden) {
     hidden = [];
     for (let i = 0; i < shotList.length; i++) {
-      hidden.push("false");
+      hidden.push('false');
     }
   } else {
-    hidden = hidden.split(",");
+    hidden = hidden.split(',');
   }
 
   const slugs = [];
@@ -43,25 +43,25 @@ const sceneArrangerHandler = async (req, res) => {
   if (finish > shotList.length - 1) finish = shotList.length;
   if (finish < top ) finish = top;
 
-  if (full === "yes") {
-    res.render("full-shot-list.njk", {
+  if (full === 'yes') {
+    res.render('full-shot-list.njk', {
       title,
       shotList: sList,
       slugList,
-      page: "Full Shot List",
+      page: 'Full Shot List',
       size: shotList.length,
       realTitle: credits.title,
       elementNumber,
       sceneNumber,
     });
   } else {
-    res.render("scene-arranger.njk", {
+    res.render('scene-arranger.njk', {
       top,
       finish,
       title,
       shotList: sList,
       slugList,
-      page: "Scene Arranger",
+      page: 'Scene Arranger',
       size: shotList.length,
       hidden,
       elementNumber,

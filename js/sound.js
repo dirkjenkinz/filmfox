@@ -1,5 +1,5 @@
 $(() => {
-  $("#nav-sound").addClass('active');
+  $('#nav-sound').addClass('active');
 }),
 $('.btn-merge').on('click', (e) => {
     let sceneNumber = e.target.value;
@@ -13,10 +13,10 @@ $('.btn-merge').on('click', (e) => {
     element = `s${num}.mp3`;
     s = '../data/' + title + '/scenes/' + element;
     document
-      .getElementById("master-play")
+      .getElementById('master-play')
       .setAttribute('src', s);
     document
-      .getElementById("master-play")
+      .getElementById('master-play')
       .play();
   }),
   $('#btn-master').on('click', (e) => {
@@ -29,9 +29,9 @@ $('.btn-merge').on('click', (e) => {
     const title = $('#filmTitle')[0].innerText;
     s = '../data/' + title + '/scenes/master.mp3';
     document
-      .getElementById("master-play")
-      .setAttribute('src', s)
+      .getElementById('master-play')
+      .setAttribute('src', s);
     document
-      .getElementById("master-play")
+      .getElementById('master-play')
       .play();
-  })
+  });
