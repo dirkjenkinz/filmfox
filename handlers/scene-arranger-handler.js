@@ -39,10 +39,9 @@ const sceneArrangerHandler = async (req, res) => {
   });
 
   top = parseInt(top);
-  let finish = 12 + parseInt(top);
+  let finish = 16 + parseInt(top);
   if (finish > shotList.length - 1) finish = shotList.length;
   if (finish < top ) finish = top;
-
 
   if (full === "yes") {
     res.render("full-shot-list.njk", {

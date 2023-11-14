@@ -100,7 +100,7 @@ const generateSpeech = async (apiKey, voiceID, fileName, textInput, title) => {
       );
       return response.data;
     } catch (error) {
-      smartLog("error", "error getting sample");
+      smartLog("error", error.response.data.detail);
       return "Failed";
     }
   };
