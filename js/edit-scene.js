@@ -1,6 +1,7 @@
 $(() => {
   $("#nav-edit-scene").addClass('active');
-}),
+})
+
 $("#btn-change").on("click", (e) => {
   const element = e.target.value;
   const title = $("#filmTitle")[0].innerText;

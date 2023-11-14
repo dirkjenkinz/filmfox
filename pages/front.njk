@@ -137,9 +137,15 @@
           </p>
           {% for i in range(0, fdxList.length) -%}
             <div class='row show2'>
-              <button type='button' class='btn btn-edit btn-block btn-sm btn-fdx' value='{{fdxList[i]}}'>
-                {{fdxList[i].substring(0,40)}}
-              </button>
+              {% if converted[i] === 'n' %}
+                <button type='button' class='btn btn-edit btn-block btn-sm btn-fdx' value='{{fdxList[i]}}'>
+                  {{fdxList[i].substring(0,40)}}
+                </button>
+              {% else %}
+                <button type='button' class='btn btn-yes btn-block btn-sm btn-fdx-yes' value='{{fdxList[i]}}'>
+                  {{fdxList[i].substring(0,40)}}
+                </button>
+              {% endif %}
             </div>
           {%- endfor %}
         </div>

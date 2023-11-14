@@ -259,6 +259,16 @@ textarea {
   text-align: left;
 }
 
+.btn-fdx-yes {
+  background: violet;
+  color: white;
+  border: black 2px solid;
+  text-align: center;
+  display: block;
+  width: 100%;
+  font-size: 75%;
+}
+
 .btn-edit {
   background: red;
   color: white;

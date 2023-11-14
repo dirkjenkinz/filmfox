@@ -43,13 +43,21 @@ const frontHandler = async (req, res) => {
     voices = await getVoices(api_key);
     await writeFile(JSON.stringify(voices), "voices.json");
   }
+  const converted = [];
+  fdxList.forEach((f) => {
+    if (fffList.indexOf(f.substring(0, f.length - 4)) !== -1){
+      converted.push('y');
+    } else {
+      converted.push('n');
+    }
+  });
 
   res.render("front.njk", {
     api_key,
     fffList,
     fdxList,
     subscription,
-    headersOnly: "no",
+    converted,
   });
 };
 
