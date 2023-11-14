@@ -9,6 +9,7 @@ const deleteShotHandler = async (req, res) => {
   const u = url.parse(req.originalUrl, true);
   const title = u.query.title;
   const sceneNumber = u.query.sceneNumber;
+  const elementNumber = u.query.elementNumber;
   const line = u.query.line;
 
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
@@ -29,7 +30,7 @@ const deleteShotHandler = async (req, res) => {
     await writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
   }
 
-  res.redirect(`/scene-shot-list?title=${title}&sceneNumber=${sceneNumber}`);
+  res.redirect(`/scene-shot-list?title=${title}&sceneNumber=${sceneNumber}&elementNumber=${elementNumber}`);
 };
 
 module.exports = { deleteShotHandler };

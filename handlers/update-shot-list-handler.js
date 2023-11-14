@@ -11,15 +11,10 @@ const updateShotListHandler = async (req, res) => {
   const val = u.query.val;
   const item = u.query.item;
   const line = u.query.line;
-  console.log({val});
-  console.log(({item}));
-  console.log({line});
 
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
   const {shotList} = filmFoxFile;
-  console.log(shotList[sceneNumber]);
   shotList[sceneNumber].lines[line][`${item}`] = val;
-  console.log(shotList[sceneNumber]);
   await writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
 
   res.redirect(`/scene-shot-list?title=${title}&sceneNumber=${sceneNumber}`);

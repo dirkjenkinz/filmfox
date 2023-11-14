@@ -30,6 +30,7 @@ const showreelHandler = async (req, res) => {
   const slug = script[sceneNumber][0].dialogue;
 
   let audio = '';
+
   if (element.sound && speak == 'yes') {
     audio = `../data/${title}/sounds/${element.sound}`;
   }

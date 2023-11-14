@@ -3,8 +3,8 @@ const url = require('url');
 const { smartLog } = require('../services/smart-log');
 const { readFile } = require('../services/file-service');
 
-const sceneArrangerHandler = async (req, res) => {
-  smartLog('info', 'ENTERING SCENE ARRANGER HANDLER');
+const fullShotListHandler = async (req, res) => {
+  smartLog('info', 'ENTERING FULL SHOT LIST HANDLER');
   const u = url.parse(req.originalUrl, true);
   const title = u.query.title;
   let hidden = u.query.hidden;
@@ -42,18 +42,16 @@ const sceneArrangerHandler = async (req, res) => {
   if (finish > shotList.length - 1) finish = shotList.length;
   if (finish < top) finish = top;
 
-  res.render('scene-arranger.njk', {
-    top,
-    finish,
+  res.render('full-shot-list.njk', {
     title,
     shotList: sList,
     slugList,
-    page: 'Scene Arranger',
+    page: 'Full Shot List',
     size: shotList.length,
-    hidden,
+    realTitle: credits.title,
     elementNumber,
     sceneNumber,
   });
 };
 
-module.exports = { sceneArrangerHandler };
+module.exports = { fullShotListHandler };

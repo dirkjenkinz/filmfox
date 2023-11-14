@@ -50,8 +50,6 @@ const breakdownHandler = async (req, res) => {
       }
     }
   }
-  console.log(filmFoxFile.breakdown[sceneNumber]);
-  console.log({ action });
   if (action !== 'display') {
     await writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
   }

@@ -53,7 +53,7 @@ $('#nav-display-full').on('click', () => {
   const title = $('#filmTitle')[0].innerText;
   const sceneNumber = $('#sceneNumber')[0].innerText;
   const elementNumber = $('#elementNumber')[0].innerText;
-  window.location.href = `/scene-arranger?title=${title}&full=yes&sceneNumber=${sceneNumber}&elementNumber=${elementNumber}`;
+  window.location.href = `/full-shot-list?title=${title}&sceneNumber=${sceneNumber}&elementNumber=${elementNumber}`;
 });
 
 $('#nav-showreel').on('click', () => {
