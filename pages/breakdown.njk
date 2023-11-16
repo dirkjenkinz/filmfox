@@ -64,10 +64,13 @@
         <table id='table-{{headers[i]}}'>
           <thead>
             <tr>
-              <th>
+              <th width='15%'>
+                <button type='button' style='background: red; width:100%;' class='btn-delete' value='{{breakdown[i][0]}}'>Delete</button>
+              </th>
+              <th  width='70%'>
                 <button type='button' class='btn-element' value='{{breakdown[i][0]}}'>{{breakdown[i][0]}}</button>
               </th>
-              <th>
+              <th width='15%'>
                 <button type='button' style='background: red; width:100%;' class='btn-hide' value='{{breakdown[i][0]}}'>Hide</button>
               </th>
             </tr>
@@ -75,7 +78,7 @@
           <tbody>
             {% for j in range(1, breakdown[i].length) -%}
               <tr>
-                <td id='entity-{{j -1}}' width='80%'>{{breakdown[i][j]}}</td>
+                <td id='entity-{{j -1}}' colspan='2'>{{breakdown[i][j]}}</td>
                 <td>
                   <button type='button' class='btn-del btn-block' id='del-{{breakdown[i][0]}}' value='{{breakdown[i][j]}}'>Delete</button>
                 </td>
@@ -83,8 +86,8 @@
             {% endfor %}
             <tr>
               <form action='\breakdown?title={{title}}&sceneNumber={{sceneNumber}}&element={{breakdown[i][0]}}&action=add'>
-                <td width="80%;">
-                  <input type="text" name="entity" size='40'>
+                <td colspan='2'>
+                  <input type="text" name="entity" size='40' style='border: 0px;'>
                   <input type="hidden" name="title" value="{{title}}">
                   <input type="hidden" name="sceneNumber" value="{{sceneNumber}}">
                   <input type="hidden" name="elementNumber" value="{{elementNumber}}">
@@ -97,7 +100,7 @@
               </form>
             </tr>
             <tr>
-              <td colspan='2' style='background: steelblue; font-size:50%;'>&nbsp;</td>
+              <td colspan='3' style='background: steelblue; font-size:50%;'>&nbsp;</td>
             </tr>
           </tbody>
         </table>

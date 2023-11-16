@@ -45,7 +45,7 @@ const soundHandler = async (req, res) => {
   let masterExists = 'no';
   if (mergedList[0] === 'master.mp3') {
     masterExists = 'yes';
-  }
+  };
 
   const merged = [];
 

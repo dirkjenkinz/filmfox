@@ -1,7 +1,7 @@
 'use strict';
 const url = require('url');
 const { smartLog } = require('../services/smart-log');
-const { readFile } = require('../services/file-service');
+const { readFile, getFileList } = require('../services/file-service');
 
 const videoHandler = async (req, res) => {
   smartLog('info', 'ENTERING VIDEO HANDLER');
@@ -14,20 +14,25 @@ const videoHandler = async (req, res) => {
 
   const gen = [];
 
-  script.forEach((s, index) => {
-    if (s[0].sound){
-      gen.push('yes');
-    } else {
-      gen.push('no');
-    }
-  });
+  const videoList = await getFileList(`data//${title}/videos`, 'mp4');
 
-   res.render('video.njk', {
+  for (let i = 0; i < script.length; i++){
+    let num = '0000' + i;
+    num = num.substring(num.length - 4);
+    let found = 'no';
+    for (let j = 0; j < videoList.length; j++){
+      if (videoList[j].substring(0,4) === num) found = 'yes';
+    };
+    gen.push(found);
+  };
+
+  res.render('video.njk', {
     title,
     script,
     page: 'Video',
     elementNumber,
     sceneNumber,
+    gen,
   });
 };
 

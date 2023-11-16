@@ -20,7 +20,7 @@
       <p id='unused-size' hidden>{{unused.length}}</p>
       
       <table class='table-bordered table-sm table-dark table-grid' id='tab_img_unused'>
-        <tbody id='tblBody'>
+        <tbody id='tblBody1'>
           {% for i in range(0, unused.length, 2) -%}
             <tr id='unused-{{i}}' class='unused-item'>
               {% for num in range(0, 2) -%}
@@ -55,22 +55,31 @@
         </tbody>
       </table>
     </div>
+
     <div class='col-md-6'>
       <table class='table-bordered table-sm table-dark table-grid' id='tab_img'>
-        <tbody>
-          {% for i in range(0, used.length, 2) -%}
-            <tr>
+        <tbody id='tblBody2'>
+        {% for i in range(0, used.length, 2) -%}
+            <tr id='used-{{i}}' class='used-item'>
               {% for num in range(0, 2) -%}
                 {% if used[i + num][0] %}
-                  <td class='data-left'>
+                  <td class='data-left' id='used-image-{{i + num}}'>
                     {% if used[i + num][1] === 'movie' %}
-                      <video width='240' height='136' controls='controls' autoplay='autoplay' id='img_{{i + num}}' class='img' muted='muted'>
+                      <video width='240' height='135' controls='controls' autoplay='autoplay' id='img_{{i + num}}' class='img' muted='muted'>
                         <source src='../data/{{title}}/images/{{used[i + num][0]}}' type='video/mp4'>
                       </video>
                     {% else %}
                       <img width='240' height='135' src='../data/{{title}}/images/{{used[i + num][0]}}' id='img_{{i + num}}' class='img' alt='used[i + num][0]'>
                     {% endif %}
-                    <button type='button' class='btn btn-edit btn-block btn-sm btn-select' value='{{used[i + num][0]}}'>
+                  </td>
+                {% endif %}
+              {% endfor %}
+            </tr>
+            <tr class='used-select'>
+              {% for num in range(0, 2) -%}
+                {% if used[i + num][0] %}
+                  <td class='data-left' id='used-sel-{{i + num}}'>
+                    <button type='button' class='btn btn-edit btn-block btn-sm btn-select' id='btn-used-{{i + num}}' value='{{used[i + num][0]}}'>
                       Select
                     </button>
                     <p style='font-size: 60%;'>
@@ -80,7 +89,7 @@
                 {% endif %}
               {% endfor %}
             </tr>
-          {% endfor %}
+                      {% endfor %}
         </tbody>
       </table>
     </div>

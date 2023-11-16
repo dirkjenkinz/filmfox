@@ -25,6 +25,7 @@ $('.btn-cancel').on('click', () => {
 
 $('#search').on('keypress', (e) => {
   const searchString = e.target.value + String.fromCharCode(e.which);
+  
   let unusedSize = $('#unused-size')[0].innerText;
   for (let i = 0; i < unusedSize; i++){
     let ptr = ($(`#btn-unused-${i}`)[0].value).indexOf(searchString);
@@ -37,13 +38,28 @@ $('#search').on('keypress', (e) => {
       $(`#unused-sel-${i}`).show();
     };
   };
+
+  let usedSize = $('#used-size')[0].innerText;
+  for (let i = 0; i < usedSize; i++){
+    let ptr = ($(`#btn-used-${i}`)[0].value).indexOf(searchString);
+    if ($(`#btn-used-${i}`)[0].value, ptr === -1)
+    {
+      $(`#used-image-${i}`).hide();
+      $(`#used-sel-${i}`).hide();
+    } else {
+      $(`#used-image-${i}`).show();
+      $(`#used-sel-${i}`).show();
+    };
+  };
+
 });
 
 $('#search').on('keydown', (e) => {
   if (e.keyCode === 8){
+  
     let searchString = e.target.value;
     searchString = searchString.substring(0, searchString.length - 1);
-    console.log({searchString});
+
     let unusedSize = $('#unused-size')[0].innerText;
     for (let i = 0; i < unusedSize; i++){
       let ptr = ($(`#btn-unused-${i}`)[0].value).indexOf(searchString);
@@ -56,5 +72,19 @@ $('#search').on('keydown', (e) => {
         $(`#unused-sel-${i}`).show();
       };
     };
+
+    let usedSize = $('#used-size')[0].innerText;
+    for (let i = 0; i < usedSize; i++){
+      let ptr = ($(`#btn-used-${i}`)[0].value).indexOf(searchString);
+      if ($(`#btn-used-${i}`)[0].value, ptr === -1)
+      {
+        $(`#used-image-${i}`).hide();
+        $(`#used-sel-${i}`).hide();
+      } else {
+        $(`#used-image-${i}`).show();
+        $(`#used-sel-${i}`).show();
+      };
+    };
+  
   };
 });

@@ -24,7 +24,7 @@
                     {% endif %}
                   </td>
                   <td class='data-left'>
-                    {% if gen[i + num] == 'no' %}
+                   {% if gen[i + num] === 'no' %}
                       <button class='btn btn-block btn-edit btn-sm btn-generate' value="{{i + num}}" id='btn-generate_{{i + num}}'>Generate</button>
                     {% else %}
                       <button class='btn btn-block btn-modify btn-sm btn-generate' value="{{i + num}}" id='btn-generate_{{i + num}}'>Modify</button>
