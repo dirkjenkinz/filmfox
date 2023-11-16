@@ -35,13 +35,12 @@ $('.btn-add').on('click', (e) => {
   const element = e.target.value;
   const num = e.target.id.substring(11);
   const entity = $(`#input-entity-${num}`);
-
   let url = buildUrl('breakdown', '', '');
   url += `&element=${element}&entity=${entity}&action=add`;
   window.location.href = url;
 });
 
-$('.btn-del').on('click', (e)=> {
+$('.btn-del').on('click', (e) => {
   const element = e.target.id.substring(4);
   const entity = e.target.value;
   const url = buildUrl('breakdown', '', '');
@@ -64,6 +63,14 @@ $('.btn-element').on('click', (e) => {
     url += `&element=${element}&entity=${entity}&action=add`;
     window.location.href = url;
   }
+});
+
+$('#btn-add-category').on('click', () => {
+  const category = $('#input-category')[0].value;
+  if (category !== '') {
+    const url = buildUrl('add-category', '', '');
+    window.location.href = `${url}&category=${category}`;
+  };
 });
 
 $('#btn-previous-scene').on('click', () => {

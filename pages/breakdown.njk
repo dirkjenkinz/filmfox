@@ -116,9 +116,17 @@
     </div>
 
     <div class='col-md-2 tableFixHead3' style='font-size: 80%; background:steelblue;'>
-      {% for i in range(0, breakdown.length) -%}
-        <button type='button' class='btn-control' id='btn-control-{{headers[i]}}' value='{{headers[i]}}' hidden>Reveal {{headers[i]}}</button>
-      {% endfor %}
+      <row>
+        <input type="text" name="category" id='input-category' size='20'>
+        <button type='button' class='btn-edit' id='btn-add-category' value=''>Add Category</button>
+        <br>
+      </row>
+      <row>
+        {% for i in range(0, breakdown.length) -%}
+          <button type='button' class='btn-control' id='btn-control-{{headers[i]}}' value='{{headers[i]}}' hidden="hidden">Reveal
+            {{headers[i]}}</button>
+        {% endfor %}
+      </row>
     </div>
 
   </div>

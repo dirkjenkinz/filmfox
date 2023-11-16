@@ -1,12 +1,12 @@
-{% extends 'parent.njk' %}
+{% extends "parent.njk" %}
 {% block page %}
   <div class='row'>
     <div class='col-md-8'>
-      <input type='text' id='search' name='search' size='20' value='{{searchString}}'>
+      <input type="text" id="search" name="search" size='20' value='{{searchString}}'>
       Search
     </div>
     <div class='col-md-4' style='margin-top: 4px;'>
-      <button type='button' class='btn btn-prevnext btn-block btn-sm btn-cancel'>Cancel & Go Back</button>
+      <button type='button' class='btn btn-prevnext btn-block btn-sm btn-cancel'>Cancel & Go Back</td>
     </div>
   </div>
   <div class='row'>
@@ -15,23 +15,21 @@
   </div>
   <div class='row tableFixHead' id='tabhead'>
     <div class='col-md-6'>
-      <p id='caller' hidden='hidden'>{{caller}}</p>
-      <p id='used-size' hidden>{{used.length}}</p>
-      <p id='unused-size' hidden>{{unused.length}}</p>
-      
+      <p id='caller' hidden="hidden">{{caller}}</p>
+
       <table class='table-bordered table-sm table-dark table-grid' id='tab_img_unused'>
         <tbody id='tblBody'>
           {% for i in range(0, unused.length, 2) -%}
             <tr id='unused-{{i}}' class='unused-item'>
               {% for num in range(0, 2) -%}
                 {% if unused[i + num][0] %}
-                  <td class='data-left' id='unused-image-{{i + num}}'>
+                  <td class='data-left' id='unused-image-{{i}}' value="value">
                     {% if unused[i + num][1] === 'movie' %}
-                      <video width='240' height='135' controls='controls' autoplay='autoplay' id='img_{{i + num}}' class='img' muted='muted'>
-                        <source src='../data/{{title}}/images/{{unused[i + num][0]}}' type='video/mp4'>
+                      <video width="240" height="135" controls="controls" autoplay="autoplay" id="img_{{i + num}}" class="img" muted="muted">
+                        <source src="../data/{{title}}/images/{{unused[i + num][0]}}" type="video/mp4">
                       </video>
                     {% else %}
-                      <img width='240' height='135' src='../data/{{title}}/images/{{unused[i + num][0]}}' id='img_{{i + num}}' class='img' alt='unused[i + num][0]'>
+                      <img width="240" height="135" src="../data/{{title}}/images/{{unused[i + num][0]}}" id="img_{{i + num}}" class="img" alt="unused[i + num][0]"/>
                     {% endif %}
                   </td>
                 {% endif %}
@@ -40,8 +38,8 @@
             <tr class='unused-select'>
               {% for num in range(0, 2) -%}
                 {% if unused[i + num][0] %}
-                  <td class='data-left' id='unused-sel-{{i + num}}'>
-                    <button type='button' class='btn btn-edit btn-block btn-sm btn-select' id='btn-unused-{{i + num}}' value='{{unused[i + num][0]}}'>
+                  <td class='data-left'>
+                    <button type='button' class='btn btn-edit btn-block btn-sm btn-select' value="{{unused[i + num][0]}}">
                       Select
                     </button>
                     <p style='font-size: 60%;'>
@@ -64,13 +62,13 @@
                 {% if used[i + num][0] %}
                   <td class='data-left'>
                     {% if used[i + num][1] === 'movie' %}
-                      <video width='240' height='136' controls='controls' autoplay='autoplay' id='img_{{i + num}}' class='img' muted='muted'>
-                        <source src='../data/{{title}}/images/{{used[i + num][0]}}' type='video/mp4'>
+                      <video width="240" height="136" controls="controls" autoplay="autoplay" id="img_{{i + num}}" class="img" muted="muted">
+                        <source src="../data/{{title}}/images/{{used[i + num][0]}}" type="video/mp4">
                       </video>
                     {% else %}
-                      <img width='240' height='135' src='../data/{{title}}/images/{{used[i + num][0]}}' id='img_{{i + num}}' class='img' alt='used[i + num][0]'>
+                      <img width="240" height="135" src="../data/{{title}}/images/{{used[i + num][0]}}" id="img_{{i + num}}" class="img" alt="used[i + num][0]"/>
                     {% endif %}
-                    <button type='button' class='btn btn-edit btn-block btn-sm btn-select' value='{{used[i + num][0]}}'>
+                    <button type='button' class='btn btn-edit btn-block btn-sm btn-select' value="{{used[i + num][0]}}">
                       Select
                     </button>
                     <p style='font-size: 60%;'>

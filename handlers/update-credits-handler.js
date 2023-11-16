@@ -9,6 +9,8 @@ const updateCreditsHandler = async (req, res) => {
   const title = u.query.title;
   const val = u.query.val;
   const credit = u.query.credit;
+  const sceneNumber = u.query.sceneNumber;
+  const elementNumber = u.query.elementNumber;
 
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
   let {credits} = filmFoxFile;
@@ -41,7 +43,7 @@ const updateCreditsHandler = async (req, res) => {
 
   await writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
 
-  res.redirect(`/credits?title=${title}`);
+  res.redirect(`/credits?title=${title}&sceneNumber=${sceneNumber}&elementNumber=${elementNumber}`);
 };
 
 module.exports = { updateCreditsHandler };
