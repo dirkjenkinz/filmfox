@@ -12,10 +12,8 @@ const videoHandler = async (req, res) => {
   const sceneNumber = u.query.sceneNumber;
   const { script } = filmFoxFile;
 
-  const gen = [];
-
   const videoList = await getFileList(`data//${title}/videos`, 'mp4');
-
+  const gen = [];
   for (let i = 0; i < script.length; i++){
     let num = '0000' + i;
     num = num.substring(num.length - 4);
@@ -26,6 +24,16 @@ const videoHandler = async (req, res) => {
     gen.push(found);
   };
 
+  const complete = [];
+
+  script.forEach((s) => {
+    let comp = 'yes';
+    s.forEach((element) => {
+      if (!element.sound) comp = 'no';
+    });
+    complete.push(comp);
+  });
+
   res.render('video.njk', {
     title,
     script,
@@ -33,6 +41,7 @@ const videoHandler = async (req, res) => {
     elementNumber,
     sceneNumber,
     gen,
+    complete,
   });
 };
 

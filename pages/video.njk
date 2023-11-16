@@ -7,38 +7,47 @@
           {% for i in range(0, script.length, 5) -%}
             <tr>
               {% for num in range(0, 5) -%}
-                {% if (script[i + num]) %}
-                  <td class='data-left'>
-                    Scene
-                    {{i + num}}
-                  </td>
-                  <td class='data-left'>
-                    {% if script[i][0].type == 'movie' %}
-                      <video width="80" height="45" controls="controls" autoplay="autoplay" muted="muted" class="img">
-                        <source src="../data/{{title}}/images/{{script[i][0].image}}" type="video/mp4">
-                      </video>
-                    {% elseif script[i][0].type == 'still' %}
-                      <img width="80" height="45" src="../data/{{title}}/images/{{script[i + num][0].image}}" class="img" alt="img_{{i}}"/>
-                    {% else %}
-                      <p style='font-size: 50%;'>No image</p>
-                    {% endif %}
-                  </td>
-                  <td class='data-left'>
-                   {% if gen[i + num] === 'no' %}
+              {% if (num % 2 ) === 0 %}
+              {% set cl = 'red-box'%}
+              {% else%}
+              {% set cl = 'blue-box' %}
+              {% endif %}
+              {% if (script[i + num]) %}
+                <td class='{{cl}}'>
+                  Scene
+                  {{i + num}}
+                </td>
+                <td class='{{cl}}'>
+                  {% if script[i][0].type == 'movie' %}
+                    <video width="80" height="45" controls="controls" autoplay="autoplay" muted="muted" class="img">
+                      <source src="../data/{{title}}/images/{{script[i][0].image}}" type="video/mp4">
+                    </video>
+                  {% elseif script[i][0].type == 'still' %}
+                    <img width="80" height="45" src="../data/{{title}}/images/{{script[i + num][0].image}}" class="img" alt="img_{{i}}"/>
+                  {% else %}
+                    <p style='font-size: 50%;'>No image</p>
+                  {% endif %}
+                </td>
+                <td class='{{cl}}'>
+                  {% if complete[i + num] === 'yes' %}
+                    {% if gen[i + num] === 'no' %}
                       <button class='btn btn-block btn-edit btn-sm btn-generate' value="{{i + num}}" id='btn-generate_{{i + num}}'>Generate</button>
                     {% else %}
                       <button class='btn btn-block btn-modify btn-sm btn-generate' value="{{i + num}}" id='btn-generate_{{i + num}}'>Modify</button>
                     {% endif %}
-                  </td>
-                  <td style='background:black;'>&nbsp;&nbsp;</td>
-                {% endif %}
-              {% endfor %}
-            </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-    </div>
+                  {% else %}
+                    Incomplete
+                  {% endif %}
+                </td>
+                <td style='background:black;'>&nbsp;&nbsp;</td>
+              {% endif %}
+            {% endfor %}
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
   </div>
+</div>
 </div>
 <script src='../js/parent.js'></script>
 <script src='../js/video.js'></script>

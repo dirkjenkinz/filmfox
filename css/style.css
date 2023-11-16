@@ -93,6 +93,14 @@ table {
   font-size: 60%;
 }
 
+.red-box {
+  background: red;
+}
+
+.blue-box {
+  background: steelblue;
+}
+
 #piccy {
   border: 6px solid white;
 }
