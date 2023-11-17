@@ -1,0 +1,38 @@
+{% extends "parent.njk" %}
+{% block page %}
+  <div class='row top' style='font-size: 90%;'>
+    <div class='col-md-4'>
+      <table id='table-categories'>
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>&nbsp;</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for i in range(0, categories.length) -%}
+            <tr>
+              <td>
+                {{categories[i]}}
+              </td>
+              <td>
+                <button type='button' class='btn-edit btn-delete-category' value='{{categories[i]}}'>Delete</button>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <div class='col-md-2 tableFixHead3'>
+        <input type="text" name="category" id='input-category' size='25'>
+        <button type='button' class='btn-edit' id='btn-add-category' value=''>Add Category</button>
+        {% for i in range(0, breakdown.length) -%}
+          <button type='button' class='btn-control' id='btn-control-{{headers[i]}}' value='{{headers[i]}}' hidden="hidden">Reveal
+            {{headers[i]}}</button>
+        {% endfor %}
+    </div>
+  </div>
+  <script src='../js/parent.js'></script>
+  <script src='../js/categories.js'></script>
+{% endblock %}

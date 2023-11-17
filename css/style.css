@@ -71,6 +71,10 @@ table {
   background: darkcyan;
 }
 
+.btn-generate {
+  background: mediumslateblue;
+}
+
 .top {
   padding: 4px 0;
   font-size: 130%;

@@ -65,14 +65,6 @@ $('.btn-element').on('click', (e) => {
   }
 });
 
-$('#btn-add-category').on('click', () => {
-  const category = $('#input-category')[0].value;
-  if (category !== '') {
-    const url = buildUrl('add-category', '', '');
-    window.location.href = `${url}&category=${category}`;
-  };
-});
-
 $('#btn-previous-scene').on('click', () => {
   const sceneNumber = parseInt($('#sceneNumber')[0].innerText) - 1;
   let url = buildUrl('breakdown', sceneNumber, '');

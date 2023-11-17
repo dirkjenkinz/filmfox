@@ -33,3 +33,14 @@
 .dialogue {
  margin: 0 40px 20px 40px; 
 }
+
+.breakdown-list {
+  background: tan;
+  color: black;
+}
+
+.script {
+  background: white;
+  color: black;
+  font-size: 75%;
+}

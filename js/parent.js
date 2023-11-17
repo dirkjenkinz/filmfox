@@ -92,3 +92,10 @@ $('#nav-credits').on('click', () => {
   const url = buildParentUrl('credits', sceneNumber, elementNumber);
   window.location.href = url;
 });
+
+$('#nav-categories').on('click', () => {
+  const sceneNumber = $('#sceneNumber')[0].innerText;
+  const elementNumber = $('#elementNumber')[0].innerText;
+  const url = buildParentUrl('categories', sceneNumber, elementNumber);
+  window.location.href = url;
+});

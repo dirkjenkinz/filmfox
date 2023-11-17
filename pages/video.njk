@@ -7,7 +7,7 @@
           {% for i in range(0, script.length, 5) -%}
             <tr>
               {% for num in range(0, 5) -%}
-              {% if (num % 2 ) === 0 %}
+              {% if ((num + i) % 2 ) === 0 %}
               {% set cl = 'red-box'%}
               {% else%}
               {% set cl = 'blue-box' %}
@@ -18,6 +18,17 @@
                   {{i + num}}
                 </td>
                 <td class='{{cl}}'>
+                  {% if complete[i + num] === 'yes' %}
+                    {% if gen[i + num] === 'no' %}
+                      <button class='btn btn-block btn-sm btn-generate' value="{{i + num}}" id='btn-generate_{{i + num}}'>Generate</button>
+                    {% else %}
+                      <button class='btn btn-block btn-modify btn-sm' value="{{i + num}}" id='btn-generate_{{i + num}}'>Modify</button>
+                    {% endif %}
+                  {% else %}
+                    Incomplete
+                  {% endif %}
+                </td>
+                <td class='{{cl}}'>
                   {% if script[i][0].type == 'movie' %}
                     <video width="80" height="45" controls="controls" autoplay="autoplay" muted="muted" class="img">
                       <source src="../data/{{title}}/images/{{script[i][0].image}}" type="video/mp4">
@@ -26,17 +37,6 @@
                     <img width="80" height="45" src="../data/{{title}}/images/{{script[i + num][0].image}}" class="img" alt="img_{{i}}"/>
                   {% else %}
                     <p style='font-size: 50%;'>No image</p>
-                  {% endif %}
-                </td>
-                <td class='{{cl}}'>
-                  {% if complete[i + num] === 'yes' %}
-                    {% if gen[i + num] === 'no' %}
-                      <button class='btn btn-block btn-edit btn-sm btn-generate' value="{{i + num}}" id='btn-generate_{{i + num}}'>Generate</button>
-                    {% else %}
-                      <button class='btn btn-block btn-modify btn-sm btn-generate' value="{{i + num}}" id='btn-generate_{{i + num}}'>Modify</button>
-                    {% endif %}
-                  {% else %}
-                    Incomplete
                   {% endif %}
                 </td>
                 <td style='background:black;'>&nbsp;&nbsp;</td>

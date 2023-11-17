@@ -39,6 +39,8 @@ const breakdownReportRouter = require('./routes/breakdown-report.js');
 const breakdownPDFRouter = require('./routes/breakdown-pdf.js');
 const fullShotListRouter = require('./routes/full-shot-list.js');
 const addCategoryRouter = require('./routes/add-category.js');
+const deleteCategoryRouter = require('./routes/delete-category.js');
+const categoriesRouter = require('./routes/categories.js');
 
 const nunjucks = require('nunjucks');
 const bodyParser = require('body-parser');
@@ -96,6 +98,8 @@ app.use('/breakdown-report', breakdownReportRouter);
 app.use('/breakdown-pdf', breakdownPDFRouter);
 app.use('/full-shot-list', fullShotListRouter);
 app.use('/add-category', addCategoryRouter);
+app.use('/delete-category', deleteCategoryRouter);
+app.use('/categories', categoriesRouter);
 
 app.listen(PORT, (err) => {
     smartLog('paramount', `FilmFox is up & running on port ${PORT}`);
