@@ -20,7 +20,7 @@ const addCategoryHandler = async (req, res) => {
 
   await writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
 
-  res.redirect(`/breakdown?title=${title}&elementNumber=${elementNumber}&sceneNumber=${sceneNumber}&action=display`);
+  res.redirect(`/categories?title=${title}&elementNumber=${elementNumber}&sceneNumber=${sceneNumber}`);
 };
 
 module.exports = { addCategoryHandler };

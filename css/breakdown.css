@@ -44,3 +44,10 @@
   color: black;
   font-size: 75%;
 }
+
+.btn-hide-reveal {
+  background: red;
+  margin: 5px 0 5px 0;
+  width: 100%;
+  font-size: 75%;
+}

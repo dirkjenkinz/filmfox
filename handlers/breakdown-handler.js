@@ -11,10 +11,17 @@ const breakdownHandler = async (req, res) => {
   const sceneNumber = u.query.sceneNumber;
   const elementNumber = u.query.elementNumber;
   const element = u.query.element;
+  const hidden = u.query.hidden;
   let entity = u.query.entity;
   let action = u.query.action;
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
-  let { script, elements, breakdown } = filmFoxFile;
+  let { script, breakdown } = filmFoxFile;
+
+  const categories = [];
+
+  breakdown[0].forEach((c) => {
+    categories.push(c[0]);
+  });
 
   if (!entity) {
     action = 'display';
@@ -59,15 +66,23 @@ const breakdownHandler = async (req, res) => {
     headers.push(b[0].replace(/ /gi, '-'));
   });
 
+  if (!hidden){
+    let h = '';
+    breakdown.forEach(() => {
+      h = h + 'r';
+    });
+  }
+
   res.render('breakdown.njk', {
     title,
     sceneNumber,
     elementNumber,
     highestScene: script.length - 1,
     breakdown: breakdown[sceneNumber],
-    elements,
+    categories,
     scene: script[sceneNumber],
     headers,
+    hidden,
   });
 };
 

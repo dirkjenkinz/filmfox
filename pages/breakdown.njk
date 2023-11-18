@@ -1,6 +1,8 @@
 {% extends "parent.njk" %}
 {% block page %}
   <div class='row top'>
+    <p id='categories' hidden>{{categories}}</p>
+    <p id='hidden' hidden>{{hidden}}<p>
     <div class='col-md-2'>
       {% if sceneNumber > 0 %}
         <button type='button' class='btn-prevnext btn-sm' id='btn-first-scene'>
@@ -64,7 +66,7 @@
         <table id='table-{{headers[i]}}'>
           <thead>
             <tr>
-              <th  width='85%'>
+              <th width='70%'>
                 <button type='button' class='btn-element' value='{{breakdown[i][0]}}'>{{breakdown[i][0]}}</button>
               </th>
               <th width='15%'>
@@ -116,10 +118,13 @@
     </div>
 
     <div class='col-md-2 tableFixHead3' style='font-size: 80%; background:steelblue;'>
-        {% for i in range(0, breakdown.length) -%}
-          <button type='button' class='btn-control' id='btn-control-{{headers[i]}}' value='{{headers[i]}}' hidden="hidden">Reveal
-            {{headers[i]}}</button>
-        {% endfor %}
+      <button type='button' class='btn-hide-reveal' id='btn-hide-all'>Hide All</button>
+      <button type='button' class='btn-hide-reveal' id='btn-reveal-all'>Reveal All</button>
+      <br>
+      {% for i in range(0, breakdown.length) -%}
+        <button type='button' class='btn-control' id='btn-control-{{headers[i]}}' value='{{headers[i]}}' hidden="hidden">Reveal
+          {{headers[i]}}</button>
+      {% endfor %}
     </div>
 
   </div>
