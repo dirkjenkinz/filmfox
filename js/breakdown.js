@@ -14,18 +14,22 @@ $(window).on('load', function () {
       $(`#${control}`).show();
     };
   });
-
+  $('#table1')[0].scrollTop = $('#scr1')[0].innerText;
 });
 
 const buildUrl = (call, sceneNumber, elementNumber) => {
   const title = $('#filmTitle')[0].innerText;
   if (sceneNumber === '') {
     sceneNumber = $('#sceneNumber')[0].innerText;
-  }
+  };
+
   if (elementNumber === '') {
     elementNumber = $('#elementNumber')[0].innerText;
-  }
-  return `/${call}?title=${title}&sceneNumber=${sceneNumber}&elementNumber=${elementNumber}`;
+  };
+
+  const scr1 = $('#table1')[0].scrollTop;
+
+  return `/${call}?title=${title}&sceneNumber=${sceneNumber}&elementNumber=${elementNumber}&scr1=${scr1}`;
 };
 
 const listHidden = () => {

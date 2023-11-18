@@ -14,6 +14,7 @@ const breakdownHandler = async (req, res) => {
   const hidden = u.query.hidden;
   let entity = u.query.entity;
   let action = u.query.action;
+  let scr1 = u.query.scr1;
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
   let { script, breakdown } = filmFoxFile;
 
@@ -71,7 +72,9 @@ const breakdownHandler = async (req, res) => {
     breakdown.forEach(() => {
       h = h + 'r';
     });
-  }
+  };
+
+  if (!scr1) scr1 = 0;  
 
   res.render('breakdown.njk', {
     title,
@@ -83,6 +86,7 @@ const breakdownHandler = async (req, res) => {
     scene: script[sceneNumber],
     headers,
     hidden,
+    scr1,
   });
 };
 

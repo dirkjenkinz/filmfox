@@ -2,7 +2,8 @@
 {% block page %}
   <div class='row top'>
     <p id='categories' hidden>{{categories}}</p>
-    <p id='hidden' hidden>{{hidden}}<p>
+    <p id='hidden' hidden>{{hidden}}</p>
+    <p id='scr1' hidden>{{scr1}}</p>
     <div class='col-md-2'>
       {% if sceneNumber > 0 %}
         <button type='button' class='btn-prevnext btn-sm' id='btn-first-scene'>
@@ -61,9 +62,9 @@
   <!-- end of row 1 -->
 
   <div class='row top'>
-    <div class='col-md-4 tableFixHead3' style='font-size: 70%;'>
+    <div class='col-md-4 tableFixHead3' style='font-size: 70%;' id='table1'>
       {% for i in range(0, breakdown.length) -%}
-        <table id='table-{{headers[i]}}'>
+        <table id='table-{{headers[i]}}' class='zzz'>
           <thead>
             <tr>
               <th width='70%'>
