@@ -1,8 +1,8 @@
 {% extends "parent.njk" %}
 {% block page %}
   <div class='row top'>
-    <p id='categories' hidden>{{categories}}</p>
-    <p id='hidden' hidden>{{hidden}}</p>
+    <p id='categories' hidden="hidden">{{categories}}</p>
+    <p id='hidden' hidden="hidden">{{hidden}}</p>
     <p id='scr1' hidden>{{scr1}}</p>
     <div class='col-md-2'>
       {% if sceneNumber > 0 %}
@@ -68,10 +68,10 @@
           <thead>
             <tr>
               <th width='70%'>
-                <button type='button' class='btn-element' value='{{breakdown[i][0]}}'>{{breakdown[i][0]}}</button>
+                <button type='button' class='btn-element' id='btn-element-{{breakdown[i][0]}}' value='{{breakdown[i][0]}}'>{{breakdown[i][0]}}</button>
               </th>
               <th width='15%'>
-                <button type='button' style='background: red; width:100%;' class='btn-hide' value='{{breakdown[i][0]}}'>Hide</button>
+                <button type='button' class='btn-hide' value='{{breakdown[i][0]}}'>Hide</button>
               </th>
             </tr>
           </thead>
@@ -85,19 +85,12 @@
               </tr>
             {% endfor %}
             <tr>
-              <form action='\breakdown?title={{title}}&sceneNumber={{sceneNumber}}&element={{breakdown[i][0]}}&action=add'>
-                <td>
-                  <input type="text" name="entity" size='40' style='border: 0px;'>
-                  <input type="hidden" name="title" value="{{title}}">
-                  <input type="hidden" name="sceneNumber" value="{{sceneNumber}}">
-                  <input type="hidden" name="elementNumber" value="{{elementNumber}}">
-                  <input type="hidden" name="element" value="{{breakdown[i][0]}}">
-                  <input type="hidden" name="action" value="add">
-                </td>
-                <td>
-                  <input type="submit" style='width:100%; margin:0; padding: 0;' value="Submit">
-                </td>
-              </form>
+              <td>
+                 <input type="text" name="input-entity" id='input-entity-{{breakdown[i][0]}}' size='40' style='border: 0px;'>
+              </td>
+              <td>
+                <button type='button' class='btn-add-entity' id='btn-entity-{{breakdown[i][0]}}' value='{{breakdown[i][0]}}'>Add</button>
+              </td>
             </tr>
             <tr>
               <td colspan='3' style='background: steelblue; font-size:50%;'>&nbsp;</td>

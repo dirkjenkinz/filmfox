@@ -26,9 +26,7 @@ const buildUrl = (call, sceneNumber, elementNumber) => {
   if (elementNumber === '') {
     elementNumber = $('#elementNumber')[0].innerText;
   };
-
   const scr1 = $('#table1')[0].scrollTop;
-
   return `/${call}?title=${title}&sceneNumber=${sceneNumber}&elementNumber=${elementNumber}&scr1=${scr1}`;
 };
 
@@ -47,6 +45,14 @@ const listHidden = () => {
   });
   return h;
 };
+
+$('.btn-add-entity').on('click', (e) => {
+  const element = $(`#btn-element-${e.target.value}`)[0].innerText;
+  const hidden = listHidden();
+  const entity = $(`#input-entity-${e.target.value}`)[0].value; 
+  const url = buildUrl('breakdown', '', '');
+  window.location.href = `${url}&element=${element}&entity=${entity}&action=add&hidden=${hidden}`;
+});
 
 $('.btn-control').on('click', (e) => {
   let table = `table-${e.target.value}`;
