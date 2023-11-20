@@ -6,12 +6,13 @@
         <thead>
           <tr>
             <th>
-              <input type="text" name="category" id='input-category' size='25'>
+              <input type="text" name="category" id='input-category' size='25' style='border: 0;'>
             </th>
             <th>
-              <button type='button' class='btn-edit' id='btn-add-category' value=''>Add Category</button>
+              <button type='button' class='btn-edit' id='btn-add-category' value=''>Add</button>
             </th>
           </tr>
+          <tr><th></th></tr>
         </thead>
         <tbody>
           {% for i in range(0, categories.length) -%}
@@ -34,12 +35,16 @@
           {% for j in range(1, list[i].length) -%}
             {% for k in range (0, list[i][j].length)%}
               {% if k === 0 %}
-                {{list[i][j][k]}} = 
+                {{list[i][j][k]}}:
               {% else %}
-                {{list[i][j][k]}}
+                {% if k < list[i][j].length - 1 %}
+                  {{list[i][j][k]}},
+                {% else %}
+                  {{list[i][j][k]}}&nbsp;&nbsp;
+                {% endif %}
               {% endif %}
             {% endfor %}
-            ,&nbsp;
+            ~&nbsp;
           {% endfor %}
         </p>
       {% endfor %}

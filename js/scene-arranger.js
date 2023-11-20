@@ -4,28 +4,20 @@ $(window).on('load', function () {
 
 $('.btn-down').on('click', (e) => {
   const size = $('#size')[0].innerText;
-  const hidden = [];
-  for (let i = 0; i < size; i++) {
-    hidden.push($(`#table-shots-list-${i}`).is(':hidden'));
-  }
   const num = e.target.value;
   const title = $('#filmTitle')[0].innerText;
   const elementNumber = $('#elementNumber')[0].innerText;
   const sceneNumber = $('#sceneNumber')[0].innerText;
   const scr1 = $('#table1')[0].scrollTop;
-  window.location.href = `/change-scene-order?title=${title}&scr1=${scr1}&elementNumber=${elementNumber}&sceneNumber=${sceneNumber}&direction=down&num=${num}&hidden=${hidden}`;
+  window.location.href = `/change-scene-order?title=${title}&scr1=${scr1}&elementNumber=${elementNumber}&sceneNumber=${sceneNumber}&direction=down&num=${num}`;
 });
 
 $('.btn-up').on('click', (e) => {
   const size = $('#size')[0].innerText;
-  const hidden = [];
-  for (let i = 0; i < size; i++) {
-    hidden.push($(`#table-shots-list-${i}`).is(':hidden'));
-  }
   const num = e.target.value;
   const title = $('#filmTitle')[0].innerText;
   const elementNumber = $('#elementNumber')[0].innerText;
   const sceneNumber = $('#sceneNumber')[0].innerText;
   const scr1 = $('#table1')[0].scrollTop;
-  window.location.href = `/change-scene-order?title=${title}&scr1=${scr1}&elementNumber=${elementNumber}&sceneNumber=${sceneNumber}&direction=up&num=${num}&hidden=${hidden}`;
+  window.location.href = `/change-scene-order?title=${title}&scr1=${scr1}&elementNumber=${elementNumber}&sceneNumber=${sceneNumber}&direction=up&num=${num}`;
 });

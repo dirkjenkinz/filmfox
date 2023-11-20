@@ -7,23 +7,11 @@ const sceneArrangerHandler = async (req, res) => {
   smartLog('info', 'ENTERING SCENE ARRANGER HANDLER');
   const u = url.parse(req.originalUrl, true);
   const title = u.query.title;
-  let hidden = u.query.hidden;
   const elementNumber = u.query.elementNumber;
   const sceneNumber = u.query.sceneNumber;
   let scr1 = u.query.scr1;
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
   const { shotList, script, sceneOrder } = filmFoxFile;
-
-  console.log({scr1});
-
-  if (!hidden) {
-    hidden = [];
-    for (let i = 0; i < shotList.length; i++) {
-      hidden.push('false');
-    }
-  } else {
-    hidden = hidden.split(',');
-  }
 
   const slugs = [];
   script.forEach((s) => {
@@ -45,7 +33,6 @@ const sceneArrangerHandler = async (req, res) => {
     slugList,
     page: 'Scene Arranger',
     size: shotList.length,
-    hidden,
     elementNumber,
     sceneNumber,
     scr1,
