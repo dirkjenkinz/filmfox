@@ -25,6 +25,7 @@ const characterToVoiceHandler = async (req, res) => {
   const u = url.parse(req.originalUrl, true);
   let sceneNumber = u.query.sceneNumber;
   let elementNumber = u.query.elementNumber;
+  let scr1 = u.query.scr1;
   const title = u.query.title;
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
   const { characterList } = filmFoxFile;
@@ -43,6 +44,8 @@ const characterToVoiceHandler = async (req, res) => {
     });
   });
 
+  if (!scr1) scr1 = 0;  
+
   res.render('character-to-voice.njk', {
     title,
     characters: characterList,
@@ -50,6 +53,7 @@ const characterToVoiceHandler = async (req, res) => {
     sceneNumber,
     elementNumber,
     page: 'Voice Map',
+    scr1,
   });
 };
 

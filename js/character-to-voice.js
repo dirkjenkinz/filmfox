@@ -1,5 +1,6 @@
 $(() => {
   $('#nav-ctv').addClass('active');
+  $('#table1')[0].scrollTop = $('#scr1')[0].innerText;
 });
 
   $('select').on('change', function (e) {
@@ -11,7 +12,8 @@ $(() => {
     const title = $('#filmTitle')[0].outerText;
     const sceneNumber = $('#sceneNumber')[0].innerText;
     const elementNumber = $('#elementNumber')[0].innerText;
-    window.location.href = `/character-update?title=${title}&character=${character}&voice=${voice}&elementNumber=${elementNumber}&sceneNumber=${sceneNumber}`;
+    const scr1 = $('#table1')[0].scrollTop;
+    window.location.href = `/character-update?title=${title}&character=${character}&voice=${voice}&elementNumber=${elementNumber}&sceneNumber=${sceneNumber}&scr1=${scr1}`;
   });
 
   $('.btn-play-sample').on('click', (e) =>{

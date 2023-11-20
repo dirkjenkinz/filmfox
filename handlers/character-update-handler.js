@@ -29,6 +29,7 @@ const characterUpdateHandler = async (req, res) => {
   const title = u.query.title;
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
   const characters = filmFoxFile.characterList;
+  const scr1 = u.query.scr1;
   
   const voices = await readFile('voices.json');
   let voice_data = getVoiceData(voices);
@@ -42,7 +43,7 @@ const characterUpdateHandler = async (req, res) => {
 
   writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
 
-  res.redirect(`/ctv?title=${title}&sceneNumber=${sceneNumber}&elementNumber=${elementNumber}`);
+  res.redirect(`/ctv?title=${title}&sceneNumber=${sceneNumber}&elementNumber=${elementNumber}&scr1=${scr1}`);
 
 };
 
