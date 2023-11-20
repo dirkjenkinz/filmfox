@@ -1,7 +1,7 @@
 {% extends "parent.njk" %}
 {% block page %}
-  <div class='row top tableFixHead3' style='font-size: 90%;'>
-    <div class='col-md-3'>
+  <div class='row top' style='font-size: 90%;'>
+    <div class='col-md-3 tableFixHead3'>
       <table id='table-categories'>
         <thead>
           <tr>
@@ -26,6 +26,23 @@
           {% endfor %}
         </tbody>
       </table>
+    </div>
+    <div class='col-md-9 tableFixHead3'>
+      {% for i in range(0, list.length) -%}
+        <p class='scene-breakdown'>
+          {{list[i][0]}}
+          {% for j in range(1, list[i].length) -%}
+            {% for k in range (0, list[i][j].length)%}
+              {% if k === 0 %}
+                {{list[i][j][k]}} = 
+              {% else %}
+                {{list[i][j][k]}}
+              {% endif %}
+            {% endfor %}
+            ,&nbsp;
+          {% endfor %}
+        </p>
+      {% endfor %}
     </div>
   </div>
   <script src='../js/parent.js'></script>

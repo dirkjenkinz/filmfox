@@ -3,6 +3,9 @@ const path = require('path');
 const axios = require('axios');
 const directoryPath = path.join(__dirname, '../data');
 const { smartLog } = require('../services/smart-log');
+const elevenLabsAPI = 'https://api.elevenlabs.io/v1';
+const fs = require('fs');
+
 
 const getSampleIds = async (voice_id, apiKey) => {
   smartLog('info', 'Get Sample IDs');
@@ -13,7 +16,7 @@ const getSampleIds = async (voice_id, apiKey) => {
     },
     data: {
       text: 'string',
-      model_id: 'eleven_monolingual_v2',
+   //   model_id: 'eleven_monolingual_v2',
       voice_settings: {
         stability: 0.5,
         similarity_boost: 0.5,
@@ -76,7 +79,66 @@ const generateSample = async (voiceID, apiKey) => {
   }
 };
 
-const generateSpeech = async (apiKey, voiceID, fileName, textInput, title) => {
+
+//const _generateSpeech = async (apiKey, voiceID, fileName, textInput, title) => {
+
+
+//const generateSpeech = async (apiKey, voiceID, fileName, textInput, stability, similarityBoost, modelId) => {
+  const generateSpeech = async (apiKey, voiceID, fileName, textInput, title) => {
+  try {
+
+		if (!apiKey || !voiceID || !fileName || !textInput) {
+			console.log('ERR: Missing parameter');
+		}
+
+		const voiceURL = `${elevenLabsAPI}/text-to-speech/${voiceID}`;
+    fileName = `${directoryPath}/${title}/sounds/${fileName}`;
+
+		const response = await axios({
+			method: 'POST',
+			url: voiceURL,
+			data: {
+				text: textInput,
+				voice_settings: {
+					stability: 0,
+					similarity_boost: 0
+				},
+        model_id: 'eleven_monolingual_v1',
+			},
+			headers: {
+				'Accept': 'audio/mpeg',
+				'xi-api-key': apiKey,
+				'Content-Type': 'application/json',
+			},
+			responseType: 'stream'
+		});
+
+		response.data.pipe(fs.createWriteStream(fileName));
+
+		return {
+			status: 'ok'
+		};
+
+	} catch (error) {
+		console.log(error);
+	}
+};
+
+const _generateSpeech = async (apiKey, voiceID, fileName, textInput, title) => {
+  smartLog('info', 'generate speech');
+  try {
+      await voice.textToSpeech(apiKey, voiceID, `${directoryPath}/${title}/sounds/${fileName}`, textInput).then(res => {
+          smartLog('info', `sound file generated for ${fileName}`);
+          return 'Generated';
+      });
+  } catch (error) {
+      smartLog('error', 'error generating speech');
+      smartLog('error', error.message);
+      return 'Failed';
+  };
+};
+
+const __generateSpeech = async (apiKey, voiceID, fileName, textInput, title) => {
   smartLog('info', 'generate speech');
     const config = {
       headers: {
@@ -86,14 +148,14 @@ const generateSpeech = async (apiKey, voiceID, fileName, textInput, title) => {
       },
       data: {
         text: textInput,
-        model_id: 'eleven_monolingual_v2',
+//        model_id: 'eleven_monolingual_v2',
         voice_settings: {
           stability: 0.5,
           similarity_boost: 0.5,
         },
       },
     };
-
+    console.log(`https://api.elevenlabs.io/v1/text-to-speech/${voiceID}/${directoryPath}/${title}/sounds/${fileName}`);
     try {
       let response = await axios.post(
         `https://api.elevenlabs.io/v1/text-to-speech/${voiceID}/${directoryPath}/${title}/sounds/${fileName}`

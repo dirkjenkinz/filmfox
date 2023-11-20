@@ -49,7 +49,11 @@ const generateSingleHandler = async (req, res) => {
     };
   };
 
-  const msg = await generateSpeech(
+  console.log({api_key});
+  console.log({voice_id});
+  console.log({dialogue});
+
+  let msg = await generateSpeech(
     api_key,
     voice_id,
     fileName,

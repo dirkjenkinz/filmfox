@@ -10,14 +10,27 @@ const categoriesHandler = async (req, res) => {
   const title = u.query.title;
   const sceneNumber = u.query.sceneNumber;
   const elementNumber = u.query.elementNumber;
-  const category = u.query.category;
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
   let { breakdown } = filmFoxFile;
 
   const categories = [];
 
+
   breakdown[0].forEach((b)=>{
     categories.push(b[0]);
+  });
+
+  const list = [];
+  breakdown.forEach((categories, index) => {
+    const temp = [index];
+    categories.forEach((c) => {
+      if (c.length > 1){
+        temp.push(c);
+      };
+    });
+    if (temp.length > 1) {
+      list.push(temp);
+    };
   });
 
   res.render('categories.njk',{
@@ -25,6 +38,7 @@ const categoriesHandler = async (req, res) => {
     sceneNumber,
     elementNumber,
     categories,
+    list,
   });
 
 };
