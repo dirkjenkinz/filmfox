@@ -50,7 +50,7 @@ $('.btn-add-entity').on('click', (e) => {
   const element = $(`#btn-element-${e.target.value}`)[0].innerText;
   const hidden = listHidden();
   const entity = $(`#input-entity-${e.target.value}`)[0].value; 
-  const url = buildUrl('breakdown', '', '');
+  const url = buildUrl('breakdown', '', '');  
   window.location.href = `${url}&element=${element}&entity=${entity}&action=add&hidden=${hidden}`;
 });
 

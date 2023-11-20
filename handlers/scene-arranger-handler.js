@@ -10,11 +10,11 @@ const sceneArrangerHandler = async (req, res) => {
   let hidden = u.query.hidden;
   const elementNumber = u.query.elementNumber;
   const sceneNumber = u.query.sceneNumber;
-  let top = u.query.top;
+  let scr1 = u.query.scr1;
   const filmFoxFile = await readFile(`${title}/${title}.fff`);
-  const { shotList, script, sceneOrder, credits } = filmFoxFile;
+  const { shotList, script, sceneOrder } = filmFoxFile;
 
-  if (!top) top = 1;
+  console.log({scr1});
 
   if (!hidden) {
     hidden = [];
@@ -37,14 +37,9 @@ const sceneArrangerHandler = async (req, res) => {
     slugList.push(slugs[sceneNumber]);
   });
 
-  top = parseInt(top);
-  let finish = 16 + parseInt(top);
-  if (finish > shotList.length - 1) finish = shotList.length;
-  if (finish < top) finish = top;
+  if (!scr1) scr1 = 0;  
 
   res.render('scene-arranger.njk', {
-    top,
-    finish,
     title,
     shotList: sList,
     slugList,
@@ -53,6 +48,7 @@ const sceneArrangerHandler = async (req, res) => {
     hidden,
     elementNumber,
     sceneNumber,
+    scr1,
   });
 };
 

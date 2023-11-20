@@ -1,3 +1,7 @@
+$(window).on('load', function () {
+  $('#table1')[0].scrollTop = $('#scr1')[0].innerText;
+});
+
 $('.btn-down').on('click', (e) => {
   const size = $('#size')[0].innerText;
   const hidden = [];
@@ -8,13 +12,12 @@ $('.btn-down').on('click', (e) => {
   const title = $('#filmTitle')[0].innerText;
   const elementNumber = $('#elementNumber')[0].innerText;
   const sceneNumber = $('#sceneNumber')[0].innerText;
-  const top = $('#top')[0].innerText;
-  window.location.href = `/change-scene-order?title=${title}&elementNumber=${elementNumber}&sceneNumber=${sceneNumber}&direction=down&num=${num}&hidden=${hidden}&top=${top})`;
+  const scr1 = $('#table1')[0].scrollTop;
+  window.location.href = `/change-scene-order?title=${title}&scr1=${scr1}&elementNumber=${elementNumber}&sceneNumber=${sceneNumber}&direction=down&num=${num}&hidden=${hidden}`;
 });
 
 $('.btn-up').on('click', (e) => {
   const size = $('#size')[0].innerText;
-  const top = $('#top')[0].innerText;
   const hidden = [];
   for (let i = 0; i < size; i++) {
     hidden.push($(`#table-shots-list-${i}`).is(':hidden'));
@@ -23,17 +26,6 @@ $('.btn-up').on('click', (e) => {
   const title = $('#filmTitle')[0].innerText;
   const elementNumber = $('#elementNumber')[0].innerText;
   const sceneNumber = $('#sceneNumber')[0].innerText;
-  window.location.href = `/change-scene-order?title=${title}&elementNumber=${elementNumber}&sceneNumber=${sceneNumber}&direction=up&num=${num}&hidden=${hidden}&top=${top})`;
-});
-
-$('#slider-scene').on('input', (e) => {
-  $('#output')[0].innerText = `${e.target.value}`;
-});
-
-$('#slider-scene').on('change', (e) => {
-  const top = e.target.value;
-  const title = $('#filmTitle')[0].innerText;
-  const elementNumber = $('#elementNumber')[0].innerText;
-  const sceneNumber = $('#sceneNumber')[0].innerText;
-  window.location.href = `/scene-arranger?top=${top}&title=${title}&elementNumber=${elementNumber}&sceneNumber=${sceneNumber}`;
+  const scr1 = $('#table1')[0].scrollTop;
+  window.location.href = `/change-scene-order?title=${title}&scr1=${scr1}&elementNumber=${elementNumber}&sceneNumber=${sceneNumber}&direction=up&num=${num}&hidden=${hidden}`;
 });
