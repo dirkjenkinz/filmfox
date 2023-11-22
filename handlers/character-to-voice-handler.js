@@ -21,7 +21,7 @@ const getVoiceData = (voices) => {
 };
 
 const characterToVoiceHandler = async (req, res) => {
-  smartLog('info', 'entering character to voice handler');
+  smartLog('info', 'ENTERING CHARACTER TO VOICE HANDLER');
   const u = url.parse(req.originalUrl, true);
   let sceneNumber = u.query.sceneNumber;
   let elementNumber = u.query.elementNumber;

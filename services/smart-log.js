@@ -5,8 +5,20 @@ dotenv.config();
 showLog = process.env.SHOWLOG;
 hardLog = process.env.HARDLOG;
 const filePath = 'C:/Users/User/Documents/hardLog.txt';
-let log = require(filePath);
 
+
+const getHardlog = async () => {
+  return new Promise((resolve, reject) => {
+    fs.readFile(filePath, (err, data) => {
+      if (err) {
+        console.log('error getting data');
+        reject(err);
+      } else {
+        resolve(data);
+      }
+    });
+  });
+};
 
 const writeHardLog = async (hardLog) => {
   return new Promise((resolve, reject) => {
@@ -21,8 +33,12 @@ const writeHardLog = async (hardLog) => {
 };
 
 const updateHardLog = async (time_stamp, msg) => {
+  let log = '';
+  if (fs.existsSync(filePath)) {
+    log = await getHardlog();
+  };
   log = log + `${time_stamp}: ${msg}\n`;
- writeHardLog(log);
+  writeHardLog(log);
 };
 
 const smartLog = async (lev, msg) => {
