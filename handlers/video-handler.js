@@ -7,15 +7,11 @@ const videoHandler = async (req, res) => {
   smartLog('info', 'ENTERING VIDEO HANDLER');
   const u = url.parse(req.originalUrl, true);
   const title = u.query.title;
-  console.log({title});
   const filmFoxFile = await getFile(`${title}/${title}.fff`);
-  console.log('-1-');
   const elementNumber = u.query.elementNumber;
   const sceneNumber = u.query.sceneNumber;
   const { script } = filmFoxFile;
-  console.log('2');
   const videoList = await getFileList(`data//${title}/videos`, 'mp4');
-  console.log({ videoList });
   const gen = [];
   for (let i = 0; i < script.length; i++) {
     let num = '0000' + i;

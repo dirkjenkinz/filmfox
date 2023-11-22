@@ -40,7 +40,6 @@ const imgToMP4 = (caption, sound, vision, duration, output) => {
       smartLog('info', `ffmpeg process started: ${vision}`);
     })
     .on('error', function (err) {
-      console.log('error =', err);
       smartLog('error', err);
     })
     .on('end', function (output) {

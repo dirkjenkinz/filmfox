@@ -20,7 +20,6 @@ const fileExists = (file) => {
 const getFile = async (file) => {
   smartLog('info', `getFile - getting data for ${file}`);
   const directoryPath = path.join(__dirname, '../data');
-  console.log({file})
   return new Promise((resolve, reject) => {
     fs.readFile(`${directoryPath}/${file}`, (err, data) => {
       if (err) {
@@ -28,7 +27,6 @@ const getFile = async (file) => {
         smartLog('error', err.cause);
         reject(err);
       } else {
-        console.log(JSON.parse(data))
         resolve(JSON.parse(data));
       }
     });

@@ -49,10 +49,6 @@ const generateSingleHandler = async (req, res) => {
     };
   };
 
-  console.log({api_key});
-  console.log({voice_id});
-  console.log({dialogue});
-
   let msg = await generateSpeech(
     api_key,
     voice_id,
