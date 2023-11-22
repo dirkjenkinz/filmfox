@@ -3,7 +3,7 @@
 const url = require('url');
 const { smartLog } = require('../services/smart-log');
 const {
-  readFile,
+  getFile,
   writeFile,
 } = require('../services/file-service');
 
@@ -13,7 +13,7 @@ const breakdownReportHandler = async (req, res) => {
   const title = u.query.title;
   const sceneNumber = u.query.sceneNumber;
   const elementNumber = u.query.elementNumber;
-  const filmFoxFile = await readFile(`${title}/${title}.fff`);
+  const filmFoxFile = await getFile(`${title}/${title}.fff`);
   let { script, breakdown } = filmFoxFile;
 
   res.render('breakdown-report.njk', {

@@ -2,7 +2,7 @@
 
 const url = require('url');
 const { smartLog } = require('../services/smart-log');
-const { readFile } = require('../services/file-service');
+const { getFile } = require('../services/file-service');
 const pdf = require('pdf-creator-node');
 const fs = require('fs');
 const path = require('path');
@@ -16,14 +16,14 @@ const pdfHandler = async (req, res) => {
   const sceneNumber = u.query.sceneNumber;
   const sheetNumber = u.query.sheetNumber;
 
-  const filmFoxFile = await readFile(`${title}/${title}.fff`);
+  const filmFoxFile = await getFile(`${title}/${title}.fff`);
   const { shotList, script, credits } = filmFoxFile;
   const shot = shotList[sceneNumber];
 
   let number = '000000' + sheetNumber;
   number = number.substring(number.length - 4);
 
-  const html = fs.readFileSync(`${pagesPath}/sheet.njk`, 'utf8');
+  const html = fs.getFileSync(`${pagesPath}/sheet.njk`, 'utf8');
 
   const options = {
     format: 'A4',

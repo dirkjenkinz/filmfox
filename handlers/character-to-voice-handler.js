@@ -1,7 +1,7 @@
 'use strict';
 
 const url = require('url');
-const { readFile } = require('../services/file-service');
+const { getFile } = require('../services/file-service');
 const { smartLog } = require('../services/smart-log');
 
 const getVoiceData = (voices) => {
@@ -27,9 +27,9 @@ const characterToVoiceHandler = async (req, res) => {
   let elementNumber = u.query.elementNumber;
   let scr1 = u.query.scr1;
   const title = u.query.title;
-  const filmFoxFile = await readFile(`${title}/${title}.fff`);
+  const filmFoxFile = await getFile(`${title}/${title}.fff`);
   const { characterList } = filmFoxFile;
-  const voices = await readFile('voices.json');
+  const voices = await getFile('voices.json');
   let voice_data = getVoiceData(voices);
   voice_data.unshift(['-', '', '']);
 

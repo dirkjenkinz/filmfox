@@ -17,9 +17,10 @@ const fileExists = (file) => {
   }
 };
 
-const readFile = async (file) => {
-  smartLog('info', `readFile - getting data for ${file}`);
+const getFile = async (file) => {
+  smartLog('info', `getFile - getting data for ${file}`);
   const directoryPath = path.join(__dirname, '../data');
+  console.log({file})
   return new Promise((resolve, reject) => {
     fs.readFile(`${directoryPath}/${file}`, (err, data) => {
       if (err) {
@@ -27,6 +28,7 @@ const readFile = async (file) => {
         smartLog('error', err.cause);
         reject(err);
       } else {
+        console.log(JSON.parse(data))
         resolve(JSON.parse(data));
       }
     });
@@ -192,7 +194,7 @@ const getListOfImages = async (subdir) => {
 };
 
 module.exports = {
-  readFile,
+  getFile,
   writeFile,
   createDirectory,
   getFileList,

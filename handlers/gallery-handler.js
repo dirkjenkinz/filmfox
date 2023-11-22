@@ -4,7 +4,7 @@ const url = require('url');
 const { smartLog } = require('../services/smart-log');
 const {
   getListOfImages,
-  readFile,
+  getFile,
 } = require('../services/file-service');
 
 const getUsed = (script) => {
@@ -48,7 +48,7 @@ const galleryHandler = async (req, res) => {
   }
 
 
-  const filmFoxFile = await readFile(`${title}/${title}.fff`);
+  const filmFoxFile = await getFile(`${title}/${title}.fff`);
   const { script } = filmFoxFile;
   const usedImages = getUsed(script);
   const used = [];

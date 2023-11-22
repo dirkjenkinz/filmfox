@@ -11,7 +11,7 @@ var parseString = require('xml2js').parseString;
 const {
   writeFile,
   createDirectory,
-  readFile,
+  getFile,
   readScriptData,
 } = require('../services/file-service');
 
@@ -64,7 +64,7 @@ const convertHandler = async (req, res) => {
   const u = url.parse(req.originalUrl, true);
   let title = u.query.script;
   const api_key = process.env.APIKEY;
-  const voices = await readFile('voices.json');
+  const voices = await getFile('voices.json');
   const script = await readScriptData(`${title}`);
   parseString(script, async (err, result) => {
     const paragraphs = result.FinalDraft.Content[0].Paragraph;

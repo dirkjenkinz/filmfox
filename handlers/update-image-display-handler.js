@@ -1,7 +1,7 @@
 'use strict';
 const url = require('url');
 const { smartLog } = require('../services/smart-log');
-const { readFile, writeFile } = require('../services/file-service');
+const { getFile, writeFile } = require('../services/file-service');
 
 const updateImageDisplayHandler = async (req, res) => {
   smartLog('info', 'ENTERING UPDATE IMAGE DISPLAY HANDLDER');
@@ -12,7 +12,7 @@ const updateImageDisplayHandler = async (req, res) => {
   const image = u.query.image;
   const caller = u.query.caller;
 
-  let filmFoxFile = await readFile(`${title}/${title}.fff`);
+  let filmFoxFile = await getFile(`${title}/${title}.fff`);
   const { script } = filmFoxFile;
 
   let type = 'still';

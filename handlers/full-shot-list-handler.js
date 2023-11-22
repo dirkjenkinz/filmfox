@@ -1,7 +1,7 @@
 'use strict';
 const url = require('url');
 const { smartLog } = require('../services/smart-log');
-const { readFile } = require('../services/file-service');
+const { getFile } = require('../services/file-service');
 
 const fullShotListHandler = async (req, res) => {
   smartLog('info', 'ENTERING FULL SHOT LIST HANDLER');
@@ -11,7 +11,7 @@ const fullShotListHandler = async (req, res) => {
   const elementNumber = u.query.elementNumber;
   const sceneNumber = u.query.sceneNumber;
   let top = u.query.top;
-  const filmFoxFile = await readFile(`${title}/${title}.fff`);
+  const filmFoxFile = await getFile(`${title}/${title}.fff`);
   const { shotList, script, sceneOrder, credits } = filmFoxFile;
 
   if (!top) top = 1;

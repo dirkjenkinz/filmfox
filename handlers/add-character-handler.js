@@ -2,7 +2,7 @@
 
 const url = require('url');
 const { smartLog } = require('../services/smart-log');
-const { readFile, writeFile } = require('../services/file-service');
+const { getFile, writeFile } = require('../services/file-service');
 
 const addCharacterHandler = async (req, res) => {
   smartLog('info', 'ENTERING ADD CHARACTER HANDLER');
@@ -12,7 +12,7 @@ const addCharacterHandler = async (req, res) => {
   const sceneNumber = u.query.sceneNumber;
   const elementNumber = u.query.elementNumber;
 
-  const filmFoxFile = await readFile(`${title}/${title}.fff`);
+  const filmFoxFile = await getFile(`${title}/${title}.fff`);
   let { nonSpeakers } = filmFoxFile;
   nonSpeakers.push(character);
 

@@ -2,7 +2,7 @@
 
 const url = require('url');
 const { smartLog } = require('../services/smart-log');
-const { readFile, writeFile } = require('../services/file-service');
+const { getFile, writeFile } = require('../services/file-service');
 
 const breakdownHandler = async (req, res) => {
   smartLog('info', 'ENTERING BREAKDOWN HANDLER');
@@ -15,7 +15,7 @@ const breakdownHandler = async (req, res) => {
   let entity = u.query.entity;
   let action = u.query.action;
   let scr1 = u.query.scr1;
-  const filmFoxFile = await readFile(`${title}/${title}.fff`);
+  const filmFoxFile = await getFile(`${title}/${title}.fff`);
   let { script, breakdown } = filmFoxFile;
 
   const categories = [];

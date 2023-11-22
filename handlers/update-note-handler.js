@@ -1,7 +1,7 @@
 'use strict';
 const url = require('url');
 const { smartLog } = require('../services/smart-log');
-const { readFile, writeFile } = require('../services/file-service');
+const { getFile, writeFile } = require('../services/file-service');
 
 const updateNoteHandler = async (req, res) => {
   smartLog('info', 'ENTERING UPDATE NOTE HANDLER');
@@ -13,7 +13,7 @@ const updateNoteHandler = async (req, res) => {
   const caller = u.query.caller;
   const mute = u.query.mute;
   const speak = u.query.speak;
-  const filmFoxFile = await readFile(`${title}/${title}.fff`);
+  const filmFoxFile = await getFile(`${title}/${title}.fff`);
   const {shotList} = filmFoxFile;
   shotList[sceneNumber].note = val;
 

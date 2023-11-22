@@ -2,7 +2,7 @@
 
 const url = require('url');
 const { smartLog } = require('../services/smart-log');
-const { readFile } = require('../services/file-service');
+const { getFile } = require('../services/file-service');
 const videoshow = require('videoshow');
 const path = require('path');
 const FFmpeg = require('fluent-ffmpeg');
@@ -39,7 +39,8 @@ const imgToMP4 = (caption, sound, vision, duration, output) => {
     .on('start', function (command) {
       smartLog('info', `ffmpeg process started: ${vision}`);
     })
-    .on('error', function (err, stdout, stderr) {
+    .on('error', function (err) {
+      console.log('error =', err);
       smartLog('error', err);
     })
     .on('end', function (output) {
@@ -56,7 +57,7 @@ const createVideoHandler = async (req, res) => {
   const imagePath = path.join(__dirname, `../data/${title}/images`);
   const outPath = path.join(__dirname, `../data/${title}/videos`);
 
-  const filmFoxFile = await readFile(`${title}/${title}.fff`);
+  const filmFoxFile = await getFile(`${title}/${title}.fff`);
   smartLog('info', `${title}.fff retrieved`);
   const { script } = filmFoxFile;
   

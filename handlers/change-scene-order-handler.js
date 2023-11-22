@@ -2,7 +2,7 @@
 
 const url = require('url');
 const { smartLog } = require('../services/smart-log');
-const { readFile, writeFile } = require('../services/file-service');
+const { getFile, writeFile } = require('../services/file-service');
 
 const changeSceneOrderHandler = async (req, res) => {
   smartLog('info', 'ENTERING CHANGE SCENE ORDER HANDLER');
@@ -13,7 +13,7 @@ const changeSceneOrderHandler = async (req, res) => {
   const elementNumber = u.query.elementNumber;
   const num = u.query.num;
   const scr1 = u.query.scr1;
-  const filmFoxFile = await readFile(`${title}/${title}.fff`);
+  const filmFoxFile = await getFile(`${title}/${title}.fff`);
   const { sceneOrder } = filmFoxFile;
 
   let numOther;

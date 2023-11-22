@@ -8,7 +8,7 @@ const { registerFont } = require('canvas');
 registerFont('C:/Windows/Fonts/arialbd.ttf', { family: 'Arial Bold' });
 registerFont('C:/Windows/Fonts/timesbd.ttf', { family: 'Times Bold' });
 const {
-  readFile,
+  getFile,
 } = require('../services/file-service');
 
 const buildShowreelHandler = async (req, res) => {
@@ -17,7 +17,7 @@ const buildShowreelHandler = async (req, res) => {
   const title = u.query.title;
   const sceneNumber = u.query.sceneNumber;
   const elemengNumber = u.query.sceneNumber;
-  const filmFoxFile = await readFile(`${title}/${title}.fff`);
+  const filmFoxFile = await getFile(`${title}/${title}.fff`);
   const { script } = filmFoxFile;
 
   let t = 0.00;

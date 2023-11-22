@@ -1,6 +1,6 @@
 'use strict';
 const url = require('url');
-const { readFile, getFileList } = require('../services/file-service');
+const { getFile, getFileList } = require('../services/file-service');
 const { smartLog } = require('../services/smart-log');
 const dotenv = require('dotenv');
 dotenv.config();
@@ -31,7 +31,7 @@ const soundHandler = async (req, res) => {
   const title = u.query.title;
   const elementNumber = u.query.elementNumber;
   const sceneNumber = u.query.sceneNumber;
-  const filmFoxFile = await readFile(`${title}/${title}.fff`);
+  const filmFoxFile = await getFile(`${title}/${title}.fff`);
   const { script } = filmFoxFile;
   const mergedList = await getFileList(`data/${title}/scenes`, 'mp3');
   const soundsList = await getFileList(`data//${title}/sounds`, 'mp3');

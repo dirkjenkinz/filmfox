@@ -1,6 +1,6 @@
 const url = require('url');
 const { smartLog } = require('../services/smart-log');
-const { readFile } = require('../services/file-service');
+const { getFile } = require('../services/file-service');
 const PDFDocument = require('pdfkit');
 const fs = require('fs');
 const path = require('path');
@@ -13,7 +13,7 @@ const breakdownPDFHandler = async (req, res) => {
   const title = u.query.title;
   const sceneNumber = u.query.sceneNumber;
   const elementNumber = sceneNumber;
-  const filmFoxFile = await readFile(`${title}/${title}.fff`);
+  const filmFoxFile = await getFile(`${title}/${title}.fff`);
   const { breakdown, script, credits } = filmFoxFile;
 
   let number = '000000' + sceneNumber;

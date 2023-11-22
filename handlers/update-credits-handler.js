@@ -1,7 +1,7 @@
 'use strict';
 const url = require('url');
 const { smartLog } = require('../services/smart-log');
-const { readFile, writeFile } = require('../services/file-service');
+const { getFile, writeFile } = require('../services/file-service');
 
 const updateCreditsHandler = async (req, res) => {
   smartLog('info', 'ENTERING UPDATE CREDIT HANDLER');
@@ -12,7 +12,7 @@ const updateCreditsHandler = async (req, res) => {
   const sceneNumber = u.query.sceneNumber;
   const elementNumber = u.query.elementNumber;
 
-  const filmFoxFile = await readFile(`${title}/${title}.fff`);
+  const filmFoxFile = await getFile(`${title}/${title}.fff`);
   let {credits} = filmFoxFile;
 
   if (!credits) {

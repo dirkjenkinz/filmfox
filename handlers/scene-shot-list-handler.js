@@ -1,7 +1,7 @@
 'use strict';
 const url = require('url');
 const { smartLog } = require('../services/smart-log');
-const { readFile } = require('../services/file-service');
+const { getFile } = require('../services/file-service');
 
 const shots = ['-', 'WS', 'VWS', 'MS', 'MCU', 'XCU', 'CU'];
 const angles = [
@@ -33,7 +33,7 @@ const sceneShotListHandler = async (req, res) => {
   const title = u.query.title;
   let sceneNumber = u.query.sceneNumber;
   const elementNumber = u.query.elementNumber;
-  const filmFoxFile = await readFile(`${title}/${title}.fff`);
+  const filmFoxFile = await getFile(`${title}/${title}.fff`);
   const { script, shotList, charactersByScene } = filmFoxFile;
   if (!sceneNumber) sceneNumber = 0;
 

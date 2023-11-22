@@ -1,7 +1,7 @@
 'use strict';
 const url = require('url');
 const { smartLog } = require('../services/smart-log');
-const { readFile } = require('../services/file-service');
+const { getFile } = require('../services/file-service');
 
 const showreelHandler = async (req, res) => {
   smartLog('info', 'ENTERING SHOWREEL HANDLER');
@@ -14,7 +14,7 @@ const showreelHandler = async (req, res) => {
   if (!mute) mute = 'MUTE';
   const msg = u.query.msg;
 
-  const filmFoxFile = await readFile(`${title}/${title}.fff`);
+  const filmFoxFile = await getFile(`${title}/${title}.fff`);
   const { script, shotList, charactersByScene, nonSpeakers, characterList } = filmFoxFile;
 
   if (!sceneNumber) sceneNumber = 0;  

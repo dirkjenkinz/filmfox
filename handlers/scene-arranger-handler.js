@@ -1,7 +1,7 @@
 'use strict';
 const url = require('url');
 const { smartLog } = require('../services/smart-log');
-const { readFile } = require('../services/file-service');
+const { getFile } = require('../services/file-service');
 
 const sceneArrangerHandler = async (req, res) => {
   smartLog('info', 'ENTERING SCENE ARRANGER HANDLER');
@@ -10,7 +10,7 @@ const sceneArrangerHandler = async (req, res) => {
   const elementNumber = u.query.elementNumber;
   const sceneNumber = u.query.sceneNumber;
   let scr1 = u.query.scr1;
-  const filmFoxFile = await readFile(`${title}/${title}.fff`);
+  const filmFoxFile = await getFile(`${title}/${title}.fff`);
   const { shotList, script, sceneOrder } = filmFoxFile;
 
   const slugs = [];

@@ -2,7 +2,7 @@
 
 const url = require('url');
 const { smartLog } = require('../services/smart-log');
-const { readFile, writeFile } = require('../services/file-service');
+const { getFile, writeFile } = require('../services/file-service');
 
 const deleteCategoryHandler = async (req, res) => {
   smartLog('info', 'ENTERING DELETE CATEGORY HANDLER');
@@ -11,7 +11,7 @@ const deleteCategoryHandler = async (req, res) => {
   const sceneNumber = u.query.sceneNumber;
   const elementNumber = u.query.elementNumber;
   const category = u.query.category;
-  const filmFoxFile = await readFile(`${title}/${title}.fff`);
+  const filmFoxFile = await getFile(`${title}/${title}.fff`);
   let { breakdown } = filmFoxFile;
 
   for (let i = 0; i < breakdown.length; i++){

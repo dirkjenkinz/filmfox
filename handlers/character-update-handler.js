@@ -1,7 +1,7 @@
 'use strict';
 
 const url = require('url');
-const { readFile, writeFile } = require('../services/file-service');
+const { getFile, writeFile } = require('../services/file-service');
 const { smartLog } = require('../services/smart-log');
 
 const getVoiceData = (voices) => {
@@ -27,11 +27,11 @@ const characterUpdateHandler = async (req, res) => {
   const sceneNumber = u.query.sceneNumber;
   const elementNumber = u.query.elementNumber;
   const title = u.query.title;
-  const filmFoxFile = await readFile(`${title}/${title}.fff`);
+  const filmFoxFile = await getFile(`${title}/${title}.fff`);
   const characters = filmFoxFile.characterList;
   const scr1 = u.query.scr1;
   
-  const voices = await readFile('voices.json');
+  const voices = await getFile('voices.json');
   let voice_data = getVoiceData(voices);
   voice_data.unshift(['-', '', '']);
 

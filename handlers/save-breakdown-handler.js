@@ -2,7 +2,7 @@
 
 const url = require('url');
 const { smartLog } = require('../services/smart-log');
-const { readFile, writeFile, createDirectory } = require('../services/file-service');
+const { getFile, writeFile, createDirectory } = require('../services/file-service');
 
 const saveBreakdownHandler = async (req, res) => {
   smartLog('info', 'ENTERING SAVE BREAKDOWN HANDLER');
@@ -10,7 +10,7 @@ const saveBreakdownHandler = async (req, res) => {
   const title = u.query.title;
   const sceneNumber = u.query.sceneNumber;
   const elementNumber = u.query.elementNumber;
-  const filmFoxFile = await readFile(`${title}/${title}.fff`);
+  const filmFoxFile = await getFile(`${title}/${title}.fff`);
   let { script } = filmFoxFile;
   let doc = [];
   script[sceneNumber].forEach((s) => {

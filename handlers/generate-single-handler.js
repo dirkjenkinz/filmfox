@@ -1,7 +1,7 @@
 'use strict';
 
 const url = require('url');
-const { readFile, writeFile, getDuration } = require('../services/file-service');
+const { getFile, writeFile, getDuration } = require('../services/file-service');
 const { generateSpeech } = require('../services/elevenLabs');
 const dotenv = require('dotenv');
 dotenv.config();
@@ -20,7 +20,7 @@ const generateSingleHandler = async (req, res) => {
   const api_key = process.env.APIKEY;
   const mute = u.query.mute;
 
-  const filmFoxFile = await readFile(`${title}/${title}.fff`);
+  const filmFoxFile = await getFile(`${title}/${title}.fff`);
   const { script } = filmFoxFile;
   const element = script[sceneNumber][elementNumber];
   let sc = '0000' + sceneNumber;
@@ -29,7 +29,7 @@ const generateSingleHandler = async (req, res) => {
   el = el.substring(el.length - 4);
   const fileName = `${sc}_${el}.mp3`;
 
-  const voice_data = await readFile('voices.json');
+  const voice_data = await getFile('voices.json');
   
   let voice_id = '';
 
