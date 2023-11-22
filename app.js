@@ -33,6 +33,7 @@ const updateCreditsRouter = require('./routes/update-credits.js');
 const addCharacterRouter = require('./routes/add-character.js');
 const addCharacterToSceneRouter = require('./routes/add-character-to-scene.js');
 const deleteCharacterFromSceneRouter = require('./routes/delete-character-from-scene.js');
+const deleteCharacterRouter = require('./routes/delete-character.js');
 const breakdownRouter = require('./routes/breakdown.js');
 const saveBreakdownRouter = require('./routes/save-breakdown.js');
 const breakdownReportRouter = require('./routes/breakdown-report.js');
@@ -100,6 +101,7 @@ app.use('/full-shot-list', fullShotListRouter);
 app.use('/add-category', addCategoryRouter);
 app.use('/delete-category', deleteCategoryRouter);
 app.use('/categories', categoriesRouter);
+app.use('/delete-character', deleteCharacterRouter);
 
 app.listen(PORT, (err) => {
     smartLog('paramount', `FilmFox is up & running on port ${PORT}`);

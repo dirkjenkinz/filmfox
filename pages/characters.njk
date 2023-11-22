@@ -26,30 +26,32 @@
         </tbody>
       </table>
     </div>
-    <div class='col-md-2'>
+    <div class='col-md-2' style='background: blue; padding: 20px;'>
       <div class='row'>
-        <p style='text-align:center;'>Non-Speaking Characters</p>
+        <p style='text-align:center; color:white;'>NON-SPEAKING CHARACTERS</p>
       </div>
       <div class='row' style='text-align: center;'>
         <br>
         <input type="text" id="input-add-character" name="input-add-character" size='20'>
       </div>
       <div class='row'>
-        <button type='button' class='btn btn-edit btn-block btn-sm btn-add-character'>Add Non-Speaking Character</button>
+        <button type='button' class='btn btn-edit btn-sm btn-add-character'>Add Non-Speaking Character</button>
       </div>
       <div class='row'>
         <br>
-        <table class='table-bordered table-sm table-dark table-grid' id='tab_non' style='font-size: 75%;'>
-          {% for i in range(0, nonSpeakers.length, 2) -%}
+        <table class='table-bordered table-sm table-dark table-grid' id='tab_non'>
+          {% for i in range(0, nonSpeakers.length) -%}
             <tr>
-              {% for num in range(0, 2) -%}
-                <td class='data-left'>
-                  {{nonSpeakers[i + num ]}}
-                </td>
-              {% endfor %}
+              <td class='data-left'>
+                {{nonSpeakers[i]}}
+              </td>
+              <td>
+                <button type='button' class='btn btn-edit btn-sm btn-delete-character' value='{{nonSpeakers[i]}}'>Delete</button>
+              </td>
             </tr>
           {% endfor %}
         </table>
+        <br>
       </div>
     </div>
   </div>
