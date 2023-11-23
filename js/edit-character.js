@@ -6,6 +6,13 @@ $('.btn-play').on('click', (e) => {
   document.getElementById('master-play').play();
 });
 
+$('.btn-return').on('click', (e) => {
+  const title = $('#filmTitle')[0].innerText;
+  const sceneNumber = $('#sceneNumber')[0].innerText;
+  const elementNumber = $('#elementNumber')[0].innerText;
+  window.location.href = `/characters?title=${title}&sceneNumber=${sceneNumber}&elementNumber=${elementNumber}`;
+});
+
 $('.btn-gen').on('click', (e) => {
   const file = e.target.value.split('_');
   const title = $('#filmTitle')[0].innerText;

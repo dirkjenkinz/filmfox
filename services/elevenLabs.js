@@ -16,7 +16,6 @@ const getSampleIds = async (voice_id, apiKey) => {
     },
     data: {
       text: 'string',
-   //   model_id: 'eleven_monolingual_v2',
       voice_settings: {
         stability: 0.5,
         similarity_boost: 0.5,

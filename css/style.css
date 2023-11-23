@@ -75,6 +75,14 @@ table {
   background: mediumslateblue;
 }
 
+.btn-incomplete {
+  background: white;
+}
+
+.btn-merge {
+  background: skyblue;
+}
+
 .top {
   padding: 4px 0;
   font-size: 130%;
@@ -297,6 +305,11 @@ textarea {
   border: black 2px solid;
   margin: 2px 2px 0 0;
   width: 94%;
+}
+
+.btn-return {
+  background: red;
+  margin-top: 30px;
 }
 
 .white-border {

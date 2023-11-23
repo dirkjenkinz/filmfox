@@ -24,7 +24,7 @@ const getFile = async (file) => {
     fs.readFile(`${directoryPath}/${file}`, (err, data) => {
       if (err) {
         smartLog('error', 'error getting data');
-        smartLog('error', err.cause);
+        smartLog('error', err.response);
         reject(err);
       } else {
         resolve(JSON.parse(data));
