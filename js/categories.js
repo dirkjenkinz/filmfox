@@ -26,3 +26,15 @@ $('#btn-add-category').on('click', () => {
     window.location.href = `${url}&category=${category}`;
   };
 });
+
+$('.btn-display-category').on('click', (e) => {
+  const category = e.target.value;
+    const url = buildUrl('categories', '', '');
+    window.location.href = `${url}&category=${category}`;
+});
+
+$('#btn-display-all').on('click', () => {
+  const category = '';
+    const url = buildUrl('categories', '', '');
+    window.location.href = `${url}&category=${category}`;
+});

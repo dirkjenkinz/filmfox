@@ -8,7 +8,8 @@ dotenv.config();
 const path = require('path');
 const ffmpeg = require('fluent-ffmpeg');
 
-const concatFiles = (clips, sceneNumber, title) => {
+const concatFiles = (clips, sceneNumber, title) => {  
+  smartLog('info', `concatenating scene ${sceneNumber}`); 
   const fileName = `s0${sceneNumber}.mp3`;
   const outPath = path.join(__dirname, `../data/${title}/scenes`);
   const dirPath = path.join(__dirname, `../data/${title}/sounds`);
@@ -33,6 +34,7 @@ const concatHandler = async (req, res) => {
   const u = url.parse(req.originalUrl, true);
   const title = u.query.title;
   const sceneNumber = u.query.sceneNumber;
+  const elementNumber = u.query.elementNumber;
   let sc = '0000' + sceneNumber;
   sc = sc.substring(sc.length - 4);
   const mp3List = await getFileList(`data/${title}/sounds/`, 'mp3');
@@ -44,12 +46,11 @@ const concatHandler = async (req, res) => {
       comp.push(m);
     }
   });
-  
-  
+
   concatFiles(comp, sc, title);
 
   setTimeout(function () {
-    res.redirect(`/sound?title=${title}`);
+    res.redirect(`/sound?title=${title}&elementNumber=${elementNumber}&sceneNumber=${sceneNumber}`);
   }, 5000);
 };
 

@@ -11,20 +11,20 @@ const categoriesHandler = async (req, res) => {
   const sceneNumber = u.query.sceneNumber;
   const elementNumber = u.query.elementNumber;
   const filmFoxFile = await getFile(`${title}/${title}.fff`);
+  let category = u.query.category;
   let { breakdown } = filmFoxFile;
 
   const categories = [];
 
-
-  breakdown[0].forEach((b)=>{
-    categories.push(b[0]);
+  breakdown[0].forEach((b) => {
+    categories.push([b[0], 'n']);
   });
 
   const list = [];
   breakdown.forEach((categories, index) => {
     const temp = [index];
     categories.forEach((c) => {
-      if (c.length > 1){
+      if (c.length > 1) {
         temp.push(c);
       };
     });
@@ -33,12 +33,37 @@ const categoriesHandler = async (req, res) => {
     };
   });
 
-  res.render('categories.njk',{
+  list.forEach((scene) => {
+    scene.forEach((s) => {
+      categories.forEach((c) => {
+        if (c[0] === s[0]) {
+          c[1] = 'y';
+        };
+      });
+    });
+  });
+
+  const displayList = [];
+  if (category) {
+    list.forEach((scene) => {
+      scene.forEach((s) => {
+        if (category === s[0]) {
+          displayList.push([scene[0], s]);
+        };
+      });
+    });
+  } else {
+    category = '';
+  };
+
+  res.render('categories.njk', {
     title,
     sceneNumber,
     elementNumber,
     categories,
     list,
+    category,
+    displayList,
   });
 
 };

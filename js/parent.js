@@ -62,7 +62,7 @@ $('#nav-showreel').on('click', () => {
   let elementNumber = $('#elementNumber')[0].innerText;
   if (!sceneNumber) sceneNumber = 0;
   if (!elementNumber) elementNumber = 0;
-  window.location.href = `/showreel?title=${title}&sceneNumber=${sceneNumber}&elementNumber=${elementNumber}&speak=no`;
+  window.location.href = `/showreel?title=${title}&sceneNumber=${sceneNumber}&elementNumber=${elementNumber}`;
 });
 
 $('#nav-scene-shot-list').on('click', () => {

@@ -20,9 +20,12 @@ const generateSingleHandler = async (req, res) => {
   const api_key = process.env.APIKEY;
   const mute = u.query.mute;
 
+  console.log(u.query);
+
   const filmFoxFile = await getFile(`${title}/${title}.fff`);
   const { script } = filmFoxFile;
   const element = script[sceneNumber][elementNumber];
+  console.log({element});
   let sc = '0000' + sceneNumber;
   sc = sc.substring(sc.length - 4);
   let el = '0000' + elementNumber;
@@ -40,7 +43,6 @@ const generateSingleHandler = async (req, res) => {
   });
 
   let dialogue = element.dialogue;
-
   if (element.character === 'NARRATOR'){
     if (dialogue.substring(0,4) === 'INT.'){
       dialogue = `INTERIOR. ${dialogue.substring(4)}`;
@@ -68,6 +70,8 @@ const generateSingleHandler = async (req, res) => {
     
     if (caller === 'edit-character'){
       res.redirect(`/edit-character?title=${title}&character=${character}&msg=${msg}`);
+    } else if (caller=== 'sound'){
+      res.redirect(`/sound?title=${title}&sceneNumber=${sceneNumber}&elementNumber=${elementNumber}`);
     } else {
       res.redirect(`/showreel?title=${title}&sceneNumber=${sceneNumber}&elementNumber=${elementNumber}&speak=yes&mute=${mute}&msg=${msg}`);
     };

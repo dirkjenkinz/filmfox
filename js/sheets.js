@@ -9,21 +9,29 @@ $('#slider-scene').on('input', (e) => {
 $('#slider-scene').on('change', (e) => {
   const sheetNumber = e.target.value;
   const title = $('#filmTitle')[0].innerText;
-  window.location.href = `/sheets?title=${title}&sheet=${sheetNumber}`;
+  const sceneNumber = $('#sceneNumber')[0].innerText;
+  const elementNumber = $('#elementNumber')[0].innerText;
+  window.location.href = `/sheets?title=${title}&sheet=${sheetNumber}&sceneNumber=${sceneNumber}&elementNumber=${elementNumber}`;
 });
 
 $('#btn-previous').on('click', (e) => {
   let sheet = parseInt($('#sheet')[0].innerText);
   sheet--;
   const title = $('#filmTitle')[0].innerText;
-  window.location.href = `/sheets?title=${title}&sheet=${sheet}`;
-}),
+  const sceneNumber = $('#sceneNumber')[0].innerText;
+  const elementNumber = $('#elementNumber')[0].innerText;
+  window.location.href = `/sheets?title=${title}&sheet=${sheet}&sceneNumber=${sceneNumber}&elementNumber=${elementNumber}`;
+});
+
   $('#btn-next').on('click', (e) => {
     let sheet = parseInt($('#sheet')[0].innerText);
     sheet++;
     const title = $('#filmTitle')[0].innerText;
-    window.location.href = `/sheets?title=${title}&sheet=${sheet}`;
-  }),
+    const sceneNumber = $('#sceneNumber')[0].innerText;
+    const elementNumber = $('#elementNumber')[0].innerText;
+    window.location.href = `/sheets?title=${title}&sheet=${sheet}&sceneNumber=${sceneNumber}&elementNumber=${elementNumber}`;
+  });
+
   $('#btn-pdf').on('click', (e) => {
     let sheet = parseInt($('#sheet')[0].innerText);
     let scene = $('#sceneNum')[0].innerText;

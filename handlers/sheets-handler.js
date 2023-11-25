@@ -11,8 +11,9 @@ const sheetsHandler = async (req, res) => {
   const elementNumber = u.query.elementNumber;
   const sceneNumber = u.query.sceneNumber;
   const filmFoxFile = await getFile(`${title}/${title}.fff`);
-  const { shotList, script, sceneOrder, credits, charactersByScene } =
-    filmFoxFile;
+  const { shotList, script, sceneOrder, credits, charactersByScene } = filmFoxFile;
+
+  if (!sheet) sheet = sceneNumber;
 
   const slugs = [];
   script.forEach((s) => {
