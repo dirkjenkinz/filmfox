@@ -74,7 +74,14 @@ const breakdownHandler = async (req, res) => {
     });
   };
 
-  if (!scr1) scr1 = 0;  
+  if (!scr1) scr1 = 0;
+
+  let elementNames = [];
+  breakdown[sceneNumber].forEach((b) => {
+    elementNames.push(b[0].replace(/ /gi, '-'));
+  });
+
+  console.log({elementNames});
 
   res.render('breakdown.njk', {
     title,
@@ -88,6 +95,7 @@ const breakdownHandler = async (req, res) => {
     hidden,
     scr1,
     page: 'Scene Breakdown',
+    elementNames,
   });
 };
 

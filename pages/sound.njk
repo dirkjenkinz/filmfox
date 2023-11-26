@@ -6,7 +6,7 @@
         <tbody>
           {% for i in range(0, uncompiledList.length) -%}
             <tr style='font-size: 80%'>
-              {% if i < script.length %}
+              {% if i < uncompiledList.length %}
                 <td class='table-data'>
                   <td class='data-left'>{{uncompiledList[i][0]}}.{{uncompiledList[i][1]}}</td>
                   <td class='data-left'>{{uncompiledList[i][2]}}</td>

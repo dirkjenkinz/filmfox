@@ -47,9 +47,10 @@ const listHidden = () => {
 };
 
 $('.btn-add-entity').on('click', (e) => {
-  const element = $(`#btn-element-${e.target.value}`)[0].innerText;
-  const hidden = listHidden();
-  const entity = $(`#input-entity-${e.target.value}`)[0].value; 
+  let eTargetValue = e.target.value;
+  eTargetValue = eTargetValue.replace(/ /gi, '-');
+  const element = $(`#btn-element-${eTargetValue}`)[0].innerText;
+  const entity = $(`#input-entity-${eTargetValue}`)[0].value; 
   const url = buildUrl('breakdown', '', '');  
   window.location.href = `${url}&element=${element}&entity=${entity}&action=add&hidden=${hidden}`;
 });

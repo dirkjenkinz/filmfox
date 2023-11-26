@@ -68,7 +68,7 @@
           <thead>
             <tr>
               <th width='70%'>
-                <button type='button' class='btn-element' id='btn-element-{{breakdown[i][0]}}' value='{{breakdown[i][0]}}'>{{breakdown[i][0]}}</button>
+                <button type='button' class='btn-element' id='btn-element-{{elementNames[i]}}' value='{{elementNames[i]}}'>{{breakdown[i][0]}}</button>
               </th>
               <th width='15%'>
                 <button type='button' class='btn-hide' value='{{breakdown[i][0]}}'>Hide</button>
@@ -80,16 +80,16 @@
               <tr>
                 <td id='entity-{{j -1}}' class='breakdown-list'>{{breakdown[i][j]}}</td>
                 <td>
-                  <button type='button' class='btn-del btn-block' id='del-{{breakdown[i][0]}}' value='{{breakdown[i][j]}}'>Delete</button>
+                  <button type='button' class='btn-del btn-block' id='del-{{elementNames[i]}}' value='{{breakdown[i][j]}}'>Delete</button>
                 </td>
               </tr>
             {% endfor %}
             <tr>
               <td>
-                 <input type="text" name="input-entity" id='input-entity-{{breakdown[i][0]}}' size='40' style='border: 0px;'>
+                 <input type="text" name="input-entity" id='input-entity-{{elementNames[i]}}' size='40' style='border: 0px;'>
               </td>
               <td>
-                <button type='button' class='btn-add-entity' id='btn-entity-{{breakdown[i][0]}}' value='{{breakdown[i][0]}}'>Add</button>
+                <button type='button' class='btn-add-entity' id='btn-entity-{{elementNames[i]}}' value='{{breakdown[i][0]}}'>Add</button>
               </td>
             </tr>
             <tr>
