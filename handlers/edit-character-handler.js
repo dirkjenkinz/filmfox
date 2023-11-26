@@ -2,7 +2,7 @@
 
 const url = require('url');
 const { smartLog } = require('../services/smart-log');
-const { getFile } = require('../services/file-service');
+const { getFile, fileExists } = require('../services/file-service');
 
 const editCharacterHandler = async (req, res) => {
   smartLog('info', 'ENTERING EDIT CHARACTER HANDLER');
@@ -13,25 +13,37 @@ const editCharacterHandler = async (req, res) => {
   const msg = u.query.msg;
   const character = u.query.character;
   const filmFoxFile = await getFile(`${title}/${title}.fff`);
-  const {characterList} = filmFoxFile;
+  const { characterList } = filmFoxFile;
 
   const { script } = filmFoxFile;
 
   const elements = [];
 
-  
   script.forEach((s, scene_index) => {
     s.forEach((element, element_index) => {
       if (element.character === character) {
         elements.push({
           sceneNumber: scene_index,
           dialogue: element.dialogue,
-          sound: element.sound,
           elementNumber: element_index,
           voice: element.voice,
         });
       }
     });
+  });
+
+  elements.forEach((e) => {
+    let num = '0000' + e.sceneNumber;
+    num = num.substring(num.length - 4);
+    let sub = '0000' + e.elementNumber;
+    sub = sub.substring(sub.length - 4);
+    const fileName = `${num}_${sub}.mp3`;
+    if (fileExists(`${title}/sounds/${fileName}`)) {
+      console.log('yes');
+      e.sound = fileName;
+    } else {
+      e.sound = '';
+    }
   });
 
   let currentVoice;
@@ -41,6 +53,8 @@ const editCharacterHandler = async (req, res) => {
       currentVoice = c[1];
     }
   });
+
+///  console.log({elements})
 
   res.render('edit-character.njk', {
     character,

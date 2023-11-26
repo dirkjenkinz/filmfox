@@ -1,7 +1,7 @@
 'use strict';
 const url = require('url');
 const { smartLog } = require('../services/smart-log');
-const { getFile, getFileList } = require('../services/file-service');
+const { getFile, getFileList, fileExists } = require('../services/file-service');
 
 const videoHandler = async (req, res) => {
   smartLog('info', 'ENTERING VIDEO HANDLER');
@@ -28,7 +28,12 @@ const videoHandler = async (req, res) => {
   script.forEach((s) => {
     let comp = 'yes';
     s.forEach((element) => {
-      if (!element.sound) comp = 'no';
+      let sc = '0000' + sceneNumber;
+      sc = sc.substring(sc.length - 4);
+      let el = '0000' + element;
+      el = el.substring(el.length - 4);
+      const fileName = `${sc}_${el}.mp3`;
+      if (!fileExists(`${title}/sounds/${fileName}`)) comp = 'no';
     });
     complete.push(comp);
   });

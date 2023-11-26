@@ -5,8 +5,9 @@ const { smartLog } = require('../services/smart-log');
 const sound = require('sound-play');
 
 const fileExists = (file) => {
+  const directoryPath = path.join(__dirname, '../data');
   try {
-    if (fs.existsSync(file)) {
+    if (fs.existsSync(`${directoryPath}/${file}`)) {
       return true;
     } else {
       return false;

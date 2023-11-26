@@ -1,7 +1,7 @@
 'use strict';
 const url = require('url');
 const { smartLog } = require('../services/smart-log');
-const { getFile } = require('../services/file-service');
+const { getFile, fileExists } = require('../services/file-service');
 
 const showreelHandler = async (req, res) => {
   smartLog('info', 'ENTERING SHOWREEL HANDLER');
@@ -30,8 +30,17 @@ const showreelHandler = async (req, res) => {
 
   let audio = '';
 
-  if (element.sound) {
-    audio = `../data/${title}/sounds/${element.sound}`;
+  let num = '0000' + sceneNumber;
+  num = num.substring(num.length - 4);
+  let sub = '0000' + elementNumber;
+  sub = sub.substring(sub.length - 4);
+  const fileName = `${num}_${sub}.mp3`;
+
+  if (fileExists(`${title}/sounds/${fileName}`)) {
+    audio = `../data/${title}/sounds/${fileName}`;
+    element.sound = fileName;
+  } else {
+    element.sound = '';
   };
 
   let chars = [];

@@ -61,8 +61,6 @@ const generateSingleHandler = async (req, res) => {
 
   setTimeout(async () => {
     if (msg !== 'Failed') {
-      script[sceneNumber][elementNumber].sound = fileName;
-      script[sceneNumber][elementNumber].duration = await getDuration(title, fileName);
       script[sceneNumber][elementNumber].voice = voice;
       await writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
       msg = 'OK';

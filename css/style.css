@@ -53,6 +53,7 @@ table {
   border: 2px solid red;
 }
 
+.btn-compile-scene,
 .btn-compile {
   background: red;
   font-size: 80%;

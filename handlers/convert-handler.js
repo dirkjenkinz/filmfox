@@ -113,9 +113,7 @@ const convertHandler = async (req, res) => {
           character: e.character,
           dialogue: e.text,
           voice: '',
-          sound: '',
           image: 'blank.jpg',
-          duration: '',
           type: 'still',
         };
         script[e.num].push(element);

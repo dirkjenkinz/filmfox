@@ -15,12 +15,6 @@ const deleteHandler = async (req, res) => {
 
   await deleteFile(title, 'sounds', fileName);
 
-  const filmFoxFile = await getFile(`${title}/${title}.fff`);
-  let { script } = filmFoxFile;
-  script[sceneNumber][elementNumber].sound = '';
-  script[sceneNumber][elementNumber].duration = 0.0;
-  await writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
-
   res.redirect(
     `/showreel?title=${title}&sceneNumber=${sceneNumber}&elementNumber=${elementNumber}&mute=${mute}`
   );

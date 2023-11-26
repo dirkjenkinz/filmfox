@@ -23,6 +23,12 @@ $('.btn-play').on('click', (e) => {
     .play();
 });
 
+$('.btn-compile-scene').on('click', (e) => {
+  const title = $('#filmTitle')[0].innerText;
+  const sceneNumber = e.target.value;
+  window.location.href = `/compile-scene?title=${title}&sceneNumber=${sceneNumber}&elementNumber=0`;
+});
+
 $('.btn-compile').on('click', (e) => {
   const id = e.target.id;
   const elements = e.target.value.split(',');
@@ -45,10 +51,12 @@ $('#btn-master').on('click', () => {
 $('#btn-show-uncompiled').on('click', () => {
   if ($('#btn-show-uncompiled')[0].innerText === 'Show Uncompiled Elements'){
   $('#col-uncompiled').show();
+  $('#col-incomplete').show();
   $('#col-scenes').hide();
   $('#btn-show-uncompiled')[0].innerText = 'Return to Scenes';
   } else {
     $('#col-uncompiled').hide();
+    $('#col-incomplete').hide();
     $('#col-scenes').show();
     $('#btn-show-uncompiled')[0].innerText = 'Show Uncompiled Elements';
   };

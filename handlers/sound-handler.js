@@ -1,15 +1,20 @@
 'use strict';
 const url = require('url');
-const { getFile, getFileList } = require('../services/file-service');
+const { getFile, getFileList, fileExists } = require('../services/file-service');
 const { smartLog } = require('../services/smart-log');
 const dotenv = require('dotenv');
 dotenv.config();
 
-const buildUncompiledList = ((script, characterList) => {
+const buildUncompiledList = ((script, characterList, title) => {
   const list = [];
   script.forEach((scene, sceneIndex) => {
-    scene.forEach((s, soundIndex) => {
-      if (s.sound === ''){
+    scene.forEach((s, soundIndex) => { 
+      let sc = '0000' + sceneIndex;
+      sc = sc.substring(sc.length - 4);
+      let el = '0000' + soundIndex;
+      el = el.substring(el.length - 4);
+      const fileName = `${sc}_${el}.mp3`;
+      if (!fileExists(`${title}/sounds/${fileName}`)) {
         let voice = [];
         characterList.forEach((c) => {
           if (c[0] === s.character) voice=c[1];
@@ -76,7 +81,14 @@ const soundHandler = async (req, res) => {
     }
   });
 
-  const uncompiledList = buildUncompiledList(script, characterList);
+  const uncompiledList = buildUncompiledList(script, characterList, title);
+
+  let incomplete = [];
+  uncompiledList.forEach((u) => {
+    incomplete.push(u[0]);
+  });
+
+  incomplete = [...new Set(incomplete)];
 
   res.render('sound.njk', {
     title,
@@ -90,6 +102,7 @@ const soundHandler = async (req, res) => {
     sceneNumber,
     readyForMaster,
     uncompiledList,
+    incomplete,
   });
 };
 

@@ -2,7 +2,7 @@
 
 const url = require('url');
 const { smartLog } = require('../services/smart-log');
-const { getFile } = require('../services/file-service');
+const { getFile, getDuration } = require('../services/file-service');
 const videoshow = require('videoshow');
 const path = require('path');
 const FFmpeg = require('fluent-ffmpeg');
@@ -62,15 +62,18 @@ const createVideoHandler = async (req, res) => {
   
   const scene = script[sceneNumber];
 
-  scene.forEach((s, index) => {
+  scene.forEach( async (s, index) => {
       let num = '0000' + sceneNumber;
       num = num.substring(num.length - 4);
       let sub = '0000' + index;
       sub = sub.substring(sub.length - 4);
+      const fileName = `${num}_${sub}.mp3`;
+      const dur = await getDuration(title, fileName);
+
       const caption = `${s.character}: ${s.dialogue}`;
-      const sound = `${soundPath}/${s.sound}`;
+      const sound = `${soundPath}/${fileName}`;
       const vision = `${imagePath}/${s.image}`;
-      let duration = Math.ceil(s.duration) + 1;
+      let duration = Math.ceil(dur) + 1;
       if (duration < 4 ) duration = 4;
       const output = `${outPath}/${num}_${sub}.mp4`;
       if (s.type === 'movie') {
