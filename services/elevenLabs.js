@@ -78,11 +78,6 @@ const generateSample = async (voiceID, apiKey) => {
   }
 };
 
-
-//const _generateSpeech = async (apiKey, voiceID, fileName, textInput, title) => {
-
-
-//const generateSpeech = async (apiKey, voiceID, fileName, textInput, stability, similarityBoost, modelId) => {
   const generateSpeech = async (apiKey, voiceID, fileName, textInput, title) => {
   try {
 
@@ -122,49 +117,6 @@ const generateSample = async (voiceID, apiKey) => {
 		console.log(error);
 	}
 };
-
-const _generateSpeech = async (apiKey, voiceID, fileName, textInput, title) => {
-  smartLog('info', 'generate speech');
-  try {
-      await voice.textToSpeech(apiKey, voiceID, `${directoryPath}/${title}/sounds/${fileName}`, textInput).then(res => {
-          smartLog('info', `sound file generated for ${fileName}`);
-          return 'Generated';
-      });
-  } catch (error) {
-      smartLog('error', 'error generating speech');
-      smartLog('error', error.message);
-      return 'Failed';
-  };
-};
-
-const __generateSpeech = async (apiKey, voiceID, fileName, textInput, title) => {
-  smartLog('info', 'generate speech');
-    const config = {
-      headers: {
-        'accept': 'audio/mpeg',
-        'xi-api-key': apiKey,
-        'Content-Type': 'application/json'
-      },
-      data: {
-        text: textInput,
-//        model_id: 'eleven_monolingual_v2',
-        voice_settings: {
-          stability: 0.5,
-          similarity_boost: 0.5,
-        },
-      },
-    };
-    console.log(`https://api.elevenlabs.io/v1/text-to-speech/${voiceID}/${directoryPath}/${title}/sounds/${fileName}`);
-    try {
-      let response = await axios.post(
-        `https://api.elevenlabs.io/v1/text-to-speech/${voiceID}/${directoryPath}/${title}/sounds/${fileName}`
-      );
-      return response.data;
-    } catch (error) {
-      smartLog('error', error.response.data.detail);
-      return 'Failed';
-    }
-  };
 
 const getVoices = async (apiKey) => {
   smartLog('info', 'get voices');
