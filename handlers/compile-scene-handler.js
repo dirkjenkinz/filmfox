@@ -54,16 +54,17 @@ const compileSceneHandler = async (req, res) => {
 
   scene.forEach(async (element, index) => {
       const data = createData(element, sceneNumber, index, voice_data, characterList);
+
       let msg = await setTimeout(async () => {
-      let msg = await generateSpeech(
-        api_key,
-        data[1],                    // voice id
-        data[0],                    // filename
-        data[2],                    // dialogue
-        title
-      );
-      return msg;
-    }, 3000);
+        let message = await generateSpeech(
+          api_key,
+          data[1],                    // voice id
+          data[0],                    // filename
+          data[2],                    // dialogue
+          title
+        );
+        return message;
+      }, 3000);
 
       if (msg !== 'Failed') {
         script[sceneNumber][elementNumber].voice = data[3];

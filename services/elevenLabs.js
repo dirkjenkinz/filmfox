@@ -82,7 +82,7 @@ const generateSample = async (voiceID, apiKey) => {
   try {
 
 		if (!apiKey || !voiceID || !fileName || !textInput) {
-			console.log('ERR: Missing parameter');
+			smartLog('error', 'ERR: Missing parameter');
 		}
 
 		const voiceURL = `${elevenLabsAPI}/text-to-speech/${voiceID}`;
@@ -114,7 +114,7 @@ const generateSample = async (voiceID, apiKey) => {
 		};
 
 	} catch (error) {
-		console.log(error);
+		smartLog('error', error);
 	}
 };
 
