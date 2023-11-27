@@ -24,16 +24,34 @@ const videoHandler = async (req, res) => {
   };
 
   const complete = [];
+  /*
+    script[9].forEach((element, index) => {
+      let sc = '0000' + sceneNumber;
+      sc = sc.substring(sc.length - 4);
+      let el = '0000' + index;
+      el = el.substring(el.length - 4);
+      const fileName = `${sc}_${el}.mp3`;
+      console.log({fileName});
+      if (fileExists(`${title}/sounds/${fileName}`)) {
+        console.log('yes');
+      } else {
+        console.log('no');
+      }
+  
+    });
+  */
+
 
   script.forEach((s) => {
     let comp = 'yes';
-    s.forEach((element) => {
+    s.forEach(async (element, index) => {
       let sc = '0000' + sceneNumber;
       sc = sc.substring(sc.length - 4);
-      let el = '0000' + element;
+      let el = '0000' + index;
       el = el.substring(el.length - 4);
       const fileName = `${sc}_${el}.mp3`;
-      if (!fileExists(`${title}/sounds/${fileName}`)) comp = 'no';
+      const exists = await fileExists(`${title}/sounds/${fileName}`);
+      if (!exists) comp = 'no';
     });
     complete.push(comp);
   });
