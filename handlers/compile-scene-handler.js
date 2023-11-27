@@ -7,10 +7,8 @@ const dotenv = require('dotenv');
 dotenv.config();
 const { smartLog } = require('../services/smart-log');
 
-const createData = async (element, sceneNumber, elementNumber, voice_data, characterList) => {
-
+const createData = (element, sceneNumber, elementNumber, voice_data, characterList) => {
   let voice = '';
-
   characterList.forEach((c) => {
     if (c[0] == element.character) voice = c[1];
   });
@@ -54,11 +52,9 @@ const compileSceneHandler = async (req, res) => {
   const scene = script[sceneNumber];
   const voice_data = await getFile('voices.json');
 
-  scene.forEach((element, index) => {
-    setTimeout(async () => {
-      const data = await createData(element, sceneNumber, index, voice_data, characterList);
-      console.log({data})
-
+  scene.forEach(async (element, index) => {
+      const data = createData(element, sceneNumber, index, voice_data, characterList);
+      let msg = await setTimeout(async () => {
       let msg = await generateSpeech(
         api_key,
         data[1],                    // voice id
@@ -66,13 +62,14 @@ const compileSceneHandler = async (req, res) => {
         data[2],                    // dialogue
         title
       );
+      return msg;
+    }, 3000);
 
       if (msg !== 'Failed') {
         script[sceneNumber][elementNumber].voice = data[3];
         await writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
         msg = 'OK';
-      };
-    }, 3000);
+      };    
   });
 
   res.redirect(`/sound?title=${title}&sceneNumber=${sceneNumber}&elementNumber=${elementNumber}`);

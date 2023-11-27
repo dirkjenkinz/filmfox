@@ -11,7 +11,10 @@ const charactersHandler = async (req, res) => {
   const sceneNumber = u.query.sceneNumber;
   const elementNumber = u.query.elementNumber;
   const filmFoxFile = await getFile(`${title}/${title}.fff`);
-  const { nonSpeakers, characterList } = filmFoxFile;
+  let { nonSpeakers, characterList } = filmFoxFile;
+
+  nonSpeakers.sort();
+  characterList.sort();
 
   res.render('characters.njk', {
     title,

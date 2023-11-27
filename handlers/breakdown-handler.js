@@ -64,10 +64,12 @@ const breakdownHandler = async (req, res) => {
 
   const headers = [];
   breakdown[sceneNumber].forEach((b) => {
-    headers.push(b[0].replace(/ /gi, '-'));
+    if (b !== null) {
+      headers.push(b[0].replace(/ /gi, '-'));
+    };
   });
 
-  if (!hidden){
+  if (!hidden) {
     let h = '';
     breakdown.forEach(() => {
       h = h + 'r';
@@ -81,7 +83,7 @@ const breakdownHandler = async (req, res) => {
     elementNames.push(b[0].replace(/ /gi, '-'));
   });
 
-  console.log({elementNames});
+  console.log({ elementNames });
 
   res.render('breakdown.njk', {
     title,

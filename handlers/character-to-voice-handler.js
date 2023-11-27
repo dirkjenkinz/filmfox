@@ -28,7 +28,7 @@ const characterToVoiceHandler = async (req, res) => {
   let scr1 = u.query.scr1;
   const title = u.query.title;
   const filmFoxFile = await getFile(`${title}/${title}.fff`);
-  const { characterList } = filmFoxFile;
+  let { characterList } = filmFoxFile;
   const voices = await getFile('voices.json');
   let voice_data = getVoiceData(voices);
   voice_data.unshift(['-', '', '']);
@@ -46,6 +46,7 @@ const characterToVoiceHandler = async (req, res) => {
 
   if (!scr1) scr1 = 0;  
 
+characterList = characterList.sort();
   res.render('character-to-voice.njk', {
     title,
     characters: characterList,

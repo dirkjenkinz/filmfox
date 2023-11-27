@@ -33,6 +33,8 @@ const voicesHandler = async (req, res) => {
     });
   });
 
+  vox.sort((a, b)=> a.name < b.name ? -1 : 1);
+
   res.render('voices.njk', {
     vox,
     page: 'Voices',
