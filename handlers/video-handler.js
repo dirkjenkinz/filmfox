@@ -23,39 +23,42 @@ const videoHandler = async (req, res) => {
     gen.push(found);
   };
 
+  let soundFiles = await getFileList(`data/${title}/sounds`, 'mp3');
+  let fileNotFound = [];
+
+  for (let i = 0; i < script.length; i++) {
+    for (let j = 0; j < script[i].length; j++) {
+      let sc = '0000' + i;
+      sc = sc.substring(sc.length - 4);
+      let el = '0000' + j;
+      el = el.substring(el.length - 4);
+      const fileName = `${sc}_${el}.mp3`;
+      let found = 'no';
+      soundFiles.forEach((s) => {
+        if (s === fileName) {
+          found = 'yes';
+        };
+      });
+      if (found === 'no') {
+        fileNotFound.push(fileName.substring(0, 4));
+      };
+    };
+  };
+
+  fileNotFound = [...new Set(fileNotFound)];
+
   const complete = [];
-  /*
-    script[9].forEach((element, index) => {
-      let sc = '0000' + sceneNumber;
-      sc = sc.substring(sc.length - 4);
-      let el = '0000' + index;
-      el = el.substring(el.length - 4);
-      const fileName = `${sc}_${el}.mp3`;
-      console.log({fileName});
-      if (fileExists(`${title}/sounds/${fileName}`)) {
-        console.log('yes');
-      } else {
-        console.log('no');
-      }
-  
-    });
-  */
 
-
-  script.forEach((s) => {
-    let comp = 'yes';
-    s.forEach(async (element, index) => {
-      let sc = '0000' + sceneNumber;
-      sc = sc.substring(sc.length - 4);
-      let el = '0000' + index;
-      el = el.substring(el.length - 4);
-      const fileName = `${sc}_${el}.mp3`;
-      const exists = await fileExists(`${title}/sounds/${fileName}`);
-      if (!exists) comp = 'no';
-    });
-    complete.push(comp);
+  script.forEach(() => {
+    complete.push('yes');
   });
 
+  fileNotFound.forEach((f) => {
+    let num = parseInt(f);
+    complete[num] = 'no';
+  });
+
+  
   res.render('video.njk', {
     title,
     script,

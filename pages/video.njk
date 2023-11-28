@@ -7,11 +7,7 @@
           {% for i in range(0, script.length, 5) -%}
             <tr>
               {% for num in range(0, 5) -%}
-              {% if ((num + i) % 2 ) === 0 %}
-              {% set cl = 'red-box'%}
-              {% else%}
               {% set cl = 'blue-box' %}
-              {% endif %}
               {% if (script[i + num]) %}
                 <td class='{{cl}}'>
                   Scene
@@ -22,7 +18,7 @@
                     {% if gen[i + num] === 'no' %}
                       <button class='btn btn-block btn-sm btn-generate' value="{{i + num}}" id='btn-generate_{{i + num}}'>Generate</button>
                     {% else %}
-                      <button class='btn btn-block btn-modify btn-sm' value="{{i + num}}" id='btn-generate_{{i + num}}'>Modify</button>
+                      <button class='btn btn-block btn-generate btn-sm' value="{{i + num}}" id='btn-generate_{{i + num}}'>Modify</button>
                     {% endif %}
                   {% else %}
                     Incomplete

@@ -5,25 +5,12 @@ const { smartLog } = require('../services/smart-log');
 const dotenv = require('dotenv');
 dotenv.config();
 
-const buildUncompiledList = ((script, characterList, title) => {
-  const list = [];
-  script.forEach((scene, sceneIndex) => {
-    scene.forEach((s, soundIndex) => { 
-      let sc = '0000' + sceneIndex;
-      sc = sc.substring(sc.length - 4);
-      let el = '0000' + soundIndex;
-      el = el.substring(el.length - 4);
-      const fileName = `${sc}_${el}.mp3`;
-      if (!fileExists(`${title}/sounds/${fileName}`)) {
-        let voice = [];
-        characterList.forEach((c) => {
-          if (c[0] === s.character) voice=c[1];
-        });
-        list.push([sceneIndex, soundIndex, s.character, voice]);
-      };
-    });
+const getVoice = ((character, characterList) => {
+  let voice = '';
+  characterList.forEach((c) => {
+    if (c[0] === character) voice=c[1];
   });
-  return list;
+  return voice;
 });
 
 const prepareReadyList = ((script, soundsList) => {
@@ -81,7 +68,27 @@ const soundHandler = async (req, res) => {
     }
   });
 
-  const uncompiledList = buildUncompiledList(script, characterList, title);
+  let soundFiles = await getFileList(`data/${title}/sounds`, 'mp3');
+  let uncompiledList = [];
+
+  for (let i = 0; i < script.length; i++) {
+    for (let j = 0; j < script[i].length; j++) {
+      let sc = '0000' + i;
+      sc = sc.substring(sc.length - 4);
+      let el = '0000' + j;
+      el = el.substring(el.length - 4);
+      const fileName = `${sc}_${el}.mp3`;
+      let found = 'no';
+      soundFiles.forEach((s) => {
+        if (s === fileName) {
+          found = 'yes';
+        };
+      });
+      if (found === 'no') {
+        uncompiledList.push([i,j,script[i][j].character, getVoice(script[i][j].character, characterList)]);
+      };
+    };
+  };
 
   let incomplete = [];
   uncompiledList.forEach((u) => {
@@ -89,6 +96,17 @@ const soundHandler = async (req, res) => {
   });
 
   incomplete = [...new Set(incomplete)];
+
+  const complete = [];
+
+  script.forEach(() => {
+    complete.push('yes');
+  });
+
+  uncompiledList.forEach((f) => {
+    let num = parseInt(f);
+    complete[num] = 'no';
+  });
 
   res.render('sound.njk', {
     title,

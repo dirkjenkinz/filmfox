@@ -4,8 +4,27 @@ const mp3Duration = require('mp3-duration');
 const { smartLog } = require('../services/smart-log');
 const sound = require('sound-play');
 
-const fileExists = (file) => {
+const fileExists = async (file) => {
+  smartLog('info', `Check for file ${file}`);
   const directoryPath = path.join(__dirname, '../data');
+  return new Promise((resolve, reject) => {
+    fs.existsSync(`${directoryPath}/${file}`), (err, flag) => {
+      if (err) {
+        smartLog('error', 'error getting data');
+        smartLog('error', err.response);
+        reject(err);
+      } else {
+        console.log({flag});
+        resolve(flag);
+      }
+    };
+  });
+};
+
+
+
+
+/*
   try {
     if (fs.existsSync(`${directoryPath}/${file}`)) {
       return true;
@@ -17,7 +36,7 @@ const fileExists = (file) => {
     return false;
   }
 };
-
+*/
 const getFile = async (file) => {
   smartLog('info', `getFile - getting data for ${file}`);
   const directoryPath = path.join(__dirname, '../data');
