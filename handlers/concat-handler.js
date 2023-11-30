@@ -39,8 +39,6 @@ const concatHandler = async (req, res) => {
   sc = sc.substring(sc.length - 4);
   const mp3List = await getFileList(`data/${title}/sounds/`, 'mp3');
 
-  console.log(mp3List);
-
   const comp = [];
 
   mp3List.forEach((m) => {

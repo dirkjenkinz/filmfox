@@ -2,7 +2,7 @@
 
 const url = require('url');
 const { smartLog } = require('../services/smart-log');
-const { getFile, fileExists } = require('../services/file-service');
+const { getFile, getFileList } = require('../services/file-service');
 
 const editCharacterHandler = async (req, res) => {
   smartLog('info', 'ENTERING EDIT CHARACTER HANDLER');
@@ -32,18 +32,27 @@ const editCharacterHandler = async (req, res) => {
     });
   });
 
-  elements.forEach((e) => {
+  const soundFiles = await getFileList(`data//${title}/sounds`, 'mp3');
+
+  elements.forEach(async (e) => {
     let num = '0000' + e.sceneNumber;
     num = num.substring(num.length - 4);
     let sub = '0000' + e.elementNumber;
     sub = sub.substring(sub.length - 4);
     const fileName = `${num}_${sub}.mp3`;
-    if (fileExists(`${title}/sounds/${fileName}`)) {
-      console.log('yes');
+    let found = 'no';
+    soundFiles.forEach((s) => {
+      if (s === fileName) {
+        found = 'yes';
+      };
+    });
+
+    if (found === 'yes') {
       e.sound = fileName;
     } else {
       e.sound = '';
     }
+  
   });
 
   let currentVoice;
@@ -53,8 +62,6 @@ const editCharacterHandler = async (req, res) => {
       currentVoice = c[1];
     }
   });
-
-///  console.log({elements})
 
   res.render('edit-character.njk', {
     character,

@@ -32,7 +32,7 @@ $('.btn-compile-scene').on('click', (e) => {
 $('.btn-compile').on('click', (e) => {
   const id = e.target.id;
   const elements = e.target.value.split(',');
-  const voice=elements[3];
+  const voice = elements[3];
   const character = elements[2];
   const sceneNumber = elements[0];
   const elementNumber = elements[1];
@@ -49,11 +49,11 @@ $('#btn-master').on('click', () => {
 });
 
 $('#btn-show-uncompiled').on('click', () => {
-  if ($('#btn-show-uncompiled')[0].innerText === 'Show Uncompiled Elements'){
-  $('#col-uncompiled').show();
-  $('#col-incomplete').show();
-  $('#col-scenes').hide();
-  $('#btn-show-uncompiled')[0].innerText = 'Return to Scenes';
+  if ($('#btn-show-uncompiled')[0].innerText === 'Show Uncompiled Elements') {
+    $('#col-uncompiled').show();
+    $('#col-incomplete').show();
+    $('#col-scenes').hide();
+    $('#btn-show-uncompiled')[0].innerText = 'Return to Scenes';
   } else {
     $('#col-uncompiled').hide();
     $('#col-incomplete').hide();

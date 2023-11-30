@@ -14,7 +14,6 @@ const fileExists = async (file) => {
         smartLog('error', err.response);
         reject(err);
       } else {
-        console.log({flag});
         resolve(flag);
       }
     };

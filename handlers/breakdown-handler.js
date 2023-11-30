@@ -83,8 +83,6 @@ const breakdownHandler = async (req, res) => {
     elementNames.push(b[0].replace(/ /gi, '-'));
   });
 
-  console.log({ elementNames });
-
   res.render('breakdown.njk', {
     title,
     sceneNumber,

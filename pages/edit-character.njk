@@ -47,16 +47,10 @@
                       Play
                     </button>
                   {% else %}
-                    <button type='button' class='btn btn-edit btn-block btn-sm btn-play' disabled="disabled" value='{{elements[i].sound}}'>
-                      Play
-                    </button>
-                  {% endif %}
-
-                </td>
-                <td class='data-right'>
                   <button type='button' class='btn btn-edit btn-block btn-sm btn-gen' value='{{elements[i].sceneNumber}}_{{elements[i].elementNumber}}'>
                     Generate
                   </button>
+                  {% endif %}
                 </td>
               </tr>
             {% endfor %}

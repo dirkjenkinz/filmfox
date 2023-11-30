@@ -1,6 +1,6 @@
 'use strict';
 const url = require('url');
-const { getFile, getFileList, fileExists } = require('../services/file-service');
+const { getFile, getFileList } = require('../services/file-service');
 const { smartLog } = require('../services/smart-log');
 const dotenv = require('dotenv');
 dotenv.config();

@@ -1,7 +1,7 @@
 'use strict';
 const url = require('url');
 const { smartLog } = require('../services/smart-log');
-const { getFile, fileExists } = require('../services/file-service');
+const { getFile, getFileList } = require('../services/file-service');
 
 const showreelHandler = async (req, res) => {
   smartLog('info', 'ENTERING SHOWREEL HANDLER');
@@ -16,7 +16,7 @@ const showreelHandler = async (req, res) => {
   const filmFoxFile = await getFile(`${title}/${title}.fff`);
   const { script, shotList, charactersByScene, nonSpeakers, characterList } = filmFoxFile;
 
-  if (!sceneNumber) sceneNumber = 0;  
+  if (!sceneNumber) sceneNumber = 0;
   if (!elementNumber) elementNumber = 0;
 
   if (elementNumber === '-1') {
@@ -35,8 +35,9 @@ const showreelHandler = async (req, res) => {
   let sub = '0000' + elementNumber;
   sub = sub.substring(sub.length - 4);
   const fileName = `${num}_${sub}.mp3`;
+  const soundsList = await getFileList(`data//${title}/sounds`, 'mp3');
 
-  if (fileExists(`${title}/sounds/${fileName}`)) {
+  if (soundsList.indexOf(fileName) !== -1) {
     audio = `../data/${title}/sounds/${fileName}`;
     element.sound = fileName;
   } else {
@@ -57,8 +58,8 @@ const showreelHandler = async (req, res) => {
 
   if (charactersByScene[sceneNumber]) {
     charactersByScene[sceneNumber].forEach((c) => {
-        const pointer = chars.indexOf(c);
-        chars.splice(pointer, 1);
+      const pointer = chars.indexOf(c);
+      chars.splice(pointer, 1);
     });
   }
   characterList.forEach((c) => {
