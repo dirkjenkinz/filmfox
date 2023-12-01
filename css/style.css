@@ -41,6 +41,10 @@ table {
   color: white;
 }
 
+.table-red {
+  background: red;
+};
+
 .table-header {
   background: skyblue;
   color: white;
@@ -79,7 +83,7 @@ table {
 }
 
 .btn-generate {
-  background: mediumslateblue;
+  background: red;
 }
 
 .btn-incomplete {

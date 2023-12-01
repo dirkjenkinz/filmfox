@@ -16,11 +16,10 @@ const masterHandler = async (req, res) => {
   const dirPath = path.join(__dirname, `../data/${title}/scenes`);
   const concat = ffmpeg();
 
-  console.log(u.query);
   for (let i = 0; i < size; i++) {
     let fName = `00000${i}`;
     fName = `s${fName.substring(fName.length - 5)}.mp3`;
-    console.log({fName})
+    console.log({fName});
     concat.input(`${dirPath}/${fName}`);
   }
 

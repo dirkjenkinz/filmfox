@@ -41,7 +41,7 @@
         </div>
       </div>
       <div class='row show'>
-        <p id='size' hidden="hidden">{{comp.length}}</p>
+        <p id='size' hidden="hidden">{{size}}</p>
         <div class='col-md-12' id='col-banner'>
           <table class='table-bordered table-sm table-dark table-grid' id='tab_scenes'>
             <tbody>
@@ -61,8 +61,8 @@
                     <button type='button' class='btn btn-edit btn-block btn-sm' id='btn-play-master' disabled="disabled">Play Master</button>
                   {% endif %}
                 </td>
-                <td colspan='3'>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                <td class='table-data'>
+                <td colspan='2'>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td colspan='2' class='table-data'>
                   &nbsp;&nbsp;&nbsp;
                   <audio id='master-play' controls="controls">
                     <source src='' type="audio/mpeg">

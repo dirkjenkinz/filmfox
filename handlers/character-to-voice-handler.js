@@ -46,7 +46,19 @@ const characterToVoiceHandler = async (req, res) => {
 
   if (!scr1) scr1 = 0;  
 
+
 characterList = characterList.sort();
+
+voice_data.forEach((v)=>{
+  let used = 'no';
+  characterList.forEach((char) => {
+    if (char[1] === v[0]){
+      used = 'yes';
+    };
+  });
+  v.push(used);
+});
+
   res.render('character-to-voice.njk', {
     title,
     characters: characterList,

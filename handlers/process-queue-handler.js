@@ -18,13 +18,11 @@ const processQueueHandler = async (req, res) => {
   const character = queue[0][2];
   const voice = queue[0][3];
 
-  console.log(queue, 1);
   const newQueue = [];
   for (let i = 1; i < queue.length; i++) {
     newQueue.push(queue[i]);
   };
   filmFoxFile.queue = newQueue;
-  console.log('2', { queue }, queue.length);;
 
   let caller = 'process-queue';
   if (filmFoxFile.queue.length === 0) caller = 'sound';
