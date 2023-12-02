@@ -28,7 +28,7 @@ const sceneArrangerHandler = async (req, res) => {
     slugList.push(slugs[sceneNumber]);
   });
 
-  if (!scr1) scr1 = 0;  
+  if (!scr1) scr1 = 0;
 
   res.render('scene-arranger.njk', {
     title,
@@ -40,6 +40,7 @@ const sceneArrangerHandler = async (req, res) => {
     phase,
     scr1,
     size: shotList.length,
+    sceneOrder,
   });
 };
 
