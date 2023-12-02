@@ -4,9 +4,9 @@
   <p id='scr1' hidden="hidden">{{scr1}}</p>
   <p id='size' hidden="hidden">{{size}}</p>
   <div class='row'>
-    <div class='col-md-10' id='table1'>
+    <div class='col-md-9' id='table1'>
       {% for i in range(1, shotList.length) -%}
-        <div class='row scene-box' id='bx_{{i}}' style='font-size: 75%;'>
+        <div class='row scene-box scene-box-little' id='bx_{{i}}'>
           <div class='col-md-1' id='sc_{{ i }}'>Scene
             {{shotList[i].scene}}</div>
           <div class='col-md-5' id='sl_{{ i }}'>{{slugList[i]}}</div>
@@ -14,7 +14,7 @@
         </div>
       {% endfor %}
     </div>
-    <div class='col-md-2'>
+    <div class='col-md-3'>
       <button type='button' class='btn btn-edit btn-sm' id='btn-reset'>Reset Order</button>
       <br><br>
       {% for i in range(1, sceneOrder.length) -%}

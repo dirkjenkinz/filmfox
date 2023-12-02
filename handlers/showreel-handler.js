@@ -12,9 +12,13 @@ const showreelHandler = async (req, res) => {
   let mute = u.query.mute;
   if (!mute) mute = 'MUTE';
   const msg = u.query.msg;
-
   const filmFoxFile = await getFile(`${title}/${title}.fff`);
   const { script, shotList, charactersByScene, nonSpeakers, characterList } = filmFoxFile;
+
+  if (sceneNumber > script.length -1){
+    sceneNumber = script.length -1;
+    elementNumber = script[sceneNumber].length - 1;
+  }
 
   if (!sceneNumber) sceneNumber = 0;
   if (!elementNumber) elementNumber = 0;
@@ -22,7 +26,7 @@ const showreelHandler = async (req, res) => {
   if (elementNumber === '-1') {
     sceneNumber--;
     elementNumber = script[sceneNumber].length - 1;
-  }
+  };
 
   if (elementNumber > script[sceneNumber].length - 1) elementNumber = 0;
   const element = script[sceneNumber][elementNumber];

@@ -41,6 +41,19 @@ table {
   color: white;
 }
 
+.scene-box-little {
+  font-size:75%;
+}
+
+.scene-box-large {
+  font-size:100%;
+}
+
+.scene-box-large-est {
+  font-size:125%;
+}
+
+
 .selected {
   background:red;
 }
@@ -311,6 +324,7 @@ textarea {
 }
 
 .btn-edit {
+  display: block;
   background: red;
   color: white;
   border: black 2px solid;
