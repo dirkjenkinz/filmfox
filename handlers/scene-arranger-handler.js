@@ -9,9 +9,12 @@ const sceneArrangerHandler = async (req, res) => {
   const title = u.query.title;
   const elementNumber = u.query.elementNumber;
   const sceneNumber = u.query.sceneNumber;
+  let phase = u.query.phase;
   let scr1 = u.query.scr1;
   const filmFoxFile = await getFile(`${title}/${title}.fff`);
   const { shotList, script, sceneOrder } = filmFoxFile;
+
+  if (!phase) phase = 'select';
 
   const slugs = [];
   script.forEach((s) => {
@@ -20,7 +23,7 @@ const sceneArrangerHandler = async (req, res) => {
 
   const sList = [];
   const slugList = [];
-  sceneOrder.forEach((sceneNumber, index) => {
+  sceneOrder.forEach((sceneNumber) => {
     sList.push(shotList[sceneNumber]);
     slugList.push(slugs[sceneNumber]);
   });
@@ -32,10 +35,11 @@ const sceneArrangerHandler = async (req, res) => {
     shotList: sList,
     slugList,
     page: 'Scene Arranger',
-    size: shotList.length,
     elementNumber,
     sceneNumber,
+    phase,
     scr1,
+    size: shotList.length,
   });
 };
 

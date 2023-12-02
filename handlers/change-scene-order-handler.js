@@ -8,26 +8,39 @@ const changeSceneOrderHandler = async (req, res) => {
   smartLog('info', 'ENTERING CHANGE SCENE ORDER HANDLER');
   const u = url.parse(req.originalUrl, true);
   const title = u.query.title;
-  const direction = u.query.direction;
-  const sceneNumber = u.query.sceneNumber;
-  const elementNumber = u.query.elementNumber;
-  const num = u.query.num;
+  const from = u.query.from;
+  const to = u.query.to;
   const scr1 = u.query.scr1;
   const filmFoxFile = await getFile(`${title}/${title}.fff`);
-  const { sceneOrder } = filmFoxFile;
+  let { sceneOrder } = filmFoxFile;
 
-  let numOther;
-  if (direction === 'down' ) {
-    numOther = parseInt(num) + 1;
-  } else {
-    numOther = parseInt(num) - 1;
+  if (parseInt(from) > parseInt(to)) {
+    const hold = sceneOrder[parseInt(from)];
+    sceneOrder.splice(from, 1);
+
+    const newSceneOrder = [
+      ...sceneOrder.slice(0, to),
+      hold,
+      ...sceneOrder.slice(to)
+    ];
+    filmFoxFile.sceneOrder = newSceneOrder;
   };
 
-  sceneOrder[num] = sceneOrder[num] + sceneOrder[numOther];
-  sceneOrder[numOther] = sceneOrder[num] - sceneOrder[numOther];
-  sceneOrder[num] = sceneOrder[num] - sceneOrder[numOther];
+
+  if (parseInt(from) < parseInt(to)) {
+
+    const newSceneOrder = [
+      ...sceneOrder.slice(0, to),
+      sceneOrder[parseInt(from)],
+      ...sceneOrder.slice(to)
+    ];
+    newSceneOrder.splice(parseInt(from), 1);
+
+    filmFoxFile.sceneOrder = newSceneOrder;
+  };
+
   await writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
-  res.redirect(`/scene-arranger?title=${title}&elementNumber=${elementNumber}&sceneNumber=${sceneNumber}&scr1=${scr1}`);
+  res.redirect(`/scene-arranger?title=${title}&elementNumber=0&sceneNumber=0&scr1=${scr1}`);
 };
 
 module.exports = { changeSceneOrderHandler };

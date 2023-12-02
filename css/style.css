@@ -41,6 +41,16 @@ table {
   color: white;
 }
 
+.selected {
+  background:red;
+}
+
+.scene-box {
+  background: slategrey;
+  color: black;
+  border: double 2px blue;
+}
+
 .table-red {
   background: red;
 };
