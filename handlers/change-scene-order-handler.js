@@ -9,7 +9,6 @@ const resetOrder = ((length) => {
   for (let i = 0; i < length; i++){
     newSceneOrder.push(i);
   };
-  console.log({newSceneOrder});
   return newSceneOrder;
 });
 
@@ -23,7 +22,6 @@ const changeSceneOrderHandler = async (req, res) => {
   const reset = u.query.reset;
   const filmFoxFile = await getFile(`${title}/${title}.fff`);
   let { sceneOrder } = filmFoxFile;
-  console.log({reset});
 
   if (reset === 'yes'){
     filmFoxFile.sceneOrder = resetOrder(sceneOrder.length);

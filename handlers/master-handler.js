@@ -19,7 +19,6 @@ const masterHandler = async (req, res) => {
   for (let i = 0; i < size; i++) {
     let fName = `00000${i}`;
     fName = `s${fName.substring(fName.length - 5)}.mp3`;
-    console.log({fName});
     concat.input(`${dirPath}/${fName}`);
   }
 
