@@ -1,10 +1,12 @@
 $(() => {
   $('#nav-arranger').addClass('active');
+  $('#table1')[0].scrollTop = $('#scr1')[0].innerText;
 });
 
 $('#btn-reset').on('click', (e) => {
   if (confirm('Are you sure you want to reset the scene order?')) {
     const title = $('#filmTitle')[0].innerText;
+    const scr1 = $('#table1')[0].scrollTop;
     window.location.href = `/change-scene-order?title=${title}&scr1=${scr1}&reset=yes`;
   };
 });
@@ -27,6 +29,7 @@ $('.scene-box').on('click', (e) => {
     };
     const from = $('#elementNumber')[0].innerText;
     const title = $('#filmTitle')[0].innerText;
+    const scr1 = $('#table1')[0].scrollTop;
     window.location.href = `/change-scene-order?title=${title}&scr1=${scr1}&from=${from}&to=${num}&reset=no`;
   };
 });

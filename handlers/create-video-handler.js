@@ -8,17 +8,13 @@ const path = require('path');
 const FFmpeg = require('fluent-ffmpeg');
 const fs = require('fs');
 
-const imgToMP4 = (caption, sound, vision, duration, output) => {
-  smartLog('info', `Converting ${vision}`);
-  const images = [vision];
+const imgToMP4 = (sound, image, duration, output) => {
+  smartLog('info', `Converting ${image}`);
+  const images = [image];
 
   const videoOptions = {
-    fps: 25,
-    loop: duration, // seconds
-    caption: caption,
-    captionDelay: 0,
-    captionStart: 0,
-    captionEnd: 0,
+    fps: 10,
+    loop: duration,
     transition: false,
     videoBitrate: 1024,
     videoCodec: 'libx264',
@@ -31,13 +27,13 @@ const imgToMP4 = (caption, sound, vision, duration, output) => {
 
   videoshow([
     {
-      path: vision,
+      path: image,
     },
   ])
     .audio(sound)
     .save(output)
     .on('start', function (command) {
-      smartLog('info', `ffmpeg process started: ${vision}`);
+      smartLog('info', `ffmpeg process started: ${image}`);
     })
     .on('error', function (err) {
       smartLog('error', err);
@@ -72,17 +68,17 @@ const createVideoHandler = async (req, res) => {
 
       const caption = `${s.character}: ${s.dialogue}`;
       const sound = `${soundPath}/${fileName}`;
-      const vision = `${imagePath}/${s.image}`;
+      const image = `${imagePath}/${s.image}`;
       let duration = Math.ceil(dur) + 1;
       if (duration < 4 ) duration = 4;
       const output = `${outPath}/${num}_${sub}.mp4`;
       if (s.type === 'movie') {
         new FFmpeg()
-        .addInput(vision)
+        .addInput(image)
         .addInput(sound)
         .save(output);
       } else {
-        imgToMP4(caption, sound, vision, duration, output);
+        imgToMP4(sound, image, duration, output);
       }
   });
 
