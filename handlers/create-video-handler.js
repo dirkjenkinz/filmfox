@@ -2,47 +2,25 @@
 
 const url = require('url');
 const { smartLog } = require('../services/smart-log');
-const { getFile, getDuration } = require('../services/file-service');
-const videoshow = require('videoshow');
+const { getFile } = require('../services/file-service');
 const path = require('path');
-const FFmpeg = require('fluent-ffmpeg');
-const fs = require('fs');
+var ffmpeg = require('fluent-ffmpeg');
 
-const imgToMP4 = (sound, image, duration, output) => {
-  console.log({duration});
+const imgToMP4 = (sound, image, output) => {
   smartLog('info', `Converting ${image}`);
-  const images = [image];
 
-  const videoOptions = {
-    fps: 10,
-    loop: -1,
-    t: duration,
-    transition: false,
-    videoBitrate: 1024,
-    videoCodec: 'libx264',
-    size: '640x?',
-    audioBitrate: '128k',
-    audioChannels: 2,
-    format: 'mp4',
-    pixelFormat: 'yuv420p',
-  };
-
-  videoshow([
-    {
-      path: image,
-    },
-  ])
-    .audio(sound)
-    .save(output)
-    .on('start', function (command) {
-      smartLog('info', `ffmpeg process started: ${image}`);
-    })
-    .on('error', function (err) {
-      smartLog('error', err);
-    })
-    .on('end', function (output) {
-      smartLog('info', `Video created: ${output}`);
+  let command = ffmpeg(image)
+    .input(sound)
+    .inputFPS(1)
+    .audioCodec('libmp3lame')
+    .audioBitrate(128)
+    .videoCodec('libx264')
+    .size('640x?')
+    .output(output)
+    .on('end', function () {
+      smartLog('info', `${output} created`);
     });
+  command.run();
 };
 
 const createVideoHandler = async (req, res) => {
@@ -66,22 +44,10 @@ const createVideoHandler = async (req, res) => {
     let sub = '0000' + index;
     sub = sub.substring(sub.length - 4);
     const fileName = `${num}_${sub}.mp3`;
-    const dur = await getDuration(title, fileName);
-
-    const caption = `${s.character}: ${s.dialogue}`;
     const sound = `${soundPath}/${fileName}`;
     const image = `${imagePath}/${s.image}`;
-    let duration = Math.ceil(dur) + 1;
-    if (duration < 4) duration = 4;
     const output = `${outPath}/${num}_${sub}.mp4`;
-    if (s.type === 'movie') {
-      new FFmpeg()
-        .addInput(image)
-        .addInput(sound)
-        .save(output);
-    } else {
-      imgToMP4(sound, image, duration, output);
-    }
+    imgToMP4(sound, image, output);
   });
 
   res.redirect(`/video?title=${title}&sceneNumber=${sceneNumber}`);
