@@ -57,14 +57,14 @@ $('.shot-select').on('change', (e) => {
     window.location.href = `/scene-shot-list?title=${title}&sceneNumber=${sceneNumber}&elementNumber=0;`;
    });
 
-   $('.btn-add').on('click', (e) => {
+   $('.btn-add-shot').on('click', (e) => {
     const line = e.target.value;
     const title = $('#filmTitle')[0].outerText;
     const sceneNumber = $('#sceneNumber')[0].outerText;
     window.location.href = `/add-shot?title=${title}&sceneNumber=${sceneNumber}&elementNumber=0&line=${line}`;
    });
 
-   $('.btn-delete').on('click', (e) => {
+   $('.btn-delete-shot').on('click', (e) => {
     const line = e.target.value;
     const title = $('#filmTitle')[0].outerText;
     const sceneNumber = $('#sceneNumber')[0].outerText;

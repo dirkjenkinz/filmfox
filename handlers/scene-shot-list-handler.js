@@ -40,7 +40,7 @@ const sceneShotListHandler = async (req, res) => {
   const size = shotList.length - 1;
   const slug = script[sceneNumber][0].dialogue;
 
-  res.render('scene-shot-list.njk', {
+  res.render('scene-shot-list-alt-view.njk', {
     title,
     sceneNumber,
     lines: shotList[sceneNumber].lines,
@@ -54,6 +54,7 @@ const sceneShotListHandler = async (req, res) => {
     size,
     characterList: charactersByScene[sceneNumber],
     elementNumber,
+    scene: script[sceneNumber],
   });
 };
 

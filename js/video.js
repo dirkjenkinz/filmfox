@@ -13,3 +13,8 @@ $('.btn-modify').on('click', (e) => {
   const sceneNumber = e.target.value;
   window.location.href = `/create-video?title=${title}&sceneNumber=${sceneNumber}`;
 });  
+
+$('#btn-concatenate-video').on('click', (e) => {
+  const title = $('#filmTitle')[0].innerText;
+  window.location.href = `/concatenate-video?title=${title}`;
+});

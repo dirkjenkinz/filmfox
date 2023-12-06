@@ -44,6 +44,7 @@ const deleteCategoryRouter = require('./routes/delete-category.js');
 const categoriesRouter = require('./routes/categories.js');
 const compileSceneRouter = require('./routes/compile-scene.js');
 const processQueueRouter = require('./routes/process-queue.js');
+const concatenateVideoRouter = require('./routes/concatenate-video.js');
 
 const nunjucks = require('nunjucks');
 const bodyParser = require('body-parser');
@@ -106,6 +107,7 @@ app.use('/categories', categoriesRouter);
 app.use('/delete-character', deleteCharacterRouter);
 app.use('/compile-scene', compileSceneRouter);
 app.use('/process-queue', processQueueRouter);
+app.use('/concatenate-video', concatenateVideoRouter);
 
 app.listen(PORT, (err) => {
     smartLog('paramount', `FilmFox is up & running on port ${PORT}`);

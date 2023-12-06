@@ -118,7 +118,7 @@ const createDirectory = (directory) => {
   }
 };
 
-const getDuration = (subdirectory, file) => {
+const getDuration = async (subdirectory, file) => {
   const directoryPath = path.join(
     __dirname,
     `../data/${subdirectory}/sounds/${file}`
