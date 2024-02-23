@@ -3,8 +3,6 @@
 const url = require('url');
 const { getFile, getFileList } = require('../services/file-service');
 const { smartLog } = require('../services/smart-log');
-const dotenv = require('dotenv');
-dotenv.config();
 
 /**
  * Retrieves the voice for a given character from the characterList.

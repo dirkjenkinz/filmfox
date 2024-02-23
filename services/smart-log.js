@@ -1,12 +1,19 @@
 const fs = require('fs');
 const path = require('path');
-const dotenv = require('dotenv');
-dotenv.config();
 
-// Read configuration values from environment variables
-const showLog = process.env.SHOWLOG;
-const hardLog = process.env.HARDLOG;
-const filePath = 'C:/Users/User/Documents/hardLog.txt';
+const readControlFile = () => {
+  const filePath = path.join(__dirname, '../data/control.json');
+  return new Promise((resolve, reject) => {
+    fs.readFile(filePath, (err, data) => {
+      if (err) {
+        console.error('Error reading file:', err);
+        reject(err);
+      } else {
+        resolve(JSON.parse(data));
+      }
+    });
+  });
+};
 
 // Promisify readFile and writeFile functions for asynchronous file operations
 const readFileAsync = (filePath) => {
@@ -37,6 +44,7 @@ const writeFileAsync = (filePath, content) => {
 
 // Function to update the hard log file
 const updateHardLog = async (time_stamp, msg) => {
+  const filePath = 'C:/Users/User/Documents/hardLog.txt';
   try {
     let log = '';
     if (fs.existsSync(filePath)) {
@@ -51,6 +59,7 @@ const updateHardLog = async (time_stamp, msg) => {
 
 // Function to log messages based on log level and configuration
 const smartLog = async (lev, msg) => {
+  const {showLog, hardLog} = await readControlFile();
   try {
     const dateObject = new Date();
     const date = ('0' + dateObject.getDate()).slice(-2);

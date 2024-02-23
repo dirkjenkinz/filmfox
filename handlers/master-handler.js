@@ -2,8 +2,6 @@
 
 const url = require('url');
 const { smartLog } = require('../services/smart-log');
-const dotenv = require('dotenv');
-dotenv.config();
 const path = require('path');
 const ffmpeg = require('fluent-ffmpeg');
 

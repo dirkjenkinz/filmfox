@@ -2,8 +2,6 @@
 
 const url = require('url');
 const { getFile, getFileList, writeFile } = require('../services/file-service');
-const dotenv = require('dotenv');
-dotenv.config();
 const { smartLog } = require('../services/smart-log');
 
 /**
