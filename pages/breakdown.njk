@@ -1,19 +1,14 @@
-{% extends "parent.njk" %}
+{% extends 'paperwork.njk' %}
 {% block page %}
   <div class='row top'>
-    <p id='categories' hidden="hidden">{{categories}}</p>
-    <p id='hidden' hidden="hidden">{{hidden}}</p>
-    <p id='scr1' hidden>{{scr1}}</p>
+    <p id='categories' hidden='hidden'>{{categories}}</p>
+    <p id='hidden' hidden='hidden'>{{hidden}}</p>
     <div class='col-md-2'>
-      {% if sceneNumber > 0 %}
-        <button type='button' class='btn-prevnext btn-sm' id='btn-first-scene'>
-          First Scene
-        </button>
-      {% else %}
-        <button type='button' class='btn-prevnext btn-sm' id='btn-first-scene' disabled="disabled">
-          First Scene
-        </button>
-      {% endif %}
+      <button type='button' class='btn-prevnext btn-sm' id='btn-first-scene' 
+      {% if sceneNumber <= 0 %} disabled="disabled" {% endif %}>
+        First Scene
+      </button>
+
     </div>
     <div class='col-md-2'>
       {% if sceneNumber > 0 %}
@@ -21,18 +16,24 @@
           Previous Scene
         </button>
       {% else %}
-        <button type='button' class='btn-prevnext btn-sm' id='btn-previous-scene' disabled="disabled">
+        <button type='button' class='btn-prevnext btn-sm' id='btn-previous-scene' disabled='disabled'>
           Previous Scene
         </button>
       {% endif %}
     </div>
+
+    <div class='col-md-1'>
+      <h4>Scene
+        {{sceneNumber}}</h4>
+    </div>
+
     <div class='col-md-2'>
       {% if sceneNumber < highestScene %}
         <button type='button' class='btn-prevnext btn-sm' id='btn-next-scene'>
           Next Scene
         </button>
       {%else %}
-        <button type='button' class='btn-prevnext btn-sm' id='btn-next-scene' disabled="disabled">
+        <button type='button' class='btn-prevnext btn-sm' id='btn-next-scene' disabled='disabled'>
           Next Scene
         </button>
       {% endif %}
@@ -43,14 +44,10 @@
           Last Scene
         </button>
       {% else %}
-        <button type='button' class='btn-prevnext btn-sm' id='btn-last-scene' disabled="disabled">
+        <button type='button' class='btn-prevnext btn-sm' id='btn-last-scene' disabled='disabled'>
           Last Scene
         </button>
       {% endif %}
-    </div>
-    <div class='col-md-1'>
-      <h4>Scene
-        {{sceneNumber}}</h4>
     </div>
     <div class='col-md-2'>&nbsp;</div>
     <div class='col-md-1'>
@@ -86,7 +83,7 @@
             {% endfor %}
             <tr>
               <td>
-                 <input type="text" name="input-entity" id='input-entity-{{elementNames[i]}}' size='40' style='border: 0px;'>
+                <input type='text' name='input-entity' id='input-entity-{{elementNames[i]}}' size='40' style='border: 0px;'>
               </td>
               <td>
                 <button type='button' class='btn-add-entity' id='btn-entity-{{elementNames[i]}}' value='{{breakdown[i][0]}}'>Add</button>
@@ -105,7 +102,7 @@
         {% if scene[i].character === 'NARRATOR'%}
           <p class='action' id='{{p_act[i]}}'>{{scene[i}.dialogue}}</p>
         {% else %}
-          <p class='character' id='{{p_cha[i]}}' }="}">{{scene[i].character}}</p>
+          <p class='character' id='{{p_cha[i]}}' }='}'>{{scene[i].character}}</p>
           <p class='dialogue' id='{{p_dia[i]}}'>{{scene[i}.dialogue}}</p>
         {% endif %}
       {% endfor %}
@@ -116,12 +113,12 @@
       <button type='button' class='btn-hide-reveal' id='btn-reveal-all'>Reveal All</button>
       <br>
       {% for i in range(0, breakdown.length) -%}
-        <button type='button' class='btn-control' id='btn-control-{{headers[i]}}' value='{{headers[i]}}' hidden="hidden">Reveal
+        <button type='button' class='btn-control' id='btn-control-{{headers[i]}}' value='{{headers[i]}}' hidden='hidden'>Reveal
           {{headers[i]}}</button>
       {% endfor %}
     </div>
 
   </div>
-  <script src='../js/parent.js'></script>
+  <script src='../js/paperwork.js'></script>
   <script src='../js/breakdown.js'></script>
 {% endblock %}

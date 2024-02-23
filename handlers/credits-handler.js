@@ -1,40 +1,45 @@
 'use strict';
 
+// Import necessary modules
 const url = require('url');
 const { smartLog } = require('../services/smart-log');
 const { getFile } = require('../services/file-service');
 
+// Define the creditsHandler function to handle requests related to movie credits
 const creditsHandler = async (req, res) => {
+  // Log entry point for better traceability
   smartLog('info', 'ENTERING CREDITS HANDLER');
-  const u = url.parse(req.originalUrl, true);
-  const title = u.query.title;
-  const sceneNumber = u.query.sceneNumber;
-  const elementNumber = u.query.elementNumber;
 
-  const filmFoxFile = await getFile(`${title}/${title}.fff`);
-  let { credits } = filmFoxFile;
+  try {
+    // Parse query parameters from the request URL
+    const u = url.parse(req.url, true);
+    const title = u.query.title;
+    const sceneNumber = u.query.sceneNumber;
+    const elementNumber = u.query.elementNumber;
 
-  if (!credits) {
-    credits = {
-      title: title,
-      director: '',
-      writer: '',
-      producer: '',
-    };
-  };
+    // Fetch movie file information asynchronously
+    const filmFoxFile = await getFile(`${title}/${title}.fff`);
+    
+    // Destructure the credits object with default values
+    const { credits = { title, director: '', writer: '', producer: '' } } = filmFoxFile;
 
-  if (!credits.title){
-    credits.title = title;
-  };
+    // Render the 'credits' template with relevant data
+    res.render('credits.njk', {
+      title,
+      credits,
+      page: 'Credits',
+      caller: 'credits',
+      sceneNumber,
+      elementNumber,
+    });
+  } catch (error) {
+    // Log any errors that occur during file fetching
+    smartLog('error', `Error fetching file: ${error.message}`);
 
-  res.render('credits.njk', {
-    title,
-    credits,
-    page: 'Credits',
-    sceneNumber,
-    elementNumber,
-  });
+    // Send an internal server error response if an error occurs
+    res.status(500).send('Internal Server Error');
+  }
 };
 
-
+// Export the creditsHandler function for use in other modules
 module.exports = { creditsHandler };

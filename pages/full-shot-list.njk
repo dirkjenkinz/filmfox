@@ -1,33 +1,39 @@
-{% extends "parent.njk" %}
+{% extends 'paperwork.njk' %}
 {% block page %}
+  <!-- Top row with hidden size element and 'Hide All' button -->
   <div class='row top'>
-    <p id='size' hidden="hidden">{{size}}</p>
+    <p id='size' hidden='hidden'>{{size}}</p>
     <div class='col-md-2'>
       <button class='btn btn-block btn-edit btn-sm' id='btn-hide-and-show' value='{{i}}'>Hide All</button>
     </div>
   </div>
+
+  <!-- Another top row containing a table with shot information -->
   <div class='row top'>
     <div class='row tableFixHead' id='tabhead'>
       <div class='col-md-12'>
+        <!-- Main table displaying shot information -->
         <table id='table-shots'>
           <tbody>
             {% set num = 0 %}
             {% for i in range(1, shotList.length) -%}
               <tr id='row_{{i}}' style='font-size:80%;'>
+                <!-- Button to toggle shot details visibility -->
                 <td>
                   <button class='btn btn-block btn-edit btn-sm btn-scene' id='btn-scene-{{i}}' value='{{i}}'>
-                    Scene
-                    {{shotList[i].scene}}:
-                    {{slugList[i]}}
+                    Scene {{shotList[i].scene}}: {{slugList[i]}}
                   </button>
                 </td>
+                <!-- Displaying shot note -->
                 <td>{{shotList[i].note}}</td>
               </tr>
               <tr>
                 <td colspan='4'>
+                  <!-- Table displaying detailed shot information -->
                   <table id='table-shots-list-{{i}}'>
                     <thead>
                       <tr>
+                        <!-- Headers for detailed shot information table -->
                         <th class='data-central' style='width: 7%;'>Shot #</th>
                         <th class='data-central' style='width: 7%;'>Shot</th>
                         <th class='data-central' style='width: 14%;'>Angle</th>
@@ -37,29 +43,20 @@
                       </tr>
                     </thead>
                     <tbody>
+                      <!-- Rows containing detailed shot information -->
                       {% for line in range(0, shotList[i].lines.length) %}
                         <tr style='font-size:70%;'>
-                          <td>
-                            {{num}}</td>
-                          <td>
-                            {{shotList[i].lines[line].shot}}
-                          </td>
-                          <td>
-                            {{shotList[i].lines[line].angle}}
-                          </td>
-                          <td>
-                            {{shotList[i].lines[line].audio}}
-                          </td>
-                          <td>
-                            {{shotList[i].lines[line].subject}}
-                          </td>
-                          <td>
-                            {{shotList[i].lines[line].description}}
-                          </td>
+                          <td>{{num}}</td>
+                          <td>{{shotList[i].lines[line].shot}}</td>
+                          <td>{{shotList[i].lines[line].angle}}</td>
+                          <td>{{shotList[i].lines[line].audio}}</td>
+                          <td>{{shotList[i].lines[line].subject}}</td>
+                          <td>{{shotList[i].lines[line].description}}</td>
                         </tr>
                         {% set num = num + 1 %}
                       {% endfor %}
                     </tbody>
+                    <!-- Separator row -->
                     <tr>
                       <td colspan='6' style='background: SteelBlue; font-size:20%;'>&nbsp;</td>
                     </tr>
@@ -72,11 +69,15 @@
       </div>
     </div>
   </div>
-  <script src='../js/parent.js'></script>
+
+  <!-- Including necessary JavaScript files -->
+  <script src='../js/paperwork.js'></script>
   <script src='../js/full-shot-list.js'></script>
+
+  <!-- Script to add 'active' class to the navigation tab -->
   <script>
     $(() => {
-      $("#nav-display-full").addClass('active');
+      $('#nav-display-full').addClass('active');
     });
   </script>
 {% endblock %}

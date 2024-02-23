@@ -2,11 +2,9 @@
 
 const url = require('url');
 const { smartLog } = require('../services/smart-log');
-const {
-  getListOfImages,
-  getFile,
-} = require('../services/file-service');
+const { getFile, getFileList } = require('../services/file-service');
 
+// Function to extract unique images used in the script
 const getUsed = (script) => {
   const used = [];
   script.forEach((scene) => {
@@ -18,61 +16,65 @@ const getUsed = (script) => {
   return unique;
 };
 
+// Handler for rendering the gallery
 const galleryHandler = async (req, res) => {
+  // Log entry point for better traceability
   smartLog('info', 'ENTERING GALLERY HANDLER');
-  let u = url.parse(req.originalUrl, true);
+
+  // Parse query parameters from the request URL
+  const u = url.parse(req.originalUrl, true);
   const sceneNumber = u.query.sceneNumber;
   const title = u.query.title;
   const elementNumber = u.query.elementNumber;
   const caller = u.query.caller;
   const mute = u.query.mute;
   const speak = u.query.speak;
-  const imageList = await getListOfImages(title);
-  imageList.unshift('blank.jpg');
 
-  const images = [];
-  for (let i = 0; i < imageList.length; i++) {
-    if (imageList[i].substring(imageList[i].length - 4) === '.mov') {
-      images.push([imageList[i], 'movie']);
-    } else if (imageList[i].substring(imageList[i].length - 4) === '.mp4') {
-      images.push([imageList[i], 'movie']);
-    } else if (imageList[i].substring(imageList[i].length - 4) === '.avi') {
-      images.push([imageList[i], 'movie']);
-    } else if (imageList[i].substring(imageList[i].length - 4) === '.wmv') {
-      images.push([imageList[i], 'movie']);
-    } else if (imageList[i].substring(imageList[i].length - 4) === '.mkv') {
-      images.push([imageList[i], 'movie']);
-    } else {
-      images.push([imageList[i], 'still']);
-    }
+  try {
+    // Fetch image list from the 'vision/images' directory
+    const imageList = await getFileList(`data/${title}/vision/images`, '*');
+    imageList.unshift('blank.jpg');
+
+    // Categorize images as either 'movie' or 'still'
+    const images = imageList.map((imageName) => {
+      const extension = imageName.substring(imageName.length - 4).toLowerCase();
+      return extension === '.mov' || extension === '.mp4' || extension === '.avi' ||
+        extension === '.wmv' || extension === '.mkv'
+        ? [imageName, 'movie']
+        : [imageName, 'still'];
+    });
+
+    // Fetch movie file information asynchronously
+    const filmFoxFile = await getFile(`${title}/${title}.fff`);
+    const { script } = filmFoxFile;
+
+    // Get a list of unique images used in the script
+    const usedImages = getUsed(script);
+
+    // Partition images into 'used' and 'unused' based on script usage
+    const used = images.filter((image) => usedImages.includes(image[0]));
+    const unused = images.filter((image) => !usedImages.includes(image[0]));
+
+    // Render the 'gallery' template with relevant data
+    res.render('gallery.njk', {
+      title,
+      elementNumber,
+      sceneNumber,
+      used,
+      unused,
+      caller,
+      page: 'Gallery',
+      mute,
+      speak,
+    });
+  } catch (error) {
+    // Log any errors that occur during file handling
+    smartLog('error', `Error handling gallery: ${error.message}`);
+
+    // Send an internal server error response if an error occurs
+    res.status(500).send('Internal Server Error');
   }
-
-
-  const filmFoxFile = await getFile(`${title}/${title}.fff`);
-  const { script } = filmFoxFile;
-  const usedImages = getUsed(script);
-  const used = [];
-  const unused = [];
-
-  images.forEach((i, index) => {
-    if (usedImages.indexOf(i[0]) !== -1) {
-      used.push(i);
-    } else {
-      unused.push(i);
-    }
-  });
-  
-  res.render('gallery.njk', {
-    title,
-    elementNumber,
-    sceneNumber,
-    used,
-    unused,
-    caller,
-    page: 'Gallery',
-    mute,
-    speak,
-  });
 };
 
+// Export the galleryHandler function for use in other modules
 module.exports = { galleryHandler };

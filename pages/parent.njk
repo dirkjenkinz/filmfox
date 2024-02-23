@@ -22,10 +22,12 @@
           <div class='col-md-1'></div>
           <div class='col-md-6' id='filmTitle'>
             {{ title }}
+            <!-- Hidden properties for script details -->
             <p id='length' hidden='hidden'>{{script.length}}</p>
             <p id='sceneNumber' hidden='hidden'>{{sceneNumber}}</p>
             <p id='elementNumber' hidden='hidden'>{{elementNumber}}</p>
             <p id='highestScene' hidden='hidden'>{{highestScene}}</p>
+            <!-- Additional hidden properties for various settings -->
             <p id='audio' hidden="hidden">{{audio}}</p>
             <p id='voice' hidden="hidden">{{voice}}</p>
             <p id='mute' hidden="hidden">{{mute}}</p>
@@ -34,26 +36,22 @@
             <p id='start' hidden="hidden">{{start}}</p>
             <p id='finish' hidden="hidden">{{finish}}</p>
             <p id='element' hidden="hidden">{{element}}</p>
+            <p id='scr1' hidden="hidden">{{scr1}}</p>
           </div>
           <div class='col-md-3' style='text-align: right;'>{{page}}</div>
         </div>
         <div class='row top topnav' style='padding-bottom: 0; margin-bottom:0;'>
-          <div class='col-md-12'>
+          <div class='col-md-11'>
+            <!-- Navigation links for different sections -->
             <p id='nav-showreel'>Showreel</p>
-            <p id='nav-ctv'>Voice Map</p>
             <p id='nav-sound'>Sound</p>
             <p id='nav-video'>Video</p>
+            <p id='nav-ctv'>Voice Map</p>
             <p id='nav-characters'>Characters</p>
-            <p id='nav-arranger'>Scene Arranger</p>
-            <p id='nav-scene-shot-list'>Scene Shot List</p>
-            <p id='nav-display-full'>Full Shot List</p>
-            <p id='nav-sheets'>Sheets</p>
-            <p id='nav-credits'>Credits</p>
-            <p id='nav-breakdown'>Scene Breakdown</p>
-            <p id='nav-report'>Breakdown Reports</p>
-            <p id='nav-categories'>Categories</p>
-            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-            <p id='nav-front'>Front</p>
+            <p id='nav-paperwork'>PAPERWORK</p>
+          </div>
+          <div class='col-md-1'>
+            <p id='nav-front'>FRONT</p>
           </div>
         </div>
       {% endblock %}

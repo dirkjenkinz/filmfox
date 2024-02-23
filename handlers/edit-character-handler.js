@@ -4,75 +4,78 @@ const url = require('url');
 const { smartLog } = require('../services/smart-log');
 const { getFile, getFileList } = require('../services/file-service');
 
+// Handler for editing a character
 const editCharacterHandler = async (req, res) => {
+  // Log entry point for better traceability
   smartLog('info', 'ENTERING EDIT CHARACTER HANDLER');
+
+  // Parse query parameters from the request URL
   const u = url.parse(req.originalUrl, true);
   const title = u.query.title;
   const sceneNumber = u.query.sceneNumber;
   const elementNumber = u.query.elementNumber;
   const msg = u.query.msg;
   const character = u.query.character;
-  const filmFoxFile = await getFile(`${title}/${title}.fff`);
-  const { characterList } = filmFoxFile;
 
-  const { script } = filmFoxFile;
+  try {
+    // Fetch movie file information asynchronously
+    const filmFoxFile = await getFile(`${title}/${title}.fff`);
+    const { characterList, script } = filmFoxFile;
 
-  const elements = [];
+    const elements = [];
 
-  script.forEach((s, scene_index) => {
-    s.forEach((element, element_index) => {
-      if (element.character === character) {
-        elements.push({
-          sceneNumber: scene_index,
-          dialogue: element.dialogue,
-          elementNumber: element_index,
-          voice: element.voice,
-        });
-      }
-    });
-  });
-
-  const soundFiles = await getFileList(`data//${title}/sounds`, 'mp3');
-
-  elements.forEach(async (e) => {
-    let num = '0000' + e.sceneNumber;
-    num = num.substring(num.length - 4);
-    let sub = '0000' + e.elementNumber;
-    sub = sub.substring(sub.length - 4);
-    const fileName = `${num}_${sub}.mp3`;
-    let found = 'no';
-    soundFiles.forEach((s) => {
-      if (s === fileName) {
-        found = 'yes';
-      };
+    // Iterate through the script to find elements related to the specified character
+    script.forEach((s, sceneIndex) => {
+      s.forEach((element, elementIndex) => {
+        if (element.character === character) {
+          elements.push({
+            sceneNumber: sceneIndex,
+            dialogue: element.dialogue,
+            elementNumber: elementIndex,
+            voice: element.voice,
+          });
+        }
+      });
     });
 
-    if (found === 'yes') {
-      e.sound = fileName;
-    } else {
-      e.sound = '';
-    }
-  
-  });
+    // Fetch the list of sound files associated with the specified title
+    const soundFiles = await getFileList(`data//${title}/sound/sounds`, 'mp3');
 
-  let currentVoice;
+    // Determine if a sound file exists for each element
+    elements.forEach((e) => {
+      const num = '0000' + e.sceneNumber;
+      const sceneNum = num.substring(num.length - 4);
+      const sub = '0000' + e.elementNumber;
+      const subNum = sub.substring(sub.length - 4);
+      const fileName = `${sceneNum}_${subNum}.mp3`;
 
-  characterList.forEach((c) => {
-    if (c[0] === character) {
-      currentVoice = c[1];
-    }
-  });
+      // Check if the sound file exists for the element
+      e.sound = soundFiles.includes(fileName) ? fileName : '';
+    });
 
-  res.render('edit-character.njk', {
-    character,
-    title,
-    elements,
-    currentVoice,
-    page: 'Edit Character',
-    msg,
-    sceneNumber,
-    elementNumber,
-  });
+    // Find the current voice of the character
+    const currentVoice = characterList.find((c) => c[0] === character)?.[1] || '';
+
+    // Render the 'edit-character' template with relevant data
+    res.render('edit-character.njk', {
+      character,
+      title,
+      elements,
+      currentVoice,
+      page: 'Edit Character',
+      caller: 'edit-character',
+      msg,
+      sceneNumber,
+      elementNumber,
+    });
+  } catch (error) {
+    // Log any errors that occur during file handling
+    smartLog('error', `Error editing character: ${error.message}`);
+
+    // Send an internal server error response if an error occurs
+    res.status(500).send('Internal Server Error');
+  }
 };
 
+// Export the editCharacterHandler function for use in other modules
 module.exports = { editCharacterHandler };

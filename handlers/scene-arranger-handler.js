@@ -1,4 +1,5 @@
 'use strict';
+
 const url = require('url');
 const { smartLog } = require('../services/smart-log');
 const { getFile } = require('../services/file-service');
@@ -9,12 +10,12 @@ const sceneArrangerHandler = async (req, res) => {
   const title = u.query.title;
   const elementNumber = u.query.elementNumber;
   const sceneNumber = u.query.sceneNumber;
-  let phase = u.query.phase;
-  let scr1 = u.query.scr1;
-  const filmFoxFile = await getFile(`${title}/${title}.fff`);
-  const { shotList, script, sceneOrder } = filmFoxFile;
 
-  if (!phase) phase = 'select';
+  // Destructure relevant properties from filmFoxFile
+  const { shotList, script, sceneOrder } = await getFile(`${title}/${title}.fff`);
+
+  // Use default parameters for phase and scr1
+  let { phase = 'select', scr1 = 0 } = u.query;
 
   const slugs = [];
   script.forEach((s) => {
@@ -28,13 +29,12 @@ const sceneArrangerHandler = async (req, res) => {
     slugList.push(slugs[sceneNumber]);
   });
 
-  if (!scr1) scr1 = 0;
-
   res.render('scene-arranger.njk', {
     title,
     shotList: sList,
     slugList,
     page: 'Scene Arranger',
+    caller: 'scene-arranger',
     elementNumber,
     sceneNumber,
     phase,

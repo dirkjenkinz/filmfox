@@ -1,72 +1,81 @@
 'use strict';
+
 const url = require('url');
 const { smartLog } = require('../services/smart-log');
 const { getFile, getFileList } = require('../services/file-service');
 
+/**
+ * Handles requests related to video processing.
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ */
 const videoHandler = async (req, res) => {
   smartLog('info', 'ENTERING VIDEO HANDLER');
+
+  // Parse URL parameters
   const u = url.parse(req.originalUrl, true);
   const title = u.query.title;
-  const filmFoxFile = await getFile(`${title}/${title}.fff`);
-  const elementNumber = u.query.elementNumber;
-  const sceneNumber = u.query.sceneNumber;
-  const { script } = filmFoxFile;
-  const videoList = await getFileList(`data//${title}/videos`, 'mp4');
-  const gen = [];
-  for (let i = 0; i < script.length; i++) {
-    let num = '0000' + i;
-    num = num.substring(num.length - 4);
-    let found = 'no';
-    for (let j = 0; j < videoList.length; j++) {
-      if (videoList[j].substring(0, 4) === num) found = 'yes';
-    };
-    gen.push(found);
-  };
+  let elementNumber = u.query.elementNumber || 0;
+  let sceneNumber = u.query.sceneNumber || 0;
 
-  let soundFiles = await getFileList(`data/${title}/sounds`, 'mp3');
+  // Retrieve filmFoxFile and script from the file
+  const filmFoxFile = await getFile(`${title}/${title}.fff`);
+  const { script } = filmFoxFile;
+
+  // Get the list of videos and scenes
+  const videoList = await getFileList(`data/${title}/vision/videos`, 'mp4');
+  const scenesList = await getFileList(`data/${title}/vision/scenes`, 'mp4');
+
+  // Check video completion status for each scene
+  const completeArray = script.map((scene, sceneIndex) => {
+    let complete = 'yes';
+    scene.forEach((element, elementIndex) => {
+      const sceneNumberFormatted = `0000${sceneIndex}`.slice(-4);
+      const elementNumberFormatted = `0000${elementIndex}`.slice(-4);
+      const item = `${sceneNumberFormatted}_${elementNumberFormatted}.mp4`;
+      if (videoList.indexOf(item) === -1) {
+        complete = 'no';
+      }
+    });
+    return complete;
+  });
+
+  // Check if sound files are missing for each scene
+  let soundFiles = await getFileList(`data/${title}/sound/sounds`, 'mp3');
   let fileNotFound = [];
 
-  for (let i = 0; i < script.length; i++) {
-    for (let j = 0; j < script[i].length; j++) {
-      let sc = '0000' + i;
-      sc = sc.substring(sc.length - 4);
-      let el = '0000' + j;
-      el = el.substring(el.length - 4);
-      const fileName = `${sc}_${el}.mp3`;
-      let found = 'no';
-      soundFiles.forEach((s) => {
-        if (s === fileName) {
-          found = 'yes';
-        };
-      });
-      if (found === 'no') {
+  script.forEach((scene, i) => {
+    scene.forEach((element, j) => {
+      const sceneNumberFormatted = `0000${i}`.slice(-4);
+      const elementNumberFormatted = `0000${j}`.slice(-4);
+      const fileName = `${sceneNumberFormatted}_${elementNumberFormatted}.mp3`;
+      if (!soundFiles.includes(fileName)) {
         fileNotFound.push(fileName.substring(0, 4));
-      };
-    };
-  };
+      }
+    });
+  });
 
   fileNotFound = [...new Set(fileNotFound)];
 
-  const complete = [];
-
-  script.forEach(() => {
-    complete.push('yes');
+  // Check if each scene video exists
+  const exists = script.map((_, sceneIndex) => {
+    const fileName = `0000${sceneIndex}.mp4`.slice(-8);
+    return scenesList.includes(fileName) ? 'yes' : 'no';
   });
 
-  fileNotFound.forEach((f) => {
-    let num = parseInt(f);
-    complete[num] = 'no';
-  });
+  // Determine overall readiness status
+  const ready = exists.every((status) => status === 'yes') ? 'yes' : 'no';
 
-  
+  // Render the video template
   res.render('video.njk', {
     title,
     script,
     page: 'Video',
+    caller: 'video',
     elementNumber,
-    sceneNumber,
-    gen,
-    complete,
+    completeArray,
+    ready,
+    exists,
   });
 };
 

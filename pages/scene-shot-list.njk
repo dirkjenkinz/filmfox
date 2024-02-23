@@ -1,6 +1,6 @@
-{% extends "parent.njk" %}
+{% extends "paperwork.njk" %}
 {% block page %}
-  
+
   <div class='row'>
     <div class='col-md-12'>
       SCENE:
@@ -10,6 +10,7 @@
 
   <div class='row'>
     <div class='col-md-12 slidecontainer'>
+      <!-- Slider for scene navigation -->
       <input type="range" min="0" max="{{size}}" value="{{sceneNumber}}" id='slider-scene'>
     </div>
     <br><br>
@@ -17,6 +18,7 @@
 
   <div class='row'>
     <div class='col-md-12'>
+      <!-- Table for scene details -->
       <table class='table-bordered table-sm table-dark table-grid' id='tab_img'>
         <thead>
           <tr>
@@ -25,37 +27,49 @@
             <th class='shot-header' colspan='3'>
               {{slug}}
             </th>
-          </tr>
-          <tr>
-            <td class='data-left' colspan='2'>
-              <label for="input-note">Note:</label>
-              <input type="text" id="input-note" name="input-note" size='120' value='{{note}}'>
-            </td>
-            <td>
+            <!-- Previous scene button -->
+            <th>
               {% if sceneNumber > 0 %}
-                <button class='btn btn-block btn-edit btn-sm btn-previous' id='btn-previous'>
+                <button class='btn btn-edit btn-sm btn-previous' id='btn-previous'>
                   Previous
                 </button>
               {% else %}
-                <button class='btn btn-block btn-edit btn-sm btn-previous' id='btn-previous' disabled="disabled">
+                <button class='btn btn-edit btn-sm btn-previous' id='btn-previous' disabled="disabled">
                   Previous
                 </button>
               {% endif %}
-            </td>
-            <td>
+            </th>
+            <!-- Next scene button -->
+            <th>
               {% if sceneNumber < size %}
-                <button class='btn btn-block btn-edit btn-sm btn-next' id='btn-next'>
+                <button class='btn btn-edit btn-sm btn-next' id='btn-next'>
                   Next
                 </button>
               {% else %}
-                <button class='btn btn-block btn-edit btn-sm btn-next' id='btn-next' disabled="disabled">
+                <button class='btn btn-edit btn-sm btn-next' id='btn-next' disabled="disabled">
                   Next
                 </button>
               {% endif %}
+            </th>
+          </tr>
+          <!-- Input for scene note -->
+          <tr>
+            <td class='data-left' colspan='4'>
+              <label for="input-note">Note:</label>
+              <input type="text" id="input-note" name="input-note" size='140' value='{{note}}'>
             </td>
           </tr>
         </thead>
+      </table>
+    </div>
+  </div>
+
+  <div class='row'>
+    <div class='col-md-12'>
+      <!-- Table for scene shots -->
+      <table class='table-bordered table-sm table-dark table-grid' id='tab_shots'>
         <tbody>
+          <!-- Displaying character dialogue and notes -->
           <tr>
             <td class='data-left'>
               {{slug.dialogue}}
@@ -64,15 +78,15 @@
               {{slug.note}}
             </td>
           </tr>
-          <tr style='background: green;'>
-            <th style='background: red; text-align: right'>
+          <!-- Displaying characters -->
+          <tr>
+            <th style='background: green; text-align: right' width='10%'>
               Characters:
             </th>
-            <td colspan='3' style='background: black; padding: 0 4px;'>
+            <td colspan='3' style='background: green; padding: 0 4px;'>
               {% for i in range(0, characterList.length) -%}
                 {% if i < (characterList.length - 1) %}
-                  &nbsp;{{characterList[i]}}
-                  --
+                  &nbsp;{{characterList[i]}}&nbsp;-
                 {%else %}
                   {{characterList[i]}}
                 {% endif %}
@@ -84,9 +98,10 @@
     </div>
   </div>
 
-  <div class='row tableFixHead' id='tabhead'>
-    <div class='col-md-12'>
-      <table class='table-bordered table-sm table-dark table-grid' id='tab-shot' width='100%'>
+  <div class='row' id='tabhead'  style='font-size:75%;'>
+    <div class='col-md-7 tableFixHead2'>
+      <!-- Table for shot details -->
+      <table class='table-bordered table-sm table-dark table-grid' id='tab-shot'>
         <thead>
           <tr>
             <th class='shot-header'>
@@ -104,22 +119,17 @@
             <th class='shot-header'>
               Audio
             </th>
-            <th class='shot-header' style='width: 25%' ;=";">
-              Subject
-            </th>
-            <th class='shot-header' style='width: 40%' ;=";">
-              Description
-            </th>
-            <th class='shot-header' colspan='2'></th>
           </tr>
         </thead>
         <tbody>
+          <!-- Loop through shots and display shot details -->
           {% for i in range(0, lines.length) -%}
             <tr>
               <td class='data-left'>
                 {{i +1}}
               </td>
               <td class='data-left'>
+                <!-- Dropdown for shot selection -->
                 <select id='shot-shot_{{i}}' class='shot-select shot-shot'>
                   {% for index in range(0, shots.length) -%}
                     {% if shots[index] == lines[i].shot %}
@@ -135,6 +145,7 @@
                 </select>
               </td>
               <td class='data-left'>
+                <!-- Dropdown for camera angle selection -->
                 <select id='shot-angle_{{i}}' class='shot-select shot-angle'>
                   {% for index in range(0, angles.length) -%}
                     {% if angles[index] === lines[i].angle %}
@@ -150,6 +161,7 @@
                 </select>
               </td>
               <td class='data-left'>
+                <!-- Dropdown for camera move selection -->
                 <select name="move_{{i}}" id='shot-move_{{i}}' class='shot-select'>
                   {% for index in range(0, moves.length) -%}
                     {% if moves[index] == lines[i].move %}
@@ -165,6 +177,7 @@
                 </select>
               </td>
               <td class='data-left'>
+                <!-- Dropdown for audio selection -->
                 <select name="audio{{i}}" id='shot-audio_{{i}}' class='shot-select'>
                   {% for index in range(0, audio.length) -%}
                     {% if audio[index] == lines[i].audio %}
@@ -179,25 +192,37 @@
                   {% endfor %}
                 </select>
               </td>
-              <td class='data-left'>
-                <textarea id='shot-subject_{{i}}' class='shot-subject' rows='2' cols='40'>{{lines[i].subject | trim}}</textarea>
+             <td></td>
+            </tr>
+            <!-- Additional details for each shot -->
+            <tr>
+              <td class='shot-header'>Subject</td>
+              <td colspan='3'>
+                <!-- Textarea for subject -->
+                <textarea id='shot-subject_{{i}}' class='shot-subject' rows='1' cols='70'>{{lines[i].subject | trim}}</textarea>
               </td>
-              <td class='data-left'>
-                <textarea id='shot-description_{{i}}' class='shot-description' rows="2" cols='50'>{{lines[i].description | trim}}</textarea>
-              </td>
-              <td>
-                <button class='btn btn-block btn-edit btn-sm btn-add' value='{{i}}'>
-                  +
+               <td>
+                <!-- Button to add a new shot -->
+                <button class='btn-add-shot' value='{{i}}'>
+                  <b>Add</b>
                 </button>
               </td>
-              <td>
+            </tr>
+            <tr>
+              <td class='shot-header'>Description</td>
+              <td colspan='3'>
+                <!-- Textarea for shot description -->
+                <textarea id='shot-description_{{i}}' class='shot-description' rows='1' cols='70'>{{lines[i].description | trim}}</textarea>
+              </td>
+               <td>
+                <!-- Button to delete a shot, disabled if only one shot is present -->
                 {% if lines.length > 1 %}
-                  <button class='btn btn-block btn-edit btn-sm btn-delete' value='{{i}}'>
-                    -
+                  <button class='btn-delete-shot' value='{{i}}'>
+                    <b>Delete</b>
                   </button>
                 {% else %}
-                  <button class='btn btn-block btn-edit btn-sm btn-delete' value='{{i}}' disabled="disabled">
-                    -
+                  <button class='btn-delete-shot' value='{{i}}' disabled="disabled">
+                    <b>Delete</b>
                   </button>
                 {% endif %}
               </td>
@@ -206,8 +231,21 @@
         </tbody>
       </table>
     </div>
+
+    <div class='col-md-5 tableFixHead2 script' style='background:white;'>
+      <!-- Displaying scene details and dialogue -->
+      {% for i in range(0, scene.length) -%}
+        {% if scene[i].character === 'NARRATOR'%}
+          <p class='action' id='{{p_act[i]}}'>{{scene[i].dialogue}}</p>
+        {% else %}
+          <p class='character' id='{{p_cha[i]}}' }="}">{{scene[i].character}}</p>
+          <p class='dialogue' id='{{p_dia[i]}}'>{{scene[i].dialogue}}</p>
+        {% endif %}
+      {% endfor %}
+    </div>
   </div>
 
-  <script src='../js/parent.js'></script>
+  <!-- Include necessary scripts -->
+  <script src='../js/paperwork.js'></script>
   <script src='../js/scene-shot-list.js'></script>
 {% endblock %}

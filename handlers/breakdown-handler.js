@@ -4,99 +4,106 @@ const url = require('url');
 const { smartLog } = require('../services/smart-log');
 const { getFile, writeFile } = require('../services/file-service');
 
+/**
+ * Handles requests related to the breakdown of scenes.
+ *
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ */
 const breakdownHandler = async (req, res) => {
-  smartLog('info', 'ENTERING BREAKDOWN HANDLER');
-  const u = url.parse(req.originalUrl, true);
-  const title = u.query.title;
-  const sceneNumber = u.query.sceneNumber;
-  const elementNumber = u.query.elementNumber;
-  const element = u.query.element;
-  const hidden = u.query.hidden;
-  let entity = u.query.entity;
-  let action = u.query.action;
-  let scr1 = u.query.scr1;
-  const filmFoxFile = await getFile(`${title}/${title}.fff`);
-  let { script, breakdown } = filmFoxFile;
+  try {
+    // Logging entering the handler
+    smartLog('info', 'ENTERING BREAKDOWN HANDLER');
 
-  const categories = [];
+    // Parsing URL parameters
+    const u = url.parse(req.originalUrl, true);
+    let sceneNumber = u.query.sceneNumber || 0;
+    let elementNumber = u.query.elementNumber || 0;
+    const title = u.query.title;
+    let element = u.query.element;
+    const hidden = u.query.hidden;
+    let entity = u.query.entity;
+    let action = u.query.action;
+    let scr1 = u.query.scr1;
 
-  breakdown[0].forEach((c) => {
-    categories.push(c[0]);
-  });
+    // Loading filmFoxFile data
+    const filmFoxFile = await getFile(`${title}/${title}.fff`);
+    let { script, breakdown } = filmFoxFile;
 
-  if (!entity) {
-    action = 'display';
-  } else {
-    entity = entity.toUpperCase().trim();
-  }
+    // Initializing categories array
+    const categories = breakdown[0].map(c => c[0]);
 
-  if (action === 'add') {
-    let elementExists = false;
-    breakdown[sceneNumber].forEach((b) => {
-      if (b[0] === element) {
-        if (b.indexOf(entity) === -1) {
-          b.push(entity);
-        }
-        elementExists = true;
-      }
-    });
-    if (!elementExists) {
-      breakdown[sceneNumber].push([element, entity]);
+    // Defaulting sceneNumber and elementNumber if not provided
+    if (!entity) {
+      action = 'display';
+    } else {
+      entity = entity.toUpperCase().trim();
     }
-  }
 
-  if (action === 'del') {
-    for (let i = 0; i < breakdown[sceneNumber].length; i++) {
-      if (breakdown[sceneNumber][i][0] === element) {
-        let temp = [];
-        for (let index = 0; index < breakdown[sceneNumber][i].length; index++) {
-          if (breakdown[sceneNumber][i][index] !== entity) {
-            temp.push(breakdown[sceneNumber][i][index]);
+    // Handling 'add' action
+    if (action === 'add') {
+      let elementExists = false;
+      breakdown[sceneNumber].forEach(b => {
+        if (b[0] === element) {
+          if (b.indexOf(entity) === -1) {
+            b.push(entity);
           }
+          elementExists = true;
         }
-        breakdown[sceneNumber][i] = temp;
+      });
+      if (!elementExists) {
+        breakdown[sceneNumber].push([element, entity]);
       }
     }
-  }
-  if (action !== 'display') {
-    await writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
-  }
 
-  const headers = [];
-  breakdown[sceneNumber].forEach((b) => {
-    if (b !== null) {
-      headers.push(b[0].replace(/ /gi, '-'));
-    };
-  });
+    // Handling 'del' action
+    if (action === 'del') {
+      element = element.replace(/-/g, ' ');
+      for (let i = 0; i < breakdown[sceneNumber].length; i++) {
+        if (breakdown[sceneNumber][i][0] === element) { 
+          let temp = breakdown[sceneNumber][i].filter(value => value !== entity);
+          breakdown[sceneNumber][i] = temp;
+        }
+      }
+    }
 
-  if (!hidden) {
-    let h = '';
-    breakdown.forEach(() => {
-      h = h + 'r';
+    // Writing the updated filmFoxFile back to the file if needed
+    if (action !== 'display') {
+      await writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
+    }
+
+    // Generating headers based on the breakdown data
+    const headers = breakdown[sceneNumber]
+      .filter(b => b !== null)
+      .map(b => b[0].replace(/ /gi, '-'));
+
+    // Defaulting scr1 if not provided
+    if (!scr1) scr1 = 0;
+
+    // Generating elementNames based on the breakdown data
+    const elementNames = breakdown[sceneNumber].map(b => b[0].replace(/ /gi, '-'));
+
+    // Rendering the 'breakdown' template with provided data
+    res.render('breakdown.njk', {
+      title,
+      sceneNumber,
+      elementNumber,
+      highestScene: script.length - 1,
+      breakdown: breakdown[sceneNumber],
+      categories,
+      scene: script[sceneNumber],
+      headers,
+      hidden,
+      scr1,
+      page: 'Scene Breakdown',
+      caller: 'breakdown',
+      elementNames,
     });
-  };
-
-  if (!scr1) scr1 = 0;
-
-  let elementNames = [];
-  breakdown[sceneNumber].forEach((b) => {
-    elementNames.push(b[0].replace(/ /gi, '-'));
-  });
-
-  res.render('breakdown.njk', {
-    title,
-    sceneNumber,
-    elementNumber,
-    highestScene: script.length - 1,
-    breakdown: breakdown[sceneNumber],
-    categories,
-    scene: script[sceneNumber],
-    headers,
-    hidden,
-    scr1,
-    page: 'Scene Breakdown',
-    elementNames,
-  });
+  } catch (error) {
+    // Handling errors and sending a 500 Internal Server Error response
+    console.error('Error in breakdownHandler:', error);
+    res.status(500).send('Internal Server Error');
+  }
 };
 
 module.exports = { breakdownHandler };

@@ -2,16 +2,18 @@ const fs = require('fs');
 const path = require('path');
 const dotenv = require('dotenv');
 dotenv.config();
-showLog = process.env.SHOWLOG;
-hardLog = process.env.HARDLOG;
+
+// Read configuration values from environment variables
+const showLog = process.env.SHOWLOG;
+const hardLog = process.env.HARDLOG;
 const filePath = 'C:/Users/User/Documents/hardLog.txt';
 
-
-const getHardlog = async () => {
+// Promisify readFile and writeFile functions for asynchronous file operations
+const readFileAsync = (filePath) => {
   return new Promise((resolve, reject) => {
     fs.readFile(filePath, (err, data) => {
       if (err) {
-        console.log('error getting data');
+        console.error('Error reading file:', err);
         reject(err);
       } else {
         resolve(data);
@@ -20,10 +22,11 @@ const getHardlog = async () => {
   });
 };
 
-const writeHardLog = async (hardLog) => {
+const writeFileAsync = (filePath, content) => {
   return new Promise((resolve, reject) => {
-    fs.writeFile(filePath, hardLog, (err) => {
+    fs.writeFile(filePath, content, (err) => {
       if (err) {
+        console.error('Error writing to file:', err);
         reject(err);
       } else {
         resolve('ok');
@@ -32,43 +35,54 @@ const writeHardLog = async (hardLog) => {
   });
 };
 
+// Function to update the hard log file
 const updateHardLog = async (time_stamp, msg) => {
-  let log = '';
-  if (fs.existsSync(filePath)) {
-    log = await getHardlog();
-  };
-  log = log + `${time_stamp}: ${msg}\n`;
-  writeHardLog(log);
+  try {
+    let log = '';
+    if (fs.existsSync(filePath)) {
+      log = await readFileAsync(filePath);
+    }
+    log = log + `${time_stamp}: ${msg}\n`;
+    await writeFileAsync(filePath, log);
+  } catch (error) {
+    console.error('Error updating hard log:', error);
+  }
 };
 
+// Function to log messages based on log level and configuration
 const smartLog = async (lev, msg) => {
-  const dateObject = new Date();
-  const date = ('0' + dateObject.getDate()).slice(-2);
-  const month = ('0' + (dateObject.getMonth() + 1)).slice(-2);
-  const year = dateObject.getFullYear();
-  const hours = dateObject.getHours();
-  const minutes = dateObject.getMinutes();
-  const seconds = dateObject.getSeconds();
+  try {
+    const dateObject = new Date();
+    const date = ('0' + dateObject.getDate()).slice(-2);
+    const month = ('0' + (dateObject.getMonth() + 1)).slice(-2);
+    const year = dateObject.getFullYear();
+    const hours = dateObject.getHours();
+    const minutes = dateObject.getMinutes();
+    const seconds = dateObject.getSeconds();
 
-  const time_stamp = (year + '-' + month + '-' + date + ' ' + hours + ':' + minutes + ':' + seconds);
+    const time_stamp = (year + '-' + month + '-' + date + ' ' + hours + ':' + minutes + ':' + seconds);
 
-  if (hardLog === 'YES') {
-    updateHardLog(time_stamp, msg);
-  };
+    // Check if hard logging is enabled
+    if (hardLog === 'YES') {
+      await updateHardLog(time_stamp, msg);
+    }
 
-  if (lev === 'paramount') {
-    console.log(`paramount - time: ${time_stamp} - ${msg}`);
-  };
+    // Log messages based on log level
+    if (lev === 'paramount') {
+      console.log(`paramount - time: ${time_stamp} - ${msg}`);
+    }
 
-  if (lev === 'error') {
-    console.log(`error - time: ${time_stamp} - ${msg}`);
-  };
+    if (lev === 'error') {
+      console.log(`error - time: ${time_stamp} - ${msg}`);
+    }
 
-  if (showLog === 'all') {
-    if (lev === 'info') {
+    // Log info messages if showLog is set to 'all'
+    if (showLog === 'all' && lev === 'info') {
       console.log(`info - time: ${time_stamp} - ${msg}`);
-    };
-  };
+    }
+  } catch (error) {
+    console.error('Error in smartLog:', error);
+  }
 };
 
 module.exports = {

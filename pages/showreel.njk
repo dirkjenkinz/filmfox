@@ -1,10 +1,12 @@
 {% extends "parent.njk" %}
 {% block page %}
 
+  <!-- Hidden data elements -->
   <div class='row top'>
     <p id='slugList' hidden="hidden">{{slugList}}</p>
     <p id='noteList' hidden="hidden">{{noteList}}</p>
     <p id='highestElement' hidden="hidden">{{highestElement}}</p>
+    <!-- This loop variable 'i' should be within a loop context. Assuming it is supposed to be inside a loop. -->
     <p id='type_{{i}}' hidden="hidden">{{element.type}}</p>
     <div class="col-md-12" id='message' hidden="hidden" style='background:red; text-align: center;'>
       <br><br><br>
@@ -12,6 +14,8 @@
       <br><br><br>
     </div>
   </div>
+
+  <!-- Character controls -->
   <div class='row top' style='font-size:75%;'>
     <div class="col-md-2">
       <button type='button' class='btn-sm btn-prevnext' id='btn-add-character'>
@@ -24,10 +28,10 @@
           {% if i < (characterList.length - 1) %}
             {{characterList[i]}}
             --
-          {%else %}
+          {% else %}
             {{characterList[i]}}
           {% endif %}
-        {%endif %}
+        {% endif %}
       {% endfor %}
     </div>
     <div class='col-md-2'>
@@ -37,13 +41,14 @@
     </div>
   </div>
 
+  <!-- Character tables -->
   <div class='row'>
     <div class='col-md-12'>
       <table id='table-characters' hidden="hidden">
         <tbody>
           {% for i in range(0, characters.length, 6) -%}
             <tr>
-              {% for num in range(0,6) -%}
+              {% for num in range(0, 6) -%}
                 <td style='width: 15%;'>
                   {% if characters[i + num] %}
                     <button type='button' class='btn-sm btn-deladd btn-add-char' value="{{characters[i+num]}}">
@@ -60,7 +65,7 @@
         <tbody>
           {% for i in range(0, characterList.length, 6) -%}
             <tr>
-              {% for num in range(0,6) -%}
+              {% for num in range(0, 6) -%}
                 <td style='width: 15%;'>
                   {% if characterList[i + num] %}
                     {% if characterList[i + num] !== 'NARRATOR' %}
@@ -78,160 +83,180 @@
     </div>
   </div>
 
+  <!-- Scene details -->
   <div class='row' style='background: silver; color: black;'>
     <div class='col-md-12'>
       <table class='table-bordered table-sm table-dark table-grid' id='tab_showreal'>
         <tr>
-          <table>
-            <tr>
-              <td colspan='4' style='color: white;'>
-                &nbsp;&nbsp;<b>SCENE
-                  <span id="output">{{sceneNumber}} (element {{elementNumber}}):-
-                    {{slug}}</span></b>
-              </td>
-            </tr>
-            <tr>
-              <td class='slidecontainer' colspan='4'>
-                <input type="range" min="0" max="{{highestScene}}" value="{{sceneNumber}}" id='slider-scene'>
-              </td>
-            </tr>
-          </tr>
-          <tr>
-            <td colspan='4' style='color:white;'>
-              &nbsp;Note:
-              <input type="text" id="input-note" name="note" size='170' value='{{note}}'>
-            </td>
-          </tr>
-          <tr>
-            <td colspan='4' style='background: green; font-size:40%;'>&nbsp;</td>
-          </tr>
-          <tr>
-            <td style='color: white; text-align:center;'>{{element.image.slice(0,60)}}</td>
-            <td>
-              {% if sceneNumber > 0 %}
-                <button type='button' class='btn-prevnext btn-sm' id='btn-previous-element'>
-                  Previous Element
-                </button>
-                {%else%}
-                <button type='button' class='btn-prevnext btn-sm' id='btn-previous-element' disabled="disabled">
-                  Previous Element
-                </button>
-              {% endif %}
-            </td>
-            <td>
-              <button type='button' class='btn-prevnext btn-sm' id='btn-next-element'>
-                Next Element
+          <td colspan='4' style='color: white;'>
+            &nbsp;&nbsp;<b>SCENE
+              <span id="output">{{sceneNumber}}
+                (element
+                {{elementNumber}}):-
+                {{slug}}</span></b>
+          </td>
+        </tr>
+        <tr>
+          <td class='slidecontainer' colspan='4'>
+            <input type="range" min="0" max="{{highestScene}}" value="{{sceneNumber}}" id='slider-scene'>
+          </td>
+        </tr>
+        <tr>
+          <td colspan='4' style='color:white;'>
+            &nbsp;Note:
+            <input type="text" id="input-note" name="note" size='170' value='{{note}}'>
+          </td>
+        </tr>
+        <tr>
+          <td colspan='4' style='background: green; font-size:40%;'>&nbsp;</td>
+        </tr>
+        <tr>
+          <td style='color: white; text-align:center;'>{{element.image.slice(0,60)}}</td>
+          <td>
+            {% if sceneNumber > 0 %}
+              <button type='button' class='btn-prevnext btn-sm' id='btn-previous-element'>
+                Previous Element
               </button>
-            </td>
-            <td>
-              {% if audio %}
-                <button type='button' class='btn-prevnext btn-small btn-del' id='del_{{elementNumber}}' value='{{element.sound}}'>
-                  Delete
-                  {{element.sound}}
-                </button>
-              {% else %}
-                {% if element.voice %}
-                  <button type='button' class='btn-prevnext btn-small btn-gen' id='gen_{{elementNumber}}'>
-                    Generate
-                  </button>
-                {% else %}
-                  <button type='button' class='btn-prevnext btn-small' disabled>
-                    &nbsp;
-                  </button>
-                {% endif %}
-              {% endif %}
-            </td>
-          </tr>
-
-          <tr style='border: red 4px solid;'>
-            <td class='data-showreel' id='image_{{i}}' style='width: 36%; border: red 4px solid;'>
-              {% if element.type === 'movie' %}
-                <video width='432' height='243' controls='controls' autoplay='autoplay' id='iamge_{{i}}' class='iamge' muted='muted'>
-                  <source src='../data/{{title}}/images/{{element.image}}' type='video/mp4'>
-                </video>
-              {% elseif element.type === 'still' %}
-                <img width='432' height='243' src='../data/{{title}}/images/{{element.image}}' id='iamge_{{i}}' class='img' alt='{{script[i].image}}'>
-              {% else %}
-                <h2 class='data-showreel'>NO IMAGE</h2>
-              {% endif %}
-            </td>
-
-            <td class='data-showreel' style='width: 50%; padding: 4px; border : red 4px solid;' colspan='2'>
-              <div class="box" style='font-size: 150%;'>
-                {% if element.character === 'NARRATOR'%}
-                  <p style='text-align: center; font-weight: bold;'></p>
-                  <p style='color: red;'>{{element.dialogue}}</p>
-                {% else %}
-                  <p style='text-align: center; font-weight: bold;'>{{element.character}}</p>
-                  <p>{{element.dialogue}}</p>
-                {% endif %}
-              </div>
-            </td>
-
-            <td>
-              {% if element.sound %}
-                {% if mute == 'MUTE' %}
-                  <audio id='master-play' controls="controls" style='width: 100%;'>
-                    <source src="{{audio}}" type="audio/ogg">
-                    <source src="{{audio}}" type="audio/mpeg">
-                    Your browser does not support the audio tag.
-                  </audio>
-                {% else %}
-                  <audio id='master-play' controls="controls" style='width: 100%;' muted="muted">
-                    <source src="{{audio}}" type="audio/ogg">
-                    <source src="{{audio}}" type="audio/mpeg">
-                    Your browser does not support the audio tag.
-                  </audio>
-                {% endif %}
-              {% elseif msg === 'Failed'%}
-                <h5 class='data-showreel' style='text-align: center;'>Sound generation failed</h5>
-              {% else %}
-                <h5 class='data-showreel' style='text-align: center;'>NO SOUND</h5>
-              {% endif %}
-              <p style='text-align: center; font-weight: bold; color:white;'>{{element.voice}}</p>
-              <br><br>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <button type='button' class='btn-prevnext btn-sm btn-change' id='change_{{i}}' value='{{i}}'>
-                Change Image
+            {% else %}
+              <button type='button' class='btn-prevnext btn-sm' id='btn-previous-element' disabled="disabled">
+                Previous Element
               </button>
-            </td>
-            <td>
-              {% if sceneNumber > 0 %}
-                <button type='button' class='btn-prevnext btn-sm' id='btn-previous-scene'>
-                  Previous Scene
+            {% endif %}
+          </td>
+          <td>
+            <button type='button' class='btn-prevnext btn-sm' id='btn-next-element'>
+              Next Element
+            </button>
+          </td>
+          <td>
+            {% if audio %}
+              <button type='button' class='btn-prevnext btn-small btn-del' id='del_{{elementNumber}}' value='{{element.sound}}'>
+                Delete
+                {{element.sound}}
+              </button>
+            {% else %}
+              {% if element.voice %}
+                <button type='button' class='btn-prevnext btn-small btn-gen' id='gen_{{elementNumber}}'>
+                  Generate
                 </button>
               {% else %}
-                <button type='button' class='btn-prevnext btn-sm' id='btn-previous-scene' disabled="disabled">
-                  Previous Scene
+                <button type='button' class='btn-prevnext btn-small' disabled="disabled">
+                  &nbsp;
                 </button>
               {% endif %}
-            </td>
-            <td>
-              {% if sceneNumber < highestScene %}
-                <button type='button' class='btn-prevnext btn-sm' id='btn-next-scene'>
-                  Next Scene
-                </button>
-              {%else %}
-                <button type='button' class='btn-prevnext btn-sm' id='btn-next-scene' disabled="disabled">
-                  Next Scene
-                </button>
+            {% endif %}
+          </td>
+        </tr>
+
+        <!-- Showreel content -->
+        <tr style='border: red 4px solid;'>
+          <td class='data-showreel' id='image_{{i}}' style='width: 36%; border: red 4px solid;'>
+            {% if element.type === 'movie' %}
+              <video width='432' height='243' controls='controls' autoplay='autoplay' id='iamge_{{i}}' class='iamge' muted='muted'>
+                <source src='../data/{{title}}/vision/images/{{element.image}}' type='video/mp4'>
+              </video>
+            {% elseif element.type === 'still' %}
+              <img width='432' height='243' src='../data/{{title}}/vision/images/{{element.image}}' id='iamge_{{i}}' class='img' alt='{{script[i].image}}'>
+            {% else %}
+              <h2 class='data-showreel'>NO IMAGE</h2>
+            {% endif %}
+          </td>
+
+          <!-- Showreel character/dialogue content -->
+          <td class='data-showreel' style='width: 50%; padding: 4px; border : red 4px solid;' colspan='2'>
+            <div class="box" style='font-size: 125%;'>
+              {% if element.character === 'NARRATOR'%}
+                <p style='text-align: center; font-weight: bold;'></p>
+                <p style='color: red;'>{{element.dialogue}}</p>
+              {% else %}
+                <p style='text-align: center; font-weight: bold;'>{{element.character}}</p>
+                {% if element.parenthesis %}
+                  <p style='text-align: center;'>({{element.parenthesis}})</p>
+                {% endif %}
+                <p>{{element.dialogue}}</p>
               {% endif %}
-            </td>
-            <td>
-              <button type='button' class='btn-prevnext btn-sm' id='btn-mute'>
-                {{mute}}
+            </div>
+          </td>
+
+          <!-- Showreel audio content -->
+          <td>
+            {% if element.sound %}
+              {% if mute == 'MUTE' %}
+                <audio id='master-play' controls="controls" style='width: 100%;'>
+                  <source src="{{audio}}" type="audio/ogg">
+                  <source src="{{audio}}" type="audio/mpeg">
+                  Your browser does not support the audio tag.
+                </audio>
+              {% else %}
+                <audio id='master-play' controls="controls" style='width: 100%;' muted="muted">
+                  <source src="{{audio}}" type="audio/ogg">
+                  <source src="{{audio}}" type="audio/mpeg">
+                  Your browser does not support the audio tag.
+                </audio>
+              {% endif %}
+            {% elseif msg === 'Failed'%}
+              <h5 class='data-showreel' style='text-align: center;'>Sound generation failed</h5>
+            {% else %}
+              <h5 class='data-showreel' style='text-align: center;'>NO SOUND</h5>
+            {% endif %}
+            <p style='text-align: center; font-weight: bold; color:white;'>{{element.voice}}</p>
+            <br><br>
+          </td>
+        </tr>
+        <!-- End of Showreel content -->
+
+        <!-- Buttons for scene navigation and muting -->
+        <tr>
+          <td>
+            <button type='button' class='btn-prevnext btn-sm btn-change' id='change_{{i}}' value='{{i}}'>
+              Change Image
+            </button>
+          </td>
+          <td>
+            {% if sceneNumber > 0 %}
+              <button type='button' class='btn-prevnext btn-sm' id='btn-previous-scene'>
+                Previous Scene
               </button>
-            </td>
-          </tr>
-        </table>
-      </tr>
-    </table>
+            {% else %}
+              <button type='button' class='btn-prevnext btn-sm' id='btn-previous-scene' disabled="disabled">
+                Previous Scene
+              </button>
+            {% endif %}
+          </td>
+          <td>
+            {% if sceneNumber < highestScene %}
+              <button type='button' class='btn-prevnext btn-sm' id='btn-next-scene'>
+                Next Scene
+              </button>
+            {% else %}
+              <button type='button' class='btn-prevnext btn-sm' id='btn-next-scene' disabled="disabled">
+                Next Scene
+              </button>
+            {% endif %}
+          </td>
+          <td>
+            <button type='button' class='btn-prevnext btn-sm' id='btn-mute'>
+              {{mute}}
+            </button>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- Slideshow button -->
+  <div class='row'>
+    <div class='col-md-1'>&nbsp;</div>
+    <div class='col-md-10'>
+      {% if audioComplete == 'yes' %}
+        <button type='button' class='btn-edit btn-sm' id='btn-start-slideshow'>Slideshow</button>
+      {% endif %}
+    </div>
+    <div class='col-md-1'>&nbsp;</div>
   </div>
 </div>
-</div>
+
+<!-- Include scripts -->
 <script src='../js/parent.js'></script>
 <script src='../js/showreel.js'></script>
 {% endblock %}

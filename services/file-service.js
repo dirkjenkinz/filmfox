@@ -4,38 +4,54 @@ const mp3Duration = require('mp3-duration');
 const { smartLog } = require('../services/smart-log');
 const sound = require('sound-play');
 
+// Check if a file exists
 const fileExists = async (file) => {
   smartLog('info', `Check for file ${file}`);
   const directoryPath = path.join(__dirname, '../data');
   return new Promise((resolve, reject) => {
-    fs.existsSync(`${directoryPath}/${file}`), (err, flag) => {
+    if (fs.existsSync(`${directoryPath}/${file}`)) {
+      resolve(true);
+    } else {
+      reject(new Error(`File ${file} does not exist.`));
+    }
+  });
+};
+
+// Rename a file
+const renameFile = async (title, directory, from, to) => {
+  smartLog('info', `renameFile - from ${from} to ${to}`);
+  const directoryPath = path.join(__dirname, `../data/${title}/${directory}`);
+  return new Promise((resolve, reject) => {
+    fs.rename(`${directoryPath}/${from}`, `${directoryPath}/${to}`, (err) => {
+      if (err) {
+        smartLog('error', 'error renaming file');
+        smartLog('error', err);
+        reject(err);
+      } else {
+        resolve('ok');
+      }
+    });
+  });
+};
+
+// Read the content of the sheet.njk file
+const getSheet = async () => {
+  smartLog('info', 'getSheet');
+  const directoryPath = path.join(__dirname, '../pages');
+  return new Promise((resolve, reject) => {
+    fs.readFile(`${directoryPath}/sheet.njk`, (err, data) => {
       if (err) {
         smartLog('error', 'error getting data');
         smartLog('error', err.response);
         reject(err);
       } else {
-        resolve(flag);
+        resolve(data);
       }
-    };
+    });
   });
 };
 
-
-
-
-/*
-  try {
-    if (fs.existsSync(`${directoryPath}/${file}`)) {
-      return true;
-    } else {
-      return false;
-    }
-  } catch (err) {
-    smartLog('error', 'err');
-    return false;
-  }
-};
-*/
+// Read the content of a file and parse it as JSON
 const getFile = async (file) => {
   smartLog('info', `getFile - getting data for ${file}`);
   const directoryPath = path.join(__dirname, '../data');
@@ -52,6 +68,7 @@ const getFile = async (file) => {
   });
 };
 
+// Read the content of a script file
 const readScriptData = async (file) => {
   smartLog('info', `readScriptData - getting data for ${file}`);
   const directoryPath = path.join(__dirname, '../scripts');
@@ -59,7 +76,7 @@ const readScriptData = async (file) => {
     fs.readFile(`${directoryPath}/${file}`, (err, data) => {
       if (err) {
         smartLog('error', 'error getting data');
-        smartLog('error', err.cause);
+        smartLog('error', err);
         reject(err);
       } else {
         resolve(data);
@@ -68,6 +85,7 @@ const readScriptData = async (file) => {
   });
 };
 
+// Play a sound file using the sound-play library
 const playSoundFile = async (title, file, sub) => {
   smartLog('info', `playing sound file - ${title}/${sub}/${file}`);
   const sFile = path.join(__dirname, `../data/${title}/${sub}/${file}`);
@@ -80,6 +98,7 @@ const playSoundFile = async (title, file, sub) => {
   }
 };
 
+// Write data to a file
 const writeFile = async (data, file) => {
   smartLog('info', `writing ${file}`);
   const directoryPath = path.join(__dirname, '../data');
@@ -95,6 +114,7 @@ const writeFile = async (data, file) => {
   });
 };
 
+// Delete a file
 const deleteFile = async (title, directory, fileName) => {
   smartLog('info', `deleting ${title}/${directory}/${fileName}`);
   const directoryPath = path.join(__dirname, `../data/${title}/${directory}`);
@@ -110,18 +130,20 @@ const deleteFile = async (title, directory, fileName) => {
   });
 };
 
+// Create a directory if it doesn't exist
 const createDirectory = (directory) => {
-  smartLog('info', 'create directory');
+  smartLog('info', `create directory - ${directory}`);
   const directoryPath = path.join(__dirname, '../data');
   if (!fs.existsSync(`${directoryPath}/${directory}`)) {
     fs.mkdirSync(`${directoryPath}/${directory}`);
   }
 };
 
+// Get the duration of an MP3 file
 const getDuration = async (subdirectory, file) => {
   const directoryPath = path.join(
     __dirname,
-    `../data/${subdirectory}/sounds/${file}`
+    `../data/${subdirectory}/sound/sounds/${file}`
   );
   return new Promise((resolve, reject) => {
     mp3Duration(directoryPath, (err, duration) => {
@@ -135,6 +157,7 @@ const getDuration = async (subdirectory, file) => {
   });
 };
 
+// Get a list of files in a directory with an optional file suffix filter
 const getFileList = async (dir, suffix) => {
   smartLog('info', `get file list for ${dir} - ${suffix}`);
   const directoryPath = path.join(__dirname, `../${dir}`);
@@ -144,70 +167,36 @@ const getFileList = async (dir, suffix) => {
         smartLog('error', 'error=', 'err');
         reject(err);
       } else {
-        const fList = [];
-        files.forEach((file) => {
-          if (file.substring(file.length - 4) === `.${suffix}`) {
-            fList.push(file);
-          }
-        });
-        resolve(fList);
+        if (suffix !== '*') {
+          const fList = [];
+          files.forEach((file) => {
+            if (file.substring(file.length - 4) === `.${suffix}`) {
+              fList.push(file);
+            }
+          });
+          resolve(fList);
+        } else {
+          resolve(files);
+        }
       }
     });
   });
 };
 
+// Get a list of directories in the data folder
 function getFFFList() {
-  files = [];
-  dir = path.join(__dirname, '../data');
+  const files = [];
+  const dir = path.join(__dirname, '../data');
   const fileList = fs.readdirSync(dir);
   const dirList = [];
   fileList.forEach((f) => {
     if (fs.statSync(`${dir}/${f}`).isDirectory()) {
       if (f !== 'samples') {
         dirList.push(f);
-      }
-    }
+      };
+    };
   });
   return dirList;
-}
-
-const getListOfElements = async (subdir) => {
-  smartLog('info', 'getting list of elements');
-  const directoryPath = path.join(__dirname, `../data/${subdir}/sounds`);
-  return new Promise((resolve, reject) => {
-    fs.readdir(directoryPath, (err, files) => {
-      if (err) {
-        smartLog('error', 'error retrieving list of elements');
-        reject(err);
-      } else {
-        smartLog('info', 'elements retrieved');
-        const fList = [];
-        files.forEach((file) => {
-          if (file.substring(file.length - 4) === '.mp3') {
-            fList.push(file);
-          }
-        });
-        resolve(fList);
-      }
-    });
-  });
-};
-
-const getListOfImages = async (subdir) => {
-  smartLog('info', 'getting list of elements');
-  const directoryPath = path.join(__dirname, `../data/${subdir}/images`);
-  return new Promise((resolve, reject) => {
-    fs.readdir(directoryPath, (err, files) => {
-      if (err) {
-        smartLog('error', 'error retrieving list of elements');
-        reject(err);
-      } else {
-        smartLog('info', 'elements retrieved');
-        const fList = [];
-        resolve(files);
-      }
-    });
-  });
 };
 
 module.exports = {
@@ -215,12 +204,12 @@ module.exports = {
   writeFile,
   createDirectory,
   getFileList,
-  getListOfElements,
-  getListOfImages,
   playSoundFile,
   getDuration,
   deleteFile,
   getFFFList,
   fileExists,
   readScriptData,
+  renameFile,
+  getSheet,
 };

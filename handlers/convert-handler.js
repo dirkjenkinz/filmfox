@@ -3,8 +3,6 @@
 const fs = require('fs');
 const path = require('path');
 const url = require('url');
-const dotenv = require('dotenv');
-dotenv.config();
 const { smartLog } = require('../services/smart-log');
 var parseString = require('xml2js').parseString;
 
@@ -15,6 +13,12 @@ const {
   readScriptData,
 } = require('../services/file-service');
 
+/**
+ * Adds character information to the script elements.
+ *
+ * @param {Array} elements - Script elements to be processed.
+ * @returns {Array} - Processed script elements.
+ */
 const addCharacter = (elements) => {
   let currentCharacter = '';
   const el = [];
@@ -32,6 +36,12 @@ const addCharacter = (elements) => {
   return elements;
 };
 
+/**
+ * Builds a list of characters present in each scene of the script.
+ *
+ * @param {Array} script - Script data.
+ * @returns {Array} - List of characters for each scene.
+ */
 const buildCharactersByScene = (script) => {
   const chars = [];
   for (let i = 0; i < script.length; i++) {
@@ -47,6 +57,12 @@ const buildCharactersByScene = (script) => {
   return chars;
 };
 
+/**
+ * Extracts text from XML structure.
+ *
+ * @param {Array} text - Text data from XML.
+ * @returns {Array} - Extracted text.
+ */
 const strip = (text) => {
   let newText = '';
   text.forEach((t) => {
@@ -59,149 +75,188 @@ const strip = (text) => {
   return [newText];
 };
 
+/**
+ * Handles the conversion of a script.
+ *
+ * @param {object} req - The HTTP request object.
+ * @param {object} res - The HTTP response object.
+ */
 const convertHandler = async (req, res) => {
-  smartLog('info', 'ENTERING CONVERT HANDLER');
-  const u = url.parse(req.originalUrl, true);
-  let title = u.query.script;
-  const api_key = process.env.APIKEY;
-  const voices = await getFile('voices.json');
-  const script = await readScriptData(`${title}`);
-  parseString(script, async (err, result) => {
-    const paragraphs = result.FinalDraft.Content[0].Paragraph;
+  try {
+    smartLog('info', 'ENTERING CONVERT HANDLER');
+    const u = url.parse(req.originalUrl, true);
+    let title = u.query.script;
+    const script = await readScriptData(`${title}`);
+    
+    // Parse XML script data
+    parseString(script, async (err, result) => {
+      const paragraphs = result.FinalDraft.Content[0].Paragraph;
 
-    paragraphs.forEach((p) => {
-      if (p.Text.length > 1) {
-        p.Text = strip(p.Text);
-      }
-      //    if (p.$.Type === 'Character') {
-      if (typeof p.Text[0] === 'object') {
-        p.Text[0] = p.Text[0]['_'];
-      }
-      if (p.$.Type === 'Character') {
-        const ptr = p.Text[0].indexOf('(');
-        if (ptr !== -1) {
-          p.Text[0] = p.Text[0].substring(0, p.Text[0].indexOf('(') - 1);
+      // Preprocess paragraphs
+      paragraphs.forEach((p) => {
+        if (p.Text.length > 1) {
+          p.Text = strip(p.Text);
         }
-      }
-      //    }
-    });
-
-    let elements = [];
-    let ptr = 0;
-    paragraphs.forEach((p) => {
-      if (p.$.Type === 'Scene Heading') {
-        p.Text[0] = p.Text[0].toUpperCase();
-        ptr++;
-      }
-      if (p.$.Type !== 'Parenthetical') {
-        const element = { num: ptr, type: p.$.Type, text: p.Text[0] };
-        elements.push(element);
-      }
-    });
-
-    let el = addCharacter(elements);
-
-    const script = [];
-
-    for (let i = 0; i <= el[el.length - 1].num; i++) {
-      script.push([]);
-    }
-
-    el.forEach((e) => {
-      if (e.type !== 'Character') {
-        let element = {
-          character: e.character,
-          dialogue: e.text,
-          voice: '',
-          image: 'blank.jpg',
-          type: 'still',
-        };
-        script[e.num].push(element);
-      }
-    });
-
-    let shotList = [];
-    script.forEach((s, index) => {
-      shotList.push({
-        scene: index,
-        lines: [
-          {
-            shot: '',
-            angle: '',
-            move: '',
-            audio: '',
-            subject: '',
-            description: '',
-          },
-        ],
-        note: '',
+        if (typeof p.Text[0] === 'object') {
+          p.Text[0] = p.Text[0]['_'];
+        }
+        if (p.$.Type === 'Character') {
+          const ptr = p.Text[0].indexOf('(');
+          if (ptr !== -1) {
+            p.Text[0] = p.Text[0].substring(0, p.Text[0].indexOf('(') - 1);
+          }
+        }
       });
-    });
 
-    let sceneOrder = [];
-    script.forEach((s, index) => {
-      sceneOrder.push(index);
-    });
+      let elements = [];
+      let ptr = 0;
 
-    title = title.substring(0, title.length - 4);
-    await createDirectory(title);
-    await createDirectory(`${title}/images`);
-    await createDirectory(`${title}/scenes`);
-    await createDirectory(`${title}/sheets`);
-    await createDirectory(`${title}/sounds`);
-    await createDirectory(`${title}/videos`);
-    await createDirectory(`${title}/breakdown`);
-
-    const directoryPath = path.join(__dirname, '../data');
-    fs.copyFile(
-      './blank.jpg',
-      `${directoryPath}/${title}/images/blank.jpg`,
-      (err) => {
-        if (err) throw err;
-        smartLog(
-          'info',
-          `blank.jpg was copied to ${directoryPath}/${title}/images/`
-        );
-      }
-    );
-
-    const characters = [];
-
-    script.forEach((scene) => {
-      scene.forEach((s) => {
-        characters.push(s.character);
+      // Process each paragraph and create script elements
+      paragraphs.forEach((p) => {
+        if (p.$.Type === 'Scene Heading') {
+          p.Text[0] = p.Text[0].toUpperCase();
+          ptr++;
+        }
+        if (p.$.Type !== 'Parenthetical') {
+          const element = { num: ptr, type: p.$.Type, text: p.Text[0] };
+          elements.push(element);
+        }
       });
+
+      // Add character information to the elements
+      let el = addCharacter(elements);
+
+      // Create the script structure
+      const script = [];
+      for (let i = 0; i <= el[el.length - 1].num; i++) {
+        script.push([]);
+      }
+
+      el.forEach((e) => {
+        if (e.type !== 'Character') {
+          let element = {
+            character: e.character,
+            dialogue: e.text,
+            parenthesis: e.parenthesis,
+            voice: '',
+            image: 'blank.jpg',
+            type: 'still',
+          };
+          script[e.num].push(element);
+        }
+      });
+
+      // Create shot list
+      let shotList = [];
+      script.forEach((s, index) => {
+        shotList.push({
+          scene: index,
+          lines: [
+            {
+              shot: '',
+              angle: '',
+              move: '',
+              audio: '',
+              subject: '',
+              description: '',
+            },
+          ],
+          note: '',
+        });
+      });
+
+      // Create scene order
+      let sceneOrder = [];
+      script.forEach((s, index) => {
+        sceneOrder.push(index);
+      });
+
+      // Create breakdown
+      let breakdown = [];
+      script.forEach((s, index) => {
+        breakdown.push([['Cast Members'],['Props'],['Set Dressing'],['Costumes'],['Music'],['Sounds'],['Makeup'],['Extras'],['Stunts']]);
+      });
+
+      // Set up directories
+      title = title.substring(0, title.length - 4);
+      await createDirectory(title);
+      await createDirectory(`${title}/vision`);
+      await createDirectory(`${title}/vision/images`);
+      await createDirectory(`${title}/vision/videos`);
+      await createDirectory(`${title}/vision/scenes`);
+      await createDirectory(`${title}/sound`);
+      await createDirectory(`${title}/sound/scenes`);
+      await createDirectory(`${title}/sound/sounds`);
+      await createDirectory(`${title}/paperwork`);
+      await createDirectory(`${title}/paperwork/breakdown`);
+      await createDirectory(`${title}/paperwork/sheets`);
+      await createDirectory(`${title}/paperwork/shots`);
+      await createDirectory(`${title}/paperwork/ppt`);
+     
+      const directoryPath = path.join(__dirname, '../data');
+
+      // Copy blank image file
+      fs.copyFile(
+        './blank.jpg',
+        `${directoryPath}/${title}/vision/images/blank.jpg`,
+        (err) => {
+          if (err) throw err;
+          smartLog(
+            'info',
+            `blank.jpg was copied to ${directoryPath}/${title}/vision/images/`
+          );
+        }
+      );
+
+      // Create list of characters
+      const characters = [];
+      script.forEach((scene) => {
+        scene.forEach((s) => {
+          characters.push(s.character.trim());
+        });
+      });
+
+      // Remove duplicate characters
+      const uniqueCharacters = characters.filter(
+        (x, i) => i === characters.indexOf(x)
+      );
+
+      // Create character list
+      const characterList = [];
+      uniqueCharacters.forEach((c) => {
+        characterList.push([c.trim(), '']);
+      });
+
+      // Create credits
+      const credits = { title: title, producer: '', writer: '', director: '' };
+
+      // Create characters by scene list
+      const charactersByScene = buildCharactersByScene(script);
+      const nonSpeakers = [];
+
+      // Create FilmFox file structure
+      const filmFoxFile = {
+        script,
+        shotList,
+        sceneOrder,
+        breakdown,
+        credits,
+        charactersByScene,
+        characterList,
+        nonSpeakers,
+      };
+
+      // Write FilmFox file
+      await writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
     });
 
-    const uniqueCharacters = characters.filter(
-      (x, i) => i === characters.indexOf(x)
-    );
-
-    const characterList = [];
-
-    uniqueCharacters.forEach((c) => {
-      characterList.push([c, '']);
-    });
-
-    const credits = { title: title, producer: '', writer: '', director: '' };
-
-    const charactersByScene = buildCharactersByScene(script);
-    const nonSpeakers = [];
-
-    const filmFoxFile = {
-      script,
-      shotList,
-      sceneOrder,
-      credits,
-      charactersByScene,
-      characterList,
-      nonSpeakers,
-    };
-
-    await writeFile(JSON.stringify(filmFoxFile), `${title}/${title}.fff`);
-  });
-
-  res.redirect(`/showreel?title=${title}&sceneNumber=0&elementNumber=0`);
+    // Redirect to the showreel page
+    res.redirect(`/showreel?title=${title}&sceneNumber=0&elementNumber=0`);
+  } catch (error) {
+    // Handle errors
+    smartLog('error', `Error in convertHandler: ${error.message}`);
+    res.status(500).send('Internal Server Error');
+  }
 };
 
 module.exports = { convertHandler };

@@ -1,119 +1,114 @@
 'use strict';
+
 const url = require('url');
 const { getFile, getFileList } = require('../services/file-service');
 const { smartLog } = require('../services/smart-log');
 const dotenv = require('dotenv');
 dotenv.config();
 
-const getVoice = ((character, characterList) => {
+/**
+ * Retrieves the voice for a given character from the characterList.
+ * @param {string} character - The character to find the voice for.
+ * @param {Array} characterList - List of characters and their associated voices.
+ * @returns {string} - The voice of the character.
+ */
+const getVoice = (character, characterList) => {
   let voice = '';
   characterList.forEach((c) => {
-    if (c[0] === character) voice=c[1];
+    if (c[0] === character) voice = c[1];
   });
   return voice;
-});
+};
 
-const prepareReadyList = ((script, soundsList) => {
-  let readyList = [];
-  for (let i = 0; i < script.length; i++) {
-    readyList.push(0);
-  };
+/**
+ * Prepares a list indicating whether each scene is ready.
+ * @param {Array} script - List of scenes in the script.
+ * @param {Array} soundsList - List of sound files.
+ * @returns {Array} - Ready list for each scene.
+ */
+const prepareReadyList = (script, soundsList) => {
+  let readyList = new Array(script.length).fill(0);
+
   soundsList.forEach((s) => {
     let scene = parseInt(s.substring(0, 4));
     readyList[scene]++;
   });
 
-  script.forEach((s, index) => {
-    if (s.length === readyList[index]) {
-      readyList[index] = 'yes';
-    } else {
-      readyList[index] = 'no';
-    };
-  });
-  return readyList;
-});
+  readyList = readyList.map((count, index) => (count === script[index].length ? 'yes' : 'no'));
 
+  return readyList;
+};
+
+/**
+ * Handles requests related to sound.
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ */
 const soundHandler = async (req, res) => {
   smartLog('info', 'ENTERING SOUND HANDLER');
+
+  // Parse URL parameters
   const u = url.parse(req.originalUrl, true);
   const title = u.query.title;
   const elementNumber = u.query.elementNumber;
   const sceneNumber = u.query.sceneNumber;
+
+  // Retrieve file information from filmFoxFile
   const filmFoxFile = await getFile(`${title}/${title}.fff`);
   const { script, characterList } = filmFoxFile;
-  const mergedList = await getFileList(`data/${title}/scenes`, 'mp3');
-  const soundsList = await getFileList(`data//${title}/sounds`, 'mp3');
 
+  // Retrieve lists of merged scenes and sound files
+  const mergedList = await getFileList(`data/${title}/sound/scenes`, 'mp3');
+  const soundsList = await getFileList(`data/${title}/sound/sounds`, 'mp3');
+
+  // Prepare ready lists
   const readyList = prepareReadyList(script, soundsList);
+
+  // Check if all scenes are ready for mastering
   let readyForMaster = 'yes';
-  readyList.forEach((r) => {
-    if (r === 'no') readyForMaster = 'no';
-  });
+  if (readyList.includes('no')) {
+    readyForMaster = 'no';
+  }
 
-  let masterExists = 'no';
-  if (mergedList[0] === 'master.mp3') {
-    masterExists = 'yes';
-  };
+  // Check if a master sound file exists
+  const masterExists = mergedList.includes('master.mp3') ? 'yes' : 'no';
 
-  const merged = [];
+  // Check which scenes are merged
+  const merged = script.map((_, index) => (mergedList.includes(`s${index.toString().padStart(5, '0')}.mp3`) ? 'yes' : 'no'));
 
-  script.forEach((s, index) => {
-    let template = `000000${index}`;
-    template = template.substring(template.length - 5);
-    template = `s${template}.mp3`;
-    if (mergedList.indexOf(template) > -1) {
-      merged.push('yes');
-    } else {
-      merged.push('no');
-    }
-  });
-
-  let soundFiles = await getFileList(`data/${title}/sounds`, 'mp3');
+  // Retrieve sound files and identify uncompiled list
+  let soundFiles = await getFileList(`data/${title}/sound/sounds`, 'mp3');
   let uncompiledList = [];
 
-  for (let i = 0; i < script.length; i++) {
-    for (let j = 0; j < script[i].length; j++) {
-      let sc = '0000' + i;
-      sc = sc.substring(sc.length - 4);
-      let el = '0000' + j;
-      el = el.substring(el.length - 4);
-      const fileName = `${sc}_${el}.mp3`;
-      let found = 'no';
-      soundFiles.forEach((s) => {
-        if (s === fileName) {
-          found = 'yes';
-        };
-      });
-      if (found === 'no') {
-        uncompiledList.push([i,j,script[i][j].character, getVoice(script[i][j].character, characterList)]);
-      };
-    };
-  };
+  script.forEach((s, i) => {
+    s.forEach((element, j) => {
+      const sceneIndex = i.toString().padStart(4, '0');
+      const elementIndex = j.toString().padStart(4, '0');
+      const fileName = `${sceneIndex}_${elementIndex}.mp3`;
 
-  let incomplete = [];
-  uncompiledList.forEach((u) => {
-    incomplete.push(u[0]);
+      if (!soundFiles.includes(fileName)) {
+        uncompiledList.push([i, j, element.character, getVoice(element.character, characterList)]);
+      }
+    });
   });
 
-  incomplete = [...new Set(incomplete)];
+  // Identify incomplete scenes
+  let incomplete = [...new Set(uncompiledList.map((u) => u[0]))];
 
-  const complete = [];
-
-  script.forEach(() => {
-    complete.push('yes');
-  });
-
+  // Prepare complete list
+  const complete = new Array(script.length).fill('yes');
   uncompiledList.forEach((f) => {
-    let num = parseInt(f);
-    complete[num] = 'no';
+    complete[f[0]] = 'no';
   });
 
+  // Render the sound page with relevant data
   res.render('sound.njk', {
     title,
     merged,
     script,
     masterExists,
     page: 'Sound',
+    caller: 'sound',
     size: script.length,
     readyList,
     elementNumber,

@@ -1,8 +1,10 @@
 $(() => {
+  // Set the 'active' class for the navigation item
   $('#nav-credits').addClass('active');
 });
 
 const buildUrl = (call, sceneNumber, elementNumber) => {
+  // Helper function to build URLs with film details
   const title = $('#filmTitle')[0].innerText;
   if (sceneNumber === '') {
     sceneNumber = $('#sceneNumber')[0].innerText;
@@ -13,26 +15,16 @@ const buildUrl = (call, sceneNumber, elementNumber) => {
   return `/${call}?title=${title}&sceneNumber=${sceneNumber}&elementNumber=${elementNumber}`;
 };
 
-$('#input-writer').on('focusout', (e) => {
+// Handle focusout event for input fields
+const handleFocusOut = (credit) => (e) => {
   const val = e.target.value;
   const url = buildUrl('update-credits', '', '');
-  window.location.href = `${url}&credit=writer&val=${val}`;
-});
+  // Redirect to update-credits page with the credit and value
+  window.location.href = `${url}&credit=${credit}&val=${val}`;
+};
 
-$('#input-director').on('focusout', (e) => {
-  const val = e.target.value;
-  const url = buildUrl('update-credits', '', '');
-  window.location.href = `${url}&credit=director&val=${val}`;
-});
-
-$('#input-producer').on('focusout', (e) => {
-  const val = e.target.value;
-  const url = buildUrl('update-credits', '', '');
-  window.location.href = `${url}&credit=producer&val=${val}`;
-});
-
-$('#input-title').on('focusout', (e) => {
-  const val = e.target.value;
-  const url = buildUrl('update-credits', '', '');
-  window.location.href = `${url}&credit=title&val=${val}`;
-});
+// Assign event handlers for each input field
+$('#input-writer').on('focusout', handleFocusOut('writer'));
+$('#input-director').on('focusout', handleFocusOut('director'));
+$('#input-producer').on('focusout', handleFocusOut('producer'));
+$('#input-title').on('focusout', handleFocusOut('title'));

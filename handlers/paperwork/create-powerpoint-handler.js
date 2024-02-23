@@ -1,0 +1,96 @@
+'use strict';
+
+const url = require('url');
+const path = require('path');
+const pptxgen = require('pptxgenjs');
+const { smartLog } = require('../../services/smart-log');
+const { getFile, getDuration } = require('../../services/file-service');
+
+// Handle the creation of PowerPoint presentations
+const createPowerpointHandler = async (req, res) => {
+  // Log entry information
+  smartLog('info', 'ENTERING CREATE POWERPOINT HANDLER');
+
+  // Parse query parameters from the request URL
+  const parseUrl = url.parse(req.originalUrl, true);
+  const { title, sceneNumber, elementNumber } = parseUrl.query;
+
+  // Define paths for image and output PowerPoint file
+  const imagePath = path.join(__dirname, `../../data/${title}/vision/images`);
+  const outPath = path.join(__dirname, `../../data/${title}/paperwork/ppt`);
+  const output = `${outPath}/master.pptx`;
+
+  // Create a new PowerPoint presentation instance
+  const pres = new pptxgen();
+
+  // Retrieve script data from the filmFoxFile
+  const filmFoxFile = await getFile(`${title}/${title}.fff`);
+  smartLog('info', `${title}.fff retrieved`);
+  const { script } = filmFoxFile;
+
+  // Iterate through scenes and elements to create PowerPoint slides
+  for (let sceneIndex = 0; sceneIndex < script.length; sceneIndex++) {
+    for (let elementIndex = 0; elementIndex < script[sceneIndex].length; elementIndex++) {
+      // Format scene and element numbers
+      const num = `0000${sceneIndex}`.slice(-4);
+      const sub = `0000${elementIndex}`.slice(-4);
+      const fileName = `${num}_${sub}.mp3`;
+
+      // Retrieve audio duration and image path
+      const dur = await getDuration(title, fileName);
+      const image = `${imagePath}/${script[sceneIndex][elementIndex].image}`;
+      let duration = Math.ceil(dur) + 1;
+      if (duration < 4) duration = 4;
+
+      // Extract dialogue text and format if character is not 'NARRATOR'
+      let text = script[sceneIndex][elementIndex].dialogue;
+      if (script[sceneIndex][elementIndex].character !== 'NARRATOR') {
+        text = `${script[sceneIndex][elementIndex].character}:\n\n${text}`;
+      }
+
+      // Create a new slide and add image, scene information, and dialogue text
+      const slide = pres.addSlide();
+      slide.addImage({ x: 0.2, y: 1.0, w: 6.0, h: 4.0, path: image });
+
+      slide.addText(`${title} - Scene ${num}`, {
+        x: 0.5,
+        y: 0.5,
+        color: '363636',
+        fill: { color: 'F1F1F1' },
+        align: pres.AlignH.left,
+      });
+
+      slide.addText(`element ${sub}`, {
+        x: 0.5,
+        y: 0.8,
+        color: '363636',
+        fill: { color: 'F1F1F1' },
+        fontFace: 'Arial',
+        fontSize: 8,
+        align: pres.AlignH.left,
+      });
+
+      slide.addText(text, {
+        x: 6.3,
+        y: 2.0,
+        w: 3.5,
+        color: '363636',
+        fill: { color: 'F1F1F1' },
+        fontFace: 'Arial',
+        fontSize: 10,
+        bold: true,
+        isTextBox: true,
+        align: pres.AlignH.left,
+      });
+    }
+  }
+
+  // Save the PowerPoint presentation to a file
+  pres.writeFile({ fileName: output });
+
+  // Redirect to video page with updated parameters
+  res.redirect(`/video?title=${title}&sceneNumber=${sceneNumber}&elementNumber=${elementNumber}`);
+};
+
+// Export the createPowerpointHandler function for use in other modules
+module.exports = { createPowerpointHandler };

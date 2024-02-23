@@ -1,101 +1,34 @@
 const buildParentUrl = (call, sceneNumber, elementNumber) => {
-  const title = $('#filmTitle')[0].innerText;
+  const title = encodeURIComponent($('#filmTitle')[0].innerText);
   return `/${call}?title=${title}&sceneNumber=${sceneNumber}&elementNumber=${elementNumber}`;
+};
+
+const navigate = (call) => {
+  const sceneNumber = $('#sceneNumber')[0].innerText;
+  const elementNumber = $('#elementNumber')[0].innerText;
+  const url = buildParentUrl(call, sceneNumber, elementNumber);
+  window.location.href = url;
 };
 
 $('#nav-front').on('click', () => {
   window.location.href = '/';
 });
 
-$('#nav-ctv').on('click', () => {
-  const sceneNumber = $('#sceneNumber')[0].innerText;
-  const elementNumber = $('#elementNumber')[0].innerText;
-  const url = buildParentUrl('ctv', sceneNumber, elementNumber);
-  window.location.href = url;
-});
+$('#nav-ctv').on('click', () => navigate('ctv'));
 
-$('#nav-characters').on('click', () => {
-  const sceneNumber = $('#sceneNumber')[0].innerText;
-  const elementNumber = $('#elementNumber')[0].innerText;
-  const url = buildParentUrl('characters', sceneNumber, elementNumber);
-  window.location.href = url;
-});
+$('#nav-characters').on('click', () => navigate('characters'));
 
-$('#nav-sound').on('click', () => {
-  const sceneNumber = $('#sceneNumber')[0].innerText;
-  const elementNumber = $('#elementNumber')[0].innerText;
-  const url = buildParentUrl('sound', sceneNumber, elementNumber);
-  window.location.href = url;
-});
+$('#nav-sound').on('click', () => navigate('sound'));
 
-$('#nav-video').on('click', () => {
-  const sceneNumber = $('#sceneNumber')[0].innerText;
-  const elementNumber = $('#elementNumber')[0].innerText;
-  const url = buildParentUrl('video', sceneNumber, elementNumber);
-  window.location.href = url;
-});
+$('#nav-video').on('click', () => navigate('video'));
 
-$('#nav-arranger').on('click', () => {
-  const sceneNumber = $('#sceneNumber')[0].innerText;
-  const elementNumber = $('#elementNumber')[0].innerText;
-  const url = buildParentUrl('scene-arranger', sceneNumber, elementNumber);
-  window.location.href = url;
-});
-
-$('#nav-sheets').on('click', () => {
-  const sceneNumber = $('#sceneNumber')[0].innerText;
-  const elementNumber = $('#elementNumber')[0].innerText;
-  const url = buildParentUrl('sheets', sceneNumber, elementNumber);
-  window.location.href = url;
-});
-
-$('#nav-display-full').on('click', () => {
-  const title = $('#filmTitle')[0].innerText;
-  const sceneNumber = $('#sceneNumber')[0].innerText;
-  const elementNumber = $('#elementNumber')[0].innerText;
-  window.location.href = `/full-shot-list?title=${title}&sceneNumber=${sceneNumber}&elementNumber=${elementNumber}`;
-});
+$('#nav-paperwork').on('click', () => navigate('scene-arranger'));
 
 $('#nav-showreel').on('click', () => {
-  const title = $('#filmTitle')[0].innerText;
-  let sceneNumber = $('#sceneNumber')[0].innerText;
-  let elementNumber = $('#elementNumber')[0].innerText;
-  if (!sceneNumber) sceneNumber = 0;
-  if (!elementNumber) elementNumber = 0;
+  const title = encodeURIComponent($('#filmTitle')[0].innerText);
+  const sceneNumber = $('#sceneNumber')[0].innerText || 0;
+  const elementNumber = $('#elementNumber')[0].innerText || 0;
   window.location.href = `/showreel?title=${title}&sceneNumber=${sceneNumber}&elementNumber=${elementNumber}`;
 });
 
-$('#nav-scene-shot-list').on('click', () => {
-  const sceneNumber = $('#sceneNumber')[0].innerText;
-  const elementNumber = $('#elementNumber')[0].innerText;
-  const url = buildParentUrl('scene-shot-list', sceneNumber, elementNumber);
-  window.location.href = url;
-});
-
-$('#nav-breakdown').on('click', () => {
-  const sceneNumber = $('#sceneNumber')[0].innerText;
-  const elementNumber = $('#elementNumber')[0].innerText;
-  const url = buildParentUrl('breakdown', sceneNumber, elementNumber);
-  window.location.href = `${url}&action=display`;
-});
-
-$('#nav-report').on('click', () => {
-  const sceneNumber = $('#sceneNumber')[0].innerText;
-  const elementNumber = $('#elementNumber')[0].innerText;
-  const url = buildParentUrl('breakdown-report', sceneNumber, elementNumber);
-  window.location.href = url;
-});
-
-$('#nav-credits').on('click', () => {
-  const sceneNumber = $('#sceneNumber')[0].innerText;
-  const elementNumber = $('#elementNumber')[0].innerText;
-  const url = buildParentUrl('credits', sceneNumber, elementNumber);
-  window.location.href = url;
-});
-
-$('#nav-categories').on('click', () => {
-  const sceneNumber = $('#sceneNumber')[0].innerText;
-  const elementNumber = $('#elementNumber')[0].innerText;
-  const url = buildParentUrl('categories', sceneNumber, elementNumber);
-  window.location.href = url;
-});
+$('#nav-show-gallery').on('click', () => navigate('show-gallery'));

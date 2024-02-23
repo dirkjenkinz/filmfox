@@ -1,27 +1,40 @@
-{% extends "parent.njk" %}
+{% extends 'paperwork.njk' %}
+
 {% block page %}
-  <p id='phase' hidden="hidden">{{phase}}</p>
-  <p id='scr1' hidden="hidden">{{scr1}}</p>
-  <p id='size' hidden="hidden">{{size}}</p>
+  <!-- Hidden variables for phase and size -->
+  <p id='phase' hidden='hidden'>{{ phase }}</p>
+  <p id='size' hidden='hidden'>{{ size }}</p>
+
   <div class='row'>
-    <div class='col-md-9 tableFixHead3'  id='table1'>
+    <!-- Table for shot list -->
+    <div class='col-md-10 tableFixHead3' id='table1'>
       {% for i in range(1, shotList.length) -%}
-        <div class='row scene-box scene-box-little' id='bx_{{i}}'>
-          <div class='col-md-1' id='sc_{{ i }}'>Scene
-            {{shotList[i].scene}}</div>
-          <div class='col-md-5' id='sl_{{ i }}'>{{slugList[i]}}</div>
-          <div class='col-md-5' id='sh_{{ i }}'>{{shotList[i].note}}</div>
+        <!-- Scene box for each shot -->
+        <div class='row scene-box scene-box-little' id='bx_{{ i }}'>
+          <!-- Scene number -->
+          <div class='col-md-1' id='sc_{{ i }}'>Scene {{ shotList[i].scene }}</div>
+          <!-- Slug list -->
+          <div class='col-md-4' id='sl_{{ i }}'>{{ slugList[i] }}</div>
+          <!-- Shot note -->
+          <div class='col-md-7' id='sh_{{ i }}'>{{ shotList[i].note }}</div>
         </div>
       {% endfor %}
     </div>
-    <div class='col-md-3'>
+
+    <!-- Column for buttons and scene order -->
+    <div class='col-md-2'>
+      <!-- Button to reset order -->
       <button type='button' class='btn btn-edit btn-sm' id='btn-reset'>Reset Order</button>
       <br><br>
+
+      <!-- Display scene order -->
       {% for i in range(1, sceneOrder.length) -%}
-        {{sceneOrder[i]}},
+        {{ sceneOrder[i] }},
       {% endfor %}
     </div>
   </div>
-  <script src='../js/parent.js'></script>
+
+  <!-- Include JavaScript files -->
+  <script src='../js/paperwork.js'></script>
   <script src='../js/scene-arranger.js'></script>
 {% endblock %}

@@ -1,8 +1,5 @@
 const express=require('express');
 const router = express.Router();
-
 const {editCharacterHandler} = require('../handlers/edit-character-handler');
-
 router.get('/', editCharacterHandler);
-
 module.exports = router;

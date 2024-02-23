@@ -1,84 +1,97 @@
 'use strict';
+
 const url = require('url');
 const { smartLog } = require('../services/smart-log');
 const { getFile, getFileList } = require('../services/file-service');
 
+/**
+ * Handles requests related to the showreel.
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ */
 const showreelHandler = async (req, res) => {
+  // Log entering the showreel handler
   smartLog('info', 'ENTERING SHOWREEL HANDLER');
+
+  // Parse URL parameters
   const u = url.parse(req.originalUrl, true);
   const title = u.query.title;
-  let sceneNumber = u.query.sceneNumber;
-  let elementNumber = u.query.elementNumber;
-  let mute = u.query.mute;
-  if (!mute) mute = 'MUTE';
+  let sceneNumber = parseInt(u.query.sceneNumber) || 0;
+  let elementNumber = parseInt(u.query.elementNumber) || 0;
+  let mute = u.query.mute || 'MUTE';
   const msg = u.query.msg;
-  const filmFoxFile = await getFile(`${title}/${title}.fff`);
-  const { script, shotList, charactersByScene, nonSpeakers, characterList } = filmFoxFile;
 
-  if (sceneNumber > script.length -1){
-    sceneNumber = script.length -1;
+  // Ensure sceneNumber and elementNumber are within valid ranges
+  const { script, shotList, charactersByScene, nonSpeakers, characterList } = await getFile(`${title}/${title}.fff`);
+  sceneNumber = Math.max(0, Math.min(sceneNumber, script.length - 1));
+  elementNumber = Math.max(0, Math.min(elementNumber, script[sceneNumber].length - 1));
+
+  // Handle decrement of elementNumber
+  if (elementNumber < 0) {
+    sceneNumber--;
     elementNumber = script[sceneNumber].length - 1;
   }
 
-  if (!sceneNumber) sceneNumber = 0;
-  if (!elementNumber) elementNumber = 0;
+  // Ensure sceneNumber is not negative
+  sceneNumber = Math.max(0, sceneNumber);
 
-  if (elementNumber === '-1') {
-    sceneNumber--;
-    elementNumber = script[sceneNumber].length - 1;
-  };
+  // Ensure elementNumber is within valid range
+  if (elementNumber > script[sceneNumber].length - 1) {
+    elementNumber = 0;
+  }
 
-  if (elementNumber > script[sceneNumber].length - 1) elementNumber = 0;
+  // Retrieve element details from the script
   const element = script[sceneNumber][elementNumber];
   const slug = script[sceneNumber][0].dialogue;
 
-  let audio = '';
-
-  let num = '0000' + sceneNumber;
-  num = num.substring(num.length - 4);
-  let sub = '0000' + elementNumber;
-  sub = sub.substring(sub.length - 4);
+  // Generate file name for audio based on scene and element numbers
+  let num = `0000${sceneNumber}`.slice(-4);
+  let sub = `0000${elementNumber}`.slice(-4);
   const fileName = `${num}_${sub}.mp3`;
-  const soundsList = await getFileList(`data//${title}/sounds`, 'mp3');
 
-  if (soundsList.indexOf(fileName) !== -1) {
-    audio = `../data/${title}/sounds/${fileName}`;
+  // Retrieve list of sound files for the specified title
+  const soundsList = await getFileList(`data/${title}/sound/sounds`, 'mp3');
+
+  let audio = '';
+  let audioComplete = 'yes';
+
+  // Check if the generated audio file exists in the sound list
+  if (soundsList.includes(fileName)) {
+    audio = `../data/${title}/sound/sounds/${fileName}`;
     element.sound = fileName;
   } else {
     element.sound = '';
-  };
+    audioComplete = 'no';
+  }
 
-  let chars = [];
+  // Extract characters excluding NARRATOR and non-speakers
+  let chars = characterList
+    .filter((c) => c[0] !== 'NARRATOR')
+    .map((c) => c[0])
+    .concat(nonSpeakers);
 
-  characterList.forEach((c) => {
-    if (c[0] !== 'NARRATOR') {
-      chars.push(c[0]);
-    }
-  });
-
-  nonSpeakers.forEach((n) => {
-    chars.push(n);
-  });
-
+  // Remove characters present in the current scene
   if (charactersByScene[sceneNumber]) {
     charactersByScene[sceneNumber].forEach((c) => {
       const pointer = chars.indexOf(c);
-      chars.splice(pointer, 1);
+      if (pointer !== -1) {
+        chars.splice(pointer, 1);
+      }
     });
   }
+
+  // Set the voice for the current element
   characterList.forEach((c) => {
     if (c[0] === element.character.toUpperCase()) {
       element.voice = c[1];
     }
   });
 
-  const noteList = [];
-  const slugList = [];
-  script.forEach((s) => {
-    noteList.push(s.note + '@@');
-    slugList.push(s[0].dialogue + '@@');
-  });
+  // Extract noteList and slugList from the script
+  const noteList = script.map((s) => s.note + '@@');
+  const slugList = script.map((s) => s[0].dialogue + '@@');
 
+  // Render the showreel page with relevant data
   res.render('showreel.njk', {
     sceneNumber,
     elementNumber,
@@ -89,14 +102,17 @@ const showreelHandler = async (req, res) => {
     mute,
     slug,
     page: 'Showreel',
+    caller: 'showreel',
     audio,
     note: shotList[sceneNumber].note,
+    parenthesis: element.parenthesis,
     characterList: charactersByScene[sceneNumber].sort(),
     characters: chars.sort(),
     voice: element.voice,
     slugList,
     noteList,
-    msg
+    msg,
+    audioComplete,
   });
 };
 

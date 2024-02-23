@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8'/>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'/>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
+    <title>FilmFox</title>
+    <link rel='stylesheet' href='../../css/style.css'/>
+    <link rel='stylesheet' href='../../css/parent.css'/>
+    <link rel='stylesheet' href='../../css/breakdown.css'/>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css'/>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
+    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js'></script>
+  </head>
+  <body>
+    <div class='container-fluid'>
+      <div class='row'>
+        <table class='table-bordered table-sm table-dark table-grid'>
+          <thead>
+            <tr>
+              <th class='table-header'>
+                {{this.title}}&nbsp;&nbsp;
+              </th class='table-header'>
+              <th class='table-header'>
+                &nbsp;&nbsp;SCENE
+                {{this.scene}}&nbsp;&nbsp;</th>
+              <th class='table-header'>
+                {{this.slug}}&nbsp;&nbsp;
+              </th>
+              <th class='table-header'>
+                &nbsp;&nbsp;DAY&nbsp;&nbsp;&nbsp;&nbsp;
+              </th>
+            </tr>
+          </thead>
+        </table>
+        <br>
+      </div>
+      <div class='row'>
+        <table class='table-bordered table-sm table-dark table-grid'>
+          <thead>
+            <tr>
+              <th>&nbsp;SHOT&nbsp;</th>
+              <th>&nbsp;ANGLE&nbsp;</th>
+              <th>&nbsp;MOVE&nbsp;</th>
+              <th>&nbsp;AUDIO&nbsp;</th>
+              <th>&nbsp;SUBJECT&nbsp;</th>
+              <th>&nbsp;DESCRIPTION&nbsp;</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each lines}}
+              <tr>
+                <td class='data-left'>&nbsp;{{this.shot}}&nbsp;</td>
+                <td class='data-left'>&nbsp;{{this.angle}}&nbsp;</td>
+                <td class='data-left'>&nbsp;{{this.move}}&nbsp;</td>
+                <td class='data-left'>&nbsp;{{this.audio}}&nbsp;</td>
+                <td class='data-left'>&nbsp;{{this.subject}}&nbsp;</td>
+                <td class='data-left'>
+                  &nbsp;{{this.description}}&nbsp;
+                </td>
+              </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>

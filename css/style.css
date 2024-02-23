@@ -25,11 +25,13 @@ table {
   width: 100%;
 }
 
-.btn-delete-shot,
+.btn-delete-shot ,
 .btn-add-shot {
-  margin-left:40px;
+  margin-left:10px;
   background: red;
-  width: 45%;
+  display: block;
+  width: 80%;
+  font-size:75%;
 }
 
 .btn-deladd {
@@ -67,7 +69,7 @@ table {
 
 .scene-box {
   background: slategrey;
-  color: black;
+  color: white;
   border: double 2px blue;
 }
 
@@ -320,6 +322,10 @@ textarea {
   text-align: left;
 }
 
+#btn-front {
+  margin-top: 20px;
+}
+
 .btn-fdx-yes {
   background: violet;
   color: white;
@@ -333,6 +339,17 @@ textarea {
 .btn-edit {
   display: block;
   background: red;
+  color: white;
+  border: black 2px solid;
+  text-align: center;
+  display: block;
+  width: 100%;
+  font-size: 75%;
+}
+
+.btn-blue {
+  display: block;
+  background: grey;
   color: white;
   border: black 2px solid;
   text-align: center;

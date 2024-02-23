@@ -6,12 +6,12 @@
         <tbody>
           {% for i in range(0, uncompiledList.length) -%}
             <tr style='font-size: 80%'>
-              <td class='data-left'>{{uncompiledList[i][0]}}.{{uncompiledList[i][1]}}</td>
-              <td class='data-left'>{{uncompiledList[i][2]}}</td>
-              <td class='data-left'>{{uncompiledList[i][3]}}</td>
+              <td class='data-left'>{{ uncompiledList[i][0] }}.{{ uncompiledList[i][1] }}</td>
+              <td class='data-left'>{{ uncompiledList[i][2] }}</td>
+              <td class='data-left'>{{ uncompiledList[i][3] }}</td>
               <td>
                 {% if uncompiledList[i][3] !== '' %}
-                  <button type='button' class='btn btn-block btn-sm btn-compile' value='{{uncompiledList[i]}}' id='btn-compile-{{i}}'>
+                  <button type='button' class='btn btn-block btn-sm btn-compile' value='{{ uncompiledList[i] }}' id='btn-compile-{{ i }}'>
                     Compile
                   </button>
                 {% else %}
@@ -29,9 +29,9 @@
           {% for i in range(0, incomplete.length) -%}
             <tr style='font-size: 80%'>
               <td>
-                <button type='button' class='btn btn-block btn-sm btn-compile-scene' value='{{incomplete[i]}}'>
+                <button type='button' class='btn btn-block btn-sm btn-compile-scene' value='{{ incomplete[i] }}'>
                   Compile Scene
-                  {{incomplete[i]}}
+                  {{ incomplete[i] }}
                 </button>
               </td>
             </tr>
@@ -41,11 +41,11 @@
     </div>
   </div>
   <div class='row show'>
-    <p id='size' hidden="hidden">{{size}}</p>
+    <p id='size' hidden="hidden">{{ size }}</p>
     <div class='col-md-12' id='col-banner'>
       <table class='table-bordered table-sm table-dark table-grid' id='tab_scenes'>
         <tbody>
-          <tr style='font0size: 80%'>
+          <tr style='font-size: 80%'>
             <td class='table-data'>
               {% if readyForMaster === 'yes' %}
                 <button type='button' class='btn btn-edit btn-block btn-sm' id='btn-master'>Create/Update Master</button>
@@ -71,11 +71,11 @@
             <td>
               {% if uncompiledList.length > 0 %}
                 <button type='button' class='btn btn-edit' id='btn-show-uncompiled'>
-                  Show Uncompiled Elements
+                  Uncompiled Elements
                 </button>
               {% else %}
                 <button type='button' class='btn btn-edit' disabled="disabled">
-                  Show Uncompiled Elements
+                  Uncompiled Elements
                 </button>
               {% endif %}
             </td>
@@ -95,16 +95,16 @@
                   <td class='table-data'>
                     {% if merged[i + num] != 'yes' %}
                       {% if readyList[i + num] === 'yes' %}
-                        <button type='button' class='btn btn-block btn-sm btn-merge' id='btn-merge_{{i + num}}' value='{{i + num}}'>Merge Scene
-                          {{i + num}}</button>
+                        <button type='button' class='btn btn-block btn-sm btn-merge' id='btn-merge_{{ i + num }}' value='{{ i + num }}'>Merge Scene
+                          {{ i + num }}</button>
                       {% else %}
                         <button type='button' class='btn btn-block btn-sm btn-incomplete' disabled="disabled">Incomplete - Scene
-                          {{i + num}}</button>
+                          {{ i + num }}</button>
                       {% endif %}
                     {% else %}
-                      <button type='button' class='btn btn-edit btn-block btn-sm btn-play' id="play_{{i + num}}" value='{{i + num}}'>
+                      <button type='button' class='btn btn-edit btn-block btn-sm btn-play' id="play_{{ i + num }}" value='{{ i + num }}'>
                         Play Scene
-                        {{i + num}}
+                        {{ i + num }}
                       </button>
                     {% endif %}
                   </td>
@@ -120,7 +120,6 @@
       </table>
     </div>
   </div>
-</div>
 </div>
 <script src='../js/parent.js'></script>
 <script src='../js/sound.js'></script>

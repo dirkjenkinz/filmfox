@@ -1,14 +1,20 @@
 {% extends "parent.njk" %}
 {% block page %}
+  <!-- Row for character and voice tables -->
   <div class='row' id='tabhead'>
+    <!-- Hidden paragraph for script information -->
     <p id='scr1' hidden="hidden">{{scr1}}</p>
+
+    <!-- Character table -->
     <div class='col-md-6 tableFixHead3' id='table1'>
       <table id="character_table">
         <thead>
+          <!-- Table header for character data -->
           <tr>
             <th class='table-header' id="tab_ch_{{i}}">Character</th>
             <th class='table-header' id="tab_vce_{{i}}">Voice</th>
             <th>
+              <!-- Audio player for master play -->
               <audio id='master-play' style='width: 100%;'>
                 <source src='' type='audio/mpeg'>
               </audio>
@@ -16,14 +22,17 @@
           </tr>
         </thead>
         <tbody>
+          <!-- Loop through characters to display -->
           {% for i in range(0, characters.length) -%}
             <tr>
+              <!-- Display character name -->
               <td class="table-data" id="char_{{i}}" style='font-size:80%;'>{{characters[i][0]}}</td>
+              <!-- Dropdown for selecting character voice -->
               <td class="data-display">
                 <select name="voices_{{i}}" id="voices_{{i}}" style='background:black; font-size:80%;'>
+                  <!-- Loop through voice data to populate dropdown -->
                   {% for j in range(0, voice_data.length) -%}
-                    {% if
-                    characters[i][1] == voice_data[j][0] %}
+                    {% if characters[i][1] == voice_data[j][0] %}
                       <option value="{{voice_data[j][0]}}" selected="selected">
                         {{voice_data[j][0]}}
                       </option>
@@ -35,6 +44,7 @@
                   {%- endfor %}
                 </select>
               </td>
+              <!-- Button for playing a sample -->
               <td class='table-data'>
                 <button class='btn-edit btn-play-sample' value='{{characters[i][2]}}'>Sample</button>
               </td>
@@ -43,25 +53,26 @@
         </tbody>
       </table>
     </div>
+
+    <!-- Voice table -->
     <div class='col-md-6 tableFixHead3'>
       <table class="table-bordered table-sm table-dark table-grid" id="voice_table">
         <thead>
+          <!-- Table header for voice data -->
           <tr>
             <th class='table-header'>Voice</th>
-            <th class='table-data'>
-              Description
-            </th>
+            <th class='table-data'>Description</th>
             <th class='table-data'>Gender</th>
-            <th class='table-data'>
-              Accent
-            </th>
+            <th class='table-data'>Accent</th>
             <th class='table-data'>Age</th>
             <th></th>
           </tr>
         </thead>
         <tbody>
+          <!-- Loop through voice data to display -->
           {% for i in range(1, voice_data.length) -%}
             <tr>
+              <!-- Apply a red background if voice is marked as 'yes' -->
               {% if voice_data[i][7] === 'yes'%}
                 <td class='table-red' id="voice_data_{{i}}">
                   {{voice_data[i][0]}}
@@ -71,6 +82,7 @@
                   {{voice_data[i][0]}}
                 </td>
               {% endif %}
+              <!-- Display voice description, gender, accent, and age -->
               <td class="table-data" id="voice_description_{{i}}">
                 {{voice_data[i][3]}}
               </td>
@@ -83,6 +95,7 @@
               <td class="table-data" id="voice_age_{{i}}">
                 {{voice_data[i][6]}}
               </td>
+              <!-- Button for playing a sample -->
               <td>
                 <button class='btn-edit btn-play-sample' value='{{voice_data[i][2]}}'>Sample</button>
               </td>
@@ -92,6 +105,8 @@
       </table>
     </div>
   </div>
+
+  <!-- Include JavaScript files -->
   <script src='../js/parent.js'></script>
   <script src='../js/character-to-voice.js'></script>
 {% endblock %}

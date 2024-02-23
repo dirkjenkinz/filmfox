@@ -1,36 +1,37 @@
+// Set active class for navigation
 $(() => {
   $('#nav-sound').addClass('active');
 });
 
+// Event handler for merging sounds
 $('.btn-merge').on('click', (e) => {
-  let sceneNumber = e.target.value;
+  const sceneNumber = e.target.value;
   const title = $('#filmTitle')[0].innerText;
   const elementNumber = $('#elementNumber')[0].innerText;
-  window.location.href = `/concat?title=${title}&sceneNumber=${sceneNumber}&elementNumber=${elementNumber}`;
+  window.location.href = `/concatenate-sound?title=${title}&sceneNumber=${sceneNumber}&elementNumber=${elementNumber}`;
 });
 
+// Event handler for playing a sound
 $('.btn-play').on('click', (e) => {
   const title = $('#filmTitle')[0].innerText;
-  let num = '000000' + e.target.value;
-  num = num.substring(num.length - 5);
-  element = `s${num}.mp3`;
-  s = '../data/' + title + '/scenes/' + element;
-  document
-    .getElementById('master-play')
-    .setAttribute('src', s);
-  document
-    .getElementById('master-play')
-    .play();
+  const num = '000000' + e.target.value;
+  const formattedNum = num.substring(num.length - 5);
+  const element = `s${formattedNum}.mp3`;
+  const soundPath = `../data/${title}/sound/scenes/${element}`;
+
+  document.getElementById('master-play').setAttribute('src', soundPath);
+  document.getElementById('master-play').play();
 });
 
+// Event handler for compiling a scene
 $('.btn-compile-scene').on('click', (e) => {
   const title = $('#filmTitle')[0].innerText;
   const sceneNumber = e.target.value;
   window.location.href = `/compile-scene?title=${title}&sceneNumber=${sceneNumber}&elementNumber=0`;
 });
 
+// Event handler for generating a single sound
 $('.btn-compile').on('click', (e) => {
-  const id = e.target.id;
   const elements = e.target.value.split(',');
   const voice = elements[3];
   const character = elements[2];
@@ -40,6 +41,7 @@ $('.btn-compile').on('click', (e) => {
   window.location.href = `/generate-single?title=${title}&sceneNumber=${sceneNumber}&elementNumber=${elementNumber}&voice=${voice}&caller=sound&character=${character}`;
 });
 
+// Event handler for creating a master sound
 $('#btn-master').on('click', () => {
   const title = $('#filmTitle')[0].innerText;
   const sceneNumber = $('#sceneNumber')[0].innerText;
@@ -48,27 +50,29 @@ $('#btn-master').on('click', () => {
   window.location.href = `/master?title=${title}&sceneNumber=${sceneNumber}&size=${size}&elementNumber=${elementNumber}`;
 });
 
+// Event handler for toggling visibility of uncompiled elements
 $('#btn-show-uncompiled').on('click', () => {
-  if ($('#btn-show-uncompiled')[0].innerText === 'Show Uncompiled Elements') {
+  const showUncompiledText = 'Show Uncompiled Elements';
+  const returnToScenesText = 'Return to Scenes';
+
+  if ($('#btn-show-uncompiled')[0].innerText === showUncompiledText) {
     $('#col-uncompiled').show();
     $('#col-incomplete').show();
     $('#col-scenes').hide();
-    $('#btn-show-uncompiled')[0].innerText = 'Return to Scenes';
+    $('#btn-show-uncompiled')[0].innerText = returnToScenesText;
   } else {
     $('#col-uncompiled').hide();
     $('#col-incomplete').hide();
     $('#col-scenes').show();
-    $('#btn-show-uncompiled')[0].innerText = 'Show Uncompiled Elements';
-  };
+    $('#btn-show-uncompiled')[0].innerText = showUncompiledText;
+  }
 });
 
+// Event handler for playing the master sound
 $('#btn-play-master').on('click', (e) => {
   const title = $('#filmTitle')[0].innerText;
-  s = '../data/' + title + '/scenes/master.mp3';
-  document
-    .getElementById('master-play')
-    .setAttribute('src', s);
-  document
-    .getElementById('master-play')
-    .play();
+  const soundPath = `../data/${title}/sound/scenes/master.mp3`;
+
+  document.getElementById('master-play').setAttribute('src', soundPath);
+  document.getElementById('master-play').play();
 });
