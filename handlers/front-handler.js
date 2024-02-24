@@ -10,7 +10,8 @@ const frontHandler = async (req, res) => {
   smartLog('info', 'entering front handler');
 
   // Get the ElevenLabs API key from the environment variables
-  const {api_key} = await getFile('control.json');
+  const { api_key } = await getFile('control.json');
+
   // Fetch the list of FFF (Film Fox Files) and FDX (Final Draft) files
   let fffList = await getFFFList();
   const fdxList = await getFileList('scripts', 'fdx');
@@ -36,7 +37,6 @@ const frontHandler = async (req, res) => {
         reset = subscription.next_character_count_reset_unix * 1000;
         resetDate = new Date(reset);
         subscription.next_character_count_reset = resetDate.toLocaleString();
-
         payment = subscription.next_invoice.next_payment_attempt_unix * 1000;
         paymentDate = new Date(payment);
         subscription.next_invoice.next_payment_attempt = paymentDate.toLocaleString();

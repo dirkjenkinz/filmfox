@@ -26,3 +26,8 @@ $('#btn-voices').on('click', (e) => {
   // Redirect to the voices page
   window.location.href = '/voices';
 });
+
+$('#btn-api-key').on('click', () => {
+  const key = $('#input-api-key').val();
+  window.location.href = `/update-api-key?key=${key}`;
+});

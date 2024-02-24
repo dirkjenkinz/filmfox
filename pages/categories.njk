@@ -1,4 +1,5 @@
-{% extends "paperwork.njk" %}
+{% extends 'paperwork.njk' %}
+
 {% block page %}
   <!-- Top row with buttons and input field -->
   <div class='row top' style='font-size: 90%;'>
@@ -15,7 +16,7 @@
           <!-- Input field for adding a new category -->
           <tr>
             <th colspan='2'>
-              <input type="text" name="category" id='input-category' size='25' style='border: 0;'>
+              <input type='text' name='category' id='input-category' size='25' style='border: 0;'>
             </th>
             <!-- Button to add a new category -->
             <th>
@@ -29,24 +30,24 @@
         </thead>
         <tbody>
           <!-- Loop through categories to display -->
-          {% for i in range(0, categories.length) -%}
+          {% for category in categories %}
             <tr>
               <!-- Display category name -->
               <td>
-                {{categories[i][0]}}
+                {{ category[0] }}
               </td>
-              <!-- Display "Display" button if category is marked as 'y' -->
+              <!-- Display 'Display' button if category is marked as 'y' -->
               <td>
-                {% if categories[i][1] === 'y' %}
-                  <button type='button' class='btn-edit btn-display-category' value='{{categories[i][0]}}'>Display</button>
+                {% if category[1] === 'y' %}
+                  <button type='button' class='btn-edit btn-display-category' value='{{ category[0] }}'>Display</button>
                 {% else %}
                   &nbsp;
                 {% endif %}
               </td>
-              <!-- Display "Delete" button if category is marked as 'n' -->
+              <!-- Display 'Delete' button if category is marked as 'n' -->
               <td>
-                {% if categories[i][1] === 'n' %}
-                  <button type='button' class='btn-edit btn-delete-category' value='{{categories[i][0]}}'>Delete</button>
+                {% if category[1] === 'n' %}
+                  <button type='button' class='btn-edit btn-delete-category' value='{{ category[0] }}'>Delete</button>
                 {% endif %}
               </td>
             </tr>
@@ -59,22 +60,14 @@
     {% if category === '' %}
       <!-- Display all scene breakdowns -->
       <div class='col-md-9 tableFixHead3'>
-        {% for i in range(0, list.length) -%}
+        {% for scene in list %}
           <!-- Display scene breakdown -->
           <p class='scene-breakdown'>
-            {{list[i][0]}} --&nbsp;
-            {% for j in range(1, list[i].length) -%}
-              {% for k in range(0, list[i][j].length)%}
+            {{ scene[0] }} --&nbsp;
+            {% for detailList in scene[1:] %}
+              {% for detail in detailList %}
                 <!-- Display breakdown details -->
-                {% if k === 0 %}
-                  {{list[i][j][k]}}:
-                {% else %}
-                  {% if k < list[i][j].length - 1 %}
-                    {{list[i][j][k]}},
-                  {% else %}
-                    {{list[i][j][k]}}&nbsp;&nbsp;
-                  {% endif %}
-                {% endif %}
+                {{ detail }}{% if not loop.last %},{% endif %}
               {% endfor %}
               ~&nbsp;
             {% endfor %}
@@ -84,14 +77,13 @@
     {% else %}
       <!-- Display selected category's breakdowns -->
       <div class='col-md-9 tableFixHead3'>
-        <p class='display-header'>{{category}}</p>
-        {% for i in range(0, displayList.length) -%}
+        <p class='display-header'>{{ category }}</p>
+        {% for scene in displayList %}
           <!-- Display breakdown for the selected category -->
           <p class='scene-breakdown'>
-            {{displayList[i][0]}}
-            --
-            {% for j in range(1, displayList[i][1].length) -%}
-              {{displayList[i][1][j]}},
+            {{ scene[0] }} --
+            {% for detail in scene[1][1:] %}
+              {{ detail }}{% if not loop.last %},{% endif %}
             {% endfor %}
           </p>
         {% endfor %}
