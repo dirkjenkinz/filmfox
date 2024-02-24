@@ -22,7 +22,7 @@
         Add Character
       </button>
     </div>
-    <div class='col-md-8'>
+    <div class='col-md-4'>
       {% for i in range(0, characterList.length) -%}
         {% if characterList[i] !== 'NARRATOR' %}
           {% if i < (characterList.length - 1) %}
@@ -39,6 +39,13 @@
         Delete Character
       </button>
     </div>
+    <div class='col-md-1'>&nbsp;</div>
+    <div class='col-md-3'>
+      {% if audioComplete == 'yes' %}
+        <button type='button' class='btn-edit btn-sm' id='btn-start-slideshow'>Start slideshow</button>
+      {% endif %}
+    </div>
+
   </div>
 
   <!-- Character tables -->
@@ -242,17 +249,6 @@
         </tr>
       </table>
     </div>
-  </div>
-
-  <!-- Slideshow button -->
-  <div class='row'>
-    <div class='col-md-1'>&nbsp;</div>
-    <div class='col-md-10'>
-      {% if audioComplete == 'yes' %}
-        <button type='button' class='btn-edit btn-sm' id='btn-start-slideshow'>Slideshow</button>
-      {% endif %}
-    </div>
-    <div class='col-md-1'>&nbsp;</div>
   </div>
 </div>
 
