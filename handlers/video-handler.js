@@ -72,6 +72,7 @@ const videoHandler = async (req, res) => {
     script,
     page: 'Video',
     caller: 'video',
+    sceneNumber,
     elementNumber,
     completeArray,
     ready,
