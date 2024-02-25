@@ -108,6 +108,7 @@ const shotListPDF = async (shotList, title, sceneNumber, slug) => {
     const document = {
         html: html,
         data: {
+            title: title,
             scene: sceneNumber,
             slug: slug,
             lines: shotList.lines
@@ -149,7 +150,7 @@ const sheetPDF = async (breakdown, script, title, sceneNumber, shotList) => {
         type: '',
         header: {
             height: '20mm',  // Adjust the height as needed
-            contents: '<img src="../../images/film_fox_logo" style="width: 100%;" />NIPPLES'
+            contents: '<img src="../../images/film_fox_logo" style="width: 100%;" />'
         }
     };
     try {
