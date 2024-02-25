@@ -16,7 +16,7 @@ const pdfOptions = {
     footer: {
         height: '40mm',
         contents: {
-            default: '<span style="color: #444;">{{page}}</span> of <span>{{pages}}</span>',
+            default: '<span style="color: #444;">{{page}}</span> of <span>{{pages}}</span>', // fallback value
             last: 'Last Page'
         }
     }
@@ -46,7 +46,7 @@ const masterListPDF = async (breakdown, title) => {
 
     try {
         const result = await pdf.create(document, pdfOptions);
-        smartLog('info', `Created MasterList PDF: ${result.filename}`);
+        smartLog('info', `created: ${result.filename}`);
     } catch (error) {
         smartLog('error', error);
     }
@@ -57,9 +57,20 @@ const categoryPDF = async (breakdown, title) => {
     const htmlPath = path.join(__dirname, '../../pages/templates/category.html');
     let html = fs.readFileSync(htmlPath, 'utf8');
 
-    const sceneList = breakdown.map(scene => scene.map(category => category));
+    const sceneList = [];
+    breakdown.forEach((scene) => {
+        const sc = [];
+        scene.forEach((category) => {
+            sc.push(category);
+        });
+        sceneList.push(sc);
+    });
 
-    const categories = sceneList[0].map(category => category[0]);
+    const categories = [];
+
+    sceneList[0].forEach((category) => {
+        categories.push(category[0]);
+    });
 
     categories.forEach(async (category) => {
         const output = [];
@@ -69,9 +80,9 @@ const categoryPDF = async (breakdown, title) => {
                     if (item[0] === category) {
                         item.shift();
                         output.push([`SCENE ${sceneIndex}:`, item]);
-                    }
+                    };
                 });
-            }
+            };
         });
 
         const outPath = path.join(__dirname, `../../data/${title}/paperwork/breakdown/${category}.pdf`);
@@ -88,7 +99,7 @@ const categoryPDF = async (breakdown, title) => {
 
         try {
             const result = await pdf.create(document, pdfOptions);
-            smartLog('info', `Created Category PDF for ${category}: ${result.filename}`);
+            smartLog('info', `created: ${result.filename}`);
         } catch (error) {
             smartLog('error', error);
         }
@@ -118,7 +129,7 @@ const shotListPDF = async (shotList, title, sceneNumber, slug) => {
 
     try {
         const result = await pdf.create(document, pdfOptions);
-        smartLog('info', `Created ShotList PDF: ${result.filename}`);
+        smartLog('info', `created: ${result.filename}`);
     } catch (error) {
         smartLog('error', error);
     }
@@ -151,7 +162,7 @@ const sheetPDF = async (breakdown, script, title, sceneNumber, shotList) => {
 
     try {
         const result = await pdf.create(document, pdfOptions);
-        smartLog('info', `Created Sheet PDF: ${result.filename}`);
+        smartLog('info', `created: ${result.filename}`);
     } catch (error) {
         smartLog('error', error);
     }
