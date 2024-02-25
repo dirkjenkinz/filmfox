@@ -147,8 +147,11 @@ const sheetPDF = async (breakdown, script, title, sceneNumber, shotList) => {
         },
         path: outPath,
         type: '',
+        header: {
+            height: '20mm',  // Adjust the height as needed
+            contents: '<img src="../../images/film_fox_logo" style="width: 100%;" />NIPPLES'
+        }
     };
-
     try {
         const result = await pdf.create(document, pdfOptions);
         smartLog('info', `Created Sheet PDF: ${result.filename}`);
