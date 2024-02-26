@@ -9,7 +9,7 @@ const pdf = require('pdf-creator-node');
 
 // Function to generate Category PDF
 const generateCategoryPDFsHandler = async (req, res) => {
-    smartLog('info', 'Enetering Generate Category PDFs Handler');
+    smartLog('info', 'Entering Generate Category PDFs Handler');
     const pdfOptions = {
         format: 'A4',
         orientation: 'portrait',
@@ -21,23 +21,25 @@ const generateCategoryPDFsHandler = async (req, res) => {
             height: '40mm',
             contents: {
                 default: '<span style="color: #444;">{{page}}</span> of <span>{{pages}}</span>',
-                last: 'Last Page'
-            }
-        }
+                last: 'Last Page',
+            },
+        },
     };
     const u = url.parse(req.originalUrl, true);
     const title = u.query.title;
+    const sceneNumber = u.query.sceneNumber;
+    const elementNumber = u.query.elementNumber;
     const filmFoxFile = await getFile(`${title}/${title}.fff`);
     const { breakdown } = filmFoxFile;
 
     const htmlPath = path.join(__dirname, '../../pages/templates/category.html');
-    let html = fs.readFileSync(htmlPath, 'utf8');
+    const html = fs.readFileSync(htmlPath, 'utf8');
 
     const sceneList = breakdown.map(scene => scene.map(category => category));
 
     const categories = sceneList[0].map(category => category[0]);
 
-    categories.forEach(async (category) => {
+    const promises = categories.map(async (category) => {
         const output = [];
         sceneList.forEach((scene, sceneIndex) => {
             if (sceneIndex > 0) {
@@ -52,12 +54,8 @@ const generateCategoryPDFsHandler = async (req, res) => {
 
         const outPath = path.join(__dirname, `../../data/${title}/paperwork/breakdown/${category}.pdf`);
         const document = {
-            html: html,
-            data: {
-                title: title,
-                category: category,
-                sceneList: output
-            },
+            html,
+            data: { title, category, sceneList: output },
             path: outPath,
             type: '',
         };
@@ -69,6 +67,11 @@ const generateCategoryPDFsHandler = async (req, res) => {
             smartLog('error', error);
         }
     });
+
+    await Promise.all(promises);
+
+    const returnUrl = `/generate-paperwork?title=${title}&sceneNumber=${sceneNumber}&elementNumber=${elementNumber}`;
+    res.redirect(returnUrl);
 };
 
 module.exports = { generateCategoryPDFsHandler };
