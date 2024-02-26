@@ -4,82 +4,72 @@ const fs = require('fs');
 const path = require('path');
 const pdf = require('pdf-creator-node');
 
+// PDF creation options
+const pdfOptions = {
+  format: 'A4',
+  orientation: 'portrait',
+  border: '5mm',
+  header: {
+      height: '5mm',
+  },
+  footer: {
+      height: '40mm',
+      contents: {
+          default: '<span style="color: #444;">{{page}}</span> of <span>{{pages}}</span>',
+          last: 'Last Page'
+      }
+  }
+};
+
 // Importing necessary services
 const { getFile } = require('../../services/file-service');
 const { smartLog } = require('../../services/smart-log');
 
 /**
- * Generates a PDF document for a scene's breakdown sheet.
+ * Generates a PDF document for a scene's shot list.
  * @param {Array} breakdown - Breakdown data for the scene.
  * @param {Array} script - Script data for the scene.
  * @param {string} title - Title of the film.
  * @param {number} sceneNumber - Scene number.
  * @param {Object} shotList - Shot list for the scene.
  */
-const sheetPDF = async (breakdown, script, title, sceneNumber, shotList) => {
-  const pdfOptions = {
-    format: 'A4',
-    orientation: 'portrait',
-    border: '5mm',
-    header: {
-      height: '5mm',
-    },
-    footer: {
-      height: '40mm',
-      contents: {
-        default: '<span style="color: #444;">{{page}}</span> of <span>{{pages}}</span>',
-        last: 'Last Page',
-      },
-    },
-  };
-
-  // Generate a filename based on scene number
+const shotListPDF = async (shotList, title, sceneNumber, slug) => {
+  pdfOptions.orientation = 'landscape';
   let fileName = '0000' + sceneNumber;
-  fileName = 'sheet' + fileName.substring(fileName.length - 4) + '.pdf';
+  fileName = 'shots' + fileName.substring(fileName.length - 4) + '.pdf';
 
-  const htmlPath = path.join(__dirname, '../../pages/templates/sheet.html');
-  const outPath = path.join(__dirname, `../../data/${title}/paperwork/sheets/${fileName}`);
+  const htmlPath = path.join(__dirname, '../../pages/templates/shots.html');
+  const outPath = path.join(__dirname, `../../data/${title}/paperwork/shots/${fileName}`);
   let html = fs.readFileSync(htmlPath, 'utf8');
 
-  // Format breakdown entities for PDF content
-  const entities = breakdown.map((entity) =>
-    entity.map((item, index) => (index === 0 ? `${item.toUpperCase()}:` : `${item}, `))
-  );
-
   const document = {
-    html: html,
-    data: {
-      title: title,
-      sceneNumber: sceneNumber,
-      slug: script[0].dialogue,
-      note: shotList.note,
-      entities: entities,
-    },
-    path: outPath,
-    type: '',
-    header: {
-      height: '20mm', // Adjust the height as needed
-      contents: '<img src="../../images/film_fox_logo.jpg" style="width: 100%;" />',
-    },
+      html: html,
+      data: {
+          title: title,
+          scene: sceneNumber,
+          slug: slug,
+          lines: shotList.lines
+      },
+      path: outPath,
+      type: '',
   };
 
   try {
-    // Generate the PDF document
-    const result = await pdf.create(document, pdfOptions);
-    smartLog('info', `Created Sheet PDF: ${result.filename}`);
+      const result = await pdf.create(document, pdfOptions);
+      smartLog('info', `Created ShotList PDF: ${result.filename}`);
   } catch (error) {
-    smartLog('error', error);
+      smartLog('error', error);
   }
 };
 
 /**
- * Handles the generation of sheet PDFs for multiple scenes.
+ * Handles the generation of shot PDFs for multiple scenes.
  * @param {Object} req - Express request object.
  * @param {Object} res - Express response object.
  */
-const generateSheetPDFsHandler = async (req, res) => {
+const generateShotPDFsHandler = async (req, res) => {
   try {
-    smartLog('info', 'Entering Generate Sheet PDFs Handler');
+    smartLog('info', 'Entering Generate SHOT PDFs Handler');
 
     // Function to delay execution using Promises
     const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -97,9 +87,9 @@ const generateSheetPDFsHandler = async (req, res) => {
     // Iterate over scenes and generate paperwork
     for (let scene = 1; scene < breakdown.length; scene++) {
       // Introduce a delay of 2 seconds between paperwork generation
-      await delay(10);
+      await delay(100);
 
-      await sheetPDF(breakdown[scene], script[scene], credits.title, scene, shotList[scene]);
+      await shotListPDF(shotList[scene], credits.title, scene, script[scene][0].dialogue);
     }
 
     // Redirect to the original page with updated parameters
@@ -107,9 +97,9 @@ const generateSheetPDFsHandler = async (req, res) => {
     res.redirect(returnUrl);
   } catch (error) {
     // Handling errors and sending an appropriate response
-    smartLog('error', 'Error generating sheet PDFs:', error);
+    smartLog('error', `Error generating shot PDFs: ${error}`);
     res.status(500).send('Internal Server Error');
   }
 };
 
-module.exports = { generateSheetPDFsHandler };
+module.exports = { generateShotPDFsHandler };

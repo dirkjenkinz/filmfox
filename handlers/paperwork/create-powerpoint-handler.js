@@ -89,7 +89,7 @@ const createPowerpointHandler = async (req, res) => {
   pres.writeFile({ fileName: output });
 
   // Redirect to video page with updated parameters
-  res.redirect(`/video?title=${title}&sceneNumber=${sceneNumber}&elementNumber=${elementNumber}`);
+  res.redirect(`/generate-paperwork?title=${title}&sceneNumber=${sceneNumber}&elementNumber=${elementNumber}`);
 };
 
 // Export the createPowerpointHandler function for use in other modules
