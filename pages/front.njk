@@ -19,7 +19,7 @@
       <!-- Header row with Film Fox logo and Voices button -->
       <div class='row'>
         <div class='col-md-10'>
-          <img src='../images/film_fox_logo.jpg' alt='Film Fox Logo' width='80' height='45' style='margin-top:14px;'> 
+          <img src='../images/film_fox_logo.jpg' alt='Film Fox Logo' width='80' height='45' style='margin-top:14px;'>
         </div>
         <div class='col-md-2'>
           <br>
@@ -34,7 +34,7 @@
       <div class='row' id='api-update' style='background: blue;'>
         <div class='col-md-1'></div>
         <div class='col-md-5'>
-          API Key = 
+          API Key =
           <!-- Input field for API Key -->
           <input type="text" name="input-api-key" id='input-api-key' size='50' style='border: 10;' autofocus="autofocus" value='{{api_key}}'>
         </div>
@@ -139,13 +139,18 @@
                       {{subscription.next_invoice.next_payment_attempt}}
                     </td>
                   </tr>
+                  <th class='data-left'>Amount Due</th>
+                  {% if subscription.next_invoice %}
+                    <td>${{subscription.next_invoice.amount_due_cents / 100}}</td>
+                  {% else %}
+                    <td></td>
+                  {% endif %}
+                </tr>
+                <tr>
                   <tr>
-                    <th class='data-left'>Amount Due</th>
-                    {% if subscription.next_invoice %}
-                      <td>${{subscription.next_invoice.amount_due_cents / 100}}</td>
-                    {% else %}
-                      <td></td>
-                    {% endif %}
+                    <td colspan='2' style='text-align: center;'>
+                      <img src='../images/film_fox_logo.jpg' alt='Film Fox Logo' width='320' height='180' style='margin: auto; margin-top: 14px;'>
+                    </td>
                   </tr>
                 </tbody>
               </table>
