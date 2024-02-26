@@ -31,7 +31,7 @@ const masterListPDF = async (breakdown, title) => {
     const lines = breakdown.flatMap((entity, index) => [
         `SCENE ${index}`,
         ...entity,
-        '-------------------------------------------------'
+        '<-------------------------------------------------------------------------------------------------->'
     ]);
 
     const document = {
@@ -150,7 +150,7 @@ const sheetPDF = async (breakdown, script, title, sceneNumber, shotList) => {
         type: '',
         header: {
             height: '20mm',  // Adjust the height as needed
-            contents: '<img src="../../images/film_fox_logo" style="width: 100%;" />'
+            contents: '<img src="../../images/film_fox_logo.jpg" style="width: 100%;" />'
         }
     };
     try {

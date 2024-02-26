@@ -1,0 +1,45 @@
+{% extends 'paperwork.njk' %}
+{% block page %}
+  <div class='row' style='padding: 10px 0'>
+    <div class='col-md-1'></div>
+    <div class='col-md-2'>
+      <button type='button' class='btn btn-edit btn-block btn-sm' id='btn-category-pdfs'>
+        Category PDFs
+      </button>
+    </div>
+    <div class='col-md-2'>
+      <button type='button' class='btn btn-edit btn-block btn-sm' id='btn-category-csvs'>
+        Category CSVs
+      </button>
+    </div>
+    <div class='col-md-2'>
+      <button type='button' class='btn btn-edit btn-block btn-sm' id='btn-sheet-pdfs'>
+        Sheet PDFs
+      </button>
+    </div>
+    <div class='col-md-2'>
+      <button type='button' class='btn btn-edit btn-block btn-sm' id='btn-sheet-csvs'>
+        Sheet CSVs
+      </button>
+    </div>
+    <div class='col-md-2'>
+      <button type='button' class='btn btn-edit btn-block btn-sm' id='btn-powerpoint'>
+        Powerpoint
+      </button>
+    </div>
+  </div>
+  <div class='row' style='padding: 10px 0'>
+    <div class='col-md-1'></div>
+    <div class='col-md-2'>
+      <button type='button' class='btn btn-edit btn-block btn-sm' id='btn-shot-pdfs'>
+        Shot PDFs
+      </button>
+    </div>
+    <div class='col-md-2'>
+      <button type='button' class='btn btn-edit btn-block btn-sm' id='btn-shot-csvs'>
+        Shot CSVs
+      </button>
+    </div>
+  </div>
+  <script src='../js/generate-paperwork.js'></script>
+{% endblock %}

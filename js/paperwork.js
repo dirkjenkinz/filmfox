@@ -81,11 +81,10 @@ $('#nav-categories').on('click', () => {
   window.location.href = url;
 });
 
-// Event handler for the generate button click
-$('#btn-generate').on('click', () => {
-  const caller = $('#caller').text();
+// Event handler for the gebnerate paperwork navigation
+$('#nav-generate-paperwork').on('click', () => {
   const sceneNumber = $('#sceneNumber').text();
   const elementNumber = $('#elementNumber').text();
   const url = buildParentUrl('generate-paperwork', sceneNumber, elementNumber);
-  window.location.href = `${url}&caller=${caller}`;
+  window.location.href = url;
 });

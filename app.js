@@ -76,6 +76,8 @@ const routers = {
     '/slideshow': require('./routes/slideshow.js'),
     '/generate-paperwork': require('./routes/generate-paperwork.js'),
     '/update-api-key': require('./routes/update-api-key.js'),
+    '/generate-category-pdfs': require('./routes/generate-category-pdfs.js'),
+    '/generate-category-csvs': require('./routes/generate-category-csvs.js'),
 };
 
 // Attach each router to its corresponding endpoint
