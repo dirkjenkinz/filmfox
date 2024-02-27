@@ -1,7 +1,7 @@
 const express=require('express');
 const router = express.Router();
 
-const {charactersHandler} = require('../handlers/characters-handler');
+const {charactersHandler} = require('../handlers/showreel/characters-handler');
 
 router.get('/', charactersHandler);
 
