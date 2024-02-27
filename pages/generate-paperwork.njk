@@ -1,46 +1,62 @@
 {% extends 'paperwork.njk' %}
 {% block page %}
   <div class='row' style='padding: 10px 0'>
-    <div class='col-md-1'></div>
-    <div class='col-md-2'>
+    <div class='col-md-6 paperwork-box'>
       <button type='button' class='btn btn-edit btn-block btn-sm' id='btn-category-pdfs'>
         Category PDFs
       </button>
+      Output Directory:
+      {{categoryDirectory}}
     </div>
-    <div class='col-md-2'>
+    <div class='col-md-6 paperwork-box'>
       <button type='button' class='btn btn-edit btn-block btn-sm' id='btn-category-spreadsheets'>
         Category Spreadsheets
       </button>
-    </div>
-    <div class='col-md-2'>
-      <button type='button' class='btn btn-edit btn-block btn-sm' id='btn-sheet-pdfs'>
-        Sheet PDFs
-      </button>
-    </div>
-    <div class='col-md-2'>
-      <button type='button' class='btn btn-edit btn-block btn-sm' id='btn-sheet-spreadsheets'>
-        Sheet Spreadsheets
-      </button>
-    </div>
-    <div class='col-md-2'>
-      <button type='button' class='btn btn-edit btn-block btn-sm' id='btn-powerpoint'>
-        Powerpoint
-      </button>
+      Output Directory:
+      {{categoryDirectory}}
     </div>
   </div>
   <div class='row' style='padding: 10px 0'>
-    <div class='col-md-1'></div>
-    <div class='col-md-2'>
+    <div class='col-md-6 paperwork-box'>
+      <button type='button' class='btn btn-edit btn-block btn-sm' id='btn-sheet-pdfs'>
+        Sheet PDFs
+      </button>
+      Output Directory:
+      {{sheetDirectory}}
+    </div>
+    <div class='col-md-6 paperwork-box'>
+      <button type='button' class='btn btn-edit btn-block btn-sm' id='btn-sheet-spreadsheets'>
+        Sheet Spreadsheets
+      </button>
+      Output Directory:
+      {{sheetDirectory}}
+    </div>
+  </div>
+  <div class='row' style='padding: 10px 0'>
+    <div class='col-md-6 paperwork-box'>
       <button type='button' class='btn btn-edit btn-block btn-sm' id='btn-shot-pdfs'>
         Shot PDFs
       </button>
+      Output Directory:
+      {{shotDirectory}}
     </div>
-    <div class='col-md-2'>
+    <div class='col-md-6 paperwork-box'>
       <button type='button' class='btn btn-edit btn-block btn-sm' id='btn-shot-spreadsheets'>
         Shot Spreadsheets
       </button>
+      Output Directory:
+      {{sheetDirectory}}
+    </div>
+  </div>
+  <div class='row' style='padding: 10px 0'>
+    <div class='col-md-6 paperwork-box'>
+      <button type='button' class='btn btn-edit btn-block btn-sm' id='btn-powerpoint'>
+        Powerpoint
+      </button>
+      Output Directory:
+      {{powerpointDirectory}}
     </div>
   </div>
   <script src='../js/generate-paperwork.js'></script>
-    <script src='../js/paperwork.js'></script>
+  <script src='../js/paperwork.js'></script>
 {% endblock %}

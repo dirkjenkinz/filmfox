@@ -1,5 +1,5 @@
 'use strict';
-
+const path = require('path');
 const url = require('url');
 const { smartLog } = require('../../services/smart-log');
 
@@ -17,6 +17,10 @@ const generatePaperworkHandler = async (req, res) => {
     title,
     page: 'Generate Paperwork',
     caller: 'generate-paperwork',
+    categoryDirectory: path.join(__dirname, `../../data/${title}/paperwork/breakdown`),
+    sheetDirectory: path.join(__dirname, `../../data/${title}/paperwork/sheets`),
+    shotDirectory: path.join(__dirname, `../../data/${title}/paperwork/shots`),
+    powerpointDirectory: path.join(__dirname, `../../data/${title}/paperwork/ppt`),
   });
 };
 

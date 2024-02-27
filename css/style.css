@@ -9,6 +9,13 @@ table {
   background: black;
 }
 
+.paperwork-box {
+  background: blue;
+  border: double 4px red;
+  border-radius: 25px;
+  padding: 10px 0;
+}
+
 .btn-navigate {
   background: green;
   font-size: 75%;

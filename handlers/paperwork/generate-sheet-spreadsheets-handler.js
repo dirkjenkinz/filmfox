@@ -9,7 +9,7 @@ const { getFile } = require('../../services/file-service');
 // Function to delay execution using Promises
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-const createXLS = (csvData, fileName) => {
+const createXLS = (csvData, fileName, title) => {
   // Convert CSV to array of arrays
   const rows = csvData.trim().split('\n').map(line => line.split(','));
 
@@ -22,7 +22,7 @@ const createXLS = (csvData, fileName) => {
   xlsx.utils.book_append_sheet(workbook, worksheet, 'Sheet1');
 
   // Write the workbook to an XLSX file
-  const outPath = path.join(__dirname, `../../data/Satellite/paperwork/sheets/${fileName}.xlsx`);
+  const outPath = path.join(__dirname, `../../data/${title}/paperwork/sheets/${fileName}.xlsx`);
   xlsx.writeFile(workbook, outPath, { bookType: 'xlsx', bookSST: false, type: 'binary' });
 
   smartLog('info', `${fileName}.xlsx created successfully`);
@@ -61,7 +61,7 @@ const sheetCSV = async (breakdown, script, title, sceneNumber, shotList) => {
   fileNumber = fileNumber.substring(fileNumber.length - 4);
   const fileName = 'sheet' + fileNumber;
 
-  await createXLS(csv, fileName);
+  await createXLS(csv, fileName, title);
 };
 
 const generateSheetSpreadsheetsHandler = async (req, res) => {

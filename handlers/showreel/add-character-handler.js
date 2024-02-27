@@ -36,7 +36,7 @@ const addCharacterHandler = async (req, res) => {
     res.redirect(`/characters?title=${title}&elementNumber=${elementNumber}&sceneNumber=${sceneNumber}`);
   } catch (error) {
     // Handling errors and sending a 500 Internal Server Error response
-    console.error('Error in addCharacterHandler:', error);
+    smartLog('error', `Error in addCharacterHandler: ${error}`);
     res.status(500).send('Internal Server Error');
   }
 };

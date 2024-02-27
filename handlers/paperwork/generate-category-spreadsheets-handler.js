@@ -12,7 +12,7 @@ const { smartLog } = require('../../services/smart-log');
  * @param {string} csvData - CSV data for the category.
  * @param {string} category - Category name.
  */
-const createXLS = (csvData, category) => {
+const createXLS = (csvData, category, title) => {
   // Convert CSV to array of arrays
   const rows = csvData.trim().split('\n').map(line => line.split(','));
 
@@ -26,7 +26,7 @@ const createXLS = (csvData, category) => {
   xlsx.utils.book_append_sheet(workbook, worksheet, 'Sheet1');
 
   // Write the workbook to an XLSX file
-  const outPath = path.join(__dirname, `../../data/Satellite/paperwork/breakdown/${category}.xlsx`);
+  const outPath = path.join(__dirname, `../../data/${title}/paperwork/breakdown/${category}.xlsx`);
   xlsx.writeFile(workbook, outPath, { bookType: 'xlsx', bookSST: false, type: 'binary' });
 
   smartLog('info', `${category}.xlsx created successfully`);
@@ -80,7 +80,7 @@ const generateCategorySpreadsheetsHandler = async (req, res) => {
 
         csv += '\n';
       }
-      await createXLS(csv, category[0]);
+      await createXLS(csv, category[0], title);
     }
 
     // Redirecting to the specified URL after XLSX generation

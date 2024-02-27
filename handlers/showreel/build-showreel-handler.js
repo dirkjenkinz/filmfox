@@ -1,7 +1,6 @@
 'use strict';
 
 const fs = require('fs');
-const path = require('path');
 const url = require('url');
 const { smartLog } = require('../../services/smart-log');
 const { registerFont } = require('canvas');
