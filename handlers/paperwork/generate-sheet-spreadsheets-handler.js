@@ -18,7 +18,6 @@ const createXLS = (csvData, fileName) => {
 
   // Add a worksheet
   const worksheet = xlsx.utils.aoa_to_sheet(rows);
-
   // Add the worksheet to the workbook
   xlsx.utils.book_append_sheet(workbook, worksheet, 'Sheet1');
 
@@ -28,7 +27,6 @@ const createXLS = (csvData, fileName) => {
 
   smartLog('info', `${fileName}.xlsx created successfully`);
 };
-
 
 const sheetCSV = async (breakdown, script, title, sceneNumber, shotList) => {
   const note = shotList.note.replace(/,/gi, '');
@@ -82,11 +80,12 @@ const generateSheetSpreadsheetsHandler = async (req, res) => {
     const filmFoxFile = await getFile(`${title}/${title}.fff`);
     const { shotList, script, credits, breakdown } = filmFoxFile;
 
+    const masterbook = xlsx.utils.book_new();
+
     // Iterate over scenes and generate paperwork
     for (let scene = 1; scene < breakdown.length; scene++) {
-      // Introduce a delay of 2 seconds between paperwork generation
+      // Introduce a delay between paperwork generation
       await delay(100);
-
       sheetCSV(breakdown[scene], script[scene], credits.title, scene, shotList[scene]);
     }
 

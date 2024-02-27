@@ -79,6 +79,7 @@ const routers = {
     '/generate-category-pdfs': require('./routes/generate-category-pdfs.js'),
     '/generate-category-spreadsheets': require('./routes/generate-category-spreadsheets.js'),
     '/generate-sheet-pdfs': require('./routes/generate-sheet-pdfs.js'),
+    '/generate-sheet-spreadsheets': require('./routes/generate-sheet-spreadsheets.js'),
     '/generate-shot-pdfs': require('./routes/generate-shot-pdfs.js'),
     '/generate-shot-spreadsheets': require('./routes/generate-shot-spreadsheets.js'),
 };

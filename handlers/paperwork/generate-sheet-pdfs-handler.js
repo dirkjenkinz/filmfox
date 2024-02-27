@@ -96,7 +96,7 @@ const generateSheetPDFsHandler = async (req, res) => {
 
     // Iterate over scenes and generate paperwork
     for (let scene = 1; scene < breakdown.length; scene++) {
-      // Introduce a delay of 2 seconds between paperwork generation
+      // Introduce a delay of between paperwork generation
       await delay(10);
 
       await sheetPDF(breakdown[scene], script[scene], credits.title, scene, shotList[scene]);

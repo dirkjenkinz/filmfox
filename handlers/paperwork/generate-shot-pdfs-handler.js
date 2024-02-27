@@ -86,8 +86,8 @@ const generateShotPDFsHandler = async (req, res) => {
 
     // Iterate over scenes and generate paperwork
     for (let scene = 1; scene < breakdown.length; scene++) {
-      // Introduce a delay of 2 seconds between paperwork generation
-      await delay(100);
+      // Introduce a delay between paperwork generation
+      await delay(10);
 
       await shotListPDF(shotList[scene], credits.title, scene, script[scene][0].dialogue);
     }
