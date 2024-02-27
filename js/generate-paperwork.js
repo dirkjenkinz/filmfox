@@ -45,7 +45,7 @@ $('#btn-powerpoint').on('click', () => {
   if (!sceneNumber) sceneNumber = 0;
   if (!elementNumber) elementNumber = 0;
   const title = $('#filmTitle')[0].innerText;
-  window.location.href = `/create-powerpoint?title=${title}`;
+  window.location.href = `/generate-powerpoint?title=${title}`;
 });
 
 $('#btn-shot-pdfs').on('click', (e) => {

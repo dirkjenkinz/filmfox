@@ -68,7 +68,7 @@ const routers = {
     '/categories': require('./routes/categories.js'),
     '/compile-scene': require('./routes/compile-scene.js'),
     '/concatenate-video': require('./routes/concatenate-video.js'),
-    '/create-powerpoint': require('./routes/create-powerpoint.js'),
+    '/generate-powerpoint': require('./routes/generate-powerpoint.js'),
     '/show-gallery': require('./routes/show-gallery.js'),
     '/delete-image': require('./routes/delete-image.js'),
     '/rename-image': require('./routes/rename-image.js'),

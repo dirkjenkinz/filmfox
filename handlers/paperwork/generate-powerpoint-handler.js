@@ -7,9 +7,9 @@ const { smartLog } = require('../../services/smart-log');
 const { getFile, getDuration } = require('../../services/file-service');
 
 // Handle the creation of PowerPoint presentations
-const createPowerpointHandler = async (req, res) => {
+const generatePowerpointHandler = async (req, res) => {
   // Log entry information
-  smartLog('info', 'ENTERING CREATE POWERPOINT HANDLER');
+  smartLog('info', 'ENTERING GENERATE POWERPOINT HANDLER');
 
   // Parse query parameters from the request URL
   const parseUrl = url.parse(req.originalUrl, true);
@@ -20,7 +20,7 @@ const createPowerpointHandler = async (req, res) => {
   const outPath = path.join(__dirname, `../../data/${title}/paperwork/ppt`);
   const output = `${outPath}/master.pptx`;
 
-  // Create a new PowerPoint presentation instance
+  // generate a new PowerPoint presentation instance
   const pres = new pptxgen();
 
   // Retrieve script data from the filmFoxFile
@@ -28,7 +28,7 @@ const createPowerpointHandler = async (req, res) => {
   smartLog('info', `${title}.fff retrieved`);
   const { script } = filmFoxFile;
 
-  // Iterate through scenes and elements to create PowerPoint slides
+  // Iterate through scenes and elements to generate PowerPoint slides
   for (let sceneIndex = 0; sceneIndex < script.length; sceneIndex++) {
     for (let elementIndex = 0; elementIndex < script[sceneIndex].length; elementIndex++) {
       // Format scene and element numbers
@@ -48,7 +48,7 @@ const createPowerpointHandler = async (req, res) => {
         text = `${script[sceneIndex][elementIndex].character}:\n\n${text}`;
       }
 
-      // Create a new slide and add image, scene information, and dialogue text
+      // Generate a new slide and add image, scene information, and dialogue text
       const slide = pres.addSlide();
       slide.addImage({ x: 0.2, y: 1.0, w: 6.0, h: 4.0, path: image });
 
@@ -92,5 +92,5 @@ const createPowerpointHandler = async (req, res) => {
   res.redirect(`/generate-paperwork?title=${title}&sceneNumber=${sceneNumber}&elementNumber=${elementNumber}`);
 };
 
-// Export the createPowerpointHandler function for use in other modules
-module.exports = { createPowerpointHandler };
+// Export the generatePowerpointHandler function for use in other modules
+module.exports = { generatePowerpointHandler };

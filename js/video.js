@@ -24,9 +24,9 @@ $('#btn-concatenate-video').on('click', (e) => {
   window.location.href = `/concatenate-video?title=${title}`;
 });
 
-$('#btn-create-powerpoint').on('click', (e) => {
+$('#btn-generate-powerpoint').on('click', (e) => {
   const title = $('#filmTitle')[0].innerText;
   const sceneNumber = $('#sceneNumber')[0].innerText;
   const elementNumber = $('#elementNumber')[0].innerText;
-  window.location.href = `/create-powerpoint?title=${title}&sceneNumber=${sceneNumber}&elementNumber=${elementNumber}`;
+  window.location.href = `/generate-powerpoint?title=${title}&sceneNumber=${sceneNumber}&elementNumber=${elementNumber}`;
 });
