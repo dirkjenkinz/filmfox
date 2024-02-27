@@ -66,7 +66,6 @@ const sheetCSV = async (breakdown, script, title, sceneNumber, shotList) => {
   await createXLS(csv, fileName);
 };
 
-
 const generateSheetSpreadsheetsHandler = async (req, res) => {
   try {
     // Log entry information
