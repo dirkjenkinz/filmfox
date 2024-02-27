@@ -105,7 +105,7 @@ const showreelHandler = async (req, res) => {
     caller: 'showreel',
     audio,
     note: shotList[sceneNumber].note,
-    parenthesis: element.parenthesis,
+    parenthetical: element.parenthetical,
     characterList: charactersByScene[sceneNumber].sort(),
     characters: chars.sort(),
     voice: element.voice,

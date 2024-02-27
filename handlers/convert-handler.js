@@ -9,7 +9,6 @@ var parseString = require('xml2js').parseString;
 const {
   writeFile,
   createDirectory,
-  getFile,
   readScriptData,
 } = require('../services/file-service');
 
@@ -112,17 +111,21 @@ const convertHandler = async (req, res) => {
       let ptr = 0;
 
       // Process each paragraph and create script elements
+      let parenthetical = '';
       paragraphs.forEach((p) => {
         if (p.$.Type === 'Scene Heading') {
           p.Text[0] = p.Text[0].toUpperCase();
           ptr++;
         }
+        if (p.$.Type === 'Parenthetical') {
+          parenthetical = p.Text[0];
+        };
         if (p.$.Type !== 'Parenthetical') {
-          const element = { num: ptr, type: p.$.Type, text: p.Text[0] };
+          const element = { num: ptr, type: p.$.Type, text: p.Text[0], parenthetical: parenthetical  };
           elements.push(element);
+          parenthetical = '';
         }
       });
-
       // Add character information to the elements
       let el = addCharacter(elements);
 
@@ -137,9 +140,9 @@ const convertHandler = async (req, res) => {
           let element = {
             character: e.character,
             dialogue: e.text,
-            parenthesis: e.parenthesis,
+            parenthetical: e.parenthetical,
             voice: '',
-            image: 'blank.jpg',
+            image: 'blank.jpg', 
             type: 'still',
           };
           script[e.num].push(element);

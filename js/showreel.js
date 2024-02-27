@@ -175,16 +175,6 @@ $('#input-note').on('focusout', (e) => {
   window.location.href = url;
 });
 
-// Update parenthesis on focus out
-$('#input-parenthesis').on('focusout', (e) => {
-  const value = e.target.value;
-  const sceneNumber = $('#sceneNumber')[0].outerText;
-  const elementNumber = $('#elementNumber')[0].innerText;
-  let url = buildUrl('update-parenthesis', sceneNumber, elementNumber, 'no');
-  url = `${url}&val=${value}&caller=showreel`;
-  window.location.href = url;
-});
-
 // Generate a single sound file
 $('.btn-gen').on('click', () => {
   const elementNumber = $('#elementNumber')[0].innerText;
