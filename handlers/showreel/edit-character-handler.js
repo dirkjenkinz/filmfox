@@ -57,7 +57,7 @@ const editCharacterHandler = async (req, res) => {
     const currentVoice = characterList.find((c) => c[0] === character)?.[1] || '';
 
     // Render the 'edit-character' template with relevant data
-    res.render('edit-character.njk', {
+    res.render('showreel/edit-character.njk', {
       character,
       title,
       elements,

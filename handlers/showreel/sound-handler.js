@@ -100,7 +100,7 @@ const soundHandler = async (req, res) => {
   });
 
   // Render the sound page with relevant data
-  res.render('sound.njk', {
+  res.render('showreel/sound.njk', {
     title,
     merged,
     script,

@@ -60,7 +60,7 @@ const slideshowHandler = async (req, res) => {
   const audioLength = await getDuration(title, fileName) * 1000;
 
   // Render the slideshow template with relevant data
-  res.render('slideshow.njk', {
+  res.render('showreel/slideshow.njk', {
     sceneNumber,
     elementNumber,
     highestElement: script[sceneNumber].length - 1,

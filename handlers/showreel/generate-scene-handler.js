@@ -31,7 +31,6 @@ const generateSceneHandler = async (req, res) => {
     start = sceneNumber;
     end = parseInt(sceneNumber) + 1;
   }
-
   // Iterate through the specified scenes and generate videos
   for (let scene = start; scene < end; scene++) {
     let sc = '0000' + scene;

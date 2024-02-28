@@ -52,14 +52,15 @@ const imgToMP4 = (sound, image, output) => {
  * @returns {Promise<void>} - Promise indicating the completion of the handler.
  */
 const createVideoHandler = async (req, res) => {
+  smartLog('info', 'ENTERING CREATE VIDEO HANDLER');
   try {
     // Extracting parameters from the request URL
     const u = url.parse(req.originalUrl, true);
     const title = u.query.title;
     const sceneNumber = u.query.sceneNumber;
-    const soundPath = path.join(__dirname, `../data/${title}/sound/sounds`);
-    const imagePath = path.join(__dirname, `../data/${title}/vision/images`);
-    const outPath = path.join(__dirname, `../data/${title}/vision/videos`);
+    const soundPath = path.join(__dirname, `../../data/${title}/sound/sounds`);
+    const imagePath = path.join(__dirname, `../../data/${title}/vision/images`);
+    const outPath = path.join(__dirname, `../../data/${title}/vision/videos`);
 
     // Retrieving script information from the film file
     const filmFoxFile = await getFile(`${title}/${title}.fff`);

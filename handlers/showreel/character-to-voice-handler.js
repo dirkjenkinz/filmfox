@@ -75,7 +75,7 @@ const characterToVoiceHandler = async (req, res) => {
   });
 
   // Render the character-to-voice template with necessary data
-  res.render('character-to-voice.njk', {
+  res.render('showreel/character-to-voice.njk', {
     title,
     characters: characterList,
     voice_data,

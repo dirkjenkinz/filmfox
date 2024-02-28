@@ -22,7 +22,7 @@ const charactersHandler = async (req, res) => {
   characterList.sort();
 
   // Render the characters template with necessary data
-  res.render('characters.njk', {
+  res.render('showreel/characters.njk', {
     title,
     characters: characterList,
     page: 'Characters',

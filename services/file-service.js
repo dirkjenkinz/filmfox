@@ -161,19 +161,15 @@ const getDuration = async (subdirectory, file) => {
 const getFileList = async (dir, suffix) => {
   smartLog('info', `get file list for ${dir} - ${suffix}`);
   const directoryPath = path.join(__dirname, `../${dir}`);
+  
   return new Promise((resolve, reject) => {
     fs.readdir(directoryPath, (err, files) => {
       if (err) {
-        smartLog('error', 'error=', 'err');
+        smartLog('error', `error= ${err}`);
         reject(err);
       } else {
-        if (suffix !== '*') {
-          const fList = [];
-          files.forEach((file) => {
-            if (file.substring(file.length - 4) === `.${suffix}`) {
-              fList.push(file);
-            }
-          });
+        if (suffix !== undefined && suffix !== null && suffix !== '*') {
+          const fList = files.filter(file => file.endsWith(`.${suffix}`));
           resolve(fList);
         } else {
           resolve(files);

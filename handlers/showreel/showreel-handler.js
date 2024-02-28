@@ -92,7 +92,7 @@ const showreelHandler = async (req, res) => {
   const slugList = script.map((s) => s[0].dialogue + '@@');
 
   // Render the showreel page with relevant data
-  res.render('showreel.njk', {
+  res.render('showreel/showreel.njk', {
     sceneNumber,
     elementNumber,
     highestElement: script[sceneNumber].length - 1,
