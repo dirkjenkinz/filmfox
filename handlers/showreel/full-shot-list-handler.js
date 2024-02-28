@@ -42,7 +42,7 @@ const fullShotListHandler = async (req, res) => {
     finish = Math.max(finish, top);
 
     // Render the 'full-shot-list' template with relevant data
-    res.render('full-shot-list.njk', {
+    res.render('paperwork/full-shot-list.njk', {
       title,
       shotList: sList.slice(top - 1, finish),
       slugList: slugList.slice(top - 1, finish),

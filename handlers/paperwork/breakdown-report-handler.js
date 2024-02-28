@@ -30,7 +30,7 @@ const breakdownReportHandler = async (req, res) => {
     if (!elementNumber) elementNumber = 0;
 
     // Rendering the 'breakdown-report' template with provided data
-    res.render('breakdown-report.njk', {
+    res.render('paperwork/breakdown-report.njk', {
       title,
       sceneNumber,
       elementNumber,

@@ -24,7 +24,7 @@ const creditsHandler = async (req, res) => {
     const { credits = { title, director: '', writer: '', producer: '' } } = filmFoxFile;
 
     // Render the 'credits' template with relevant data
-    res.render('credits.njk', {
+    res.render('paperwork/credits.njk', {
       title,
       credits,
       page: 'Credits',

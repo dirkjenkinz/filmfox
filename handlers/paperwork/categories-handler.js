@@ -68,7 +68,7 @@ const categoriesHandler = async (req, res) => {
   }
 
   // Render the categories template with necessary data
-  res.render('categories.njk', {
+  res.render('paperwork/categories.njk', {
     title,
     sceneNumber,
     elementNumber,

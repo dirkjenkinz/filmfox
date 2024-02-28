@@ -29,7 +29,7 @@ const sceneArrangerHandler = async (req, res) => {
     slugList.push(slugs[sceneNumber]);
   });
 
-  res.render('scene-arranger.njk', {
+  res.render('paperwork/scene-arranger.njk', {
     title,
     shotList: sList,
     slugList,

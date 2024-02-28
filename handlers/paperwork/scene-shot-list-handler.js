@@ -50,7 +50,7 @@ const sceneShotListHandler = async (req, res) => {
   const slug = script[sceneNumber][0].dialogue;
 
   // Render the scene shot list page with necessary data
-  res.render('scene-shot-list.njk', {
+  res.render('paperwork/scene-shot-list.njk', {
     title,
     sceneNumber,
     lines: shotList[sceneNumber].lines,

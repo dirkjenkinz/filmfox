@@ -84,7 +84,7 @@ const breakdownHandler = async (req, res) => {
     const elementNames = breakdown[sceneNumber].map(b => b[0].replace(/ /gi, '-'));
 
     // Rendering the 'breakdown' template with provided data
-    res.render('breakdown.njk', {
+    res.render('paperwork/breakdown.njk', {
       title,
       sceneNumber,
       elementNumber,

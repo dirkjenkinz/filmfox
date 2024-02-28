@@ -44,7 +44,7 @@ const sheetsHandler = async (req, res) => {
   });
 
   // Render sheets page with necessary data
-  res.render('sheets.njk', {
+  res.render('paperwork/sheets.njk', {
     title,
     shotList: sList,
     slugs: slugList,
