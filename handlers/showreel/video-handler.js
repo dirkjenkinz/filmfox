@@ -4,11 +4,6 @@ const url = require('url');
 const { smartLog } = require('../../services/smart-log');
 const { getFile, getFileList } = require('../../services/file-service');
 
-/**
- * Handles requests related to video processing.
- * @param {Object} req - The request object.
- * @param {Object} res - The response object.
- */
 const videoHandler = async (req, res) => {
   try {
     smartLog('info', 'ENTERING VIDEO HANDLER');
@@ -20,13 +15,19 @@ const videoHandler = async (req, res) => {
     let sceneNumber = u.query.sceneNumber || 0;
 
     // Retrieve filmFoxFile and script from the file
-    const filmFoxFile = await getFile(`${title}/${title}.fff`);
+    const filmFoxFile = await getFile(`${title}/${title}.fff`).catch((error) => {
+      throw new Error(`Error fetching filmFoxFile: ${error}`);
+    });
     const { script } = filmFoxFile;
 
     // Get the list of videos and scenes
-    const videoList = await getFileList(`data/${title}/vision/videos`, 'mp4');
-    const scenesList = await getFileList(`data/${title}/vision/scenes`, 'mp4');
-
+    const videoList = await getFileList(`data/${title}/vision/videos`, 'mp4').catch((error) => {
+      throw new Error(`Error fetching video list: ${error}`);
+    });
+    const scenesList = await getFileList(`data/${title}/vision/scenes`, 'mp4').catch((error) => {
+      throw new Error(`Error fetching scenes list: ${error}`);
+    });
+    
     // Check video completion status for each scene
     const completeArray = script.map((scene, sceneIndex) => {
       let complete = 'yes';
@@ -40,10 +41,12 @@ const videoHandler = async (req, res) => {
       });
       return complete;
     });
-    // Check if sound files are missing for each scene
-    let soundFiles = await getFileList(`data/${title}/sound/sounds`, 'mp3');
-    let fileNotFound = [];
 
+    // Check if sound files are missing for each scene
+    let soundFiles = await getFileList(`data/${title}/sound/sounds`, 'mp3').catch((error) => {
+      throw new Error(`Error fetching sound files: ${error}`);
+    });
+    let fileNotFound = [];
     script.forEach((scene, i) => {
       scene.forEach((element, j) => {
         const sceneNumberFormatted = `0000${i}`.slice(-4);
