@@ -67,7 +67,7 @@ const showGalleryHandler = async (req, res) => {
   });
 
   // Rendering the show-gallery page
-  res.render('show-gallery.njk', {
+  res.render('showreel/show-gallery.njk', {
     title,
     elementNumber,
     sceneNumber,

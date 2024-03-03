@@ -56,7 +56,7 @@ const galleryHandler = async (req, res) => {
     const unused = images.filter((image) => !usedImages.includes(image[0]));
 
     // Render the 'gallery' template with relevant data
-    res.render('gallery.njk', {
+    res.render('showreel/gallery.njk', {
       title,
       elementNumber,
       sceneNumber,
