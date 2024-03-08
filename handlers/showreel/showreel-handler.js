@@ -21,10 +21,10 @@ const showreelHandler = async (req, res) => {
   let mute = u.query.mute || 'MUTE';
   const msg = u.query.msg;
 
+
   // Ensure sceneNumber and elementNumber are within valid ranges
   const { script, shotList, charactersByScene, nonSpeakers, characterList } = await getFile(`${title}/${title}.fff`);
   sceneNumber = Math.max(0, Math.min(sceneNumber, script.length - 1));
-  elementNumber = Math.max(0, Math.min(elementNumber, script[sceneNumber].length - 1));
 
   // Handle decrement of elementNumber
   if (elementNumber < 0) {

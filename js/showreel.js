@@ -88,8 +88,14 @@ $('#btn-previous-scene').on('click', () => {
 
 $('#btn-previous-element').on('click', () => {
   // Move to the previous element
-  const sceneNumber = $('#sceneNumber')[0].innerText;
-  const elementNumber = parseInt($('#elementNumber')[0].innerText) - 1;
+  let sceneNumber = $('#sceneNumber')[0].innerText;
+  let elementNumber = parseInt($('#elementNumber')[0].innerText) - 1;
+ /* console.log({sceneNumber});
+  console.log({elementNumber});
+  if (elementNumber < 0){
+    elementNumber = 0;
+    sceneNumber --;
+  }; */
   const url = buildUrl('showreel', sceneNumber, elementNumber, 'yes');
   window.location.href = url;
 });
