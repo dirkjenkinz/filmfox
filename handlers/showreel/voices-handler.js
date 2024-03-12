@@ -43,7 +43,7 @@ const voicesHandler = async (req, res) => {
   vox.sort((a, b) => (a.name < b.name ? -1 : 1));
 
   // Render the voices template
-  res.render('voices.njk', {
+  res.render('showreel/voices.njk', {
     vox,
     page: 'Voices',
     caller: 'voices',
