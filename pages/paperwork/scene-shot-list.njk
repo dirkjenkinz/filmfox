@@ -80,10 +80,10 @@
           </tr>
           <!-- Displaying characters -->
           <tr>
-            <th style='background: green; text-align: right' width='10%'>
+            <th style='header-right' width='10%'>
               Characters:
             </th>
-            <td colspan='3' style='background: green; padding: 0 4px;'>
+            <td colspan='3' class='data-left'>
               {% for i in range(0, characterList.length) -%}
                 {% if i < (characterList.length - 1) %}
                   &nbsp;{{characterList[i]}}&nbsp;-

@@ -1,8 +1,9 @@
+/* General Styles */
 .container,
 .container-fluid {
   background: black;
   color: white;
-  border: darkslategrey 12px solid;
+  border: 12px solid darkslategrey;
 }
 
 table {
@@ -18,321 +19,67 @@ table {
   color: black;
 }
 
-.btn-del-add {
-  text-align: center;
-  background: black;
-  color: white;
-  font-size: 75%;
-  width: 100%;
-}
-
-.btn-prev-next {
-  text-align: center;
-  display: block;
-  width: 100%;
-  background: blue;
-  color: white;
-}
-
-.scene-box-little {
-  font-size:75%;
-}
-
-.scene-box-large {
-  font-size:100%;
-}
-
-.scene-box-large-est {
-  font-size:125%;
-}
-
-
-.selected {
-  background:red;
-}
-
-.scene-box {
-  background: slategrey;
-  color: white;
-  border: double 2px blue;
-}
-
-.table-red {
-  background: red;
-};
-
-.table-header {
-  background: skyblue;
-  color: white;
-  border: 2px solid red;
-}
-
-.table-data {
-  background: grey;
-  color: black;
-  border: 2px solid red;
-}
-
-.table-header-small {
-  background: slategrey;
-  color: white;
-  border: 2px solid red;
-  font-size: 75%p;
-}
-
-.table-data-small {
-  background: grey;
-  color: black;
-  border: 2px solid red;
-  font-size: 75%p;
-}
-
-.btn-generate {
-  display: block;
-  background: red;
-  color: white;
-  border: black 2px solid;
-  text-align: center;
-  display: block;
-  width: 100%;
-  font-size: 75%;
-}
-
-.btn-incomplete {
-  display: block;
-  background: white;
-  color: white;
-  border: black 2px solid;
-  text-align: center;
-  display: block;
-  width: 100%;
-  font-size: 75%;
-}
-
-.btn-merge {
-  display: block;
-  background: skyblue;
-  color: black;
-  border: black 2px solid;
-  text-align: center;
-  display: block;
-  width: 100%;
-  font-size: 75%;
-}
-
-.top {
-  padding: 4px 0;
-  font-size: 130%;
-  border: cornflowerblue 4px double;
-}
-
-#top-row {
-  padding-bottom: 3px;
-}
-
-.padded {
-  padding: 0 4px;
-  background: slategrey;
-}
-
-.red-row {
-  background: red;
-}
-.small-text {
-  font-size: 60%;
-}
-
-.red-box {
-  background: red;
-}
-
-.blue-box {
-  background: steelblue;
-}
-
-#piccy {
-  border: 6px solid white;
-}
-
-.show {
-  background: paleturquoise;
-  border: 4px blue solid;
-  color: black;
-  padding: 4px;
-}
-
-.show2 {
-  background: steelblue;
-  border: 4px blue solid;
-  color: black;
-  padding: 4px;
-}
-
-.display {
-  border: 4px red solid;
-}
-
-html {
-  background: #555;
-}
-
-#heading {
-  font-size: 200%;
-}
-
-.data-header {
-  text-align: right;
-  background: white;
-  padding: 0px 4px;
-  color: black;
-  font-weight: bolder;
-}
-
-.data-left {
-  text-align: left;
-  padding: 0px 4px;
-  background: black;
-  color: silver;
-}
-
-.data-right {
-  text-align: right;
-  background: black;
-  padding: 0px 4px;
-  color: white;
-}
-
-.data-central {
-  text-align: left;
-  padding: 0px 4px;
-  background: #000000;
-  color: silver;
-  font-size: 75%;
-}
-
-.data-display {
-  background: black;
-  padding: 0px 4px;
-}
-
-.data-char {
-  background: black;
-  padding: 0px 4px;
-  color: white;
-}
-
-.header-display {
-  background: slategrey;
-  padding: 0px 4px;
-}
-
-.header-line {
-  background: red;
-  font-weight: bold;
-  font-size:120%;
-  text-align: center;
-}
-
-.non-header-display {
-  background: cornflowerblue;
-  padding: 0px 4px;
-  font-weight:bold;
-}
-
-.break {
-  background: silver;
-}
-
-.h-chars {
-  background: red;
-}
-
-.voice {
-  background: black;
-  color: white;
-}
-
-#voices {
-  background: black;
-  color: white;
-}
-
-.card {
-  text-align:center;
-}
-
-.img {
-  border: 5px solid #555;
-}
-
-input[type="range"][orient="vertical"] {
-  writing-mode: bt-lr; /* IE */
-  -webkit-appearance: slider-vertical; /* WebKit */
-  width: 20px;
-  height: 600px;
-  padding: 100pxs 5px;
-}
-
-input,
-textarea {
-  background: black;
-  border: 2px white solid;
-}
-
-textarea {
-  resize: vertical;
-}
-
-.txt {
-  background: white;
-}
-
-#module-text {
-  background: blue;
-  color: red;
-  border: 6px solid black;
-  margin: 0 60px;
-}
-
-.hdr {
-  background: silver;
-  color: white;
-  font-weight: bold;
-  text-align: center;
-  font-size: 150%;
-}
-
-#list {
-  text-align: center;
-}
-
-#error-response {
-  text-align: center;
-}
-
-.chars,
-.txt {
-  color: black;
-  text-align: left;
-}
-
-#btn-front {
-  margin-top: 20px;
-}
-
-.btn-fdx-yes {
-  background: violet;
-  color: white;
-  border: black 2px solid;
-  text-align: center;
-  display: block;
-  width: 100%;
-  font-size: 75%;
-}
-
+.btn-del-add,
+.btn-prev-next,
+.btn-generate,
+.btn-incomplete,
+.btn-merge,
+.btn-control,
+.btn-add-entity,
+.btn-element,
+.btn-hide,
+.btn-add,
+.btn-del,
 .btn-compile,
 .btn-generate-scene,
-.btn-delete-shot ,
+.btn-delete-shot,
+.btn-add-shot,
+.btn-scene,
+.btn-select,
+.btn-play,
+.btn-edit-character,
+.btn-play-sample,
+.btn-next,
+.btn-previous,
+.btn-edit,
+.btn-blue {
+  display: block;
+  background: red;
+  color: white;
+  border: 2px solid black;
+  text-align: center;
+  width: 100%;
+  font-size: 75%;
+}
+
+.btn-big-red {
+  display: block;
+  background: red;
+  color: white;
+  border: 2px solid black;
+  text-align: center;
+  width: 100%;
+}
+
+.btn-blue {
+  display: block;
+  background: blue;
+  color: white;
+  border: 2px solid black;
+  text-align: center;
+  width: 100%;
+  font-size: 75%;
+}
+
+.btn-control,
+.btn-add-entity,
+.btn-element,
+.btn-hide,
+.btn-add,
+.btn-del,
+.btn-compile,
+.btn-generate-scene,
+.btn-delete-shot,
 .btn-add-shot,
 .btn-scene,
 .btn-select,
@@ -340,66 +87,76 @@ textarea {
 .btn-edit-character,
 .btn-play-sample,
 .btn-edit {
-  display: block;
-  background: red;
-  color: white;
-  border: black 2px solid;
-  text-align: center;
-  display: block;
-  width: 100%;
-  font-size: 75%;
+  margin-bottom: 2px;
 }
 
+.btn-control,
+.btn-add-entity,
+.btn-element,
+.btn-hide,
+.btn-add,
+.btn-del,
+.btn-compile,
+.btn-generate-scene,
+.btn-delete-shot,
+.btn-add-shot,
+.btn-scene,
+.btn-select,
+.btn-play,
+.btn-edit-character,
+.btn-play-sample,
+.btn-edit,
 .btn-blue {
   display: block;
-  background: grey;
-  color: white;
-  border: black 2px solid;
-  text-align: center;
-  display: block;
   width: 100%;
+}
+
+.top {
+  padding: 4px 0;
+  font-size: 130%;
+  border: 4px double cornflowerblue;
+}
+
+.scene-box-little {
   font-size: 75%;
 }
 
-.btn-side {
-  background: blue;
-  color: white;
-  border: black 2px solid;
-  margin: 2px 2px 0 0;
-  width: 94%;
+.scene-box-large {
+  font-size: 100%;
 }
 
-.btn-return {
+.scene-box-large-est {
+  font-size: 125%;
+}
+
+.selected {
   background: red;
-  margin-top: 30px;
 }
 
-.white-border {
-  padding: 2px 10px;
-  background: red;
+.scene-box {
+  background: slategrey;
   color: white;
-  border: white 4px solid;
-  text-align: center;
+  border: 2px double blue;
 }
 
-#characters {
-  background: #555;
-  color: black;
+.table-red {
+  background: red;
 }
 
-#filmTitle-head {
-  text-align: right;
+/* Table Styles */
+.table-header,
+.table-data,
+.table-header-small,
+.table-data-small {
+  background: grey;
+  color: white;
+  border: 2px solid red;
 }
 
-#summary,
-#fname {
-  background: white;
-  color: black;
-}
-
-.well {
-  background: none;
-  height: 500px;
+.table-header,
+.table-header-small {
+  background: slategrey;
+  font-size: 75%;
 }
 
 .table-scroll tbody {
@@ -418,61 +175,114 @@ textarea {
   border: none;
 }
 
-#sound-data {
-  font-size: 60%;
+.input-credit {
+  color: black;
+}
+
+#input-note {
+  color: white;
+  background: black;
+  text-align: left;
+}
+
+/* Form Styles */
+.input,
+textarea {
+  background: black;
+  color: white;
+  border: 2px solid white;
+}
+
+textarea {
+  resize: vertical;
+}
+
+/* Button Styles */
+.btn-fdx-yes {
+  background: violet;
+}
+
+.btn-return {
+  margin-top: 30px;
+  background: red;
+}
+
+.btn-side {
+  background: blue;
+  color: white;
+  border: 2px solid black;
+  margin: 2px 2px 0 0;
+  width: 94%;
+}
+
+/* Header Styles */
+#heading {
+  font-size: 200%;
+}
+
+.hdr {
+  background: silver;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  font-size: 150%;
+}
+
+.header-line {
+  background: red;
+  font-weight: bold;
+  font-size: 120%;
+  text-align: center;
+}
+
+/* Miscellaneous Styles */
+html {
+  background: #555;
+}
+
+.img {
+  border: 5px solid #555;
+}
+
+.card {
+  text-align: center;
+}
+
+.well {
+  height: 500px;
+}
+
+.voice,
+#voices {
+  background: black;
+  color: white;
 }
 
 .sep {
   background: skyblue;
 }
 
-#sub-show {
-  background: dodgerblue;
-  border: black 4px solid;
+/* Dialog Styles */
+.character,
+.dialogue {
+  text-align: center;
+  margin: 0 40px;
 }
 
-.data-page {
-  background: white;
-  color: black;
-}
-
-.shot-header {
-  background:mediumslateblue;
-}
-
-.display-box {
-  border: double white 4px;
-}
-
-.data-showreel {
-  vertical-align: top;
-  background: black;
-  color: white;
-  padding: 0 4px;
-}
-
-.shot-header-right {
-  background:mediumslateblue;
-  text-align: right;
-}
-
-.shot-select {
-  background: black;
-}
-
+/* Slider Styles */
 .slidecontainer {
   width: 100%;
 }
 
 .slider {
   -webkit-appearance: none;
+  appearance: none;
   width: 100%;
   height: 25px;
   background: #d3d3d3;
   outline: none;
   opacity: 0.7;
-  -webkit-transition: .2s;
-  transition: opacity .2s;
+  transition: opacity 0.2s;
 }
 
 .slider:hover {
@@ -493,9 +303,232 @@ textarea {
   height: 25px;
   background: #04AA6D;
   cursor: pointer;
-} 
+}
+
+/* Text Styles */
+.chars,
+.txt,
+.data-header,
+.data-display,
+.data-char,
+.header-display,
+.non-header-display,
+.break {
+  background: black;
+  color: white;
+  padding: 0 4px;
+  font-size: 80%;
+}
+
+.data-header {
+  text-align: right;
+  background: white;
+  color: black;
+  font-weight: bold;
+}
+
+.data-left {
+  text-align: left;
+  background: black;
+  color: silver;
+}
+
+.data-central {
+  text-align: center;
+  background: black;
+  color: silver;
+}
+
+.data-right {
+  text-align: right;
+  background: black;
+  color: white;
+}
+
+.data-page {
+  background: white;
+  color: black;
+}
+
+.header-display {
+  background: slategrey;
+}
+
+.non-header-display {
+  background: cornflowerblue;
+  font-weight: bold;
+}
+
+.break {
+  background: silver;
+}
+
+#module-text {
+  background: blue;
+  color: red;
+  border: 6px solid black;
+  margin: 0 60px;
+}
+
+#list,
+#error-response {
+  text-align: center;
+}
+
+#characters,
+#sound-data,
+#sub-show {
+  background: black;
+  color: white;
+}
+
+#filmTitle-head {
+  text-align: right;
+}
+
+#summary,
+#fname,
+.chars,
+.txt {
+  background: white;
+  color: black;
+}
+
+#btn-front {
+  margin-top: 20px;
+}
+
+.white-border {
+  padding: 2px 10px;
+  background: red;
+  color: white;
+  border: 4px solid white;
+  text-align: center;
+}
+
+.header-right {
+  color: white;
+  background: black;
+  text-align: right;
+}
+
+/* Shot Styles */
+.shot-header,
+.shot-header-right,
+.shot-select,
+.shot-subject,
+.shot-description,
+.display-box {
+  background: white;
+  color: black;
+}
+
+.shot-header-right {
+  text-align: right;
+}
 
 .shot-subject,
 .shot-description {
-  border: 0;
+  border: none;
+}
+
+/* Paperwork Styles */
+.paperwork-box {
+  background: lightgrey;
+  color: black;
+  border: double 4px red;
+  border-radius: 25px;
+  padding: 10px 0;
+  margin: 0 10px;
+}
+
+/* Show Styles */
+.show,
+.show2 {
+  background: steelblue;
+  color: black;
+  border: 4px solid blue;
+  padding: 4px;
+}
+
+/* Top Navigation Styles */
+.topnav {
+  background-color: #333;
+  overflow: hidden;
+  font-size: 75%;
+}
+
+.topnav p {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 4px 16px 0 16px;
+  text-decoration: none;
+}
+
+.topnav p:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav p.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+/* Table Styles */
+.tableFixHead,
+.tableFixHead2,
+.tableFixHead3 {
+  overflow-y: auto;
+  border: 12px black solid;
+}
+
+.tableFixHead thead th,
+.tableFixHead2 thead th,
+.tableFixHead3 thead th {
+  position: sticky;
+  top: 0;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td,
+th {
+  padding: 4px;
+  border: 4px solid #ccc;
+  background: black;
+}
+
+.head-display {
+  border-bottom: 5px solid black;
+  color: black;
+  background: #eee;
+}
+
+/* Box Styles */
+.box,
+.box2 {
+  overflow-y: auto;
+  padding: 0 20px;
+  color: red;
+}
+
+.box {
+  height: 220px;
+}
+
+.box2 {
+  height: 200px;
+}
+
+/* Input Range Styles */
+input[type=range][orient=vertical] {
+  appearance: slider-vertical;
+  width: 10px;
+  height: 400px;
+  padding: 0 5px;
 }

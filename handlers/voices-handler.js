@@ -1,8 +1,8 @@
 'use strict';
 
 const url = require('url');
-const { smartLog } = require('../../services/smart-log');
-const { getFile, getFileList } = require('../../services/file-service');
+const { smartLog } = require('../services/smart-log');
+const { getFile, getFileList } = require('../services/file-service');
 
 /**
  * Handles requests related to voices.
@@ -43,7 +43,7 @@ const voicesHandler = async (req, res) => {
   vox.sort((a, b) => (a.name < b.name ? -1 : 1));
 
   // Render the voices template
-  res.render('showreel/voices.njk', {
+  res.render('voices.njk', {
     vox,
     page: 'Voices',
     caller: 'voices',
