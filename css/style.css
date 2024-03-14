@@ -199,7 +199,8 @@ textarea {
 
 /* Button Styles */
 .btn-fdx-yes {
-  background: violet;
+  background: slategrey;
+  width: 100%;
 }
 
 .btn-return {
