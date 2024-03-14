@@ -4,7 +4,7 @@
   <div class='row top'>
     <p id='size' hidden='hidden'>{{size}}</p>
     <div class='col-md-2'>
-      <button class='btn btn-block btn-edit btn-sm' id='btn-hide-and-show' value='{{i}}'>Hide All</button>
+      <button class='btn btn-edit' id='btn-hide-and-show' value='{{i}}'>Hide All</button>
     </div>
   </div>
 
@@ -20,7 +20,7 @@
               <tr id='row_{{i}}' style='font-size:80%;'>
                 <!-- Button to toggle shot details visibility -->
                 <td>
-                  <button class='btn btn-block btn-edit btn-sm btn-scene' id='btn-scene-{{i}}' value='{{i}}'>
+                  <button class='btn btn-scene' id='btn-scene-{{i}}' value='{{i}}'>
                     Scene {{shotList[i].scene}}: {{slugList[i]}}
                   </button>
                 </td>

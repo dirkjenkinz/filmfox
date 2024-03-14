@@ -24,7 +24,7 @@
         <div class='col-md-2'>
           <br>
           <!-- Button for displaying voices -->
-          <button class='btn btn-block btn-edit btn-sm' id='btn-voices'>
+          <button class='btn btn-edit' id='btn-voices'>
             Voices
           </button>
           <br>
@@ -55,7 +55,7 @@
           {% for i in range(0, fffList.length) -%}
             <div class='row show'>
               <!-- Button for displaying script content -->
-              <button type='button' class='btn btn-edit btn-block btn-sm btn-fff' value='{{fffList[i]}}'>
+              <button type='button' class='btn btn-edit btn-fff' value='{{fffList[i]}}'>
                 {{fffList[i].substring(0,40)}}
               </button>
             </div>
@@ -69,7 +69,7 @@
             </div>
             <div class='col-md-7'>
               <!-- Button for adding/changing API Key in subscription details -->
-              <button class='btn btn-block btn-edit btn-sm' id='btn-api-key'>
+              <button class='btn btn-edit' id='btn-api-key'>
                 Add/Change API Key
               </button>
             </div>
@@ -170,11 +170,11 @@
             <div class='row show2'>
               <!-- Conditional button based on script conversion status -->
               {% if converted[i] === 'n' %}
-                <button type='button' class='btn btn-edit btn-block btn-sm btn-fdx' value='{{fdxList[i]}}'>
+                <button type='button' class='btn btn-edit btn-fdx' value='{{fdxList[i]}}'>
                   {{fdxList[i].substring(0,40)}}
                 </button>
               {% else %}
-                <button type='button' class='btn btn-yes btn-block btn-sm btn-fdx-yes' value='{{fdxList[i]}}'>
+                <button type='button' class='btn btn-yes btn-fdx-yes' value='{{fdxList[i]}}'>
                   {{fdxList[i].substring(0,40)}}
                 </button>
               {% endif %}

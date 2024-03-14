@@ -10,11 +10,12 @@ table {
 }
 
 .paperwork-box {
-  background: blue;
+  background: lightgrey;
   border: double 4px red;
   border-radius: 25px;
   padding: 10px 0;
   margin: 0 10px;
+  color: black;
 }
 
 .btn-navigate {
@@ -100,7 +101,7 @@ table {
 .btn-compile-scene,
 .btn-compile {
   background: red;
-  font-size: 80%;
+  font-size: 75%;
   color: black;
 }
 
@@ -108,14 +109,14 @@ table {
   background: slategrey;
   color: white;
   border: 2px solid red;
-  font-size: 80%p;
+  font-size: 75%p;
 }
 
 .table-data-small {
   background: grey;
   color: black;
   border: 2px solid red;
-  font-size: 80%p;
+  font-size: 75%p;
 }
 
 .btn-modify {
@@ -123,15 +124,36 @@ table {
 }
 
 .btn-generate {
+  display: block;
   background: red;
+  color: white;
+  border: black 2px solid;
+  text-align: center;
+  display: block;
+  width: 100%;
+  font-size: 75%;
 }
 
 .btn-incomplete {
+  display: block;
   background: white;
+  color: white;
+  border: black 2px solid;
+  text-align: center;
+  display: block;
+  width: 100%;
+  font-size: 75%;
 }
 
 .btn-merge {
+  display: block;
   background: skyblue;
+  color: black;
+  border: black 2px solid;
+  text-align: center;
+  display: block;
+  width: 100%;
+  font-size: 75%;
 }
 
 .top {
@@ -344,6 +366,7 @@ textarea {
   font-size: 75%;
 }
 
+.btn-scene,
 .btn-edit {
   display: block;
   background: red;

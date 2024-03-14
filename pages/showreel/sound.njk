@@ -1,7 +1,7 @@
 {% extends "showreel/parent.njk" %}
 {% block page %}
   <div class='row show'>
-    <div class='col-md-10 tableFixHead' id='col-uncompiled' hidden="hidden">
+    <div class='col-md-12 tableFixHead' id='col-uncompiled' hidden="hidden">
       <table class='table-bordered table-sm table-dark table-grid' id='tab-uncompiled'>
         <tbody>
           {% for i in range(0, uncompiledList.length) -%}
@@ -23,22 +23,6 @@
         </tbody>
       </table>
     </div>
-    <div class='col-md-2 tableFixHead' id='col-incomplete' hidden="hidden">
-      <table class='table-bordered table-sm table-dark table-grid' id='tab-incomplete'>
-        <tbody>
-          {% for i in range(0, incomplete.length) -%}
-            <tr style='font-size: 80%'>
-              <td>
-                <button type='button' class='btn btn-block btn-sm btn-compile-scene' value='{{ incomplete[i] }}'>
-                  Compile Scene
-                  {{ incomplete[i] }}
-                </button>
-              </td>
-            </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-    </div>
   </div>
   <div class='row show'>
     <p id='size' hidden="hidden">{{ size }}</p>
@@ -48,17 +32,17 @@
           <tr style='font-size: 80%'>
             <td class='table-data'>
               {% if readyForMaster === 'yes' %}
-                <button type='button' class='btn btn-edit btn-block btn-sm' id='btn-master'>Create/Update Master</button>
+                <button type='button' class='btn btn-edit' id='btn-master'>Create/Update Master</button>
               {% else %}
-                <button type='button' class='btn btn-edit btn-block btn-sm' disabled="disabled">Create/Update Master</button>
+                <button type='button' class='btn btn-edit' disabled="disabled">Create/Update Master</button>
               {% endif %}
             </td>
             <td>&nbsp;</td>
             <td class='table-data' colspan='2'>
               {% if masterExists == 'yes' %}
-                <button type='button' class='btn btn-edit btn-block btn-sm' id='btn-play-master'>Play Master</button>
+                <button type='button' class='btn btn-edit' id='btn-play-master'>Play Master</button>
               {% else %}
-                <button type='button' class='btn btn-edit btn-block btn-sm' id='btn-play-master' disabled="disabled">Play Master</button>
+                <button type='button' class='btn btn-edit' id='btn-play-master' disabled="disabled">Play Master</button>
               {% endif %}
             </td>
             <td colspan='2'>&nbsp;&nbsp;&nbsp;&nbsp;</td>
@@ -102,7 +86,7 @@
                           {{ i + num }}</button>
                       {% endif %}
                     {% else %}
-                      <button type='button' class='btn btn-edit btn-block btn-sm btn-play' id="play_{{ i + num }}" value='{{ i + num }}'>
+                      <button type='button' class='btn btn-edit btn-play' id="play_{{ i + num }}" value='{{ i + num }}'>
                         Play Scene
                         {{ i + num }}
                       </button>
