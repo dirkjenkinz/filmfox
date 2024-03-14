@@ -30,17 +30,17 @@
                   </td>
                   <td class='blue-box'>
                     {% if completeArray[current] === 'no' %}
-                      <button class='btn-block btn-sm btn-edit btn-generate-elements' value="{{ current }}" id='btn-generate-elements-{{ current }}'>Generate elements</button>
+                      <button class='btn-edit btn-generate-elements' value="{{ current }}" id='btn-generate-elements-{{ current }}'>Generate elements</button>
                     {% else %}
-                      <button class='btn-block btn-sm btn-blue btn-generate-elements' value="{{ current }}" id='btn-generate-elements-{{ current }}'>Refresh elements</button>
+                      <button class='btn-blue btn-generate-elements' value="{{ current }}" id='btn-generate-elements-{{ current }}'>Refresh elements</button>
                     {% endif %}
                   </td>
                   <td class='blue-box'>
                     {% if completeArray[current] === 'yes' %}
                       {% if exists[current] === 'no' %}
-                        <button class='btn-block btn-sm btn-edit btn-generate-scene' value="{{ current }}" id='btn-generate-scene-{{ current }}'>Generate scene</button>
+                        <button class='btn-edit btn-generate-scene' value="{{ current }}" id='btn-generate-scene-{{ current }}'>Generate scene</button>
                       {% else %}
-                        <button class='btn-block btn-sm btn-prevnext btn-generate-scene' value="{{ current }}" id='btn-generate-scene-{{ current }}'>Overwrite scene</button>
+                        <button class='btn-prev-next btn-generate-scene' value="{{ current }}" id='btn-generate-scene-{{ current }}'>Overwrite scene</button>
                       {% endif %}
                     {% endif %}
                   </td>

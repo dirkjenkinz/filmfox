@@ -18,30 +18,7 @@ table {
   color: black;
 }
 
-.btn-navigate {
-  background: green;
-  font-size: 75%;
-  display: block;
-  width: 100%;
-  text-align: center;
-}
-
-.btn-remove-tag,
-.btn-element {
-  text-align: center;
-  color: white;
-  font-size: 100%;
-  width: 100%;
-}
-
-.btn-delete-shot ,
-.btn-add-shot {
-  background: red;
-  display: block;
-  width: 100%;
-}
-
-.btn-deladd {
+.btn-del-add {
   text-align: center;
   background: black;
   color: white;
@@ -49,7 +26,7 @@ table {
   width: 100%;
 }
 
-.btn-prevnext {
+.btn-prev-next {
   text-align: center;
   display: block;
   width: 100%;
@@ -96,13 +73,6 @@ table {
   border: 2px solid red;
 }
 
-.btn-compile-scene,
-.btn-compile {
-  background: red;
-  font-size: 75%;
-  color: black;
-}
-
 .table-header-small {
   background: slategrey;
   color: white;
@@ -115,10 +85,6 @@ table {
   color: black;
   border: 2px solid red;
   font-size: 75%p;
-}
-
-.btn-modify {
-  background: darkcyan;
 }
 
 .btn-generate {
@@ -364,6 +330,10 @@ textarea {
   font-size: 75%;
 }
 
+.btn-compile,
+.btn-generate-scene,
+.btn-delete-shot ,
+.btn-add-shot,
 .btn-scene,
 .btn-select,
 .btn-play,

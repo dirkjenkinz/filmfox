@@ -34,7 +34,7 @@
 <!-- Character controls -->
 <div class='row top' style='font-size:75%;'>
   <div class="col-md-2">
-    <button type='button' class='btn-sm btn-prevnext' id='btn-add-character'>
+    <button type='button' class='btn-sm btn-prev-next' id='btn-add-character'>
       Add Character
     </button>
   </div>
@@ -51,7 +51,7 @@
     {% endfor %}
   </div>
   <div class='col-md-2'>
-    <button type='button' class='btn-sm btn-prevnext' id='btn-delete-character'>
+    <button type='button' class='btn-sm btn-prev-next' id='btn-delete-character'>
       Delete Character
     </button>
   </div>
@@ -70,7 +70,7 @@
             {% for num in range(0, 6) -%}
               <td style='width: 15%;'>
                 {% if characters[i + num] %}
-                  <button type='button' class='btn-sm btn-deladd btn-add-char' value="{{characters[i+num]}}">
+                  <button type='button' class='btn-del-add btn-add-char' value="{{characters[i+num]}}">
                     {{characters[i + num]}}
                   </button>
                 {% endif %}
@@ -88,7 +88,7 @@
               <td style='width: 15%;'>
                 {% if characterList[i + num] %}
                   {% if characterList[i + num] !== 'NARRATOR' %}
-                    <button type='button' class='btn-sm btn-deladd btn-delete-char' value="{{characterList[i+num]}}">
+                    <button type='button' class='btn-del-add btn-delete-char' value="{{characterList[i+num]}}">
                       {{characterList[i + num]}}
                     </button>
                   {% endif %}
@@ -124,33 +124,33 @@
         <td style='color: white; text-align:center;'>{{element.image.slice(0,60)}}</td>
         <td>
           {% if sceneNumber > 0 %}
-            <button type='button' class='btn-prevnext btn-sm' id='btn-previous-element'>
+            <button type='button' class='btn-prev-next btn-sm' id='btn-previous-element'>
               Previous Element
             </button>
           {% else %}
-            <button type='button' class='btn-prevnext btn-sm' id='btn-previous-element' disabled="disabled">
+            <button type='button' class='btn-prev-next btn-sm' id='btn-previous-element' disabled="disabled">
               Previous Element
             </button>
           {% endif %}
         </td>
         <td>
-          <button type='button' class='btn-prevnext btn-sm' id='btn-next-element'>
+          <button type='button' class='btn-prev-next btn-sm' id='btn-next-element'>
             Next Element
           </button>
         </td>
         <td>
           {% if audio %}
-            <button type='button' class='btn-prevnext btn-small btn-del' id='del_{{elementNumber}}' value='{{element.sound}}'>
+            <button type='button' class='btn-prev-next btn-small btn-del' id='del_{{elementNumber}}' value='{{element.sound}}'>
               Delete
               {{element.sound}}
             </button>
           {% else %}
             {% if element.voice %}
-              <button type='button' class='btn-prevnext btn-small btn-gen' id='gen_{{elementNumber}}'>
+              <button type='button' class='btn-prev-next btn-small btn-gen' id='gen_{{elementNumber}}'>
                 Generate
               </button>
             {% else %}
-              <button type='button' class='btn-prevnext btn-small' disabled="disabled">
+              <button type='button' class='btn-prev-next btn-small' disabled="disabled">
                 &nbsp;
               </button>
             {% endif %}
@@ -218,34 +218,34 @@
       <!-- Buttons for scene navigation and muting -->
       <tr>
         <td>
-          <button type='button' class='btn-prevnext btn-sm btn-change' id='change_{{i}}' value='{{i}}'>
+          <button type='button' class='btn-prev-next btn-sm btn-change' id='change_{{i}}' value='{{i}}'>
             Change Image
           </button>
         </td>
         <td>
           {% if sceneNumber > 0 %}
-            <button type='button' class='btn-prevnext btn-sm' id='btn-previous-scene'>
+            <button type='button' class='btn-prev-next btn-sm' id='btn-previous-scene'>
               Previous Scene
             </button>
           {% else %}
-            <button type='button' class='btn-prevnext btn-sm' id='btn-previous-scene' disabled="disabled">
+            <button type='button' class='btn-prev-next btn-sm' id='btn-previous-scene' disabled="disabled">
               Previous Scene
             </button>
           {% endif %}
         </td>
         <td>
           {% if sceneNumber < highestScene %}
-            <button type='button' class='btn-prevnext btn-sm' id='btn-next-scene'>
+            <button type='button' class='btn-prev-next btn-sm' id='btn-next-scene'>
               Next Scene
             </button>
           {% else %}
-            <button type='button' class='btn-prevnext btn-sm' id='btn-next-scene' disabled="disabled">
+            <button type='button' class='btn-prev-next btn-sm' id='btn-next-scene' disabled="disabled">
               Next Scene
             </button>
           {% endif %}
         </td>
         <td>
-          <button type='button' class='btn-prevnext btn-sm' id='btn-mute'>
+          <button type='button' class='btn-prev-next btn-sm' id='btn-mute'>
             {{mute}}
           </button>
         </td>

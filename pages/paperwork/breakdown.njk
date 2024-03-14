@@ -4,7 +4,7 @@
     <p id='categories' hidden='hidden'>{{categories}}</p>
     <p id='hidden' hidden='hidden'>{{hidden}}</p>
     <div class='col-md-2'>
-      <button type='button' class='btn-prevnext btn-sm' id='btn-first-scene' 
+      <button type='button' class='btn-prev-next btn-sm' id='btn-first-scene' 
       {% if sceneNumber <= 0 %} disabled="disabled" {% endif %}>
         First Scene
       </button>
@@ -12,11 +12,11 @@
     </div>
     <div class='col-md-2'>
       {% if sceneNumber > 0 %}
-        <button type='button' class='btn-prevnext btn-sm' id='btn-previous-scene'>
+        <button type='button' class='btn-prev-next btn-sm' id='btn-previous-scene'>
           Previous Scene
         </button>
       {% else %}
-        <button type='button' class='btn-prevnext btn-sm' id='btn-previous-scene' disabled='disabled'>
+        <button type='button' class='btn-prev-next btn-sm' id='btn-previous-scene' disabled='disabled'>
           Previous Scene
         </button>
       {% endif %}
@@ -29,29 +29,29 @@
 
     <div class='col-md-2'>
       {% if sceneNumber < highestScene %}
-        <button type='button' class='btn-prevnext btn-sm' id='btn-next-scene'>
+        <button type='button' class='btn-prev-next btn-sm' id='btn-next-scene'>
           Next Scene
         </button>
       {%else %}
-        <button type='button' class='btn-prevnext btn-sm' id='btn-next-scene' disabled='disabled'>
+        <button type='button' class='btn-prev-next btn-sm' id='btn-next-scene' disabled='disabled'>
           Next Scene
         </button>
       {% endif %}
     </div>
     <div class='col-md-2'>
       {% if sceneNumber < highestScene %}
-        <button type='button' class='btn-prevnext btn-sm' id='btn-last-scene'>
+        <button type='button' class='btn-prev-next btn-sm' id='btn-last-scene'>
           Last Scene
         </button>
       {% else %}
-        <button type='button' class='btn-prevnext btn-sm' id='btn-last-scene' disabled='disabled'>
+        <button type='button' class='btn-prev-next btn-sm' id='btn-last-scene' disabled='disabled'>
           Last Scene
         </button>
       {% endif %}
     </div>
     <div class='col-md-2'>&nbsp;</div>
     <div class='col-md-1'>
-      <button type='button' class='btn-prevnext btn-sm' id='btn-report'>
+      <button type='button' class='btn-prev-next btn-sm' id='btn-report'>
         Report
       </button>
     </div>

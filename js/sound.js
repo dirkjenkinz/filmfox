@@ -23,13 +23,6 @@ $('.btn-play').on('click', (e) => {
   document.getElementById('master-play').play();
 });
 
-// Event handler for compiling a scene
-$('.btn-compile-scene').on('click', (e) => {
-  const title = $('#filmTitle')[0].innerText;
-  const sceneNumber = e.target.value;
-  window.location.href = `/compile-scene?title=${title}&sceneNumber=${sceneNumber}&elementNumber=0`;
-});
-
 // Event handler for generating a single sound
 $('.btn-compile').on('click', (e) => {
   const elements = e.target.value.split(',');
