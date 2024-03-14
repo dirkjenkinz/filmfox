@@ -26,11 +26,11 @@
                   <!-- Delete button -->
                   <td class='data-left'>
                     {% if images[i + num][2] === 'no' %}
-                      <button type='button' class='btn btn-edit btn-block btn-sm btn-delete' id='btn-delete-{{i + num}}' value='{{images[i + num][0]}}'>
+                      <button type='button' class='btn-delete' id='btn-delete-{{i + num}}' value='{{images[i + num][0]}}'>
                         Delete
                       </button>
                     {% else %}
-                      <button type='button' disabled='disabled' class='btn btn-edit btn-block btn-sm btn-delete' id='btn-delete-{{i + num}}' value='{{images[i + num][0]}}'>
+                      <button type='button' disabled='disabled' class='btn-delete' id='btn-delete-{{i + num}}' value='{{images[i + num][0]}}'>
                         &nbsp;
                       </button>
                     {% endif %}
@@ -63,7 +63,7 @@
                 {% if images[i + num][0] %}
                   <!-- Rename button and input -->
                   <td>
-                    <button type='button' class='btn btn-edit btn-sm btn-rename' id='btn-rename-{{i + num}}' value='{{images[i + num][0]}}'>
+                    <button type='button' class='btn-rename' id='btn-rename-{{i + num}}' value='{{images[i + num][0]}}'>
                       Rename
                     </button>
                   </td>
