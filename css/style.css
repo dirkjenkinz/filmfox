@@ -365,6 +365,9 @@ textarea {
 }
 
 .btn-scene,
+.btn-select,
+.btn-play,
+.btn-play-sample,
 .btn-edit {
   display: block;
   background: red;

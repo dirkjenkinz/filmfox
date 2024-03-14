@@ -26,7 +26,7 @@
     <div class="col-md-3"></div>
     <div class="col-md-3">
       <!-- Button to return to the front page -->
-      <button class="btn btn-block btn-edit btn-sm" id="btn-front">
+      <button class="btn-edit" id="btn-front">
         Return to Front Page
       </button>
     </div>
@@ -58,10 +58,10 @@
               <td class="data-left">
                 {% if vox[i].generated == 'yes' %}
                   <!-- Play Sample button for generated entries -->
-                  <button type="button" class="btn btn-edit btn-block btn-sm btn-play-sample" value="{{ vox[i].id }}" id="btn-get-sample-ids_{{ i }}">Play Sample</button>
+                  <button type="button" class="btn-edit btn-block btn-sm btn-play-sample" value="{{ vox[i].id }}" id="btn-get-sample-ids_{{ i }}">Play Sample</button>
                 {% else %}
                   <!-- Get Sample button for non-generated entries -->
-                  <button type="button" class="btn btn-edit btn-block btn-sm btn-get-sample" value="{{ vox[i].id }}" id="btn-get-sample-ids_{{ i }}">Get Sample</button>
+                  <button type="button" class="btn-edit btn-block btn-sm btn-get-sample" value="{{ vox[i].id }}" id="btn-get-sample-ids_{{ i }}">Get Sample</button>
                 {% endif %}
               </td>
             </tr>

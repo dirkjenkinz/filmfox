@@ -7,7 +7,7 @@
       Search
     </div>
     <div class='col-md-4' style='margin-top: 4px;'>
-      <button type='button' class='btn btn-prevnext btn-block btn-sm btn-cancel'>Cancel & Go Back</button>
+      <button type='button' class='btn-prevnext btn-block btn-sm btn-cancel'>Cancel & Go Back</button>
     </div>
   </div>
 
@@ -50,10 +50,10 @@
               {% for num in range(0, 2) -%}
                 {% if unused[i + num][0] %}
                   <td class='data-left' id='unused-sel-{{i + num}}'>
-                    <button type='button' class='btn btn-edit btn-block btn-sm btn-select' id='btn-unused-{{i + num}}' value='{{unused[i + num][0]}}'>
+                    <button type='button' class='btn-select' id='btn-unused-{{i + num}}' value='{{unused[i + num][0]}}'>
                       Select
                     </button>
-                    <p style='font-size: 60%;'>
+                    <p>
                       {{unused[i + num][0].substring(0,28)}}
                     </p>
                   </td>
@@ -91,10 +91,10 @@
               {% for num in range(0, 2) -%}
                 {% if used[i + num][0] %}
                   <td class='data-left' id='used-sel-{{i + num}}'>
-                    <button type='button' class='btn btn-edit btn-block btn-sm btn-select' id='btn-used-{{i + num}}' value='{{used[i + num][0]}}'>
+                    <button type='button' class='btn-select' id='btn-used-{{i + num}}' value='{{used[i + num][0]}}'>
                       Select
                     </button>
-                    <p style='font-size: 60%;'>
+                    <p>
                       {{used[i + num][0].substring(0,28)}}
                     </p>
                   </td>

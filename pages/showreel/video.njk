@@ -5,14 +5,14 @@
   <div class='row top'>
     <div class='col-md-4'>
       {% if ready === 'yes' %}
-        <button class='btn btn-edit' id='btn-concatenate-video'>Create Master</button>
+        <button class='btn-edit' id='btn-concatenate-video'>Create Master</button>
       {% else %}
-        <button class='btn btn-edit' id='btn-concatenate-video' disabled="disabled">Create Master</button>
+        <button class='btn-edit' id='btn-concatenate-video' disabled="disabled">Create Master</button>
       {% endif %}
     </div>
 
     <div class='col-md-4'>
-      <button class='btn btn-edit' id='btn-generate-all'>Generate/Overwrite All Scenes</button>
+      <button class='btn-edit' id='btn-generate-all'>Generate/Overwrite All Scenes</button>
     </div>
   </div>
 
@@ -30,17 +30,17 @@
                   </td>
                   <td class='blue-box'>
                     {% if completeArray[current] === 'no' %}
-                      <button class='btn btn-block btn-sm btn-edit btn-generate-elements' value="{{ current }}" id='btn-generate-elements-{{ current }}'>Generate elements</button>
+                      <button class='btn-block btn-sm btn-edit btn-generate-elements' value="{{ current }}" id='btn-generate-elements-{{ current }}'>Generate elements</button>
                     {% else %}
-                      <button class='btn btn-block btn-sm btn-blue btn-generate-elements' value="{{ current }}" id='btn-generate-elements-{{ current }}'>Refresh elements</button>
+                      <button class='btn-block btn-sm btn-blue btn-generate-elements' value="{{ current }}" id='btn-generate-elements-{{ current }}'>Refresh elements</button>
                     {% endif %}
                   </td>
                   <td class='blue-box'>
                     {% if completeArray[current] === 'yes' %}
                       {% if exists[current] === 'no' %}
-                        <button class='btn btn-block btn-sm btn-edit btn-generate-scene' value="{{ current }}" id='btn-generate-scene-{{ current }}'>Generate scene</button>
+                        <button class='btn-block btn-sm btn-edit btn-generate-scene' value="{{ current }}" id='btn-generate-scene-{{ current }}'>Generate scene</button>
                       {% else %}
-                        <button class='btn btn-block btn-sm btn-prevnext btn-generate-scene' value="{{ current }}" id='btn-generate-scene-{{ current }}'>Overwrite scene</button>
+                        <button class='btn-block btn-sm btn-prevnext btn-generate-scene' value="{{ current }}" id='btn-generate-scene-{{ current }}'>Overwrite scene</button>
                       {% endif %}
                     {% endif %}
                   </td>

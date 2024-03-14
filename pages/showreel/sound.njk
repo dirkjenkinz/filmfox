@@ -5,13 +5,13 @@
       <table class='table-bordered table-sm table-dark table-grid' id='tab-uncompiled'>
         <tbody>
           {% for i in range(0, uncompiledList.length) -%}
-            <tr style='font-size: 80%'>
+            <tr>
               <td class='data-left'>{{ uncompiledList[i][0] }}.{{ uncompiledList[i][1] }}</td>
               <td class='data-left'>{{ uncompiledList[i][2] }}</td>
               <td class='data-left'>{{ uncompiledList[i][3] }}</td>
               <td>
                 {% if uncompiledList[i][3] !== '' %}
-                  <button type='button' class='btn btn-block btn-sm btn-compile' value='{{ uncompiledList[i] }}' id='btn-compile-{{ i }}'>
+                  <button type='button' class='btn-compile' value='{{ uncompiledList[i] }}' id='btn-compile-{{ i }}'>
                     Compile
                   </button>
                 {% else %}
@@ -29,20 +29,20 @@
     <div class='col-md-12' id='col-banner'>
       <table class='table-bordered table-sm table-dark table-grid' id='tab_scenes'>
         <tbody>
-          <tr style='font-size: 80%'>
+          <tr>
             <td class='table-data'>
               {% if readyForMaster === 'yes' %}
-                <button type='button' class='btn btn-edit' id='btn-master'>Create/Update Master</button>
+                <button type='button' class='btn-edit' id='btn-master'>Create/Update Master</button>
               {% else %}
-                <button type='button' class='btn btn-edit' disabled="disabled">Create/Update Master</button>
+                <button type='button' class='btn-edit' disabled="disabled">Create/Update Master</button>
               {% endif %}
             </td>
             <td>&nbsp;</td>
             <td class='table-data' colspan='2'>
               {% if masterExists == 'yes' %}
-                <button type='button' class='btn btn-edit' id='btn-play-master'>Play Master</button>
+                <button type='button' class='btn-edit' id='btn-play-master'>Play Master</button>
               {% else %}
-                <button type='button' class='btn btn-edit' id='btn-play-master' disabled="disabled">Play Master</button>
+                <button type='button' class='btn-edit' id='btn-play-master' disabled="disabled">Play Master</button>
               {% endif %}
             </td>
             <td colspan='2'>&nbsp;&nbsp;&nbsp;&nbsp;</td>
@@ -54,11 +54,11 @@
             </td>
             <td>
               {% if uncompiledList.length > 0 %}
-                <button type='button' class='btn btn-edit' id='btn-show-uncompiled'>
+                <button type='button' class='btn-edit' id='btn-show-uncompiled'>
                   Uncompiled Elements
                 </button>
               {% else %}
-                <button type='button' class='btn btn-edit' disabled="disabled">
+                <button type='button' class='btn-edit' disabled="disabled">
                   Uncompiled Elements
                 </button>
               {% endif %}
@@ -71,7 +71,7 @@
   <div class='row'>
     <div class='col-md-12' id='col-scenes'>
       <table class='table-bordered table-sm table-dark table-grid' id='tab_img'>
-        <tbody style='font-size: 80%;'>
+        <tbody>
           {% for i in range(0, script.length, 8) -%}
             <tr>
               {% for num in range(0, 8) -%}
@@ -79,14 +79,14 @@
                   <td class='table-data'>
                     {% if merged[i + num] != 'yes' %}
                       {% if readyList[i + num] === 'yes' %}
-                        <button type='button' class='btn btn-block btn-sm btn-merge' id='btn-merge_{{ i + num }}' value='{{ i + num }}'>Merge Scene
+                        <button type='button' class='btn-merge' id='btn-merge_{{ i + num }}' value='{{ i + num }}'>Merge Scene
                           {{ i + num }}</button>
                       {% else %}
-                        <button type='button' class='btn btn-block btn-sm btn-incomplete' disabled="disabled">Incomplete - Scene
+                        <button type='button' class='btn-incomplete' disabled="disabled">Incomplete - Scene
                           {{ i + num }}</button>
                       {% endif %}
                     {% else %}
-                      <button type='button' class='btn btn-edit btn-play' id="play_{{ i + num }}" value='{{ i + num }}'>
+                      <button type='button' class='btn-play' id="play_{{ i + num }}" value='{{ i + num }}'>
                         Play Scene
                         {{ i + num }}
                       </button>
