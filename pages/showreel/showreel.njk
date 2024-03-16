@@ -8,7 +8,7 @@
     <p id='highestElement' hidden="hidden">{{highestElement}}</p>
     <!-- This loop variable 'i' should be within a loop context. Assuming it is supposed to be inside a loop. -->
     <p id='type_{{i}}' hidden="hidden">{{element.type}}</p>
-    <div class="col-md-12" id='message' hidden="hidden" style='background:red; text-align: center;'>
+    <div class="col-md-12" id='message' hidden="hidden" style='background:white; text-align: center;'>
       <br><br><br>
       <h1>Processing... Please wait.</h1>
       <br><br><br>
@@ -159,8 +159,8 @@
       </tr>
 
       <!-- Showreel content -->
-      <tr style='border: red 4px solid;'>
-        <td class='data-showreel' id='image_{{i}}' style='width: 36%; border: red 4px solid;'>
+      <tr style='border: white 4px solid;'>
+        <td class='data-showreel' id='image_{{i}}' style='width: 36%; border: white 4px solid;'>
           {% if element.type === 'movie' %}
             <video width='432' height='243' controls='controls' autoplay='autoplay' id='iamge_{{i}}' class='iamge' muted='muted'>
               <source src='../data/{{title}}/vision/images/{{element.image}}' type='video/mp4'>
@@ -173,8 +173,8 @@
         </td>
 
         <!-- Showreel character/dialogue content -->
-        <td class='data-showreel' style='width: 50%; padding: 4px; border : red 4px solid;' colspan='2'>
-          <div class="box" style='font-size: 125%;'>
+        <td class='data-showreel' style='width: 50%; padding: 4px; border : white 4px solid;' colspan='2'>
+          <div class="box" style='font-size: 125%; color: white;'>
             {% if element.character === 'NARRATOR'%}
               <p style='text-align: center; font-weight: bold;'></p>
               <p>{{element.dialogue}}</p>
@@ -189,27 +189,15 @@
         </td>
 
         <!-- Showreel audio content -->
-        <td>
+        <td class='fox-speaker'>
           {% if element.sound %}
-            {% if mute == 'MUTE' %}
-              <audio id='master-play' controls="controls" style='width: 100%;'>
-                <source src="{{audio}}" type="audio/ogg">
-                <source src="{{audio}}" type="audio/mpeg">
-                Your browser does not support the audio tag.
-              </audio>
-            {% else %}
-              <audio id='master-play' controls="controls" style='width: 100%;' muted="muted">
-                <source src="{{audio}}" type="audio/ogg">
-                <source src="{{audio}}" type="audio/mpeg">
-                Your browser does not support the audio tag.
-              </audio>
-            {% endif %}
+            <div id="master-play" style="width: 100%;"></div>
           {% elseif msg === 'Failed'%}
             <h5 class='data-showreel' style='text-align: center;'>Sound generation failed</h5>
           {% else %}
             <h5 class='data-showreel' style='text-align: center;'>NO SOUND</h5>
           {% endif %}
-          <p style='text-align: center; font-weight: bold; color:white;'>{{element.voice}}</p>
+          <p style='text-align: center; font-size: 150%; font-weight: bold; color:white;'>{{element.voice}}</p>
           <br><br>
         </td>
       </tr>
@@ -253,9 +241,43 @@
     </table>
   </div>
 </div>
-</div>
 
 <!-- Include scripts -->
+<script>
+  $(document).ready(function() {
+    // Create a new Howler.js sound instance
+    var sound = new Howl({
+      src: ['{{audio}}'],
+      html5: true,
+      format: ['ogg', 'mp3'],
+      autoplay: true, // Autoplay enabled
+      mute: {% if mute == 'MUTE' %} false {% else %} true {% endif %}
+    });
+
+    // Append the audio controls to the master-play div
+    $('#master-play').append(`
+      <button class='btn-big-red' id="play-pause">Play/Pause</button>
+      <br>
+      <button class='btn-big-red' id="mute-unmute">{{mute}}</button>
+      <br>
+    `);
+
+    // Play/Pause button functionality
+    $('#play-pause').click(function() {
+      if (sound.playing()) {
+        sound.pause();
+      } else {
+        sound.play();
+      }
+    });
+
+    // Mute/Unmute button functionality
+    $('#mute-unmute').click(function() {
+      sound.mute(!sound.mute());
+      $(this).text(sound.mute() ? 'UNMUTE' : 'MUTE');
+    });
+  });
+</script>
 <script src='../js/parent.js'></script>
 <script src='../js/showreel.js'></script>
 {% endblock %}

@@ -193,6 +193,11 @@ textarea {
   border: 2px solid white;
 }
 
+#input-api-key {
+  background: black;
+  color: white;
+}
+
 textarea {
   resize: vertical;
 }
@@ -511,10 +516,16 @@ th {
 }
 
 /* Box Styles */
+.showreel-box,
 .box,
 .box2 {
   overflow-y: auto;
   padding: 0 20px;
+  color: red;
+}
+
+.showreel-box {
+  height: 400px;
   color: red;
 }
 
@@ -532,4 +543,10 @@ input[type=range][orient=vertical] {
   width: 10px;
   height: 400px;
   padding: 0 5px;
+}
+
+.fox-speaker {
+  background-image: url('../images/speaker.jpg');
+  background-size: cover; /* Adjusts the size of the background image to cover the entire element */
+  background-position: center; /* Positions the background image at the center of the element */
 }
