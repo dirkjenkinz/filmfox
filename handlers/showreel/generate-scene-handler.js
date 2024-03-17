@@ -40,12 +40,10 @@ const generateSceneHandler = async (req, res) => {
     }
     // Iterate through the specified scenes and generate videos
     for (let scene = start; scene < end; scene++) {   
-      console.log('>>>>', scene);
       try {
         let sc = '0000' + scene;
         sc = sc.substring(sc.length - 4);
         const videoList = [];
-console.log({sc})
         // Build a list of video clips for the scene
         for (let element = 0; element < script[scene].length; element++) {
           let el = '0000' + element;
@@ -59,7 +57,6 @@ console.log({sc})
 
         // Define the output file path for the scene
         const outputFile = `${scenesPath}/${sc}.mp4`;
-console.log(scenesPath);
         // Use video-stitch library to concatenate video clips and generate the scene
         await videoConcat({
           silent: true,

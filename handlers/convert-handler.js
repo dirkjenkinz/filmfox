@@ -121,7 +121,6 @@ const convertHandler = async (req, res) => {
           parenthetical = p.Text[0];
           parenthetical = parenthetical.substring(1);
           parenthetical = parenthetical.substring(0, parenthetical.length - 1);
-          console.log({parenthetical});
         };
         if (p.$.Type !== 'Parenthetical') {
           const element = { num: ptr, type: p.$.Type, text: p.Text[0], parenthetical: parenthetical  };
