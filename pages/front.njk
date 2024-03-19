@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
   <head>
     <!-- Metadata for character encoding, compatibility, and viewport settings -->
-    <meta charset="UTF-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset='UTF-8'/>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'/>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
     <title>Film Fox Front Page</title>
     <!-- Link to custom styles and Bootstrap CSS -->
-    <link rel="stylesheet" href="../css/style.css"/>
+    <link rel='stylesheet' href='../css/style.css'/>
     <link rel='stylesheet' href='../css/bootstrap.min.css'/>
+    <link rel='stylesheet' href='../css/toggle.css'/>
     <!-- Include jQuery and Bootstrap JavaScript libraries -->
     <script src='../js/jquery-3.7.1.min.js'></script>
     <script src='..js/bootstrap.min.js'></script>
@@ -18,25 +19,40 @@
     <div class='container-fluid'>
       <!-- Header row with Film Fox logo and Voices button -->
       <div class='row'>
-        <div class='col-md-10'>
+        <div class='col-md-8'>
           <img src='../images/film_fox_logo.jpg' alt='Film Fox Logo' width='160' height='80' style='margin-top:14px;'>
         </div>
         <div class='col-md-2'>
           <br>
           <!-- Button for displaying voices -->
           <button class='btn-big-red' id='btn-voices'>
-            Voices
+            Available Voices
           </button>
           <br>
+        </div>
+        <div class='col-md-2'>
+          <br>
+          <label class='switch'>
+            <input type='checkbox' id='full-log' value='0'>
+            <span class='slider round'></span>
+          </label>
+          Full log
+          <br>
+          <label class='switch'>
+            <input type='checkbox' id='hard-log' value='0'>
+            <span class='slider round'></span>
+          </label>
+          Hard log
         </div>
       </div>
       <!-- API Key update row with input field and button -->
       <div class='row' id='api-update' style='background: blue;'>
+        <br>
         <div class='col-md-1'></div>
         <div class='col-md-5'>
           API Key =
           <!-- Input field for API Key -->
-          <input type="text" name="input-api-key" id='input-api-key' size='50' style='border: 10;' autofocus="autofocus" value='{{api_key}}'>
+          <input type='text' name='input-api-key' id='input-api-key' size='50' style='border: 10;' autofocus='autofocus' value='{{api_key}}'>
         </div>
         <div class='col-md-2'>
           <!-- Button for adding/changing API Key -->
@@ -44,6 +60,7 @@
             Add/Change API Key
           </button>
         </div>
+        <br>
       </div>
       <!-- Row for displaying converted scripts -->
       <div class='row show2'>

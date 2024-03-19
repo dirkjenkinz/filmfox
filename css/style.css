@@ -550,3 +550,7 @@ input[type=range][orient=vertical] {
   background-size: cover; /* Adjusts the size of the background image to cover the entire element */
   background-position: center; /* Positions the background image at the center of the element */
 }
+
+.document-footer {
+  color: #444;
+}

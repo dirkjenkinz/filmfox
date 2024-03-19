@@ -3,13 +3,9 @@
 // Import required modules
 const url = require('url');
 const path = require('path');
-const dotenv = require('dotenv');
 const ffmpeg = require('fluent-ffmpeg');
 const { getFileList } = require('../../services/file-service');
 const { smartLog } = require('../../services/smart-log');
-
-// Load environment variables from the .env file
-dotenv.config();
 
 // Function to concatenate audio clips
 const concatFiles = (clips, sceneNumber, title) => {

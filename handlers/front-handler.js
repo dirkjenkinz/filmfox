@@ -1,5 +1,5 @@
 'use strict';
-
+const url = require('url');
 const { getFileList, writeFile, getFile, getFFFList } = require('../services/file-service');
 const { getUserSubscriptionInfo, getVoices } = require('../services/elevenLabs');
 const { smartLog } = require('../services/smart-log');
@@ -8,8 +8,9 @@ const { smartLog } = require('../services/smart-log');
 const frontHandler = async (req, res) => {
   // Log entry point for better traceability
   smartLog('info', 'entering front handler');
-
-  // Get the ElevenLabs API key from the environment variables
+  const u = url.parse(req.originalUrl, true);
+  const caller = u.query.caller || 'none';
+  // Get the ElevenLabs API key
   const { api_key } = await getFile('control.json');
 
   // Fetch the list of FFF (Film Fox Files) and FDX (Final Draft) files
@@ -25,7 +26,7 @@ const frontHandler = async (req, res) => {
   let voices = '';
 
   // Check if an ElevenLabs API key is available
-  if (api_key) {
+  if (api_key && caller === 'none') {
     // Fetch user subscription information from ElevenLabs
     subscription = await getUserSubscriptionInfo(api_key);
 

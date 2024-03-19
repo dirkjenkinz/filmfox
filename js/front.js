@@ -31,3 +31,7 @@ $('#btn-api-key').on('click', () => {
   const key = $('#input-api-key').val();
   window.location.href = `/update-api-key?key=${key}`;
 });
+
+$('#full-log').on('change', (e) => {
+  console.log(e.target);
+});

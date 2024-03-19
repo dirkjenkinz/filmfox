@@ -20,7 +20,7 @@ const generateCategoryPDFsHandler = async (req, res) => {
         footer: {
             height: '40mm',
             contents: {
-                default: '<span style="color: #444;">{{page}}</span> of <span>{{pages}}</span>',
+                default: '<span class="document-footer">{{page}}</span> of <span>{{pages}}</span>',
                 last: 'Last Page',
             },
         },
